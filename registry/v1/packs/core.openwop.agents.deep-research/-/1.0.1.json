@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.agents.deep-research",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Long-horizon research agent. Plans, dispatches sub-investigations, retrieves from RAG + web, writes up findings. Mirrors LangGraph Deep Agents (planner + subagents + filesystem). Pure-agent pack.",
   "author": "OpenWOP Working Group",
   "license": "Apache-2.0",
@@ -31,10 +31,10 @@
       "modelClass": "research",
       "systemPromptRef": "prompts/deep-research.md",
       "toolAllowlist": [
-        "openwop:core.http.fetch",
-        "openwop:core.rag.retrieve",
-        "openwop:core.rag.contextual-compression",
-        "openwop:vendor.myndhyve.web-research"
+        "openwop:core.openwop.http.fetch",
+        "openwop:core.rag.retriever-basic",
+        "openwop:core.rag.retriever-contextual-compression",
+        "openwop:ai.research.web"
       ],
       "memoryShape": {
         "scratchpad": true,
@@ -59,7 +59,6 @@
     "publicKeyRef": "openwop-team-1",
     "signatureRef": "keys/pack.json.sig"
   },
-  "integrity": "sha256-9KIVJeEsM5LTFmjqLGxMavw3Rh1eSDZI8+ybehmAsV4=",
-  "yanked": true,
-  "yankedReason": "systemPromptRef body omitted from tarball (pre-#295 bundler defect); superseded by 1.0.1"
+  "integrity": "sha256-pQJ4hjiQE151csoJ4XFX6c/qYr89Dlyd8mz5Ve53ibs=",
+  "publishedAt": "2026-05-27T00:00:00Z"
 }

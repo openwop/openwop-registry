@@ -47,5 +47,12 @@
   "runtime": {
     "language": "remote",
     "entry": "pack.json"
-  }
+  },
+  "signing": {
+    "method": "manual",
+    "publicKeyRef": "openwop-team-1",
+    "signatureRef": "keys/pack.json.sig"
+  },
+  "integrity": "sha256-BiMZVrMEFlW4cdBKdl+KTLWJfLV2vhuDJzrJQyixoNk=",
+  "publishedAt": "2026-05-27T00:00:00Z"
 }
