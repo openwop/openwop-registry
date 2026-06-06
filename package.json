@@ -1,0 +1,16 @@
+{
+  "name": "openwop-registry",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "OpenWOP pack ecosystem — source packs (packs/) and the published registry catalog (registry/) served at packs.openwop.dev.",
+  "license": "Apache-2.0",
+  "scripts": {
+    "build:index": "node registry/scripts/build-index.mjs",
+    "check": "bash scripts/registry-check.sh"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  }
+}

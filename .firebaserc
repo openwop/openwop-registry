@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "openwop-dev"
+  },
+  "targets": {
+    "openwop-dev": {
+      "hosting": {
+        "packs": [
+          "packs-openwop-dev"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
