@@ -78,6 +78,6 @@ Deep-merge is intentionally out of scope; downstream packs can ship that variant
 
 ## See also
 
-- [`spec/v1/node-packs.md`](../../spec/v1/node-packs.md)
-- [`docs/PACKS-MVP-PLAN.md`](../../docs/PACKS-MVP-PLAN.md) — Phase 1 catalog
-- [`docs/PROTOCOL-GAP-CLOSURE-PLAN.md`](../../docs/PROTOCOL-GAP-CLOSURE-PLAN.md) Track 7 — Node-Pack Registry MVP
+- [`spec/v1/node-packs.md`](https://github.com/openwop/openwop/blob/main/spec/v1/node-packs.md)
+- [`docs/PACKS-MVP-PLAN.md`](https://github.com/openwop/openwop/blob/main/docs/PACKS-MVP-PLAN.md) — Phase 1 catalog
+- [`docs/PROTOCOL-GAP-CLOSURE-PLAN.md`](https://github.com/openwop/openwop/blob/main/docs/PROTOCOL-GAP-CLOSURE-PLAN.md) Track 7 — Node-Pack Registry MVP

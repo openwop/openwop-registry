@@ -35,4 +35,4 @@ Note that `task.outputSchema` is an **inline JSON Schema** (the caller passes th
 ## See also
 
 - [`packs/core.openwop.agents/`](../core.openwop.agents/) — see `output-parser-structured` + `output-parser-auto-fix` sub-nodes for the in-workflow equivalent
-- [`RFCS/0003-agent-packs.md`](../../RFCS/0003-agent-packs.md) §D — handoff schema resolution
+- [`RFCS/0003-agent-packs.md`](https://github.com/openwop/openwop/blob/main/RFCS/0003-agent-packs.md) §D — handoff schema resolution

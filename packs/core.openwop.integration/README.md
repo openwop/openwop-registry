@@ -97,7 +97,7 @@ Hosts that don't expose these throw `host_capability_missing` at runtime. (Workf
 
 ## See also
 
-- [`spec/v1/capabilities.md`](../../spec/v1/capabilities.md) — host integration advertisement
-- [`spec/v1/replay.md`](../../spec/v1/replay.md) §"Replay determinism"
-- [`spec/v1/idempotency.md`](../../spec/v1/idempotency.md) — Layer-1 + Layer-2 cost-once contract
-- [`docs/PACKS-MVP-PLAN.md`](../../docs/PACKS-MVP-PLAN.md) — Phase 1 catalog
+- [`spec/v1/capabilities.md`](https://github.com/openwop/openwop/blob/main/spec/v1/capabilities.md) — host integration advertisement
+- [`spec/v1/replay.md`](https://github.com/openwop/openwop/blob/main/spec/v1/replay.md) §"Replay determinism"
+- [`spec/v1/idempotency.md`](https://github.com/openwop/openwop/blob/main/spec/v1/idempotency.md) — Layer-1 + Layer-2 cost-once contract
+- [`docs/PACKS-MVP-PLAN.md`](https://github.com/openwop/openwop/blob/main/docs/PACKS-MVP-PLAN.md) — Phase 1 catalog

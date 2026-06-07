@@ -42,4 +42,4 @@ Hosts MAY restrict at dispatch time. Workflows MAY extend via `task.toolAllowlis
 
 - `packs/core.openwop.agents.research-crew/` (not yet shipped) — bundled crew variant (planner + retriever + critic + writer)
 - [`packs/core.openwop.rag/`](../core.openwop.rag/) — RAG primitives used by tools
-- [`RFCS/0004-memory-layer.md`](../../RFCS/0004-memory-layer.md)
+- [`RFCS/0004-memory-layer.md`](https://github.com/openwop/openwop/blob/main/RFCS/0004-memory-layer.md)

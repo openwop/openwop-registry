@@ -94,7 +94,7 @@ Triggers tied to a specific host concept — canvas state, chat messages, artifa
 
 ## See also
 
-- [`spec/v1/rest-endpoints.md`](../../spec/v1/rest-endpoints.md) — host webhook + event endpoints
-- [`spec/v1/webhooks.md`](../../spec/v1/webhooks.md) — HMAC verification + delivery semantics
-- [`docs/PACKS-MVP-PLAN.md`](../../docs/PACKS-MVP-PLAN.md) — Phase 1 catalog
+- [`spec/v1/rest-endpoints.md`](https://github.com/openwop/openwop/blob/main/spec/v1/rest-endpoints.md) — host webhook + event endpoints
+- [`spec/v1/webhooks.md`](https://github.com/openwop/openwop/blob/main/spec/v1/webhooks.md) — HMAC verification + delivery semantics
+- [`docs/PACKS-MVP-PLAN.md`](https://github.com/openwop/openwop/blob/main/docs/PACKS-MVP-PLAN.md) — Phase 1 catalog
 - `docs/plans/MYNDHYVE-TO-OPENWOP-PACK-MIGRATION.md` (lives in the myndhyve repo) — domain trigger split decisions

@@ -39,5 +39,5 @@ ctx.suspend({ reason, resumeKey, answerSchema?, timeoutMs? })
 ## See also
 
 - [`docs/plans/MYNDHYVE-TO-OPENWOP-PACK-MIGRATION.md`](https://github.com/openwop/openwop) (in myndhyve)
-- [`RFCS/0002-agent-identity-and-reasoning-events.md`](../../RFCS/0002-agent-identity-and-reasoning-events.md) §F — suspend primitive (was RFC 0007 in original numbering)
-- [`RFCS/0005-conversation.md`](../../RFCS/0005-conversation.md) — conversation primitive (RFC 0010 in original numbering)
+- [`RFCS/0002-agent-identity-and-reasoning-events.md`](https://github.com/openwop/openwop/blob/main/RFCS/0002-agent-identity-and-reasoning-events.md) §F — suspend primitive (was RFC 0007 in original numbering)
+- [`RFCS/0005-conversation.md`](https://github.com/openwop/openwop/blob/main/RFCS/0005-conversation.md) — conversation primitive (RFC 0010 in original numbering)

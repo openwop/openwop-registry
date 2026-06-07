@@ -18,8 +18,8 @@
 }
 ```
 
-- `ctx.chat.sendMessage(...)` per [spec §host.chat](../../spec/v1/host-capabilities.md#host-chat) — pack invokes with `{ role: 'user', content, idempotencyKey }`.
-- `ctx.aiEnvelope.await({ envelopeType, timeoutMs })` per [spec §host.aiEnvelope](../../spec/v1/host-capabilities.md#host-aiEnvelope) — pack reads `{ envelopeType, payload?, envelopeId?, timedOut? }`.
+- `ctx.chat.sendMessage(...)` per [spec §host.chat](https://github.com/openwop/openwop/blob/main/spec/v1/host-capabilities.md#host-chat) — pack invokes with `{ role: 'user', content, idempotencyKey }`.
+- `ctx.aiEnvelope.await({ envelopeType, timeoutMs })` per [spec §host.aiEnvelope](https://github.com/openwop/openwop/blob/main/spec/v1/host-capabilities.md#host-aiEnvelope) — pack reads `{ envelopeType, payload?, envelopeId?, timedOut? }`.
 
 ## What's in the pack vs. what's the host's job
 

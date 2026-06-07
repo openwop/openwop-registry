@@ -22,7 +22,7 @@ Spec-canonical examples pack. Three minimal nodes used as smoke probes in confor
 
 Returns the input port `value` verbatim. Pure / replay-safe / no side effects.
 
-**Schemas:** [`schemas/echo.config.json`](./schemas/echo.config.json), [`schemas/echo.input.json`](./schemas/echo.input.json), [`schemas/echo.output.json`](./schemas/echo.output.json).
+**Schemas:** [`schemas/echo.config.json`](https://github.com/openwop/openwop/blob/main/schemas/echo.config.json), [`schemas/echo.input.json`](https://github.com/openwop/openwop/blob/main/schemas/echo.input.json), [`schemas/echo.output.json`](https://github.com/openwop/openwop/blob/main/schemas/echo.output.json).
 
 **Example workflow node:**
 ```json
@@ -44,7 +44,7 @@ result = SHA-256(seed)[0] % 2 === 0 ? 'heads' : 'tails'
 
 A non-JavaScript port of this pack (Python, Go, WASM) MUST honour the same rule so cross-language hosts return identical results for the same seed. The fixture `pack-fetch-verify.test.ts` asserts this property on every conformant host.
 
-**Schemas:** [`schemas/coin-flip.config.json`](./schemas/coin-flip.config.json), [`schemas/coin-flip.input.json`](./schemas/coin-flip.input.json), [`schemas/coin-flip.output.json`](./schemas/coin-flip.output.json).
+**Schemas:** [`schemas/coin-flip.config.json`](https://github.com/openwop/openwop/blob/main/schemas/coin-flip.config.json), [`schemas/coin-flip.input.json`](https://github.com/openwop/openwop/blob/main/schemas/coin-flip.input.json), [`schemas/coin-flip.output.json`](https://github.com/openwop/openwop/blob/main/schemas/coin-flip.output.json).
 
 ### `core.openwop.examples.delay-with-progress`
 
@@ -52,7 +52,7 @@ Sleeps for `config.delayMs`, streaming a `node.progress` event every `config.tic
 
 On replay, per `spec/v1/replay.md` §"Replay determinism," the host returns the cached `{ actualDelayMs, tickCount }` directly — the function is NOT re-executed, so replay cost is near-zero.
 
-**Schemas:** [`schemas/delay-with-progress.config.json`](./schemas/delay-with-progress.config.json), [`schemas/delay-with-progress.input.json`](./schemas/delay-with-progress.input.json), [`schemas/delay-with-progress.output.json`](./schemas/delay-with-progress.output.json).
+**Schemas:** [`schemas/delay-with-progress.config.json`](https://github.com/openwop/openwop/blob/main/schemas/delay-with-progress.config.json), [`schemas/delay-with-progress.input.json`](https://github.com/openwop/openwop/blob/main/schemas/delay-with-progress.input.json), [`schemas/delay-with-progress.output.json`](https://github.com/openwop/openwop/blob/main/schemas/delay-with-progress.output.json).
 
 ## Building the tarball
 
@@ -62,7 +62,7 @@ tar -czf core.openwop.examples-1.0.0.tgz \
   pack.json index.mjs schemas/ README.md LICENSE
 ```
 
-(`scripts/build-pack.sh` automates this once the build pipeline lands per [`docs/PACKS-MVP-PLAN.md`](../../docs/PACKS-MVP-PLAN.md).)
+(`scripts/build-pack.sh` automates this once the build pipeline lands per [`docs/PACKS-MVP-PLAN.md`](https://github.com/openwop/openwop/blob/main/docs/PACKS-MVP-PLAN.md).)
 
 ## Verifying the pack locally
 
@@ -117,7 +117,7 @@ node --input-type=module -e "
 
 ## See also
 
-- [`spec/v1/node-packs.md`](../../spec/v1/node-packs.md) — the pack format and runtime contract.
-- [`spec/v1/registry-operations.md`](../../spec/v1/registry-operations.md) — how packs are published.
-- [`docs/PACKS-MVP-PLAN.md`](../../docs/PACKS-MVP-PLAN.md) — the broader catalog plan.
-- [`examples/node-pack-publishing/`](../../examples/node-pack-publishing/) — end-to-end publish walkthrough.
+- [`spec/v1/node-packs.md`](https://github.com/openwop/openwop/blob/main/spec/v1/node-packs.md) — the pack format and runtime contract.
+- [`spec/v1/registry-operations.md`](https://github.com/openwop/openwop/blob/main/spec/v1/registry-operations.md) — how packs are published.
+- [`docs/PACKS-MVP-PLAN.md`](https://github.com/openwop/openwop/blob/main/docs/PACKS-MVP-PLAN.md) — the broader catalog plan.
+- [`examples/node-pack-publishing/`](https://github.com/openwop/openwop-examples/tree/main/examples/node-pack-publishing) — end-to-end publish walkthrough.

@@ -42,6 +42,6 @@ Suggested companions:
 
 ## See also
 
-- [`RFCS/0006-orchestrator.md`](../../RFCS/0006-orchestrator.md)
-- [`RFCS/0007-dispatch.md`](../../RFCS/0007-dispatch.md)
+- [`RFCS/0006-orchestrator.md`](https://github.com/openwop/openwop/blob/main/RFCS/0006-orchestrator.md)
+- [`RFCS/0007-dispatch.md`](https://github.com/openwop/openwop/blob/main/RFCS/0007-dispatch.md)
 - `packs/core.openwop.agents.research-crew/` (not yet shipped) — pre-bundled crew (Supervisor pairs naturally with crew packs)

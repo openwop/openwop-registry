@@ -55,8 +55,8 @@ The reference Postgres host (`examples/hosts/postgres/`) advertises both.
 ## See also
 
 - `spec/v1/agent-dispatch.md` (not yet drafted)
-- [`RFCS/0002-agent-identity-and-reasoning-events.md`](../../RFCS/0002-agent-identity-and-reasoning-events.md)
-- [`RFCS/0007-dispatch.md`](../../RFCS/0007-dispatch.md)
+- [`RFCS/0002-agent-identity-and-reasoning-events.md`](https://github.com/openwop/openwop/blob/main/RFCS/0002-agent-identity-and-reasoning-events.md)
+- [`RFCS/0007-dispatch.md`](https://github.com/openwop/openwop/blob/main/RFCS/0007-dispatch.md)
 - [`packs/core.openwop.agents/`](../core.openwop.agents/) — n8n-style root+sub-nodes for in-workflow agent composition (this pack is the alternative: a standalone agent persona, no sub-nodes)
 - [`packs/core.openwop.agents.supervisor/`](../core.openwop.agents.supervisor/) — multi-agent supervisor
 - [`packs/core.openwop.agents.deep-research/`](../core.openwop.agents.deep-research/) — long-horizon research variant

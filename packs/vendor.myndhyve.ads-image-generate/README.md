@@ -1,6 +1,6 @@
 # vendor.myndhyve.ads-image-generate
 
-> `ads.image.generate` — generate ad creative images via the host's `ctx.callImageGenerator`. **First consumer of the `aiProviders.imageGeneration` sub-capability** ([spec PR #48](../../spec/v1/host-capabilities.md#host-aiProviders)).
+> `ads.image.generate` — generate ad creative images via the host's `ctx.callImageGenerator`. **First consumer of the `aiProviders.imageGeneration` sub-capability** ([spec PR #48](https://github.com/openwop/openwop/blob/main/spec/v1/host-capabilities.md#host-aiProviders)).
 
 ## Node
 
@@ -16,7 +16,7 @@
 }
 ```
 
-`ctx.callImageGenerator({ provider, model, prompt, negativePrompt, width, height, count, seed, brandColors })` per [spec §host.aiProviders → imageGeneration sub-capability](../../spec/v1/host-capabilities.md#host-aiProviders).
+`ctx.callImageGenerator({ provider, model, prompt, negativePrompt, width, height, count, seed, brandColors })` per [spec §host.aiProviders → imageGeneration sub-capability](https://github.com/openwop/openwop/blob/main/spec/v1/host-capabilities.md#host-aiProviders).
 
 Pack uses every parameter in the spec contract. Hosts that advertise the sub-capability flag MUST expose the method per the spec.
 

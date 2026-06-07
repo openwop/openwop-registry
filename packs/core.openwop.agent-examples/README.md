@@ -76,8 +76,8 @@ The agent manifest's `modelClass` is a CLASS (`general`, `writing`, `coding`, `r
 
 ## See also
 
-- [`spec/v1/node-packs.md`](../../spec/v1/node-packs.md)
-- [`schemas/agent-manifest.schema.json`](../../schemas/agent-manifest.schema.json)
-- [`RFCS/0003-agent-packs.md`](../../RFCS/0003-agent-packs.md) — agents[] extension RFC
-- [`docs/PACK-CATALOG.md`](../../docs/PACK-CATALOG.md) — full pack catalog
+- [`spec/v1/node-packs.md`](https://github.com/openwop/openwop/blob/main/spec/v1/node-packs.md)
+- [`schemas/agent-manifest.schema.json`](https://github.com/openwop/openwop/blob/main/schemas/agent-manifest.schema.json)
+- [`RFCS/0003-agent-packs.md`](https://github.com/openwop/openwop/blob/main/RFCS/0003-agent-packs.md) — agents[] extension RFC
+- [`docs/PACK-CATALOG.md`](https://github.com/openwop/openwop/blob/main/docs/PACK-CATALOG.md) — full pack catalog
 - Production agent packs: `packs/core.openwop.agents.<pattern>/`

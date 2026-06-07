@@ -45,9 +45,9 @@ Declared `side-effectful` capability + cached via the engine's Layer-2 invocatio
 
 ## Schemas
 
-- [`schemas/fetch.config.json`](./schemas/fetch.config.json) — url, method, headers, timeout, retry policy, idempotency mode
-- [`schemas/fetch.input.json`](./schemas/fetch.input.json) — URL template variables, body
-- [`schemas/fetch.output.json`](./schemas/fetch.output.json) — status, headers, body, durationMs, attempts, idempotencyKey, networkError
+- [`schemas/fetch.config.json`](https://github.com/openwop/openwop/blob/main/schemas/fetch.config.json) — url, method, headers, timeout, retry policy, idempotency mode
+- [`schemas/fetch.input.json`](https://github.com/openwop/openwop/blob/main/schemas/fetch.input.json) — URL template variables, body
+- [`schemas/fetch.output.json`](https://github.com/openwop/openwop/blob/main/schemas/fetch.output.json) — status, headers, body, durationMs, attempts, idempotencyKey, networkError
 
 ## Example workflow node
 
@@ -110,7 +110,7 @@ tar -czf core.openwop.http-1.0.0.tgz pack.json index.mjs schemas/ README.md LICE
 
 ## See also
 
-- [`spec/v1/node-packs.md`](../../spec/v1/node-packs.md)
-- [`spec/v1/idempotency.md`](../../spec/v1/idempotency.md) — Layer-1 (HTTP) and Layer-2 (engine) idempotency contracts
-- [`spec/v1/replay.md`](../../spec/v1/replay.md) — why side-effect nodes are safe under replay
-- [`docs/PACKS-MVP-PLAN.md`](../../docs/PACKS-MVP-PLAN.md)
+- [`spec/v1/node-packs.md`](https://github.com/openwop/openwop/blob/main/spec/v1/node-packs.md)
+- [`spec/v1/idempotency.md`](https://github.com/openwop/openwop/blob/main/spec/v1/idempotency.md) — Layer-1 (HTTP) and Layer-2 (engine) idempotency contracts
+- [`spec/v1/replay.md`](https://github.com/openwop/openwop/blob/main/spec/v1/replay.md) — why side-effect nodes are safe under replay
+- [`docs/PACKS-MVP-PLAN.md`](https://github.com/openwop/openwop/blob/main/docs/PACKS-MVP-PLAN.md)
