@@ -120,12 +120,12 @@ Rotation: per `spec/v1/registry-operations.md` §"Signing keys + rotation," publ
 
 ## Schemas
 
-- [`schemas/uppercase.{config,input,output}.json`](./schemas/)
+- [`schemas/uppercase.{config,input,output}.json`](https://github.com/openwop/openwop/tree/main/schemas)
 - Agent manifest validates against `schemas/agent-manifest.schema.json` (at repo root)
 
 ## See also
 
-- [`spec/v1/node-packs.md`](../../spec/v1/node-packs.md) §"Signing"
-- [`spec/v1/registry-operations.md`](../../spec/v1/registry-operations.md) §"Signing keys + rotation"
-- [`docs/PACKS-MVP-PLAN.md`](../../docs/PACKS-MVP-PLAN.md)
-- [`examples/node-pack-publishing/`](../../examples/node-pack-publishing/)
+- [`spec/v1/node-packs.md`](https://github.com/openwop/openwop/blob/main/spec/v1/node-packs.md) §"Signing"
+- [`spec/v1/registry-operations.md`](https://github.com/openwop/openwop/blob/main/spec/v1/registry-operations.md) §"Signing keys + rotation"
+- [`docs/PACKS-MVP-PLAN.md`](https://github.com/openwop/openwop/blob/main/docs/PACKS-MVP-PLAN.md)
+- [`examples/node-pack-publishing/`](https://github.com/openwop/openwop-examples/tree/main/examples/node-pack-publishing)

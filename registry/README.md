@@ -259,8 +259,8 @@ To deploy this registry for the first time:
 
 ## See also
 
-- [`spec/v1/node-packs.md`](../spec/v1/node-packs.md) — pack manifest format + registry HTTP API
-- [`spec/v1/registry-operations.md`](../spec/v1/registry-operations.md) — operator-side lifecycle (submission, deprecation, yank, key rotation)
-- [`RFCS/0008-wasm-abi.md`](../RFCS/0008-wasm-abi.md) — WASM pack ABI (the `rust-hello` pack hosted here exercises this)
-- [`examples/packs/rust-hello/README.md`](../examples/packs/rust-hello/README.md) — the reference WASM pack
+- [`spec/v1/node-packs.md`](https://github.com/openwop/openwop/blob/main/spec/v1/node-packs.md) — pack manifest format + registry HTTP API
+- [`spec/v1/registry-operations.md`](https://github.com/openwop/openwop/blob/main/spec/v1/registry-operations.md) — operator-side lifecycle (submission, deprecation, yank, key rotation)
+- [`RFCS/0008-wasm-abi.md`](https://github.com/openwop/openwop/blob/main/RFCS/0008-wasm-abi.md) — WASM pack ABI (the `rust-hello` pack hosted here exercises this)
+- [`examples/packs/rust-hello/README.md`](https://github.com/openwop/openwop-examples/blob/main/examples/packs/rust-hello/README.md) — the reference WASM pack
 - [`.github/workflows/registry-publish.yml`](../.github/workflows/registry-publish.yml) — CI gate + deploy job

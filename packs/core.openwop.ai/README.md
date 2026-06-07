@@ -116,8 +116,8 @@ Hosts that don't expose this throw `host_capability_missing` at runtime. (Workfl
 
 ## See also
 
-- [`spec/v1/capabilities.md`](../../spec/v1/capabilities.md) §aiProviders
-- [`spec/v1/replay.md`](../../spec/v1/replay.md) §"Replay determinism" — why side-effectful nodes are replay-safe
-- [`spec/v1/node-packs.md`](../../spec/v1/node-packs.md) §peerDependencies
-- [`docs/PACKS-MVP-PLAN.md`](../../docs/PACKS-MVP-PLAN.md) — Phase 1 catalog
+- [`spec/v1/capabilities.md`](https://github.com/openwop/openwop/blob/main/spec/v1/capabilities.md) §aiProviders
+- [`spec/v1/replay.md`](https://github.com/openwop/openwop/blob/main/spec/v1/replay.md) §"Replay determinism" — why side-effectful nodes are replay-safe
+- [`spec/v1/node-packs.md`](https://github.com/openwop/openwop/blob/main/spec/v1/node-packs.md) §peerDependencies
+- [`docs/PACKS-MVP-PLAN.md`](https://github.com/openwop/openwop/blob/main/docs/PACKS-MVP-PLAN.md) — Phase 1 catalog
 - `docs/plans/MYNDHYVE-TO-OPENWOP-PACK-MIGRATION.md` (lives in the myndhyve repo) — full migration plan

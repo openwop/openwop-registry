@@ -1,6 +1,6 @@
 # vendor.myndhyve.ads-video-generate
 
-> `ads.video.generate` — generate ad creative videos via the host's `ctx.callVideoGenerator`. **First consumer of the `aiProviders.videoGeneration` sub-capability** ([spec PR #53](../../spec/v1/host-capabilities.md#host-aiProviders)). Symmetric companion to [`ads-image-generate`](../vendor.myndhyve.ads-image-generate/README.md) adapted for video.
+> `ads.video.generate` — generate ad creative videos via the host's `ctx.callVideoGenerator`. **First consumer of the `aiProviders.videoGeneration` sub-capability** ([spec PR #53](https://github.com/openwop/openwop/blob/main/spec/v1/host-capabilities.md#host-aiProviders)). Symmetric companion to [`ads-image-generate`](../vendor.myndhyve.ads-image-generate/README.md) adapted for video.
 
 ## Node
 
@@ -16,7 +16,7 @@
 }
 ```
 
-Per [spec §host.aiProviders → videoGeneration sub-capability](../../spec/v1/host-capabilities.md#host-aiProviders).
+Per [spec §host.aiProviders → videoGeneration sub-capability](https://github.com/openwop/openwop/blob/main/spec/v1/host-capabilities.md#host-aiProviders).
 
 ## Single-video-per-call (vs image-generate's batch)
 

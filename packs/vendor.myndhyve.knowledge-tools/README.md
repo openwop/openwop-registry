@@ -1,6 +1,6 @@
 # vendor.myndhyve.knowledge-tools
 
-> First reference consumer of the v1 `host.knowledge` surface ([spec §host.knowledge](../../spec/v1/host-capabilities.md#host-knowledge)). Two typeIds: `knowledge.retrieve` (thin pass-through) + `knowledge.augment-prompt` (composition primitive).
+> First reference consumer of the v1 `host.knowledge` surface ([spec §host.knowledge](https://github.com/openwop/openwop/blob/main/spec/v1/host-capabilities.md#host-knowledge)). Two typeIds: `knowledge.retrieve` (thin pass-through) + `knowledge.augment-prompt` (composition primitive).
 
 ## Nodes
 
@@ -11,7 +11,7 @@
 
 ## Required host capability
 
-`peerDependencies: { "host.knowledge": "supported" }` — both nodes call `ctx.knowledge.retrieve(...)` directly. See [spec §host.knowledge](../../spec/v1/host-capabilities.md#host-knowledge) for the wire contract.
+`peerDependencies: { "host.knowledge": "supported" }` — both nodes call `ctx.knowledge.retrieve(...)` directly. See [spec §host.knowledge](https://github.com/openwop/openwop/blob/main/spec/v1/host-capabilities.md#host-knowledge) for the wire contract.
 
 ## `knowledge.augment-prompt` example
 

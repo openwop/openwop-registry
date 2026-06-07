@@ -1,6 +1,6 @@
 # vendor.myndhyve.ads-publish-meta
 
-> `ads.publish.meta` — publish an ad to **Meta Marketing API v21.0** (Facebook + Instagram). **First consumer of the `secrets.resolveInPack` sub-capability** ([spec PR #52](../../spec/v1/host-capabilities.md#host-secrets)).
+> `ads.publish.meta` — publish an ad to **Meta Marketing API v21.0** (Facebook + Instagram). **First consumer of the `secrets.resolveInPack` sub-capability** ([spec PR #52](https://github.com/openwop/openwop/blob/main/spec/v1/host-capabilities.md#host-secrets)).
 
 ## Node
 
@@ -16,7 +16,7 @@
 }
 ```
 
-Per [spec §host.secrets](../../spec/v1/host-capabilities.md#host-secrets). The pack calls `ctx.secrets.resolve({ ref, purpose })` to get the OAuth access token plaintext, then calls Meta's Graph API directly via `fetch()`.
+Per [spec §host.secrets](https://github.com/openwop/openwop/blob/main/spec/v1/host-capabilities.md#host-secrets). The pack calls `ctx.secrets.resolve({ ref, purpose })` to get the OAuth access token plaintext, then calls Meta's Graph API directly via `fetch()`.
 
 ## Publish pipeline
 
@@ -48,7 +48,7 @@ On partial failure, the pack runs best-effort rollback:
 
 ## Hard rules (NFR-7 — Sensitive Data Redaction)
 
-The OAuth plaintext from `ctx.secrets.resolve` flows through this pack and out to Meta's API. The pack obeys the hard rules from [spec §host.secrets](../../spec/v1/host-capabilities.md#host-secrets):
+The OAuth plaintext from `ctx.secrets.resolve` flows through this pack and out to Meta's API. The pack obeys the hard rules from [spec §host.secrets](https://github.com/openwop/openwop/blob/main/spec/v1/host-capabilities.md#host-secrets):
 
 - Plaintext is held only in a local variable for the duration of the pipeline
 - Never logged via `ctx.log` (token is only ever inside `Authorization: Bearer ...` headers)
