@@ -221,22 +221,28 @@ function rebuildPack(packName) {
   // inspect `kind` if they need to discriminate dispatch semantics
   // (node typeIds dispatch directly; chainIds expand at edit time;
   // agentIds are resolved as AgentRef references).
+  // Declarative kinds (RFC 0107) surface their consumer-facing ids the same way:
+  // artifact-type → artifactTypes[].artifactTypeId; connection → provider.id.
   const typeIds =
     kind === 'workflow-chain'
       ? (pack?.chains ?? []).map((c) => c.chainId).filter(Boolean)
+      : kind === 'artifact-type'
+      ? (pack?.artifactTypes ?? []).map((t) => t.artifactTypeId).filter(Boolean)
+      : kind === 'connection'
+      ? (pack?.provider?.id ? [pack.provider.id] : [])
       : [
           ...(pack?.nodes ?? []).map((n) => n.typeId),
           ...(pack?.agents ?? []).map((a) => a.agentId),
         ].filter(Boolean);
 
-  // Per-pack node + agent counts surface the composition of the latest
-  // manifest so the catalog landing page can bucket "node packs" vs
-  // "agent packs" without re-reading each manifest. Mixed packs (both
-  // arrays non-empty) appear in BOTH tabs — they ship both kinds of
-  // consumer-facing artifacts. Additive field per RFC 0003 / RFC 0013;
-  // unknown-key tolerance covers older clients.
+  // Per-pack composition counts so the catalog landing can bucket by kind
+  // without re-reading each manifest. Mixed node+agent packs appear in BOTH
+  // those tabs. Additive fields per RFC 0003 / RFC 0013 / RFC 0107; unknown-key
+  // tolerance covers older clients.
   const nodeCount  = Array.isArray(pack?.nodes)  ? pack.nodes.length  : 0;
   const agentCount = Array.isArray(pack?.agents) ? pack.agents.length : 0;
+  const artifactTypeCount = Array.isArray(pack?.artifactTypes) ? pack.artifactTypes.length : 0;
+  const providerCount = pack?.provider?.id ? 1 : 0;
 
   const indexDoc = {
     name: packName,
@@ -250,12 +256,18 @@ function rebuildPack(packName) {
     typeIds,
     nodeCount,
     agentCount,
+    artifactTypeCount,
+    providerCount,
     versions: versionEntries,
     latest,
     deprecated: versionEntries.every((v) => v.deprecated),
   };
   if (!indexDoc.homepage) delete indexDoc.homepage;
   if (!indexDoc.repository) delete indexDoc.repository;
+  // RFC 0107 declarative counts are additive + only meaningful for their kind —
+  // omit when zero so existing node/agent pack index.json stay byte-identical.
+  if (!artifactTypeCount) delete indexDoc.artifactTypeCount;
+  if (!providerCount) delete indexDoc.providerCount;
 
   writeJson(join(PACKS_DIR, packName, 'index.json'), indexDoc);
   return indexDoc;
@@ -330,6 +342,9 @@ function emitLandingPage(packDocs) {
   // ship both kinds of consumer-facing artifacts.
   const nodePacks  = packDocs.filter((p) => (p.nodeCount  ?? 0) > 0);
   const agentPacks = packDocs.filter((p) => (p.agentCount ?? 0) > 0);
+  // Declarative kinds (RFC 0107) — bucket by kind discriminator.
+  const artifactTypePacks = packDocs.filter((p) => p.kind === 'artifact-type');
+  const connectionPacks   = packDocs.filter((p) => p.kind === 'connection');
 
   const rowFor = (p, kindHint) => {
     const v = p.versions[p.versions.length - 1];
@@ -340,9 +355,14 @@ function emitLandingPage(packDocs) {
     // also lives in the other tab.
     if (kindHint === 'node' && (p.agentCount ?? 0) > 0) flags.push('<span class="flag flag-mixed">+ agent</span>');
     if (kindHint === 'agent' && (p.nodeCount ?? 0) > 0) flags.push('<span class="flag flag-mixed">+ nodes</span>');
-    const countCell = kindHint === 'node'
-      ? `<td class="count" title="nodes in latest manifest">${p.nodeCount ?? 0}</td>`
-      : `<td class="count" title="agents in latest manifest">${p.agentCount ?? 0}</td>`;
+    const countCell =
+      kindHint === 'node'
+        ? `<td class="count" title="nodes in latest manifest">${p.nodeCount ?? 0}</td>`
+        : kindHint === 'agent'
+        ? `<td class="count" title="agents in latest manifest">${p.agentCount ?? 0}</td>`
+        : kindHint === 'artifact-type'
+        ? `<td class="count" title="artifact types in latest manifest">${p.artifactTypeCount ?? 0}</td>`
+        : `<td class="count" title="provider in latest manifest">${p.providerCount ?? 0}</td>`;
     return `        <tr>
           <td class="name"><code>${htmlEscape(p.name)}</code> ${flags.join(' ')}</td>
           <td class="version">${htmlEscape(p.latest)}</td>
@@ -366,6 +386,8 @@ function emitLandingPage(packDocs) {
 
   const nodeRows  = buildRows(nodePacks,  'node');
   const agentRows = buildRows(agentPacks, 'agent');
+  const artifactTypeRows = buildRows(artifactTypePacks, 'artifact-type');
+  const connectionRows   = buildRows(connectionPacks,   'connection');
 
   const tableFor = (rows, countHeader) =>
     `    <table>
@@ -648,19 +670,25 @@ ${rows}
     outline: none;
   }
   #tab-nodes:focus-visible  ~ .tab-list .tab[for="tab-nodes"],
-  #tab-agents:focus-visible ~ .tab-list .tab[for="tab-agents"] {
+  #tab-agents:focus-visible ~ .tab-list .tab[for="tab-agents"],
+  #tab-artifact-types:focus-visible ~ .tab-list .tab[for="tab-artifact-types"],
+  #tab-connections:focus-visible    ~ .tab-list .tab[for="tab-connections"] {
     outline: 2px solid var(--clay);
     outline-offset: 2px;
     border-radius: 2px;
   }
   /* Active-tab styling — :checked drives sibling rules. */
   #tab-nodes:checked  ~ .tab-list .tab[for="tab-nodes"],
-  #tab-agents:checked ~ .tab-list .tab[for="tab-agents"] {
+  #tab-agents:checked ~ .tab-list .tab[for="tab-agents"],
+  #tab-artifact-types:checked ~ .tab-list .tab[for="tab-artifact-types"],
+  #tab-connections:checked    ~ .tab-list .tab[for="tab-connections"] {
     color: var(--ink);
     border-bottom-color: var(--clay);
   }
   #tab-nodes:checked  ~ .tab-list .tab[for="tab-nodes"]  .tab-count,
-  #tab-agents:checked ~ .tab-list .tab[for="tab-agents"] .tab-count {
+  #tab-agents:checked ~ .tab-list .tab[for="tab-agents"] .tab-count,
+  #tab-artifact-types:checked ~ .tab-list .tab[for="tab-artifact-types"] .tab-count,
+  #tab-connections:checked    ~ .tab-list .tab[for="tab-connections"] .tab-count {
     background: var(--clay-soft);
     color: var(--clay);
   }
@@ -668,6 +696,8 @@ ${rows}
   .tab-panel { display: none; }
   #tab-nodes:checked  ~ .tab-panel-nodes  { display: block; }
   #tab-agents:checked ~ .tab-panel-agents { display: block; }
+  #tab-artifact-types:checked ~ .tab-panel-artifact-types { display: block; }
+  #tab-connections:checked    ~ .tab-panel-connections    { display: block; }
   .tab-desc {
     color: var(--ink-2);
     font-size: 14.5px;
@@ -771,6 +801,8 @@ ${
     : `    <div class="tabs">
       <input type="radio" name="catalog-tab" id="tab-nodes" class="tab-radio" checked>
       <input type="radio" name="catalog-tab" id="tab-agents" class="tab-radio">
+      <input type="radio" name="catalog-tab" id="tab-artifact-types" class="tab-radio">
+      <input type="radio" name="catalog-tab" id="tab-connections" class="tab-radio">
 
       <div class="tab-list" role="tablist" aria-label="Pack categories">
         <label class="tab" for="tab-nodes" role="tab">
@@ -780,6 +812,14 @@ ${
         <label class="tab" for="tab-agents" role="tab">
           <span class="tab-label">Agent packs</span>
           <span class="tab-count">${agentPacks.length}</span>
+        </label>
+        <label class="tab" for="tab-artifact-types" role="tab">
+          <span class="tab-label">Artifact-type packs</span>
+          <span class="tab-count">${artifactTypePacks.length}</span>
+        </label>
+        <label class="tab" for="tab-connections" role="tab">
+          <span class="tab-label">Connection packs</span>
+          <span class="tab-count">${connectionPacks.length}</span>
         </label>
       </div>
 
@@ -813,6 +853,37 @@ ${
         ${agentPacks.length === 0
           ? '<div class="empty">No agent packs published yet — the first pure-agent packs are in the <code>core.openwop.agents.*</code> family.</div>'
           : tableFor(agentRows, 'Agents')}
+      </div>
+
+      <div class="tab-panel tab-panel-artifact-types" role="tabpanel" aria-labelledby="tab-artifact-types">
+        <p class="tab-desc">
+          <strong>Artifact-type packs</strong> register typed artifact schemas (a
+          JSON Schema + export targets) into a host's artifact registry — so workflow
+          outputs (one-pagers, brand kits, SOWs) are typed, validated, and exportable.
+          They are <em>declarative</em>: a manifest with <code>kind: "artifact-type"</code>
+          and an <code>artifactTypes[]</code> array, no runtime. See
+          <a href="https://github.com/openwop/openwop/blob/main/RFCS/0075-artifact-type-packs-realworld-amendment.md">RFC 0075</a>
+          (publishable per <a href="https://github.com/openwop/openwop/blob/main/RFCS/0107-publishable-declarative-pack-kinds.md">RFC 0107</a>).
+        </p>
+        ${artifactTypePacks.length === 0
+          ? '<div class="empty">No artifact-type packs published yet.</div>'
+          : tableFor(artifactTypeRows, 'Types')}
+      </div>
+
+      <div class="tab-panel tab-panel-connections" role="tabpanel" aria-labelledby="tab-connections">
+        <p class="tab-desc">
+          <strong>Connection packs</strong> ship portable provider definitions — OAuth /
+          API-key auth, scopes, and reach (MCP / OpenAPI / integration) — that make a
+          host's connection registry installable for third-party providers. They are
+          <em>declarative</em>: a manifest with <code>kind: "connection"</code> and a
+          <code>provider</code> object, no runtime and <strong>no credential material</strong>
+          (enforced). See
+          <a href="https://github.com/openwop/openwop/blob/main/RFCS/0095-connection-packs-portable-provider-definitions.md">RFC 0095</a>
+          (publishable per <a href="https://github.com/openwop/openwop/blob/main/RFCS/0107-publishable-declarative-pack-kinds.md">RFC 0107</a>).
+        </p>
+        ${connectionPacks.length === 0
+          ? '<div class="empty">No connection packs published yet.</div>'
+          : tableFor(connectionRows, 'Provider')}
       </div>
     </div>`
 }

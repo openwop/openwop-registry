@@ -269,19 +269,25 @@
     outline: none;
   }
   #tab-nodes:focus-visible  ~ .tab-list .tab[for="tab-nodes"],
-  #tab-agents:focus-visible ~ .tab-list .tab[for="tab-agents"] {
+  #tab-agents:focus-visible ~ .tab-list .tab[for="tab-agents"],
+  #tab-artifact-types:focus-visible ~ .tab-list .tab[for="tab-artifact-types"],
+  #tab-connections:focus-visible    ~ .tab-list .tab[for="tab-connections"] {
     outline: 2px solid var(--clay);
     outline-offset: 2px;
     border-radius: 2px;
   }
   /* Active-tab styling — :checked drives sibling rules. */
   #tab-nodes:checked  ~ .tab-list .tab[for="tab-nodes"],
-  #tab-agents:checked ~ .tab-list .tab[for="tab-agents"] {
+  #tab-agents:checked ~ .tab-list .tab[for="tab-agents"],
+  #tab-artifact-types:checked ~ .tab-list .tab[for="tab-artifact-types"],
+  #tab-connections:checked    ~ .tab-list .tab[for="tab-connections"] {
     color: var(--ink);
     border-bottom-color: var(--clay);
   }
   #tab-nodes:checked  ~ .tab-list .tab[for="tab-nodes"]  .tab-count,
-  #tab-agents:checked ~ .tab-list .tab[for="tab-agents"] .tab-count {
+  #tab-agents:checked ~ .tab-list .tab[for="tab-agents"] .tab-count,
+  #tab-artifact-types:checked ~ .tab-list .tab[for="tab-artifact-types"] .tab-count,
+  #tab-connections:checked    ~ .tab-list .tab[for="tab-connections"] .tab-count {
     background: var(--clay-soft);
     color: var(--clay);
   }
@@ -289,6 +295,8 @@
   .tab-panel { display: none; }
   #tab-nodes:checked  ~ .tab-panel-nodes  { display: block; }
   #tab-agents:checked ~ .tab-panel-agents { display: block; }
+  #tab-artifact-types:checked ~ .tab-panel-artifact-types { display: block; }
+  #tab-connections:checked    ~ .tab-panel-connections    { display: block; }
   .tab-desc {
     color: var(--ink-2);
     font-size: 14.5px;
@@ -389,6 +397,8 @@
     <div class="tabs">
       <input type="radio" name="catalog-tab" id="tab-nodes" class="tab-radio" checked>
       <input type="radio" name="catalog-tab" id="tab-agents" class="tab-radio">
+      <input type="radio" name="catalog-tab" id="tab-artifact-types" class="tab-radio">
+      <input type="radio" name="catalog-tab" id="tab-connections" class="tab-radio">
 
       <div class="tab-list" role="tablist" aria-label="Pack categories">
         <label class="tab" for="tab-nodes" role="tab">
@@ -398,6 +408,14 @@
         <label class="tab" for="tab-agents" role="tab">
           <span class="tab-label">Agent packs</span>
           <span class="tab-count">5</span>
+        </label>
+        <label class="tab" for="tab-artifact-types" role="tab">
+          <span class="tab-label">Artifact-type packs</span>
+          <span class="tab-count">0</span>
+        </label>
+        <label class="tab" for="tab-connections" role="tab">
+          <span class="tab-label">Connection packs</span>
+          <span class="tab-count">0</span>
         </label>
       </div>
 
@@ -1196,6 +1214,33 @@
       </tbody>
     </table>
       </div>
+
+      <div class="tab-panel tab-panel-artifact-types" role="tabpanel" aria-labelledby="tab-artifact-types">
+        <p class="tab-desc">
+          <strong>Artifact-type packs</strong> register typed artifact schemas (a
+          JSON Schema + export targets) into a host's artifact registry — so workflow
+          outputs (one-pagers, brand kits, SOWs) are typed, validated, and exportable.
+          They are <em>declarative</em>: a manifest with <code>kind: "artifact-type"</code>
+          and an <code>artifactTypes[]</code> array, no runtime. See
+          <a href="https://github.com/openwop/openwop/blob/main/RFCS/0075-artifact-type-packs-realworld-amendment.md">RFC 0075</a>
+          (publishable per <a href="https://github.com/openwop/openwop/blob/main/RFCS/0107-publishable-declarative-pack-kinds.md">RFC 0107</a>).
+        </p>
+        <div class="empty">No artifact-type packs published yet.</div>
+      </div>
+
+      <div class="tab-panel tab-panel-connections" role="tabpanel" aria-labelledby="tab-connections">
+        <p class="tab-desc">
+          <strong>Connection packs</strong> ship portable provider definitions — OAuth /
+          API-key auth, scopes, and reach (MCP / OpenAPI / integration) — that make a
+          host's connection registry installable for third-party providers. They are
+          <em>declarative</em>: a manifest with <code>kind: "connection"</code> and a
+          <code>provider</code> object, no runtime and <strong>no credential material</strong>
+          (enforced). See
+          <a href="https://github.com/openwop/openwop/blob/main/RFCS/0095-connection-packs-portable-provider-definitions.md">RFC 0095</a>
+          (publishable per <a href="https://github.com/openwop/openwop/blob/main/RFCS/0107-publishable-declarative-pack-kinds.md">RFC 0107</a>).
+        </p>
+        <div class="empty">No connection packs published yet.</div>
+      </div>
     </div>
   </section>
 
@@ -1244,7 +1289,7 @@ const ok = verify(null, readFileSync('pack.tgz'), pub, readFileSync('pack.sig'))
   </section>
 
   <footer>
-    Generated 2026-06-23T04:16:21.306Z · <a href="https://openwop.dev/">openwop.dev</a> · <a href="https://github.com/openwop/openwop">openwop on GitHub</a>
+    Generated 2026-06-23T13:47:57.122Z · <a href="https://openwop.dev/">openwop.dev</a> · <a href="https://github.com/openwop/openwop">openwop on GitHub</a>
   </footer>
 </main>
 </body>
