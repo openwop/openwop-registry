@@ -13,7 +13,7 @@ Webhook signature verification (Stripe / GitHub / Slack style) lives in `core.op
 | `core.crypto.hash` | pure | sha-256 / sha-384 / sha-512 / sha-1 / md5 / blake2b512. |
 | `core.crypto.hmac-sign` | pure | HMAC-SHA-256/384/512 sign. Hex or base64 output. |
 | `core.crypto.hmac-verify` | pure | Constant-time HMAC verify against a provided signature. |
-| `core.crypto.aead-encrypt` | pure | AES-256-GCM / ChaCha20-Poly1305 encrypt with optional AAD. |
+| `core.crypto.aead-encrypt` | side-effect | AES-256-GCM / ChaCha20-Poly1305 encrypt with optional AAD. Non-deterministic (fresh random nonce/call) → `side-effectful`, not `cacheable`. |
 | `core.crypto.aead-decrypt` | pure | Authenticated decrypt; rejects tampered ciphertext. |
 | `core.crypto.sign` | pure | Asymmetric sign (Ed25519, RS256, ES256). |
 | `core.crypto.verify` | pure | Asymmetric verify. |
@@ -26,7 +26,7 @@ Webhook signature verification (Stripe / GitHub / Slack style) lives in `core.op
 
 ## Replay & caching
 
-All nodes are `cacheable`. Workflows that compute the same hash/HMAC twice get the same result by construction. AEAD encryption is non-deterministic by design (random nonce) — re-running re-encrypts.
+The deterministic primitives (hash, HMAC, sign/verify, x509) are `cacheable`: a workflow that computes the same hash/HMAC twice gets the same result by construction. AEAD encryption is non-deterministic by design (fresh random nonce per call) — so `core.crypto.aead-encrypt` is `role: side-effect` / `side-effectful` (its output is recorded; a replay/fork reads the recorded ciphertext rather than re-encrypting to a different nonce), NOT `cacheable`.
 
 ## Compliance posture
 
