@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>openwop registry — packs.openwop.dev</title>
-<meta name="description" content="The canonical signed node-pack registry for the openwop workflow orchestration protocol. 71 pack(s), 98 version(s) published.">
+<meta name="description" content="The canonical signed node-pack registry for the openwop workflow orchestration protocol. 72 pack(s), 99 version(s) published.">
 <meta name="robots" content="index, follow">
 
 <meta property="og:type" content="website">
@@ -273,7 +273,8 @@
   #tab-artifact-types:focus-visible ~ .tab-list .tab[for="tab-artifact-types"],
   #tab-connections:focus-visible    ~ .tab-list .tab[for="tab-connections"],
   #tab-workflow-chains:focus-visible ~ .tab-list .tab[for="tab-workflow-chains"],
-  #tab-prompts:focus-visible         ~ .tab-list .tab[for="tab-prompts"] {
+  #tab-prompts:focus-visible         ~ .tab-list .tab[for="tab-prompts"],
+  #tab-cards:focus-visible           ~ .tab-list .tab[for="tab-cards"] {
     outline: 2px solid var(--clay);
     outline-offset: 2px;
     border-radius: 2px;
@@ -284,7 +285,8 @@
   #tab-artifact-types:checked ~ .tab-list .tab[for="tab-artifact-types"],
   #tab-connections:checked    ~ .tab-list .tab[for="tab-connections"],
   #tab-workflow-chains:checked ~ .tab-list .tab[for="tab-workflow-chains"],
-  #tab-prompts:checked         ~ .tab-list .tab[for="tab-prompts"] {
+  #tab-prompts:checked         ~ .tab-list .tab[for="tab-prompts"],
+  #tab-cards:checked           ~ .tab-list .tab[for="tab-cards"] {
     color: var(--ink);
     border-bottom-color: var(--clay);
   }
@@ -293,7 +295,8 @@
   #tab-artifact-types:checked ~ .tab-list .tab[for="tab-artifact-types"] .tab-count,
   #tab-connections:checked    ~ .tab-list .tab[for="tab-connections"] .tab-count,
   #tab-workflow-chains:checked ~ .tab-list .tab[for="tab-workflow-chains"] .tab-count,
-  #tab-prompts:checked         ~ .tab-list .tab[for="tab-prompts"] .tab-count {
+  #tab-prompts:checked         ~ .tab-list .tab[for="tab-prompts"] .tab-count,
+  #tab-cards:checked           ~ .tab-list .tab[for="tab-cards"] .tab-count {
     background: var(--clay-soft);
     color: var(--clay);
   }
@@ -305,6 +308,7 @@
   #tab-connections:checked    ~ .tab-panel-connections    { display: block; }
   #tab-workflow-chains:checked ~ .tab-panel-workflow-chains { display: block; }
   #tab-prompts:checked         ~ .tab-panel-prompts         { display: block; }
+  #tab-cards:checked           ~ .tab-panel-cards           { display: block; }
   .tab-desc {
     color: var(--ink-2);
     font-size: 14.5px;
@@ -394,8 +398,8 @@
     </h1>
     <p class="lead">Canonical signed node-pack registry for the <a href="https://openwop.dev/">openwop</a> workflow orchestration protocol.</p>
     <div class="summary">
-      <div><strong>71</strong><span>packs published</span></div>
-      <div><strong>98</strong><span>versions total</span></div>
+      <div><strong>72</strong><span>packs published</span></div>
+      <div><strong>99</strong><span>versions total</span></div>
       <div><strong>Ed25519</strong><span>signing algorithm</span></div>
     </div>
   </header>
@@ -409,6 +413,7 @@
       <input type="radio" name="catalog-tab" id="tab-connections" class="tab-radio">
       <input type="radio" name="catalog-tab" id="tab-workflow-chains" class="tab-radio">
       <input type="radio" name="catalog-tab" id="tab-prompts" class="tab-radio">
+      <input type="radio" name="catalog-tab" id="tab-cards" class="tab-radio">
 
       <div class="tab-list" role="tablist" aria-label="Pack categories">
         <label class="tab" for="tab-nodes" role="tab">
@@ -433,6 +438,10 @@
         </label>
         <label class="tab" for="tab-prompts" role="tab">
           <span class="tab-label">Prompt packs</span>
+          <span class="tab-count">1</span>
+        </label>
+        <label class="tab" for="tab-cards" role="tab">
+          <span class="tab-label">Card packs</span>
           <span class="tab-count">1</span>
         </label>
       </div>
@@ -1415,6 +1424,38 @@
       </tbody>
     </table>
       </div>
+
+      <div class="tab-panel tab-panel-cards" role="tabpanel" aria-labelledby="tab-cards">
+        <p class="tab-desc">
+          <strong>Card packs</strong> ship reusable, prompt-driven <em>AI chat cards</em> — a
+          typed input form + a prompt template + an output contract — that a host's chat
+          surface (<code>host.chat.cardPacks</code>) resolves and executes through its AI
+          envelope. They are <em>declarative</em>: a manifest with <code>kind: "card"</code>
+          and a <code>cards[]</code> array, no runtime; card-input content is treated as
+          <code>contentTrust: "untrusted"</code>. See
+          <a href="https://github.com/openwop/openwop/blob/main/RFCS/0071-artifact-type-and-chat-card-packs.md">RFC 0071</a>
+          (publishable per <a href="https://github.com/openwop/openwop/blob/main/RFCS/0107-publishable-declarative-pack-kinds.md">RFC 0107</a>).
+        </p>
+            <table>
+      <thead>
+        <tr><th>Name</th><th>Version</th><th class="count-h">Cards</th><th>Description</th><th>License</th><th>Artifacts</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="name"><code>vendor.openwop.card-sample</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="cards in latest manifest">2</td>
+          <td class="desc">Reference chat-card pack (RFC 0071) — two portable, host-agnostic AI chat cards: a text summarizer and a meeting action-item extractor. Demonstrates the card manifest contract (typed inputs from the portable subset, a prompt template with placeholder mapping, no runtime).</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/vendor.openwop.card-sample/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/vendor.openwop.card-sample/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/vendor.openwop.card-sample/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+      </div>
     </div>
   </section>
 
@@ -1463,7 +1504,7 @@ const ok = verify(null, readFileSync('pack.tgz'), pub, readFileSync('pack.sig'))
   </section>
 
   <footer>
-    Generated 2026-06-23T16:00:45.520Z · <a href="https://openwop.dev/">openwop.dev</a> · <a href="https://github.com/openwop/openwop">openwop on GitHub</a>
+    Generated 2026-06-23T16:51:00.937Z · <a href="https://openwop.dev/">openwop.dev</a> · <a href="https://github.com/openwop/openwop">openwop on GitHub</a>
   </footer>
 </main>
 </body>
