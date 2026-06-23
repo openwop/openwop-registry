@@ -17,16 +17,19 @@ Webhook signature verification (Stripe / GitHub / Slack style) lives in `core.op
 | `core.crypto.aead-decrypt` | pure | Authenticated decrypt; rejects tampered ciphertext. |
 | `core.crypto.sign` | pure | Asymmetric sign (Ed25519, RS256, ES256). |
 | `core.crypto.verify` | pure | Asymmetric verify. |
-| `core.crypto.jwt-mint` | pure | Mint a JWT (HS256/384/512, RS256, ES256, EdDSA). |
-| `core.crypto.jwt-verify` | pure | Verify a JWT including `exp`/`nbf`/`iss`/`aud` claim checks. |
-| `core.crypto.totp-generate` | pure | RFC 6238 TOTP code generator. |
-| `core.crypto.totp-verify` | pure | TOTP verify with configurable drift window. |
+| `core.crypto.jwt-mint` | side-effect | Mint a JWT (HS256/384/512, RS256, ES256, EdDSA). Time-dependent (`iat`/`exp`) → non-deterministic. |
+| `core.crypto.jwt-verify` | side-effect | Verify a JWT including `exp`/`nbf`/`iss`/`aud` claim checks. Reads the wall clock → non-deterministic. |
+| `core.crypto.totp-generate` | side-effect | RFC 6238 TOTP code generator. Time-step-dependent → non-deterministic. |
+| `core.crypto.totp-verify` | side-effect | TOTP verify with configurable drift window. Reads the wall clock → non-deterministic. |
 | `core.crypto.x509-parse` | pure | Parse a PEM x509 cert and return issuer / subject / SAN / fingerprint / validity. |
 | `core.crypto.x509-verify-chain` | pure | Verify a leaf cert chains to one of N trust roots. |
 
 ## Replay & caching
 
-The deterministic primitives (hash, HMAC, sign/verify, x509) are `cacheable`: a workflow that computes the same hash/HMAC twice gets the same result by construction. AEAD encryption is non-deterministic by design (fresh random nonce per call) — so `core.crypto.aead-encrypt` is `role: side-effect` / `side-effectful` (its output is recorded; a replay/fork reads the recorded ciphertext rather than re-encrypting to a different nonce), NOT `cacheable`.
+The deterministic primitives (hash, HMAC, sign/verify, x509) are `cacheable`: a workflow that computes the same hash/HMAC twice gets the same result by construction. The non-deterministic nodes are `role: side-effect` / `side-effectful` instead — their output is recorded, so a replay/fork reads the recorded result rather than recomputing:
+
+- `core.crypto.aead-encrypt` — fresh random nonce per call (re-encrypting would yield different ciphertext);
+- `core.crypto.jwt-mint`, `core.crypto.jwt-verify`, `core.crypto.totp-generate`, `core.crypto.totp-verify` — all read the wall clock (`iat`/`exp`/`nbf`, the TOTP time-step), so the same inputs verify/mint differently as time passes.
 
 ## Compliance posture
 
