@@ -360,6 +360,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.crypto@1.0.4",
+      "type": "library",
+      "name": "core.openwop.crypto",
+      "version": "1.0.4",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v1/packs/core.openwop.crypto/-/1.0.4.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "00f494ab1831c68bf93ad65f147dc9b05630f26407931a844c64b0f76f8a9855"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.data@1.0.0",
       "type": "library",
       "name": "core.openwop.data",
