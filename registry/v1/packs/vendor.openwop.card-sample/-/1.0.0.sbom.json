@@ -1,0 +1,101 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/vendor.openwop.card-sample@1.0.0",
+      "type": "library",
+      "name": "vendor.openwop.card-sample",
+      "version": "1.0.0",
+      "description": "Reference chat-card pack (RFC 0071) — two portable, host-agnostic AI chat cards: a text summarizer and a meeting action-item extractor. Demonstrates the card manifest contract (typed inputs from the portable subset, a prompt template with placeholder mapping, no runtime).",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/spec/v1/chat-card-packs.md"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop-examples"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "46d4b8291659c7b82343d086725ae923aa6d0813286a0c474c24b1adc15be36b"
+        }
+      ],
+      "purl": "pkg:openwop/vendor.openwop.card-sample@1.0.0"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8d12cf2211de47e81be87867b3faf2d0c2839673f648892f683f492e75b3dc32"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1554"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "919a7d5637483305d05f11d55300bfebeafd29e79ed8ebdcc31eef9512c3d12c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5790191207742d253cefaa296382e5eba1963110c4cb41e7d1ebfdeca2e1329a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2137"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/vendor.openwop.card-sample@1.0.0",
+      "dependsOn": []
+    }
+  ]
+}

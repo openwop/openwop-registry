@@ -1728,6 +1728,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/vendor.openwop.card-sample@1.0.0",
+      "type": "library",
+      "name": "vendor.openwop.card-sample",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v1/packs/vendor.openwop.card-sample/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "840270bdb32ed2418c8b9a347c3ef8ad0296bb5fb426d468f3e0aa55a2208778"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/vendor.openwop.prompt-sample@1.0.0",
       "type": "library",
       "name": "vendor.openwop.prompt-sample",

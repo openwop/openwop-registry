@@ -1,0 +1,33 @@
+{
+  "name": "vendor.openwop.card-sample",
+  "kind": "card",
+  "description": "Reference chat-card pack (RFC 0071) — two portable, host-agnostic AI chat cards: a text summarizer and a meeting action-item extractor. Demonstrates the card manifest contract (typed inputs from the portable subset, a prompt template with placeholder mapping, no runtime).",
+  "author": "OpenWOP",
+  "license": "Apache-2.0",
+  "homepage": "https://openwop.dev/spec/v1/chat-card-packs.md",
+  "repository": "https://github.com/openwop/openwop-examples",
+  "tags": [],
+  "typeIds": [
+    "vendor.openwop.card-sample.summarize",
+    "vendor.openwop.card-sample.extract-action-items"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "cardCount": 2,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/vendor.openwop.card-sample/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/vendor.openwop.card-sample/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/vendor.openwop.card-sample/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-RtS4KRZZx7gjQ9CGclrpI6ptCBMoagxHTCSxrcFb42s=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

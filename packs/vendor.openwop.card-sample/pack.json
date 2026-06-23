@@ -1,0 +1,55 @@
+{
+  "name": "vendor.openwop.card-sample",
+  "version": "1.0.0",
+  "kind": "card",
+  "description": "Reference chat-card pack (RFC 0071) — two portable, host-agnostic AI chat cards: a text summarizer and a meeting action-item extractor. Demonstrates the card manifest contract (typed inputs from the portable subset, a prompt template with placeholder mapping, no runtime).",
+  "author": "OpenWOP",
+  "license": "Apache-2.0",
+  "homepage": "https://openwop.dev/spec/v1/chat-card-packs.md",
+  "repository": "https://github.com/openwop/openwop-examples",
+  "keywords": ["chat-card", "card", "rfc-0071", "summarize", "action-items", "reference"],
+  "engines": { "openwop": ">=1.0.0" },
+  "cards": [
+    {
+      "cardTypeId": "vendor.openwop.card-sample.summarize",
+      "schemaVersion": 1,
+      "inputs": [
+        { "id": "source", "type": "longtext", "label": "Source text", "required": true },
+        {
+          "id": "length",
+          "type": "select",
+          "label": "Summary length",
+          "required": false,
+          "default": "short",
+          "options": ["one-line", "short", "detailed"]
+        }
+      ],
+      "prompt": {
+        "systemPrompt": "You are a concise summarization assistant. Preserve the key facts and decisions; omit filler. Never invent details not present in the source.",
+        "template": "Summarize the following text at {{length}} length.\n\n{{source}}",
+        "placeholderMapping": {
+          "source": "inputs.source",
+          "length": "inputs.length"
+        },
+        "temperature": 0.3
+      }
+    },
+    {
+      "cardTypeId": "vendor.openwop.card-sample.extract-action-items",
+      "schemaVersion": 1,
+      "inputs": [
+        { "id": "notes", "type": "longtext", "label": "Meeting notes", "required": true },
+        { "id": "owner_hint", "type": "text", "label": "Default owner (when unclear)", "required": false }
+      ],
+      "prompt": {
+        "systemPrompt": "You extract concrete, assignable action items from meeting notes. Output one item per line as `- [ ] <task> — owner: <name> — due: <hint or n/a>`. No preamble, no commentary.",
+        "template": "Extract the action items from these meeting notes. For each, give a clear task, an owner (default to \"{{owner_hint}}\" when the notes don't name one), and a due hint if present.\n\n{{notes}}",
+        "placeholderMapping": {
+          "notes": "inputs.notes",
+          "owner_hint": "inputs.owner_hint"
+        },
+        "temperature": 0.2
+      }
+    }
+  ]
+}

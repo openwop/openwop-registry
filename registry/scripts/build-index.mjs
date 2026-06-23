@@ -228,6 +228,8 @@ function rebuildPack(packName) {
       ? (pack?.chains ?? []).map((c) => c.chainId).filter(Boolean)
       : kind === 'prompt'
       ? (pack?.prompts ?? []).map((p) => p.templateId).filter(Boolean)
+      : kind === 'card'
+      ? (pack?.cards ?? []).map((c) => c.cardTypeId).filter(Boolean)
       : kind === 'artifact-type'
       ? (pack?.artifactTypes ?? []).map((t) => t.artifactTypeId).filter(Boolean)
       : kind === 'connection'
@@ -247,6 +249,7 @@ function rebuildPack(packName) {
   const providerCount = pack?.provider?.id ? 1 : 0;
   const chainCount = Array.isArray(pack?.chains) ? pack.chains.length : 0;
   const promptCount = Array.isArray(pack?.prompts) ? pack.prompts.length : 0;
+  const cardCount = Array.isArray(pack?.cards) ? pack.cards.length : 0;
 
   const indexDoc = {
     name: packName,
@@ -264,6 +267,7 @@ function rebuildPack(packName) {
     providerCount,
     chainCount,
     promptCount,
+    cardCount,
     versions: versionEntries,
     latest,
     deprecated: versionEntries.every((v) => v.deprecated),
@@ -276,6 +280,7 @@ function rebuildPack(packName) {
   if (!providerCount) delete indexDoc.providerCount;
   if (!chainCount) delete indexDoc.chainCount;
   if (!promptCount) delete indexDoc.promptCount;
+  if (!cardCount) delete indexDoc.cardCount;
 
   writeJson(join(PACKS_DIR, packName, 'index.json'), indexDoc);
   return indexDoc;
@@ -355,6 +360,7 @@ function emitLandingPage(packDocs) {
   const connectionPacks   = packDocs.filter((p) => p.kind === 'connection');
   const workflowChainPacks = packDocs.filter((p) => p.kind === 'workflow-chain');
   const promptPacks        = packDocs.filter((p) => p.kind === 'prompt');
+  const cardPacks          = packDocs.filter((p) => p.kind === 'card');
 
   const rowFor = (p, kindHint) => {
     const v = p.versions[p.versions.length - 1];
@@ -376,6 +382,8 @@ function emitLandingPage(packDocs) {
         ? `<td class="count" title="chains in latest manifest">${p.chainCount ?? 0}</td>`
         : kindHint === 'prompt'
         ? `<td class="count" title="prompt templates in latest manifest">${p.promptCount ?? 0}</td>`
+        : kindHint === 'card'
+        ? `<td class="count" title="cards in latest manifest">${p.cardCount ?? 0}</td>`
         : `<td class="count" title="provider in latest manifest">${p.providerCount ?? 0}</td>`;
     return `        <tr>
           <td class="name"><code>${htmlEscape(p.name)}</code> ${flags.join(' ')}</td>
@@ -404,6 +412,7 @@ function emitLandingPage(packDocs) {
   const connectionRows   = buildRows(connectionPacks,   'connection');
   const workflowChainRows = buildRows(workflowChainPacks, 'workflow-chain');
   const promptRows         = buildRows(promptPacks,        'prompt');
+  const cardRows           = buildRows(cardPacks,          'card');
 
   const tableFor = (rows, countHeader) =>
     `    <table>
@@ -690,7 +699,8 @@ ${rows}
   #tab-artifact-types:focus-visible ~ .tab-list .tab[for="tab-artifact-types"],
   #tab-connections:focus-visible    ~ .tab-list .tab[for="tab-connections"],
   #tab-workflow-chains:focus-visible ~ .tab-list .tab[for="tab-workflow-chains"],
-  #tab-prompts:focus-visible         ~ .tab-list .tab[for="tab-prompts"] {
+  #tab-prompts:focus-visible         ~ .tab-list .tab[for="tab-prompts"],
+  #tab-cards:focus-visible           ~ .tab-list .tab[for="tab-cards"] {
     outline: 2px solid var(--clay);
     outline-offset: 2px;
     border-radius: 2px;
@@ -701,7 +711,8 @@ ${rows}
   #tab-artifact-types:checked ~ .tab-list .tab[for="tab-artifact-types"],
   #tab-connections:checked    ~ .tab-list .tab[for="tab-connections"],
   #tab-workflow-chains:checked ~ .tab-list .tab[for="tab-workflow-chains"],
-  #tab-prompts:checked         ~ .tab-list .tab[for="tab-prompts"] {
+  #tab-prompts:checked         ~ .tab-list .tab[for="tab-prompts"],
+  #tab-cards:checked           ~ .tab-list .tab[for="tab-cards"] {
     color: var(--ink);
     border-bottom-color: var(--clay);
   }
@@ -710,7 +721,8 @@ ${rows}
   #tab-artifact-types:checked ~ .tab-list .tab[for="tab-artifact-types"] .tab-count,
   #tab-connections:checked    ~ .tab-list .tab[for="tab-connections"] .tab-count,
   #tab-workflow-chains:checked ~ .tab-list .tab[for="tab-workflow-chains"] .tab-count,
-  #tab-prompts:checked         ~ .tab-list .tab[for="tab-prompts"] .tab-count {
+  #tab-prompts:checked         ~ .tab-list .tab[for="tab-prompts"] .tab-count,
+  #tab-cards:checked           ~ .tab-list .tab[for="tab-cards"] .tab-count {
     background: var(--clay-soft);
     color: var(--clay);
   }
@@ -722,6 +734,7 @@ ${rows}
   #tab-connections:checked    ~ .tab-panel-connections    { display: block; }
   #tab-workflow-chains:checked ~ .tab-panel-workflow-chains { display: block; }
   #tab-prompts:checked         ~ .tab-panel-prompts         { display: block; }
+  #tab-cards:checked           ~ .tab-panel-cards           { display: block; }
   .tab-desc {
     color: var(--ink-2);
     font-size: 14.5px;
@@ -829,6 +842,7 @@ ${
       <input type="radio" name="catalog-tab" id="tab-connections" class="tab-radio">
       <input type="radio" name="catalog-tab" id="tab-workflow-chains" class="tab-radio">
       <input type="radio" name="catalog-tab" id="tab-prompts" class="tab-radio">
+      <input type="radio" name="catalog-tab" id="tab-cards" class="tab-radio">
 
       <div class="tab-list" role="tablist" aria-label="Pack categories">
         <label class="tab" for="tab-nodes" role="tab">
@@ -854,6 +868,10 @@ ${
         <label class="tab" for="tab-prompts" role="tab">
           <span class="tab-label">Prompt packs</span>
           <span class="tab-count">${promptPacks.length}</span>
+        </label>
+        <label class="tab" for="tab-cards" role="tab">
+          <span class="tab-label">Card packs</span>
+          <span class="tab-count">${cardPacks.length}</span>
         </label>
       </div>
 
@@ -946,6 +964,22 @@ ${
         ${promptPacks.length === 0
           ? '<div class="empty">No prompt packs published yet.</div>'
           : tableFor(promptRows, 'Templates')}
+      </div>
+
+      <div class="tab-panel tab-panel-cards" role="tabpanel" aria-labelledby="tab-cards">
+        <p class="tab-desc">
+          <strong>Card packs</strong> ship reusable, prompt-driven <em>AI chat cards</em> — a
+          typed input form + a prompt template + an output contract — that a host's chat
+          surface (<code>host.chat.cardPacks</code>) resolves and executes through its AI
+          envelope. They are <em>declarative</em>: a manifest with <code>kind: "card"</code>
+          and a <code>cards[]</code> array, no runtime; card-input content is treated as
+          <code>contentTrust: "untrusted"</code>. See
+          <a href="https://github.com/openwop/openwop/blob/main/RFCS/0071-artifact-type-and-chat-card-packs.md">RFC 0071</a>
+          (publishable per <a href="https://github.com/openwop/openwop/blob/main/RFCS/0107-publishable-declarative-pack-kinds.md">RFC 0107</a>).
+        </p>
+        ${cardPacks.length === 0
+          ? '<div class="empty">No card packs published yet.</div>'
+          : tableFor(cardRows, 'Cards')}
       </div>
     </div>`
 }
