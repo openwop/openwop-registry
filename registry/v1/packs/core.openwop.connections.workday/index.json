@@ -1,0 +1,30 @@
+{
+  "name": "core.openwop.connections.workday",
+  "kind": "connection",
+  "description": "Workday connection pack (RFC 0095) — OAuth2 provider for the Workday REST API (HCM / People). ADR 0033 DEPLOY-GATED. Reach is `openapi`: Workday has no first-party global MCP server, and its OAuth authorize/token endpoints plus REST base are TENANT-SPECIFIC (`https://{instance}.workday.com/{tenant}/...`), supplied per connection via instanceUrlTemplate. The manifest declares the global https hosts and the per-tenant template; the operator fills the tenant at connection time (ADR 0033 §4 capability honesty). Carries NO secret; the operator supplies the API-client id/secret host-side (ADR 0024 §7).",
+  "author": "",
+  "license": "Apache-2.0",
+  "tags": [],
+  "typeIds": [
+    "workday"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "providerCount": 1,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.connections.workday/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.connections.workday/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.connections.workday/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-DfuyDqNqBJbb2KO8ANQeImxnL8zf62JS/xWPsVWOkzs=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

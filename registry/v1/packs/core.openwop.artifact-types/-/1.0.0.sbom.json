@@ -1,0 +1,76 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.artifact-types@1.0.0",
+      "type": "library",
+      "name": "core.openwop.artifact-types",
+      "version": "1.0.0",
+      "description": "Example artifact-type pack (ADR 0055 Phase 3 / RFC 0075) — proves the kind:'artifact-type' pack tier registers its declared types through the host artifact-type registry (registrationSource:'pack'), advertised under host.artifactTypes and served at /schemas/artifacts/{id}.schema.json.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6eb4f0f4dc56daf43b0755a22289feab39c73d0e12a4bf86c9ce245505d7c133"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.artifact-types@1.0.0"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6aabf6603037d8a85ca925bae54d5785d20695bb5bf8f4025f74ee5639ea58ba"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7f05920a293fdd130b8a968048140f9bdfcf583caa0ef5efb06ee31e1b87d35d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1191"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.artifact-types@1.0.0",
+      "dependsOn": []
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "name": "core.openwop.connections.github",
+  "kind": "connection",
+  "description": "GitHub connection pack (RFC 0095) — OAuth2 provider definition, reached via the official GitHub MCP server. Demonstrates the openwop-app connection-pack loader: drop this pack in and `github` becomes a resolvable provider. Carries NO secret; the operator supplies the OAuth client id/secret host-side (ADR 0024 §7).",
+  "author": "",
+  "license": "Apache-2.0",
+  "tags": [],
+  "typeIds": [
+    "github"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "providerCount": 1,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.connections.github/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.connections.github/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.connections.github/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-8oBHSexTBhP1FvlG0aclISAhJG/xBi9DvLwFx1NZiqw=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

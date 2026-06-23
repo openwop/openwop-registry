@@ -1,7 +1,7 @@
 {
   "registryVersion": "1.0.0",
   "generatedAt": "2026-05-10T00:00:00Z",
-  "packCount": 62,
+  "packCount": 69,
   "packs": [
     {
       "name": "community.openwop-team.demo",
@@ -162,6 +162,112 @@
         "core.openwop.ai.transform"
       ],
       "nodeCount": 15,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.artifact-types",
+      "kind": "artifact-type",
+      "latestVersion": "1.0.0",
+      "description": "Example artifact-type pack (ADR 0055 Phase 3 / RFC 0075) — proves the kind:'artifact-type' pack tier registers its declared types through the host artifact-type registry (registrationSource:'pack'), advertised under host.artifactTypes and served at /schemas/artifacts/{id}.schema.json.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "doc.one-pager",
+        "brand.kit"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.connections.github",
+      "kind": "connection",
+      "latestVersion": "1.0.0",
+      "description": "GitHub connection pack (RFC 0095) — OAuth2 provider definition, reached via the official GitHub MCP server. Demonstrates the openwop-app connection-pack loader: drop this pack in and `github` becomes a resolvable provider. Carries NO secret; the operator supplies the OAuth client id/secret host-side (ADR 0024 §7).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "github"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.connections.jira",
+      "kind": "connection",
+      "latestVersion": "1.0.0",
+      "description": "Jira connection pack (RFC 0095) — Atlassian OAuth2 (3LO) provider for Jira Cloud. ADR 0033 DEPLOY-GATED. Reach is `mcp` against Atlassian's official first-party remote MCP server (the Rovo MCP server, https://mcp.atlassian.com/v1/mcp), which fronts Jira (and Confluence) under the signed-in user's permissions. Carries NO secret; the operator supplies the OAuth client id/secret host-side (ADR 0024 §7).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "jira"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.connections.microsoft365",
+      "kind": "connection",
+      "latestVersion": "1.0.0",
+      "description": "Microsoft 365 connection pack (RFC 0095) — OAuth2 provider for Teams, Outlook (Mail/Calendar), and SharePoint via the Microsoft Graph API. ADR 0033 DEPLOY-GATED. Reach is `openapi` against the Microsoft Graph OpenAPI surface: Microsoft's first-party remote MCP servers are per-tenant/preview (a tenant-templated URL, not a single global https endpoint the manifest can fix), so a stable Graph OpenAPI path is the honest day-1 reach (ADR 0033 §4 capability honesty). Carries NO secret; the operator supplies the OAuth client id/secret host-side (ADR 0024 §7).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "microsoft365"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.connections.notion",
+      "kind": "connection",
+      "latestVersion": "1.0.0",
+      "description": "Notion connection pack (RFC 0095) — OAuth2 provider for Notion pages + databases. ADR 0033 DEPLOY-GATED. Reach is `mcp` against Notion's official first-party hosted MCP server (https://mcp.notion.com/mcp, Streamable HTTP), which searches/reads/creates/updates workspace content under the connected user's permissions. Notion consent is a static developer-portal capability set rather than per-request OAuth scopes (scopeModel `capabilities`). Carries NO secret; the operator supplies the OAuth client id/secret host-side (ADR 0024 §7).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "notion"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.connections.salesforce",
+      "kind": "connection",
+      "latestVersion": "1.0.0",
+      "description": "Salesforce connection pack (RFC 0095) — OAuth2 (web-server flow) provider for the Salesforce REST API. ADR 0033 DEPLOY-GATED. Reach is `openapi`: Salesforce has no single global first-party MCP server (the API lives on a per-org `*.my.salesforce.com` instance host, supplied per connection via instanceUrlTemplate), so a documented OpenAPI/REST surface is the honest day-1 reach (ADR 0033 §4). Carries NO secret; the operator supplies the connected-app consumer key/secret host-side (ADR 0024 §7).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "salesforce"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.connections.workday",
+      "kind": "connection",
+      "latestVersion": "1.0.0",
+      "description": "Workday connection pack (RFC 0095) — OAuth2 provider for the Workday REST API (HCM / People). ADR 0033 DEPLOY-GATED. Reach is `openapi`: Workday has no first-party global MCP server, and its OAuth authorize/token endpoints plus REST base are TENANT-SPECIFIC (`https://{instance}.workday.com/{tenant}/...`), supplied per connection via instanceUrlTemplate. The manifest declares the global https hosts and the per-tenant template; the operator fills the tenant at connection time (ADR 0033 §4 capability honesty). Carries NO secret; the operator supplies the API-client id/secret host-side (ADR 0024 §7).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "workday"
+      ],
+      "nodeCount": 0,
       "agentCount": 0,
       "deprecated": false,
       "yanked": false
