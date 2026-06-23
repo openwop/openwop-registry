@@ -226,6 +226,8 @@ function rebuildPack(packName) {
   const typeIds =
     kind === 'workflow-chain'
       ? (pack?.chains ?? []).map((c) => c.chainId).filter(Boolean)
+      : kind === 'prompt'
+      ? (pack?.prompts ?? []).map((p) => p.templateId).filter(Boolean)
       : kind === 'artifact-type'
       ? (pack?.artifactTypes ?? []).map((t) => t.artifactTypeId).filter(Boolean)
       : kind === 'connection'
@@ -243,6 +245,8 @@ function rebuildPack(packName) {
   const agentCount = Array.isArray(pack?.agents) ? pack.agents.length : 0;
   const artifactTypeCount = Array.isArray(pack?.artifactTypes) ? pack.artifactTypes.length : 0;
   const providerCount = pack?.provider?.id ? 1 : 0;
+  const chainCount = Array.isArray(pack?.chains) ? pack.chains.length : 0;
+  const promptCount = Array.isArray(pack?.prompts) ? pack.prompts.length : 0;
 
   const indexDoc = {
     name: packName,
@@ -258,6 +262,8 @@ function rebuildPack(packName) {
     agentCount,
     artifactTypeCount,
     providerCount,
+    chainCount,
+    promptCount,
     versions: versionEntries,
     latest,
     deprecated: versionEntries.every((v) => v.deprecated),
@@ -268,6 +274,8 @@ function rebuildPack(packName) {
   // omit when zero so existing node/agent pack index.json stay byte-identical.
   if (!artifactTypeCount) delete indexDoc.artifactTypeCount;
   if (!providerCount) delete indexDoc.providerCount;
+  if (!chainCount) delete indexDoc.chainCount;
+  if (!promptCount) delete indexDoc.promptCount;
 
   writeJson(join(PACKS_DIR, packName, 'index.json'), indexDoc);
   return indexDoc;
@@ -345,6 +353,8 @@ function emitLandingPage(packDocs) {
   // Declarative kinds (RFC 0107) — bucket by kind discriminator.
   const artifactTypePacks = packDocs.filter((p) => p.kind === 'artifact-type');
   const connectionPacks   = packDocs.filter((p) => p.kind === 'connection');
+  const workflowChainPacks = packDocs.filter((p) => p.kind === 'workflow-chain');
+  const promptPacks        = packDocs.filter((p) => p.kind === 'prompt');
 
   const rowFor = (p, kindHint) => {
     const v = p.versions[p.versions.length - 1];
@@ -362,6 +372,10 @@ function emitLandingPage(packDocs) {
         ? `<td class="count" title="agents in latest manifest">${p.agentCount ?? 0}</td>`
         : kindHint === 'artifact-type'
         ? `<td class="count" title="artifact types in latest manifest">${p.artifactTypeCount ?? 0}</td>`
+        : kindHint === 'workflow-chain'
+        ? `<td class="count" title="chains in latest manifest">${p.chainCount ?? 0}</td>`
+        : kindHint === 'prompt'
+        ? `<td class="count" title="prompt templates in latest manifest">${p.promptCount ?? 0}</td>`
         : `<td class="count" title="provider in latest manifest">${p.providerCount ?? 0}</td>`;
     return `        <tr>
           <td class="name"><code>${htmlEscape(p.name)}</code> ${flags.join(' ')}</td>
@@ -388,6 +402,8 @@ function emitLandingPage(packDocs) {
   const agentRows = buildRows(agentPacks, 'agent');
   const artifactTypeRows = buildRows(artifactTypePacks, 'artifact-type');
   const connectionRows   = buildRows(connectionPacks,   'connection');
+  const workflowChainRows = buildRows(workflowChainPacks, 'workflow-chain');
+  const promptRows         = buildRows(promptPacks,        'prompt');
 
   const tableFor = (rows, countHeader) =>
     `    <table>
@@ -672,7 +688,9 @@ ${rows}
   #tab-nodes:focus-visible  ~ .tab-list .tab[for="tab-nodes"],
   #tab-agents:focus-visible ~ .tab-list .tab[for="tab-agents"],
   #tab-artifact-types:focus-visible ~ .tab-list .tab[for="tab-artifact-types"],
-  #tab-connections:focus-visible    ~ .tab-list .tab[for="tab-connections"] {
+  #tab-connections:focus-visible    ~ .tab-list .tab[for="tab-connections"],
+  #tab-workflow-chains:focus-visible ~ .tab-list .tab[for="tab-workflow-chains"],
+  #tab-prompts:focus-visible         ~ .tab-list .tab[for="tab-prompts"] {
     outline: 2px solid var(--clay);
     outline-offset: 2px;
     border-radius: 2px;
@@ -681,14 +699,18 @@ ${rows}
   #tab-nodes:checked  ~ .tab-list .tab[for="tab-nodes"],
   #tab-agents:checked ~ .tab-list .tab[for="tab-agents"],
   #tab-artifact-types:checked ~ .tab-list .tab[for="tab-artifact-types"],
-  #tab-connections:checked    ~ .tab-list .tab[for="tab-connections"] {
+  #tab-connections:checked    ~ .tab-list .tab[for="tab-connections"],
+  #tab-workflow-chains:checked ~ .tab-list .tab[for="tab-workflow-chains"],
+  #tab-prompts:checked         ~ .tab-list .tab[for="tab-prompts"] {
     color: var(--ink);
     border-bottom-color: var(--clay);
   }
   #tab-nodes:checked  ~ .tab-list .tab[for="tab-nodes"]  .tab-count,
   #tab-agents:checked ~ .tab-list .tab[for="tab-agents"] .tab-count,
   #tab-artifact-types:checked ~ .tab-list .tab[for="tab-artifact-types"] .tab-count,
-  #tab-connections:checked    ~ .tab-list .tab[for="tab-connections"] .tab-count {
+  #tab-connections:checked    ~ .tab-list .tab[for="tab-connections"] .tab-count,
+  #tab-workflow-chains:checked ~ .tab-list .tab[for="tab-workflow-chains"] .tab-count,
+  #tab-prompts:checked         ~ .tab-list .tab[for="tab-prompts"] .tab-count {
     background: var(--clay-soft);
     color: var(--clay);
   }
@@ -698,6 +720,8 @@ ${rows}
   #tab-agents:checked ~ .tab-panel-agents { display: block; }
   #tab-artifact-types:checked ~ .tab-panel-artifact-types { display: block; }
   #tab-connections:checked    ~ .tab-panel-connections    { display: block; }
+  #tab-workflow-chains:checked ~ .tab-panel-workflow-chains { display: block; }
+  #tab-prompts:checked         ~ .tab-panel-prompts         { display: block; }
   .tab-desc {
     color: var(--ink-2);
     font-size: 14.5px;
@@ -803,6 +827,8 @@ ${
       <input type="radio" name="catalog-tab" id="tab-agents" class="tab-radio">
       <input type="radio" name="catalog-tab" id="tab-artifact-types" class="tab-radio">
       <input type="radio" name="catalog-tab" id="tab-connections" class="tab-radio">
+      <input type="radio" name="catalog-tab" id="tab-workflow-chains" class="tab-radio">
+      <input type="radio" name="catalog-tab" id="tab-prompts" class="tab-radio">
 
       <div class="tab-list" role="tablist" aria-label="Pack categories">
         <label class="tab" for="tab-nodes" role="tab">
@@ -820,6 +846,14 @@ ${
         <label class="tab" for="tab-connections" role="tab">
           <span class="tab-label">Connection packs</span>
           <span class="tab-count">${connectionPacks.length}</span>
+        </label>
+        <label class="tab" for="tab-workflow-chains" role="tab">
+          <span class="tab-label">Workflow-chain packs</span>
+          <span class="tab-count">${workflowChainPacks.length}</span>
+        </label>
+        <label class="tab" for="tab-prompts" role="tab">
+          <span class="tab-label">Prompt packs</span>
+          <span class="tab-count">${promptPacks.length}</span>
         </label>
       </div>
 
@@ -884,6 +918,34 @@ ${
         ${connectionPacks.length === 0
           ? '<div class="empty">No connection packs published yet.</div>'
           : tableFor(connectionRows, 'Provider')}
+      </div>
+
+      <div class="tab-panel tab-panel-workflow-chains" role="tabpanel" aria-labelledby="tab-workflow-chains">
+        <p class="tab-desc">
+          <strong>Workflow-chain packs</strong> ship reusable sub-workflows — a parameterized
+          DAG of nodes that callers invoke as a single step (and that expands inline at edit
+          time). They are <em>declarative</em>: a manifest with <code>kind: "workflow-chain"</code>
+          and a <code>chains[]</code> array, no runtime. See
+          <a href="https://github.com/openwop/openwop/blob/main/RFCS/0013-workflow-chain-packs.md">RFC 0013</a>
+          (publishable per <a href="https://github.com/openwop/openwop/blob/main/RFCS/0107-publishable-declarative-pack-kinds.md">RFC 0107</a>).
+        </p>
+        ${workflowChainPacks.length === 0
+          ? '<div class="empty">No workflow-chain packs published yet.</div>'
+          : tableFor(workflowChainRows, 'Chains')}
+      </div>
+
+      <div class="tab-panel tab-panel-prompts" role="tabpanel" aria-labelledby="tab-prompts">
+        <p class="tab-desc">
+          <strong>Prompt packs</strong> ship reusable, versioned prompt templates — named,
+          parameterized text with model hints — that a host's prompt library resolves at run
+          time (with the override hierarchy of RFC 0029). They are <em>declarative</em>: a
+          manifest with <code>kind: "prompt"</code> and a <code>prompts[]</code> array, no runtime. See
+          <a href="https://github.com/openwop/openwop/blob/main/RFCS/0027-prompt-templates.md">RFC 0027</a>
+          (publishable per <a href="https://github.com/openwop/openwop/blob/main/RFCS/0107-publishable-declarative-pack-kinds.md">RFC 0107</a>).
+        </p>
+        ${promptPacks.length === 0
+          ? '<div class="empty">No prompt packs published yet.</div>'
+          : tableFor(promptRows, 'Templates')}
       </div>
     </div>`
 }
