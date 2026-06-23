@@ -1,0 +1,30 @@
+{
+  "name": "core.openwop.connections.notion",
+  "kind": "connection",
+  "description": "Notion connection pack (RFC 0095) — OAuth2 provider for Notion pages + databases. ADR 0033 DEPLOY-GATED. Reach is `mcp` against Notion's official first-party hosted MCP server (https://mcp.notion.com/mcp, Streamable HTTP), which searches/reads/creates/updates workspace content under the connected user's permissions. Notion consent is a static developer-portal capability set rather than per-request OAuth scopes (scopeModel `capabilities`). Carries NO secret; the operator supplies the OAuth client id/secret host-side (ADR 0024 §7).",
+  "author": "",
+  "license": "Apache-2.0",
+  "tags": [],
+  "typeIds": [
+    "notion"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "providerCount": 1,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.connections.notion/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.connections.notion/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.connections.notion/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-tlOdUAzeIvtFXI09u/yj4BMmWsIklHe9secTHujpqG0=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}
