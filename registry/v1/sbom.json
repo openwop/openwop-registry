@@ -1728,6 +1728,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/vendor.openwop.prompt-sample@1.0.0",
+      "type": "library",
+      "name": "vendor.openwop.prompt-sample",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v1/packs/vendor.openwop.prompt-sample/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "92e454834e1e09518574a2452335de29c4f0623b4f319a8762c085b275dbeec9"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/vendor.openwop.rust-hello@1.0.0",
       "type": "library",
       "name": "vendor.openwop.rust-hello",
@@ -1740,6 +1758,24 @@
             {
               "alg": "SHA-256",
               "content": "6e80e616fb81c06a4de9997b5a6f1b80312a54cd0e38ae5b8e3662627c35ea3a"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.openwop.workflow-chain-sample@1.0.0",
+      "type": "library",
+      "name": "vendor.openwop.workflow-chain-sample",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v1/packs/vendor.openwop.workflow-chain-sample/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "4777c75bd68ba295ad6372c0ec57e7a65f1b1650d7625c0875de1807cb4ac8bd"
             }
           ]
         }

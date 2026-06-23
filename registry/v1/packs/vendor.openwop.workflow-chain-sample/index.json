@@ -1,0 +1,33 @@
+{
+  "name": "vendor.openwop.workflow-chain-sample",
+  "kind": "workflow-chain",
+  "description": "Reference workflow-chain pack proving the RFC 0013 manifest format works end-to-end across schema validation, registry indexing, and the reference expansion library. Two chains: a 1-node 'summarize text' chain showing literal parameter substitution, and a 2-node 'fetch-and-summarize' chain showing multi-node DAG composition with edge wiring and capability propagation. In-tree only (NOT published to packs.openwop.dev); the canonical proof that the chain-pack contract is implementable with real-world-shaped content.",
+  "author": "openwop project",
+  "license": "Apache-2.0",
+  "homepage": "https://openwop.dev/spec/v1/workflow-chain-packs.md",
+  "repository": "https://github.com/openwop/openwop",
+  "tags": [],
+  "typeIds": [
+    "vendor.openwop.workflow-chain-sample.summarize-text",
+    "vendor.openwop.workflow-chain-sample.fetch-and-summarize"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 2,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/vendor.openwop.workflow-chain-sample/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/vendor.openwop.workflow-chain-sample/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/vendor.openwop.workflow-chain-sample/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-1CyQi9IezReb+A1fJ8WBIVFn1t/L9pIl97FzLZLVxQE=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

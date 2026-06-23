@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>openwop registry — packs.openwop.dev</title>
-<meta name="description" content="The canonical signed node-pack registry for the openwop workflow orchestration protocol. 69 pack(s), 96 version(s) published.">
+<meta name="description" content="The canonical signed node-pack registry for the openwop workflow orchestration protocol. 71 pack(s), 98 version(s) published.">
 <meta name="robots" content="index, follow">
 
 <meta property="og:type" content="website">
@@ -271,7 +271,9 @@
   #tab-nodes:focus-visible  ~ .tab-list .tab[for="tab-nodes"],
   #tab-agents:focus-visible ~ .tab-list .tab[for="tab-agents"],
   #tab-artifact-types:focus-visible ~ .tab-list .tab[for="tab-artifact-types"],
-  #tab-connections:focus-visible    ~ .tab-list .tab[for="tab-connections"] {
+  #tab-connections:focus-visible    ~ .tab-list .tab[for="tab-connections"],
+  #tab-workflow-chains:focus-visible ~ .tab-list .tab[for="tab-workflow-chains"],
+  #tab-prompts:focus-visible         ~ .tab-list .tab[for="tab-prompts"] {
     outline: 2px solid var(--clay);
     outline-offset: 2px;
     border-radius: 2px;
@@ -280,14 +282,18 @@
   #tab-nodes:checked  ~ .tab-list .tab[for="tab-nodes"],
   #tab-agents:checked ~ .tab-list .tab[for="tab-agents"],
   #tab-artifact-types:checked ~ .tab-list .tab[for="tab-artifact-types"],
-  #tab-connections:checked    ~ .tab-list .tab[for="tab-connections"] {
+  #tab-connections:checked    ~ .tab-list .tab[for="tab-connections"],
+  #tab-workflow-chains:checked ~ .tab-list .tab[for="tab-workflow-chains"],
+  #tab-prompts:checked         ~ .tab-list .tab[for="tab-prompts"] {
     color: var(--ink);
     border-bottom-color: var(--clay);
   }
   #tab-nodes:checked  ~ .tab-list .tab[for="tab-nodes"]  .tab-count,
   #tab-agents:checked ~ .tab-list .tab[for="tab-agents"] .tab-count,
   #tab-artifact-types:checked ~ .tab-list .tab[for="tab-artifact-types"] .tab-count,
-  #tab-connections:checked    ~ .tab-list .tab[for="tab-connections"] .tab-count {
+  #tab-connections:checked    ~ .tab-list .tab[for="tab-connections"] .tab-count,
+  #tab-workflow-chains:checked ~ .tab-list .tab[for="tab-workflow-chains"] .tab-count,
+  #tab-prompts:checked         ~ .tab-list .tab[for="tab-prompts"] .tab-count {
     background: var(--clay-soft);
     color: var(--clay);
   }
@@ -297,6 +303,8 @@
   #tab-agents:checked ~ .tab-panel-agents { display: block; }
   #tab-artifact-types:checked ~ .tab-panel-artifact-types { display: block; }
   #tab-connections:checked    ~ .tab-panel-connections    { display: block; }
+  #tab-workflow-chains:checked ~ .tab-panel-workflow-chains { display: block; }
+  #tab-prompts:checked         ~ .tab-panel-prompts         { display: block; }
   .tab-desc {
     color: var(--ink-2);
     font-size: 14.5px;
@@ -386,8 +394,8 @@
     </h1>
     <p class="lead">Canonical signed node-pack registry for the <a href="https://openwop.dev/">openwop</a> workflow orchestration protocol.</p>
     <div class="summary">
-      <div><strong>69</strong><span>packs published</span></div>
-      <div><strong>96</strong><span>versions total</span></div>
+      <div><strong>71</strong><span>packs published</span></div>
+      <div><strong>98</strong><span>versions total</span></div>
       <div><strong>Ed25519</strong><span>signing algorithm</span></div>
     </div>
   </header>
@@ -399,6 +407,8 @@
       <input type="radio" name="catalog-tab" id="tab-agents" class="tab-radio">
       <input type="radio" name="catalog-tab" id="tab-artifact-types" class="tab-radio">
       <input type="radio" name="catalog-tab" id="tab-connections" class="tab-radio">
+      <input type="radio" name="catalog-tab" id="tab-workflow-chains" class="tab-radio">
+      <input type="radio" name="catalog-tab" id="tab-prompts" class="tab-radio">
 
       <div class="tab-list" role="tablist" aria-label="Pack categories">
         <label class="tab" for="tab-nodes" role="tab">
@@ -416,6 +426,14 @@
         <label class="tab" for="tab-connections" role="tab">
           <span class="tab-label">Connection packs</span>
           <span class="tab-count">6</span>
+        </label>
+        <label class="tab" for="tab-workflow-chains" role="tab">
+          <span class="tab-label">Workflow-chain packs</span>
+          <span class="tab-count">1</span>
+        </label>
+        <label class="tab" for="tab-prompts" role="tab">
+          <span class="tab-label">Prompt packs</span>
+          <span class="tab-count">1</span>
         </label>
       </div>
 
@@ -1337,6 +1355,66 @@
       </tbody>
     </table>
       </div>
+
+      <div class="tab-panel tab-panel-workflow-chains" role="tabpanel" aria-labelledby="tab-workflow-chains">
+        <p class="tab-desc">
+          <strong>Workflow-chain packs</strong> ship reusable sub-workflows — a parameterized
+          DAG of nodes that callers invoke as a single step (and that expands inline at edit
+          time). They are <em>declarative</em>: a manifest with <code>kind: "workflow-chain"</code>
+          and a <code>chains[]</code> array, no runtime. See
+          <a href="https://github.com/openwop/openwop/blob/main/RFCS/0013-workflow-chain-packs.md">RFC 0013</a>
+          (publishable per <a href="https://github.com/openwop/openwop/blob/main/RFCS/0107-publishable-declarative-pack-kinds.md">RFC 0107</a>).
+        </p>
+            <table>
+      <thead>
+        <tr><th>Name</th><th>Version</th><th class="count-h">Chains</th><th>Description</th><th>License</th><th>Artifacts</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="name"><code>vendor.openwop.workflow-chain-sample</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">2</td>
+          <td class="desc">Reference workflow-chain pack proving the RFC 0013 manifest format works end-to-end across schema validation, registry indexing, and the reference expansion library. Two chains: a 1-node &#39;summarize text&#39; chain showing literal parameter substitution, and a 2-node &#39;fetch-and-summarize&#39; chain showing multi-node DAG composition with edge wiring and capability propagation. In-tree only (NOT published to packs.openwop.dev); the canonical proof that the chain-pack contract is implementable with real-world-shaped content.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/vendor.openwop.workflow-chain-sample/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/vendor.openwop.workflow-chain-sample/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/vendor.openwop.workflow-chain-sample/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+      </div>
+
+      <div class="tab-panel tab-panel-prompts" role="tabpanel" aria-labelledby="tab-prompts">
+        <p class="tab-desc">
+          <strong>Prompt packs</strong> ship reusable, versioned prompt templates — named,
+          parameterized text with model hints — that a host's prompt library resolves at run
+          time (with the override hierarchy of RFC 0029). They are <em>declarative</em>: a
+          manifest with <code>kind: "prompt"</code> and a <code>prompts[]</code> array, no runtime. See
+          <a href="https://github.com/openwop/openwop/blob/main/RFCS/0027-prompt-templates.md">RFC 0027</a>
+          (publishable per <a href="https://github.com/openwop/openwop/blob/main/RFCS/0107-publishable-declarative-pack-kinds.md">RFC 0107</a>).
+        </p>
+            <table>
+      <thead>
+        <tr><th>Name</th><th>Version</th><th class="count-h">Templates</th><th>Description</th><th>License</th><th>Artifacts</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="name"><code>vendor.openwop.prompt-sample</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="prompt templates in latest manifest">2</td>
+          <td class="desc">Reference prompt pack proving the RFC 0028 §B manifest format works end-to-end across schema validation, registry indexing, and the in-memory PromptStore&#39;s installPackTemplates() seam. Two templates: a writer-system prompt and a critic-system prompt — the minimal pair that lets a multi-agent workflow author point a `writer` + `critic` node pair at vendor-published prompts via `prompt:writer-system@1.0.0` / `prompt:critic-system@1.0.0` refs. In-tree only (NOT published to packs.openwop.dev); the canonical proof that the prompt-pack contract is implementable with real-world-shaped content.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/vendor.openwop.prompt-sample/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/vendor.openwop.prompt-sample/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/vendor.openwop.prompt-sample/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+      </div>
     </div>
   </section>
 
@@ -1385,7 +1463,7 @@ const ok = verify(null, readFileSync('pack.tgz'), pub, readFileSync('pack.sig'))
   </section>
 
   <footer>
-    Generated 2026-06-23T14:14:42.166Z · <a href="https://openwop.dev/">openwop.dev</a> · <a href="https://github.com/openwop/openwop">openwop on GitHub</a>
+    Generated 2026-06-23T16:00:45.520Z · <a href="https://openwop.dev/">openwop.dev</a> · <a href="https://github.com/openwop/openwop">openwop on GitHub</a>
   </footer>
 </main>
 </body>

@@ -1,7 +1,7 @@
 {
   "registryVersion": "1.0.0",
   "generatedAt": "2026-05-10T00:00:00Z",
-  "packCount": 69,
+  "packCount": 71,
   "packs": [
     {
       "name": "community.openwop-team.demo",
@@ -1355,6 +1355,22 @@
       "yanked": false
     },
     {
+      "name": "vendor.openwop.prompt-sample",
+      "kind": "prompt",
+      "latestVersion": "1.0.0",
+      "description": "Reference prompt pack proving the RFC 0028 §B manifest format works end-to-end across schema validation, registry indexing, and the in-memory PromptStore's installPackTemplates() seam. Two templates: a writer-system prompt and a critic-system prompt — the minimal pair that lets a multi-agent workflow author point a `writer` + `critic` node pair at vendor-published prompts via `prompt:writer-system@1.0.0` / `prompt:critic-system@1.0.0` refs. In-tree only (NOT published to packs.openwop.dev); the canonical proof that the prompt-pack contract is implementable with real-world-shaped content.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "writer-system",
+        "critic-system"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
       "name": "vendor.openwop.rust-hello",
       "kind": "node",
       "latestVersion": "1.0.0",
@@ -1365,6 +1381,22 @@
         "vendor.openwop.rust-hello.greet"
       ],
       "nodeCount": 1,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.openwop.workflow-chain-sample",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.0",
+      "description": "Reference workflow-chain pack proving the RFC 0013 manifest format works end-to-end across schema validation, registry indexing, and the reference expansion library. Two chains: a 1-node 'summarize text' chain showing literal parameter substitution, and a 2-node 'fetch-and-summarize' chain showing multi-node DAG composition with edge wiring and capability propagation. In-tree only (NOT published to packs.openwop.dev); the canonical proof that the chain-pack contract is implementable with real-world-shaped content.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "vendor.openwop.workflow-chain-sample.summarize-text",
+        "vendor.openwop.workflow-chain-sample.fetch-and-summarize"
+      ],
+      "nodeCount": 0,
       "agentCount": 0,
       "deprecated": false,
       "yanked": false
