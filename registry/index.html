@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>openwop registry — packs.openwop.dev</title>
-<meta name="description" content="The canonical signed node-pack registry for the openwop workflow orchestration protocol. 72 pack(s), 99 version(s) published.">
+<meta name="description" content="The canonical signed node-pack registry for the openwop workflow orchestration protocol. 73 pack(s), 100 version(s) published.">
 <meta name="robots" content="index, follow">
 
 <meta property="og:type" content="website">
@@ -398,8 +398,8 @@
     </h1>
     <p class="lead">Canonical signed node-pack registry for the <a href="https://openwop.dev/">openwop</a> workflow orchestration protocol.</p>
     <div class="summary">
-      <div><strong>72</strong><span>packs published</span></div>
-      <div><strong>99</strong><span>versions total</span></div>
+      <div><strong>73</strong><span>packs published</span></div>
+      <div><strong>100</strong><span>versions total</span></div>
       <div><strong>Ed25519</strong><span>signing algorithm</span></div>
     </div>
   </header>
@@ -434,7 +434,7 @@
         </label>
         <label class="tab" for="tab-workflow-chains" role="tab">
           <span class="tab-label">Workflow-chain packs</span>
-          <span class="tab-count">1</span>
+          <span class="tab-count">2</span>
         </label>
         <label class="tab" for="tab-prompts" role="tab">
           <span class="tab-label">Prompt packs</span>
@@ -1380,6 +1380,18 @@
       </thead>
       <tbody>
         <tr>
+          <td class="name"><code>core.openwop.workflows.market-intel</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">1</td>
+          <td class="desc">Real-work workflow pack (RFC 0013, ADR 0149/0150). A competitive / market-intelligence digest authored entirely over PUBLISHED node packs (vendor.myndhyve.market-intel-* + core.openwop.ai), so it expands + runs on any conformant host. The thin-slice proof that the real-work workflows publish to packs.openwop.dev. Published under the `core.openwop.workflows.*` namespace (openwop-team signing key); the registry adds `signing` at publish time.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.market-intel/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.market-intel/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.market-intel/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
           <td class="name"><code>vendor.openwop.workflow-chain-sample</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="chains in latest manifest">2</td>
@@ -1504,7 +1516,7 @@ const ok = verify(null, readFileSync('pack.tgz'), pub, readFileSync('pack.sig'))
   </section>
 
   <footer>
-    Generated 2026-06-23T16:51:00.937Z · <a href="https://openwop.dev/">openwop.dev</a> · <a href="https://github.com/openwop/openwop">openwop on GitHub</a>
+    Generated 2026-06-27T15:12:04.769Z · <a href="https://openwop.dev/">openwop.dev</a> · <a href="https://github.com/openwop/openwop">openwop on GitHub</a>
   </footer>
 </main>
 </body>

@@ -1,7 +1,7 @@
 {
   "registryVersion": "1.0.0",
   "generatedAt": "2026-05-10T00:00:00Z",
-  "packCount": 72,
+  "packCount": 73,
   "packs": [
     {
       "name": "community.openwop-team.demo",
@@ -709,6 +709,21 @@
         "core.trigger.cron-advanced"
       ],
       "nodeCount": 16,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.market-intel",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.0",
+      "description": "Real-work workflow pack (RFC 0013, ADR 0149/0150). A competitive / market-intelligence digest authored entirely over PUBLISHED node packs (vendor.myndhyve.market-intel-* + core.openwop.ai), so it expands + runs on any conformant host. The thin-slice proof that the real-work workflows publish to packs.openwop.dev. Published under the `core.openwop.workflows.*` namespace (openwop-team signing key); the registry adds `signing` at publish time.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "market-intel.digest"
+      ],
+      "nodeCount": 0,
       "agentCount": 0,
       "deprecated": false,
       "yanked": false
