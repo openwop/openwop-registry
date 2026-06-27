@@ -1008,6 +1008,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.market-intel@1.0.0",
+      "type": "library",
+      "name": "core.openwop.workflows.market-intel",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v1/packs/core.openwop.workflows.market-intel/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "f24c661767258fee7f880dcb025d6faecd688ed42d0ee0c24290cb764f7782b8"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/vendor.myndhyve.ads-copy-generate@1.0.0",
       "type": "library",
       "name": "vendor.myndhyve.ads-copy-generate",
