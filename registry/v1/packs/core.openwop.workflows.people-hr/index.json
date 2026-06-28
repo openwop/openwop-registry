@@ -1,0 +1,32 @@
+{
+  "name": "core.openwop.workflows.people-hr",
+  "kind": "workflow-chain",
+  "description": "Real-work workflow pack (RFC 0013, ADR 0149) — the People / HR cluster: Employee Onboarding Orchestrator, Offboarding & Access Revocation, and Leave/PTO Request Routing. Reasons with core.ai.chatCompletion; binds Workday (HRIS), Microsoft 365, and Jira via core.openwop.http.openapi-call connectionRef; every account/HRIS mutation and every team-facing send is gated by core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + integration packs; connections are configured under Access & data → Connections. Published under core.openwop.workflows.* (openwop-team key).",
+  "author": "openwop",
+  "license": "Apache-2.0",
+  "tags": [],
+  "typeIds": [
+    "people-hr.onboarding",
+    "people-hr.offboarding",
+    "people-hr.pto-routing"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 3,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.workflows.people-hr/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.workflows.people-hr/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.workflows.people-hr/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-IAQMPoBXvLgy4Yttuc+VraRsCxB8geQUj9jMCRFmlv4=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

@@ -1026,6 +1026,42 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.finance@1.0.0",
+      "type": "library",
+      "name": "core.openwop.workflows.finance",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v1/packs/core.openwop.workflows.finance/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "1e05da69aedb89e5a5544ca9a0f2f344bbdabcb7afc203c1d6193856335396c8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.it-support@1.0.0",
+      "type": "library",
+      "name": "core.openwop.workflows.it-support",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v1/packs/core.openwop.workflows.it-support/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "4b229676e52605e55c1e789c97457f6276e426695f6f28530030b13e273f4b3b"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.workflows.lighthouse@1.0.0",
       "type": "library",
       "name": "core.openwop.workflows.lighthouse",
@@ -1056,6 +1092,42 @@
             {
               "alg": "SHA-256",
               "content": "f24c661767258fee7f880dcb025d6faecd688ed42d0ee0c24290cb764f7782b8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.marketing@1.0.0",
+      "type": "library",
+      "name": "core.openwop.workflows.marketing",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v1/packs/core.openwop.workflows.marketing/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "1f0fff693692dfb48ceee2b66ea5992deb3fa7d5fa5b8f64d7230207c3db8d3b"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.people-hr@1.0.0",
+      "type": "library",
+      "name": "core.openwop.workflows.people-hr",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v1/packs/core.openwop.workflows.people-hr/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "67335d03638160782b2dd160e2750970754833b853dce0c2d021888ca209c340"
             }
           ]
         }
