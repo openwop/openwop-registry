@@ -264,7 +264,22 @@ jobs:
         env:
           FIREBASE_TOKEN: ${{ steps.auth.outputs.access_token }}
         run: |
-          firebase deploy \
+          set +e
+          out="$(firebase deploy \
             --only hosting:packs \
             --project openwop-dev \
-            --non-interactive
+            --non-interactive 2>&1)"
+          code=$?
+          echo "$out"
+          if [ "$code" -ne 0 ]; then
+            # Benign no-op: when the uploaded file set is byte-identical to what is
+            # already live, Firebase finalizes the version but refuses to RE-release
+            # it ("... is the current active version", HTTP 400). The desired state
+            # (this content live) is already achieved, so treat that one case as
+            # success. Any other failure still fails the job.
+            if printf '%s' "$out" | grep -q "is the current active version"; then
+              echo "::notice::Hosting content already live (version unchanged) — release was a no-op; treating as success."
+              exit 0
+            fi
+            exit "$code"
+          fi
