@@ -1,0 +1,32 @@
+{
+  "name": "core.openwop.workflows.exec-ops",
+  "kind": "workflow-chain",
+  "description": "Real-work workflow pack (RFC 0013, ADR 0149) — the Executive / Chief-of-Staff cluster: Daily Executive Briefing, Meeting Prep & Attendee Dossier, and Board / Investor Update Pack. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.analytics); connector-touching steps bind a connection pack via core.openwop.http.openapi-call connectionRef (Meeting Prep → Microsoft 365 calendar, Board Update → NetSuite finance), so a configured connection runs live and an unconfigured one surfaces a connect prompt. Every external send is gated by core.chat.approvalGate; the read-only briefing is ungated; all tenant values are run parameters (replay-deterministic). Resolves fully on hosts shipping the feature + http/mcp + chat packs (the OpenWOP reference app). Published under core.openwop.workflows.* (openwop-team key).",
+  "author": "openwop",
+  "license": "Apache-2.0",
+  "tags": [],
+  "typeIds": [
+    "exec-ops.daily-briefing",
+    "exec-ops.meeting-prep",
+    "exec-ops.board-update"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 3,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.workflows.exec-ops/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.workflows.exec-ops/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.workflows.exec-ops/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-806GmT+RM3G8h9L777dAanLqEAXH117AIC5PII9DZsk=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}
