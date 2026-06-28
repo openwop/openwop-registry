@@ -1,7 +1,7 @@
 {
   "registryVersion": "1.0.0",
   "generatedAt": "2026-05-10T00:00:00Z",
-  "packCount": 73,
+  "packCount": 74,
   "packs": [
     {
       "name": "community.openwop-team.demo",
@@ -709,6 +709,25 @@
         "core.trigger.cron-advanced"
       ],
       "nodeCount": 16,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.lighthouse",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.0",
+      "description": "Real-work workflow pack (RFC 0013, ADR 0149 / ADR 0155). The five zero-config 'lighthouse' workflows from the ADR 0149 catalog — Lead Triage, Account Brief, Renewal & Churn-Risk Digest, RFP Response, and Post-Meeting Follow-up. Authored over the feature node packs (feature.crm/kb/analytics) plus core.ai.chatCompletion, core.chat.approvalGate, and core.openwop.integration.*; every external send is gated by a human approval and all tenant-specific values are run parameters (replay-deterministic). Resolves fully on hosts that ship the feature packs (e.g. the OpenWOP reference app); on other hosts the unmet node types surface as a connect/install prompt rather than failing. Published under core.openwop.workflows.* (openwop-team signing key); the registry adds `signing` at publish time.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "lighthouse.lead-triage",
+        "lighthouse.account-brief",
+        "lighthouse.renewal-risk",
+        "lighthouse.rfp-response",
+        "lighthouse.post-meeting"
+      ],
+      "nodeCount": 0,
       "agentCount": 0,
       "deprecated": false,
       "yanked": false

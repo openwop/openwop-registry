@@ -1008,6 +1008,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.lighthouse@1.0.0",
+      "type": "library",
+      "name": "core.openwop.workflows.lighthouse",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v1/packs/core.openwop.workflows.lighthouse/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "64b1199f09e0bb685cfdd98d133e679ad8aa54fe99309defeb70a622b12e15a8"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.workflows.market-intel@1.0.0",
       "type": "library",
       "name": "core.openwop.workflows.market-intel",
