@@ -1008,6 +1008,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.exec-ops@1.0.0",
+      "type": "library",
+      "name": "core.openwop.workflows.exec-ops",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v1/packs/core.openwop.workflows.exec-ops/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "228efe5787aff4e19658359f5cb7b28420d592bc28e6fca17d1c3734f59f055d"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.workflows.lighthouse@1.0.0",
       "type": "library",
       "name": "core.openwop.workflows.lighthouse",

@@ -1,7 +1,7 @@
 {
   "registryVersion": "1.0.0",
   "generatedAt": "2026-05-10T00:00:00Z",
-  "packCount": 74,
+  "packCount": 75,
   "packs": [
     {
       "name": "community.openwop-team.demo",
@@ -709,6 +709,23 @@
         "core.trigger.cron-advanced"
       ],
       "nodeCount": 16,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.exec-ops",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.0",
+      "description": "Real-work workflow pack (RFC 0013, ADR 0149) — the Executive / Chief-of-Staff cluster: Daily Executive Briefing, Meeting Prep & Attendee Dossier, and Board / Investor Update Pack. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.analytics); connector-touching steps bind a connection pack via core.openwop.http.openapi-call connectionRef (Meeting Prep → Microsoft 365 calendar, Board Update → NetSuite finance), so a configured connection runs live and an unconfigured one surfaces a connect prompt. Every external send is gated by core.chat.approvalGate; the read-only briefing is ungated; all tenant values are run parameters (replay-deterministic). Resolves fully on hosts shipping the feature + http/mcp + chat packs (the OpenWOP reference app). Published under core.openwop.workflows.* (openwop-team key).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "exec-ops.daily-briefing",
+        "exec-ops.meeting-prep",
+        "exec-ops.board-update"
+      ],
+      "nodeCount": 0,
       "agentCount": 0,
       "deprecated": false,
       "yanked": false

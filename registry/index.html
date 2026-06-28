@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>openwop registry — packs.openwop.dev</title>
-<meta name="description" content="The canonical signed node-pack registry for the openwop workflow orchestration protocol. 74 pack(s), 101 version(s) published.">
+<meta name="description" content="The canonical signed node-pack registry for the openwop workflow orchestration protocol. 75 pack(s), 102 version(s) published.">
 <meta name="robots" content="index, follow">
 
 <meta property="og:type" content="website">
@@ -398,8 +398,8 @@
     </h1>
     <p class="lead">Canonical signed node-pack registry for the <a href="https://openwop.dev/">openwop</a> workflow orchestration protocol.</p>
     <div class="summary">
-      <div><strong>74</strong><span>packs published</span></div>
-      <div><strong>101</strong><span>versions total</span></div>
+      <div><strong>75</strong><span>packs published</span></div>
+      <div><strong>102</strong><span>versions total</span></div>
       <div><strong>Ed25519</strong><span>signing algorithm</span></div>
     </div>
   </header>
@@ -434,7 +434,7 @@
         </label>
         <label class="tab" for="tab-workflow-chains" role="tab">
           <span class="tab-label">Workflow-chain packs</span>
-          <span class="tab-count">3</span>
+          <span class="tab-count">4</span>
         </label>
         <label class="tab" for="tab-prompts" role="tab">
           <span class="tab-label">Prompt packs</span>
@@ -1380,6 +1380,18 @@
       </thead>
       <tbody>
         <tr>
+          <td class="name"><code>core.openwop.workflows.exec-ops</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">3</td>
+          <td class="desc">Real-work workflow pack (RFC 0013, ADR 0149) — the Executive / Chief-of-Staff cluster: Daily Executive Briefing, Meeting Prep &amp; Attendee Dossier, and Board / Investor Update Pack. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.analytics); connector-touching steps bind a connection pack via core.openwop.http.openapi-call connectionRef (Meeting Prep → Microsoft 365 calendar, Board Update → NetSuite finance), so a configured connection runs live and an unconfigured one surfaces a connect prompt. Every external send is gated by core.chat.approvalGate; the read-only briefing is ungated; all tenant values are run parameters (replay-deterministic). Resolves fully on hosts shipping the feature + http/mcp + chat packs (the OpenWOP reference app). Published under core.openwop.workflows.* (openwop-team key).</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.exec-ops/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.exec-ops/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.exec-ops/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
           <td class="name"><code>core.openwop.workflows.lighthouse</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="chains in latest manifest">5</td>
@@ -1528,7 +1540,7 @@ const ok = verify(null, readFileSync('pack.tgz'), pub, readFileSync('pack.sig'))
   </section>
 
   <footer>
-    Generated 2026-06-28T03:33:37.978Z · <a href="https://openwop.dev/">openwop.dev</a> · <a href="https://github.com/openwop/openwop">openwop on GitHub</a>
+    Generated 2026-06-28T13:51:14.053Z · <a href="https://openwop.dev/">openwop.dev</a> · <a href="https://github.com/openwop/openwop">openwop on GitHub</a>
   </footer>
 </main>
 </body>
