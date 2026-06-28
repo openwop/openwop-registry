@@ -1,0 +1,33 @@
+{
+  "name": "core.openwop.workflows.marketing",
+  "kind": "workflow-chain",
+  "description": "Real-work workflow pack (RFC 0013, ADR 0149) — the Marketing & Advertising cluster: Full Campaign Launch, Ad Performance Optimization Loop, Content Brief Generator, and Content Repurposing. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.kb / feature.cms / feature.email); binds the ad platforms (Google/Meta Ads) via core.openwop.http.openapi-call connectionRef. The optimization loop routes within-guardrail changes to auto-apply and out-of-guardrail changes to a core.chat.approvalGate via a core.flow.if conditional node (ADR 0149 open-question resolution: a flow conditional, not a new primitive). Every launch/publish/apply is approval- or guardrail-gated; all tenant values are run parameters (replay-deterministic). Published under core.openwop.workflows.* (openwop-team key).",
+  "author": "openwop",
+  "license": "Apache-2.0",
+  "tags": [],
+  "typeIds": [
+    "marketing.campaign-launch",
+    "marketing.ad-optimization",
+    "marketing.content-brief",
+    "marketing.content-repurposing"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 4,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.workflows.marketing/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.workflows.marketing/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.workflows.marketing/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-WJgZidR4TXG0hzIgQG6ZM/4nQSK24m5VYLIhF7bQ1p4=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

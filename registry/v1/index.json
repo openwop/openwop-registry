@@ -1,7 +1,7 @@
 {
   "registryVersion": "1.0.0",
   "generatedAt": "2026-05-10T00:00:00Z",
-  "packCount": 75,
+  "packCount": 79,
   "packs": [
     {
       "name": "community.openwop-team.demo",
@@ -731,6 +731,38 @@
       "yanked": false
     },
     {
+      "name": "core.openwop.workflows.finance",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.0",
+      "description": "Real-work workflow pack (RFC 0013, ADR 0149) — the Finance cluster: Invoice → AP Processing, Month-End Close Checklist, and Expense/Budget Approval + anomaly detection. Reasons with core.ai.chatCompletion; binds the ERP (NetSuite) via core.openwop.http.openapi-call connectionRef for validation + posting; every posting/reimbursement runs through a threshold core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + kb + integration packs. Published under core.openwop.workflows.* (openwop-team key).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "finance.invoice-ap",
+        "finance.month-end-close",
+        "finance.expense-approval"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.it-support",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.0",
+      "description": "Real-work workflow pack (RFC 0013, ADR 0149) — the IT / Support cluster: Incident Triage & Major-Incident Comms. Classifies an incoming alert/ticket, then a core.flow.if routes routine incidents to a recommended KB article + a ticket (Jira) and major incidents to cadence stakeholder updates (Slack); finally a post-incident summary. Major-incident sends are human-gated. All tenant values are run parameters (replay-deterministic). Resolves on hosts shipping the kb + http + ai + chat + integration packs. Published under core.openwop.workflows.* (openwop-team key).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "it-support.incident-triage"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
       "name": "core.openwop.workflows.lighthouse",
       "kind": "workflow-chain",
       "latestVersion": "1.0.0",
@@ -758,6 +790,41 @@
       "tags": [],
       "typeIds": [
         "market-intel.digest"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.marketing",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.0",
+      "description": "Real-work workflow pack (RFC 0013, ADR 0149) — the Marketing & Advertising cluster: Full Campaign Launch, Ad Performance Optimization Loop, Content Brief Generator, and Content Repurposing. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.kb / feature.cms / feature.email); binds the ad platforms (Google/Meta Ads) via core.openwop.http.openapi-call connectionRef. The optimization loop routes within-guardrail changes to auto-apply and out-of-guardrail changes to a core.chat.approvalGate via a core.flow.if conditional node (ADR 0149 open-question resolution: a flow conditional, not a new primitive). Every launch/publish/apply is approval- or guardrail-gated; all tenant values are run parameters (replay-deterministic). Published under core.openwop.workflows.* (openwop-team key).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "marketing.campaign-launch",
+        "marketing.ad-optimization",
+        "marketing.content-brief",
+        "marketing.content-repurposing"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.people-hr",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.0",
+      "description": "Real-work workflow pack (RFC 0013, ADR 0149) — the People / HR cluster: Employee Onboarding Orchestrator, Offboarding & Access Revocation, and Leave/PTO Request Routing. Reasons with core.ai.chatCompletion; binds Workday (HRIS), Microsoft 365, and Jira via core.openwop.http.openapi-call connectionRef; every account/HRIS mutation and every team-facing send is gated by core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + integration packs; connections are configured under Access & data → Connections. Published under core.openwop.workflows.* (openwop-team key).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "people-hr.onboarding",
+        "people-hr.offboarding",
+        "people-hr.pto-routing"
       ],
       "nodeCount": 0,
       "agentCount": 0,
