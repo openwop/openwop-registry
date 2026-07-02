@@ -409,7 +409,40 @@ function emitLandingPage(packDocs) {
   const nodeRows  = buildRows(nodePacks,  'node');
   const agentRows = buildRows(agentPacks, 'agent');
   const artifactTypeRows = buildRows(artifactTypePacks, 'artifact-type');
-  const connectionRows   = buildRows(connectionPacks,   'connection');
+  // Connection packs group by commercial VENDOR (Microsoft 365 / Google / Workday …)
+  // so a company scans the catalog by the vendors it does business with. Vendor is
+  // derived host-side from the provider id (typeIds[0] for kind:"connection") — it is
+  // presentational, NOT a manifest field (the RFC 0095 provider schema is
+  // additionalProperties:false; a normative `vendor` field would need an openwop RFC).
+  // A provider with no mapping falls back to a titleised provider id, so nothing hides.
+  const CONNECTION_VENDOR = {
+    github: 'GitHub', jira: 'Atlassian', microsoft365: 'Microsoft 365',
+    notion: 'Notion', salesforce: 'Salesforce', workday: 'Workday',
+    google: 'Google', gmail: 'Google', bigquery: 'Google', slack: 'Slack',
+    servicenow: 'ServiceNow', zoom: 'Zoom', dropbox: 'Dropbox', box: 'Box',
+  };
+  const vendorOf = (p) => {
+    const providerId = p.typeIds?.[0] ?? p.name.split('.').pop() ?? '';
+    if (CONNECTION_VENDOR[providerId]) return CONNECTION_VENDOR[providerId];
+    return providerId ? providerId.charAt(0).toUpperCase() + providerId.slice(1) : '—';
+  };
+  const buildConnectionRows = (packs) => {
+    const groups = new Map();
+    for (const p of packs) {
+      const v = vendorOf(p);
+      const bucket = groups.get(v);
+      if (bucket) bucket.push(p); else groups.set(v, [p]);
+    }
+    return [...groups.entries()]
+      .sort((a, b) => a[0].localeCompare(b[0]))
+      .map(([vendor, ps]) => {
+        const header = `        <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">${htmlEscape(vendor)}</th></tr>`;
+        const rows = ps.slice().sort((a, b) => a.name.localeCompare(b.name)).map((p) => rowFor(p, 'connection')).join('\n');
+        return `${header}\n${rows}`;
+      })
+      .join('\n');
+  };
+  const connectionRows   = buildConnectionRows(connectionPacks);
   const workflowChainRows = buildRows(workflowChainPacks, 'workflow-chain');
   const promptRows         = buildRows(promptPacks,        'prompt');
   const cardRows           = buildRows(cardPacks,          'card');
@@ -615,6 +648,19 @@ ${rows}
   }
   tbody tr { transition: background .15s ease; }
   tbody tr:hover { background: var(--clay-wash); }
+  /* Vendor group heading inside the connection catalog (ADR 0182 parallel) —
+     lets a company scan connectors by the vendors it uses. */
+  tr.vendor-row:hover { background: none; }
+  th.vendor-group {
+    font-family: var(--mono);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--clay);
+    border-bottom: 1px solid var(--clay-rule);
+    padding-top: 20px;
+  }
   td.name code { font-size: 13px; }
   td.version { color: var(--ink-3); font-family: var(--mono); font-variant-numeric: tabular-nums; }
   td.artifacts { font-size: 13px; }

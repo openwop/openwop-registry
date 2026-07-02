@@ -189,6 +189,19 @@
   }
   tbody tr { transition: background .15s ease; }
   tbody tr:hover { background: var(--clay-wash); }
+  /* Vendor group heading inside the connection catalog (ADR 0182 parallel) —
+     lets a company scan connectors by the vendors it uses. */
+  tr.vendor-row:hover { background: none; }
+  th.vendor-group {
+    font-family: var(--mono);
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--clay);
+    border-bottom: 1px solid var(--clay-rule);
+    padding-top: 20px;
+  }
   td.name code { font-size: 13px; }
   td.version { color: var(--ink-3); font-family: var(--mono); font-variant-numeric: tabular-nums; }
   td.artifacts { font-size: 13px; }
@@ -1289,18 +1302,7 @@
         <tr><th>Name</th><th>Version</th><th class="count-h">Provider</th><th>Description</th><th>License</th><th>Artifacts</th></tr>
       </thead>
       <tbody>
-        <tr>
-          <td class="name"><code>core.openwop.connections.github</code> </td>
-          <td class="version">1.0.0</td>
-          <td class="count" title="provider in latest manifest">1</td>
-          <td class="desc">GitHub connection pack (RFC 0095) — OAuth2 provider definition, reached via the official GitHub MCP server. Demonstrates the openwop-app connection-pack loader: drop this pack in and `github` becomes a resolvable provider. Carries NO secret; the operator supplies the OAuth client id/secret host-side (ADR 0024 §7).</td>
-          <td class="license">Apache-2.0</td>
-          <td class="artifacts">
-            <a href="/v1/packs/core.openwop.connections.github/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v1/packs/core.openwop.connections.github/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v1/packs/core.openwop.connections.github/-/1.0.0.sig" title="Ed25519 signature">sig</a>
-          </td>
-        </tr>
+        <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Atlassian</th></tr>
         <tr>
           <td class="name"><code>core.openwop.connections.jira</code> </td>
           <td class="version">1.0.0</td>
@@ -1313,6 +1315,20 @@
             · <a href="/v1/packs/core.openwop.connections.jira/-/1.0.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
+        <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">GitHub</th></tr>
+        <tr>
+          <td class="name"><code>core.openwop.connections.github</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="provider in latest manifest">1</td>
+          <td class="desc">GitHub connection pack (RFC 0095) — OAuth2 provider definition, reached via the official GitHub MCP server. Demonstrates the openwop-app connection-pack loader: drop this pack in and `github` becomes a resolvable provider. Carries NO secret; the operator supplies the OAuth client id/secret host-side (ADR 0024 §7).</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.connections.github/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.connections.github/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.connections.github/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Microsoft 365</th></tr>
         <tr>
           <td class="name"><code>core.openwop.connections.microsoft365</code> </td>
           <td class="version">1.0.0</td>
@@ -1325,6 +1341,7 @@
             · <a href="/v1/packs/core.openwop.connections.microsoft365/-/1.0.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
+        <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Notion</th></tr>
         <tr>
           <td class="name"><code>core.openwop.connections.notion</code> </td>
           <td class="version">1.0.0</td>
@@ -1337,6 +1354,7 @@
             · <a href="/v1/packs/core.openwop.connections.notion/-/1.0.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
+        <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Salesforce</th></tr>
         <tr>
           <td class="name"><code>core.openwop.connections.salesforce</code> </td>
           <td class="version">1.0.0</td>
@@ -1349,6 +1367,7 @@
             · <a href="/v1/packs/core.openwop.connections.salesforce/-/1.0.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
+        <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Workday</th></tr>
         <tr>
           <td class="name"><code>core.openwop.connections.workday</code> </td>
           <td class="version">1.0.0</td>
@@ -1588,7 +1607,7 @@ const ok = verify(null, readFileSync('pack.tgz'), pub, readFileSync('pack.sig'))
   </section>
 
   <footer>
-    Generated 2026-06-28T14:53:24.182Z · <a href="https://openwop.dev/">openwop.dev</a> · <a href="https://github.com/openwop/openwop">openwop on GitHub</a>
+    Generated 2026-07-02T03:30:22.323Z · <a href="https://openwop.dev/">openwop.dev</a> · <a href="https://github.com/openwop/openwop">openwop on GitHub</a>
   </footer>
 </main>
 </body>
