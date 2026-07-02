@@ -1,7 +1,7 @@
 {
   "registryVersion": "1.0.0",
   "generatedAt": "2026-05-10T00:00:00Z",
-  "packCount": 79,
+  "packCount": 85,
   "packs": [
     {
       "name": "community.openwop-team.demo",
@@ -198,6 +198,36 @@
       "yanked": false
     },
     {
+      "name": "core.openwop.connections.google-ads",
+      "kind": "connection",
+      "latestVersion": "1.0.0",
+      "description": "Google Ads connection pack (RFC 0095) — OAuth2 provider for the Google Ads REST API. Reach is `openapi`: Google Ads has no first-party global MCP server; the manifest declares the global Google OAuth hosts and points at the REST API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the OAuth client id/secret + developer token host-side (ADR 0024 §7). One of the three ad platforms Campaign Studio syncs (ADR 0159 — Google / Meta / LinkedIn Ads).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "google-ads"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.connections.google-workspace",
+      "kind": "connection",
+      "latestVersion": "1.0.0",
+      "description": "Google Workspace connection pack (RFC 0095) — OAuth2 PKCE provider for Drive, Calendar, and Gmail via the Google APIs. Registry parity for the reference app's BUILT-IN `google` provider (day-1 UX P10 / C3): the app itself never loads this pack (the builtin wins by id precedence anyway — this pack deliberately uses the distinct id `google-workspace` so OTHER hosts can adopt it without shadowing semantics); it exists so packs.openwop.dev offers a Google productivity-suite connection alongside microsoft365 — previously the registry's only Google entry was google-ads. Read scopes are the day-1 consent; gmail.send / calendar.events are WRITE groups behind a separate re-consent (ADR 0024 §3). Carries NO secret; the operator supplies the OAuth client id/secret host-side (ADR 0024 §7).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "google-workspace"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
       "name": "core.openwop.connections.jira",
       "kind": "connection",
       "latestVersion": "1.0.0",
@@ -213,6 +243,36 @@
       "yanked": false
     },
     {
+      "name": "core.openwop.connections.linkedin-ads",
+      "kind": "connection",
+      "latestVersion": "1.0.0",
+      "description": "LinkedIn Ads connection pack (RFC 0095) — OAuth2 provider for the LinkedIn Marketing API. Reach is `openapi`: the manifest declares the global LinkedIn OAuth hosts and points at the Marketing API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the client id/secret host-side (ADR 0024 §7). One of the three ad platforms Campaign Studio syncs (ADR 0159 — Google / Meta / LinkedIn Ads).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "linkedin-ads"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.connections.meta-ads",
+      "kind": "connection",
+      "latestVersion": "1.0.0",
+      "description": "Meta (Facebook/Instagram) Ads connection pack (RFC 0095) — OAuth2 provider for the Meta Marketing API. Reach is `openapi`: the manifest declares the global Meta OAuth hosts and points at the Marketing API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the app id/secret host-side (ADR 0024 §7). An available provider (the parallel ad platform to google-ads); one of the three ad platforms Campaign Studio syncs (ADR 0159).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "meta-ads"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
       "name": "core.openwop.connections.microsoft365",
       "kind": "connection",
       "latestVersion": "1.0.0",
@@ -221,6 +281,21 @@
       "tags": [],
       "typeIds": [
         "microsoft365"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.connections.netsuite",
+      "kind": "connection",
+      "latestVersion": "1.0.0",
+      "description": "Oracle NetSuite connection pack (RFC 0095) — OAuth2 provider for the NetSuite SuiteTalk REST API (ERP / finance). Reach is `openapi`: NetSuite has no first-party global MCP server, and its REST base + OAuth hosts are PER-ACCOUNT (`https://{account}.suitetalk.api.netsuite.com`), supplied per connection via instanceUrlTemplate (the schema's own NetSuite example). Carries NO secret; the operator supplies the integration/client credentials host-side (ADR 0024 §7). Bound by ADR 0149 lib.finance.invoice-ap (post to ERP).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "netsuite"
       ],
       "nodeCount": 0,
       "agentCount": 0,
@@ -251,6 +326,21 @@
       "tags": [],
       "typeIds": [
         "salesforce"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.connections.tiktok-ads",
+      "kind": "connection",
+      "latestVersion": "1.0.0",
+      "description": "TikTok Ads connection pack (RFC 0095) — OAuth2 provider for the TikTok Business (Marketing) API. Reach is `openapi`: the manifest declares the TikTok business-api OAuth hosts and points at the Marketing API reference. Carries NO secret; the operator supplies the app id/secret host-side (ADR 0024 §7). The third ad platform Campaign Studio dispatches to (ADR 0167 Phase 3) — TikTok authenticates with an `Access-Token` header (not `Authorization: Bearer`), handled host-side by the ads-dispatch adapter.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "tiktok-ads"
       ],
       "nodeCount": 0,
       "agentCount": 0,

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>openwop registry — packs.openwop.dev</title>
-<meta name="description" content="The canonical signed node-pack registry for the openwop workflow orchestration protocol. 79 pack(s), 106 version(s) published.">
+<meta name="description" content="The canonical signed node-pack registry for the openwop workflow orchestration protocol. 85 pack(s), 112 version(s) published.">
 <meta name="robots" content="index, follow">
 
 <meta property="og:type" content="website">
@@ -411,8 +411,8 @@
     </h1>
     <p class="lead">Canonical signed node-pack registry for the <a href="https://openwop.dev/">openwop</a> workflow orchestration protocol.</p>
     <div class="summary">
-      <div><strong>79</strong><span>packs published</span></div>
-      <div><strong>106</strong><span>versions total</span></div>
+      <div><strong>85</strong><span>packs published</span></div>
+      <div><strong>112</strong><span>versions total</span></div>
       <div><strong>Ed25519</strong><span>signing algorithm</span></div>
     </div>
   </header>
@@ -443,7 +443,7 @@
         </label>
         <label class="tab" for="tab-connections" role="tab">
           <span class="tab-label">Connection packs</span>
-          <span class="tab-count">6</span>
+          <span class="tab-count">12</span>
         </label>
         <label class="tab" for="tab-workflow-chains" role="tab">
           <span class="tab-label">Workflow-chain packs</span>
@@ -1328,6 +1328,58 @@
             · <a href="/v1/packs/core.openwop.connections.github/-/1.0.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
+        <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Google-ads</th></tr>
+        <tr>
+          <td class="name"><code>core.openwop.connections.google-ads</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="provider in latest manifest">1</td>
+          <td class="desc">Google Ads connection pack (RFC 0095) — OAuth2 provider for the Google Ads REST API. Reach is `openapi`: Google Ads has no first-party global MCP server; the manifest declares the global Google OAuth hosts and points at the REST API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the OAuth client id/secret + developer token host-side (ADR 0024 §7). One of the three ad platforms Campaign Studio syncs (ADR 0159 — Google / Meta / LinkedIn Ads).</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.connections.google-ads/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.connections.google-ads/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.connections.google-ads/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Google-workspace</th></tr>
+        <tr>
+          <td class="name"><code>core.openwop.connections.google-workspace</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="provider in latest manifest">1</td>
+          <td class="desc">Google Workspace connection pack (RFC 0095) — OAuth2 PKCE provider for Drive, Calendar, and Gmail via the Google APIs. Registry parity for the reference app&#39;s BUILT-IN `google` provider (day-1 UX P10 / C3): the app itself never loads this pack (the builtin wins by id precedence anyway — this pack deliberately uses the distinct id `google-workspace` so OTHER hosts can adopt it without shadowing semantics); it exists so packs.openwop.dev offers a Google productivity-suite connection alongside microsoft365 — previously the registry&#39;s only Google entry was google-ads. Read scopes are the day-1 consent; gmail.send / calendar.events are WRITE groups behind a separate re-consent (ADR 0024 §3). Carries NO secret; the operator supplies the OAuth client id/secret host-side (ADR 0024 §7).</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.connections.google-workspace/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.connections.google-workspace/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.connections.google-workspace/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Linkedin-ads</th></tr>
+        <tr>
+          <td class="name"><code>core.openwop.connections.linkedin-ads</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="provider in latest manifest">1</td>
+          <td class="desc">LinkedIn Ads connection pack (RFC 0095) — OAuth2 provider for the LinkedIn Marketing API. Reach is `openapi`: the manifest declares the global LinkedIn OAuth hosts and points at the Marketing API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the client id/secret host-side (ADR 0024 §7). One of the three ad platforms Campaign Studio syncs (ADR 0159 — Google / Meta / LinkedIn Ads).</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.connections.linkedin-ads/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.connections.linkedin-ads/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.connections.linkedin-ads/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Meta-ads</th></tr>
+        <tr>
+          <td class="name"><code>core.openwop.connections.meta-ads</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="provider in latest manifest">1</td>
+          <td class="desc">Meta (Facebook/Instagram) Ads connection pack (RFC 0095) — OAuth2 provider for the Meta Marketing API. Reach is `openapi`: the manifest declares the global Meta OAuth hosts and points at the Marketing API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the app id/secret host-side (ADR 0024 §7). An available provider (the parallel ad platform to google-ads); one of the three ad platforms Campaign Studio syncs (ADR 0159).</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.connections.meta-ads/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.connections.meta-ads/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.connections.meta-ads/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
         <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Microsoft 365</th></tr>
         <tr>
           <td class="name"><code>core.openwop.connections.microsoft365</code> </td>
@@ -1339,6 +1391,19 @@
             <a href="/v1/packs/core.openwop.connections.microsoft365/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
             · <a href="/v1/packs/core.openwop.connections.microsoft365/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
             · <a href="/v1/packs/core.openwop.connections.microsoft365/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Netsuite</th></tr>
+        <tr>
+          <td class="name"><code>core.openwop.connections.netsuite</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="provider in latest manifest">1</td>
+          <td class="desc">Oracle NetSuite connection pack (RFC 0095) — OAuth2 provider for the NetSuite SuiteTalk REST API (ERP / finance). Reach is `openapi`: NetSuite has no first-party global MCP server, and its REST base + OAuth hosts are PER-ACCOUNT (`https://{account}.suitetalk.api.netsuite.com`), supplied per connection via instanceUrlTemplate (the schema&#39;s own NetSuite example). Carries NO secret; the operator supplies the integration/client credentials host-side (ADR 0024 §7). Bound by ADR 0149 lib.finance.invoice-ap (post to ERP).</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.connections.netsuite/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.connections.netsuite/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.connections.netsuite/-/1.0.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Notion</th></tr>
@@ -1365,6 +1430,19 @@
             <a href="/v1/packs/core.openwop.connections.salesforce/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
             · <a href="/v1/packs/core.openwop.connections.salesforce/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
             · <a href="/v1/packs/core.openwop.connections.salesforce/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Tiktok-ads</th></tr>
+        <tr>
+          <td class="name"><code>core.openwop.connections.tiktok-ads</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="provider in latest manifest">1</td>
+          <td class="desc">TikTok Ads connection pack (RFC 0095) — OAuth2 provider for the TikTok Business (Marketing) API. Reach is `openapi`: the manifest declares the TikTok business-api OAuth hosts and points at the Marketing API reference. Carries NO secret; the operator supplies the app id/secret host-side (ADR 0024 §7). The third ad platform Campaign Studio dispatches to (ADR 0167 Phase 3) — TikTok authenticates with an `Access-Token` header (not `Authorization: Bearer`), handled host-side by the ads-dispatch adapter.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.connections.tiktok-ads/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.connections.tiktok-ads/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.connections.tiktok-ads/-/1.0.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Workday</th></tr>
@@ -1607,7 +1685,7 @@ const ok = verify(null, readFileSync('pack.tgz'), pub, readFileSync('pack.sig'))
   </section>
 
   <footer>
-    Generated 2026-07-02T03:30:32.801Z · <a href="https://openwop.dev/">openwop.dev</a> · <a href="https://github.com/openwop/openwop">openwop on GitHub</a>
+    Generated 2026-07-02T21:03:27.414Z · <a href="https://openwop.dev/">openwop.dev</a> · <a href="https://github.com/openwop/openwop">openwop on GitHub</a>
   </footer>
 </main>
 </body>

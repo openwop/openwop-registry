@@ -324,6 +324,42 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.connections.google-ads@1.0.0",
+      "type": "library",
+      "name": "core.openwop.connections.google-ads",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v1/packs/core.openwop.connections.google-ads/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "275f082592fd8e9d7b2d46434fb766488561adb1d4cd332a1f4345191b1d1319"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.connections.google-workspace@1.0.0",
+      "type": "library",
+      "name": "core.openwop.connections.google-workspace",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v1/packs/core.openwop.connections.google-workspace/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "2edde4fc8a8fdccb1da3d905d5d5f32a92ccb5f0c18ff8248a7598c4bd8bbe3a"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.connections.jira@1.0.0",
       "type": "library",
       "name": "core.openwop.connections.jira",
@@ -342,6 +378,42 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.connections.linkedin-ads@1.0.0",
+      "type": "library",
+      "name": "core.openwop.connections.linkedin-ads",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v1/packs/core.openwop.connections.linkedin-ads/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "4bd6630c9992af01cf6e05fdaed4bf39d8b33a50434e462e847f967c923489a8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.connections.meta-ads@1.0.0",
+      "type": "library",
+      "name": "core.openwop.connections.meta-ads",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v1/packs/core.openwop.connections.meta-ads/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "9a0e48062ab951e4a417492bed2a265d58e074a479b961440be879d6f421b1b4"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.connections.microsoft365@1.0.0",
       "type": "library",
       "name": "core.openwop.connections.microsoft365",
@@ -354,6 +426,24 @@
             {
               "alg": "SHA-256",
               "content": "cc3dcc9f2d898536a2a5cf232e3c1dac868552bd43ff018311a83ed697e07700"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.connections.netsuite@1.0.0",
+      "type": "library",
+      "name": "core.openwop.connections.netsuite",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v1/packs/core.openwop.connections.netsuite/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "ae0a1e351eaa60effe4e9cb478b34221ad43fa2bd82733831cb27403bfb0a24a"
             }
           ]
         }
@@ -390,6 +480,24 @@
             {
               "alg": "SHA-256",
               "content": "82461ff5ddada386e20b565ff89cd2ced3170a81c8ccd5d62b53f254d77cf994"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.connections.tiktok-ads@1.0.0",
+      "type": "library",
+      "name": "core.openwop.connections.tiktok-ads",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v1/packs/core.openwop.connections.tiktok-ads/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "92fd0a3f2b0fbb4684c9abc63ea75bb874c70abf6a34e8c309468adef44ae13d"
             }
           ]
         }
