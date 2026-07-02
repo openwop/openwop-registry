@@ -648,7 +648,7 @@ ${rows}
   }
   tbody tr { transition: background .15s ease; }
   tbody tr:hover { background: var(--clay-wash); }
-  /* Vendor group heading inside the connection catalog (ADR 0182 parallel) —
+  /* Vendor group heading inside the connection catalog (ADR 0185 parallel) —
      lets a company scan connectors by the vendors it uses. */
   tr.vendor-row:hover { background: none; }
   th.vendor-group {
