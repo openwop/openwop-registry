@@ -72,6 +72,30 @@ function ensureCallAI(ctx) {
  * Returns the input array verbatim when ctx.trustBoundary is absent or
  * `'trusted'` — zero behavioral change for non-MCP-mount runs.
  */
+/**
+ * Coerce a node's inputs into a non-empty messages[] for callAI. A chatCompletion /
+ * structured-output node fed STRUCTURED upstream data (e.g. `{triage:{...}}` from a
+ * preceding node) — not a chat `messages` array — would otherwise pass
+ * `messages: undefined` to the provider and crash with "messages is not iterable".
+ * Precedence: an explicit `messages[]` → a recognized single-string port → the
+ * structured inputs serialized as ONE user turn (so the model still acts on them per
+ * the `systemPrompt`). Returns [] only when there is genuinely no input at all.
+ */
+function toMessages(inputs) {
+  const src = inputs && typeof inputs === 'object' ? inputs : {};
+  if (Array.isArray(src.messages) && src.messages.length > 0) return src.messages;
+  for (const k of ['prompt', 'text', 'message', 'content', 'input']) {
+    if (typeof src[k] === 'string' && src[k].length > 0) return [{ role: 'user', content: src[k] }];
+  }
+  for (const [k, v] of Object.entries(src)) {
+    if (k !== 'messages' && typeof v === 'string' && v.length > 0) return [{ role: 'user', content: v }];
+  }
+  const structured = {};
+  for (const [k, v] of Object.entries(src)) if (k !== 'messages' && v !== undefined) structured[k] = v;
+  if (Object.keys(structured).length > 0) return [{ role: 'user', content: JSON.stringify(structured) }];
+  return [];
+}
+
 function applyUntrustedMarkers(messages, trustBoundary) {
   if (trustBoundary !== 'untrusted' || !Array.isArray(messages)) return messages;
   return messages.map((m) => {
@@ -103,7 +127,7 @@ function normalizeFinishReason(raw) {
 export async function chatCompletion(ctx) {
   ensureCallAI(ctx);
   const { provider, model, systemPrompt, temperature, maxTokens, stopSequences } = ctx.config;
-  const { messages } = ctx.inputs;
+  const messages = toMessages(ctx.inputs);
 
   const result = await ctx.callAI({
     provider,
@@ -161,7 +185,7 @@ export async function structuredOutput(ctx) {
     provider, model, systemPrompt, temperature, maxTokens,
     outputSchema, retryOnInvalidJson = 2,
   } = ctx.config;
-  const { messages } = ctx.inputs;
+  const messages = toMessages(ctx.inputs);
 
   let retries = 0;
   let lastErr = null;
@@ -261,7 +285,7 @@ export async function toolCalling(ctx) {
     );
   }
   const { provider, model, systemPrompt, temperature, maxTokens, tools, toolChoice } = ctx.config;
-  const { messages } = ctx.inputs;
+  const messages = toMessages(ctx.inputs);
 
   const result = await ctx.callAIWithTools({
     provider,
