@@ -1,8 +1,8 @@
 {
   "name": "core.openwop.workflows.it-support",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "kind": "workflow-chain",
-  "description": "Real-work workflow pack (RFC 0013, ADR 0149) — the IT / Support cluster: Incident Triage & Major-Incident Comms. Classifies an incoming alert/ticket, then a core.flow.if routes routine incidents to a recommended KB article + a ticket (ticketing) and major incidents to cadence stakeholder updates (Slack); finally a post-incident summary. Major-incident sends are human-gated. All tenant values are run parameters (replay-deterministic). Resolves on hosts shipping the kb + http + ai + chat + integration packs. Published under core.openwop.workflows.* (openwop-team key).",
+  "description": "Real-work workflow pack (RFC 0013, ADR 0149, ADR 0208) — the IT / Support cluster: Incident Triage & Major-Incident Comms. An AI classifier assigns a structured severity (routine vs major); a router then sends routine incidents to a recommended KB article + a ticket and major incidents to human-gated cadence stakeholder updates (Slack), and the taken branch flows into a post-incident summary. Only the matching branch fires. Major-incident sends are human-gated. All tenant values are run parameters (replay-deterministic). Resolves on hosts shipping the kb + http + ai + chat + integration packs. Published under core.openwop.workflows.* (openwop-team key).",
   "author": "openwop",
   "license": "Apache-2.0",
   "engines": { "openwop": ">=1.0.0" },
@@ -10,9 +10,9 @@
   "chains": [
     {
       "chainId": "it-support.incident-triage",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "label": "Incident Triage & Major-Incident Comms",
-      "description": "Classify severity, route routine incidents to a KB article + Jira ticket and major incidents to gated stakeholder updates (Slack), then write a post-incident summary.",
+      "description": "Classify severity (structured), route routine incidents to a KB article + ticket and major incidents to gated stakeholder updates (Slack), then write a post-incident summary. Only the matching branch fires (exclusive routing).",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
@@ -26,8 +26,8 @@
       "capabilities": ["side-effectful"],
       "dag": {
         "nodes": [
-          { "id": "classify", "typeId": "core.ai.chatCompletion", "name": "Classify + severity", "position": { "x": 0, "y": 60 }, "config": { "systemPrompt": "Classify this incident and assign a severity (routine vs major). Alert: {{params.alert}}" }, "inputs": {} },
-          { "id": "route", "typeId": "core.flow.if", "name": "Routine vs major?", "position": { "x": 280, "y": 60 }, "config": {}, "inputs": {} },
+          { "id": "classify", "typeId": "core.ai.structuredOutput", "name": "Classify severity", "position": { "x": 0, "y": 60 }, "config": { "systemPrompt": "Classify this IT incident's severity. 'major' = widespread outage, security incident, or SLA-breaching impact; 'routine' = single-user or low-impact. Alert: {{params.alert}}", "outputSchema": { "type": "object", "additionalProperties": false, "required": ["severity"], "properties": { "severity": { "type": "string", "enum": ["major", "routine"], "description": "The assigned severity." } } } }, "inputs": {} },
+          { "id": "route", "typeId": "core.flow.router", "name": "Route by severity", "position": { "x": 280, "y": 60 }, "config": { "mode": "first-match", "defaultLabel": "routine", "routes": [ { "label": "major", "predicate": { "path": "severity", "op": "eq", "value": "major" } } ] }, "inputs": {} },
           { "id": "kbArticle", "typeId": "feature.kb.nodes.rag", "name": "Recommend KB article", "position": { "x": 560, "y": 0 }, "config": { "query": "{{params.alert}}" }, "inputs": {} },
           { "id": "ticket", "typeId": "core.openwop.connectors.ticket-create", "name": "Route on-call (ticketing)", "position": { "x": 840, "y": 0 }, "config": { "baseUrl": "{{params.ticketingBaseUrl}}", "project": "{{params.ticketProject}}", "summary": "On-call incident: {{params.alert}}" }, "inputs": {} },
           { "id": "majorApprove", "typeId": "core.chat.approvalGate", "name": "Approve stakeholder comms", "position": { "x": 560, "y": 160 }, "config": {}, "inputs": {} },
@@ -36,9 +36,9 @@
           { "id": "notify", "typeId": "core.openwop.integration.notification-push", "name": "Distribute summary", "position": { "x": 1400, "y": 80 }, "config": {}, "inputs": {} }
         ],
         "edges": [
-          { "from": "classify", "to": "route" },
-          { "from": "route", "to": "kbArticle" },
-          { "from": "route", "to": "majorApprove" },
+          { "from": "classify.data", "to": "route.value" },
+          { "from": "route", "to": "kbArticle", "condition": { "type": "contains", "left": "branches", "right": "routine" } },
+          { "from": "route", "to": "majorApprove", "condition": { "type": "contains", "left": "branches", "right": "major" } },
           { "from": "kbArticle", "to": "ticket" },
           { "from": "majorApprove", "to": "stakeholders" },
           { "from": "ticket", "to": "summary" },

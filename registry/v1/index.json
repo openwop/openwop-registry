@@ -925,8 +925,8 @@
     {
       "name": "core.openwop.workflows.it-support",
       "kind": "workflow-chain",
-      "latestVersion": "1.1.0",
-      "description": "Real-work workflow pack (RFC 0013, ADR 0149) — the IT / Support cluster: Incident Triage & Major-Incident Comms. Classifies an incoming alert/ticket, then a core.flow.if routes routine incidents to a recommended KB article + a ticket (ticketing) and major incidents to cadence stakeholder updates (Slack); finally a post-incident summary. Major-incident sends are human-gated. All tenant values are run parameters (replay-deterministic). Resolves on hosts shipping the kb + http + ai + chat + integration packs. Published under core.openwop.workflows.* (openwop-team key).",
+      "latestVersion": "1.2.0",
+      "description": "Real-work workflow pack (RFC 0013, ADR 0149, ADR 0208) — the IT / Support cluster: Incident Triage & Major-Incident Comms. An AI classifier assigns a structured severity (routine vs major); a router then sends routine incidents to a recommended KB article + a ticket and major incidents to human-gated cadence stakeholder updates (Slack), and the taken branch flows into a post-incident summary. Only the matching branch fires. Major-incident sends are human-gated. All tenant values are run parameters (replay-deterministic). Resolves on hosts shipping the kb + http + ai + chat + integration packs. Published under core.openwop.workflows.* (openwop-team key).",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
