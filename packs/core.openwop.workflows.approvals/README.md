@@ -1,0 +1,3 @@
+# core.openwop.workflows.approvals
+
+RFC 0013 workflow-chain pack (2 chains) — the ADR 0198 approvals-depth cluster (Request Sign-off + Two-Stage Sign-off). Source of truth: openwop-app repo, examples/workflow-chain-packs/approvals/. Real-work workflow pack (RFC 0013, ADR 0198) — the Approvals cluster, the single most-used enterprise automation shape (Power Automate's #1 template is a sign-off flow with ~3.35M instantiations): Request Sign-off (an open gate any team member can approve — the zero-config marquee) and Two-Stage Sign-off (an ordered approval chain: stage two is only asked after stage one approves — sequential chains are DAG composition, not a new primitive).

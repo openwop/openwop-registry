@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>openwop registry — packs.openwop.dev</title>
-<meta name="description" content="The canonical signed node-pack registry for the openwop workflow orchestration protocol. 92 pack(s), 127 version(s) published.">
+<meta name="description" content="The canonical signed node-pack registry for the openwop workflow orchestration protocol. 93 pack(s), 128 version(s) published.">
 <meta name="robots" content="index, follow">
 
 <meta property="og:type" content="website">
@@ -411,8 +411,8 @@
     </h1>
     <p class="lead">Canonical signed node-pack registry for the <a href="https://openwop.dev/">openwop</a> workflow orchestration protocol.</p>
     <div class="summary">
-      <div><strong>92</strong><span>packs published</span></div>
-      <div><strong>127</strong><span>versions total</span></div>
+      <div><strong>93</strong><span>packs published</span></div>
+      <div><strong>128</strong><span>versions total</span></div>
       <div><strong>Ed25519</strong><span>signing algorithm</span></div>
     </div>
   </header>
@@ -447,7 +447,7 @@
         </label>
         <label class="tab" for="tab-workflow-chains" role="tab">
           <span class="tab-label">Workflow-chain packs</span>
-          <span class="tab-count">15</span>
+          <span class="tab-count">16</span>
         </label>
         <label class="tab" for="tab-prompts" role="tab">
           <span class="tab-label">Prompt packs</span>
@@ -1477,6 +1477,18 @@
       </thead>
       <tbody>
         <tr>
+          <td class="name"><code>core.openwop.workflows.approvals</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">2</td>
+          <td class="desc">Real-work workflow pack (RFC 0013, ADR 0198) — the Approvals cluster, the single most-used enterprise automation shape (Power Automate&#39;s #1 template is a sign-off flow with ~3.35M instantiations): Request Sign-off (an open gate any team member can approve — the zero-config marquee) and Two-Stage Sign-off (an ordered approval chain: stage two is only asked after stage one approves — sequential chains are DAG composition, not a new primitive). Gates support quorum (requiredApprovals), named approvers (approverRefs), and out-of-office delegation (an approver&#39;s active delegation lets their delegate act, counted as ONE identity — ADR 0198). All tenant values are run parameters (replay-deterministic).</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.approvals/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.approvals/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.approvals/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
           <td class="name"><code>core.openwop.workflows.content</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="chains in latest manifest">2</td>
@@ -1769,7 +1781,7 @@ const ok = verify(null, readFileSync('pack.tgz'), pub, readFileSync('pack.sig'))
   </section>
 
   <footer>
-    Generated 2026-07-03T03:21:31.517Z · <a href="https://openwop.dev/">openwop.dev</a> · <a href="https://github.com/openwop/openwop">openwop on GitHub</a>
+    Generated 2026-07-03T12:45:10.237Z · <a href="https://openwop.dev/">openwop.dev</a> · <a href="https://github.com/openwop/openwop">openwop on GitHub</a>
   </footer>
 </main>
 </body>

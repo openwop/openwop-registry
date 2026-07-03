@@ -1,7 +1,7 @@
 {
   "registryVersion": "1.0.0",
   "generatedAt": "2026-05-10T00:00:00Z",
-  "packCount": 92,
+  "packCount": 93,
   "packs": [
     {
       "name": "community.openwop-team.demo",
@@ -799,6 +799,22 @@
         "core.trigger.cron-advanced"
       ],
       "nodeCount": 16,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.approvals",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.0",
+      "description": "Real-work workflow pack (RFC 0013, ADR 0198) — the Approvals cluster, the single most-used enterprise automation shape (Power Automate's #1 template is a sign-off flow with ~3.35M instantiations): Request Sign-off (an open gate any team member can approve — the zero-config marquee) and Two-Stage Sign-off (an ordered approval chain: stage two is only asked after stage one approves — sequential chains are DAG composition, not a new primitive). Gates support quorum (requiredApprovals), named approvers (approverRefs), and out-of-office delegation (an approver's active delegation lets their delegate act, counted as ONE identity — ADR 0198). All tenant values are run parameters (replay-deterministic).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "approvals.request-sign-off",
+        "approvals.two-stage-sign-off"
+      ],
+      "nodeCount": 0,
       "agentCount": 0,
       "deprecated": false,
       "yanked": false
