@@ -1,0 +1,110 @@
+{
+  "name": "core.openwop.workflows.data-ops",
+  "version": "1.0.0",
+  "kind": "workflow-chain",
+  "description": "Real-work workflow pack (RFC 0013, ADR 0200) — the Data Ops cluster, the one shape-family the Zapier/n8n and Microsoft canons don't cover (surfaced by the Make/Workato research): collapsing many records into one output (the aggregator canon) and one-way movement of records from one system into another. Roll Up (sum + format a list of records into a narrated summary), To Table (records → a clean table + AI anomaly scan), and Records → System (READ records from a source connection → AI reshape → human sign-off → UPSERT into a destination). Uses only shipped, executable nodes (core.flow.aggregate-{numeric,text,table} + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.http.openapi-call + core.openwop.integration.notification-push). The write is ONE-WAY movement keyed on an external id (re-runs update, never duplicate) behind a human approval — it is NOT a bidirectional sync. All tenant values are run parameters (replay-deterministic).",
+  "author": "openwop",
+  "license": "Apache-2.0",
+  "engines": { "openwop": ">=1.0.0" },
+  "keywords": ["Data Ops"],
+  "chains": [
+    {
+      "chainId": "data-ops.rollup",
+      "version": "1.0.0",
+      "label": "Roll Up a List of Records",
+      "description": "Turn a list of records (orders, line items, expenses…) into one narrated summary: sum a numeric field, format each record into a readable line, and write a short digest. The 'collapse many rows into one output' shape — paste a JSON array or pipe one from another workflow.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["items"],
+        "properties": {
+          "items": { "type": "array", "description": "The records to roll up (a JSON array of objects)." },
+          "amountField": { "type": "string", "default": "amount", "description": "The numeric field to sum across records." },
+          "lineTemplate": { "type": "string", "default": "- {{name}}: {{amount}}", "description": "How to format each record into a line ({{field}} references)." }
+        }
+      },
+      "capabilities": [],
+      "dag": {
+        "nodes": [
+          { "id": "total", "typeId": "core.flow.aggregate-numeric", "name": "Sum the amount", "position": { "x": 0, "y": 0 }, "config": { "op": "sum", "path": "{{params.amountField}}" }, "inputs": { "items": "{{params.items}}" } },
+          { "id": "list", "typeId": "core.flow.aggregate-text", "name": "Format each record", "position": { "x": 0, "y": 160 }, "config": { "template": "{{params.lineTemplate}}", "separator": "\n" }, "inputs": { "items": "{{params.items}}" } },
+          { "id": "digest", "typeId": "core.ai.chatCompletion", "name": "Write the digest", "position": { "x": 300, "y": 80 }, "config": { "systemPrompt": "You are a reporting assistant. You are given a summed total and a formatted list of records. Write a short digest (under 120 words): lead with the total, then the notable items, then one observation. Do not invent numbers beyond what you are given." }, "inputs": {} },
+          { "id": "notify", "typeId": "core.openwop.integration.notification-push", "name": "Deliver digest", "position": { "x": 560, "y": 80 }, "config": {}, "inputs": {} }
+        ],
+        "edges": [
+          { "from": "total", "to": "digest" },
+          { "from": "list", "to": "digest" },
+          { "from": "digest", "to": "notify" }
+        ]
+      },
+      "outputs": {
+        "digest": { "type": "string", "description": "The narrated roll-up (total + formatted records)." }
+      }
+    },
+    {
+      "chainId": "data-ops.to-table",
+      "version": "1.0.0",
+      "label": "Records → Table + Anomaly Scan",
+      "description": "Reshape a list of records into a clean table of the columns you name, then have AI scan it for outliers, gaps, and things worth a second look — delivered as a notification. Paste a JSON array of records.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["records"],
+        "properties": {
+          "records": { "type": "array", "description": "The records to tabulate (a JSON array of objects)." },
+          "columns": { "type": "array", "default": [{ "path": "name", "label": "Name" }, { "path": "value", "label": "Value" }], "description": "The columns to extract: [{ path, label }]." }
+        }
+      },
+      "capabilities": [],
+      "dag": {
+        "nodes": [
+          { "id": "table", "typeId": "core.flow.aggregate-table", "name": "Build the table", "position": { "x": 0, "y": 0 }, "config": { "columns": "{{params.columns}}" }, "inputs": { "items": "{{params.records}}" } },
+          { "id": "scan", "typeId": "core.ai.chatCompletion", "name": "Scan for anomalies", "position": { "x": 300, "y": 0 }, "config": { "systemPrompt": "You are a data analyst. Given a table of rows and columns, call out outliers, missing/empty values, and rows worth a second look. Be specific (cite the row). If the table looks clean, say so." }, "inputs": {} },
+          { "id": "notify", "typeId": "core.openwop.integration.notification-push", "name": "Deliver findings", "position": { "x": 560, "y": 0 }, "config": {}, "inputs": {} }
+        ],
+        "edges": [
+          { "from": "table", "to": "scan" },
+          { "from": "scan", "to": "notify" }
+        ]
+      },
+      "outputs": {
+        "findings": { "type": "string", "description": "The table plus the anomaly scan." }
+      }
+    },
+    {
+      "chainId": "data-ops.records-to-system",
+      "version": "1.0.0",
+      "label": "Records → System (one-way)",
+      "description": "One-way movement: read records from a source system, reshape them with AI, review, and upsert them into a destination — keyed on an external id so re-runs update the same records instead of duplicating them. It is one-way, not a sync: it does not read the destination back, propagate deletes, or reconcile conflicts. The write step needs a connection with write scope (if you added that scope after connecting, re-authorize the connection) and an upsert-by-external-key operation (e.g. Salesforce upsert, HubSpot upsert) — pointed at a plain create it will duplicate. Every write waits on your approval.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["sourceConnectionRef", "readOperationId", "destConnectionRef", "upsertOperationId", "keyField"],
+        "properties": {
+          "sourceConnectionRef": { "type": "string", "description": "The source connection to read from (e.g. core.openwop.connections.salesforce)." },
+          "readOperationId": { "type": "string", "description": "The read/list operation on the source (e.g. listContacts)." },
+          "destConnectionRef": { "type": "string", "description": "The destination connection to write to (e.g. core.openwop.connections.hubspot)." },
+          "upsertOperationId": { "type": "string", "description": "An upsert-by-external-key operation on the destination (not a plain create, which would duplicate on re-run)." },
+          "keyField": { "type": "string", "description": "The external-id field the upsert keys on (so re-runs update, not duplicate)." }
+        }
+      },
+      "capabilities": ["side-effectful"],
+      "dag": {
+        "nodes": [
+          { "id": "read", "typeId": "core.openwop.http.openapi-call", "name": "Read source records", "position": { "x": 0, "y": 0 }, "config": { "connectionRef": "{{params.sourceConnectionRef}}", "operationId": "{{params.readOperationId}}" }, "inputs": {} },
+          { "id": "reshape", "typeId": "core.ai.chatCompletion", "name": "Reshape for the destination", "position": { "x": 280, "y": 0 }, "config": { "systemPrompt": "You map source records to the destination's shape. Return a JSON array; for every field you cannot determine from the source, output the string \"unknown\" — never guess or invent a value that would be written to a system of record. Preserve the external key ({{params.keyField}}) on every record." }, "inputs": {} },
+          { "id": "approve", "typeId": "core.chat.approvalGate", "name": "Review before write", "position": { "x": 560, "y": 0 }, "config": {}, "inputs": {} },
+          { "id": "upsert", "typeId": "core.openwop.http.openapi-call", "name": "Upsert into destination", "position": { "x": 840, "y": 0 }, "config": { "connectionRef": "{{params.destConnectionRef}}", "operationId": "{{params.upsertOperationId}}" }, "inputs": {} }
+        ],
+        "edges": [
+          { "from": "read", "to": "reshape" },
+          { "from": "reshape", "to": "approve" },
+          { "from": "approve", "to": "upsert" }
+        ]
+      },
+      "outputs": {
+        "result": { "type": "string", "description": "The approved, upserted records (one-way, keyed on the external id)." }
+      }
+    }
+  ]
+}

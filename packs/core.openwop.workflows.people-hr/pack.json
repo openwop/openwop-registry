@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.people-hr",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "kind": "workflow-chain",
   "description": "Real-work workflow pack (RFC 0013, ADR 0149) — the People / HR cluster: Employee Onboarding Orchestrator, Offboarding & Access Revocation, and Leave/PTO Request Routing. Reasons with core.ai.chatCompletion; binds Microsoft 365 via core.openwop.http.openapi-call connectionRef, recommends HRIS actions provider-agnostically via core.openwop.connectors.hris-action (Workday today), and provider-agnostic ticketing (Jira/ServiceNow) via the core.openwop.connectors.ticket-* capability nodes (ADR 0186); every account/HRIS mutation and every team-facing send is gated by core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + integration packs; connections are configured under Access & data → Connections. Published under core.openwop.workflows.* (openwop-team key).",
   "author": "openwop",
@@ -28,6 +28,7 @@
       "dag": {
         "nodes": [
           { "id": "plan", "typeId": "core.ai.chatCompletion", "name": "Onboarding plan", "position": { "x": 0, "y": 120 }, "config": { "systemPrompt": "You are an HR operations coordinator. Produce a day-one onboarding checklist for {{params.newHireName}} ({{params.role}}): IT provisioning, payroll/HRIS setup, role-based training, and a manager checklist." }, "inputs": {} },
+          { "id": "approve", "typeId": "core.chat.approvalGate", "name": "Approve provisioning", "position": { "x": 160, "y": 120 }, "config": {}, "inputs": {} },
           { "id": "itProvision", "typeId": "core.openwop.http.openapi-call", "name": "Provision IT (M365)", "position": { "x": 320, "y": 0 }, "config": { "connectionRef": "core.openwop.connections.microsoft365", "operationId": "createUser" }, "inputs": {} },
           { "id": "hris", "typeId": "core.openwop.connectors.hris-action", "name": "Set up payroll (HRIS)", "position": { "x": 320, "y": 120 }, "config": { "action": "create-worker", "workerName": "{{params.newHireName}}", "role": "{{params.role}}" }, "inputs": {} },
           { "id": "tickets", "typeId": "core.openwop.connectors.ticket-create", "name": "Create onboarding tasks (ticketing)", "position": { "x": 320, "y": 240 }, "config": { "baseUrl": "{{params.ticketingBaseUrl}}", "project": "{{params.ticketProject}}", "summary": "Onboarding tasks: {{params.newHireName}}" }, "inputs": {} },
@@ -35,9 +36,10 @@
           { "id": "notify", "typeId": "core.openwop.integration.notification-push", "name": "Notify manager + IT", "position": { "x": 920, "y": 120 }, "config": {}, "inputs": {} }
         ],
         "edges": [
-          { "from": "plan", "to": "itProvision" },
-          { "from": "plan", "to": "hris" },
-          { "from": "plan", "to": "tickets" },
+          { "from": "plan", "to": "approve" },
+          { "from": "approve", "to": "itProvision" },
+          { "from": "approve", "to": "hris" },
+          { "from": "approve", "to": "tickets" },
           { "from": "itProvision", "to": "track" },
           { "from": "hris", "to": "track" },
           { "from": "tickets", "to": "track" },
