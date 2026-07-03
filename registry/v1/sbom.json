@@ -1134,6 +1134,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.approvals@1.0.0",
+      "type": "library",
+      "name": "core.openwop.workflows.approvals",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v1/packs/core.openwop.workflows.approvals/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "d8f86b5edd3348ce450ed491cd4a7ae809461831bc716ce09c188f7680731bf3"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.workflows.content@1.0.0",
       "type": "library",
       "name": "core.openwop.workflows.content",
