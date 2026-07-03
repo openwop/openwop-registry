@@ -1,0 +1,504 @@
+{
+  "name": "core.openwop.workflows.starters",
+  "version": "1.0.0",
+  "kind": "workflow-chain",
+  "description": "Starter workflow pack (RFC 0013, ADR 0190) — the simple-pipe on-ramp tier: short single-trigger→action recipes (webhook→notify, form→table, schedule→digest, fetch→store) that run in under a minute with zero connections, before you graduate to the AI-agent packs. Trigger-shaped starters begin with a core.trigger.* pass-through entry node: bind them to a live source with a trigger subscription (POST /v1/trigger-subscriptions — webhook, email, or form; RFC 0099) or a Schedule; on a manual run the trigger payload is empty, so bind a source to see them shine. External sends stay behind a human approval gate; in-app notifications are direct. All tenant values are run parameters (replay-deterministic).",
+  "author": "openwop",
+  "license": "Apache-2.0",
+  "engines": {
+    "openwop": ">=1.0.0"
+  },
+  "keywords": [
+    "Starters"
+  ],
+  "chains": [
+    {
+      "chainId": "starters.webhook-notify",
+      "version": "1.0.0",
+      "label": "Webhook → Notification",
+      "description": "The hello-world pipe: any webhook event becomes an in-app notification. Run it manually to try the shape; bind a live source via the trigger-subscriptions API and every delivery notifies you with the payload.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [],
+        "properties": {}
+      },
+      "capabilities": [],
+      "dag": {
+        "nodes": [
+          {
+            "id": "hook",
+            "typeId": "core.trigger.webhook",
+            "name": "Webhook event",
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "config": {},
+            "inputs": {}
+          },
+          {
+            "id": "notify",
+            "typeId": "core.openwop.integration.notification-push",
+            "name": "Notify me",
+            "position": {
+              "x": 280,
+              "y": 0
+            },
+            "config": {},
+            "inputs": {}
+          }
+        ],
+        "edges": [
+          {
+            "from": "hook",
+            "to": "notify"
+          }
+        ]
+      },
+      "outputs": {
+        "event": {
+          "type": "string",
+          "description": "The delivered webhook payload."
+        }
+      }
+    },
+    {
+      "chainId": "starters.form-to-table",
+      "version": "1.0.0",
+      "label": "Form Submission → Table Row",
+      "description": "The classic form→spreadsheet shape: every form submission is appended as a row in a durable table, then you get a notification. Run it manually to try the shape; bind a live form source via the trigger-subscriptions API.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [],
+        "properties": {
+          "table": {
+            "type": "string",
+            "default": "form_submissions",
+            "description": "Durable table name the rows are appended to."
+          }
+        }
+      },
+      "capabilities": [
+        "side-effectful"
+      ],
+      "dag": {
+        "nodes": [
+          {
+            "id": "form",
+            "typeId": "core.trigger.form",
+            "name": "Form submission",
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "config": {},
+            "inputs": {}
+          },
+          {
+            "id": "insert",
+            "typeId": "core.storage.table-insert",
+            "name": "Append row",
+            "position": {
+              "x": 280,
+              "y": 0
+            },
+            "config": {
+              "table": "{{params.table}}"
+            },
+            "inputs": {}
+          },
+          {
+            "id": "notify",
+            "typeId": "core.openwop.integration.notification-push",
+            "name": "Notify me",
+            "position": {
+              "x": 560,
+              "y": 0
+            },
+            "config": {},
+            "inputs": {}
+          }
+        ],
+        "edges": [
+          {
+            "from": "form",
+            "to": "insert"
+          },
+          {
+            "from": "insert",
+            "to": "notify"
+          }
+        ]
+      },
+      "outputs": {
+        "row": {
+          "type": "string",
+          "description": "The appended submission row."
+        }
+      }
+    },
+    {
+      "chainId": "starters.scheduled-digest",
+      "version": "1.0.0",
+      "label": "Scheduled One-Line Digest",
+      "description": "A tiny recurring brief: on each scheduled run, write a one-paragraph digest on your topic and notify you. Pair it with a Schedule to make it recurring — the simplest taste of an AI step inside a pipe.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [],
+        "properties": {
+          "topic": {
+            "type": "string",
+            "default": "a short daily focus note for the team",
+            "description": "The digest topic."
+          }
+        }
+      },
+      "capabilities": [],
+      "dag": {
+        "nodes": [
+          {
+            "id": "tick",
+            "typeId": "core.trigger.schedule",
+            "name": "Scheduled tick",
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "config": {},
+            "inputs": {}
+          },
+          {
+            "id": "digest",
+            "typeId": "core.ai.chatCompletion",
+            "name": "Write one-paragraph digest",
+            "position": {
+              "x": 280,
+              "y": 0
+            },
+            "config": {
+              "systemPrompt": "Write a single crisp paragraph (max 80 words) on: {{params.topic}}. Plain text, no preamble."
+            },
+            "inputs": {}
+          },
+          {
+            "id": "notify",
+            "typeId": "core.openwop.integration.notification-push",
+            "name": "Notify me",
+            "position": {
+              "x": 560,
+              "y": 0
+            },
+            "config": {},
+            "inputs": {}
+          }
+        ],
+        "edges": [
+          {
+            "from": "tick",
+            "to": "digest"
+          },
+          {
+            "from": "digest",
+            "to": "notify"
+          }
+        ]
+      },
+      "outputs": {
+        "digest": {
+          "type": "string",
+          "description": "The one-paragraph digest."
+        }
+      }
+    },
+    {
+      "chainId": "starters.fetch-to-storage",
+      "version": "1.0.0",
+      "label": "Fetch URL → Blob Storage",
+      "description": "Save a file from any URL into blob storage and get notified with the stored reference — the classic save-the-file pipe.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "url"
+        ],
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "The URL of the file to fetch and store."
+          },
+          "bucket": {
+            "type": "string",
+            "default": "inbox-files",
+            "description": "Blob bucket to store into."
+          }
+        }
+      },
+      "capabilities": [
+        "side-effectful"
+      ],
+      "dag": {
+        "nodes": [
+          {
+            "id": "fetch",
+            "typeId": "core.openwop.http.fetch",
+            "name": "Fetch file",
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "config": {
+              "url": "{{params.url}}"
+            },
+            "inputs": {}
+          },
+          {
+            "id": "store",
+            "typeId": "core.storage.blob-put",
+            "name": "Store blob",
+            "position": {
+              "x": 280,
+              "y": 0
+            },
+            "config": {
+              "bucket": "{{params.bucket}}"
+            },
+            "inputs": {}
+          },
+          {
+            "id": "notify",
+            "typeId": "core.openwop.integration.notification-push",
+            "name": "Notify me",
+            "position": {
+              "x": 560,
+              "y": 0
+            },
+            "config": {},
+            "inputs": {}
+          }
+        ],
+        "edges": [
+          {
+            "from": "fetch",
+            "to": "store"
+          },
+          {
+            "from": "store",
+            "to": "notify"
+          }
+        ]
+      },
+      "outputs": {
+        "blob": {
+          "type": "string",
+          "description": "The stored blob reference."
+        }
+      }
+    },
+    {
+      "chainId": "starters.verified-webhook-router",
+      "version": "1.0.0",
+      "label": "Verified Webhook Router",
+      "description": "A webhook pipe that checks the sender's signature first (Stripe / GitHub / Slack / raw HMAC — the secret stays host-side, never a parameter): verified events notify you; failed signatures are dropped. The safe way to wire third-party webhooks.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [],
+        "properties": {
+          "family": {
+            "type": "string",
+            "default": "github",
+            "description": "Signature family to verify: stripe, github, slack, or raw-hmac."
+          }
+        }
+      },
+      "capabilities": [],
+      "dag": {
+        "nodes": [
+          {
+            "id": "hook",
+            "typeId": "core.trigger.webhook",
+            "name": "Webhook event",
+            "position": {
+              "x": 0,
+              "y": 80
+            },
+            "config": {},
+            "inputs": {}
+          },
+          {
+            "id": "verify",
+            "typeId": "core.openwop.http.webhook-verify",
+            "name": "Verify signature",
+            "position": {
+              "x": 280,
+              "y": 80
+            },
+            "config": {
+              "family": "{{params.family}}"
+            },
+            "inputs": {}
+          },
+          {
+            "id": "route",
+            "typeId": "core.flow.if",
+            "name": "Signature valid?",
+            "position": {
+              "x": 560,
+              "y": 80
+            },
+            "config": {},
+            "inputs": {}
+          },
+          {
+            "id": "notify",
+            "typeId": "core.openwop.integration.notification-push",
+            "name": "Notify (verified)",
+            "position": {
+              "x": 840,
+              "y": 0
+            },
+            "config": {},
+            "inputs": {}
+          },
+          {
+            "id": "drop",
+            "typeId": "core.flow.noop",
+            "name": "Drop (failed signature)",
+            "position": {
+              "x": 840,
+              "y": 160
+            },
+            "config": {},
+            "inputs": {}
+          }
+        ],
+        "edges": [
+          {
+            "from": "hook",
+            "to": "verify"
+          },
+          {
+            "from": "verify",
+            "to": "route"
+          },
+          {
+            "from": "route",
+            "to": "notify"
+          },
+          {
+            "from": "route",
+            "to": "drop"
+          }
+        ]
+      },
+      "outputs": {
+        "event": {
+          "type": "string",
+          "description": "The verified webhook payload (failed signatures are dropped)."
+        }
+      }
+    },
+    {
+      "chainId": "starters.webhook-to-slack",
+      "version": "1.0.0",
+      "label": "Webhook → Summarize → Slack",
+      "description": "Turn any webhook event into a one-line summary and post it to Slack — behind a human approval, because it leaves the building. Approve a few, then decide if you want it always-on.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [],
+        "properties": {
+          "channel": {
+            "type": "string",
+            "default": "#activity",
+            "description": "Slack channel to post to."
+          }
+        }
+      },
+      "capabilities": [
+        "side-effectful"
+      ],
+      "dag": {
+        "nodes": [
+          {
+            "id": "hook",
+            "typeId": "core.trigger.webhook",
+            "name": "Webhook event",
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "config": {},
+            "inputs": {}
+          },
+          {
+            "id": "summarize",
+            "typeId": "core.ai.chatCompletion",
+            "name": "One-line summary",
+            "position": {
+              "x": 280,
+              "y": 0
+            },
+            "config": {
+              "systemPrompt": "Summarize this event payload in one plain-text line a teammate can scan in Slack. No markdown, no preamble."
+            },
+            "inputs": {}
+          },
+          {
+            "id": "approve",
+            "typeId": "core.chat.approvalGate",
+            "name": "Approve before post",
+            "position": {
+              "x": 560,
+              "y": 0
+            },
+            "config": {},
+            "inputs": {}
+          },
+          {
+            "id": "post",
+            "typeId": "core.openwop.integration.slack-message",
+            "name": "Post to Slack",
+            "position": {
+              "x": 840,
+              "y": 0
+            },
+            "config": {
+              "channel": "{{params.channel}}"
+            },
+            "inputs": {}
+          }
+        ],
+        "edges": [
+          {
+            "from": "hook",
+            "to": "summarize"
+          },
+          {
+            "from": "summarize",
+            "to": "approve"
+          },
+          {
+            "from": "approve",
+            "to": "post"
+          }
+        ]
+      },
+      "outputs": {
+        "post": {
+          "type": "string",
+          "description": "The approved, posted summary line."
+        }
+      }
+    }
+  ],
+  "signing": {
+    "method": "manual",
+    "publicKeyRef": "openwop-team-1",
+    "signatureRef": "keys/pack.json.sig"
+  },
+  "integrity": "sha256-SLHZ8YqkPOXi5viWuW5pS154mhW5LKXRBxBmJqAsAYQ="
+}

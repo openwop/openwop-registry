@@ -1,0 +1,33 @@
+{
+  "name": "core.openwop.workflows.devops",
+  "kind": "workflow-chain",
+  "description": "Real-work workflow pack (RFC 0013, ADR 0190 Phase 4) — the DevOps cluster: senior-style code review of a diff, changelog/release-notes drafting from a commit log, CI-failure diagnosis from a signature-verified webhook, and a stale-issue gardener over the public GitHub API. All four are ADVISORY — they analyze and notify in-app, never write to your repo or post comments (an authenticated GitHub write path would bind a connection behind an approval gate; deferred until the MCP-reach connection binding has a chain precedent). These chains do not run the Code Reviewer / Git Author AGENTS — those remain chat-drivable via the agents surface; the chains use short chain-local prompts over core.ai.chatCompletion. All tenant values are run parameters (replay-deterministic).",
+  "author": "openwop",
+  "license": "Apache-2.0",
+  "tags": [],
+  "typeIds": [
+    "devops.pr-review",
+    "devops.release-notes",
+    "devops.ci-failure-explainer",
+    "devops.stale-issues"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 4,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.workflows.devops/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.workflows.devops/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.workflows.devops/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-ioq5TmJPfbRqW6tMaiTqI6IiWl5VXjy4OlVrLzoa5q8=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

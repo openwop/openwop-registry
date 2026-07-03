@@ -1,24 +1,27 @@
 {
   "name": "core.openwop.workflows.people-hr",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "kind": "workflow-chain",
-  "description": "Real-work workflow pack (RFC 0013, ADR 0149) — the People / HR cluster: Employee Onboarding Orchestrator, Offboarding & Access Revocation, and Leave/PTO Request Routing. Reasons with core.ai.chatCompletion; binds Workday (HRIS), Microsoft 365, and Jira via core.openwop.http.openapi-call connectionRef; every account/HRIS mutation and every team-facing send is gated by core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + integration packs; connections are configured under Access & data → Connections. Published under core.openwop.workflows.* (openwop-team key).",
+  "description": "Real-work workflow pack (RFC 0013, ADR 0149) — the People / HR cluster: Employee Onboarding Orchestrator, Offboarding & Access Revocation, and Leave/PTO Request Routing. Reasons with core.ai.chatCompletion; binds Microsoft 365 via core.openwop.http.openapi-call connectionRef, recommends HRIS actions provider-agnostically via core.openwop.connectors.hris-action (Workday today), and provider-agnostic ticketing (Jira/ServiceNow) via the core.openwop.connectors.ticket-* capability nodes (ADR 0186); every account/HRIS mutation and every team-facing send is gated by core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + integration packs; connections are configured under Access & data → Connections. Published under core.openwop.workflows.* (openwop-team key).",
   "author": "openwop",
   "license": "Apache-2.0",
   "engines": { "openwop": ">=1.0.0" },
+  "keywords": ["People"],
   "chains": [
     {
       "chainId": "people-hr.onboarding",
       "version": "1.0.0",
       "label": "Employee Onboarding Orchestrator",
-      "description": "On offer-accepted, plan the onboarding checklist and provision the new hire across IT (Microsoft 365), HRIS/payroll (Workday), and task tracking (Jira) in parallel, then summarize completion. Exceptions are surfaced for review.",
+      "description": "On offer-accepted, plan the onboarding checklist and provision the new hire across IT (Microsoft 365), HRIS/payroll (Workday), and provider-agnostic task tracking (Jira/ServiceNow) in parallel, then summarize completion. Exceptions are surfaced for review.",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
         "required": ["newHireName"],
         "properties": {
           "newHireName": { "type": "string", "description": "The new hire's name." },
-          "role": { "type": "string", "default": "the assigned role", "description": "Role/title to tailor provisioning + training." }
+          "role": { "type": "string", "default": "the assigned role", "description": "Role/title to tailor provisioning + training." },
+          "ticketingBaseUrl": { "type": "string", "default": "", "description": "The tenant's ticketing instance REST base (Jira/ServiceNow). Empty ⇒ no ticket is created." },
+          "ticketProject": { "type": "string", "default": "HR", "description": "Project/queue key for the onboarding tasks." }
         }
       },
       "capabilities": ["side-effectful"],
@@ -26,8 +29,8 @@
         "nodes": [
           { "id": "plan", "typeId": "core.ai.chatCompletion", "name": "Onboarding plan", "position": { "x": 0, "y": 120 }, "config": { "systemPrompt": "You are an HR operations coordinator. Produce a day-one onboarding checklist for {{params.newHireName}} ({{params.role}}): IT provisioning, payroll/HRIS setup, role-based training, and a manager checklist." }, "inputs": {} },
           { "id": "itProvision", "typeId": "core.openwop.http.openapi-call", "name": "Provision IT (M365)", "position": { "x": 320, "y": 0 }, "config": { "connectionRef": "core.openwop.connections.microsoft365", "operationId": "createUser" }, "inputs": {} },
-          { "id": "hris", "typeId": "core.openwop.http.openapi-call", "name": "Set up payroll (Workday)", "position": { "x": 320, "y": 120 }, "config": { "connectionRef": "core.openwop.connections.workday", "operationId": "createWorker" }, "inputs": {} },
-          { "id": "tickets", "typeId": "core.openwop.http.openapi-call", "name": "Create onboarding tasks (Jira)", "position": { "x": 320, "y": 240 }, "config": { "connectionRef": "core.openwop.connections.jira", "operationId": "createIssues" }, "inputs": {} },
+          { "id": "hris", "typeId": "core.openwop.connectors.hris-action", "name": "Set up payroll (HRIS)", "position": { "x": 320, "y": 120 }, "config": { "action": "create-worker", "workerName": "{{params.newHireName}}", "role": "{{params.role}}" }, "inputs": {} },
+          { "id": "tickets", "typeId": "core.openwop.connectors.ticket-create", "name": "Create onboarding tasks (ticketing)", "position": { "x": 320, "y": 240 }, "config": { "baseUrl": "{{params.ticketingBaseUrl}}", "project": "{{params.ticketProject}}", "summary": "Onboarding tasks: {{params.newHireName}}" }, "inputs": {} },
           { "id": "track", "typeId": "core.ai.chatCompletion", "name": "Completion summary", "position": { "x": 640, "y": 120 }, "config": { "systemPrompt": "Summarize onboarding completion across IT, payroll, and tasks; flag any exceptions that need a human." }, "inputs": {} },
           { "id": "notify", "typeId": "core.openwop.integration.notification-push", "name": "Notify manager + IT", "position": { "x": 920, "y": 120 }, "config": {}, "inputs": {} }
         ],
@@ -47,21 +50,24 @@
       "chainId": "people-hr.offboarding",
       "version": "1.0.0",
       "label": "Offboarding & Access Revocation",
-      "description": "On termination, deprovision accounts (Microsoft 365), close access tickets (Jira), run final-pay in the HRIS (Workday), capture a knowledge handoff, then require a compliance attestation before completing.",
+      "description": "On termination, deprovision accounts (Microsoft 365), close access tickets (provider-agnostic Jira/ServiceNow), run final-pay in the HRIS (Workday), capture a knowledge handoff, then require a compliance attestation before completing.",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
         "required": ["employeeName"],
         "properties": {
-          "employeeName": { "type": "string", "description": "The departing employee." }
+          "employeeName": { "type": "string", "description": "The departing employee." },
+          "ticketingBaseUrl": { "type": "string", "default": "", "description": "The tenant's ticketing instance REST base (Jira/ServiceNow). Empty ⇒ no ticket is transitioned." },
+          "accessTicketKey": { "type": "string", "default": "", "description": "The access-request ticket key / sys_id to close." },
+          "closeTransitionId": { "type": "string", "default": "", "description": "The provider transition id (Jira) or target state (ServiceNow) that marks the ticket closed." }
         }
       },
       "capabilities": ["side-effectful"],
       "dag": {
         "nodes": [
           { "id": "deprovision", "typeId": "core.openwop.http.openapi-call", "name": "Deprovision accounts (M365)", "position": { "x": 0, "y": 0 }, "config": { "connectionRef": "core.openwop.connections.microsoft365", "operationId": "disableUser" }, "inputs": {} },
-          { "id": "accessTickets", "typeId": "core.openwop.http.openapi-call", "name": "Close access (Jira)", "position": { "x": 0, "y": 120 }, "config": { "connectionRef": "core.openwop.connections.jira", "operationId": "transitionIssues" }, "inputs": {} },
-          { "id": "finalPay", "typeId": "core.openwop.http.openapi-call", "name": "Final pay (Workday)", "position": { "x": 0, "y": 240 }, "config": { "connectionRef": "core.openwop.connections.workday", "operationId": "terminateWorker" }, "inputs": {} },
+          { "id": "accessTickets", "typeId": "core.openwop.connectors.ticket-transition", "name": "Close access (ticketing)", "position": { "x": 0, "y": 120 }, "config": { "baseUrl": "{{params.ticketingBaseUrl}}", "issueKey": "{{params.accessTicketKey}}", "sysId": "{{params.accessTicketKey}}", "transitionId": "{{params.closeTransitionId}}", "state": "{{params.closeTransitionId}}" }, "inputs": {} },
+          { "id": "finalPay", "typeId": "core.openwop.connectors.hris-action", "name": "Final pay (HRIS)", "position": { "x": 0, "y": 240 }, "config": { "action": "terminate-worker", "workerName": "{{params.employeeName}}" }, "inputs": {} },
           { "id": "handoff", "typeId": "core.ai.chatCompletion", "name": "Knowledge handoff", "position": { "x": 320, "y": 120 }, "config": { "systemPrompt": "Draft a knowledge-handoff summary for {{params.employeeName}}'s departure: owned systems, in-flight work, and who should inherit each." }, "inputs": {} },
           { "id": "attest", "typeId": "core.chat.approvalGate", "name": "Compliance attestation", "position": { "x": 640, "y": 120 }, "config": {}, "inputs": {} },
           { "id": "notify", "typeId": "core.openwop.integration.notification-push", "name": "Confirm offboarding", "position": { "x": 920, "y": 120 }, "config": {}, "inputs": {} }
@@ -87,7 +93,10 @@
         "required": ["employeeName", "dates"],
         "properties": {
           "employeeName": { "type": "string", "description": "Requesting employee." },
-          "dates": { "type": "string", "description": "Requested PTO dates." }
+          "dates": { "type": "string", "description": "Requested PTO date (ISO yyyy-mm-dd for a live submit)." },
+          "hrisBaseUrl": { "type": "string", "default": "", "description": "The Workday Absence Management REST base (…/ccx/api/absenceManagement/v1/{tenant}). Empty ⇒ recommend only." },
+          "workerId": { "type": "string", "default": "", "description": "The Workday worker id for a live time-off submit." },
+          "timeOffType": { "type": "string", "default": "", "description": "The Workday time-off type id." }
         }
       },
       "capabilities": ["side-effectful"],
@@ -96,7 +105,7 @@
           { "id": "policy", "typeId": "core.ai.chatCompletion", "name": "Policy + coverage check", "position": { "x": 0, "y": 0 }, "config": { "systemPrompt": "Assess the PTO request for {{params.employeeName}} on {{params.dates}}: policy eligibility and coverage risk." }, "inputs": {} },
           { "id": "calendar", "typeId": "core.openwop.http.openapi-call", "name": "Team calendar (M365)", "position": { "x": 0, "y": 140 }, "config": { "connectionRef": "core.openwop.connections.microsoft365", "operationId": "listCalendarEvents" }, "inputs": {} },
           { "id": "approve", "typeId": "core.chat.approvalGate", "name": "Manager approval", "position": { "x": 320, "y": 70 }, "config": {}, "inputs": {} },
-          { "id": "hris", "typeId": "core.openwop.http.openapi-call", "name": "Update HRIS (Workday)", "position": { "x": 640, "y": 0 }, "config": { "connectionRef": "core.openwop.connections.workday", "operationId": "submitTimeOff" }, "inputs": {} },
+          { "id": "hris", "typeId": "core.openwop.connectors.hris-action", "name": "Update HRIS", "position": { "x": 640, "y": 0 }, "config": { "action": "submit-time-off", "workerName": "{{params.employeeName}}", "baseUrl": "{{params.hrisBaseUrl}}", "workerId": "{{params.workerId}}", "date": "{{params.dates}}", "timeOffType": "{{params.timeOffType}}" }, "inputs": {} },
           { "id": "notifyTeam", "typeId": "core.openwop.integration.slack-message", "name": "Notify team", "position": { "x": 640, "y": 140 }, "config": {}, "inputs": {} }
         ],
         "edges": [

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>openwop registry — packs.openwop.dev</title>
-<meta name="description" content="The canonical signed node-pack registry for the openwop workflow orchestration protocol. 85 pack(s), 113 version(s) published.">
+<meta name="description" content="The canonical signed node-pack registry for the openwop workflow orchestration protocol. 92 pack(s), 127 version(s) published.">
 <meta name="robots" content="index, follow">
 
 <meta property="og:type" content="website">
@@ -411,8 +411,8 @@
     </h1>
     <p class="lead">Canonical signed node-pack registry for the <a href="https://openwop.dev/">openwop</a> workflow orchestration protocol.</p>
     <div class="summary">
-      <div><strong>85</strong><span>packs published</span></div>
-      <div><strong>113</strong><span>versions total</span></div>
+      <div><strong>92</strong><span>packs published</span></div>
+      <div><strong>127</strong><span>versions total</span></div>
       <div><strong>Ed25519</strong><span>signing algorithm</span></div>
     </div>
   </header>
@@ -447,7 +447,7 @@
         </label>
         <label class="tab" for="tab-workflow-chains" role="tab">
           <span class="tab-label">Workflow-chain packs</span>
-          <span class="tab-count">8</span>
+          <span class="tab-count">15</span>
         </label>
         <label class="tab" for="tab-prompts" role="tab">
           <span class="tab-label">Prompt packs</span>
@@ -1477,87 +1477,171 @@
       </thead>
       <tbody>
         <tr>
-          <td class="name"><code>core.openwop.workflows.exec-ops</code> </td>
+          <td class="name"><code>core.openwop.workflows.content</code> </td>
           <td class="version">1.0.0</td>
-          <td class="count" title="chains in latest manifest">3</td>
-          <td class="desc">Real-work workflow pack (RFC 0013, ADR 0149) — the Executive / Chief-of-Staff cluster: Daily Executive Briefing, Meeting Prep &amp; Attendee Dossier, and Board / Investor Update Pack. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.analytics); connector-touching steps bind a connection pack via core.openwop.http.openapi-call connectionRef (Meeting Prep → Microsoft 365 calendar, Board Update → NetSuite finance), so a configured connection runs live and an unconfigured one surfaces a connect prompt. Every external send is gated by core.chat.approvalGate; the read-only briefing is ungated; all tenant values are run parameters (replay-deterministic). Resolves fully on hosts shipping the feature + http/mcp + chat packs (the OpenWOP reference app). Published under core.openwop.workflows.* (openwop-team key).</td>
+          <td class="count" title="chains in latest manifest">2</td>
+          <td class="desc">Real-work workflow pack (RFC 0013, ADR 0190 Phase 3) — the Content &amp; Monitoring cluster: watch an RSS/Atom feed for new items and watch any web page for changes, each pairing a schedule trigger with durable seen-state in host KV storage (deterministic per-source key; the first run treats everything as new and seeds the state). NO host RSS poller exists — adding an &#39;rss&#39; ingestion source to /v1/trigger-subscriptions is RFC 0099 wire territory (see ADR 0190) — so these chains ARE the poller: pair each with a Schedule and the scheduler does the polling. Authored over shipped node typeIds (core.trigger.schedule + core.openwop.http.fetch + core.storage.kv-get/kv-set + core.ai.chatCompletion + core.openwop.integration.notification-push). No external sends — digests are in-app notifications, so no approval gate is needed. All tenant values are run parameters (replay-deterministic).</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v1/packs/core.openwop.workflows.exec-ops/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v1/packs/core.openwop.workflows.exec-ops/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v1/packs/core.openwop.workflows.exec-ops/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+            <a href="/v1/packs/core.openwop.workflows.content/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.content/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.content/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.workflows.devops</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">4</td>
+          <td class="desc">Real-work workflow pack (RFC 0013, ADR 0190 Phase 4) — the DevOps cluster: senior-style code review of a diff, changelog/release-notes drafting from a commit log, CI-failure diagnosis from a signature-verified webhook, and a stale-issue gardener over the public GitHub API. All four are ADVISORY — they analyze and notify in-app, never write to your repo or post comments (an authenticated GitHub write path would bind a connection behind an approval gate; deferred until the MCP-reach connection binding has a chain precedent). These chains do not run the Code Reviewer / Git Author AGENTS — those remain chat-drivable via the agents surface; the chains use short chain-local prompts over core.ai.chatCompletion. All tenant values are run parameters (replay-deterministic).</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.devops/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.devops/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.devops/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.workflows.exec-ops</code> </td>
+          <td class="version">1.1.0</td>
+          <td class="count" title="chains in latest manifest">3</td>
+          <td class="desc">Real-work workflow pack (RFC 0013, ADR 0149). The Executive / Chief-of-Staff cluster: Daily Executive Briefing, Meeting Prep &amp; Attendee Dossier, and Board / Investor Update Pack. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.analytics) and, where a workflow touches an external system, binds a connection pack via core.openwop.http.openapi-call (connectionRef) — so a configured connection runs live and an unconfigured one surfaces a connect prompt rather than failing. Every external send is gated by core.chat.approvalGate; the read-only briefing is ungated. All tenant-specific values are run parameters (replay-deterministic). Resolves fully on hosts that ship the feature + http/mcp + chat packs (the OpenWOP reference app); the connection bindings are configured by the operator under Access &amp; data → Connections.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.exec-ops/-/1.1.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.exec-ops/-/1.1.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.exec-ops/-/1.1.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr>
           <td class="name"><code>core.openwop.workflows.finance</code> </td>
-          <td class="version">1.0.0</td>
+          <td class="version">1.1.0</td>
           <td class="count" title="chains in latest manifest">3</td>
-          <td class="desc">Real-work workflow pack (RFC 0013, ADR 0149) — the Finance cluster: Invoice → AP Processing, Month-End Close Checklist, and Expense/Budget Approval + anomaly detection. Reasons with core.ai.chatCompletion; binds the ERP (NetSuite) via core.openwop.http.openapi-call connectionRef for validation + posting; every posting/reimbursement runs through a threshold core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + kb + integration packs. Published under core.openwop.workflows.* (openwop-team key).</td>
+          <td class="desc">Real-work workflow pack (RFC 0013, ADR 0149) — the Finance cluster: Invoice → AP Processing, Month-End Close Checklist, and Expense/Budget Approval + anomaly detection. Reasons with core.ai.chatCompletion; recommends ERP actions (validation + posting) provider-agnostically via core.openwop.connectors.erp-action (NetSuite when connected); every posting/reimbursement runs through a threshold core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + kb + integration packs. Published under core.openwop.workflows.* (openwop-team key).</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v1/packs/core.openwop.workflows.finance/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v1/packs/core.openwop.workflows.finance/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v1/packs/core.openwop.workflows.finance/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+            <a href="/v1/packs/core.openwop.workflows.finance/-/1.1.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.finance/-/1.1.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.finance/-/1.1.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.workflows.inbox</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">3</td>
+          <td class="desc">Real-work workflow pack (RFC 0013, ADR 0190 Phase 2) — the personal-productivity Inbox cluster: triage your own inbox (classify, draft the urgent reply, digest the rest), nudge unanswered threads, and debrief calls into coaching notes. Distinct from core.openwop.workflows.support (a customer-support mailbox with queue routing): these serve YOUR inbox and YOUR calls. Drafting uses core.email.draft — it creates a draft in your mailbox and never sends (the draft is the human gate); the one real send (follow-up nudger) waits on an approval. All tenant values are run parameters (replay-deterministic).</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.inbox/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.inbox/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.inbox/-/1.0.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr>
           <td class="name"><code>core.openwop.workflows.it-support</code> </td>
-          <td class="version">1.0.0</td>
+          <td class="version">1.1.0</td>
           <td class="count" title="chains in latest manifest">1</td>
-          <td class="desc">Real-work workflow pack (RFC 0013, ADR 0149) — the IT / Support cluster: Incident Triage &amp; Major-Incident Comms. Classifies an incoming alert/ticket, then a core.flow.if routes routine incidents to a recommended KB article + a ticket (Jira) and major incidents to cadence stakeholder updates (Slack); finally a post-incident summary. Major-incident sends are human-gated. All tenant values are run parameters (replay-deterministic). Resolves on hosts shipping the kb + http + ai + chat + integration packs. Published under core.openwop.workflows.* (openwop-team key).</td>
+          <td class="desc">Real-work workflow pack (RFC 0013, ADR 0149) — the IT / Support cluster: Incident Triage &amp; Major-Incident Comms. Classifies an incoming alert/ticket, then a core.flow.if routes routine incidents to a recommended KB article + a ticket (ticketing) and major incidents to cadence stakeholder updates (Slack); finally a post-incident summary. Major-incident sends are human-gated. All tenant values are run parameters (replay-deterministic). Resolves on hosts shipping the kb + http + ai + chat + integration packs. Published under core.openwop.workflows.* (openwop-team key).</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v1/packs/core.openwop.workflows.it-support/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v1/packs/core.openwop.workflows.it-support/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v1/packs/core.openwop.workflows.it-support/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+            <a href="/v1/packs/core.openwop.workflows.it-support/-/1.1.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.it-support/-/1.1.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.it-support/-/1.1.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.workflows.knowledge</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">3</td>
+          <td class="desc">Real-work workflow pack (RFC 0013, ADR 0190 Phase 2) — the internal Knowledge cluster: employee policy/HR Q&amp;A grounded in your Knowledge Base, compliance review of documents against your policy corpus, and structured document summarization. Distinct from core.openwop.workflows.support (customer-facing): these serve EMPLOYEES over internal policy collections. Authored entirely over shipped node typeIds (feature.kb.nodes.rag + core.ai.chatCompletion + core.flow.if + core.chat.approvalGate + core.openwop.integration.*). Populate the underlying collections in the Knowledge feature (or via knowledge-sync from Drive/OneDrive/Dropbox/Box) — these chains READ the app KB; they do not build a separate index. Every external send waits on a human approval gate. All tenant values are run parameters (replay-deterministic).</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.knowledge/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.knowledge/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.knowledge/-/1.0.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr>
           <td class="name"><code>core.openwop.workflows.lighthouse</code> </td>
-          <td class="version">1.0.0</td>
+          <td class="version">1.1.0</td>
           <td class="count" title="chains in latest manifest">5</td>
-          <td class="desc">Real-work workflow pack (RFC 0013, ADR 0149 / ADR 0155). The five zero-config &#39;lighthouse&#39; workflows from the ADR 0149 catalog — Lead Triage, Account Brief, Renewal &amp; Churn-Risk Digest, RFP Response, and Post-Meeting Follow-up. Authored over the feature node packs (feature.crm/kb/analytics) plus core.ai.chatCompletion, core.chat.approvalGate, and core.openwop.integration.*; every external send is gated by a human approval and all tenant-specific values are run parameters (replay-deterministic). Resolves fully on hosts that ship the feature packs (e.g. the OpenWOP reference app); on other hosts the unmet node types surface as a connect/install prompt rather than failing. Published under core.openwop.workflows.* (openwop-team signing key); the registry adds `signing` at publish time.</td>
+          <td class="desc">Real-work workflow pack (RFC 0013, ADR 0149 / ADR 0155 follow-on). The five zero-config &#39;lighthouse&#39; workflows from the ADR 0149 catalog — Lead Triage, Account Brief, Renewal &amp; Churn-Risk Digest, RFP Response, and Post-Meeting Follow-up — authored entirely over node typeIds shipped with this host (feature.crm/kb/analytics + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.integration.*). Each rides real tenant data through the feature node packs, reasons with the LLM node, gates every external send behind a human approval, and delivers a usable artifact. Tenant-specific values are RUN PARAMETERS (never hardcoded) so the expansion stays replay-deterministic. Picking one in the builder instantiates a fully-editable, runnable, assignable workflow.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v1/packs/core.openwop.workflows.lighthouse/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v1/packs/core.openwop.workflows.lighthouse/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v1/packs/core.openwop.workflows.lighthouse/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+            <a href="/v1/packs/core.openwop.workflows.lighthouse/-/1.1.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.lighthouse/-/1.1.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.lighthouse/-/1.1.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr>
           <td class="name"><code>core.openwop.workflows.market-intel</code> </td>
-          <td class="version">1.0.0</td>
-          <td class="count" title="chains in latest manifest">1</td>
-          <td class="desc">Real-work workflow pack (RFC 0013, ADR 0149/0150). A competitive / market-intelligence digest authored entirely over PUBLISHED node packs (vendor.myndhyve.market-intel-* + core.openwop.ai), so it expands + runs on any conformant host. The thin-slice proof that the real-work workflows publish to packs.openwop.dev. Published under the `core.openwop.workflows.*` namespace (openwop-team signing key); the registry adds `signing` at publish time.</td>
+          <td class="version">1.1.0</td>
+          <td class="count" title="chains in latest manifest">2</td>
+          <td class="desc">Real-work workflow pack (RFC 0013, ADR 0149/0150 + ADR 0174). Market-intelligence digest + a SHIFT digest (research the current period, then diff against the prior run via market-intel.shift-detect → an in-voice shift summary) authored entirely over PUBLISHED node packs (vendor.myndhyve.market-intel-* + core.openwop.ai), so they expand + run on any conformant host. Published under the `core.openwop.workflows.*` namespace (openwop-team signing key); the registry adds `signing` at publish time.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v1/packs/core.openwop.workflows.market-intel/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v1/packs/core.openwop.workflows.market-intel/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v1/packs/core.openwop.workflows.market-intel/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+            <a href="/v1/packs/core.openwop.workflows.market-intel/-/1.1.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.market-intel/-/1.1.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.market-intel/-/1.1.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr>
           <td class="name"><code>core.openwop.workflows.marketing</code> </td>
-          <td class="version">1.0.0</td>
+          <td class="version">1.1.0</td>
           <td class="count" title="chains in latest manifest">4</td>
-          <td class="desc">Real-work workflow pack (RFC 0013, ADR 0149) — the Marketing &amp; Advertising cluster: Full Campaign Launch, Ad Performance Optimization Loop, Content Brief Generator, and Content Repurposing. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.kb / feature.cms / feature.email); binds the ad platforms (Google/Meta Ads) via core.openwop.http.openapi-call connectionRef. The optimization loop routes within-guardrail changes to auto-apply and out-of-guardrail changes to a core.chat.approvalGate via a core.flow.if conditional node (ADR 0149 open-question resolution: a flow conditional, not a new primitive). Every launch/publish/apply is approval- or guardrail-gated; all tenant values are run parameters (replay-deterministic). Published under core.openwop.workflows.* (openwop-team key).</td>
+          <td class="desc">Real-work workflow pack (RFC 0013, ADR 0149) — the Marketing &amp; Advertising cluster: Full Campaign Launch, Ad Performance Optimization Loop, Content Brief Generator, and Content Repurposing. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.kb / feature.cms / feature.email); reads/optimizes the ad platforms provider-agnostically via the core.openwop.connectors.ad-* capability nodes (Meta or Google, whichever the tenant connected — ADR 0186). The optimization loop routes within-guardrail changes to auto-apply and out-of-guardrail changes to a core.chat.approvalGate via a core.flow.if conditional node (ADR 0149 open-question resolution: a flow conditional, not a new primitive). Every launch/publish/apply is approval- or guardrail-gated; all tenant values are run parameters (replay-deterministic). Published under core.openwop.workflows.* (openwop-team key).</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v1/packs/core.openwop.workflows.marketing/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v1/packs/core.openwop.workflows.marketing/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v1/packs/core.openwop.workflows.marketing/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+            <a href="/v1/packs/core.openwop.workflows.marketing/-/1.1.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.marketing/-/1.1.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.marketing/-/1.1.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr>
           <td class="name"><code>core.openwop.workflows.people-hr</code> </td>
-          <td class="version">1.0.0</td>
+          <td class="version">1.1.0</td>
           <td class="count" title="chains in latest manifest">3</td>
-          <td class="desc">Real-work workflow pack (RFC 0013, ADR 0149) — the People / HR cluster: Employee Onboarding Orchestrator, Offboarding &amp; Access Revocation, and Leave/PTO Request Routing. Reasons with core.ai.chatCompletion; binds Workday (HRIS), Microsoft 365, and Jira via core.openwop.http.openapi-call connectionRef; every account/HRIS mutation and every team-facing send is gated by core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + integration packs; connections are configured under Access &amp; data → Connections. Published under core.openwop.workflows.* (openwop-team key).</td>
+          <td class="desc">Real-work workflow pack (RFC 0013, ADR 0149) — the People / HR cluster: Employee Onboarding Orchestrator, Offboarding &amp; Access Revocation, and Leave/PTO Request Routing. Reasons with core.ai.chatCompletion; binds Microsoft 365 via core.openwop.http.openapi-call connectionRef, recommends HRIS actions provider-agnostically via core.openwop.connectors.hris-action (Workday today), and provider-agnostic ticketing (Jira/ServiceNow) via the core.openwop.connectors.ticket-* capability nodes (ADR 0186); every account/HRIS mutation and every team-facing send is gated by core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + integration packs; connections are configured under Access &amp; data → Connections. Published under core.openwop.workflows.* (openwop-team key).</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v1/packs/core.openwop.workflows.people-hr/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v1/packs/core.openwop.workflows.people-hr/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v1/packs/core.openwop.workflows.people-hr/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+            <a href="/v1/packs/core.openwop.workflows.people-hr/-/1.1.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.people-hr/-/1.1.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.people-hr/-/1.1.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.workflows.research</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">1</td>
+          <td class="desc">Real-work workflow pack (RFC 0013, ADR 0190 Phase 5) — the Research cluster: turn a question into a short, cited web brief. Rides the ADR 0101 unified web search (core.web.search → the host.webResearch surface): live results when a search key is configured (BYOK secret &#39;web-search&#39; on the keys page, or the host&#39;s OPENWOP_WEBSEARCH_API_KEY), an honest demo placeholder when not — the synthesis says so plainly instead of pretending. For deep, multi-source, long-horizon research use the Deep Research AGENT in chat; this chain is the quick-brief shape. All tenant values are run parameters (replay-deterministic).</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.research/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.research/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.research/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.workflows.starters</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">6</td>
+          <td class="desc">Starter workflow pack (RFC 0013, ADR 0190) — the simple-pipe on-ramp tier: short single-trigger→action recipes (webhook→notify, form→table, schedule→digest, fetch→store) that run in under a minute with zero connections, before you graduate to the AI-agent packs. Trigger-shaped starters begin with a core.trigger.* pass-through entry node: bind them to a live source with a trigger subscription (POST /v1/trigger-subscriptions — webhook, email, or form; RFC 0099) or a Schedule; on a manual run the trigger payload is empty, so bind a source to see them shine. External sends stay behind a human approval gate; in-app notifications are direct. All tenant values are run parameters (replay-deterministic).</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.starters/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.starters/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.starters/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.workflows.support</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">5</td>
+          <td class="desc">Real-work workflow pack (RFC 0013, ADR 0190) — the Customer Support cluster, the #1 surveyed agent use case the gallery previously had zero templates for: KB-grounded answering, email triage (draft-only — the human sends), customer-ticket routing, sentiment/brand-risk escalation, and CSAT follow-up. Authored entirely over node typeIds shipped with this host (feature.kb + core.ai.chatCompletion + core.flow.if + core.chat.approvalGate + core.email.draft + core.openwop.connectors.ticket-create + core.openwop.integration.*). Every external SEND waits on a human approval gate (core.email.draft creates a draft and never sends — the draft itself is the human gate). Distinct from core.openwop.workflows.it-support: that pack routes IT incidents by severity; this one serves customer-facing support (intent, queues, CSAT). All tenant values are run parameters (replay-deterministic).</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.support/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.support/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.support/-/1.0.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr>
@@ -1685,7 +1769,7 @@ const ok = verify(null, readFileSync('pack.tgz'), pub, readFileSync('pack.sig'))
   </section>
 
   <footer>
-    Generated 2026-07-02T23:55:10.521Z · <a href="https://openwop.dev/">openwop.dev</a> · <a href="https://github.com/openwop/openwop">openwop on GitHub</a>
+    Generated 2026-07-03T03:21:31.517Z · <a href="https://openwop.dev/">openwop.dev</a> · <a href="https://github.com/openwop/openwop">openwop on GitHub</a>
   </footer>
 </main>
 </body>

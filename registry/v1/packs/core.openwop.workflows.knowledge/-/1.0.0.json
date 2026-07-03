@@ -1,0 +1,344 @@
+{
+  "name": "core.openwop.workflows.knowledge",
+  "version": "1.0.0",
+  "kind": "workflow-chain",
+  "description": "Real-work workflow pack (RFC 0013, ADR 0190 Phase 2) — the internal Knowledge cluster: employee policy/HR Q&A grounded in your Knowledge Base, compliance review of documents against your policy corpus, and structured document summarization. Distinct from core.openwop.workflows.support (customer-facing): these serve EMPLOYEES over internal policy collections. Authored entirely over shipped node typeIds (feature.kb.nodes.rag + core.ai.chatCompletion + core.flow.if + core.chat.approvalGate + core.openwop.integration.*). Populate the underlying collections in the Knowledge feature (or via knowledge-sync from Drive/OneDrive/Dropbox/Box) — these chains READ the app KB; they do not build a separate index. Every external send waits on a human approval gate. All tenant values are run parameters (replay-deterministic).",
+  "author": "openwop",
+  "license": "Apache-2.0",
+  "engines": {
+    "openwop": ">=1.0.0"
+  },
+  "keywords": [
+    "Knowledge"
+  ],
+  "chains": [
+    {
+      "chainId": "knowledge.policy-qa",
+      "version": "1.0.0",
+      "label": "HR & Policy Q&A Agent",
+      "description": "Answer an employee's policy or HR question grounded ONLY in your internal policy docs (Knowledge Base), citing the specific policy sections. Covered questions are answered as a notification; questions your policies don't cover route to a human-approved escalation to your people team instead of guessing. Add policy docs under Knowledge to ground it.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "question"
+        ],
+        "properties": {
+          "question": {
+            "type": "string",
+            "description": "The employee's policy/HR question."
+          },
+          "escalationChannel": {
+            "type": "string",
+            "default": "#people-ops",
+            "description": "Slack channel for questions the policy corpus does not cover."
+          }
+        }
+      },
+      "capabilities": [
+        "side-effectful"
+      ],
+      "dag": {
+        "nodes": [
+          {
+            "id": "retrieve",
+            "typeId": "feature.kb.nodes.rag",
+            "name": "Retrieve policy passages",
+            "position": {
+              "x": 0,
+              "y": 80
+            },
+            "config": {
+              "query": "{{params.question}}"
+            },
+            "inputs": {}
+          },
+          {
+            "id": "answer",
+            "typeId": "core.ai.chatCompletion",
+            "name": "Answer with section citations",
+            "position": {
+              "x": 280,
+              "y": 80
+            },
+            "config": {
+              "systemPrompt": "You are an internal HR/policy assistant answering an EMPLOYEE. Answer using ONLY the retrieved policy passages, citing the specific policy/section for every statement. Never speculate about policy. If the passages do not cover the question, say exactly that. End with 'COVERED: yes' or 'COVERED: no'. Question: {{params.question}}"
+            },
+            "inputs": {}
+          },
+          {
+            "id": "route",
+            "typeId": "core.flow.if",
+            "name": "Covered by policy?",
+            "position": {
+              "x": 560,
+              "y": 80
+            },
+            "config": {},
+            "inputs": {}
+          },
+          {
+            "id": "deliver",
+            "typeId": "core.openwop.integration.notification-push",
+            "name": "Deliver answer",
+            "position": {
+              "x": 840,
+              "y": 0
+            },
+            "config": {},
+            "inputs": {}
+          },
+          {
+            "id": "approveEscalation",
+            "typeId": "core.chat.approvalGate",
+            "name": "Approve escalation",
+            "position": {
+              "x": 840,
+              "y": 160
+            },
+            "config": {},
+            "inputs": {}
+          },
+          {
+            "id": "escalate",
+            "typeId": "core.openwop.integration.slack-message",
+            "name": "Escalate to people team",
+            "position": {
+              "x": 1120,
+              "y": 160
+            },
+            "config": {
+              "channel": "{{params.escalationChannel}}"
+            },
+            "inputs": {}
+          }
+        ],
+        "edges": [
+          {
+            "from": "retrieve",
+            "to": "answer"
+          },
+          {
+            "from": "answer",
+            "to": "route"
+          },
+          {
+            "from": "route",
+            "to": "deliver"
+          },
+          {
+            "from": "route",
+            "to": "approveEscalation"
+          },
+          {
+            "from": "approveEscalation",
+            "to": "escalate"
+          }
+        ]
+      },
+      "outputs": {
+        "answer": {
+          "type": "string",
+          "description": "The policy-grounded answer with section citations, or the escalation note."
+        }
+      }
+    },
+    {
+      "chainId": "knowledge.compliance-review",
+      "version": "1.0.0",
+      "label": "Compliance Review vs Your Policies",
+      "description": "Check a document (contract clause, marketing copy, announcement) against your internal policies: retrieve the relevant ones from the Knowledge Base, flag every deviation with the policy it conflicts with, and route flagged documents to a human-approved compliance escalation. Clean documents just notify you.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "documentText"
+        ],
+        "properties": {
+          "documentText": {
+            "type": "string",
+            "description": "The document text to review."
+          },
+          "escalationChannel": {
+            "type": "string",
+            "default": "#compliance",
+            "description": "Slack channel for flagged documents."
+          }
+        }
+      },
+      "capabilities": [
+        "side-effectful"
+      ],
+      "dag": {
+        "nodes": [
+          {
+            "id": "retrieve",
+            "typeId": "feature.kb.nodes.rag",
+            "name": "Retrieve relevant policies",
+            "position": {
+              "x": 0,
+              "y": 80
+            },
+            "config": {
+              "query": "{{params.documentText}}"
+            },
+            "inputs": {}
+          },
+          {
+            "id": "review",
+            "typeId": "core.ai.chatCompletion",
+            "name": "Review vs policies",
+            "position": {
+              "x": 280,
+              "y": 80
+            },
+            "config": {
+              "systemPrompt": "You are a compliance reviewer. Compare the document below against ONLY the retrieved policy passages. List every deviation as: the document statement, the policy it conflicts with (cite the section), and the risk. If nothing conflicts, say the document passes. End with 'FLAGS: <count>'. Document: {{params.documentText}}"
+            },
+            "inputs": {}
+          },
+          {
+            "id": "route",
+            "typeId": "core.flow.if",
+            "name": "Any flags?",
+            "position": {
+              "x": 560,
+              "y": 80
+            },
+            "config": {},
+            "inputs": {}
+          },
+          {
+            "id": "pass",
+            "typeId": "core.openwop.integration.notification-push",
+            "name": "Notify: passes",
+            "position": {
+              "x": 840,
+              "y": 0
+            },
+            "config": {},
+            "inputs": {}
+          },
+          {
+            "id": "approveEscalation",
+            "typeId": "core.chat.approvalGate",
+            "name": "Approve escalation",
+            "position": {
+              "x": 840,
+              "y": 160
+            },
+            "config": {},
+            "inputs": {}
+          },
+          {
+            "id": "escalate",
+            "typeId": "core.openwop.integration.slack-message",
+            "name": "Escalate to compliance",
+            "position": {
+              "x": 1120,
+              "y": 160
+            },
+            "config": {
+              "channel": "{{params.escalationChannel}}"
+            },
+            "inputs": {}
+          }
+        ],
+        "edges": [
+          {
+            "from": "retrieve",
+            "to": "review"
+          },
+          {
+            "from": "review",
+            "to": "route"
+          },
+          {
+            "from": "route",
+            "to": "pass"
+          },
+          {
+            "from": "route",
+            "to": "approveEscalation"
+          },
+          {
+            "from": "approveEscalation",
+            "to": "escalate"
+          }
+        ]
+      },
+      "outputs": {
+        "review": {
+          "type": "string",
+          "description": "The deviation list with policy citations, or the pass note."
+        }
+      }
+    },
+    {
+      "chainId": "knowledge.doc-summarizer",
+      "version": "1.0.0",
+      "label": "Document Summarizer",
+      "description": "Turn a long document into a structured summary — purpose, key points, decisions/asks, and open questions — delivered as a notification. Paste the text (or pipe it from another workflow) and get the two-minute version.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "documentText"
+        ],
+        "properties": {
+          "documentText": {
+            "type": "string",
+            "description": "The document text to summarize."
+          }
+        }
+      },
+      "capabilities": [],
+      "dag": {
+        "nodes": [
+          {
+            "id": "summarize",
+            "typeId": "core.ai.chatCompletion",
+            "name": "Structured summary",
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "config": {
+              "systemPrompt": "Summarize the document below into: Purpose (1 line) · Key points (bullets) · Decisions or asks · Open questions. Be faithful — do not add information. Document: {{params.documentText}}"
+            },
+            "inputs": {}
+          },
+          {
+            "id": "notify",
+            "typeId": "core.openwop.integration.notification-push",
+            "name": "Deliver summary",
+            "position": {
+              "x": 280,
+              "y": 0
+            },
+            "config": {},
+            "inputs": {}
+          }
+        ],
+        "edges": [
+          {
+            "from": "summarize",
+            "to": "notify"
+          }
+        ]
+      },
+      "outputs": {
+        "summary": {
+          "type": "string",
+          "description": "The structured summary."
+        }
+      }
+    }
+  ],
+  "signing": {
+    "method": "manual",
+    "publicKeyRef": "openwop-team-1",
+    "signatureRef": "keys/pack.json.sig"
+  },
+  "integrity": "sha256-HrLdW/ggN3A7JovRbFe+9WhYwdIsenReF4kDcpFGKpg="
+}
