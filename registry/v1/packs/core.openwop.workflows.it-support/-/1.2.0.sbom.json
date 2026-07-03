@@ -1,0 +1,108 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.it-support@1.2.0",
+      "type": "library",
+      "name": "core.openwop.workflows.it-support",
+      "version": "1.2.0",
+      "description": "Real-work workflow pack (RFC 0013, ADR 0149, ADR 0208) — the IT / Support cluster: Incident Triage & Major-Incident Comms. An AI classifier assigns a structured severity (routine vs major); a router then sends routine incidents to a recommended KB article + a ticket and major incidents to human-gated cadence stakeholder updates (Slack), and the taken branch flows into a post-incident summary. Only the matching branch fires. Major-incident sends are human-gated. All tenant values are run parameters (replay-deterministic). Resolves on hosts shipping the kb + http + ai + chat + integration packs. Published under core.openwop.workflows.* (openwop-team key).",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "93018f4027230deb4ebf312d849fd9e47f1e26744e5848cc82901511ed51c2ee"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.it-support@1.2.0"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5390d71b85ab4d5bee2f54405b0fcba4d501cab71c1d39ca9371d94526c401d1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "212"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d264b57c3cb0e8c68c69fe752ebb74dce7649fcf5bdc15481537410acc99b896"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e4f01a598154489c6787a6c8bb9010b6fd664c86d0d89543f1f61bf86f53c4b6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "4289"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.it-support@1.2.0",
+      "dependsOn": []
+    }
+  ]
+}
