@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>openwop registry — packs.openwop.dev</title>
-<meta name="description" content="The canonical signed node-pack registry for the openwop workflow orchestration protocol. 93 pack(s), 128 version(s) published.">
+<meta name="description" content="The canonical signed node-pack registry for the openwop workflow orchestration protocol. 94 pack(s), 130 version(s) published.">
 <meta name="robots" content="index, follow">
 
 <meta property="og:type" content="website">
@@ -411,8 +411,8 @@
     </h1>
     <p class="lead">Canonical signed node-pack registry for the <a href="https://openwop.dev/">openwop</a> workflow orchestration protocol.</p>
     <div class="summary">
-      <div><strong>93</strong><span>packs published</span></div>
-      <div><strong>128</strong><span>versions total</span></div>
+      <div><strong>94</strong><span>packs published</span></div>
+      <div><strong>130</strong><span>versions total</span></div>
       <div><strong>Ed25519</strong><span>signing algorithm</span></div>
     </div>
   </header>
@@ -447,7 +447,7 @@
         </label>
         <label class="tab" for="tab-workflow-chains" role="tab">
           <span class="tab-label">Workflow-chain packs</span>
-          <span class="tab-count">16</span>
+          <span class="tab-count">17</span>
         </label>
         <label class="tab" for="tab-prompts" role="tab">
           <span class="tab-label">Prompt packs</span>
@@ -1501,6 +1501,18 @@
           </td>
         </tr>
         <tr>
+          <td class="name"><code>core.openwop.workflows.data-ops</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">3</td>
+          <td class="desc">Real-work workflow pack (RFC 0013, ADR 0200) — the Data Ops cluster, the one shape-family the Zapier/n8n and Microsoft canons don&#39;t cover (surfaced by the Make/Workato research): collapsing many records into one output (the aggregator canon) and one-way movement of records from one system into another. Roll Up (sum + format a list of records into a narrated summary), To Table (records → a clean table + AI anomaly scan), and Records → System (READ records from a source connection → AI reshape → human sign-off → UPSERT into a destination). Uses only shipped, executable nodes (core.flow.aggregate-{numeric,text,table} + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.http.openapi-call + core.openwop.integration.notification-push). The write is ONE-WAY movement keyed on an external id (re-runs update, never duplicate) behind a human approval — it is NOT a bidirectional sync. All tenant values are run parameters (replay-deterministic).</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.data-ops/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.data-ops/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.data-ops/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
           <td class="name"><code>core.openwop.workflows.devops</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="chains in latest manifest">4</td>
@@ -1610,14 +1622,14 @@
         </tr>
         <tr>
           <td class="name"><code>core.openwop.workflows.people-hr</code> </td>
-          <td class="version">1.1.0</td>
+          <td class="version">1.2.0</td>
           <td class="count" title="chains in latest manifest">3</td>
           <td class="desc">Real-work workflow pack (RFC 0013, ADR 0149) — the People / HR cluster: Employee Onboarding Orchestrator, Offboarding &amp; Access Revocation, and Leave/PTO Request Routing. Reasons with core.ai.chatCompletion; binds Microsoft 365 via core.openwop.http.openapi-call connectionRef, recommends HRIS actions provider-agnostically via core.openwop.connectors.hris-action (Workday today), and provider-agnostic ticketing (Jira/ServiceNow) via the core.openwop.connectors.ticket-* capability nodes (ADR 0186); every account/HRIS mutation and every team-facing send is gated by core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + integration packs; connections are configured under Access &amp; data → Connections. Published under core.openwop.workflows.* (openwop-team key).</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v1/packs/core.openwop.workflows.people-hr/-/1.1.0.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v1/packs/core.openwop.workflows.people-hr/-/1.1.0.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v1/packs/core.openwop.workflows.people-hr/-/1.1.0.sig" title="Ed25519 signature">sig</a>
+            <a href="/v1/packs/core.openwop.workflows.people-hr/-/1.2.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.people-hr/-/1.2.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.people-hr/-/1.2.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr>
@@ -1781,7 +1793,7 @@ const ok = verify(null, readFileSync('pack.tgz'), pub, readFileSync('pack.sig'))
   </section>
 
   <footer>
-    Generated 2026-07-03T12:45:10.237Z · <a href="https://openwop.dev/">openwop.dev</a> · <a href="https://github.com/openwop/openwop">openwop on GitHub</a>
+    Generated 2026-07-03T15:28:28.650Z · <a href="https://openwop.dev/">openwop.dev</a> · <a href="https://github.com/openwop/openwop">openwop on GitHub</a>
   </footer>
 </main>
 </body>

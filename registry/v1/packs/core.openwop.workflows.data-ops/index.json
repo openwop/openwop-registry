@@ -1,0 +1,32 @@
+{
+  "name": "core.openwop.workflows.data-ops",
+  "kind": "workflow-chain",
+  "description": "Real-work workflow pack (RFC 0013, ADR 0200) — the Data Ops cluster, the one shape-family the Zapier/n8n and Microsoft canons don't cover (surfaced by the Make/Workato research): collapsing many records into one output (the aggregator canon) and one-way movement of records from one system into another. Roll Up (sum + format a list of records into a narrated summary), To Table (records → a clean table + AI anomaly scan), and Records → System (READ records from a source connection → AI reshape → human sign-off → UPSERT into a destination). Uses only shipped, executable nodes (core.flow.aggregate-{numeric,text,table} + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.http.openapi-call + core.openwop.integration.notification-push). The write is ONE-WAY movement keyed on an external id (re-runs update, never duplicate) behind a human approval — it is NOT a bidirectional sync. All tenant values are run parameters (replay-deterministic).",
+  "author": "openwop",
+  "license": "Apache-2.0",
+  "tags": [],
+  "typeIds": [
+    "data-ops.rollup",
+    "data-ops.to-table",
+    "data-ops.records-to-system"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 3,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.workflows.data-ops/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.workflows.data-ops/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.workflows.data-ops/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-QPK38IkioJLOJQwFFEqCrfBz6JzFaWI4aj5+Of7fUoQ=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}
