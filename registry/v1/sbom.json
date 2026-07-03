@@ -1188,6 +1188,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.data-ops@1.1.0",
+      "type": "library",
+      "name": "core.openwop.workflows.data-ops",
+      "version": "1.1.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v1/packs/core.openwop.workflows.data-ops/-/1.1.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "20b2472df2fbb71d0d10fc301ca250ac0b26122878235a2e8b084eec7a2a2ecf"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.workflows.devops@1.0.0",
       "type": "library",
       "name": "core.openwop.workflows.devops",
