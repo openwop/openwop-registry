@@ -1368,6 +1368,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.it-support@1.2.1",
+      "type": "library",
+      "name": "core.openwop.workflows.it-support",
+      "version": "1.2.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v1/packs/core.openwop.workflows.it-support/-/1.2.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "dcc9bf26069ec8575472ed95c810a1f6e20e71696683d5de18b3c810f3e616d7"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.workflows.knowledge@1.0.0",
       "type": "library",
       "name": "core.openwop.workflows.knowledge",
