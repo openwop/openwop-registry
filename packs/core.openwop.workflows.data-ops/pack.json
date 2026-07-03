@@ -1,8 +1,8 @@
 {
   "name": "core.openwop.workflows.data-ops",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "kind": "workflow-chain",
-  "description": "Real-work workflow pack (RFC 0013, ADR 0200) — the Data Ops cluster, the one shape-family the Zapier/n8n and Microsoft canons don't cover (surfaced by the Make/Workato research): collapsing many records into one output (the aggregator canon) and one-way movement of records from one system into another. Roll Up (sum + format a list of records into a narrated summary), To Table (records → a clean table + AI anomaly scan), and Records → System (READ records from a source connection → AI reshape → human sign-off → UPSERT into a destination). Uses only shipped, executable nodes (core.flow.aggregate-{numeric,text,table} + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.http.openapi-call + core.openwop.integration.notification-push). The write is ONE-WAY movement keyed on an external id (re-runs update, never duplicate) behind a human approval — it is NOT a bidirectional sync. All tenant values are run parameters (replay-deterministic).",
+  "description": "Real-work workflow pack (RFC 0013, ADR 0200/0201) — the Data Ops cluster, the one shape-family the Zapier/n8n and Microsoft canons don't cover (surfaced by the Make/Workato research): collapsing many records into one output (the aggregator canon), one-way movement of records between systems, and content routing (send a record down the right branch). Roll Up, Records → Table, Records → System (one-way upsert behind a human sign-off), and Content Router (route a record to the matching branch by a field predicate — the Make router shape, gated via edge conditions, ADR 0201). Uses only shipped, executable nodes (core.flow.aggregate-{numeric,text,table} + core.flow.router + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.http.openapi-call + core.openwop.integration.notification-push). The write is ONE-WAY movement keyed on an external id (re-runs update, never duplicate) behind a human approval — it is NOT a bidirectional sync. All tenant values are run parameters (replay-deterministic).",
   "author": "openwop",
   "license": "Apache-2.0",
   "engines": { "openwop": ">=1.0.0" },
@@ -104,6 +104,38 @@
       },
       "outputs": {
         "result": { "type": "string", "description": "The approved, upserted records (one-way, keyed on the external id)." }
+      }
+    },
+    {
+      "chainId": "data-ops.content-router",
+      "version": "1.0.0",
+      "label": "Content Router",
+      "description": "Route a record to the right branch by one of its fields: match on the field's value (e.g. priority high / normal / low) and only the matching branch fires its notification. Set the field to switch on; the three example branches match high, normal, and low.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["record"],
+        "properties": {
+          "record": { "type": "object", "description": "The record to route (a JSON object)." },
+          "routeField": { "type": "string", "default": "priority", "description": "The field on the record to route by." }
+        }
+      },
+      "capabilities": [],
+      "dag": {
+        "nodes": [
+          { "id": "route", "typeId": "core.flow.router", "name": "Route by field", "position": { "x": 0, "y": 120 }, "config": { "mode": "first-match", "defaultLabel": "normal", "routes": [ { "label": "high", "predicate": { "path": "{{params.routeField}}", "op": "eq", "value": "high" } }, { "label": "low", "predicate": { "path": "{{params.routeField}}", "op": "eq", "value": "low" } }, { "label": "normal", "predicate": { "path": "{{params.routeField}}", "op": "eq", "value": "normal" } } ] }, "inputs": { "value": "{{params.record}}" } },
+          { "id": "high", "typeId": "core.openwop.integration.notification-push", "name": "High-priority branch", "position": { "x": 320, "y": 0 }, "config": {}, "inputs": {} },
+          { "id": "normal", "typeId": "core.openwop.integration.notification-push", "name": "Normal branch", "position": { "x": 320, "y": 120 }, "config": {}, "inputs": {} },
+          { "id": "low", "typeId": "core.openwop.integration.notification-push", "name": "Low-priority branch", "position": { "x": 320, "y": 240 }, "config": {}, "inputs": {} }
+        ],
+        "edges": [
+          { "from": "route", "to": "high", "condition": { "type": "contains", "left": "branches", "right": "high" } },
+          { "from": "route", "to": "normal", "condition": { "type": "contains", "left": "branches", "right": "normal" } },
+          { "from": "route", "to": "low", "condition": { "type": "contains", "left": "branches", "right": "low" } }
+        ]
+      },
+      "outputs": {
+        "routed": { "type": "string", "description": "The branch the record was routed to." }
       }
     }
   ]
