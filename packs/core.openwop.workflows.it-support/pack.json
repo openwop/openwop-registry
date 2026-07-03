@@ -1,8 +1,8 @@
 {
   "name": "core.openwop.workflows.it-support",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "kind": "workflow-chain",
-  "description": "Real-work workflow pack (RFC 0013, ADR 0149, ADR 0208) — the IT / Support cluster: Incident Triage & Major-Incident Comms. An AI classifier assigns a structured severity (routine vs major); a router then sends routine incidents to a recommended KB article + a ticket and major incidents to human-gated cadence stakeholder updates (Slack), and the taken branch flows into a post-incident summary. Only the matching branch fires. Major-incident sends are human-gated. All tenant values are run parameters (replay-deterministic). Resolves on hosts shipping the kb + http + ai + chat + integration packs. Published under core.openwop.workflows.* (openwop-team key).",
+  "description": "Real-work workflow pack (RFC 0013, ADR 0149, ADR 0208) — the IT / Support cluster: Incident Triage & Major-Incident Comms. An AI classifier assesses each incident's severity; routine incidents go to a recommended knowledge-base article and a ticket, while major incidents go to human-approved stakeholder updates in Slack — and each incident finishes with a post-incident summary. All tenant values are run parameters (replay-deterministic). Resolves on hosts shipping the kb + http + ai + chat + integration packs. Published under core.openwop.workflows.* (openwop-team key).",
   "author": "openwop",
   "license": "Apache-2.0",
   "engines": { "openwop": ">=1.0.0" },
@@ -10,9 +10,9 @@
   "chains": [
     {
       "chainId": "it-support.incident-triage",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "label": "Incident Triage & Major-Incident Comms",
-      "description": "Classify severity (structured), route routine incidents to a KB article + ticket and major incidents to gated stakeholder updates (Slack), then write a post-incident summary. Only the matching branch fires (exclusive routing).",
+      "description": "Assesses each incident's severity, then routes routine incidents to a recommended knowledge-base article and a ticket, and major incidents to human-approved stakeholder updates in Slack — finishing with a post-incident summary.",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
