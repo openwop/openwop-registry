@@ -32,7 +32,7 @@
       "toolAllowlist": [],
       "memoryShape": {
         "scratchpad": true,
-        "conversation": true,
+        "conversation": false,
         "longTerm": false
       },
       "handoff": {
@@ -53,5 +53,5 @@
     "publicKeyRef": "openwop-team-1",
     "signatureRef": "keys/pack.json.sig"
   },
-  "integrity": "sha256-q3oLX/yakjGV5If2Nw7L2xN0jM4eoNhMGDBvCaMKehQ="
+  "integrity": "sha256-LKgZ0Dq6vm4tiw518X5l3Lk7jVP2tm63wqNBMsVOKJA="
 }

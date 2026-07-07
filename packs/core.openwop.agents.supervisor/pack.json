@@ -32,7 +32,7 @@
       "toolAllowlist": [],
       "memoryShape": {
         "scratchpad": true,
-        "conversation": true,
+        "conversation": false,
         "longTerm": false
       },
       "handoff": {
