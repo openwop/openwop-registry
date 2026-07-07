@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.workflows.support",
       "version": "1.0.0",
-      "description": "Real-work workflow pack (RFC 0013, ADR 0190) — the Customer Support cluster, the #1 surveyed agent use case the gallery previously had zero templates for: KB-grounded answering, email triage (draft-only — the human sends), customer-ticket routing, sentiment/brand-risk escalation, and CSAT follow-up. Authored entirely over node typeIds shipped with this host (feature.kb + core.ai.chatCompletion + core.flow.if + core.chat.approvalGate + core.email.draft + core.openwop.connectors.ticket-create + core.openwop.integration.*). Every external SEND waits on a human approval gate (core.email.draft creates a draft and never sends — the draft itself is the human gate). Distinct from core.openwop.workflows.it-support: that pack routes IT incidents by severity; this one serves customer-facing support (intent, queues, CSAT). All tenant values are run parameters (replay-deterministic).",
+      "description": "Real-work workflow pack (RFC 0013) — the Customer Support cluster, the #1 surveyed agent use case the gallery previously had zero templates for: KB-grounded answering, email triage (draft-only — the human sends), customer-ticket routing, sentiment/brand-risk escalation, and CSAT follow-up. Authored entirely over node typeIds shipped with this host (feature.kb + core.ai.chatCompletion + core.flow.if + core.chat.approvalGate + core.email.draft + core.openwop.connectors.ticket-create + core.openwop.integration.*). Every external SEND waits on a human approval gate (core.email.draft creates a draft and never sends — the draft itself is the human gate). Distinct from core.openwop.workflows.it-support: that pack routes IT incidents by severity; this one serves customer-facing support (intent, queues, CSAT). All tenant values are run parameters (replay-deterministic).",
       "licenses": [
         {
           "license": {
@@ -20,7 +20,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f1a0f0aebebb4d79610cfe0550278b5d43ff5eb832d57c9c20279a76b63a585b"
+          "content": "521863755e117ac05856b60374ec31a95dab5833d41cbeed1573225e4fa53c03"
         }
       ],
       "purl": "pkg:openwop/core.openwop.workflows.support@1.0.0"
@@ -72,7 +72,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "28d0c2973484db3904582e4bd65b1c4bfcd09e8737e2f1bc9b88337733bc7c33"
+          "content": "a1402ac8e463a9ceb47e3544912ea79a645af833fa9eb5c7799333ce3eeb2da7"
         }
       ],
       "properties": [
@@ -88,13 +88,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f2532d61aec7a42bb06f1e273d37a43af256876035c665e9fe142de4d86b83db"
+          "content": "8496a35b6c9c35577dedb081dbdc52756aced1c71d210642ca18f4d183f86fbb"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "10711"
+          "value": "10701"
         }
       ]
     }

@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.workflows.exec-ops",
       "version": "1.1.0",
-      "description": "Real-work workflow pack (RFC 0013, ADR 0149). The Executive / Chief-of-Staff cluster: Daily Executive Briefing, Meeting Prep & Attendee Dossier, and Board / Investor Update Pack. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.analytics) and, where a workflow touches an external system, binds a connection pack via core.openwop.http.openapi-call (connectionRef) — so a configured connection runs live and an unconfigured one surfaces a connect prompt rather than failing. Every external send is gated by core.chat.approvalGate; the read-only briefing is ungated. All tenant-specific values are run parameters (replay-deterministic). Resolves fully on hosts that ship the feature + http/mcp + chat packs (the OpenWOP reference app); the connection bindings are configured by the operator under Access & data → Connections.",
+      "description": "Real-work workflow pack (RFC 0013). The Executive / Chief-of-Staff cluster: Daily Executive Briefing, Meeting Prep & Attendee Dossier, and Board / Investor Update Pack. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.analytics) and, where a workflow touches an external system, binds a connection pack via core.openwop.http.openapi-call (connectionRef) — so a configured connection runs live and an unconfigured one surfaces a connect prompt rather than failing. Every external send is gated by core.chat.approvalGate; the read-only briefing is ungated. All tenant-specific values are run parameters (replay-deterministic). Resolves fully on hosts that ship the feature + http/mcp + chat packs (the OpenWOP reference app); the connection bindings are configured by the operator under Access & data → Connections.",
       "licenses": [
         {
           "license": {
@@ -20,7 +20,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "606694b7f5ac616b07e004523768b49fa2c2fe41973c4713377a96475b7ef897"
+          "content": "d94f4c49a9ada20fd671afb1007b431124a9aa8e0883888b29a167c2326bb088"
         }
       ],
       "purl": "pkg:openwop/core.openwop.workflows.exec-ops@1.1.0"
@@ -72,7 +72,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ec1eef7c735727590f6779b98dbd5e26ebec7f2715fb74fc2140ea3fd2449b27"
+          "content": "de331ce882ce8f1d288cded2bc75d4b28f3a28c8348ad47b9bb06d0dda686192"
         }
       ],
       "properties": [
@@ -88,13 +88,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7acd0f3f8138aebfb8aab9971bb4f4f743c510c5a1c5475617bbd6b9fc79ab92"
+          "content": "6b759905a978a1d017a21c1a6d39febf0b835a4ed0992054919c4680ffec9fd2"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "7092"
+          "value": "7082"
         }
       ]
     }

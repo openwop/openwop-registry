@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.workflows.approvals",
       "version": "1.0.0",
-      "description": "Real-work workflow pack (RFC 0013, ADR 0198) — the Approvals cluster, the single most-used enterprise automation shape (Power Automate's #1 template is a sign-off flow with ~3.35M instantiations): Request Sign-off (an open gate any team member can approve — the zero-config marquee) and Two-Stage Sign-off (an ordered approval chain: stage two is only asked after stage one approves — sequential chains are DAG composition, not a new primitive). Gates support quorum (requiredApprovals), named approvers (approverRefs), and out-of-office delegation (an approver's active delegation lets their delegate act, counted as ONE identity — ADR 0198). All tenant values are run parameters (replay-deterministic).",
+      "description": "Real-work workflow pack (RFC 0013) — the Approvals cluster, the single most-used enterprise automation shape (Power Automate's #1 template is a sign-off flow with ~3.35M instantiations): Request Sign-off (an open gate any team member can approve — the zero-config marquee) and Two-Stage Sign-off (an ordered approval chain: stage two is only asked after stage one approves — sequential chains are DAG composition, not a new primitive). Gates support quorum (requiredApprovals), named approvers (approverRefs), and out-of-office delegation (an approver's active delegation lets their delegate act, counted as ONE identity). All tenant values are run parameters (replay-deterministic).",
       "licenses": [
         {
           "license": {
@@ -20,7 +20,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "82a19d95d0b49fa682608862ea9a0eb83c6917a6a137667ff619fd1c55e0e5ca"
+          "content": "8ff18faa634dfaa8beb8f758fd42bcf1f49856ab247eeb20d08f619828c934fc"
         }
       ],
       "purl": "pkg:openwop/core.openwop.workflows.approvals@1.0.0"
@@ -72,7 +72,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b89498d1d82d4eabaed01f40caf109b4e0bab6bd030b069e288500b61cbd80c8"
+          "content": "04a2a7e46a4c6ce9ec6613919795325b58002bbb943d8ba5446da64e49780325"
         }
       ],
       "properties": [
@@ -88,13 +88,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "aa2b9140f4e75a5a6559e1debba175dfe89959a4d8205a2add93fc24032bbd6b"
+          "content": "fd75e7171198e993b79dc99a4d8f4b2c99841ae4201e3154b6f1a2a7015afd8c"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "4383"
+          "value": "4360"
         }
       ]
     }

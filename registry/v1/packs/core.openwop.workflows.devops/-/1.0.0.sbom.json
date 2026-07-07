@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.workflows.devops",
       "version": "1.0.0",
-      "description": "Real-work workflow pack (RFC 0013, ADR 0190 Phase 4) — the DevOps cluster: senior-style code review of a diff, changelog/release-notes drafting from a commit log, CI-failure diagnosis from a signature-verified webhook, and a stale-issue gardener over the public GitHub API. All four are ADVISORY — they analyze and notify in-app, never write to your repo or post comments (an authenticated GitHub write path would bind a connection behind an approval gate; deferred until the MCP-reach connection binding has a chain precedent). These chains do not run the Code Reviewer / Git Author AGENTS — those remain chat-drivable via the agents surface; the chains use short chain-local prompts over core.ai.chatCompletion. All tenant values are run parameters (replay-deterministic).",
+      "description": "Real-work workflow pack (RFC 0013) — the DevOps cluster: senior-style code review of a diff, changelog/release-notes drafting from a commit log, CI-failure diagnosis from a signature-verified webhook, and a stale-issue gardener over the public GitHub API. All four are ADVISORY — they analyze and notify in-app, never write to your repo or post comments (an authenticated GitHub write path would bind a connection behind an approval gate; deferred until the MCP-reach connection binding has a chain precedent). These chains do not run the Code Reviewer / Git Author AGENTS — those remain chat-drivable via the agents surface; the chains use short chain-local prompts over core.ai.chatCompletion. All tenant values are run parameters (replay-deterministic).",
       "licenses": [
         {
           "license": {
@@ -20,7 +20,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8a8ab94e624f7db46a5bab4c6a24ea23a2225a5e555e3cb83a556b2f3a1ae6af"
+          "content": "55a49df67fea538c76ffe337ee8bce52c793bb5e39a27feda0f7d952cc705d88"
         }
       ],
       "purl": "pkg:openwop/core.openwop.workflows.devops@1.0.0"
@@ -72,7 +72,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "34e2c368ea8fb297832ec3c6640882972fbddb780897dd2bf1b6e0365e049de9"
+          "content": "215eca43df2a93e6f45294f9c5b9d996e6820998976f3480df2066f0c31b51c7"
         }
       ],
       "properties": [
@@ -88,13 +88,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c618d99f82456b0884ddabc23d2904bd5640505b94bea5e2e35bea8d76c537df"
+          "content": "29ba0726b6761dec8d58e344961b7c8b9ae75ae327027ad1aed21ebdc553d876"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "7358"
+          "value": "7340"
         }
       ]
     }

@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.workflows.it-support",
       "version": "1.2.1",
-      "description": "Real-work workflow pack (RFC 0013, ADR 0149, ADR 0208) — the IT / Support cluster: Incident Triage & Major-Incident Comms. An AI classifier assesses each incident's severity; routine incidents go to a recommended knowledge-base article and a ticket, while major incidents go to human-approved stakeholder updates in Slack — and each incident finishes with a post-incident summary. All tenant values are run parameters (replay-deterministic). Resolves on hosts shipping the kb + http + ai + chat + integration packs. Published under core.openwop.workflows.* (openwop-team key).",
+      "description": "Real-work workflow pack (RFC 0013) — the IT / Support cluster: Incident Triage & Major-Incident Comms. An AI classifier assesses each incident's severity; routine incidents go to a recommended knowledge-base article and a ticket, while major incidents go to human-approved stakeholder updates in Slack — and each incident finishes with a post-incident summary. All tenant values are run parameters (replay-deterministic). Resolves on hosts shipping the kb + http + ai + chat + integration packs. Published under core.openwop.workflows.* (openwop-team key).",
       "licenses": [
         {
           "license": {
@@ -20,7 +20,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "dd505ef59ad66c56a9ec106acc77292ea849678c2fd3a20c57b65978f5bfb3e8"
+          "content": "978ddd744f674a56fb8bc3a3d44d2c3f4b4d2435674d0f3429fb6eb176bb4213"
         }
       ],
       "purl": "pkg:openwop/core.openwop.workflows.it-support@1.2.1"
@@ -72,7 +72,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "380c9fb4c218ca0c72434f12d2551f8d9aec07b05c8af91f5cdbdedb0be06a8f"
+          "content": "e249ec07e76cdef1bc7c47e41836fea39148bc405fad68d04f9b69f350929205"
         }
       ],
       "properties": [
@@ -88,13 +88,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "dc3d80b3bc144cca4105b830016f0f82d5c99ca21efeeb763668ff5c0485010c"
+          "content": "102a20f2a0165d82a5e796e682537720e9bd4adb57e1fb6b065309fc7d11cb24"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "4209"
+          "value": "4189"
         }
       ]
     }

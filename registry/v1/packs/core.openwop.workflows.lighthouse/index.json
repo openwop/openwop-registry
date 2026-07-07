@@ -1,7 +1,7 @@
 {
   "name": "core.openwop.workflows.lighthouse",
   "kind": "workflow-chain",
-  "description": "Real-work workflow pack (RFC 0013, ADR 0149 / ADR 0155 follow-on). The five zero-config 'lighthouse' workflows from the ADR 0149 catalog — Lead Triage, Account Brief, Renewal & Churn-Risk Digest, RFP Response, and Post-Meeting Follow-up — authored entirely over node typeIds shipped with this host (feature.crm/kb/analytics + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.integration.*). Each rides real tenant data through the feature node packs, reasons with the LLM node, gates every external send behind a human approval, and delivers a usable artifact. Tenant-specific values are RUN PARAMETERS (never hardcoded) so the expansion stays replay-deterministic. Picking one in the builder instantiates a fully-editable, runnable, assignable workflow.",
+  "description": "Real-work workflow pack (RFC 0013 follow-on). The five zero-config 'lighthouse' workflows from the catalog — Lead Triage, Account Brief, Renewal & Churn-Risk Digest, RFP Response, and Post-Meeting Follow-up — authored entirely over node typeIds shipped with this host (feature.crm/kb/analytics + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.integration.*). Each rides real tenant data through the feature node packs, reasons with the LLM node, gates every external send behind a human approval, and delivers a usable artifact. Tenant-specific values are RUN PARAMETERS (never hardcoded) so the expansion stays replay-deterministic. Picking one in the builder instantiates a fully-editable, runnable, assignable workflow.",
   "author": "openwop",
   "license": "Apache-2.0",
   "tags": [],
@@ -36,7 +36,7 @@
       "signatureUrl": "/v1/packs/core.openwop.workflows.lighthouse/-/1.1.0.sig",
       "signingMethod": "manual",
       "signingKeyId": "openwop-team-1",
-      "integrity": "sha256-sxJsaITbpkuMWc98G2KgTgzE6Fu5U98tQucaqDrNMWI=",
+      "integrity": "sha256-ymTaPPvyBIUo13Wn/h2O9cDonVbbH++vxFvs3eDExqE=",
       "deprecated": false,
       "yanked": false
     }
