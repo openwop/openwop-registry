@@ -1,0 +1,169 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.agents.audit-summarizer@1.0.0",
+      "type": "library",
+      "name": "core.openwop.agents.audit-summarizer",
+      "version": "1.0.0",
+      "description": "Audit-trail summarizer agent. Compresses raw audit logs into executive summaries, highlights anomalies, tracks pattern shifts over time via long-term memory. Pure-agent pack.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/packs/core.openwop.agents.audit-summarizer"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fe490aac7a1fa3b31b7c29f05f3bb0155e9ce941c751b0d7a5dfbb42f3f68b57"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.agents.audit-summarizer@1.0.0"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f85b822d3e534d410ae56aad6f2b65c73148180b4885932bdb0043421560da78"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1545"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "79c3613e61b49d7fbc788ec20ca0342382a10fa0fcd653d3ea9c335a3ab0e103"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a9b417e8763e97dc89f229c7b59829d848679937485106dae60c0da4b7b4e67c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1624"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/audit-summarizer.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "215e6d85b7c505f25372641e46e8a5442cf36450493d4ce532c06b0d22d9f4ea"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3083"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/audit-summarizer.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3bdbed2ada13d9318844e784bb92b2a9a336bcfa7dde70783f9c900cff01aa4a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3815"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/audit-summarizer.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0a52663d22b34ca462f1c317400c9937f5727a8bcfd76a6debf2a49375e7da90"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1965"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.agents.audit-summarizer@1.0.0",
+      "dependsOn": [
+        "host:aiProviders",
+        "host:host.agentRuntime",
+        "host:openwop.agents.memoryBackends"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,266 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.agents.devops-crew@1.0.0",
+      "type": "library",
+      "name": "core.openwop.agents.devops-crew",
+      "version": "1.0.0",
+      "description": "DevOps crew. Planner decomposes runbook → executor runs steps via host.fs + host.queueBus + http → verifier confirms desired state. Gated on host fs + queue capabilities.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/packs/core.openwop.agents.devops-crew"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "83a0200bc355d06a75e057a19029e2c7cd0d77a55daaa5b5ffb0bf6eb40943df"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.agents.devops-crew@1.0.0"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6826b7d48aa5752862756761a4a74972eda983fe28c11053871c5e2b73f4faee"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1474"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "563479cd6d727b19c7bd1d9802e74215af6a0080877bd00ebdbbff622dffb8a7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "87b53171139715d9325f6a1b1c6f048d44599fd908e226df09e0d197dc689c44"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2933"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/executor.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "06baa10b07aa565051cfad3ec5a4b4c5af3a872f04248661ce7aee30be3a621c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1623"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/planner.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2053304502c5437789fe75292c16b640472c8fd35c8bfb3ea693fb83f1a2177e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2257"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/verifier.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c7370dac3caddd9693da14df048856c51034f69e5a98e45ef65c5b5b7b764866"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1291"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/executor.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1601282dbed6cebcdad26b4c67c246f852ab0608ada68f76cff1c5106c423ad0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "791"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/executor.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0798a7030427eb34db4a6476a2a9852a131a1ca5e48ea363322683df10f10ef1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "997"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/planner.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cdf7950876819660563bb557b830be94559a8ae7d679e981d625e965742d1d26"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1709"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/planner.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "edfa15e56f30ebc3ab0374ec2d8173e0cfe1bc9f3482e0d245cb1fee2ba544de"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "841"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/verifier.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3f53404c95aae09339cf42eb73359984c71e852fa1fecf039273158749f57230"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "989"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/verifier.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "75c34ee68434773d473dc962b1780c88688579560ef76f5a4e1d30cb0e1f3427"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "766"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.agents.devops-crew@1.0.0",
+      "dependsOn": [
+        "host:aiProviders",
+        "host:host.agentRuntime",
+        "host:host.fs",
+        "host:host.queueBus"
+      ]
+    }
+  ]
+}

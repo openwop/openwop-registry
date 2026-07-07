@@ -1,0 +1,168 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.agents.code-reviewer@1.0.0",
+      "type": "library",
+      "name": "core.openwop.agents.code-reviewer",
+      "version": "1.0.0",
+      "description": "Code review agent. Reviews diffs or files for correctness, style, security, and design. Diff-aware prompting; cites file:line in findings. Pure-agent pack.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/packs/core.openwop.agents.code-reviewer"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a010d30096585e88ddc314fe4419572b6cda3b6dfb2cbc3675aa8fefb89644fa"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.agents.code-reviewer@1.0.0"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b7137e2b87eea444f4143a02e0fc018dfc0968c71fad55359bcc2220e712e5bd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1658"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "04bde3e7746134bfd9c5e695a95e2e6b9d96ca12331f215a9230371169db53bb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "374c418c4fc66587f6dce3f5bdbb8ed50ad9bd490b47845dcc3f59905be3a8e9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1559"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/code-reviewer.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "638f2beb535153cc20e269f54f8ad0508009d03ca594c30556241ca1e859e524"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3140"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/code-reviewer.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6b9150a76fc75bf44986b4ae1eeb952066c1c429377bc3d7018090a57ac2c3c6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2111"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/code-reviewer.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c1c8c1b2464c2dafd6a92ee36860bed0b20e5dd767d4cb974c9ed455bca1fe3b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1455"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.agents.code-reviewer@1.0.0",
+      "dependsOn": [
+        "host:aiProviders",
+        "host:host.agentRuntime"
+      ]
+    }
+  ]
+}

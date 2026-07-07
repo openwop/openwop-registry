@@ -1,0 +1,33 @@
+{
+  "name": "core.openwop.agents.devops-crew",
+  "kind": "node",
+  "description": "DevOps crew. Planner decomposes runbook → executor runs steps via host.fs + host.queueBus + http → verifier confirms desired state. Gated on host fs + queue capabilities.",
+  "author": "OpenWOP Working Group",
+  "license": "Apache-2.0",
+  "homepage": "https://openwop.dev/packs/core.openwop.agents.devops-crew",
+  "repository": "https://github.com/openwop/openwop",
+  "tags": [],
+  "typeIds": [
+    "core.openwop.agents.devops-crew.planner",
+    "core.openwop.agents.devops-crew.executor",
+    "core.openwop.agents.devops-crew.verifier"
+  ],
+  "nodeCount": 0,
+  "agentCount": 3,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.agents.devops-crew/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.agents.devops-crew/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.agents.devops-crew/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-g6AgC8NV0Gp14FehkCnix80Nd6VdqqW1/7C/brQJQ98=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

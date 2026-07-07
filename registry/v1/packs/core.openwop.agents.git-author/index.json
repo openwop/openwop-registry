@@ -1,0 +1,31 @@
+{
+  "name": "core.openwop.agents.git-author",
+  "kind": "node",
+  "description": "Git authoring agent — drafts commit messages, PR bodies, release notes, and changelog entries from diffs. Pure-agent pack.",
+  "author": "OpenWOP Working Group",
+  "license": "Apache-2.0",
+  "homepage": "https://openwop.dev/packs/core.openwop.agents.git-author",
+  "repository": "https://github.com/openwop/openwop",
+  "tags": [],
+  "typeIds": [
+    "core.openwop.agents.git-author.default"
+  ],
+  "nodeCount": 0,
+  "agentCount": 1,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.agents.git-author/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.agents.git-author/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.agents.git-author/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-G6MRPOWm6gn5fYUBwPg0+38BTLV5aB+/COMRkTFiAUM=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

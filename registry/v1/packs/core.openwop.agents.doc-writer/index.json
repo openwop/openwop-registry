@@ -1,0 +1,31 @@
+{
+  "name": "core.openwop.agents.doc-writer",
+  "kind": "node",
+  "description": "Technical documentation author. Produces README sections, API docs, architecture notes, and changelogs from source material. RAG-grounded. Pure-agent pack.",
+  "author": "OpenWOP Working Group",
+  "license": "Apache-2.0",
+  "homepage": "https://openwop.dev/packs/core.openwop.agents.doc-writer",
+  "repository": "https://github.com/openwop/openwop",
+  "tags": [],
+  "typeIds": [
+    "core.openwop.agents.doc-writer.default"
+  ],
+  "nodeCount": 0,
+  "agentCount": 1,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.agents.doc-writer/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.agents.doc-writer/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.agents.doc-writer/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-7f7zMGEWC+f5i6fYqQtSQtyx8/S0IfYfds6XFBSU9Zk=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

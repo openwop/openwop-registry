@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>openwop registry — packs.openwop.dev</title>
-<meta name="description" content="The canonical signed node-pack registry for the openwop workflow orchestration protocol. 96 pack(s), 136 version(s) published.">
+<meta name="description" content="The canonical signed node-pack registry for the openwop workflow orchestration protocol. 117 pack(s), 160 version(s) published.">
 <meta name="robots" content="index, follow">
 
 <meta property="og:type" content="website">
@@ -411,8 +411,8 @@
     </h1>
     <p class="lead">Canonical signed node-pack registry for the <a href="https://openwop.dev/">openwop</a> workflow orchestration protocol.</p>
     <div class="summary">
-      <div><strong>96</strong><span>packs published</span></div>
-      <div><strong>136</strong><span>versions total</span></div>
+      <div><strong>117</strong><span>packs published</span></div>
+      <div><strong>160</strong><span>versions total</span></div>
       <div><strong>Ed25519</strong><span>signing algorithm</span></div>
     </div>
   </header>
@@ -435,7 +435,7 @@
         </label>
         <label class="tab" for="tab-agents" role="tab">
           <span class="tab-label">Agent packs</span>
-          <span class="tab-count">6</span>
+          <span class="tab-count">27</span>
         </label>
         <label class="tab" for="tab-artifact-types" role="tab">
           <span class="tab-label">Artifact-type packs</span>
@@ -1240,39 +1240,291 @@
           </td>
         </tr>
         <tr>
+          <td class="name"><code>core.openwop.agents.api-designer</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="agents in latest manifest">1</td>
+          <td class="desc">API design agent. Authors OpenAPI 3.1, AsyncAPI 3.0, and JSON Schema 2020-12 documents from natural-language briefs. Pure-agent pack.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.agents.api-designer/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.agents.api-designer/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.agents.api-designer/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.agents.audit-summarizer</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="agents in latest manifest">1</td>
+          <td class="desc">Audit-trail summarizer agent. Compresses raw audit logs into executive summaries, highlights anomalies, tracks pattern shifts over time via long-term memory. Pure-agent pack.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.agents.audit-summarizer/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.agents.audit-summarizer/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.agents.audit-summarizer/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.agents.classifier</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="agents in latest manifest">1</td>
+          <td class="desc">Fast classification agent. Caller supplies labels + optional rationale schema; agent picks the best-fit label(s). Stateless, single-shot. Pure-agent pack.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.agents.classifier/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.agents.classifier/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.agents.classifier/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.agents.code-reviewer</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="agents in latest manifest">1</td>
+          <td class="desc">Code review agent. Reviews diffs or files for correctness, style, security, and design. Diff-aware prompting; cites file:line in findings. Pure-agent pack.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.agents.code-reviewer/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.agents.code-reviewer/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.agents.code-reviewer/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
           <td class="name"><code>core.openwop.agents.deep-research</code> </td>
-          <td class="version">1.0.1</td>
+          <td class="version">1.0.2</td>
           <td class="count" title="agents in latest manifest">1</td>
           <td class="desc">Long-horizon research agent. Plans, dispatches sub-investigations, retrieves from RAG + web, writes up findings. Mirrors LangGraph Deep Agents (planner + subagents + filesystem). Pure-agent pack.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v1/packs/core.openwop.agents.deep-research/-/1.0.1.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v1/packs/core.openwop.agents.deep-research/-/1.0.1.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v1/packs/core.openwop.agents.deep-research/-/1.0.1.sig" title="Ed25519 signature">sig</a>
+            <a href="/v1/packs/core.openwop.agents.deep-research/-/1.0.2.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.agents.deep-research/-/1.0.2.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.agents.deep-research/-/1.0.2.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.agents.devops-crew</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="agents in latest manifest">3</td>
+          <td class="desc">DevOps crew. Planner decomposes runbook → executor runs steps via host.fs + host.queueBus + http → verifier confirms desired state. Gated on host fs + queue capabilities.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.agents.devops-crew/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.agents.devops-crew/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.agents.devops-crew/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.agents.doc-writer</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="agents in latest manifest">1</td>
+          <td class="desc">Technical documentation author. Produces README sections, API docs, architecture notes, and changelogs from source material. RAG-grounded. Pure-agent pack.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.agents.doc-writer/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.agents.doc-writer/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.agents.doc-writer/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.agents.document-author</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="agents in latest manifest">1</td>
+          <td class="desc">Office-document authoring agent — produces PDF / Word / Excel / PowerPoint deliverables from briefs. Pure-agent pack.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.agents.document-author/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.agents.document-author/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.agents.document-author/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.agents.expense-categorizer</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="agents in latest manifest">1</td>
+          <td class="desc">Expense categorization agent. Classifies expenses against a policy-defined chart of accounts and flags policy violations. Pure-agent pack.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.agents.expense-categorizer/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.agents.expense-categorizer/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.agents.expense-categorizer/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.agents.frontend-designer</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="agents in latest manifest">1</td>
+          <td class="desc">Frontend / UI design agent. Produces design-system-aware component specs, page layouts, and Storybook-style mocks from briefs. Mirrors Anthropic&#39;s `frontend-design` skill (top-installed in marketplace).</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.agents.frontend-designer/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.agents.frontend-designer/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.agents.frontend-designer/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.agents.git-author</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="agents in latest manifest">1</td>
+          <td class="desc">Git authoring agent — drafts commit messages, PR bodies, release notes, and changelog entries from diffs. Pure-agent pack.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.agents.git-author/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.agents.git-author/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.agents.git-author/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.agents.invoice-extractor</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="agents in latest manifest">1</td>
+          <td class="desc">Invoice extraction agent. OCR-aware structured extraction of vendor, line items, totals, tax, payment terms from PDF or scanned-image invoices. Pure-agent pack.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.agents.invoice-extractor/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.agents.invoice-extractor/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.agents.invoice-extractor/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.agents.long-doc-summarizer</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="agents in latest manifest">1</td>
+          <td class="desc">Long-document summarizer using map-reduce. Splits input into chunks, summarizes each, then synthesizes a final summary. Handles documents that exceed any single LLM&#39;s context window. Pure-agent pack.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.agents.long-doc-summarizer/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.agents.long-doc-summarizer/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.agents.long-doc-summarizer/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.agents.policy-reviewer</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="agents in latest manifest">1</td>
+          <td class="desc">Policy reviewer agent. Reads content (docs, emails, ads, code) against a set of policy rules and flags violations with rationale. Pure-agent pack.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.agents.policy-reviewer/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.agents.policy-reviewer/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.agents.policy-reviewer/-/1.0.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr>
           <td class="name"><code>core.openwop.agents.react</code> </td>
-          <td class="version">1.0.1</td>
+          <td class="version">1.0.2</td>
           <td class="count" title="agents in latest manifest">1</td>
           <td class="desc">Canonical ReAct (Reason + Act) loop agent. Pure-agent pack — ships one agent manifest with a configurable toolAllowlist. Composes via dispatch and consumes host.aiProviders + host.agentRuntime. The &#39;hello world&#39; of openwop agents.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v1/packs/core.openwop.agents.react/-/1.0.1.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v1/packs/core.openwop.agents.react/-/1.0.1.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v1/packs/core.openwop.agents.react/-/1.0.1.sig" title="Ed25519 signature">sig</a>
+            <a href="/v1/packs/core.openwop.agents.react/-/1.0.2.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.agents.react/-/1.0.2.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.agents.react/-/1.0.2.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.agents.research-crew</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="agents in latest manifest">4</td>
+          <td class="desc">Multi-agent research crew. 4 specialists — planner / retriever / critic / writer — bundled into one pack for dispatch via orchestrator. Mirrors CrewAI&#39;s sequential/hierarchical crew templates.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.agents.research-crew/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.agents.research-crew/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.agents.research-crew/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.agents.sales-coach</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="agents in latest manifest">1</td>
+          <td class="desc">Sales Coach agent. Analyzes call transcripts, identifies coaching moments, recommends next steps, and tracks rep development over time via long-term memory. Pure-agent pack.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.agents.sales-coach/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.agents.sales-coach/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.agents.sales-coach/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.agents.sdr</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="agents in latest manifest">1</td>
+          <td class="desc">Sales Development Representative agent. Researches prospects, drafts outreach (email/LinkedIn/SMS), schedules follow-ups. Persists prospect history to long-term memory. Pure-agent pack.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.agents.sdr/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.agents.sdr/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.agents.sdr/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.agents.structured-extractor</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="agents in latest manifest">1</td>
+          <td class="desc">Production-grade structured extraction agent. Caller supplies a JSON Schema; agent extracts conforming output with an auto-fix loop on validation failure. Mirrors LangGraph Trustcall. Pure-agent pack.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.agents.structured-extractor/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.agents.structured-extractor/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.agents.structured-extractor/-/1.0.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr>
           <td class="name"><code>core.openwop.agents.supervisor</code> </td>
-          <td class="version">1.0.1</td>
+          <td class="version">1.0.2</td>
           <td class="count" title="agents in latest manifest">1</td>
           <td class="desc">Multi-agent supervisor. Routes user tasks to specialized subagents via dispatch + orchestrator semantics. Mirrors LangGraph Supervisor and CrewAI&#39;s hierarchical-process pattern. Pure-agent pack.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v1/packs/core.openwop.agents.supervisor/-/1.0.1.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v1/packs/core.openwop.agents.supervisor/-/1.0.1.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v1/packs/core.openwop.agents.supervisor/-/1.0.1.sig" title="Ed25519 signature">sig</a>
+            <a href="/v1/packs/core.openwop.agents.supervisor/-/1.0.2.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.agents.supervisor/-/1.0.2.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.agents.supervisor/-/1.0.2.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.agents.support-crew</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="agents in latest manifest">3</td>
+          <td class="desc">Support 3-agent crew. Triage → Resolver → Escalator. Single dispatch handles the full ticket lifecycle.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.agents.support-crew/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.agents.support-crew/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.agents.support-crew/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.agents.support-resolver</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="agents in latest manifest">1</td>
+          <td class="desc">Customer support resolver agent. KB-grounded answers with explicit citation, escalation handoff on low confidence. Pure-agent pack.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.agents.support-resolver/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.agents.support-resolver/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.agents.support-resolver/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.agents.support-triage</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="agents in latest manifest">1</td>
+          <td class="desc">Customer support triage agent. Categorizes inbound tickets, routes to the right queue, surfaces severity + customer-segment signals. Pure-agent pack.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.agents.support-triage/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.agents.support-triage/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.agents.support-triage/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.agents.test-author</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="agents in latest manifest">1</td>
+          <td class="desc">Test authoring agent. Generates unit, integration, and e2e tests from source code or specs. Pure-agent pack.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.agents.test-author/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.agents.test-author/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.agents.test-author/-/1.0.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr>
@@ -1829,7 +2081,7 @@ const ok = verify(null, readFileSync('pack.tgz'), pub, readFileSync('pack.sig'))
   </section>
 
   <footer>
-    Generated 2026-07-07T16:09:31.270Z · <a href="https://openwop.dev/">openwop.dev</a> · <a href="https://github.com/openwop/openwop">openwop on GitHub</a>
+    Generated 2026-07-07T18:07:06.069Z · <a href="https://openwop.dev/">openwop.dev</a> · <a href="https://github.com/openwop/openwop">openwop on GitHub</a>
   </footer>
 </main>
 </body>

@@ -42,7 +42,8 @@
       },
       "confidence": {
         "defaultThreshold": 0.7
-      }
+      },
+      "role": "skill"
     },
     {
       "agentId": "core.openwop.agents.research-crew.retriever",
@@ -68,7 +69,8 @@
       },
       "confidence": {
         "defaultThreshold": 0.7
-      }
+      },
+      "role": "skill"
     },
     {
       "agentId": "core.openwop.agents.research-crew.critic",
@@ -89,7 +91,8 @@
       },
       "confidence": {
         "defaultThreshold": 0.75
-      }
+      },
+      "role": "skill"
     },
     {
       "agentId": "core.openwop.agents.research-crew.writer",
@@ -110,7 +113,8 @@
       },
       "confidence": {
         "defaultThreshold": 0.7
-      }
+      },
+      "role": "skill"
     }
   ],
   "runtime": {
