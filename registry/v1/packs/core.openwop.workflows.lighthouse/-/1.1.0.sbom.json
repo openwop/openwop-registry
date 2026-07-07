@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.workflows.lighthouse",
       "version": "1.1.0",
-      "description": "Real-work workflow pack (RFC 0013, ADR 0149 / ADR 0155 follow-on). The five zero-config 'lighthouse' workflows from the ADR 0149 catalog — Lead Triage, Account Brief, Renewal & Churn-Risk Digest, RFP Response, and Post-Meeting Follow-up — authored entirely over node typeIds shipped with this host (feature.crm/kb/analytics + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.integration.*). Each rides real tenant data through the feature node packs, reasons with the LLM node, gates every external send behind a human approval, and delivers a usable artifact. Tenant-specific values are RUN PARAMETERS (never hardcoded) so the expansion stays replay-deterministic. Picking one in the builder instantiates a fully-editable, runnable, assignable workflow.",
+      "description": "Real-work workflow pack (RFC 0013 follow-on). The five zero-config 'lighthouse' workflows from the catalog — Lead Triage, Account Brief, Renewal & Churn-Risk Digest, RFP Response, and Post-Meeting Follow-up — authored entirely over node typeIds shipped with this host (feature.crm/kb/analytics + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.integration.*). Each rides real tenant data through the feature node packs, reasons with the LLM node, gates every external send behind a human approval, and delivers a usable artifact. Tenant-specific values are RUN PARAMETERS (never hardcoded) so the expansion stays replay-deterministic. Picking one in the builder instantiates a fully-editable, runnable, assignable workflow.",
       "licenses": [
         {
           "license": {
@@ -20,7 +20,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "b3126c6884dba64b8c59cf7c1b62a04e0cc4e85bb953df2d42e71aa83acd3162"
+          "content": "ca64da3cfbf2048528d775a7fe1d8ef5c0e89d56db1fefafc45becdde0c4c6a1"
         }
       ],
       "purl": "pkg:openwop/core.openwop.workflows.lighthouse@1.1.0"
@@ -72,7 +72,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "71acd8a8c73a8606b06f7aa4a0e6cd4efe92c0602a7f8c0aac3fc871f95d124d"
+          "content": "323d7373ebd9731d3d20f4f64d450c9c027315fbe07d926c33976d71b399559e"
         }
       ],
       "properties": [
@@ -88,13 +88,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "dc5d735b2e23072109ff32afb4ec902609d12e4efd8772b72d32c728d9a91be2"
+          "content": "eaaa87afd74872e844ba001d84f0b60a80859fa9c4516ce27b88c1c69695b0f9"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "8536"
+          "value": "8506"
         }
       ]
     }

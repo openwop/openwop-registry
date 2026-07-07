@@ -2,7 +2,7 @@
   "name": "core.openwop.workflows.research",
   "version": "1.0.0",
   "kind": "workflow-chain",
-  "description": "Real-work workflow pack (RFC 0013, ADR 0190 Phase 5) — the Research cluster: turn a question into a short, cited web brief. Rides the ADR 0101 unified web search (core.web.search → the host.webResearch surface): live results when a search key is configured (BYOK secret 'web-search' on the keys page, or the host's OPENWOP_WEBSEARCH_API_KEY), an honest demo placeholder when not — the synthesis says so plainly instead of pretending. For deep, multi-source, long-horizon research use the Deep Research AGENT in chat; this chain is the quick-brief shape. All tenant values are run parameters (replay-deterministic).",
+  "description": "Real-work workflow pack (RFC 0013) — the Research cluster: turn a question into a short, cited web brief. Rides the unified web search (core.web.search → the host.webResearch surface): live results when a search key is configured (BYOK secret 'web-search' on the keys page, or the host's OPENWOP_WEBSEARCH_API_KEY), an honest demo placeholder when not — the synthesis says so plainly instead of pretending. For deep, multi-source, long-horizon research use the Deep Research AGENT in chat; this chain is the quick-brief shape. All tenant values are run parameters (replay-deterministic).",
   "author": "openwop",
   "license": "Apache-2.0",
   "engines": {
@@ -99,5 +99,5 @@
     "publicKeyRef": "openwop-team-1",
     "signatureRef": "keys/pack.json.sig"
   },
-  "integrity": "sha256-DU8Q8yCpJNZ6HBrHffCHE463yuIQ5SjlEIJKjySDYT4="
+  "integrity": "sha256-PNFKA+d/EDgfyOtEkWtBTMOqgvODdFOx6iwXEWeh8DU="
 }

@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.connections.linkedin-ads",
       "version": "1.0.0",
-      "description": "LinkedIn Ads connection pack (RFC 0095) — OAuth2 provider for the LinkedIn Marketing API. Reach is `openapi`: the manifest declares the global LinkedIn OAuth hosts and points at the Marketing API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the client id/secret host-side (ADR 0024 §7). One of the three ad platforms Campaign Studio syncs (ADR 0159 — Google / Meta / LinkedIn Ads).",
+      "description": "LinkedIn Ads connection pack (RFC 0095) — OAuth2 provider for the LinkedIn Marketing API. Reach is `openapi`: the manifest declares the global LinkedIn OAuth hosts and points at the Marketing API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the client id/secret host-side. One of the three ad platforms Campaign Studio syncs (Google / Meta / LinkedIn Ads).",
       "licenses": [
         {
           "license": {
@@ -20,7 +20,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ab2acea94f76cb0ee9890561f38dd6c91af5d229204eea6407dda9409741ee49"
+          "content": "d25b23fac5c46f7b63a2cccc69c8fcde662ed8e73bf22a92c2923fb8e2a1d4b2"
         }
       ],
       "purl": "pkg:openwop/core.openwop.connections.linkedin-ads@1.0.0"
@@ -40,7 +40,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e500d216d9080122c2e5f2163d7a4857989a35c3b9c63cf45405e85aeade4233"
+          "content": "2e150046cceeb0899713dada5dbe901948dbc76fdb3af1c3372ba1df2313490e"
         }
       ],
       "properties": [
@@ -56,13 +56,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "79592e46b11dc582668f4c8b86878e98ba79527f4a7a04ddc7d308a0f21d3461"
+          "content": "756124f4788ecc33a1ce19bd44b5c7814084b2d30821ea93c8b59f358a834a69"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "1457"
+          "value": "1429"
         }
       ]
     }

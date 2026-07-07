@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.workflows.finance",
       "version": "1.1.0",
-      "description": "Real-work workflow pack (RFC 0013, ADR 0149) — the Finance cluster: Invoice → AP Processing, Month-End Close Checklist, and Expense/Budget Approval + anomaly detection. Reasons with core.ai.chatCompletion; recommends ERP actions (validation + posting) provider-agnostically via core.openwop.connectors.erp-action (NetSuite when connected); every posting/reimbursement runs through a threshold core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + kb + integration packs. Published under core.openwop.workflows.* (openwop-team key).",
+      "description": "Real-work workflow pack (RFC 0013) — the Finance cluster: Invoice → AP Processing, Month-End Close Checklist, and Expense/Budget Approval + anomaly detection. Reasons with core.ai.chatCompletion; recommends ERP actions (validation + posting) provider-agnostically via core.openwop.connectors.erp-action (NetSuite when connected); every posting/reimbursement runs through a threshold core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + kb + integration packs. Published under core.openwop.workflows.* (openwop-team key).",
       "licenses": [
         {
           "license": {
@@ -20,7 +20,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "db7822a435e94417cb8060481dcf039150cd074b674944126e2270f17bed2580"
+          "content": "2304a829db8d7e0d030b66a786e67807dff84db622b13c3bf969537c0ba72d1f"
         }
       ],
       "purl": "pkg:openwop/core.openwop.workflows.finance@1.1.0"
@@ -72,7 +72,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e7099efad632050dff70a510d606221a75683041c1debefae5ea8dafcc2a7a92"
+          "content": "6d589f3b874756be5b662d18cfb3891602270c1084e8b5d93ca1e3d8881dec61"
         }
       ],
       "properties": [
@@ -88,13 +88,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "180e6b6b5459476efbb9cbf529e02bddbdff84c1392a9f9de2c7ed406e6d438e"
+          "content": "a94cb65e09a4a25cabd33f69becd8efdabfcecd4ef32c47968cdef123790f354"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "6632"
+          "value": "6622"
         }
       ]
     }

@@ -2,7 +2,7 @@
   "name": "core.openwop.connections.salesforce",
   "version": "1.0.0",
   "kind": "connection",
-  "description": "Salesforce connection pack (RFC 0095) — OAuth2 (web-server flow) provider for the Salesforce REST API. ADR 0033 DEPLOY-GATED. Reach is `openapi`: Salesforce has no single global first-party MCP server (the API lives on a per-org `*.my.salesforce.com` instance host, supplied per connection via instanceUrlTemplate), so a documented OpenAPI/REST surface is the honest day-1 reach (ADR 0033 §4). Carries NO secret; the operator supplies the connected-app consumer key/secret host-side (ADR 0024 §7).",
+  "description": "Salesforce connection pack (RFC 0095) — OAuth2 (web-server flow) provider for the Salesforce REST API. DEPLOY-GATED. Reach is `openapi`: Salesforce has no single global first-party MCP server (the API lives on a per-org `*.my.salesforce.com` instance host, supplied per connection via instanceUrlTemplate), so a documented OpenAPI/REST surface is the honest day-1 reach. Carries NO secret; the operator supplies the connected-app consumer key/secret host-side.",
   "license": "Apache-2.0",
   "engines": {
     "openwop": ">=1.0.0"
@@ -74,5 +74,5 @@
     "publicKeyRef": "openwop-team-1",
     "signatureRef": "keys/pack.json.sig"
   },
-  "integrity": "sha256-8iT0XXYybjhEcNzuN/temPYS/j0v6RPsFjVXJjAM1R8="
+  "integrity": "sha256-vMdlnmx/2b+Q1Pa3BbQISM9+qFGkH8DexavNQEmWq/Y="
 }

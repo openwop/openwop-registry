@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.workflows.starters",
       "version": "1.0.0",
-      "description": "Starter workflow pack (RFC 0013, ADR 0190) — the simple-pipe on-ramp tier: short single-trigger→action recipes (webhook→notify, form→table, schedule→digest, fetch→store) that run in under a minute with zero connections, before you graduate to the AI-agent packs. Trigger-shaped starters begin with a core.trigger.* pass-through entry node: bind them to a live source with a trigger subscription (POST /v1/trigger-subscriptions — webhook, email, or form; RFC 0099) or a Schedule; on a manual run the trigger payload is empty, so bind a source to see them shine. External sends stay behind a human approval gate; in-app notifications are direct. All tenant values are run parameters (replay-deterministic).",
+      "description": "Starter workflow pack (RFC 0013) — the simple-pipe on-ramp tier: short single-trigger→action recipes (webhook→notify, form→table, schedule→digest, fetch→store) that run in under a minute with zero connections, before you graduate to the AI-agent packs. Trigger-shaped starters begin with a core.trigger.* pass-through entry node: bind them to a live source with a trigger subscription (POST /v1/trigger-subscriptions — webhook, email, or form; RFC 0099) or a Schedule; on a manual run the trigger payload is empty, so bind a source to see them shine. External sends stay behind a human approval gate; in-app notifications are direct. All tenant values are run parameters (replay-deterministic).",
       "licenses": [
         {
           "license": {
@@ -20,7 +20,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "48b1d9f18aa43ce5e2e6f896b96e694b5e789a15b92ca5d107106626a02c0184"
+          "content": "35c8b46b2ac2a5b273b017db9d404af8d0af7fe9493959d9c16df32a5f9c7ec6"
         }
       ],
       "purl": "pkg:openwop/core.openwop.workflows.starters@1.0.0"
@@ -72,7 +72,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d76e660c23985130d66bbd48f282775e6b68633ff7b6c531b588223e56ee6bba"
+          "content": "0deeb9763ce316063db16d99a90852540f9eecd983b8914657210e42c4a28ec2"
         }
       ],
       "properties": [
@@ -88,13 +88,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9b67536645ec84c9dc2ca60c7b67861c468a0895261d98e8fdf43656085054c9"
+          "content": "941ba23b3a8c4112607c3e5f7e17b6cd8007f5f0536e639bea8455cc1c5eb388"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "8276"
+          "value": "8266"
         }
       ]
     }

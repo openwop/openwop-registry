@@ -1,7 +1,7 @@
 {
   "name": "core.openwop.artifact-types",
   "kind": "artifact-type",
-  "description": "Example artifact-type pack (ADR 0055 Phase 3 / RFC 0075) — proves the kind:'artifact-type' pack tier registers its declared types through the host artifact-type registry (registrationSource:'pack'), advertised under host.artifactTypes and served at /schemas/artifacts/{id}.schema.json.",
+  "description": "Example artifact-type pack (RFC 0075) — proves the kind:'artifact-type' pack tier registers its declared types through the host artifact-type registry (registrationSource:'pack'), advertised under host.artifactTypes and served at /schemas/artifacts/{id}.schema.json.",
   "author": "OpenWOP App",
   "license": "Apache-2.0",
   "tags": [],
@@ -21,7 +21,7 @@
       "signatureUrl": "/v1/packs/core.openwop.artifact-types/-/1.0.0.sig",
       "signingMethod": "manual",
       "signingKeyId": "openwop-team-1",
-      "integrity": "sha256-brTw9NxW2vQ7B1WiIon+qznHPQ4SpL+Gyc4kVQXXwTM=",
+      "integrity": "sha256-TaHb+bCW12yrpsQu+c52rcKs+AeeTBxoPLp+8EcDI1A=",
       "deprecated": false,
       "yanked": false
     }

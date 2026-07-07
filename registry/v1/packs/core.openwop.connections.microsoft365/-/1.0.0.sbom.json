@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.connections.microsoft365",
       "version": "1.0.0",
-      "description": "Microsoft 365 connection pack (RFC 0095) — OAuth2 provider for Teams, Outlook (Mail/Calendar), and SharePoint via the Microsoft Graph API. ADR 0033 DEPLOY-GATED. Reach is `openapi` against the Microsoft Graph OpenAPI surface: Microsoft's first-party remote MCP servers are per-tenant/preview (a tenant-templated URL, not a single global https endpoint the manifest can fix), so a stable Graph OpenAPI path is the honest day-1 reach (ADR 0033 §4 capability honesty). Carries NO secret; the operator supplies the OAuth client id/secret host-side (ADR 0024 §7).",
+      "description": "Microsoft 365 connection pack (RFC 0095) — OAuth2 provider for Teams, Outlook (Mail/Calendar), and SharePoint via the Microsoft Graph API. DEPLOY-GATED. Reach is `openapi` against the Microsoft Graph OpenAPI surface: Microsoft's first-party remote MCP servers are per-tenant/preview (a tenant-templated URL, not a single global https endpoint the manifest can fix), so a stable Graph OpenAPI path is the honest day-1 reach (capability honesty). Carries NO secret; the operator supplies the OAuth client id/secret host-side.",
       "licenses": [
         {
           "license": {
@@ -20,7 +20,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "63c40854401aaa96565526c50c8935080679c12a3fe88ff9bb2f8897677c10b2"
+          "content": "8cca6d66ae272390bac4c95a79121a746743a616908ee39b8111466f9cf4c07e"
         }
       ],
       "purl": "pkg:openwop/core.openwop.connections.microsoft365@1.0.0"
@@ -40,7 +40,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "28a7458cf50d42fcfc8a487dfe5f4c00e3f9cb47bdd31e5988784dcb9ae13d07"
+          "content": "6a965d9098508d6a4fcc81b322ee3d53dc36a1766a568c71acdf3dd019e9b3fd"
         }
       ],
       "properties": [
@@ -56,13 +56,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6a17cb1a0fe30123c2e00514c1a4f1791544ce8e2ec7c149f6f380638645ced7"
+          "content": "39c90967dab86fbbe4481b80b3d80b290cda10f4dcc62c09a15b024f59a1bd47"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "2528"
+          "value": "2491"
         }
       ]
     }

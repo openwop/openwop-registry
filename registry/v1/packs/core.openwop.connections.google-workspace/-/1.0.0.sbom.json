@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.connections.google-workspace",
       "version": "1.0.0",
-      "description": "Google Workspace connection pack (RFC 0095) — OAuth2 PKCE provider for Drive, Calendar, and Gmail via the Google APIs. Registry parity for the reference app's BUILT-IN `google` provider (day-1 UX P10 / C3): the app itself never loads this pack (the builtin wins by id precedence anyway — this pack deliberately uses the distinct id `google-workspace` so OTHER hosts can adopt it without shadowing semantics); it exists so packs.openwop.dev offers a Google productivity-suite connection alongside microsoft365 — previously the registry's only Google entry was google-ads. Read scopes are the day-1 consent; gmail.send / calendar.events are WRITE groups behind a separate re-consent (ADR 0024 §3). Carries NO secret; the operator supplies the OAuth client id/secret host-side (ADR 0024 §7).",
+      "description": "Google Workspace connection pack (RFC 0095) — OAuth2 PKCE provider for Drive, Calendar, and Gmail via the Google APIs. Registry parity for the reference app's BUILT-IN `google` provider (day-1 UX P10 / C3): the app itself never loads this pack (the builtin wins by id precedence anyway — this pack deliberately uses the distinct id `google-workspace` so OTHER hosts can adopt it without shadowing semantics); it exists so packs.openwop.dev offers a Google productivity-suite connection alongside microsoft365 — previously the registry's only Google entry was google-ads. Read scopes are the day-1 consent; gmail.send / calendar.events are WRITE groups behind a separate re-consent. Carries NO secret; the operator supplies the OAuth client id/secret host-side.",
       "licenses": [
         {
           "license": {
@@ -20,7 +20,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d35c5b0666c213c92b65b2b6d8cb2b185500f5ddef4596e8cc6d305c5200c7e5"
+          "content": "00af900eb10c1604c2d5a3b206780d979e2a70795e6c2e6dba3c3e857443488b"
         }
       ],
       "purl": "pkg:openwop/core.openwop.connections.google-workspace@1.0.0"
@@ -40,7 +40,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7c3c6796f6feae5707d5895c8f12d96fd5c8a179b4b7771810b8432a63bc3546"
+          "content": "5ca1261148a28d4b2500fd69e7eb7c43e5922339691ead31d7dd5d957c738706"
         }
       ],
       "properties": [
@@ -56,13 +56,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "45f30f4dd1bb3ce911bf0f7358cf21006110200e87740f49bef10521a06305ac"
+          "content": "88d48a7b72615de53263c65a7ac6808f1fa826723c02cc5502b635bbf95dc72f"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "2169"
+          "value": "2139"
         }
       ]
     }

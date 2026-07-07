@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.workflows.people-hr",
       "version": "1.2.0",
-      "description": "Real-work workflow pack (RFC 0013, ADR 0149) — the People / HR cluster: Employee Onboarding Orchestrator, Offboarding & Access Revocation, and Leave/PTO Request Routing. Reasons with core.ai.chatCompletion; binds Microsoft 365 via core.openwop.http.openapi-call connectionRef, recommends HRIS actions provider-agnostically via core.openwop.connectors.hris-action (Workday today), and provider-agnostic ticketing (Jira/ServiceNow) via the core.openwop.connectors.ticket-* capability nodes (ADR 0186); every account/HRIS mutation and every team-facing send is gated by core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + integration packs; connections are configured under Access & data → Connections. Published under core.openwop.workflows.* (openwop-team key).",
+      "description": "Real-work workflow pack (RFC 0013) — the People / HR cluster: Employee Onboarding Orchestrator, Offboarding & Access Revocation, and Leave/PTO Request Routing. Reasons with core.ai.chatCompletion; binds Microsoft 365 via core.openwop.http.openapi-call connectionRef, recommends HRIS actions provider-agnostically via core.openwop.connectors.hris-action (Workday today), and provider-agnostic ticketing (Jira/ServiceNow) via the core.openwop.connectors.ticket-* capability nodes; every account/HRIS mutation and every team-facing send is gated by core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + integration packs; connections are configured under Access & data → Connections. Published under core.openwop.workflows.* (openwop-team key).",
       "licenses": [
         {
           "license": {
@@ -20,7 +20,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5fd957c9ae864213fe06a04e889a11eb5776c3b1fe8c382d3f1defcbc7bb4487"
+          "content": "97e16753975d76ebc645f6b0dcb635d90ecacf6be136ea468ca2d5874d6855d8"
         }
       ],
       "purl": "pkg:openwop/core.openwop.workflows.people-hr@1.2.0"
@@ -72,7 +72,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "57b1fbca679e53e4d677baa7ae3cd2a176d867363ea0b2504d1e913b121f206d"
+          "content": "9cbbf46f2bb43497550f9be092fdb103ee02fc46b4040d87c94ad6d037bbe371"
         }
       ],
       "properties": [
@@ -88,13 +88,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6d5dee70366b65443de3537b91a3e091d3d9fe39dc3c1669c868fffdcd470172"
+          "content": "796d44c1f3f80a7ba4a99290789e7e24e0824e1a8262b51c484c49d3d92454b5"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "9104"
+          "value": "9083"
         }
       ]
     }

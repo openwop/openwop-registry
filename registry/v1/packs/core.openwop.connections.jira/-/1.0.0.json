@@ -2,7 +2,7 @@
   "name": "core.openwop.connections.jira",
   "version": "1.0.0",
   "kind": "connection",
-  "description": "Jira connection pack (RFC 0095) — Atlassian OAuth2 (3LO) provider for Jira Cloud. ADR 0033 DEPLOY-GATED. Reach is `mcp` against Atlassian's official first-party remote MCP server (the Rovo MCP server, https://mcp.atlassian.com/v1/mcp), which fronts Jira (and Confluence) under the signed-in user's permissions. Carries NO secret; the operator supplies the OAuth client id/secret host-side (ADR 0024 §7).",
+  "description": "Jira connection pack (RFC 0095) — Atlassian OAuth2 (3LO) provider for Jira Cloud. DEPLOY-GATED. Reach is `mcp` against Atlassian's official first-party remote MCP server (the Rovo MCP server, https://mcp.atlassian.com/v1/mcp), which fronts Jira (and Confluence) under the signed-in user's permissions. Carries NO secret; the operator supplies the OAuth client id/secret host-side.",
   "license": "Apache-2.0",
   "engines": {
     "openwop": ">=1.0.0"
@@ -67,5 +67,5 @@
     "publicKeyRef": "openwop-team-1",
     "signatureRef": "keys/pack.json.sig"
   },
-  "integrity": "sha256-hNak77nyM4DRRJFcn/FnSME9LJr1/BI6sBUThI3wBcY="
+  "integrity": "sha256-/Dw0X5SjWXmu89u5UmpQWRSnC6rvLE29M/V3V4OeXbc="
 }
