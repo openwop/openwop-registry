@@ -33,7 +33,7 @@
       "signatureUrl": "/v1/packs/core.openwop.agents.supervisor/-/1.0.1.sig",
       "signingMethod": "manual",
       "signingKeyId": "openwop-team-1",
-      "integrity": "sha256-q3oLX/yakjGV5If2Nw7L2xN0jM4eoNhMGDBvCaMKehQ=",
+      "integrity": "sha256-LKgZ0Dq6vm4tiw518X5l3Lk7jVP2tm63wqNBMsVOKJA=",
       "deprecated": false,
       "yanked": false
     }

@@ -29,7 +29,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ab7a0b5ffc9a923195e487f6370ecbdb13748cce1ea0d84c18306f09a30a7a14"
+          "content": "2ca819d03ababe6e2d8b0e75f17e65dcb93b8d53f6b66eb7c2a34132c54e2890"
         }
       ],
       "purl": "pkg:openwop/core.openwop.agents.supervisor@1.0.1"
@@ -81,7 +81,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "aff0edafcef99c22def78a2788f5d11524e353ffa4d0f2c2058cf4e1aab5816b"
+          "content": "183cefb05546b849545738dedab72bc5308311c4fa2811c316b9a7182893cb5a"
         }
       ],
       "properties": [
@@ -97,13 +97,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cbf6da72138e4b408a5d534bc28874fdb98eb399179fc9f73e8985da94eca70c"
+          "content": "70915af9561d373da4a173653835e79eb6489536565c7da5987d067ec56c17ff"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "1448"
+          "value": "1449"
         }
       ]
     },

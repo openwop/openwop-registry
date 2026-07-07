@@ -29,7 +29,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a50278863890135e7572ca09e17157e9cfea62bf3d0e5c9df26cf955ee7789bb"
+          "content": "d04148b173cb93b4ab0f3bc13956d9ec26be734793d66674bbd6d44171b22d59"
         }
       ],
       "purl": "pkg:openwop/core.openwop.agents.deep-research@1.0.1"
@@ -65,13 +65,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1452e51ec6a80e22caba9eeb920a9ab3a945c945db22c1bc18c5b0788026c5a7"
+          "content": "ee80f476d727d9b578051d961297605496b8accc515a9aec91ec563b89a5b0ee"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "2381"
+          "value": "2420"
         }
       ]
     },
@@ -81,7 +81,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cd2c40661d44691c8e413c9f449284741d3c264d7c42ab2627ca0bfbc7cf7890"
+          "content": "154f2c41349fa9374dd2123ea7d42232d1cd93f942a2c7a3a8ac718fe03aba4c"
         }
       ],
       "properties": [
@@ -97,13 +97,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e9439b41ceff64666ec550fa7722d8fa9cf2ef0da70b2330907727459b86b437"
+          "content": "555ce5f4445e97f5aff7edee70a769171ec9f416ee22b6b83f74f4f6a8579b50"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "1672"
+          "value": "1673"
         }
       ]
     },
@@ -129,7 +129,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d981510964e84dbe471582da95915c889d5611f8881fc80af8be92da30454b0b"
+          "content": "c05053e6c9348a3fa9563b0617ea313a2fa973cc6dade68ceed3c57bd1a704e1"
         }
       ],
       "properties": [
@@ -145,7 +145,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4b799a1bfe66cdbdd0cb449f37c21c7679ee070f727d1b4d2add3946ef2f556a"
+          "content": "24578ca1df95c830e577000abcb8e0607320e743b5b7524a33284ee77c355f1e"
         }
       ],
       "properties": [

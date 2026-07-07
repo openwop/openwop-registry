@@ -33,7 +33,7 @@
       "toolAllowlist": [],
       "memoryShape": {
         "scratchpad": true,
-        "conversation": true,
+        "conversation": false,
         "longTerm": false
       },
       "handoff": {
@@ -60,7 +60,7 @@
       "memoryShape": {
         "scratchpad": true,
         "conversation": false,
-        "longTerm": true
+        "longTerm": false
       },
       "handoff": {
         "taskSchemaRef": "schemas/retriever.task.schema.json",
