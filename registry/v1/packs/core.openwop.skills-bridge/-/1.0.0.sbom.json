@@ -1,0 +1,232 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.skills-bridge@1.0.0",
+      "type": "library",
+      "name": "core.openwop.skills-bridge",
+      "version": "1.0.0",
+      "description": "Hybrid pack bridging Anthropic / OpenAI Agent Skills (SKILL.md format, open standard since Dec 2025) to openwop AgentManifests. One converter node + one adapter agent. Positions openwop as the orchestration layer above the Skills standard rather than in competition.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/packs/core.openwop.skills-bridge"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9999e2256fd099391656b0f7b1c159e292704db79366d7b513a68dca1e4953bd"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.skills-bridge@1.0.0"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4f1bbaff227a67dafc2ff652bb59cddaeb1c3fdbcd53ef01a09e67557cee3e6a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3951"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "index.mjs",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1b3afc85562c93fd621c78b11d1a1094a86261bbd6169979f42efcba622bba53"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "7198"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1918d7c3dead8906bfe49a52b931397345db3cd7cfe9f746732d4e1152d567cf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e67544b92111b3384b59fc74daa1f8f959a6e838cb2ed8e091ba438096b27ff9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2174"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/adapter.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e72688cd1da96d28176f0d942d4c3c355a85e18369259bfa062d746c0efb4d74"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1907"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/adapter.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "30a438008f87c4bc95992c8e95dc5405d571426e0bd1d359b2c2c64a3fc0d9eb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "630"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/adapter.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0fafaec10d1f48795ecd4f4698f43578ef6b6088bb3fb22b8ccb503931a8babb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1020"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/convert.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e7fafa70d975c4d79a7df61891dc127ffbf7c0e315754dc192735bbc55eefdea"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "596"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/convert.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "60a08fc8ce8c17c1934cab3ccaca5fbafe5926a3ec09f7c3231a84087e28bbb3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "620"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/convert.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c5be66878a00e68af40383a5604e87f88cff8b27a23406ee51623983e971e0d1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "815"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.skills-bridge@1.0.0",
+      "dependsOn": [
+        "host:aiProviders",
+        "host:host.agentRuntime"
+      ]
+    }
+  ]
+}
