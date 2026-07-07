@@ -1,0 +1,168 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.agents.api-designer@1.0.0",
+      "type": "library",
+      "name": "core.openwop.agents.api-designer",
+      "version": "1.0.0",
+      "description": "API design agent. Authors OpenAPI 3.1, AsyncAPI 3.0, and JSON Schema 2020-12 documents from natural-language briefs. Pure-agent pack.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/packs/core.openwop.agents.api-designer"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2a731a8c2fd1cf3f526e8d7972f2b5faa681caf3ec5b835cb87241eaecc83126"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.agents.api-designer@1.0.0"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f1a4e35b62bb947d24e97c693d9aa9ec4f5b13d2a0fbceba05467518235a8ba4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "908"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "92bd10da9508500599c736ad907845a8ba2bb597f9812a72d8debdd2c45404f5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fc78a6bed6fa79175d5e8a272d859a0db9ad64cf16706a7b22d13ff382bde393"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1520"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/api-designer.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cb5326f019fd54d25c0f183d57333c93e1eb46735220190aecc13b7821c5f3a2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3134"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/api-designer.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a9332debabf215c4fb60419dbd07f9badc08d7d2ff2841d34a78adba85b2171c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1308"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/api-designer.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "84a628c286a2b1467fe7df2a3d05e1b8fe3ed0183307466fecfcd22e793c75f6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "729"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.agents.api-designer@1.0.0",
+      "dependsOn": [
+        "host:aiProviders",
+        "host:host.agentRuntime"
+      ]
+    }
+  ]
+}

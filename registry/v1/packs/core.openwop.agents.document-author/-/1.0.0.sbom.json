@@ -1,0 +1,168 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.agents.document-author@1.0.0",
+      "type": "library",
+      "name": "core.openwop.agents.document-author",
+      "version": "1.0.0",
+      "description": "Office-document authoring agent — produces PDF / Word / Excel / PowerPoint deliverables from briefs. Pure-agent pack.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/packs/core.openwop.agents.document-author"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7d0728f8913727176df72668c2970877d4b9f79aa32803596bb528283d82730c"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.agents.document-author@1.0.0"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8b75c2bcaf5f074dae4dac0a759afccfbbf143b58353cc3737ecb18311cfd83f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1201"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "df3c56295600f0b9b74da5c9a567a86f89dbbb4af50bd048896217929c130cb6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9c621c1bd734f33a24eca96415e17a822435d065c70b5ae67654f3c3d6364383"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1674"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/document-author.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "38ec565c8c99e27a783dbf30e1658129668c41b9ea19faa5dfcfb66c89930740"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2758"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/document-author.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "260f0f035e226d40b72d08c26b5fd363f743e8b95bfd9e33c400ef7b1ec0b42c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1058"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/document-author.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "95c9091e0a18411e03dac916b66a2a07a92c3f568636cf5c30b8251a661e393a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "930"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.agents.document-author@1.0.0",
+      "dependsOn": [
+        "host:aiProviders",
+        "host:host.agentRuntime"
+      ]
+    }
+  ]
+}

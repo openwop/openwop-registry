@@ -1,7 +1,7 @@
 {
   "registryVersion": "1.0.0",
   "generatedAt": "2026-05-10T00:00:00Z",
-  "packCount": 96,
+  "packCount": 117,
   "packs": [
     {
       "name": "community.openwop-team.demo",
@@ -96,9 +96,69 @@
       "yanked": false
     },
     {
+      "name": "core.openwop.agents.api-designer",
+      "kind": "node",
+      "latestVersion": "1.0.0",
+      "description": "API design agent. Authors OpenAPI 3.1, AsyncAPI 3.0, and JSON Schema 2020-12 documents from natural-language briefs. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.api-designer.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.audit-summarizer",
+      "kind": "node",
+      "latestVersion": "1.0.0",
+      "description": "Audit-trail summarizer agent. Compresses raw audit logs into executive summaries, highlights anomalies, tracks pattern shifts over time via long-term memory. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.audit-summarizer.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.classifier",
+      "kind": "node",
+      "latestVersion": "1.0.0",
+      "description": "Fast classification agent. Caller supplies labels + optional rationale schema; agent picks the best-fit label(s). Stateless, single-shot. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.classifier.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.code-reviewer",
+      "kind": "node",
+      "latestVersion": "1.0.0",
+      "description": "Code review agent. Reviews diffs or files for correctness, style, security, and design. Diff-aware prompting; cites file:line in findings. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.code-reviewer.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
       "name": "core.openwop.agents.deep-research",
       "kind": "node",
-      "latestVersion": "1.0.1",
+      "latestVersion": "1.0.2",
       "description": "Long-horizon research agent. Plans, dispatches sub-investigations, retrieves from RAG + web, writes up findings. Mirrors LangGraph Deep Agents (planner + subagents + filesystem). Pure-agent pack.",
       "license": "Apache-2.0",
       "tags": [],
@@ -111,9 +171,146 @@
       "yanked": false
     },
     {
+      "name": "core.openwop.agents.devops-crew",
+      "kind": "node",
+      "latestVersion": "1.0.0",
+      "description": "DevOps crew. Planner decomposes runbook → executor runs steps via host.fs + host.queueBus + http → verifier confirms desired state. Gated on host fs + queue capabilities.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.devops-crew.planner",
+        "core.openwop.agents.devops-crew.executor",
+        "core.openwop.agents.devops-crew.verifier"
+      ],
+      "nodeCount": 0,
+      "agentCount": 3,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.doc-writer",
+      "kind": "node",
+      "latestVersion": "1.0.0",
+      "description": "Technical documentation author. Produces README sections, API docs, architecture notes, and changelogs from source material. RAG-grounded. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.doc-writer.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.document-author",
+      "kind": "node",
+      "latestVersion": "1.0.0",
+      "description": "Office-document authoring agent — produces PDF / Word / Excel / PowerPoint deliverables from briefs. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.document-author.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.expense-categorizer",
+      "kind": "node",
+      "latestVersion": "1.0.0",
+      "description": "Expense categorization agent. Classifies expenses against a policy-defined chart of accounts and flags policy violations. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.expense-categorizer.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.frontend-designer",
+      "kind": "node",
+      "latestVersion": "1.0.0",
+      "description": "Frontend / UI design agent. Produces design-system-aware component specs, page layouts, and Storybook-style mocks from briefs. Mirrors Anthropic's `frontend-design` skill (top-installed in marketplace).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.frontend-designer.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.git-author",
+      "kind": "node",
+      "latestVersion": "1.0.0",
+      "description": "Git authoring agent — drafts commit messages, PR bodies, release notes, and changelog entries from diffs. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.git-author.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.invoice-extractor",
+      "kind": "node",
+      "latestVersion": "1.0.0",
+      "description": "Invoice extraction agent. OCR-aware structured extraction of vendor, line items, totals, tax, payment terms from PDF or scanned-image invoices. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.invoice-extractor.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.long-doc-summarizer",
+      "kind": "node",
+      "latestVersion": "1.0.0",
+      "description": "Long-document summarizer using map-reduce. Splits input into chunks, summarizes each, then synthesizes a final summary. Handles documents that exceed any single LLM's context window. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.long-doc-summarizer.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.policy-reviewer",
+      "kind": "node",
+      "latestVersion": "1.0.0",
+      "description": "Policy reviewer agent. Reads content (docs, emails, ads, code) against a set of policy rules and flags violations with rationale. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.policy-reviewer.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
       "name": "core.openwop.agents.react",
       "kind": "node",
-      "latestVersion": "1.0.1",
+      "latestVersion": "1.0.2",
       "description": "Canonical ReAct (Reason + Act) loop agent. Pure-agent pack — ships one agent manifest with a configurable toolAllowlist. Composes via dispatch and consumes host.aiProviders + host.agentRuntime. The 'hello world' of openwop agents.",
       "license": "Apache-2.0",
       "tags": [],
@@ -126,14 +323,139 @@
       "yanked": false
     },
     {
+      "name": "core.openwop.agents.research-crew",
+      "kind": "node",
+      "latestVersion": "1.0.0",
+      "description": "Multi-agent research crew. 4 specialists — planner / retriever / critic / writer — bundled into one pack for dispatch via orchestrator. Mirrors CrewAI's sequential/hierarchical crew templates.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.research-crew.planner",
+        "core.openwop.agents.research-crew.retriever",
+        "core.openwop.agents.research-crew.critic",
+        "core.openwop.agents.research-crew.writer"
+      ],
+      "nodeCount": 0,
+      "agentCount": 4,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.sales-coach",
+      "kind": "node",
+      "latestVersion": "1.0.0",
+      "description": "Sales Coach agent. Analyzes call transcripts, identifies coaching moments, recommends next steps, and tracks rep development over time via long-term memory. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.sales-coach.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.sdr",
+      "kind": "node",
+      "latestVersion": "1.0.0",
+      "description": "Sales Development Representative agent. Researches prospects, drafts outreach (email/LinkedIn/SMS), schedules follow-ups. Persists prospect history to long-term memory. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.sdr.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.structured-extractor",
+      "kind": "node",
+      "latestVersion": "1.0.0",
+      "description": "Production-grade structured extraction agent. Caller supplies a JSON Schema; agent extracts conforming output with an auto-fix loop on validation failure. Mirrors LangGraph Trustcall. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.structured-extractor.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
       "name": "core.openwop.agents.supervisor",
       "kind": "node",
-      "latestVersion": "1.0.1",
+      "latestVersion": "1.0.2",
       "description": "Multi-agent supervisor. Routes user tasks to specialized subagents via dispatch + orchestrator semantics. Mirrors LangGraph Supervisor and CrewAI's hierarchical-process pattern. Pure-agent pack.",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
         "core.openwop.agents.supervisor.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.support-crew",
+      "kind": "node",
+      "latestVersion": "1.0.0",
+      "description": "Support 3-agent crew. Triage → Resolver → Escalator. Single dispatch handles the full ticket lifecycle.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.support-crew.triage",
+        "core.openwop.agents.support-crew.resolver",
+        "core.openwop.agents.support-crew.escalator"
+      ],
+      "nodeCount": 0,
+      "agentCount": 3,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.support-resolver",
+      "kind": "node",
+      "latestVersion": "1.0.0",
+      "description": "Customer support resolver agent. KB-grounded answers with explicit citation, escalation handoff on low confidence. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.support-resolver.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.support-triage",
+      "kind": "node",
+      "latestVersion": "1.0.0",
+      "description": "Customer support triage agent. Categorizes inbound tickets, routes to the right queue, surfaces severity + customer-segment signals. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.support-triage.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.test-author",
+      "kind": "node",
+      "latestVersion": "1.0.0",
+      "description": "Test authoring agent. Generates unit, integration, and e2e tests from source code or specs. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.test-author.default"
       ],
       "nodeCount": 0,
       "agentCount": 1,

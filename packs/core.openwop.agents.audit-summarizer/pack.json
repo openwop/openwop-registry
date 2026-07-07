@@ -6,8 +6,17 @@
   "license": "Apache-2.0",
   "homepage": "https://openwop.dev/packs/core.openwop.agents.audit-summarizer",
   "repository": "https://github.com/openwop/openwop",
-  "keywords": ["core", "agents", "compliance", "audit", "summarization", "vertical"],
-  "engines": { "openwop": ">=1.1.0 <2.0.0" },
+  "keywords": [
+    "core",
+    "agents",
+    "compliance",
+    "audit",
+    "summarization",
+    "vertical"
+  ],
+  "engines": {
+    "openwop": ">=1.1.0 <2.0.0"
+  },
   "peerDependencies": {
     "aiProviders": "supported",
     "host.agentRuntime": "supported",
@@ -24,13 +33,23 @@
       "toolAllowlist": [
         "openwop:core.flow.split-in-batches"
       ],
-      "memoryShape": { "scratchpad": true, "conversation": false, "longTerm": false },
+      "memoryShape": {
+        "scratchpad": true,
+        "conversation": false,
+        "longTerm": false
+      },
       "handoff": {
         "taskSchemaRef": "schemas/audit-summarizer.task.schema.json",
         "returnSchemaRef": "schemas/audit-summarizer.return.schema.json"
       },
-      "confidence": { "defaultThreshold": 0.7 }
+      "confidence": {
+        "defaultThreshold": 0.7
+      },
+      "role": "skill"
     }
   ],
-  "runtime": { "language": "remote", "entry": "pack.json" }
+  "runtime": {
+    "language": "remote",
+    "entry": "pack.json"
+  }
 }

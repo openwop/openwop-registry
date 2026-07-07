@@ -1,0 +1,265 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.agents.support-crew@1.0.0",
+      "type": "library",
+      "name": "core.openwop.agents.support-crew",
+      "version": "1.0.0",
+      "description": "Support 3-agent crew. Triage → Resolver → Escalator. Single dispatch handles the full ticket lifecycle.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/packs/core.openwop.agents.support-crew"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "727a72a7703a1c525368f46de72755d471113d877a0bbca2a89dd0a8e813358a"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.agents.support-crew@1.0.0"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1338784a00bc1f30742753bf41b5402906913a79f61e9d5a053e45ec31162e38"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1258"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d88f89266e776bcc3ccd68c432f9bc70447a8d9a8385b844d1e5c46d5e9f4d0a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0d96305344c6b61fd53f47d1ec6f4e46f95f6854e7f13eed3cc672ff0abffcfa"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2643"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/escalator.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4e074ae6a739518586243894b19bdd93714829b44951d325174894f6358f83de"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1998"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/resolver.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "46f9e195d0dccff91cffee6680933dd3c8dc7288957a7c14c3098e0457581b4f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1057"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/triage.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ab5910045317911cebd079e9bf56a9516ca57dd77c9f79e86e65330521e39663"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "799"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/escalator.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e9796502a7359f6a28aa4c651789dd14f4cd8c81bca9495e97c6ce274c5d3453"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1305"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/escalator.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2cd7b6fc2d0a364e7430aae808f8fd7f108b9ea69e1b0d173e8acb661346d726"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1076"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/resolver.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "de5ad21715afee644d173830b5101fc27a5ff378c426c5f7e09154ab0982b138"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1659"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/resolver.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "90914c75f7f941a4560aedba26a5dd14a125f3522948c136d358a616a0081846"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "813"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/triage.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4b3483756595b3a7b0aa26980236a0a5b5e8c586c6483f51a68d54ab3e631fd3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "833"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/triage.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "47a2e8a0e3e041e5cbe95224b13af67995d07027f03798f0755fcb7cdcebfbb1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "963"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.agents.support-crew@1.0.0",
+      "dependsOn": [
+        "host:aiProviders",
+        "host:host.agentRuntime",
+        "host:openwop.agents.memoryBackends"
+      ]
+    }
+  ]
+}

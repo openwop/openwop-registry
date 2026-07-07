@@ -1,0 +1,31 @@
+{
+  "name": "core.openwop.agents.policy-reviewer",
+  "kind": "node",
+  "description": "Policy reviewer agent. Reads content (docs, emails, ads, code) against a set of policy rules and flags violations with rationale. Pure-agent pack.",
+  "author": "OpenWOP Working Group",
+  "license": "Apache-2.0",
+  "homepage": "https://openwop.dev/packs/core.openwop.agents.policy-reviewer",
+  "repository": "https://github.com/openwop/openwop",
+  "tags": [],
+  "typeIds": [
+    "core.openwop.agents.policy-reviewer.default"
+  ],
+  "nodeCount": 0,
+  "agentCount": 1,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.agents.policy-reviewer/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.agents.policy-reviewer/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.agents.policy-reviewer/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-T+YaYrOdf3b8vfTCZHEbllUzMtqegc2SLQY9RG1lJGY=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

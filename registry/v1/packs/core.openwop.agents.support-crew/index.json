@@ -1,0 +1,33 @@
+{
+  "name": "core.openwop.agents.support-crew",
+  "kind": "node",
+  "description": "Support 3-agent crew. Triage → Resolver → Escalator. Single dispatch handles the full ticket lifecycle.",
+  "author": "OpenWOP Working Group",
+  "license": "Apache-2.0",
+  "homepage": "https://openwop.dev/packs/core.openwop.agents.support-crew",
+  "repository": "https://github.com/openwop/openwop",
+  "tags": [],
+  "typeIds": [
+    "core.openwop.agents.support-crew.triage",
+    "core.openwop.agents.support-crew.resolver",
+    "core.openwop.agents.support-crew.escalator"
+  ],
+  "nodeCount": 0,
+  "agentCount": 3,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.agents.support-crew/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.agents.support-crew/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.agents.support-crew/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-cnpyp3A6HFJTaPRt5ydV1HERPYd6C7yiqJ3QqOgTNYo=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

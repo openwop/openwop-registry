@@ -43,7 +43,8 @@
       },
       "confidence": {
         "defaultThreshold": 0.85
-      }
+      },
+      "role": "skill"
     }
   ],
   "runtime": {

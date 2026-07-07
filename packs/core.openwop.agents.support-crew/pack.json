@@ -42,7 +42,8 @@
       },
       "confidence": {
         "defaultThreshold": 0.75
-      }
+      },
+      "role": "skill"
     },
     {
       "agentId": "core.openwop.agents.support-crew.resolver",
@@ -66,7 +67,8 @@
       },
       "confidence": {
         "defaultThreshold": 0.75
-      }
+      },
+      "role": "skill"
     },
     {
       "agentId": "core.openwop.agents.support-crew.escalator",
@@ -87,7 +89,8 @@
       },
       "confidence": {
         "defaultThreshold": 0.8
-      }
+      },
+      "role": "skill"
     }
   ],
   "runtime": {
