@@ -1,0 +1,183 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.web-search@1.0.0",
+      "type": "library",
+      "name": "core.openwop.web-search",
+      "version": "1.0.0",
+      "description": "Spec-canonical web-search pack. A single capability-advertised search node that routes through the host's `host.webSearch` adapter (search API + scraping policy + rate-limit + cache layer). When the host does not advertise the surface — as in the OpenWOP demo backend — the node returns a deterministic fixture result so replay determinism holds. This is a PROTOCOL-LAYER node pack (capability-advertised), NOT a host-side exec tool.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/packs/core.openwop.web-search"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4c101857e25c4f8cf59554c63f37a7602a200acd8917ca35654a85d6eb6dd3aa"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.web-search@1.0.0"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e5764079ae4d679c41689adab96eaf9234a5c748b13b24a620346da8339e982a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1957"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "index.mjs",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b409b62b51b5a085af34ba77fb27bb44bb4bc154ab8a9ac849973fbbb8169892"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "4089"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ec7e06aa3d14c63d756043e2c1224e16ac113927e7a435c3ce18b348a6e0dad7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8580dc6fb754a0fdcf6505aaa21ef71071ec8ae8b445dcaf35d2362c15cbfb9e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1797"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/search.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a61005e945962a120fa751ba134c1f2b1d9c6ebf704bf7c2e018b67190238a9f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "676"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/search.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e313f7ffe9663458a31a92de4f89ae1a6a84ed99f90cad237dd3deb228fb5783"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "682"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/search.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1f5baf910328c2f7091d1bd1f3784d490598d5cbeaa24cd6fb98bca004a9dd21"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1382"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.web-search@1.0.0",
+      "dependsOn": [
+        "host:host.webSearch"
+      ]
+    }
+  ]
+}

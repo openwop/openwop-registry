@@ -1,0 +1,32 @@
+{
+  "name": "core.openwop.skills-bridge",
+  "kind": "node",
+  "description": "Hybrid pack bridging Anthropic / OpenAI Agent Skills (SKILL.md format, open standard since Dec 2025) to openwop AgentManifests. One converter node + one adapter agent. Positions openwop as the orchestration layer above the Skills standard rather than in competition.",
+  "author": "OpenWOP Working Group",
+  "license": "Apache-2.0",
+  "homepage": "https://openwop.dev/packs/core.openwop.skills-bridge",
+  "repository": "https://github.com/openwop/openwop",
+  "tags": [],
+  "typeIds": [
+    "core.skills-bridge.convert",
+    "core.openwop.skills-bridge.adapter"
+  ],
+  "nodeCount": 1,
+  "agentCount": 1,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.skills-bridge/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.skills-bridge/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.skills-bridge/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-mZniJW/QmTkWVrD3scFZ4pJwTbeTZte1E6aNyh5JU70=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}
