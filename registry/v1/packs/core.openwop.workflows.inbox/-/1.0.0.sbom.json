@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.workflows.inbox",
       "version": "1.0.0",
-      "description": "Real-work workflow pack (RFC 0013) — the personal-productivity Inbox cluster: triage your own inbox (classify, draft the urgent reply, digest the rest), nudge unanswered threads, and debrief calls into coaching notes. Distinct from core.openwop.workflows.support (a customer-support mailbox with queue routing): these serve YOUR inbox and YOUR calls. Drafting uses core.email.draft — it creates a draft in your mailbox and never sends (the draft is the human gate); the one real send (follow-up nudger) waits on an approval. All tenant values are run parameters (replay-deterministic).",
+      "description": "Real-work workflow pack — the personal-productivity Inbox cluster: triage your own inbox (classify, draft the urgent reply, digest the rest), nudge unanswered threads, and debrief calls into coaching notes. Distinct from core.openwop.workflows.support (a customer-support mailbox with queue routing): these serve YOUR inbox and YOUR calls. Drafting uses core.email.draft — it creates a draft in your mailbox and never sends (the draft is the human gate); the one real send (follow-up nudger) waits on an approval. All tenant values are run parameters (replay-deterministic).",
       "licenses": [
         {
           "license": {
@@ -20,7 +20,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "12d3a42a6bd37661a9be870091e385ab169dfb0d6653bca44acb173191b92047"
+          "content": "bedce130b5ff544486fdb9835339b5ce0a43e4793aeed41fb9feec9f8df0ae54"
         }
       ],
       "purl": "pkg:openwop/core.openwop.workflows.inbox@1.0.0"
@@ -72,7 +72,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6fdd119755950ee05b1cfaf8b4ed8339f48827f9c09e892f83cfb7b5078ea641"
+          "content": "3233841d062dd66bc71a583d4ab6280d33f460ecb201c87f5e013023818f6aff"
         }
       ],
       "properties": [
@@ -88,13 +88,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f33dd54147fca477698c9b40a2ec2acb8e89bf6ad9b3483fe6bc9fd4553a61c5"
+          "content": "7b2149e7e388aebda295b89da4f2580a87c3d6e3fc8feff3045cf783493100c2"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "5708"
+          "value": "5697"
         }
       ]
     }

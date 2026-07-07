@@ -1,7 +1,7 @@
 {
   "name": "core.openwop.workflows.exec-ops",
   "kind": "workflow-chain",
-  "description": "Real-work workflow pack (RFC 0013). The Executive / Chief-of-Staff cluster: Daily Executive Briefing, Meeting Prep & Attendee Dossier, and Board / Investor Update Pack. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.analytics) and, where a workflow touches an external system, binds a connection pack via core.openwop.http.openapi-call (connectionRef) — so a configured connection runs live and an unconfigured one surfaces a connect prompt rather than failing. Every external send is gated by core.chat.approvalGate; the read-only briefing is ungated. All tenant-specific values are run parameters (replay-deterministic). Resolves fully on hosts that ship the feature + http/mcp + chat packs (the OpenWOP reference app); the connection bindings are configured by the operator under Access & data → Connections.",
+  "description": "Real-work workflow pack. The Executive / Chief-of-Staff cluster: Daily Executive Briefing, Meeting Prep & Attendee Dossier, and Board / Investor Update Pack. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.analytics) and, where a workflow touches an external system, binds a connection pack via core.openwop.http.openapi-call (connectionRef) — so a configured connection runs live and an unconfigured one surfaces a connect prompt rather than failing. Every external send is gated by core.chat.approvalGate; the read-only briefing is ungated. All tenant-specific values are run parameters (replay-deterministic). Resolves fully on hosts that ship the feature + http/mcp + chat packs (the OpenWOP reference app); the connection bindings are configured by the operator under Access & data → Connections.",
   "author": "openwop",
   "license": "Apache-2.0",
   "tags": [],
@@ -34,7 +34,7 @@
       "signatureUrl": "/v1/packs/core.openwop.workflows.exec-ops/-/1.1.0.sig",
       "signingMethod": "manual",
       "signingKeyId": "openwop-team-1",
-      "integrity": "sha256-2U9MSamtog/Wca+xAHtDESSpqo4Ig4iLKaFnwjJrsIg=",
+      "integrity": "sha256-LlKm9Bi0cmabFnzC5y5OSBgbEfj9Ly4fQzHoeo3oW+0=",
       "deprecated": false,
       "yanked": false
     }

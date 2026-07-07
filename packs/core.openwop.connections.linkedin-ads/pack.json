@@ -2,7 +2,7 @@
   "name": "core.openwop.connections.linkedin-ads",
   "version": "1.0.0",
   "kind": "connection",
-  "description": "LinkedIn Ads connection pack (RFC 0095) \u2014 OAuth2 provider for the LinkedIn Marketing API. Reach is `openapi`: the manifest declares the global LinkedIn OAuth hosts and points at the Marketing API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the client id/secret host-side. One of the three ad platforms Campaign Studio syncs (Google / Meta / LinkedIn Ads).",
+  "description": "LinkedIn Ads connection pack \u2014 OAuth2 provider for the LinkedIn Marketing API. Reach is `openapi`: the manifest declares the global LinkedIn OAuth hosts and points at the Marketing API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the client id/secret host-side. One of the three ad platforms Campaign Studio syncs (Google / Meta / LinkedIn Ads).",
   "license": "Apache-2.0",
   "engines": {
     "openwop": ">=1.0.0"

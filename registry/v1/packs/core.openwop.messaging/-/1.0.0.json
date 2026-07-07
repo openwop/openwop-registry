@@ -1,7 +1,7 @@
 {
   "name": "core.openwop.messaging",
   "version": "1.0.0",
-  "description": "Queue + stream primitives — publish, consume (trigger), ack/nack/dead-letter, stream subscribe/publish. Capability-gated on host.queueBus (RFC 0017). Sibling to host.messaging (outbound-egress-only).",
+  "description": "Queue + stream primitives — publish, consume (trigger), ack/nack/dead-letter, stream subscribe/publish. Capability-gated on host.queueBus. Sibling to host.messaging (outbound-egress-only).",
   "author": "OpenWOP Working Group",
   "license": "Apache-2.0",
   "homepage": "https://openwop.dev/packs/core.openwop.messaging",
@@ -138,5 +138,5 @@
     "publicKeyRef": "openwop-team-1",
     "signatureRef": "keys/pack.json.sig"
   },
-  "integrity": "sha256-vYHVupO8Qf4OEO39GY8JmF5dH46xSdWMHB/fkQXO99g="
+  "integrity": "sha256-fuve5wD0wxEzuMqOC/KcG6I31IbQMUP6+3FfvPTtQF8="
 }

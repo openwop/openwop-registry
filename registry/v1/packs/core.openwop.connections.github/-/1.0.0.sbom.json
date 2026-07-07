@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.connections.github",
       "version": "1.0.0",
-      "description": "GitHub connection pack (RFC 0095) — OAuth2 provider definition, reached via the official GitHub MCP server. Demonstrates the openwop-app connection-pack loader: drop this pack in and `github` becomes a resolvable provider. Carries NO secret; the operator supplies the OAuth client id/secret host-side.",
+      "description": "GitHub connection pack — OAuth2 provider definition, reached via the official GitHub MCP server. Demonstrates the openwop-app connection-pack loader: drop this pack in and `github` becomes a resolvable provider. Carries NO secret; the operator supplies the OAuth client id/secret host-side.",
       "licenses": [
         {
           "license": {
@@ -20,7 +20,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "a8af89d0bb61db98c7ee19beeb29c499cd5977914313a58129359f4beef50dc8"
+          "content": "0dea1b87d4d9c2c8d4dd4bddc11c376e4b66bd3ebb4f557975d3003d4696918b"
         }
       ],
       "purl": "pkg:openwop/core.openwop.connections.github@1.0.0"
@@ -40,7 +40,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ec33cb1c043edfba1cdd101af777c2a2ee34a58a29a4d51127ae7d5d93d412fd"
+          "content": "59c24b0fc6f6801463fa9296abfe65dee1d26ce1898779530d264a4197a877af"
         }
       ],
       "properties": [
@@ -56,13 +56,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "59bce80134ff14c588e38930a3f9761da304cfadb6a492f8787d852e0dc68989"
+          "content": "f45e9ea5c7d152f9c762ea919ed16db8513d16cbc51fee433b173796bbb507fd"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "1218"
+          "value": "1207"
         }
       ]
     }

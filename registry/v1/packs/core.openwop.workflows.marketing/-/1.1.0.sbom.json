@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.workflows.marketing",
       "version": "1.1.0",
-      "description": "Real-work workflow pack (RFC 0013) — the Marketing & Advertising cluster: Full Campaign Launch, Ad Performance Optimization Loop, Content Brief Generator, and Content Repurposing. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.kb / feature.cms / feature.email); reads/optimizes the ad platforms provider-agnostically via the core.openwop.connectors.ad-* capability nodes (Meta or Google, whichever the tenant connected). The optimization loop routes within-guardrail changes to auto-apply and out-of-guardrail changes to a core.chat.approvalGate via a core.flow.if conditional node (open-question resolution: a flow conditional, not a new primitive). Every launch/publish/apply is approval- or guardrail-gated; all tenant values are run parameters (replay-deterministic). Published under core.openwop.workflows.* (openwop-team key).",
+      "description": "Real-work workflow pack — the Marketing & Advertising cluster: Full Campaign Launch, Ad Performance Optimization Loop, Content Brief Generator, and Content Repurposing. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.kb / feature.cms / feature.email); reads/optimizes the ad platforms provider-agnostically via the core.openwop.connectors.ad-* capability nodes (Meta or Google, whichever the tenant connected). The optimization loop routes within-guardrail changes to auto-apply and out-of-guardrail changes to a core.chat.approvalGate via a core.flow.if conditional node (open-question resolution: a flow conditional, not a new primitive). Every launch/publish/apply is approval- or guardrail-gated; all tenant values are run parameters (replay-deterministic). Published under core.openwop.workflows.* (openwop-team key).",
       "licenses": [
         {
           "license": {
@@ -20,7 +20,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7db32eca534430cbff1277d625a180e7884dbfac2ceb3de4f34b4277cbc3df96"
+          "content": "970e91c411882d4cf243faf0a568ba5564feba09006908ce81f0cbc571227c7b"
         }
       ],
       "purl": "pkg:openwop/core.openwop.workflows.marketing@1.1.0"
@@ -72,7 +72,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "59ccf7eaa606d0b17fb989108adea8d266b7ecca4dc1c85b288b89b9c5862788"
+          "content": "f997e818d4a3ed2493ee0644c40ac8723a04050d933b4a417f670f2e97bab6ca"
         }
       ],
       "properties": [
@@ -88,13 +88,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ffafefd15ff56e1249677b244e1d052bdc48c112227b40f27cfa9f3b2fae9086"
+          "content": "a726d058baae110e052b868d48cf5da64ccd9ba63af2f8f3495d4862be1a0ea6"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "9281"
+          "value": "9270"
         }
       ]
     }

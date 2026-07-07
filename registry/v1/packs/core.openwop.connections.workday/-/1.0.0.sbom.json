@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.connections.workday",
       "version": "1.0.0",
-      "description": "Workday connection pack (RFC 0095) — OAuth2 provider for the Workday REST API (HCM / People). DEPLOY-GATED. Reach is `openapi`: Workday has no first-party global MCP server, and its OAuth authorize/token endpoints plus REST base are TENANT-SPECIFIC (`https://{instance}.workday.com/{tenant}/..`), supplied per connection via instanceUrlTemplate. The manifest declares the global https hosts and the per-tenant template; the operator fills the tenant at connection time (capability honesty). Carries NO secret; the operator supplies the API-client id/secret host-side.",
+      "description": "Workday connection pack — OAuth2 provider for the Workday REST API (HCM / People). DEPLOY-GATED. Reach is `openapi`: Workday has no first-party global MCP server, and its OAuth authorize/token endpoints plus REST base are TENANT-SPECIFIC (`https://{instance}.workday.com/{tenant}/.`), supplied per connection via instanceUrlTemplate. The manifest declares the global https hosts and the per-tenant template; the operator fills the tenant at connection time (capability honesty). Carries NO secret; the operator supplies the API-client id/secret host-side.",
       "licenses": [
         {
           "license": {
@@ -20,7 +20,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "dd768cfb3b7c3a2e896df075e224e7e856c1ac56631d9089ef5eeb3fc68ad7dc"
+          "content": "a9c1888c3ac4b224e3030b67db95312e54c23c55218868c93ebc302489d7db7e"
         }
       ],
       "purl": "pkg:openwop/core.openwop.connections.workday@1.0.0"
@@ -40,7 +40,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "db9c07e781e5966b99aa1d7ec78a1bedc4736a6761fecc379a83a831a1389065"
+          "content": "4544ffabe8be6d695d050f10884076ea768ae06f8c70ec3281aeec1d0a0a8739"
         }
       ],
       "properties": [
@@ -56,13 +56,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3b63490886aaeaa3140b5f706b5c9295d833f73fbd8aba2b765ea8b2f8e9e610"
+          "content": "4d685212e92903b3cc897c6362f8d1de90bbc9092613769bfdc0c76211f8a21d"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "1447"
+          "value": "1435"
         }
       ]
     }

@@ -1,7 +1,7 @@
 {
   "name": "core.openwop.workflows.approvals",
   "kind": "workflow-chain",
-  "description": "Real-work workflow pack (RFC 0013) — the Approvals cluster, the single most-used enterprise automation shape (Power Automate's #1 template is a sign-off flow with ~3.35M instantiations): Request Sign-off (an open gate any team member can approve — the zero-config marquee) and Two-Stage Sign-off (an ordered approval chain: stage two is only asked after stage one approves — sequential chains are DAG composition, not a new primitive). Gates support quorum (requiredApprovals), named approvers (approverRefs), and out-of-office delegation (an approver's active delegation lets their delegate act, counted as ONE identity). All tenant values are run parameters (replay-deterministic).",
+  "description": "Real-work workflow pack — the Approvals cluster, the single most-used enterprise automation shape (Power Automate's #1 template is a sign-off flow with ~3.35M instantiations): Request Sign-off (an open gate any team member can approve — the zero-config marquee) and Two-Stage Sign-off (an ordered approval chain: stage two is only asked after stage one approves — sequential chains are DAG composition, not a new primitive). Gates support quorum (requiredApprovals), named approvers (approverRefs), and out-of-office delegation (an approver's active delegation lets their delegate act, counted as ONE identity). All tenant values are run parameters (replay-deterministic).",
   "author": "openwop",
   "license": "Apache-2.0",
   "tags": [],
@@ -21,7 +21,7 @@
       "signatureUrl": "/v1/packs/core.openwop.workflows.approvals/-/1.0.0.sig",
       "signingMethod": "manual",
       "signingKeyId": "openwop-team-1",
-      "integrity": "sha256-j/GPqmNN+qi+uPdY/UK88fSYVqskfusg0I9hmCjJNPw=",
+      "integrity": "sha256-lUyAjPBqoLVDnC2glFZK0qq2xZY8Rz+WVs0ueBvEmi0=",
       "deprecated": false,
       "yanked": false
     }

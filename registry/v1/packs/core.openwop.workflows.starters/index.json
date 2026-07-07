@@ -1,7 +1,7 @@
 {
   "name": "core.openwop.workflows.starters",
   "kind": "workflow-chain",
-  "description": "Starter workflow pack (RFC 0013) — the simple-pipe on-ramp tier: short single-trigger→action recipes (webhook→notify, form→table, schedule→digest, fetch→store) that run in under a minute with zero connections, before you graduate to the AI-agent packs. Trigger-shaped starters begin with a core.trigger.* pass-through entry node: bind them to a live source with a trigger subscription (POST /v1/trigger-subscriptions — webhook, email, or form; RFC 0099) or a Schedule; on a manual run the trigger payload is empty, so bind a source to see them shine. External sends stay behind a human approval gate; in-app notifications are direct. All tenant values are run parameters (replay-deterministic).",
+  "description": "Starter workflow pack — the simple-pipe on-ramp tier: short single-trigger→action recipes (webhook→notify, form→table, schedule→digest, fetch→store) that run in under a minute with zero connections, before you graduate to the AI-agent packs. Trigger-shaped starters begin with a core.trigger.* pass-through entry node: bind them to a live source with a trigger subscription (POST /v1/trigger-subscriptions — webhook, email, or form) or a Schedule; on a manual run the trigger payload is empty, so bind a source to see them shine. External sends stay behind a human approval gate; in-app notifications are direct. All tenant values are run parameters (replay-deterministic).",
   "author": "openwop",
   "license": "Apache-2.0",
   "tags": [],
@@ -25,7 +25,7 @@
       "signatureUrl": "/v1/packs/core.openwop.workflows.starters/-/1.0.0.sig",
       "signingMethod": "manual",
       "signingKeyId": "openwop-team-1",
-      "integrity": "sha256-Nci0ayrCpbJzsBfbnUBK+NCvf+lJOVnZwW3zKl+cfsY=",
+      "integrity": "sha256-5T7jvwGrYSgb1KGmvn2yVswJ9+mu9H33md5M2/5cZXE=",
       "deprecated": false,
       "yanked": false
     }

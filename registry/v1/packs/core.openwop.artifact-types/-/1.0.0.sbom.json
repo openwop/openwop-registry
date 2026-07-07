@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.artifact-types",
       "version": "1.0.0",
-      "description": "Example artifact-type pack (RFC 0075) — proves the kind:'artifact-type' pack tier registers its declared types through the host artifact-type registry (registrationSource:'pack'), advertised under host.artifactTypes and served at /schemas/artifacts/{id}.schema.json.",
+      "description": "Example artifact-type pack — proves the kind:'artifact-type' pack tier registers its declared types through the host artifact-type registry (registrationSource:'pack'), advertised under host.artifactTypes and served at /schemas/artifacts/{id}.schema.json.",
       "licenses": [
         {
           "license": {
@@ -20,7 +20,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4da1dbf9b096d76caba6c42ef9ce76adc2acf8079e4c1c683cba7ef047032350"
+          "content": "f589aa0ac75928afac1da45508f4fb4cc44061d6163127fef77d24755ffc1843"
         }
       ],
       "purl": "pkg:openwop/core.openwop.artifact-types@1.0.0"
@@ -40,7 +40,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "225ee6bd737e1dbe135b796321cee75bf737df0fe5f43d0337e6a874de5716c2"
+          "content": "933192571f6988f0569fcf2d2b9464d807e0369b9026a86fe7dc7005278bc1b6"
         }
       ],
       "properties": [
@@ -56,13 +56,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cca5ae6f41454637e00876ee50df2f80ea39e5b6b82985ac22ff50037e6f0edc"
+          "content": "08f86a5a3af26d559a311c56d8e8f2b56f2f8ce2e135c005f8708aaf870c54ac"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "1172"
+          "value": "1161"
         }
       ]
     }

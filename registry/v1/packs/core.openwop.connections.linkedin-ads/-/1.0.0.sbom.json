@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.connections.linkedin-ads",
       "version": "1.0.0",
-      "description": "LinkedIn Ads connection pack (RFC 0095) — OAuth2 provider for the LinkedIn Marketing API. Reach is `openapi`: the manifest declares the global LinkedIn OAuth hosts and points at the Marketing API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the client id/secret host-side. One of the three ad platforms Campaign Studio syncs (Google / Meta / LinkedIn Ads).",
+      "description": "LinkedIn Ads connection pack — OAuth2 provider for the LinkedIn Marketing API. Reach is `openapi`: the manifest declares the global LinkedIn OAuth hosts and points at the Marketing API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the client id/secret host-side. One of the three ad platforms Campaign Studio syncs (Google / Meta / LinkedIn Ads).",
       "licenses": [
         {
           "license": {
@@ -20,7 +20,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d25b23fac5c46f7b63a2cccc69c8fcde662ed8e73bf22a92c2923fb8e2a1d4b2"
+          "content": "b0293aaf08eafcbee724c0ab4bcdd630e6094d6ce9af3a05cb39c47f1fa975a5"
         }
       ],
       "purl": "pkg:openwop/core.openwop.connections.linkedin-ads@1.0.0"
@@ -40,7 +40,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "2e150046cceeb0899713dada5dbe901948dbc76fdb3af1c3372ba1df2313490e"
+          "content": "088562a8ee89089508f4498b4f5da38b1ca3d98392037ec3540875bc17a476ac"
         }
       ],
       "properties": [
@@ -56,13 +56,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "756124f4788ecc33a1ce19bd44b5c7814084b2d30821ea93c8b59f358a834a69"
+          "content": "8bd5ab24e4d9103ef5110aebe474392150382e3fa16a953e1a4ed36161aa9dd3"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "1429"
+          "value": "1418"
         }
       ]
     }

@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.workflows.data-ops",
       "version": "1.1.0",
-      "description": "Real-work workflow pack (RFC 0013) — the Data Ops cluster, the one shape-family the Zapier/n8n and Microsoft canons don't cover (surfaced by the Make/Workato research): collapsing many records into one output (the aggregator canon), one-way movement of records between systems, and content routing (send a record down the right branch). Roll Up, Records → Table, Records → System (one-way upsert behind a human sign-off), and Content Router (route a record to the matching branch by a field predicate — the Make router shape, gated via edge conditions). Uses only shipped, executable nodes (core.flow.aggregate-{numeric,text,table} + core.flow.router + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.http.openapi-call + core.openwop.integration.notification-push). The write is ONE-WAY movement keyed on an external id (re-runs update, never duplicate) behind a human approval — it is NOT a bidirectional sync. All tenant values are run parameters (replay-deterministic).",
+      "description": "Real-work workflow pack — the Data Ops cluster, the one shape-family the Zapier/n8n and Microsoft canons don't cover (surfaced by the Make/Workato research): collapsing many records into one output (the aggregator canon), one-way movement of records between systems, and content routing (send a record down the right branch). Roll Up, Records → Table, Records → System (one-way upsert behind a human sign-off), and Content Router (route a record to the matching branch by a field predicate — the Make router shape, gated via edge conditions). Uses only shipped, executable nodes (core.flow.aggregate-{numeric,text,table} + core.flow.router + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.http.openapi-call + core.openwop.integration.notification-push). The write is ONE-WAY movement keyed on an external id (re-runs update, never duplicate) behind a human approval — it is NOT a bidirectional sync. All tenant values are run parameters (replay-deterministic).",
       "licenses": [
         {
           "license": {
@@ -20,7 +20,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "07e6912914e978d10f2240a197f05f4db8b7c5165e0a1424ff17a81504a1ab90"
+          "content": "ee9c3380c0f39dde9eebcccd3fa9af5ad9c0aad162e137c2167e111dbea1391f"
         }
       ],
       "purl": "pkg:openwop/core.openwop.workflows.data-ops@1.1.0"
@@ -72,7 +72,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "679ac4ebc5577111e6522b09fb2d416f02a70c0108c7abb79edc214bb55d4afc"
+          "content": "0d8064edcb546f2f4767ebb7ae3271c515c4e1d3abeb71109fd57bc86ff493f3"
         }
       ],
       "properties": [
@@ -88,13 +88,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "34136e83894c8b6f833090c3fdd6e4f5f994ff611f0c273a04074a6e8e8886e1"
+          "content": "c9a1a9fc2f53a563956e22e3ed02421317e0760ec187243c0e00f2315130d0f1"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "9698"
+          "value": "9687"
         }
       ]
     }

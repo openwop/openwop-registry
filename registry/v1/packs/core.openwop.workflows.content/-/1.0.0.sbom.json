@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.workflows.content",
       "version": "1.0.0",
-      "description": "Real-work workflow pack (RFC 0013) — the Content & Monitoring cluster: watch an RSS/Atom feed for new items and watch any web page for changes, each pairing a schedule trigger with durable seen-state in host KV storage (deterministic per-source key; the first run treats everything as new and seeds the state). NO host RSS poller exists — adding an 'rss' ingestion source to /v1/trigger-subscriptions is RFC 0099 wire territory (see) — so these chains ARE the poller: pair each with a Schedule and the scheduler does the polling. Authored over shipped node typeIds (core.trigger.schedule + core.openwop.http.fetch + core.storage.kv-get/kv-set + core.ai.chatCompletion + core.openwop.integration.notification-push). No external sends — digests are in-app notifications, so no approval gate is needed. All tenant values are run parameters (replay-deterministic).",
+      "description": "Real-work workflow pack — the Content & Monitoring cluster: watch an RSS/Atom feed for new items and watch any web page for changes, each pairing a schedule trigger with durable seen-state in host KV storage (deterministic per-source key; the first run treats everything as new and seeds the state). NO host RSS poller exists — adding an 'rss' ingestion source to /v1/trigger-subscriptions is wire territory (see) — so these chains ARE the poller: pair each with a Schedule and the scheduler does the polling. Authored over shipped node typeIds (core.trigger.schedule + core.openwop.http.fetch + core.storage.kv-get/kv-set + core.ai.chatCompletion + core.openwop.integration.notification-push). No external sends — digests are in-app notifications, so no approval gate is needed. All tenant values are run parameters (replay-deterministic).",
       "licenses": [
         {
           "license": {
@@ -20,7 +20,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "539c9264f1dd3922e43bf5189ab2a9950dcdf669c2d91f17deb4c1d8dfe179b5"
+          "content": "b5bdb037f71ab0938c1cf3a3ceb14110fe791d67ea062f78f735e68345a6556a"
         }
       ],
       "purl": "pkg:openwop/core.openwop.workflows.content@1.0.0"
@@ -72,7 +72,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8490c8c8401b13290d1a1b65b5934bd2c0c09eb81b405fe0886fcd0f897f3a28"
+          "content": "1f069c63dcc4f5d3515829dae12999de728f6f8488808f4f714b4e83cd8a2a73"
         }
       ],
       "properties": [
@@ -88,13 +88,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c98fb4c1e8d65a9bc647ebd9d28823bd272d7f6d255ccc62d212623c7a866f84"
+          "content": "6ddb7da5907fe64d39a954519f60f863fa65e8cb445ae69b82a81b273f2ecd4a"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "5980"
+          "value": "5960"
         }
       ]
     }

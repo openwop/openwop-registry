@@ -1,7 +1,7 @@
 {
   "name": "core.openwop.connections.notion",
   "kind": "connection",
-  "description": "Notion connection pack (RFC 0095) — OAuth2 provider for Notion pages + databases. DEPLOY-GATED. Reach is `mcp` against Notion's official first-party hosted MCP server (https://mcp.notion.com/mcp, Streamable HTTP), which searches/reads/creates/updates workspace content under the connected user's permissions. Notion consent is a static developer-portal capability set rather than per-request OAuth scopes (scopeModel `capabilities`). Carries NO secret; the operator supplies the OAuth client id/secret host-side.",
+  "description": "Notion connection pack — OAuth2 provider for Notion pages + databases. DEPLOY-GATED. Reach is `mcp` against Notion's official first-party hosted MCP server (https://mcp.notion.com/mcp, Streamable HTTP), which searches/reads/creates/updates workspace content under the connected user's permissions. Notion consent is a static developer-portal capability set rather than per-request OAuth scopes (scopeModel `capabilities`). Carries NO secret; the operator supplies the OAuth client id/secret host-side.",
   "author": "",
   "license": "Apache-2.0",
   "tags": [],
@@ -20,7 +20,7 @@
       "signatureUrl": "/v1/packs/core.openwop.connections.notion/-/1.0.0.sig",
       "signingMethod": "manual",
       "signingKeyId": "openwop-team-1",
-      "integrity": "sha256-EvpBo6XPypLHLOfgG5FKa7YDiGIm4MQpjkyN4Meb74w=",
+      "integrity": "sha256-4YZYtNlDwhUIpJPUgL0HQv0UWbwYQos7RX3huDddAIY=",
       "deprecated": false,
       "yanked": false
     }

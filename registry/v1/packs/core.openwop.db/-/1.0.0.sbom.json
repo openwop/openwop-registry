@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.db",
       "version": "1.0.0",
-      "description": "Database adapter primitives — sql, nosql, search, vector. Each gated on its host capability (host.sql, host.nosql, host.searchIndex, host.vectorStore) per RFC 0018. Pack speaks no driver — delegates to ctx.db.*. Parametric SQL only (host enforces).",
+      "description": "Database adapter primitives — sql, nosql, search, vector. Each gated on its host capability (host.sql, host.nosql, host.searchIndex, host.vectorStore) per. Pack speaks no driver — delegates to ctx.db.*. Parametric SQL only (host enforces).",
       "licenses": [
         {
           "license": {
@@ -29,7 +29,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "01f4bdc169c6b4ee3bd46076a50b84910d466b6b37a9af8157f2acf85bb312a8"
+          "content": "e2896b0cf509437f85cef9d5c6dac40085428786b9083ad24fb770c62ec4616a"
         }
       ],
       "purl": "pkg:openwop/core.openwop.db@1.0.0"
@@ -97,7 +97,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "085673168c157debfe95c68d59fe307d2a6e942bb1423a2df51f58115a7ff2bc"
+          "content": "6993e4ec7713fa6dca47e905faf27cf57e7e1e7d16ff5acc50aa026296885a6d"
         }
       ],
       "properties": [
@@ -113,13 +113,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5cc1c9006e56dfc1ed419f869f7ab55b0bf7dcfdf72330712e2ca1257b27a37f"
+          "content": "34bad8865816d5961369bca292e9f380d7c4cc11efe60c4e8b0199c455b3d561"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "5249"
+          "value": "5240"
         }
       ]
     },

@@ -2,7 +2,7 @@
   "name": "vendor.openwop.card-sample",
   "version": "1.0.0",
   "kind": "card",
-  "description": "Reference chat-card pack (RFC 0071) — two portable, host-agnostic AI chat cards: a text summarizer and a meeting action-item extractor. Demonstrates the card manifest contract (typed inputs from the portable subset, a prompt template with placeholder mapping, no runtime).",
+  "description": "Reference chat-card pack — two portable, host-agnostic AI chat cards: a text summarizer and a meeting action-item extractor. Demonstrates the card manifest contract (typed inputs from the portable subset, a prompt template with placeholder mapping, no runtime).",
   "author": "OpenWOP",
   "license": "Apache-2.0",
   "homepage": "https://openwop.dev/spec/v1/chat-card-packs.md",

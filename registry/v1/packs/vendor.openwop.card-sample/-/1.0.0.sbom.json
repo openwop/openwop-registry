@@ -8,7 +8,7 @@
       "type": "library",
       "name": "vendor.openwop.card-sample",
       "version": "1.0.0",
-      "description": "Reference chat-card pack (RFC 0071) — two portable, host-agnostic AI chat cards: a text summarizer and a meeting action-item extractor. Demonstrates the card manifest contract (typed inputs from the portable subset, a prompt template with placeholder mapping, no runtime).",
+      "description": "Reference chat-card pack — two portable, host-agnostic AI chat cards: a text summarizer and a meeting action-item extractor. Demonstrates the card manifest contract (typed inputs from the portable subset, a prompt template with placeholder mapping, no runtime).",
       "licenses": [
         {
           "license": {
@@ -29,7 +29,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "46d4b8291659c7b82343d086725ae923aa6d0813286a0c474c24b1adc15be36b"
+          "content": "d89840c4d1bc5288a3132b01c2ed8ef1db16c0a64bb037fe9a17b0d6896cecd1"
         }
       ],
       "purl": "pkg:openwop/vendor.openwop.card-sample@1.0.0"
@@ -65,7 +65,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "919a7d5637483305d05f11d55300bfebeafd29e79ed8ebdcc31eef9512c3d12c"
+          "content": "cb121a1b57dd8a30245552b14a1ae5e09a5d486510e79029b2b86f47e8716573"
         }
       ],
       "properties": [
@@ -81,13 +81,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "5790191207742d253cefaa296382e5eba1963110c4cb41e7d1ebfdeca2e1329a"
+          "content": "366816d16d792879bd64b592bf62e071c43079a041399db5947a466b89dd551e"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "2137"
+          "value": "2126"
         }
       ]
     }

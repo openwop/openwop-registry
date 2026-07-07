@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.connections.notion",
       "version": "1.0.0",
-      "description": "Notion connection pack (RFC 0095) — OAuth2 provider for Notion pages + databases. DEPLOY-GATED. Reach is `mcp` against Notion's official first-party hosted MCP server (https://mcp.notion.com/mcp, Streamable HTTP), which searches/reads/creates/updates workspace content under the connected user's permissions. Notion consent is a static developer-portal capability set rather than per-request OAuth scopes (scopeModel `capabilities`). Carries NO secret; the operator supplies the OAuth client id/secret host-side.",
+      "description": "Notion connection pack — OAuth2 provider for Notion pages + databases. DEPLOY-GATED. Reach is `mcp` against Notion's official first-party hosted MCP server (https://mcp.notion.com/mcp, Streamable HTTP), which searches/reads/creates/updates workspace content under the connected user's permissions. Notion consent is a static developer-portal capability set rather than per-request OAuth scopes (scopeModel `capabilities`). Carries NO secret; the operator supplies the OAuth client id/secret host-side.",
       "licenses": [
         {
           "license": {
@@ -20,7 +20,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "12fa41a3a5cfca92c72ce7e01b914a6bb603886226e0c4298e4c8de0c79bef8c"
+          "content": "e18658b4d943c21508a493d480bd0742fd1459bc18428b3b457de1b8375d0086"
         }
       ],
       "purl": "pkg:openwop/core.openwop.connections.notion@1.0.0"
@@ -40,7 +40,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "1e4b5cfeafdcf3d78cf53e915bb475e1c31dad5ef7b3aef946e07faa179ea0a7"
+          "content": "961469e4e8fc5d61ad7192d80c2b7fbfb3a22760b8512145b3857a5f215c801a"
         }
       ],
       "properties": [
@@ -56,13 +56,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e08b2151826ead5e34ef5012d967cedc56e800b0421b404ea272f27a6d299744"
+          "content": "15c3c3cd4a3ef28741c50177dcc0ade393eaa536620f917931274791c6d6c89a"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "1425"
+          "value": "1414"
         }
       ]
     }

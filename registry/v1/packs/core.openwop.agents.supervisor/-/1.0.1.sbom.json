@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.agents.supervisor",
       "version": "1.0.1",
-      "description": "Multi-agent supervisor. Routes user tasks to specialized subagents via RFC 0007 dispatch + RFC 0006 orchestrator semantics. Mirrors LangGraph Supervisor and CrewAI's hierarchical-process pattern. Pure-agent pack.",
+      "description": "Multi-agent supervisor. Routes user tasks to specialized subagents via dispatch + orchestrator semantics. Mirrors LangGraph Supervisor and CrewAI's hierarchical-process pattern. Pure-agent pack.",
       "licenses": [
         {
           "license": {
@@ -29,7 +29,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "06231956b3041655b871d04a765f8a4cb5897cb576be1b83273ac94328b1a0d9"
+          "content": "ab7a0b5ffc9a923195e487f6370ecbdb13748cce1ea0d84c18306f09a30a7a14"
         }
       ],
       "purl": "pkg:openwop/core.openwop.agents.supervisor@1.0.1"
@@ -65,13 +65,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fa62d726d05bca51f42df6a78b0d1f16fbc874706fa6848ea32d26a1293d73ca"
+          "content": "8b2869df828dfd9867da6e55db73d3299c687afdcecff23d0e9282ced375e91e"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "2942"
+          "value": "3020"
         }
       ]
     },
@@ -81,7 +81,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "075c3eaf05c088f907614179ffc30db4d13beb02d9944afc0fff4d1f8fd18056"
+          "content": "aff0edafcef99c22def78a2788f5d11524e353ffa4d0f2c2058cf4e1aab5816b"
         }
       ],
       "properties": [
@@ -97,13 +97,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "38d3fe0b6c2f9add1e51bec9b47675e7579b734e6d6ccc0dc1016fab6eb71dbf"
+          "content": "cbf6da72138e4b408a5d534bc28874fdb98eb399179fc9f73e8985da94eca70c"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "1466"
+          "value": "1448"
         }
       ]
     },
@@ -129,7 +129,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4c52c2358ef95c8f6c92a2d139b4d9d1bb99d89c29d935dfac387a1a44dd9bc8"
+          "content": "7f7ff6eb93bf4afadcc1b323d0099aa610c9908ea170c2ae49b06dfb13c26201"
         }
       ],
       "properties": [
@@ -145,7 +145,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e2126112f3e12f86e4b4eae42841a922a0b00b074dd22c0d5e54d044394438f9"
+          "content": "afafa5665752787fceab9d2bdbbbdbce3e50c9b9968e2534c90f1a22082a8f6f"
         }
       ],
       "properties": [
