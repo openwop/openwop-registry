@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.connections.salesforce",
       "version": "1.0.0",
-      "description": "Salesforce connection pack (RFC 0095) — OAuth2 (web-server flow) provider for the Salesforce REST API. DEPLOY-GATED. Reach is `openapi`: Salesforce has no single global first-party MCP server (the API lives on a per-org `*.my.salesforce.com` instance host, supplied per connection via instanceUrlTemplate), so a documented OpenAPI/REST surface is the honest day-1 reach. Carries NO secret; the operator supplies the connected-app consumer key/secret host-side.",
+      "description": "Salesforce connection pack — OAuth2 (web-server flow) provider for the Salesforce REST API. DEPLOY-GATED. Reach is `openapi`: Salesforce has no single global first-party MCP server (the API lives on a per-org `*.my.salesforce.com` instance host, supplied per connection via instanceUrlTemplate), so a documented OpenAPI/REST surface is the honest day-1 reach. Carries NO secret; the operator supplies the connected-app consumer key/secret host-side.",
       "licenses": [
         {
           "license": {
@@ -20,7 +20,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bcc7659e6c7fd9bf90d4f6b705b40848cf7ea851a41fc0dec5abcd404996abf6"
+          "content": "89186dbcc85896e7de8e33f3f147d03d160fab9b9ba04214bc8775d5e9b75c12"
         }
       ],
       "purl": "pkg:openwop/core.openwop.connections.salesforce@1.0.0"
@@ -40,7 +40,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3c607aa14f95f652c4537d3c9ea1c1ce5ede34d7bf3f6a258a1edfb16e90cad4"
+          "content": "4541063d7da550d414adb51da2b06c8654b5e7bb1812e97d87337b41b5243569"
         }
       ],
       "properties": [
@@ -56,13 +56,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8a228d4ed9596f602fedb5b33ebcdd4be16b9712b7a8b32eee35db3b688c235e"
+          "content": "9bc51b3d83c7331775d7d39dbb29558a7ac8ffa039d08b427492795a099837f6"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "1760"
+          "value": "1749"
         }
       ]
     }

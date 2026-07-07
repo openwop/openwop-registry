@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.files",
       "version": "1.0.0",
-      "description": "File + binary primitives — fs CRUD, base64, mime detection, image / PDF / archive processing, FTP / SFTP / SSH. Capability-gated on host.fs (RFC 0014). Hosts MUST enforce sandbox root + path-traversal protection.",
+      "description": "File + binary primitives — fs CRUD, base64, mime detection, image / PDF / archive processing, FTP / SFTP / SSH. Capability-gated on host.fs. Hosts MUST enforce sandbox root + path-traversal protection.",
       "licenses": [
         {
           "license": {
@@ -29,7 +29,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "f60797fc08c90ff3dc980daa6fca9e6837308092de97114c3c022903c75d7718"
+          "content": "29873864856a27d4bb49f3fb30b87176f51da1e80f4286f15392a6b412738fb0"
         }
       ],
       "purl": "pkg:openwop/core.openwop.files@1.0.0"
@@ -97,7 +97,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3763f0a4eabb49448f25292cdbef541c48862f0cc6c17ca820742ecd46018668"
+          "content": "16712f3c4dbab264ba5219b5fc5fdf6aa6b1cdce5ab07c9c2fc4b15a137867df"
         }
       ],
       "properties": [
@@ -113,13 +113,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d61d83b434b79f2e3a4f7813057bbe1554513dc20520ad0fb7a641d8bb8a85a1"
+          "content": "aee988f850a34afab57d1e0a3c82b6e41a4b2e0c532cbf13cb26d39369a7eb97"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "7786"
+          "value": "7775"
         }
       ]
     },

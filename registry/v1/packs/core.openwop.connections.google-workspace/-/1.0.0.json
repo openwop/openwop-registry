@@ -2,7 +2,7 @@
   "name": "core.openwop.connections.google-workspace",
   "version": "1.0.0",
   "kind": "connection",
-  "description": "Google Workspace connection pack (RFC 0095) — OAuth2 PKCE provider for Drive, Calendar, and Gmail via the Google APIs. Registry parity for the reference app's BUILT-IN `google` provider (day-1 UX P10 / C3): the app itself never loads this pack (the builtin wins by id precedence anyway — this pack deliberately uses the distinct id `google-workspace` so OTHER hosts can adopt it without shadowing semantics); it exists so packs.openwop.dev offers a Google productivity-suite connection alongside microsoft365 — previously the registry's only Google entry was google-ads. Read scopes are the day-1 consent; gmail.send / calendar.events are WRITE groups behind a separate re-consent. Carries NO secret; the operator supplies the OAuth client id/secret host-side.",
+  "description": "Google Workspace connection pack — OAuth2 PKCE provider for Drive, Calendar, and Gmail via the Google APIs. Registry parity for the reference app's BUILT-IN `google` provider (day-1 UX P10 / C3): the app itself never loads this pack (the builtin wins by id precedence anyway — this pack deliberately uses the distinct id `google-workspace` so OTHER hosts can adopt it without shadowing semantics); it exists so packs.openwop.dev offers a Google productivity-suite connection alongside microsoft365 — previously the registry's only Google entry was google-ads. Read scopes are the day-1 consent; gmail.send / calendar.events are WRITE groups behind a separate re-consent. Carries NO secret; the operator supplies the OAuth client id/secret host-side.",
   "license": "Apache-2.0",
   "engines": {
     "openwop": ">=1.0.0"
@@ -80,5 +80,5 @@
     "publicKeyRef": "openwop-team-1",
     "signatureRef": "keys/pack.json.sig"
   },
-  "integrity": "sha256-AK+QDrEMFgTC1aOyBngNl54qcHlebC5tujw+hXRDSIs="
+  "integrity": "sha256-bPLKvzGMCbPEYhRVTZGf4hHM00Pt26btUnxlH9R+EJc="
 }

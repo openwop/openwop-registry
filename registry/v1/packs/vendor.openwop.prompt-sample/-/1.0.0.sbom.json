@@ -8,7 +8,7 @@
       "type": "library",
       "name": "vendor.openwop.prompt-sample",
       "version": "1.0.0",
-      "description": "Reference prompt pack proving the RFC 0028 §B manifest format works end-to-end across schema validation, registry indexing, and the in-memory PromptStore's installPackTemplates() seam. Two templates: a writer-system prompt and a critic-system prompt — the minimal pair that lets a multi-agent workflow author point a `writer` + `critic` node pair at vendor-published prompts via `prompt:writer-system@1.0.0` / `prompt:critic-system@1.0.0` refs. In-tree only (NOT published to packs.openwop.dev); the canonical proof that the prompt-pack contract is implementable with real-world-shaped content.",
+      "description": "Reference prompt pack proving the manifest format works end-to-end across schema validation, registry indexing, and the in-memory PromptStore's installPackTemplates seam. Two templates: a writer-system prompt and a critic-system prompt — the minimal pair that lets a multi-agent workflow author point a `writer` + `critic` node pair at vendor-published prompts via `prompt:writer-system@1.0.0` / `prompt:critic-system@1.0.0` refs. In-tree only (NOT published to packs.openwop.dev); the canonical proof that the prompt-pack contract is implementable with real-world-shaped content.",
       "licenses": [
         {
           "license": {
@@ -29,7 +29,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "90c8fa9b3154ba31b186fdedb1052c17f27713b5e63eb51f2165c97a2c7d1ee1"
+          "content": "c153c5f46e84c04281f5e64a71ff549478101afa835a1d30d0bf19a374dc3adf"
         }
       ],
       "purl": "pkg:openwop/vendor.openwop.prompt-sample@1.0.0"
@@ -65,7 +65,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "8a5eec3b7d144d86227e3ae625c4ca8c01c2a321888446cdf1270a11913cdc44"
+          "content": "736b79e4317d7df68b8785008b0de98b734a55e782fca47edb4e5f47c0dff8c1"
         }
       ],
       "properties": [
@@ -81,13 +81,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d5d059bd06fd81ac6513448fa494d622fba1e14ce8b4f94248c31342c83677a4"
+          "content": "afb5c07884faf31fea8cd00cc0b98542c68dd671fb99749d3c3789c197fbecf1"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "2083"
+          "value": "2068"
         }
       ]
     }

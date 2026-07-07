@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.workflows.knowledge",
       "version": "1.0.0",
-      "description": "Real-work workflow pack (RFC 0013) — the internal Knowledge cluster: employee policy/HR Q&A grounded in your Knowledge Base, compliance review of documents against your policy corpus, and structured document summarization. Distinct from core.openwop.workflows.support (customer-facing): these serve EMPLOYEES over internal policy collections. Authored entirely over shipped node typeIds (feature.kb.nodes.rag + core.ai.chatCompletion + core.flow.if + core.chat.approvalGate + core.openwop.integration.*). Populate the underlying collections in the Knowledge feature (or via knowledge-sync from Drive/OneDrive/Dropbox/Box) — these chains READ the app KB; they do not build a separate index. Every external send waits on a human approval gate. All tenant values are run parameters (replay-deterministic).",
+      "description": "Real-work workflow pack — the internal Knowledge cluster: employee policy/HR Q&A grounded in your Knowledge Base, compliance review of documents against your policy corpus, and structured document summarization. Distinct from core.openwop.workflows.support (customer-facing): these serve EMPLOYEES over internal policy collections. Authored entirely over shipped node typeIds (feature.kb.nodes.rag + core.ai.chatCompletion + core.flow.if + core.chat.approvalGate + core.openwop.integration.*). Populate the underlying collections in the Knowledge feature (or via knowledge-sync from Drive/OneDrive/Dropbox/Box) — these chains READ the app KB; they do not build a separate index. Every external send waits on a human approval gate. All tenant values are run parameters (replay-deterministic).",
       "licenses": [
         {
           "license": {
@@ -20,7 +20,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "63a081b418dc6fab2926a38f63f6f9d38793f0c6fc39e71d9bd84083795a541b"
+          "content": "de3917870fd29ddf3dcbb78fc16cefc9515376d0a32fa07bca9587dbac764572"
         }
       ],
       "purl": "pkg:openwop/core.openwop.workflows.knowledge@1.0.0"
@@ -72,7 +72,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "aef832ee475f702c73bc485adcdd7ea4a98be06c97cbe13decada8612ab50e53"
+          "content": "d576b7d005c60cf1be4ece194c3cf764977eec84c5ce66f5584006f7581b3641"
         }
       ],
       "properties": [
@@ -88,13 +88,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9de925c6391b4499d59b3b3ff8bef8b29d02431197a9984763422ab13b587751"
+          "content": "528e165f8c0018f37241074fa3766b1663bc0ff4a35b7e469e50f96a4ac9643c"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "6978"
+          "value": "6967"
         }
       ]
     }

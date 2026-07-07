@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.workflows.market-intel",
       "version": "1.1.0",
-      "description": "Real-work workflow pack (RFC 0013 +). Market-intelligence digest + a SHIFT digest (research the current period, then diff against the prior run via market-intel.shift-detect → an in-voice shift summary) authored entirely over PUBLISHED node packs (vendor.myndhyve.market-intel-* + core.openwop.ai), so they expand + run on any conformant host. Published under the `core.openwop.workflows.*` namespace (openwop-team signing key); the registry adds `signing` at publish time.",
+      "description": "Real-work workflow pack (+). Market-intelligence digest + a SHIFT digest (research the current period, then diff against the prior run via market-intel.shift-detect → an in-voice shift summary) authored entirely over PUBLISHED node packs (vendor.myndhyve.market-intel-* + core.openwop.ai), so they expand + run on any conformant host. Published under the `core.openwop.workflows.*` namespace (openwop-team signing key); the registry adds `signing` at publish time.",
       "licenses": [
         {
           "license": {
@@ -20,7 +20,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "16311225288bea05e0d5df3935abde34ea1adeaa264daeb0ea90ecbd033706ee"
+          "content": "ab740297b10a72e21111083d215db585273db9b4af43ef5f7ad44377375223f5"
         }
       ],
       "purl": "pkg:openwop/core.openwop.workflows.market-intel@1.1.0"
@@ -72,7 +72,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "ed43351d2725baaf0a44f0cef1868ea6651996c97e6859c6a1ed5e1f23a02f67"
+          "content": "e3679d4636ac0d7ec05105fe8d86a0829fbc6d05f059d3b520e2741e0bee1a6f"
         }
       ],
       "properties": [
@@ -88,13 +88,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "457add7b2dec8d91ad433e843ad3021fdfd7315dce61861b1495e2bcb51805cb"
+          "content": "3cc5b66f88d820fbdd3876dfc2aedfcc393f28aa84d5324584bf918aef916019"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "4773"
+          "value": "4764"
         }
       ]
     }

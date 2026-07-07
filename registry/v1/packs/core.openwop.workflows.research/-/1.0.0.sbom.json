@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.workflows.research",
       "version": "1.0.0",
-      "description": "Real-work workflow pack (RFC 0013) — the Research cluster: turn a question into a short, cited web brief. Rides the unified web search (core.web.search → the host.webResearch surface): live results when a search key is configured (BYOK secret 'web-search' on the keys page, or the host's OPENWOP_WEBSEARCH_API_KEY), an honest demo placeholder when not — the synthesis says so plainly instead of pretending. For deep, multi-source, long-horizon research use the Deep Research AGENT in chat; this chain is the quick-brief shape. All tenant values are run parameters (replay-deterministic).",
+      "description": "Real-work workflow pack — the Research cluster: turn a question into a short, cited web brief. Rides the unified web search (core.web.search → the host.webResearch surface): live results when a search key is configured (BYOK secret 'web-search' on the keys page, or the host's OPENWOP_WEBSEARCH_API_KEY), an honest demo placeholder when not — the synthesis says so plainly instead of pretending. For deep, multi-source, long-horizon research use the Deep Research AGENT in chat; this chain is the quick-brief shape. All tenant values are run parameters (replay-deterministic).",
       "licenses": [
         {
           "license": {
@@ -20,7 +20,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3cd14a03e77f10381fc8eb44916b414cc3aa82f3837453b1ea2c171167a1f035"
+          "content": "12cf530f72941e07cc7c3f9859113b817ff5461753224a69ab10d0bc79de9332"
         }
       ],
       "purl": "pkg:openwop/core.openwop.workflows.research@1.0.0"
@@ -72,7 +72,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "74b7725530bfd3ff28c3ee92851c83c5546ddddf4f6dfa76aca3d2d2ed544c4b"
+          "content": "5284d60ae94d3c797698840bdc4fea2767fdf269977bc76cebde43c6203189b1"
         }
       ],
       "properties": [
@@ -88,13 +88,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "23949d5e31226ee12568a45e80b4e04255b8bc7528e32957b9ea330831589fce"
+          "content": "417d5e0b2a28837d97d3db4daa9e1fac63e0b49924ca2412b011756001e30153"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "2612"
+          "value": "2601"
         }
       ]
     }

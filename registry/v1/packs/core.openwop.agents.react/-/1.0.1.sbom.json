@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.agents.react",
       "version": "1.0.1",
-      "description": "Canonical ReAct (Reason + Act) loop agent. Pure-agent pack — ships one agent manifest with a configurable toolAllowlist. Composes via RFC 0007 dispatch and consumes host.aiProviders + host.agentRuntime. The 'hello world' of openwop agents.",
+      "description": "Canonical ReAct (Reason + Act) loop agent. Pure-agent pack — ships one agent manifest with a configurable toolAllowlist. Composes via dispatch and consumes host.aiProviders + host.agentRuntime. The 'hello world' of openwop agents.",
       "licenses": [
         {
           "license": {
@@ -29,7 +29,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d2de6a29cfb312bf7b11e5e01bd7a0a039fac7ac46824117a4cb89fb1d36ce31"
+          "content": "94956fca80218fdf0c0ea13219f851cfa012fd37412e459e5a123047678e3ea9"
         }
       ],
       "purl": "pkg:openwop/core.openwop.agents.react@1.0.1"
@@ -65,13 +65,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "923f329acf3ca748ae38d812606688c196cb0808fb44a3fcdfc6398084d8c9a0"
+          "content": "a69b1d396289961ad423accc39fa69b8f59f481c2e50d6f896ac1ab22bc90b19"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "3615"
+          "value": "3693"
         }
       ]
     },
@@ -81,7 +81,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6af33c2dea9e303f4438f1b0c2763073317eedd1e25d6a7a68e0dbc2c9ae9a96"
+          "content": "1b87f0dde5dbabc1d102211cc7b890293879849b26e285802bf0f304576535ed"
         }
       ],
       "properties": [
@@ -97,13 +97,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c76307d9ba23ea5bae141de31e8c95c0d52697418933fa4d5fe0b9f8dfcbc799"
+          "content": "6988abb3014d41f7a8441b0e727b6c698338ba826597e7e2b8ef4321f4868f1b"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "1487"
+          "value": "1478"
         }
       ]
     },
@@ -129,7 +129,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "9ab6d6fd91798cd71933cf6727666585ad6d882dc133c7f4308362e6b5c600b6"
+          "content": "0f35bca7c93841705e43a8fd0f30063477d65266573860d133a37450fc7d7691"
         }
       ],
       "properties": [
@@ -145,7 +145,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6e93b74b56e5f8be0754878d27d546cc6395de38e9ac3cf4f79236fb95f535a7"
+          "content": "cdd23a4aac9f29fdaa3d667a0087662de8ab2ab57cb6461fb66f0ff695fead96"
         }
       ],
       "properties": [

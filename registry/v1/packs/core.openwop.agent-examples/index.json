@@ -1,7 +1,7 @@
 {
   "name": "core.openwop.agent-examples",
   "kind": "node",
-  "description": "First pure-agent pack — ships two minimal agent manifests with no node runtime. Validates the `agents[]` extension to the pack manifest (per agent-manifest.schema.json + RFC 0003). Echo agent inlines its system prompt; Summarizer references `prompts/summarizer.md` to demonstrate the `systemPromptRef` path. Both agents are stateless (memoryShape.longTerm: false). Vendor-neutral: no model is pinned — hosts resolve via their BYOK aiProviders surface.",
+  "description": "Reference / smoke-fixture agent pack. Exercises every shape on agent-manifest.schema.json: inline systemPrompt, systemPromptRef, conversation memory, scratchpad memory, non-empty toolAllowlist, and handoff.{task,return}SchemaRef. Validates the `agents[]` extension to the pack manifest (per agent-manifest.schema.json +). Vendor-neutral: no model pinned — hosts resolve via their BYOK aiProviders surface.",
   "author": "OpenWOP Working Group",
   "license": "Apache-2.0",
   "homepage": "https://openwop.dev/packs/core.openwop.agent-examples",
@@ -9,10 +9,13 @@
   "tags": [],
   "typeIds": [
     "core.openwop.agent-examples.echo-agent",
-    "core.openwop.agent-examples.summarizer"
+    "core.openwop.agent-examples.summarizer",
+    "core.openwop.agent-examples.chat",
+    "core.openwop.agent-examples.structured-fixture",
+    "core.openwop.agent-examples.tool-caller"
   ],
   "nodeCount": 0,
-  "agentCount": 2,
+  "agentCount": 5,
   "versions": [
     {
       "version": "1.0.0",
@@ -25,8 +28,20 @@
       "integrity": "sha256-OvcPLr9HBXZ2yoDLGua/sOBjzAdrO+unMCoflkRtNgQ=",
       "deprecated": false,
       "yanked": false
+    },
+    {
+      "version": "1.1.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.agent-examples/-/1.1.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.agent-examples/-/1.1.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.agent-examples/-/1.1.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-eXdgcMIkjawgeA/VTOMmb7Zpb8UPbo6Rw/kJ73vqDBg=",
+      "deprecated": false,
+      "yanked": false
     }
   ],
-  "latest": "1.0.0",
+  "latest": "1.1.0",
   "deprecated": false
 }

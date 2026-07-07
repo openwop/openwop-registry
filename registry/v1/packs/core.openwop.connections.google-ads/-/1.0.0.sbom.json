@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.connections.google-ads",
       "version": "1.0.0",
-      "description": "Google Ads connection pack (RFC 0095) — OAuth2 provider for the Google Ads REST API. Reach is `openapi`: Google Ads has no first-party global MCP server; the manifest declares the global Google OAuth hosts and points at the REST API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the OAuth client id/secret + developer token host-side. One of the three ad platforms Campaign Studio syncs (Google / Meta / LinkedIn Ads).",
+      "description": "Google Ads connection pack — OAuth2 provider for the Google Ads REST API. Reach is `openapi`: Google Ads has no first-party global MCP server; the manifest declares the global Google OAuth hosts and points at the REST API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the OAuth client id/secret + developer token host-side. One of the three ad platforms Campaign Studio syncs (Google / Meta / LinkedIn Ads).",
       "licenses": [
         {
           "license": {
@@ -20,7 +20,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cc89b6890c23bea072e01147b6e44d5d95c447ce06267a70daa0ec7b55316c90"
+          "content": "9bbaf0376db4eca3fafe85d5cf93b572d29ffa3d484f18b7fbd1b2a67437aa5d"
         }
       ],
       "purl": "pkg:openwop/core.openwop.connections.google-ads@1.0.0"
@@ -40,7 +40,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "da1fdb23f00598fff570c2038336e580843a29d32e02599883dd2b93341722b0"
+          "content": "a588c997068efde5c2a9c1da89defe52a3fbaba25ec1b44361839655645540f5"
         }
       ],
       "properties": [
@@ -56,13 +56,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6a142a85bb86c97223409e356919930d89d0c317bcbdb8ad6976351de5cdb91a"
+          "content": "87199b7d7f85dbcca8e2059153a8552bae25e642ff2f0e0802d87a303005e838"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "1583"
+          "value": "1572"
         }
       ]
     }

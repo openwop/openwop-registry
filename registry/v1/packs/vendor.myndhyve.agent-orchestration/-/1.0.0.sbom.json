@@ -8,7 +8,7 @@
       "type": "library",
       "name": "vendor.myndhyve.agent-orchestration",
       "version": "1.0.0",
-      "description": "MyndHyve agent-orchestration pack. Six nodes that operate on RFC 0007 / 0008 / 0011 protocol primitives — spawn, delegate-smart, consensus-vote, message-send, skill-invoke, swarm-execute. Routes through the host's agent runtime (ctx.agentRuntime.*). Inherits RFC 0007 §F suspend mechanics for low-confidence escalation.",
+      "description": "MyndHyve agent-orchestration pack. Six nodes that operate on protocol primitives — spawn, delegate-smart, consensus-vote, message-send, skill-invoke, swarm-execute. Routes through the host's agent runtime (ctx.agentRuntime.*). Inherits suspend mechanics for low-confidence escalation.",
       "licenses": [
         {
           "license": {
@@ -29,7 +29,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cf93236a76f80b26b6e8873f7b37ba8e940d1702fe14f34b94cf2f7fa79e3626"
+          "content": "5f8e54c907c4ab672fb6f7cb5a2c2e9c0da13b0aa6683230689041801fcf194b"
         }
       ],
       "purl": "pkg:openwop/vendor.myndhyve.agent-orchestration@1.0.0"
@@ -97,7 +97,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6a5f6d7804d55282170009c8af90c5b06c1345b353d9af1444985d8c414c8b6c"
+          "content": "29887c84fb6e32794d496077030a3439c0d09a0e666ab0775c522a0363a261c5"
         }
       ],
       "properties": [
@@ -113,13 +113,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "586e590c749abc97bfcf0db956f63d9336d1a88d55ff231877ab038349d24693"
+          "content": "7248e50f948f9487165c6e19fb49b73845abf366807eb1367acabf59c0baac26"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "7453"
+          "value": "7417"
         }
       ]
     },

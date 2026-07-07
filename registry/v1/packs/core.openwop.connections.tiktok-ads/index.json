@@ -1,7 +1,7 @@
 {
   "name": "core.openwop.connections.tiktok-ads",
   "kind": "connection",
-  "description": "TikTok Ads connection pack (RFC 0095) — OAuth2 provider for the TikTok Business (Marketing) API. Reach is `openapi`: the manifest declares the TikTok business-api OAuth hosts and points at the Marketing API reference. Carries NO secret; the operator supplies the app id/secret host-side. The third ad platform Campaign Studio dispatches to — TikTok authenticates with an `Access-Token` header (not `Authorization: Bearer`), handled host-side by the ads-dispatch adapter.",
+  "description": "TikTok Ads connection pack — OAuth2 provider for the TikTok Business (Marketing) API. Reach is `openapi`: the manifest declares the TikTok business-api OAuth hosts and points at the Marketing API reference. Carries NO secret; the operator supplies the app id/secret host-side. The third ad platform Campaign Studio dispatches to — TikTok authenticates with an `Access-Token` header (not `Authorization: Bearer`), handled host-side by the ads-dispatch adapter.",
   "author": "",
   "license": "Apache-2.0",
   "tags": [],
@@ -20,7 +20,7 @@
       "signatureUrl": "/v1/packs/core.openwop.connections.tiktok-ads/-/1.0.0.sig",
       "signingMethod": "manual",
       "signingKeyId": "openwop-team-1",
-      "integrity": "sha256-Z7aCAUAtnSwoo68Ujk7p1gyL+HA5HziYfyyEFeePiFo=",
+      "integrity": "sha256-smbIdK7vhtvdOeeO4GdnrfSAdtgNFkuVDiDVEpgQ1N4=",
       "deprecated": false,
       "yanked": false
     }

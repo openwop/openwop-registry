@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.connections.tiktok-ads",
       "version": "1.0.0",
-      "description": "TikTok Ads connection pack (RFC 0095) — OAuth2 provider for the TikTok Business (Marketing) API. Reach is `openapi`: the manifest declares the TikTok business-api OAuth hosts and points at the Marketing API reference. Carries NO secret; the operator supplies the app id/secret host-side. The third ad platform Campaign Studio dispatches to — TikTok authenticates with an `Access-Token` header (not `Authorization: Bearer`), handled host-side by the ads-dispatch adapter.",
+      "description": "TikTok Ads connection pack — OAuth2 provider for the TikTok Business (Marketing) API. Reach is `openapi`: the manifest declares the TikTok business-api OAuth hosts and points at the Marketing API reference. Carries NO secret; the operator supplies the app id/secret host-side. The third ad platform Campaign Studio dispatches to — TikTok authenticates with an `Access-Token` header (not `Authorization: Bearer`), handled host-side by the ads-dispatch adapter.",
       "licenses": [
         {
           "license": {
@@ -20,7 +20,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "67b68201402d9d2c28a3af148e4ee9d60c8bf870391f38987f2c8415e78f885a"
+          "content": "b266c874aeef86dbdd39e78ee06767adf48076d80d164b950e20d5129810d4de"
         }
       ],
       "purl": "pkg:openwop/core.openwop.connections.tiktok-ads@1.0.0"
@@ -40,7 +40,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "e4738cbb509b7b4d9a54f3c536a1dbf867fa139876409cb151673a1d1e727647"
+          "content": "2caeef1ab4078c50842da1a268d8e39356af2fea6c12e7bf2f2af1a7773e4cc5"
         }
       ],
       "properties": [
@@ -56,13 +56,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bc0c3e6a7ad016d01d7f7a29fda6f3bd4a5e574db96f0885d19ad3cda733f3c8"
+          "content": "f3da669cb9541ff086f79c898db370f11171edb2373b7c6be6ebeac489e4fa8a"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "1454"
+          "value": "1443"
         }
       ]
     }

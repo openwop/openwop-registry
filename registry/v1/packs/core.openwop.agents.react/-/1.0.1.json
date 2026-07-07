@@ -1,7 +1,7 @@
 {
   "name": "core.openwop.agents.react",
   "version": "1.0.1",
-  "description": "Canonical ReAct (Reason + Act) loop agent. Pure-agent pack — ships one agent manifest with a configurable toolAllowlist. Composes via RFC 0007 dispatch and consumes host.aiProviders + host.agentRuntime. The 'hello world' of openwop agents.",
+  "description": "Canonical ReAct (Reason + Act) loop agent. Pure-agent pack — ships one agent manifest with a configurable toolAllowlist. Composes via dispatch and consumes host.aiProviders + host.agentRuntime. The 'hello world' of openwop agents.",
   "author": "OpenWOP Working Group",
   "license": "Apache-2.0",
   "homepage": "https://openwop.dev/packs/core.openwop.agents.react",
@@ -55,6 +55,5 @@
     "publicKeyRef": "openwop-team-1",
     "signatureRef": "keys/pack.json.sig"
   },
-  "integrity": "sha256-0t5qKc+zEr97EeXgG9egoDn6x6xGgkEXpMuJ+x02zjE=",
-  "publishedAt": "2026-05-27T00:00:00Z"
+  "integrity": "sha256-lJVvyoAhj98MDqEyGfhRz6AS/TdBLkWeWhIwR2eOPqk="
 }

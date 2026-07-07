@@ -53,16 +53,19 @@
     {
       "name": "core.openwop.agent-examples",
       "kind": "node",
-      "latestVersion": "1.0.0",
-      "description": "First pure-agent pack — ships two minimal agent manifests with no node runtime. Validates the `agents[]` extension to the pack manifest (per agent-manifest.schema.json + RFC 0003). Echo agent inlines its system prompt; Summarizer references `prompts/summarizer.md` to demonstrate the `systemPromptRef` path. Both agents are stateless (memoryShape.longTerm: false). Vendor-neutral: no model is pinned — hosts resolve via their BYOK aiProviders surface.",
+      "latestVersion": "1.1.0",
+      "description": "Reference / smoke-fixture agent pack. Exercises every shape on agent-manifest.schema.json: inline systemPrompt, systemPromptRef, conversation memory, scratchpad memory, non-empty toolAllowlist, and handoff.{task,return}SchemaRef. Validates the `agents[]` extension to the pack manifest (per agent-manifest.schema.json +). Vendor-neutral: no model pinned — hosts resolve via their BYOK aiProviders surface.",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
         "core.openwop.agent-examples.echo-agent",
-        "core.openwop.agent-examples.summarizer"
+        "core.openwop.agent-examples.summarizer",
+        "core.openwop.agent-examples.chat",
+        "core.openwop.agent-examples.structured-fixture",
+        "core.openwop.agent-examples.tool-caller"
       ],
       "nodeCount": 0,
-      "agentCount": 2,
+      "agentCount": 5,
       "deprecated": false,
       "yanked": false
     },
@@ -70,7 +73,7 @@
       "name": "core.openwop.agents",
       "kind": "node",
       "latestVersion": "1.0.1",
-      "description": "Agent composition primitives. Root agent.run + sub-nodes (tools, memory, parsers, model selector). Composes via RFC 0013 expansion semantics and consumes host.aiProviders + host.agentRuntime.",
+      "description": "Agent composition primitives. Root agent.run + sub-nodes (tools, memory, parsers, model selector). Composes via expansion semantics and consumes host.aiProviders + host.agentRuntime.",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -111,7 +114,7 @@
       "name": "core.openwop.agents.react",
       "kind": "node",
       "latestVersion": "1.0.1",
-      "description": "Canonical ReAct (Reason + Act) loop agent. Pure-agent pack — ships one agent manifest with a configurable toolAllowlist. Composes via RFC 0007 dispatch and consumes host.aiProviders + host.agentRuntime. The 'hello world' of openwop agents.",
+      "description": "Canonical ReAct (Reason + Act) loop agent. Pure-agent pack — ships one agent manifest with a configurable toolAllowlist. Composes via dispatch and consumes host.aiProviders + host.agentRuntime. The 'hello world' of openwop agents.",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -126,7 +129,7 @@
       "name": "core.openwop.agents.supervisor",
       "kind": "node",
       "latestVersion": "1.0.1",
-      "description": "Multi-agent supervisor. Routes user tasks to specialized subagents via RFC 0007 dispatch + RFC 0006 orchestrator semantics. Mirrors LangGraph Supervisor and CrewAI's hierarchical-process pattern. Pure-agent pack.",
+      "description": "Multi-agent supervisor. Routes user tasks to specialized subagents via dispatch + orchestrator semantics. Mirrors LangGraph Supervisor and CrewAI's hierarchical-process pattern. Pure-agent pack.",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -170,7 +173,7 @@
       "name": "core.openwop.artifact-types",
       "kind": "artifact-type",
       "latestVersion": "1.0.0",
-      "description": "Example artifact-type pack (RFC 0075) — proves the kind:'artifact-type' pack tier registers its declared types through the host artifact-type registry (registrationSource:'pack'), advertised under host.artifactTypes and served at /schemas/artifacts/{id}.schema.json.",
+      "description": "Example artifact-type pack — proves the kind:'artifact-type' pack tier registers its declared types through the host artifact-type registry (registrationSource:'pack'), advertised under host.artifactTypes and served at /schemas/artifacts/{id}.schema.json.",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -186,7 +189,7 @@
       "name": "core.openwop.connections.github",
       "kind": "connection",
       "latestVersion": "1.0.0",
-      "description": "GitHub connection pack (RFC 0095) — OAuth2 provider definition, reached via the official GitHub MCP server. Demonstrates the openwop-app connection-pack loader: drop this pack in and `github` becomes a resolvable provider. Carries NO secret; the operator supplies the OAuth client id/secret host-side.",
+      "description": "GitHub connection pack — OAuth2 provider definition, reached via the official GitHub MCP server. Demonstrates the openwop-app connection-pack loader: drop this pack in and `github` becomes a resolvable provider. Carries NO secret; the operator supplies the OAuth client id/secret host-side.",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -201,7 +204,7 @@
       "name": "core.openwop.connections.google-ads",
       "kind": "connection",
       "latestVersion": "1.0.0",
-      "description": "Google Ads connection pack (RFC 0095) — OAuth2 provider for the Google Ads REST API. Reach is `openapi`: Google Ads has no first-party global MCP server; the manifest declares the global Google OAuth hosts and points at the REST API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the OAuth client id/secret + developer token host-side. One of the three ad platforms Campaign Studio syncs (Google / Meta / LinkedIn Ads).",
+      "description": "Google Ads connection pack — OAuth2 provider for the Google Ads REST API. Reach is `openapi`: Google Ads has no first-party global MCP server; the manifest declares the global Google OAuth hosts and points at the REST API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the OAuth client id/secret + developer token host-side. One of the three ad platforms Campaign Studio syncs (Google / Meta / LinkedIn Ads).",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -216,7 +219,7 @@
       "name": "core.openwop.connections.google-workspace",
       "kind": "connection",
       "latestVersion": "1.0.0",
-      "description": "Google Workspace connection pack (RFC 0095) — OAuth2 PKCE provider for Drive, Calendar, and Gmail via the Google APIs. Registry parity for the reference app's BUILT-IN `google` provider (day-1 UX P10 / C3): the app itself never loads this pack (the builtin wins by id precedence anyway — this pack deliberately uses the distinct id `google-workspace` so OTHER hosts can adopt it without shadowing semantics); it exists so packs.openwop.dev offers a Google productivity-suite connection alongside microsoft365 — previously the registry's only Google entry was google-ads. Read scopes are the day-1 consent; gmail.send / calendar.events are WRITE groups behind a separate re-consent. Carries NO secret; the operator supplies the OAuth client id/secret host-side.",
+      "description": "Google Workspace connection pack — OAuth2 PKCE provider for Drive, Calendar, and Gmail via the Google APIs. Registry parity for the reference app's BUILT-IN `google` provider (day-1 UX P10 / C3): the app itself never loads this pack (the builtin wins by id precedence anyway — this pack deliberately uses the distinct id `google-workspace` so OTHER hosts can adopt it without shadowing semantics); it exists so packs.openwop.dev offers a Google productivity-suite connection alongside microsoft365 — previously the registry's only Google entry was google-ads. Read scopes are the day-1 consent; gmail.send / calendar.events are WRITE groups behind a separate re-consent. Carries NO secret; the operator supplies the OAuth client id/secret host-side.",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -231,7 +234,7 @@
       "name": "core.openwop.connections.jira",
       "kind": "connection",
       "latestVersion": "1.0.0",
-      "description": "Jira connection pack (RFC 0095) — Atlassian OAuth2 (3LO) provider for Jira Cloud. DEPLOY-GATED. Reach is `mcp` against Atlassian's official first-party remote MCP server (the Rovo MCP server, https://mcp.atlassian.com/v1/mcp), which fronts Jira (and Confluence) under the signed-in user's permissions. Carries NO secret; the operator supplies the OAuth client id/secret host-side.",
+      "description": "Jira connection pack — Atlassian OAuth2 (3LO) provider for Jira Cloud. DEPLOY-GATED. Reach is `mcp` against Atlassian's official first-party remote MCP server (the Rovo MCP server, https://mcp.atlassian.com/v1/mcp), which fronts Jira (and Confluence) under the signed-in user's permissions. Carries NO secret; the operator supplies the OAuth client id/secret host-side.",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -246,7 +249,7 @@
       "name": "core.openwop.connections.linkedin-ads",
       "kind": "connection",
       "latestVersion": "1.0.0",
-      "description": "LinkedIn Ads connection pack (RFC 0095) — OAuth2 provider for the LinkedIn Marketing API. Reach is `openapi`: the manifest declares the global LinkedIn OAuth hosts and points at the Marketing API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the client id/secret host-side. One of the three ad platforms Campaign Studio syncs (Google / Meta / LinkedIn Ads).",
+      "description": "LinkedIn Ads connection pack — OAuth2 provider for the LinkedIn Marketing API. Reach is `openapi`: the manifest declares the global LinkedIn OAuth hosts and points at the Marketing API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the client id/secret host-side. One of the three ad platforms Campaign Studio syncs (Google / Meta / LinkedIn Ads).",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -261,7 +264,7 @@
       "name": "core.openwop.connections.meta-ads",
       "kind": "connection",
       "latestVersion": "1.0.0",
-      "description": "Meta (Facebook/Instagram) Ads connection pack (RFC 0095) — OAuth2 provider for the Meta Marketing API. Reach is `openapi`: the manifest declares the global Meta OAuth hosts and points at the Marketing API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the app id/secret host-side. An available provider (the parallel ad platform to google-ads); one of the three ad platforms Campaign Studio syncs.",
+      "description": "Meta (Facebook/Instagram) Ads connection pack — OAuth2 provider for the Meta Marketing API. Reach is `openapi`: the manifest declares the global Meta OAuth hosts and points at the Marketing API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the app id/secret host-side. An available provider (the parallel ad platform to google-ads); one of the three ad platforms Campaign Studio syncs.",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -276,7 +279,7 @@
       "name": "core.openwop.connections.microsoft365",
       "kind": "connection",
       "latestVersion": "1.0.0",
-      "description": "Microsoft 365 connection pack (RFC 0095) — OAuth2 provider for Teams, Outlook (Mail/Calendar), and SharePoint via the Microsoft Graph API. DEPLOY-GATED. Reach is `openapi` against the Microsoft Graph OpenAPI surface: Microsoft's first-party remote MCP servers are per-tenant/preview (a tenant-templated URL, not a single global https endpoint the manifest can fix), so a stable Graph OpenAPI path is the honest day-1 reach (capability honesty). Carries NO secret; the operator supplies the OAuth client id/secret host-side.",
+      "description": "Microsoft 365 connection pack — OAuth2 provider for Teams, Outlook (Mail/Calendar), and SharePoint via the Microsoft Graph API. DEPLOY-GATED. Reach is `openapi` against the Microsoft Graph OpenAPI surface: Microsoft's first-party remote MCP servers are per-tenant/preview (a tenant-templated URL, not a single global https endpoint the manifest can fix), so a stable Graph OpenAPI path is the honest day-1 reach (capability honesty). Carries NO secret; the operator supplies the OAuth client id/secret host-side.",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -291,7 +294,7 @@
       "name": "core.openwop.connections.netsuite",
       "kind": "connection",
       "latestVersion": "1.0.0",
-      "description": "Oracle NetSuite connection pack (RFC 0095) — OAuth2 provider for the NetSuite SuiteTalk REST API (ERP / finance). Reach is `openapi`: NetSuite has no first-party global MCP server, and its REST base + OAuth hosts are PER-ACCOUNT (`https://{account}.suitetalk.api.netsuite.com`), supplied per connection via instanceUrlTemplate (the schema's own NetSuite example). Carries NO secret; the operator supplies the integration/client credentials host-side. Bound by lib.finance.invoice-ap (post to ERP).",
+      "description": "Oracle NetSuite connection pack — OAuth2 provider for the NetSuite SuiteTalk REST API (ERP / finance). Reach is `openapi`: NetSuite has no first-party global MCP server, and its REST base + OAuth hosts are PER-ACCOUNT (`https://{account}.suitetalk.api.netsuite.com`), supplied per connection via instanceUrlTemplate (the schema's own NetSuite example). Carries NO secret; the operator supplies the integration/client credentials host-side. Bound by lib.finance.invoice-ap (post to ERP).",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -306,7 +309,7 @@
       "name": "core.openwop.connections.notion",
       "kind": "connection",
       "latestVersion": "1.0.0",
-      "description": "Notion connection pack (RFC 0095) — OAuth2 provider for Notion pages + databases. DEPLOY-GATED. Reach is `mcp` against Notion's official first-party hosted MCP server (https://mcp.notion.com/mcp, Streamable HTTP), which searches/reads/creates/updates workspace content under the connected user's permissions. Notion consent is a static developer-portal capability set rather than per-request OAuth scopes (scopeModel `capabilities`). Carries NO secret; the operator supplies the OAuth client id/secret host-side.",
+      "description": "Notion connection pack — OAuth2 provider for Notion pages + databases. DEPLOY-GATED. Reach is `mcp` against Notion's official first-party hosted MCP server (https://mcp.notion.com/mcp, Streamable HTTP), which searches/reads/creates/updates workspace content under the connected user's permissions. Notion consent is a static developer-portal capability set rather than per-request OAuth scopes (scopeModel `capabilities`). Carries NO secret; the operator supplies the OAuth client id/secret host-side.",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -321,7 +324,7 @@
       "name": "core.openwop.connections.salesforce",
       "kind": "connection",
       "latestVersion": "1.0.0",
-      "description": "Salesforce connection pack (RFC 0095) — OAuth2 (web-server flow) provider for the Salesforce REST API. DEPLOY-GATED. Reach is `openapi`: Salesforce has no single global first-party MCP server (the API lives on a per-org `*.my.salesforce.com` instance host, supplied per connection via instanceUrlTemplate), so a documented OpenAPI/REST surface is the honest day-1 reach. Carries NO secret; the operator supplies the connected-app consumer key/secret host-side.",
+      "description": "Salesforce connection pack — OAuth2 (web-server flow) provider for the Salesforce REST API. DEPLOY-GATED. Reach is `openapi`: Salesforce has no single global first-party MCP server (the API lives on a per-org `*.my.salesforce.com` instance host, supplied per connection via instanceUrlTemplate), so a documented OpenAPI/REST surface is the honest day-1 reach. Carries NO secret; the operator supplies the connected-app consumer key/secret host-side.",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -336,7 +339,7 @@
       "name": "core.openwop.connections.tiktok-ads",
       "kind": "connection",
       "latestVersion": "1.0.0",
-      "description": "TikTok Ads connection pack (RFC 0095) — OAuth2 provider for the TikTok Business (Marketing) API. Reach is `openapi`: the manifest declares the TikTok business-api OAuth hosts and points at the Marketing API reference. Carries NO secret; the operator supplies the app id/secret host-side. The third ad platform Campaign Studio dispatches to — TikTok authenticates with an `Access-Token` header (not `Authorization: Bearer`), handled host-side by the ads-dispatch adapter.",
+      "description": "TikTok Ads connection pack — OAuth2 provider for the TikTok Business (Marketing) API. Reach is `openapi`: the manifest declares the TikTok business-api OAuth hosts and points at the Marketing API reference. Carries NO secret; the operator supplies the app id/secret host-side. The third ad platform Campaign Studio dispatches to — TikTok authenticates with an `Access-Token` header (not `Authorization: Bearer`), handled host-side by the ads-dispatch adapter.",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -351,7 +354,7 @@
       "name": "core.openwop.connections.workday",
       "kind": "connection",
       "latestVersion": "1.0.0",
-      "description": "Workday connection pack (RFC 0095) — OAuth2 provider for the Workday REST API (HCM / People). DEPLOY-GATED. Reach is `openapi`: Workday has no first-party global MCP server, and its OAuth authorize/token endpoints plus REST base are TENANT-SPECIFIC (`https://{instance}.workday.com/{tenant}/..`), supplied per connection via instanceUrlTemplate. The manifest declares the global https hosts and the per-tenant template; the operator fills the tenant at connection time (capability honesty). Carries NO secret; the operator supplies the API-client id/secret host-side.",
+      "description": "Workday connection pack — OAuth2 provider for the Workday REST API (HCM / People). DEPLOY-GATED. Reach is `openapi`: Workday has no first-party global MCP server, and its OAuth authorize/token endpoints plus REST base are TENANT-SPECIFIC (`https://{instance}.workday.com/{tenant}/.`), supplied per connection via instanceUrlTemplate. The manifest declares the global https hosts and the per-tenant template; the operator fills the tenant at connection time (capability honesty). Carries NO secret; the operator supplies the API-client id/secret host-side.",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -445,7 +448,7 @@
       "name": "core.openwop.db",
       "kind": "node",
       "latestVersion": "1.0.0",
-      "description": "Database adapter primitives — sql, nosql, search, vector. Each gated on its host capability (host.sql, host.nosql, host.searchIndex, host.vectorStore) per RFC 0018. Pack speaks no driver — delegates to ctx.db.*. Parametric SQL only (host enforces).",
+      "description": "Database adapter primitives — sql, nosql, search, vector. Each gated on its host capability (host.sql, host.nosql, host.searchIndex, host.vectorStore) per. Pack speaks no driver — delegates to ctx.db.*. Parametric SQL only (host enforces).",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -488,7 +491,7 @@
       "name": "core.openwop.files",
       "kind": "node",
       "latestVersion": "1.0.0",
-      "description": "File + binary primitives — fs CRUD, base64, mime detection, image / PDF / archive processing, FTP / SFTP / SSH. Capability-gated on host.fs (RFC 0014). Hosts MUST enforce sandbox root + path-traversal protection.",
+      "description": "File + binary primitives — fs CRUD, base64, mime detection, image / PDF / archive processing, FTP / SFTP / SSH. Capability-gated on host.fs. Hosts MUST enforce sandbox root + path-traversal protection.",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -581,7 +584,7 @@
       "name": "core.openwop.http",
       "kind": "node",
       "latestVersion": "2.0.0",
-      "description": "HTTP + general transport pack. v2.0 (RFC 0076 §B): prefers the host-mediated, SSRF-guarded `ctx.http.safeFetch` for all outbound when the host exposes it, falling back to the pack's own `assertPublicUrl` (node:dns) + `globalThis.fetch` otherwise; declares `runtime.requires: [\"net.dns\",\"net.outbound\"]` for the fallback path. v1.0 baseline: core.openwop.http.fetch (retry, backoff, idempotency). v1.1 additions: openapi-call, GraphQL (query/mutation/subscription), SOAP, gRPC (4 streaming variants), SSE consume, WebSocket client, long-poll, upload (multipart + resumable), download stream, pagination decorators (cursor/offset/link-header), rate-limit-aware retry, circuit breaker, idempotency-key generator, webhook signature verifier (Stripe/GitHub/Slack/raw-hmac). Zero npm deps — Node 20+ fetch/undici; transports requiring native libs delegate to host capabilities.",
+      "description": "HTTP + general transport pack. v2.0: prefers the host-mediated, SSRF-guarded `ctx.http.safeFetch` for all outbound when the host exposes it, falling back to the pack's own `assertPublicUrl` (node:dns) + `globalThis.fetch` otherwise; declares `runtime.requires: [\"net.dns\",\"net.outbound\"]` for the fallback path. v1.0 baseline: core.openwop.http.fetch (retry, backoff, idempotency). v1.1 additions: openapi-call, GraphQL (query/mutation/subscription), SOAP, gRPC (4 streaming variants), SSE consume, WebSocket client, long-poll, upload (multipart + resumable), download stream, pagination decorators (cursor/offset/link-header), rate-limit-aware retry, circuit breaker, idempotency-key generator, webhook signature verifier (Stripe/GitHub/Slack/raw-hmac). Zero npm deps — Node 20+ fetch/undici; transports requiring native libs delegate to host capabilities.",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -674,7 +677,7 @@
       "name": "core.openwop.messaging",
       "kind": "node",
       "latestVersion": "1.0.0",
-      "description": "Queue + stream primitives — publish, consume (trigger), ack/nack/dead-letter, stream subscribe/publish. Capability-gated on host.queueBus (RFC 0017). Sibling to host.messaging (outbound-egress-only).",
+      "description": "Queue + stream primitives — publish, consume (trigger), ack/nack/dead-letter, stream subscribe/publish. Capability-gated on host.queueBus. Sibling to host.messaging (outbound-egress-only).",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -838,7 +841,7 @@
       "name": "core.openwop.workflows.approvals",
       "kind": "workflow-chain",
       "latestVersion": "1.0.0",
-      "description": "Real-work workflow pack (RFC 0013) — the Approvals cluster, the single most-used enterprise automation shape (Power Automate's #1 template is a sign-off flow with ~3.35M instantiations): Request Sign-off (an open gate any team member can approve — the zero-config marquee) and Two-Stage Sign-off (an ordered approval chain: stage two is only asked after stage one approves — sequential chains are DAG composition, not a new primitive). Gates support quorum (requiredApprovals), named approvers (approverRefs), and out-of-office delegation (an approver's active delegation lets their delegate act, counted as ONE identity). All tenant values are run parameters (replay-deterministic).",
+      "description": "Real-work workflow pack — the Approvals cluster, the single most-used enterprise automation shape (Power Automate's #1 template is a sign-off flow with ~3.35M instantiations): Request Sign-off (an open gate any team member can approve — the zero-config marquee) and Two-Stage Sign-off (an ordered approval chain: stage two is only asked after stage one approves — sequential chains are DAG composition, not a new primitive). Gates support quorum (requiredApprovals), named approvers (approverRefs), and out-of-office delegation (an approver's active delegation lets their delegate act, counted as ONE identity). All tenant values are run parameters (replay-deterministic).",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -854,7 +857,7 @@
       "name": "core.openwop.workflows.content",
       "kind": "workflow-chain",
       "latestVersion": "1.0.0",
-      "description": "Real-work workflow pack (RFC 0013) — the Content & Monitoring cluster: watch an RSS/Atom feed for new items and watch any web page for changes, each pairing a schedule trigger with durable seen-state in host KV storage (deterministic per-source key; the first run treats everything as new and seeds the state). NO host RSS poller exists — adding an 'rss' ingestion source to /v1/trigger-subscriptions is RFC 0099 wire territory (see) — so these chains ARE the poller: pair each with a Schedule and the scheduler does the polling. Authored over shipped node typeIds (core.trigger.schedule + core.openwop.http.fetch + core.storage.kv-get/kv-set + core.ai.chatCompletion + core.openwop.integration.notification-push). No external sends — digests are in-app notifications, so no approval gate is needed. All tenant values are run parameters (replay-deterministic).",
+      "description": "Real-work workflow pack — the Content & Monitoring cluster: watch an RSS/Atom feed for new items and watch any web page for changes, each pairing a schedule trigger with durable seen-state in host KV storage (deterministic per-source key; the first run treats everything as new and seeds the state). NO host RSS poller exists — adding an 'rss' ingestion source to /v1/trigger-subscriptions is wire territory (see) — so these chains ARE the poller: pair each with a Schedule and the scheduler does the polling. Authored over shipped node typeIds (core.trigger.schedule + core.openwop.http.fetch + core.storage.kv-get/kv-set + core.ai.chatCompletion + core.openwop.integration.notification-push). No external sends — digests are in-app notifications, so no approval gate is needed. All tenant values are run parameters (replay-deterministic).",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -870,7 +873,7 @@
       "name": "core.openwop.workflows.data-ops",
       "kind": "workflow-chain",
       "latestVersion": "1.1.0",
-      "description": "Real-work workflow pack (RFC 0013) — the Data Ops cluster, the one shape-family the Zapier/n8n and Microsoft canons don't cover (surfaced by the Make/Workato research): collapsing many records into one output (the aggregator canon), one-way movement of records between systems, and content routing (send a record down the right branch). Roll Up, Records → Table, Records → System (one-way upsert behind a human sign-off), and Content Router (route a record to the matching branch by a field predicate — the Make router shape, gated via edge conditions). Uses only shipped, executable nodes (core.flow.aggregate-{numeric,text,table} + core.flow.router + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.http.openapi-call + core.openwop.integration.notification-push). The write is ONE-WAY movement keyed on an external id (re-runs update, never duplicate) behind a human approval — it is NOT a bidirectional sync. All tenant values are run parameters (replay-deterministic).",
+      "description": "Real-work workflow pack — the Data Ops cluster, the one shape-family the Zapier/n8n and Microsoft canons don't cover (surfaced by the Make/Workato research): collapsing many records into one output (the aggregator canon), one-way movement of records between systems, and content routing (send a record down the right branch). Roll Up, Records → Table, Records → System (one-way upsert behind a human sign-off), and Content Router (route a record to the matching branch by a field predicate — the Make router shape, gated via edge conditions). Uses only shipped, executable nodes (core.flow.aggregate-{numeric,text,table} + core.flow.router + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.http.openapi-call + core.openwop.integration.notification-push). The write is ONE-WAY movement keyed on an external id (re-runs update, never duplicate) behind a human approval — it is NOT a bidirectional sync. All tenant values are run parameters (replay-deterministic).",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -888,7 +891,7 @@
       "name": "core.openwop.workflows.devops",
       "kind": "workflow-chain",
       "latestVersion": "1.0.0",
-      "description": "Real-work workflow pack (RFC 0013) — the DevOps cluster: senior-style code review of a diff, changelog/release-notes drafting from a commit log, CI-failure diagnosis from a signature-verified webhook, and a stale-issue gardener over the public GitHub API. All four are ADVISORY — they analyze and notify in-app, never write to your repo or post comments (an authenticated GitHub write path would bind a connection behind an approval gate; deferred until the MCP-reach connection binding has a chain precedent). These chains do not run the Code Reviewer / Git Author AGENTS — those remain chat-drivable via the agents surface; the chains use short chain-local prompts over core.ai.chatCompletion. All tenant values are run parameters (replay-deterministic).",
+      "description": "Real-work workflow pack — the DevOps cluster: senior-style code review of a diff, changelog/release-notes drafting from a commit log, CI-failure diagnosis from a signature-verified webhook, and a stale-issue gardener over the public GitHub API. All four are ADVISORY — they analyze and notify in-app, never write to your repo or post comments (an authenticated GitHub write path would bind a connection behind an approval gate; deferred until the MCP-reach connection binding has a chain precedent). These chains do not run the Code Reviewer / Git Author AGENTS — those remain chat-drivable via the agents surface; the chains use short chain-local prompts over core.ai.chatCompletion. All tenant values are run parameters (replay-deterministic).",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -906,7 +909,7 @@
       "name": "core.openwop.workflows.exec-ops",
       "kind": "workflow-chain",
       "latestVersion": "1.1.0",
-      "description": "Real-work workflow pack (RFC 0013). The Executive / Chief-of-Staff cluster: Daily Executive Briefing, Meeting Prep & Attendee Dossier, and Board / Investor Update Pack. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.analytics) and, where a workflow touches an external system, binds a connection pack via core.openwop.http.openapi-call (connectionRef) — so a configured connection runs live and an unconfigured one surfaces a connect prompt rather than failing. Every external send is gated by core.chat.approvalGate; the read-only briefing is ungated. All tenant-specific values are run parameters (replay-deterministic). Resolves fully on hosts that ship the feature + http/mcp + chat packs (the OpenWOP reference app); the connection bindings are configured by the operator under Access & data → Connections.",
+      "description": "Real-work workflow pack. The Executive / Chief-of-Staff cluster: Daily Executive Briefing, Meeting Prep & Attendee Dossier, and Board / Investor Update Pack. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.analytics) and, where a workflow touches an external system, binds a connection pack via core.openwop.http.openapi-call (connectionRef) — so a configured connection runs live and an unconfigured one surfaces a connect prompt rather than failing. Every external send is gated by core.chat.approvalGate; the read-only briefing is ungated. All tenant-specific values are run parameters (replay-deterministic). Resolves fully on hosts that ship the feature + http/mcp + chat packs (the OpenWOP reference app); the connection bindings are configured by the operator under Access & data → Connections.",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -923,7 +926,7 @@
       "name": "core.openwop.workflows.finance",
       "kind": "workflow-chain",
       "latestVersion": "1.1.0",
-      "description": "Real-work workflow pack (RFC 0013) — the Finance cluster: Invoice → AP Processing, Month-End Close Checklist, and Expense/Budget Approval + anomaly detection. Reasons with core.ai.chatCompletion; recommends ERP actions (validation + posting) provider-agnostically via core.openwop.connectors.erp-action (NetSuite when connected); every posting/reimbursement runs through a threshold core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + kb + integration packs. Published under core.openwop.workflows.* (openwop-team key).",
+      "description": "Real-work workflow pack — the Finance cluster: Invoice → AP Processing, Month-End Close Checklist, and Expense/Budget Approval + anomaly detection. Reasons with core.ai.chatCompletion; recommends ERP actions (validation + posting) provider-agnostically via core.openwop.connectors.erp-action (NetSuite when connected); every posting/reimbursement runs through a threshold core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + kb + integration packs. Published under core.openwop.workflows.* (openwop-team key).",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -940,7 +943,7 @@
       "name": "core.openwop.workflows.inbox",
       "kind": "workflow-chain",
       "latestVersion": "1.0.0",
-      "description": "Real-work workflow pack (RFC 0013) — the personal-productivity Inbox cluster: triage your own inbox (classify, draft the urgent reply, digest the rest), nudge unanswered threads, and debrief calls into coaching notes. Distinct from core.openwop.workflows.support (a customer-support mailbox with queue routing): these serve YOUR inbox and YOUR calls. Drafting uses core.email.draft — it creates a draft in your mailbox and never sends (the draft is the human gate); the one real send (follow-up nudger) waits on an approval. All tenant values are run parameters (replay-deterministic).",
+      "description": "Real-work workflow pack — the personal-productivity Inbox cluster: triage your own inbox (classify, draft the urgent reply, digest the rest), nudge unanswered threads, and debrief calls into coaching notes. Distinct from core.openwop.workflows.support (a customer-support mailbox with queue routing): these serve YOUR inbox and YOUR calls. Drafting uses core.email.draft — it creates a draft in your mailbox and never sends (the draft is the human gate); the one real send (follow-up nudger) waits on an approval. All tenant values are run parameters (replay-deterministic).",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -957,7 +960,7 @@
       "name": "core.openwop.workflows.it-support",
       "kind": "workflow-chain",
       "latestVersion": "1.2.1",
-      "description": "Real-work workflow pack (RFC 0013) — the IT / Support cluster: Incident Triage & Major-Incident Comms. An AI classifier assesses each incident's severity; routine incidents go to a recommended knowledge-base article and a ticket, while major incidents go to human-approved stakeholder updates in Slack — and each incident finishes with a post-incident summary. All tenant values are run parameters (replay-deterministic). Resolves on hosts shipping the kb + http + ai + chat + integration packs. Published under core.openwop.workflows.* (openwop-team key).",
+      "description": "Real-work workflow pack — the IT / Support cluster: Incident Triage & Major-Incident Comms. An AI classifier assesses each incident's severity; routine incidents go to a recommended knowledge-base article and a ticket, while major incidents go to human-approved stakeholder updates in Slack — and each incident finishes with a post-incident summary. All tenant values are run parameters (replay-deterministic). Resolves on hosts shipping the kb + http + ai + chat + integration packs. Published under core.openwop.workflows.* (openwop-team key).",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -972,7 +975,7 @@
       "name": "core.openwop.workflows.knowledge",
       "kind": "workflow-chain",
       "latestVersion": "1.0.0",
-      "description": "Real-work workflow pack (RFC 0013) — the internal Knowledge cluster: employee policy/HR Q&A grounded in your Knowledge Base, compliance review of documents against your policy corpus, and structured document summarization. Distinct from core.openwop.workflows.support (customer-facing): these serve EMPLOYEES over internal policy collections. Authored entirely over shipped node typeIds (feature.kb.nodes.rag + core.ai.chatCompletion + core.flow.if + core.chat.approvalGate + core.openwop.integration.*). Populate the underlying collections in the Knowledge feature (or via knowledge-sync from Drive/OneDrive/Dropbox/Box) — these chains READ the app KB; they do not build a separate index. Every external send waits on a human approval gate. All tenant values are run parameters (replay-deterministic).",
+      "description": "Real-work workflow pack — the internal Knowledge cluster: employee policy/HR Q&A grounded in your Knowledge Base, compliance review of documents against your policy corpus, and structured document summarization. Distinct from core.openwop.workflows.support (customer-facing): these serve EMPLOYEES over internal policy collections. Authored entirely over shipped node typeIds (feature.kb.nodes.rag + core.ai.chatCompletion + core.flow.if + core.chat.approvalGate + core.openwop.integration.*). Populate the underlying collections in the Knowledge feature (or via knowledge-sync from Drive/OneDrive/Dropbox/Box) — these chains READ the app KB; they do not build a separate index. Every external send waits on a human approval gate. All tenant values are run parameters (replay-deterministic).",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -989,7 +992,7 @@
       "name": "core.openwop.workflows.lighthouse",
       "kind": "workflow-chain",
       "latestVersion": "1.1.0",
-      "description": "Real-work workflow pack (RFC 0013 follow-on). The five zero-config 'lighthouse' workflows from the catalog — Lead Triage, Account Brief, Renewal & Churn-Risk Digest, RFP Response, and Post-Meeting Follow-up — authored entirely over node typeIds shipped with this host (feature.crm/kb/analytics + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.integration.*). Each rides real tenant data through the feature node packs, reasons with the LLM node, gates every external send behind a human approval, and delivers a usable artifact. Tenant-specific values are RUN PARAMETERS (never hardcoded) so the expansion stays replay-deterministic. Picking one in the builder instantiates a fully-editable, runnable, assignable workflow.",
+      "description": "Real-work workflow pack (follow-on). The five zero-config 'lighthouse' workflows from the catalog — Lead Triage, Account Brief, Renewal & Churn-Risk Digest, RFP Response, and Post-Meeting Follow-up — authored entirely over node typeIds shipped with this host (feature.crm/kb/analytics + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.integration.*). Each rides real tenant data through the feature node packs, reasons with the LLM node, gates every external send behind a human approval, and delivers a usable artifact. Tenant-specific values are RUN PARAMETERS (never hardcoded) so the expansion stays replay-deterministic. Picking one in the builder instantiates a fully-editable, runnable, assignable workflow.",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -1008,7 +1011,7 @@
       "name": "core.openwop.workflows.market-intel",
       "kind": "workflow-chain",
       "latestVersion": "1.1.0",
-      "description": "Real-work workflow pack (RFC 0013 +). Market-intelligence digest + a SHIFT digest (research the current period, then diff against the prior run via market-intel.shift-detect → an in-voice shift summary) authored entirely over PUBLISHED node packs (vendor.myndhyve.market-intel-* + core.openwop.ai), so they expand + run on any conformant host. Published under the `core.openwop.workflows.*` namespace (openwop-team signing key); the registry adds `signing` at publish time.",
+      "description": "Real-work workflow pack (+). Market-intelligence digest + a SHIFT digest (research the current period, then diff against the prior run via market-intel.shift-detect → an in-voice shift summary) authored entirely over PUBLISHED node packs (vendor.myndhyve.market-intel-* + core.openwop.ai), so they expand + run on any conformant host. Published under the `core.openwop.workflows.*` namespace (openwop-team signing key); the registry adds `signing` at publish time.",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -1024,7 +1027,7 @@
       "name": "core.openwop.workflows.marketing",
       "kind": "workflow-chain",
       "latestVersion": "1.1.0",
-      "description": "Real-work workflow pack (RFC 0013) — the Marketing & Advertising cluster: Full Campaign Launch, Ad Performance Optimization Loop, Content Brief Generator, and Content Repurposing. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.kb / feature.cms / feature.email); reads/optimizes the ad platforms provider-agnostically via the core.openwop.connectors.ad-* capability nodes (Meta or Google, whichever the tenant connected). The optimization loop routes within-guardrail changes to auto-apply and out-of-guardrail changes to a core.chat.approvalGate via a core.flow.if conditional node (open-question resolution: a flow conditional, not a new primitive). Every launch/publish/apply is approval- or guardrail-gated; all tenant values are run parameters (replay-deterministic). Published under core.openwop.workflows.* (openwop-team key).",
+      "description": "Real-work workflow pack — the Marketing & Advertising cluster: Full Campaign Launch, Ad Performance Optimization Loop, Content Brief Generator, and Content Repurposing. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.kb / feature.cms / feature.email); reads/optimizes the ad platforms provider-agnostically via the core.openwop.connectors.ad-* capability nodes (Meta or Google, whichever the tenant connected). The optimization loop routes within-guardrail changes to auto-apply and out-of-guardrail changes to a core.chat.approvalGate via a core.flow.if conditional node (open-question resolution: a flow conditional, not a new primitive). Every launch/publish/apply is approval- or guardrail-gated; all tenant values are run parameters (replay-deterministic). Published under core.openwop.workflows.* (openwop-team key).",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -1042,7 +1045,7 @@
       "name": "core.openwop.workflows.people-hr",
       "kind": "workflow-chain",
       "latestVersion": "1.2.0",
-      "description": "Real-work workflow pack (RFC 0013) — the People / HR cluster: Employee Onboarding Orchestrator, Offboarding & Access Revocation, and Leave/PTO Request Routing. Reasons with core.ai.chatCompletion; binds Microsoft 365 via core.openwop.http.openapi-call connectionRef, recommends HRIS actions provider-agnostically via core.openwop.connectors.hris-action (Workday today), and provider-agnostic ticketing (Jira/ServiceNow) via the core.openwop.connectors.ticket-* capability nodes; every account/HRIS mutation and every team-facing send is gated by core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + integration packs; connections are configured under Access & data → Connections. Published under core.openwop.workflows.* (openwop-team key).",
+      "description": "Real-work workflow pack — the People / HR cluster: Employee Onboarding Orchestrator, Offboarding & Access Revocation, and Leave/PTO Request Routing. Reasons with core.ai.chatCompletion; binds Microsoft 365 via core.openwop.http.openapi-call connectionRef, recommends HRIS actions provider-agnostically via core.openwop.connectors.hris-action (Workday today), and provider-agnostic ticketing (Jira/ServiceNow) via the core.openwop.connectors.ticket-* capability nodes; every account/HRIS mutation and every team-facing send is gated by core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + integration packs; connections are configured under Access & data → Connections. Published under core.openwop.workflows.* (openwop-team key).",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -1059,7 +1062,7 @@
       "name": "core.openwop.workflows.research",
       "kind": "workflow-chain",
       "latestVersion": "1.0.0",
-      "description": "Real-work workflow pack (RFC 0013) — the Research cluster: turn a question into a short, cited web brief. Rides the unified web search (core.web.search → the host.webResearch surface): live results when a search key is configured (BYOK secret 'web-search' on the keys page, or the host's OPENWOP_WEBSEARCH_API_KEY), an honest demo placeholder when not — the synthesis says so plainly instead of pretending. For deep, multi-source, long-horizon research use the Deep Research AGENT in chat; this chain is the quick-brief shape. All tenant values are run parameters (replay-deterministic).",
+      "description": "Real-work workflow pack — the Research cluster: turn a question into a short, cited web brief. Rides the unified web search (core.web.search → the host.webResearch surface): live results when a search key is configured (BYOK secret 'web-search' on the keys page, or the host's OPENWOP_WEBSEARCH_API_KEY), an honest demo placeholder when not — the synthesis says so plainly instead of pretending. For deep, multi-source, long-horizon research use the Deep Research AGENT in chat; this chain is the quick-brief shape. All tenant values are run parameters (replay-deterministic).",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -1074,7 +1077,7 @@
       "name": "core.openwop.workflows.starters",
       "kind": "workflow-chain",
       "latestVersion": "1.0.0",
-      "description": "Starter workflow pack (RFC 0013) — the simple-pipe on-ramp tier: short single-trigger→action recipes (webhook→notify, form→table, schedule→digest, fetch→store) that run in under a minute with zero connections, before you graduate to the AI-agent packs. Trigger-shaped starters begin with a core.trigger.* pass-through entry node: bind them to a live source with a trigger subscription (POST /v1/trigger-subscriptions — webhook, email, or form; RFC 0099) or a Schedule; on a manual run the trigger payload is empty, so bind a source to see them shine. External sends stay behind a human approval gate; in-app notifications are direct. All tenant values are run parameters (replay-deterministic).",
+      "description": "Starter workflow pack — the simple-pipe on-ramp tier: short single-trigger→action recipes (webhook→notify, form→table, schedule→digest, fetch→store) that run in under a minute with zero connections, before you graduate to the AI-agent packs. Trigger-shaped starters begin with a core.trigger.* pass-through entry node: bind them to a live source with a trigger subscription (POST /v1/trigger-subscriptions — webhook, email, or form) or a Schedule; on a manual run the trigger payload is empty, so bind a source to see them shine. External sends stay behind a human approval gate; in-app notifications are direct. All tenant values are run parameters (replay-deterministic).",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -1094,7 +1097,7 @@
       "name": "core.openwop.workflows.support",
       "kind": "workflow-chain",
       "latestVersion": "1.0.0",
-      "description": "Real-work workflow pack (RFC 0013) — the Customer Support cluster, the #1 surveyed agent use case the gallery previously had zero templates for: KB-grounded answering, email triage (draft-only — the human sends), customer-ticket routing, sentiment/brand-risk escalation, and CSAT follow-up. Authored entirely over node typeIds shipped with this host (feature.kb + core.ai.chatCompletion + core.flow.if + core.chat.approvalGate + core.email.draft + core.openwop.connectors.ticket-create + core.openwop.integration.*). Every external SEND waits on a human approval gate (core.email.draft creates a draft and never sends — the draft itself is the human gate). Distinct from core.openwop.workflows.it-support: that pack routes IT incidents by severity; this one serves customer-facing support (intent, queues, CSAT). All tenant values are run parameters (replay-deterministic).",
+      "description": "Real-work workflow pack — the Customer Support cluster, the #1 surveyed agent use case the gallery previously had zero templates for: KB-grounded answering, email triage (draft-only — the human sends), customer-ticket routing, sentiment/brand-risk escalation, and CSAT follow-up. Authored entirely over node typeIds shipped with this host (feature.kb + core.ai.chatCompletion + core.flow.if + core.chat.approvalGate + core.email.draft + core.openwop.connectors.ticket-create + core.openwop.integration.*). Every external SEND waits on a human approval gate (core.email.draft creates a draft and never sends — the draft itself is the human gate). Distinct from core.openwop.workflows.it-support: that pack routes IT incidents by severity; this one serves customer-facing support (intent, queues, CSAT). All tenant values are run parameters (replay-deterministic).",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -1312,7 +1315,7 @@
       "name": "vendor.myndhyve.agent-orchestration",
       "kind": "node",
       "latestVersion": "1.0.0",
-      "description": "MyndHyve agent-orchestration pack. Six nodes that operate on RFC 0007 / 0008 / 0011 protocol primitives — spawn, delegate-smart, consensus-vote, message-send, skill-invoke, swarm-execute. Routes through the host's agent runtime (ctx.agentRuntime.*). Inherits RFC 0007 §F suspend mechanics for low-confidence escalation.",
+      "description": "MyndHyve agent-orchestration pack. Six nodes that operate on protocol primitives — spawn, delegate-smart, consensus-vote, message-send, skill-invoke, swarm-execute. Routes through the host's agent runtime (ctx.agentRuntime.*). Inherits suspend mechanics for low-confidence escalation.",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -1754,7 +1757,7 @@
       "name": "vendor.openwop.card-sample",
       "kind": "card",
       "latestVersion": "1.0.0",
-      "description": "Reference chat-card pack (RFC 0071) — two portable, host-agnostic AI chat cards: a text summarizer and a meeting action-item extractor. Demonstrates the card manifest contract (typed inputs from the portable subset, a prompt template with placeholder mapping, no runtime).",
+      "description": "Reference chat-card pack — two portable, host-agnostic AI chat cards: a text summarizer and a meeting action-item extractor. Demonstrates the card manifest contract (typed inputs from the portable subset, a prompt template with placeholder mapping, no runtime).",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -1770,7 +1773,7 @@
       "name": "vendor.openwop.prompt-sample",
       "kind": "prompt",
       "latestVersion": "1.0.0",
-      "description": "Reference prompt pack proving the RFC 0028 §B manifest format works end-to-end across schema validation, registry indexing, and the in-memory PromptStore's installPackTemplates() seam. Two templates: a writer-system prompt and a critic-system prompt — the minimal pair that lets a multi-agent workflow author point a `writer` + `critic` node pair at vendor-published prompts via `prompt:writer-system@1.0.0` / `prompt:critic-system@1.0.0` refs. In-tree only (NOT published to packs.openwop.dev); the canonical proof that the prompt-pack contract is implementable with real-world-shaped content.",
+      "description": "Reference prompt pack proving the manifest format works end-to-end across schema validation, registry indexing, and the in-memory PromptStore's installPackTemplates seam. Two templates: a writer-system prompt and a critic-system prompt — the minimal pair that lets a multi-agent workflow author point a `writer` + `critic` node pair at vendor-published prompts via `prompt:writer-system@1.0.0` / `prompt:critic-system@1.0.0` refs. In-tree only (NOT published to packs.openwop.dev); the canonical proof that the prompt-pack contract is implementable with real-world-shaped content.",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -1801,7 +1804,7 @@
       "name": "vendor.openwop.workflow-chain-sample",
       "kind": "workflow-chain",
       "latestVersion": "1.0.0",
-      "description": "Reference workflow-chain pack proving the RFC 0013 manifest format works end-to-end across schema validation, registry indexing, and the reference expansion library. Two chains: a 1-node 'summarize text' chain showing literal parameter substitution, and a 2-node 'fetch-and-summarize' chain showing multi-node DAG composition with edge wiring and capability propagation. In-tree only (NOT published to packs.openwop.dev); the canonical proof that the chain-pack contract is implementable with real-world-shaped content.",
+      "description": "Reference workflow-chain pack proving the manifest format works end-to-end across schema validation, registry indexing, and the reference expansion library. Two chains: a 1-node 'summarize text' chain showing literal parameter substitution, and a 2-node 'fetch-and-summarize' chain showing multi-node DAG composition with edge wiring and capability propagation. In-tree only (NOT published to packs.openwop.dev); the canonical proof that the chain-pack contract is implementable with real-world-shaped content.",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [

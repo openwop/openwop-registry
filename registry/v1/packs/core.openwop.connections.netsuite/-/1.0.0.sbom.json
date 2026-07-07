@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.connections.netsuite",
       "version": "1.0.0",
-      "description": "Oracle NetSuite connection pack (RFC 0095) — OAuth2 provider for the NetSuite SuiteTalk REST API (ERP / finance). Reach is `openapi`: NetSuite has no first-party global MCP server, and its REST base + OAuth hosts are PER-ACCOUNT (`https://{account}.suitetalk.api.netsuite.com`), supplied per connection via instanceUrlTemplate (the schema's own NetSuite example). Carries NO secret; the operator supplies the integration/client credentials host-side. Bound by lib.finance.invoice-ap (post to ERP).",
+      "description": "Oracle NetSuite connection pack — OAuth2 provider for the NetSuite SuiteTalk REST API (ERP / finance). Reach is `openapi`: NetSuite has no first-party global MCP server, and its REST base + OAuth hosts are PER-ACCOUNT (`https://{account}.suitetalk.api.netsuite.com`), supplied per connection via instanceUrlTemplate (the schema's own NetSuite example). Carries NO secret; the operator supplies the integration/client credentials host-side. Bound by lib.finance.invoice-ap (post to ERP).",
       "licenses": [
         {
           "license": {
@@ -20,7 +20,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "66f519613f9314255050442d5d7a655d363cb2267bb84a76c9c6157609812e39"
+          "content": "dac8f49fdaa9ef68001b1ed593521ed240381c27c997f0d6d65ef6356736e098"
         }
       ],
       "purl": "pkg:openwop/core.openwop.connections.netsuite@1.0.0"
@@ -40,7 +40,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "cbafd6a33a309fa03cf35ec6c6d93a729cb87f43bbdca9414ee444fc3467d4f0"
+          "content": "b4b732c2c8fd9595911036b4fd9ff77a3500cf0c21c13d3e184e5b7662de7930"
         }
       ],
       "properties": [
@@ -56,13 +56,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "fcf2b8d9ef163075eb794c315d0194066d49ed04d19b044d1d71de78045ae1c2"
+          "content": "d6f93161eef041276e611fb81752ba402745476792b753753ffc2349a7e56613"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "1469"
+          "value": "1458"
         }
       ]
     }

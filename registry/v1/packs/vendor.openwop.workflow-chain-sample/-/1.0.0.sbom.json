@@ -8,7 +8,7 @@
       "type": "library",
       "name": "vendor.openwop.workflow-chain-sample",
       "version": "1.0.0",
-      "description": "Reference workflow-chain pack proving the RFC 0013 manifest format works end-to-end across schema validation, registry indexing, and the reference expansion library. Two chains: a 1-node 'summarize text' chain showing literal parameter substitution, and a 2-node 'fetch-and-summarize' chain showing multi-node DAG composition with edge wiring and capability propagation. In-tree only (NOT published to packs.openwop.dev); the canonical proof that the chain-pack contract is implementable with real-world-shaped content.",
+      "description": "Reference workflow-chain pack proving the manifest format works end-to-end across schema validation, registry indexing, and the reference expansion library. Two chains: a 1-node 'summarize text' chain showing literal parameter substitution, and a 2-node 'fetch-and-summarize' chain showing multi-node DAG composition with edge wiring and capability propagation. In-tree only (NOT published to packs.openwop.dev); the canonical proof that the chain-pack contract is implementable with real-world-shaped content.",
       "licenses": [
         {
           "license": {
@@ -29,7 +29,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "d42c908bd21ecd179bf80d5f27c581215167d6dfcbf69225f7b1732d92d5c501"
+          "content": "3c1c2eeb35797a2d6597ca6eece7ece7f35a4fc94dd04b519965f2823df95d8e"
         }
       ],
       "purl": "pkg:openwop/vendor.openwop.workflow-chain-sample@1.0.0"
@@ -65,7 +65,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "4ab0a111a1550d6ebd179992cc73e2d432d717eac40686629f6a70c73201e433"
+          "content": "c2285db68ea85f92d43e81d6a66a52042c42a493102ce5d1d868db939d8f9996"
         }
       ],
       "properties": [
@@ -81,13 +81,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "46d6d3aaf8dc2265b4a3aa023fdb1eab9d91a817ce8b40142938316e39cb9eee"
+          "content": "4005397e089a4473e42aa3377f2aed0ab913f4a966ea861c5088b0a429949ec0"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "3995"
+          "value": "3986"
         }
       ]
     }

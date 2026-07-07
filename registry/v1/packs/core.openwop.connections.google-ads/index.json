@@ -1,7 +1,7 @@
 {
   "name": "core.openwop.connections.google-ads",
   "kind": "connection",
-  "description": "Google Ads connection pack (RFC 0095) — OAuth2 provider for the Google Ads REST API. Reach is `openapi`: Google Ads has no first-party global MCP server; the manifest declares the global Google OAuth hosts and points at the REST API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the OAuth client id/secret + developer token host-side. One of the three ad platforms Campaign Studio syncs (Google / Meta / LinkedIn Ads).",
+  "description": "Google Ads connection pack — OAuth2 provider for the Google Ads REST API. Reach is `openapi`: Google Ads has no first-party global MCP server; the manifest declares the global Google OAuth hosts and points at the REST API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the OAuth client id/secret + developer token host-side. One of the three ad platforms Campaign Studio syncs (Google / Meta / LinkedIn Ads).",
   "author": "",
   "license": "Apache-2.0",
   "tags": [],
@@ -20,7 +20,7 @@
       "signatureUrl": "/v1/packs/core.openwop.connections.google-ads/-/1.0.0.sig",
       "signingMethod": "manual",
       "signingKeyId": "openwop-team-1",
-      "integrity": "sha256-zIm2iQwjvqBy4BFHtuRNXZXER84GJnpw2qDse1UxbJA=",
+      "integrity": "sha256-m7rwN2207KP6/oXVz5O1ctKf+j1ITxi3+9GypnQ3ql0=",
       "deprecated": false,
       "yanked": false
     }

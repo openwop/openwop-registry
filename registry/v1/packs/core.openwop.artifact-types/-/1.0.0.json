@@ -2,7 +2,7 @@
   "name": "core.openwop.artifact-types",
   "version": "1.0.0",
   "kind": "artifact-type",
-  "description": "Example artifact-type pack (RFC 0075) — proves the kind:'artifact-type' pack tier registers its declared types through the host artifact-type registry (registrationSource:'pack'), advertised under host.artifactTypes and served at /schemas/artifacts/{id}.schema.json.",
+  "description": "Example artifact-type pack — proves the kind:'artifact-type' pack tier registers its declared types through the host artifact-type registry (registrationSource:'pack'), advertised under host.artifactTypes and served at /schemas/artifacts/{id}.schema.json.",
   "author": "OpenWOP App",
   "license": "Apache-2.0",
   "keywords": [
@@ -65,5 +65,5 @@
     "publicKeyRef": "openwop-team-1",
     "signatureRef": "keys/pack.json.sig"
   },
-  "integrity": "sha256-TaHb+bCW12yrpsQu+c52rcKs+AeeTBxoPLp+8EcDI1A="
+  "integrity": "sha256-9YmqCsdZKK+sHaRVCPT7TMRAYdYWMSf+930kdV/8GEM="
 }

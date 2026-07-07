@@ -1,7 +1,7 @@
 {
   "name": "core.openwop.connections.meta-ads",
   "kind": "connection",
-  "description": "Meta (Facebook/Instagram) Ads connection pack (RFC 0095) — OAuth2 provider for the Meta Marketing API. Reach is `openapi`: the manifest declares the global Meta OAuth hosts and points at the Marketing API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the app id/secret host-side. An available provider (the parallel ad platform to google-ads); one of the three ad platforms Campaign Studio syncs.",
+  "description": "Meta (Facebook/Instagram) Ads connection pack — OAuth2 provider for the Meta Marketing API. Reach is `openapi`: the manifest declares the global Meta OAuth hosts and points at the Marketing API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the app id/secret host-side. An available provider (the parallel ad platform to google-ads); one of the three ad platforms Campaign Studio syncs.",
   "author": "",
   "license": "Apache-2.0",
   "tags": [],
@@ -20,7 +20,7 @@
       "signatureUrl": "/v1/packs/core.openwop.connections.meta-ads/-/1.0.0.sig",
       "signingMethod": "manual",
       "signingKeyId": "openwop-team-1",
-      "integrity": "sha256-23sOstJ59i+qAtSmbV0B8PU0cSGU9+ySi1NIJgC9ePs=",
+      "integrity": "sha256-O0Bu1S0Zsbiz683DU782Uoxa5D3MTFvA5RPl91NI/ec=",
       "deprecated": false,
       "yanked": false
     }

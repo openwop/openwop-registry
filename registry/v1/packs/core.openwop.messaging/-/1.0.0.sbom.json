@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.messaging",
       "version": "1.0.0",
-      "description": "Queue + stream primitives — publish, consume (trigger), ack/nack/dead-letter, stream subscribe/publish. Capability-gated on host.queueBus (RFC 0017). Sibling to host.messaging (outbound-egress-only).",
+      "description": "Queue + stream primitives — publish, consume (trigger), ack/nack/dead-letter, stream subscribe/publish. Capability-gated on host.queueBus. Sibling to host.messaging (outbound-egress-only).",
       "licenses": [
         {
           "license": {
@@ -29,7 +29,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "bd81d5ba93bc41fe0e10edfd198f09985e5d1f8eb149d58c1c1fdf9105cef7d8"
+          "content": "7eebdee700f4c31133b8ca8e0bf29c1ba237d486d03143fafb715fbcf4ed405f"
         }
       ],
       "purl": "pkg:openwop/core.openwop.messaging@1.0.0"
@@ -97,7 +97,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "21fe14bae64d4275c2e756622fc6273633a77734c1318f6063aa84dcd6a1be53"
+          "content": "acd38d9fd2ba196bbb9454d0567759e98fbd9a6f947405c469e2a74a39cd9ac1"
         }
       ],
       "properties": [
@@ -113,13 +113,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "c606663319a71f79ff7b97a80ec0b74fe611c4f008da933b28cccf66e5d11cc9"
+          "content": "e8c20ae4445c2d4440ea3d9cbb9a8fdb0ccf47a3bb71ab4ba0d669bafb42a30d"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "3430"
+          "value": "3419"
         }
       ]
     },

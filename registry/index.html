@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>openwop registry — packs.openwop.dev</title>
-<meta name="description" content="The canonical signed node-pack registry for the openwop workflow orchestration protocol. 96 pack(s), 135 version(s) published.">
+<meta name="description" content="The canonical signed node-pack registry for the openwop workflow orchestration protocol. 96 pack(s), 136 version(s) published.">
 <meta name="robots" content="index, follow">
 
 <meta property="og:type" content="website">
@@ -412,7 +412,7 @@
     <p class="lead">Canonical signed node-pack registry for the <a href="https://openwop.dev/">openwop</a> workflow orchestration protocol.</p>
     <div class="summary">
       <div><strong>96</strong><span>packs published</span></div>
-      <div><strong>135</strong><span>versions total</span></div>
+      <div><strong>136</strong><span>versions total</span></div>
       <div><strong>Ed25519</strong><span>signing algorithm</span></div>
     </div>
   </header>
@@ -503,7 +503,7 @@
           <td class="name"><code>core.openwop.agents</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="nodes in latest manifest">12</td>
-          <td class="desc">Agent composition primitives. Root agent.run + sub-nodes (tools, memory, parsers, model selector). Composes via RFC 0013 expansion semantics and consumes host.aiProviders + host.agentRuntime.</td>
+          <td class="desc">Agent composition primitives. Root agent.run + sub-nodes (tools, memory, parsers, model selector). Composes via expansion semantics and consumes host.aiProviders + host.agentRuntime.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.agents/-/1.0.1.json" title="version manifest (JSON)">manifest</a>
@@ -551,7 +551,7 @@
           <td class="name"><code>core.openwop.db</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="nodes in latest manifest">12</td>
-          <td class="desc">Database adapter primitives — sql, nosql, search, vector. Each gated on its host capability (host.sql, host.nosql, host.searchIndex, host.vectorStore) per RFC 0018. Pack speaks no driver — delegates to ctx.db.*. Parametric SQL only (host enforces).</td>
+          <td class="desc">Database adapter primitives — sql, nosql, search, vector. Each gated on its host capability (host.sql, host.nosql, host.searchIndex, host.vectorStore) per. Pack speaks no driver — delegates to ctx.db.*. Parametric SQL only (host enforces).</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.db/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
@@ -575,7 +575,7 @@
           <td class="name"><code>core.openwop.files</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="nodes in latest manifest">19</td>
-          <td class="desc">File + binary primitives — fs CRUD, base64, mime detection, image / PDF / archive processing, FTP / SFTP / SSH. Capability-gated on host.fs (RFC 0014). Hosts MUST enforce sandbox root + path-traversal protection.</td>
+          <td class="desc">File + binary primitives — fs CRUD, base64, mime detection, image / PDF / archive processing, FTP / SFTP / SSH. Capability-gated on host.fs. Hosts MUST enforce sandbox root + path-traversal protection.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.files/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
@@ -611,7 +611,7 @@
           <td class="name"><code>core.openwop.http</code> </td>
           <td class="version">2.0.0</td>
           <td class="count" title="nodes in latest manifest">23</td>
-          <td class="desc">HTTP + general transport pack. v2.0 (RFC 0076 §B): prefers the host-mediated, SSRF-guarded `ctx.http.safeFetch` for all outbound when the host exposes it, falling back to the pack&#39;s own `assertPublicUrl` (node:dns) + `globalThis.fetch` otherwise; declares `runtime.requires: [&quot;net.dns&quot;,&quot;net.outbound&quot;]` for the fallback path. v1.0 baseline: core.openwop.http.fetch (retry, backoff, idempotency). v1.1 additions: openapi-call, GraphQL (query/mutation/subscription), SOAP, gRPC (4 streaming variants), SSE consume, WebSocket client, long-poll, upload (multipart + resumable), download stream, pagination decorators (cursor/offset/link-header), rate-limit-aware retry, circuit breaker, idempotency-key generator, webhook signature verifier (Stripe/GitHub/Slack/raw-hmac). Zero npm deps — Node 20+ fetch/undici; transports requiring native libs delegate to host capabilities.</td>
+          <td class="desc">HTTP + general transport pack. v2.0: prefers the host-mediated, SSRF-guarded `ctx.http.safeFetch` for all outbound when the host exposes it, falling back to the pack&#39;s own `assertPublicUrl` (node:dns) + `globalThis.fetch` otherwise; declares `runtime.requires: [&quot;net.dns&quot;,&quot;net.outbound&quot;]` for the fallback path. v1.0 baseline: core.openwop.http.fetch (retry, backoff, idempotency). v1.1 additions: openapi-call, GraphQL (query/mutation/subscription), SOAP, gRPC (4 streaming variants), SSE consume, WebSocket client, long-poll, upload (multipart + resumable), download stream, pagination decorators (cursor/offset/link-header), rate-limit-aware retry, circuit breaker, idempotency-key generator, webhook signature verifier (Stripe/GitHub/Slack/raw-hmac). Zero npm deps — Node 20+ fetch/undici; transports requiring native libs delegate to host capabilities.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.http/-/2.0.0.json" title="version manifest (JSON)">manifest</a>
@@ -647,7 +647,7 @@
           <td class="name"><code>core.openwop.messaging</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="nodes in latest manifest">7</td>
-          <td class="desc">Queue + stream primitives — publish, consume (trigger), ack/nack/dead-letter, stream subscribe/publish. Capability-gated on host.queueBus (RFC 0017). Sibling to host.messaging (outbound-egress-only).</td>
+          <td class="desc">Queue + stream primitives — publish, consume (trigger), ack/nack/dead-letter, stream subscribe/publish. Capability-gated on host.queueBus. Sibling to host.messaging (outbound-egress-only).</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.messaging/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
@@ -887,7 +887,7 @@
           <td class="name"><code>vendor.myndhyve.agent-orchestration</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="nodes in latest manifest">12</td>
-          <td class="desc">MyndHyve agent-orchestration pack. Six nodes that operate on RFC 0007 / 0008 / 0011 protocol primitives — spawn, delegate-smart, consensus-vote, message-send, skill-invoke, swarm-execute. Routes through the host&#39;s agent runtime (ctx.agentRuntime.*). Inherits RFC 0007 §F suspend mechanics for low-confidence escalation.</td>
+          <td class="desc">MyndHyve agent-orchestration pack. Six nodes that operate on protocol primitives — spawn, delegate-smart, consensus-vote, message-send, skill-invoke, swarm-execute. Routes through the host&#39;s agent runtime (ctx.agentRuntime.*). Inherits suspend mechanics for low-confidence escalation.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/vendor.myndhyve.agent-orchestration/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
@@ -1229,14 +1229,14 @@
         </tr>
         <tr>
           <td class="name"><code>core.openwop.agent-examples</code> </td>
-          <td class="version">1.0.0</td>
-          <td class="count" title="agents in latest manifest">2</td>
-          <td class="desc">First pure-agent pack — ships two minimal agent manifests with no node runtime. Validates the `agents[]` extension to the pack manifest (per agent-manifest.schema.json + RFC 0003). Echo agent inlines its system prompt; Summarizer references `prompts/summarizer.md` to demonstrate the `systemPromptRef` path. Both agents are stateless (memoryShape.longTerm: false). Vendor-neutral: no model is pinned — hosts resolve via their BYOK aiProviders surface.</td>
+          <td class="version">1.1.0</td>
+          <td class="count" title="agents in latest manifest">5</td>
+          <td class="desc">Reference / smoke-fixture agent pack. Exercises every shape on agent-manifest.schema.json: inline systemPrompt, systemPromptRef, conversation memory, scratchpad memory, non-empty toolAllowlist, and handoff.{task,return}SchemaRef. Validates the `agents[]` extension to the pack manifest (per agent-manifest.schema.json +). Vendor-neutral: no model pinned — hosts resolve via their BYOK aiProviders surface.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v1/packs/core.openwop.agent-examples/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v1/packs/core.openwop.agent-examples/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v1/packs/core.openwop.agent-examples/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+            <a href="/v1/packs/core.openwop.agent-examples/-/1.1.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.agent-examples/-/1.1.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.agent-examples/-/1.1.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr>
@@ -1255,7 +1255,7 @@
           <td class="name"><code>core.openwop.agents.react</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="agents in latest manifest">1</td>
-          <td class="desc">Canonical ReAct (Reason + Act) loop agent. Pure-agent pack — ships one agent manifest with a configurable toolAllowlist. Composes via RFC 0007 dispatch and consumes host.aiProviders + host.agentRuntime. The &#39;hello world&#39; of openwop agents.</td>
+          <td class="desc">Canonical ReAct (Reason + Act) loop agent. Pure-agent pack — ships one agent manifest with a configurable toolAllowlist. Composes via dispatch and consumes host.aiProviders + host.agentRuntime. The &#39;hello world&#39; of openwop agents.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.agents.react/-/1.0.1.json" title="version manifest (JSON)">manifest</a>
@@ -1267,7 +1267,7 @@
           <td class="name"><code>core.openwop.agents.supervisor</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="agents in latest manifest">1</td>
-          <td class="desc">Multi-agent supervisor. Routes user tasks to specialized subagents via RFC 0007 dispatch + RFC 0006 orchestrator semantics. Mirrors LangGraph Supervisor and CrewAI&#39;s hierarchical-process pattern. Pure-agent pack.</td>
+          <td class="desc">Multi-agent supervisor. Routes user tasks to specialized subagents via dispatch + orchestrator semantics. Mirrors LangGraph Supervisor and CrewAI&#39;s hierarchical-process pattern. Pure-agent pack.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.agents.supervisor/-/1.0.1.json" title="version manifest (JSON)">manifest</a>
@@ -1310,7 +1310,7 @@
           <td class="name"><code>core.openwop.artifact-types</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="artifact types in latest manifest">2</td>
-          <td class="desc">Example artifact-type pack (RFC 0075) — proves the kind:&#39;artifact-type&#39; pack tier registers its declared types through the host artifact-type registry (registrationSource:&#39;pack&#39;), advertised under host.artifactTypes and served at /schemas/artifacts/{id}.schema.json.</td>
+          <td class="desc">Example artifact-type pack — proves the kind:&#39;artifact-type&#39; pack tier registers its declared types through the host artifact-type registry (registrationSource:&#39;pack&#39;), advertised under host.artifactTypes and served at /schemas/artifacts/{id}.schema.json.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.artifact-types/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
@@ -1343,7 +1343,7 @@
           <td class="name"><code>core.openwop.connections.jira</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="provider in latest manifest">1</td>
-          <td class="desc">Jira connection pack (RFC 0095) — Atlassian OAuth2 (3LO) provider for Jira Cloud. DEPLOY-GATED. Reach is `mcp` against Atlassian&#39;s official first-party remote MCP server (the Rovo MCP server, https://mcp.atlassian.com/v1/mcp), which fronts Jira (and Confluence) under the signed-in user&#39;s permissions. Carries NO secret; the operator supplies the OAuth client id/secret host-side.</td>
+          <td class="desc">Jira connection pack — Atlassian OAuth2 (3LO) provider for Jira Cloud. DEPLOY-GATED. Reach is `mcp` against Atlassian&#39;s official first-party remote MCP server (the Rovo MCP server, https://mcp.atlassian.com/v1/mcp), which fronts Jira (and Confluence) under the signed-in user&#39;s permissions. Carries NO secret; the operator supplies the OAuth client id/secret host-side.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.connections.jira/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
@@ -1356,7 +1356,7 @@
           <td class="name"><code>core.openwop.connections.github</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="provider in latest manifest">1</td>
-          <td class="desc">GitHub connection pack (RFC 0095) — OAuth2 provider definition, reached via the official GitHub MCP server. Demonstrates the openwop-app connection-pack loader: drop this pack in and `github` becomes a resolvable provider. Carries NO secret; the operator supplies the OAuth client id/secret host-side.</td>
+          <td class="desc">GitHub connection pack — OAuth2 provider definition, reached via the official GitHub MCP server. Demonstrates the openwop-app connection-pack loader: drop this pack in and `github` becomes a resolvable provider. Carries NO secret; the operator supplies the OAuth client id/secret host-side.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.connections.github/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
@@ -1369,7 +1369,7 @@
           <td class="name"><code>core.openwop.connections.google-ads</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="provider in latest manifest">1</td>
-          <td class="desc">Google Ads connection pack (RFC 0095) — OAuth2 provider for the Google Ads REST API. Reach is `openapi`: Google Ads has no first-party global MCP server; the manifest declares the global Google OAuth hosts and points at the REST API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the OAuth client id/secret + developer token host-side. One of the three ad platforms Campaign Studio syncs (Google / Meta / LinkedIn Ads).</td>
+          <td class="desc">Google Ads connection pack — OAuth2 provider for the Google Ads REST API. Reach is `openapi`: Google Ads has no first-party global MCP server; the manifest declares the global Google OAuth hosts and points at the REST API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the OAuth client id/secret + developer token host-side. One of the three ad platforms Campaign Studio syncs (Google / Meta / LinkedIn Ads).</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.connections.google-ads/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
@@ -1382,7 +1382,7 @@
           <td class="name"><code>core.openwop.connections.google-workspace</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="provider in latest manifest">1</td>
-          <td class="desc">Google Workspace connection pack (RFC 0095) — OAuth2 PKCE provider for Drive, Calendar, and Gmail via the Google APIs. Registry parity for the reference app&#39;s BUILT-IN `google` provider (day-1 UX P10 / C3): the app itself never loads this pack (the builtin wins by id precedence anyway — this pack deliberately uses the distinct id `google-workspace` so OTHER hosts can adopt it without shadowing semantics); it exists so packs.openwop.dev offers a Google productivity-suite connection alongside microsoft365 — previously the registry&#39;s only Google entry was google-ads. Read scopes are the day-1 consent; gmail.send / calendar.events are WRITE groups behind a separate re-consent. Carries NO secret; the operator supplies the OAuth client id/secret host-side.</td>
+          <td class="desc">Google Workspace connection pack — OAuth2 PKCE provider for Drive, Calendar, and Gmail via the Google APIs. Registry parity for the reference app&#39;s BUILT-IN `google` provider (day-1 UX P10 / C3): the app itself never loads this pack (the builtin wins by id precedence anyway — this pack deliberately uses the distinct id `google-workspace` so OTHER hosts can adopt it without shadowing semantics); it exists so packs.openwop.dev offers a Google productivity-suite connection alongside microsoft365 — previously the registry&#39;s only Google entry was google-ads. Read scopes are the day-1 consent; gmail.send / calendar.events are WRITE groups behind a separate re-consent. Carries NO secret; the operator supplies the OAuth client id/secret host-side.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.connections.google-workspace/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
@@ -1395,7 +1395,7 @@
           <td class="name"><code>core.openwop.connections.linkedin-ads</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="provider in latest manifest">1</td>
-          <td class="desc">LinkedIn Ads connection pack (RFC 0095) — OAuth2 provider for the LinkedIn Marketing API. Reach is `openapi`: the manifest declares the global LinkedIn OAuth hosts and points at the Marketing API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the client id/secret host-side. One of the three ad platforms Campaign Studio syncs (Google / Meta / LinkedIn Ads).</td>
+          <td class="desc">LinkedIn Ads connection pack — OAuth2 provider for the LinkedIn Marketing API. Reach is `openapi`: the manifest declares the global LinkedIn OAuth hosts and points at the Marketing API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the client id/secret host-side. One of the three ad platforms Campaign Studio syncs (Google / Meta / LinkedIn Ads).</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.connections.linkedin-ads/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
@@ -1408,7 +1408,7 @@
           <td class="name"><code>core.openwop.connections.meta-ads</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="provider in latest manifest">1</td>
-          <td class="desc">Meta (Facebook/Instagram) Ads connection pack (RFC 0095) — OAuth2 provider for the Meta Marketing API. Reach is `openapi`: the manifest declares the global Meta OAuth hosts and points at the Marketing API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the app id/secret host-side. An available provider (the parallel ad platform to google-ads); one of the three ad platforms Campaign Studio syncs.</td>
+          <td class="desc">Meta (Facebook/Instagram) Ads connection pack — OAuth2 provider for the Meta Marketing API. Reach is `openapi`: the manifest declares the global Meta OAuth hosts and points at the Marketing API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the app id/secret host-side. An available provider (the parallel ad platform to google-ads); one of the three ad platforms Campaign Studio syncs.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.connections.meta-ads/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
@@ -1421,7 +1421,7 @@
           <td class="name"><code>core.openwop.connections.microsoft365</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="provider in latest manifest">1</td>
-          <td class="desc">Microsoft 365 connection pack (RFC 0095) — OAuth2 provider for Teams, Outlook (Mail/Calendar), and SharePoint via the Microsoft Graph API. DEPLOY-GATED. Reach is `openapi` against the Microsoft Graph OpenAPI surface: Microsoft&#39;s first-party remote MCP servers are per-tenant/preview (a tenant-templated URL, not a single global https endpoint the manifest can fix), so a stable Graph OpenAPI path is the honest day-1 reach (capability honesty). Carries NO secret; the operator supplies the OAuth client id/secret host-side.</td>
+          <td class="desc">Microsoft 365 connection pack — OAuth2 provider for Teams, Outlook (Mail/Calendar), and SharePoint via the Microsoft Graph API. DEPLOY-GATED. Reach is `openapi` against the Microsoft Graph OpenAPI surface: Microsoft&#39;s first-party remote MCP servers are per-tenant/preview (a tenant-templated URL, not a single global https endpoint the manifest can fix), so a stable Graph OpenAPI path is the honest day-1 reach (capability honesty). Carries NO secret; the operator supplies the OAuth client id/secret host-side.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.connections.microsoft365/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
@@ -1434,7 +1434,7 @@
           <td class="name"><code>core.openwop.connections.netsuite</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="provider in latest manifest">1</td>
-          <td class="desc">Oracle NetSuite connection pack (RFC 0095) — OAuth2 provider for the NetSuite SuiteTalk REST API (ERP / finance). Reach is `openapi`: NetSuite has no first-party global MCP server, and its REST base + OAuth hosts are PER-ACCOUNT (`https://{account}.suitetalk.api.netsuite.com`), supplied per connection via instanceUrlTemplate (the schema&#39;s own NetSuite example). Carries NO secret; the operator supplies the integration/client credentials host-side. Bound by lib.finance.invoice-ap (post to ERP).</td>
+          <td class="desc">Oracle NetSuite connection pack — OAuth2 provider for the NetSuite SuiteTalk REST API (ERP / finance). Reach is `openapi`: NetSuite has no first-party global MCP server, and its REST base + OAuth hosts are PER-ACCOUNT (`https://{account}.suitetalk.api.netsuite.com`), supplied per connection via instanceUrlTemplate (the schema&#39;s own NetSuite example). Carries NO secret; the operator supplies the integration/client credentials host-side. Bound by lib.finance.invoice-ap (post to ERP).</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.connections.netsuite/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
@@ -1447,7 +1447,7 @@
           <td class="name"><code>core.openwop.connections.notion</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="provider in latest manifest">1</td>
-          <td class="desc">Notion connection pack (RFC 0095) — OAuth2 provider for Notion pages + databases. DEPLOY-GATED. Reach is `mcp` against Notion&#39;s official first-party hosted MCP server (https://mcp.notion.com/mcp, Streamable HTTP), which searches/reads/creates/updates workspace content under the connected user&#39;s permissions. Notion consent is a static developer-portal capability set rather than per-request OAuth scopes (scopeModel `capabilities`). Carries NO secret; the operator supplies the OAuth client id/secret host-side.</td>
+          <td class="desc">Notion connection pack — OAuth2 provider for Notion pages + databases. DEPLOY-GATED. Reach is `mcp` against Notion&#39;s official first-party hosted MCP server (https://mcp.notion.com/mcp, Streamable HTTP), which searches/reads/creates/updates workspace content under the connected user&#39;s permissions. Notion consent is a static developer-portal capability set rather than per-request OAuth scopes (scopeModel `capabilities`). Carries NO secret; the operator supplies the OAuth client id/secret host-side.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.connections.notion/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
@@ -1460,7 +1460,7 @@
           <td class="name"><code>core.openwop.connections.salesforce</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="provider in latest manifest">1</td>
-          <td class="desc">Salesforce connection pack (RFC 0095) — OAuth2 (web-server flow) provider for the Salesforce REST API. DEPLOY-GATED. Reach is `openapi`: Salesforce has no single global first-party MCP server (the API lives on a per-org `*.my.salesforce.com` instance host, supplied per connection via instanceUrlTemplate), so a documented OpenAPI/REST surface is the honest day-1 reach. Carries NO secret; the operator supplies the connected-app consumer key/secret host-side.</td>
+          <td class="desc">Salesforce connection pack — OAuth2 (web-server flow) provider for the Salesforce REST API. DEPLOY-GATED. Reach is `openapi`: Salesforce has no single global first-party MCP server (the API lives on a per-org `*.my.salesforce.com` instance host, supplied per connection via instanceUrlTemplate), so a documented OpenAPI/REST surface is the honest day-1 reach. Carries NO secret; the operator supplies the connected-app consumer key/secret host-side.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.connections.salesforce/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
@@ -1473,7 +1473,7 @@
           <td class="name"><code>core.openwop.connections.tiktok-ads</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="provider in latest manifest">1</td>
-          <td class="desc">TikTok Ads connection pack (RFC 0095) — OAuth2 provider for the TikTok Business (Marketing) API. Reach is `openapi`: the manifest declares the TikTok business-api OAuth hosts and points at the Marketing API reference. Carries NO secret; the operator supplies the app id/secret host-side. The third ad platform Campaign Studio dispatches to — TikTok authenticates with an `Access-Token` header (not `Authorization: Bearer`), handled host-side by the ads-dispatch adapter.</td>
+          <td class="desc">TikTok Ads connection pack — OAuth2 provider for the TikTok Business (Marketing) API. Reach is `openapi`: the manifest declares the TikTok business-api OAuth hosts and points at the Marketing API reference. Carries NO secret; the operator supplies the app id/secret host-side. The third ad platform Campaign Studio dispatches to — TikTok authenticates with an `Access-Token` header (not `Authorization: Bearer`), handled host-side by the ads-dispatch adapter.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.connections.tiktok-ads/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
@@ -1486,7 +1486,7 @@
           <td class="name"><code>core.openwop.connections.workday</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="provider in latest manifest">1</td>
-          <td class="desc">Workday connection pack (RFC 0095) — OAuth2 provider for the Workday REST API (HCM / People). DEPLOY-GATED. Reach is `openapi`: Workday has no first-party global MCP server, and its OAuth authorize/token endpoints plus REST base are TENANT-SPECIFIC (`https://{instance}.workday.com/{tenant}/..`), supplied per connection via instanceUrlTemplate. The manifest declares the global https hosts and the per-tenant template; the operator fills the tenant at connection time (capability honesty). Carries NO secret; the operator supplies the API-client id/secret host-side.</td>
+          <td class="desc">Workday connection pack — OAuth2 provider for the Workday REST API (HCM / People). DEPLOY-GATED. Reach is `openapi`: Workday has no first-party global MCP server, and its OAuth authorize/token endpoints plus REST base are TENANT-SPECIFIC (`https://{instance}.workday.com/{tenant}/.`), supplied per connection via instanceUrlTemplate. The manifest declares the global https hosts and the per-tenant template; the operator fills the tenant at connection time (capability honesty). Carries NO secret; the operator supplies the API-client id/secret host-side.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.connections.workday/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
@@ -1516,7 +1516,7 @@
           <td class="name"><code>core.openwop.workflows.approvals</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="chains in latest manifest">2</td>
-          <td class="desc">Real-work workflow pack (RFC 0013) — the Approvals cluster, the single most-used enterprise automation shape (Power Automate&#39;s #1 template is a sign-off flow with ~3.35M instantiations): Request Sign-off (an open gate any team member can approve — the zero-config marquee) and Two-Stage Sign-off (an ordered approval chain: stage two is only asked after stage one approves — sequential chains are DAG composition, not a new primitive). Gates support quorum (requiredApprovals), named approvers (approverRefs), and out-of-office delegation (an approver&#39;s active delegation lets their delegate act, counted as ONE identity). All tenant values are run parameters (replay-deterministic).</td>
+          <td class="desc">Real-work workflow pack — the Approvals cluster, the single most-used enterprise automation shape (Power Automate&#39;s #1 template is a sign-off flow with ~3.35M instantiations): Request Sign-off (an open gate any team member can approve — the zero-config marquee) and Two-Stage Sign-off (an ordered approval chain: stage two is only asked after stage one approves — sequential chains are DAG composition, not a new primitive). Gates support quorum (requiredApprovals), named approvers (approverRefs), and out-of-office delegation (an approver&#39;s active delegation lets their delegate act, counted as ONE identity). All tenant values are run parameters (replay-deterministic).</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.workflows.approvals/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
@@ -1528,7 +1528,7 @@
           <td class="name"><code>core.openwop.workflows.content</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="chains in latest manifest">2</td>
-          <td class="desc">Real-work workflow pack (RFC 0013) — the Content &amp; Monitoring cluster: watch an RSS/Atom feed for new items and watch any web page for changes, each pairing a schedule trigger with durable seen-state in host KV storage (deterministic per-source key; the first run treats everything as new and seeds the state). NO host RSS poller exists — adding an &#39;rss&#39; ingestion source to /v1/trigger-subscriptions is RFC 0099 wire territory (see) — so these chains ARE the poller: pair each with a Schedule and the scheduler does the polling. Authored over shipped node typeIds (core.trigger.schedule + core.openwop.http.fetch + core.storage.kv-get/kv-set + core.ai.chatCompletion + core.openwop.integration.notification-push). No external sends — digests are in-app notifications, so no approval gate is needed. All tenant values are run parameters (replay-deterministic).</td>
+          <td class="desc">Real-work workflow pack — the Content &amp; Monitoring cluster: watch an RSS/Atom feed for new items and watch any web page for changes, each pairing a schedule trigger with durable seen-state in host KV storage (deterministic per-source key; the first run treats everything as new and seeds the state). NO host RSS poller exists — adding an &#39;rss&#39; ingestion source to /v1/trigger-subscriptions is wire territory (see) — so these chains ARE the poller: pair each with a Schedule and the scheduler does the polling. Authored over shipped node typeIds (core.trigger.schedule + core.openwop.http.fetch + core.storage.kv-get/kv-set + core.ai.chatCompletion + core.openwop.integration.notification-push). No external sends — digests are in-app notifications, so no approval gate is needed. All tenant values are run parameters (replay-deterministic).</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.workflows.content/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
@@ -1540,7 +1540,7 @@
           <td class="name"><code>core.openwop.workflows.data-ops</code> </td>
           <td class="version">1.1.0</td>
           <td class="count" title="chains in latest manifest">4</td>
-          <td class="desc">Real-work workflow pack (RFC 0013) — the Data Ops cluster, the one shape-family the Zapier/n8n and Microsoft canons don&#39;t cover (surfaced by the Make/Workato research): collapsing many records into one output (the aggregator canon), one-way movement of records between systems, and content routing (send a record down the right branch). Roll Up, Records → Table, Records → System (one-way upsert behind a human sign-off), and Content Router (route a record to the matching branch by a field predicate — the Make router shape, gated via edge conditions). Uses only shipped, executable nodes (core.flow.aggregate-{numeric,text,table} + core.flow.router + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.http.openapi-call + core.openwop.integration.notification-push). The write is ONE-WAY movement keyed on an external id (re-runs update, never duplicate) behind a human approval — it is NOT a bidirectional sync. All tenant values are run parameters (replay-deterministic).</td>
+          <td class="desc">Real-work workflow pack — the Data Ops cluster, the one shape-family the Zapier/n8n and Microsoft canons don&#39;t cover (surfaced by the Make/Workato research): collapsing many records into one output (the aggregator canon), one-way movement of records between systems, and content routing (send a record down the right branch). Roll Up, Records → Table, Records → System (one-way upsert behind a human sign-off), and Content Router (route a record to the matching branch by a field predicate — the Make router shape, gated via edge conditions). Uses only shipped, executable nodes (core.flow.aggregate-{numeric,text,table} + core.flow.router + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.http.openapi-call + core.openwop.integration.notification-push). The write is ONE-WAY movement keyed on an external id (re-runs update, never duplicate) behind a human approval — it is NOT a bidirectional sync. All tenant values are run parameters (replay-deterministic).</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.workflows.data-ops/-/1.1.0.json" title="version manifest (JSON)">manifest</a>
@@ -1552,7 +1552,7 @@
           <td class="name"><code>core.openwop.workflows.devops</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="chains in latest manifest">4</td>
-          <td class="desc">Real-work workflow pack (RFC 0013) — the DevOps cluster: senior-style code review of a diff, changelog/release-notes drafting from a commit log, CI-failure diagnosis from a signature-verified webhook, and a stale-issue gardener over the public GitHub API. All four are ADVISORY — they analyze and notify in-app, never write to your repo or post comments (an authenticated GitHub write path would bind a connection behind an approval gate; deferred until the MCP-reach connection binding has a chain precedent). These chains do not run the Code Reviewer / Git Author AGENTS — those remain chat-drivable via the agents surface; the chains use short chain-local prompts over core.ai.chatCompletion. All tenant values are run parameters (replay-deterministic).</td>
+          <td class="desc">Real-work workflow pack — the DevOps cluster: senior-style code review of a diff, changelog/release-notes drafting from a commit log, CI-failure diagnosis from a signature-verified webhook, and a stale-issue gardener over the public GitHub API. All four are ADVISORY — they analyze and notify in-app, never write to your repo or post comments (an authenticated GitHub write path would bind a connection behind an approval gate; deferred until the MCP-reach connection binding has a chain precedent). These chains do not run the Code Reviewer / Git Author AGENTS — those remain chat-drivable via the agents surface; the chains use short chain-local prompts over core.ai.chatCompletion. All tenant values are run parameters (replay-deterministic).</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.workflows.devops/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
@@ -1564,7 +1564,7 @@
           <td class="name"><code>core.openwop.workflows.exec-ops</code> </td>
           <td class="version">1.1.0</td>
           <td class="count" title="chains in latest manifest">3</td>
-          <td class="desc">Real-work workflow pack (RFC 0013). The Executive / Chief-of-Staff cluster: Daily Executive Briefing, Meeting Prep &amp; Attendee Dossier, and Board / Investor Update Pack. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.analytics) and, where a workflow touches an external system, binds a connection pack via core.openwop.http.openapi-call (connectionRef) — so a configured connection runs live and an unconfigured one surfaces a connect prompt rather than failing. Every external send is gated by core.chat.approvalGate; the read-only briefing is ungated. All tenant-specific values are run parameters (replay-deterministic). Resolves fully on hosts that ship the feature + http/mcp + chat packs (the OpenWOP reference app); the connection bindings are configured by the operator under Access &amp; data → Connections.</td>
+          <td class="desc">Real-work workflow pack. The Executive / Chief-of-Staff cluster: Daily Executive Briefing, Meeting Prep &amp; Attendee Dossier, and Board / Investor Update Pack. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.analytics) and, where a workflow touches an external system, binds a connection pack via core.openwop.http.openapi-call (connectionRef) — so a configured connection runs live and an unconfigured one surfaces a connect prompt rather than failing. Every external send is gated by core.chat.approvalGate; the read-only briefing is ungated. All tenant-specific values are run parameters (replay-deterministic). Resolves fully on hosts that ship the feature + http/mcp + chat packs (the OpenWOP reference app); the connection bindings are configured by the operator under Access &amp; data → Connections.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.workflows.exec-ops/-/1.1.0.json" title="version manifest (JSON)">manifest</a>
@@ -1576,7 +1576,7 @@
           <td class="name"><code>core.openwop.workflows.finance</code> </td>
           <td class="version">1.1.0</td>
           <td class="count" title="chains in latest manifest">3</td>
-          <td class="desc">Real-work workflow pack (RFC 0013) — the Finance cluster: Invoice → AP Processing, Month-End Close Checklist, and Expense/Budget Approval + anomaly detection. Reasons with core.ai.chatCompletion; recommends ERP actions (validation + posting) provider-agnostically via core.openwop.connectors.erp-action (NetSuite when connected); every posting/reimbursement runs through a threshold core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + kb + integration packs. Published under core.openwop.workflows.* (openwop-team key).</td>
+          <td class="desc">Real-work workflow pack — the Finance cluster: Invoice → AP Processing, Month-End Close Checklist, and Expense/Budget Approval + anomaly detection. Reasons with core.ai.chatCompletion; recommends ERP actions (validation + posting) provider-agnostically via core.openwop.connectors.erp-action (NetSuite when connected); every posting/reimbursement runs through a threshold core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + kb + integration packs. Published under core.openwop.workflows.* (openwop-team key).</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.workflows.finance/-/1.1.0.json" title="version manifest (JSON)">manifest</a>
@@ -1588,7 +1588,7 @@
           <td class="name"><code>core.openwop.workflows.inbox</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="chains in latest manifest">3</td>
-          <td class="desc">Real-work workflow pack (RFC 0013) — the personal-productivity Inbox cluster: triage your own inbox (classify, draft the urgent reply, digest the rest), nudge unanswered threads, and debrief calls into coaching notes. Distinct from core.openwop.workflows.support (a customer-support mailbox with queue routing): these serve YOUR inbox and YOUR calls. Drafting uses core.email.draft — it creates a draft in your mailbox and never sends (the draft is the human gate); the one real send (follow-up nudger) waits on an approval. All tenant values are run parameters (replay-deterministic).</td>
+          <td class="desc">Real-work workflow pack — the personal-productivity Inbox cluster: triage your own inbox (classify, draft the urgent reply, digest the rest), nudge unanswered threads, and debrief calls into coaching notes. Distinct from core.openwop.workflows.support (a customer-support mailbox with queue routing): these serve YOUR inbox and YOUR calls. Drafting uses core.email.draft — it creates a draft in your mailbox and never sends (the draft is the human gate); the one real send (follow-up nudger) waits on an approval. All tenant values are run parameters (replay-deterministic).</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.workflows.inbox/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
@@ -1600,7 +1600,7 @@
           <td class="name"><code>core.openwop.workflows.it-support</code> </td>
           <td class="version">1.2.1</td>
           <td class="count" title="chains in latest manifest">1</td>
-          <td class="desc">Real-work workflow pack (RFC 0013) — the IT / Support cluster: Incident Triage &amp; Major-Incident Comms. An AI classifier assesses each incident&#39;s severity; routine incidents go to a recommended knowledge-base article and a ticket, while major incidents go to human-approved stakeholder updates in Slack — and each incident finishes with a post-incident summary. All tenant values are run parameters (replay-deterministic). Resolves on hosts shipping the kb + http + ai + chat + integration packs. Published under core.openwop.workflows.* (openwop-team key).</td>
+          <td class="desc">Real-work workflow pack — the IT / Support cluster: Incident Triage &amp; Major-Incident Comms. An AI classifier assesses each incident&#39;s severity; routine incidents go to a recommended knowledge-base article and a ticket, while major incidents go to human-approved stakeholder updates in Slack — and each incident finishes with a post-incident summary. All tenant values are run parameters (replay-deterministic). Resolves on hosts shipping the kb + http + ai + chat + integration packs. Published under core.openwop.workflows.* (openwop-team key).</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.workflows.it-support/-/1.2.1.json" title="version manifest (JSON)">manifest</a>
@@ -1612,7 +1612,7 @@
           <td class="name"><code>core.openwop.workflows.knowledge</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="chains in latest manifest">3</td>
-          <td class="desc">Real-work workflow pack (RFC 0013) — the internal Knowledge cluster: employee policy/HR Q&amp;A grounded in your Knowledge Base, compliance review of documents against your policy corpus, and structured document summarization. Distinct from core.openwop.workflows.support (customer-facing): these serve EMPLOYEES over internal policy collections. Authored entirely over shipped node typeIds (feature.kb.nodes.rag + core.ai.chatCompletion + core.flow.if + core.chat.approvalGate + core.openwop.integration.*). Populate the underlying collections in the Knowledge feature (or via knowledge-sync from Drive/OneDrive/Dropbox/Box) — these chains READ the app KB; they do not build a separate index. Every external send waits on a human approval gate. All tenant values are run parameters (replay-deterministic).</td>
+          <td class="desc">Real-work workflow pack — the internal Knowledge cluster: employee policy/HR Q&amp;A grounded in your Knowledge Base, compliance review of documents against your policy corpus, and structured document summarization. Distinct from core.openwop.workflows.support (customer-facing): these serve EMPLOYEES over internal policy collections. Authored entirely over shipped node typeIds (feature.kb.nodes.rag + core.ai.chatCompletion + core.flow.if + core.chat.approvalGate + core.openwop.integration.*). Populate the underlying collections in the Knowledge feature (or via knowledge-sync from Drive/OneDrive/Dropbox/Box) — these chains READ the app KB; they do not build a separate index. Every external send waits on a human approval gate. All tenant values are run parameters (replay-deterministic).</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.workflows.knowledge/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
@@ -1624,7 +1624,7 @@
           <td class="name"><code>core.openwop.workflows.lighthouse</code> </td>
           <td class="version">1.1.0</td>
           <td class="count" title="chains in latest manifest">5</td>
-          <td class="desc">Real-work workflow pack (RFC 0013 follow-on). The five zero-config &#39;lighthouse&#39; workflows from the catalog — Lead Triage, Account Brief, Renewal &amp; Churn-Risk Digest, RFP Response, and Post-Meeting Follow-up — authored entirely over node typeIds shipped with this host (feature.crm/kb/analytics + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.integration.*). Each rides real tenant data through the feature node packs, reasons with the LLM node, gates every external send behind a human approval, and delivers a usable artifact. Tenant-specific values are RUN PARAMETERS (never hardcoded) so the expansion stays replay-deterministic. Picking one in the builder instantiates a fully-editable, runnable, assignable workflow.</td>
+          <td class="desc">Real-work workflow pack (follow-on). The five zero-config &#39;lighthouse&#39; workflows from the catalog — Lead Triage, Account Brief, Renewal &amp; Churn-Risk Digest, RFP Response, and Post-Meeting Follow-up — authored entirely over node typeIds shipped with this host (feature.crm/kb/analytics + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.integration.*). Each rides real tenant data through the feature node packs, reasons with the LLM node, gates every external send behind a human approval, and delivers a usable artifact. Tenant-specific values are RUN PARAMETERS (never hardcoded) so the expansion stays replay-deterministic. Picking one in the builder instantiates a fully-editable, runnable, assignable workflow.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.workflows.lighthouse/-/1.1.0.json" title="version manifest (JSON)">manifest</a>
@@ -1636,7 +1636,7 @@
           <td class="name"><code>core.openwop.workflows.market-intel</code> </td>
           <td class="version">1.1.0</td>
           <td class="count" title="chains in latest manifest">2</td>
-          <td class="desc">Real-work workflow pack (RFC 0013 +). Market-intelligence digest + a SHIFT digest (research the current period, then diff against the prior run via market-intel.shift-detect → an in-voice shift summary) authored entirely over PUBLISHED node packs (vendor.myndhyve.market-intel-* + core.openwop.ai), so they expand + run on any conformant host. Published under the `core.openwop.workflows.*` namespace (openwop-team signing key); the registry adds `signing` at publish time.</td>
+          <td class="desc">Real-work workflow pack (+). Market-intelligence digest + a SHIFT digest (research the current period, then diff against the prior run via market-intel.shift-detect → an in-voice shift summary) authored entirely over PUBLISHED node packs (vendor.myndhyve.market-intel-* + core.openwop.ai), so they expand + run on any conformant host. Published under the `core.openwop.workflows.*` namespace (openwop-team signing key); the registry adds `signing` at publish time.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.workflows.market-intel/-/1.1.0.json" title="version manifest (JSON)">manifest</a>
@@ -1648,7 +1648,7 @@
           <td class="name"><code>core.openwop.workflows.marketing</code> </td>
           <td class="version">1.1.0</td>
           <td class="count" title="chains in latest manifest">4</td>
-          <td class="desc">Real-work workflow pack (RFC 0013) — the Marketing &amp; Advertising cluster: Full Campaign Launch, Ad Performance Optimization Loop, Content Brief Generator, and Content Repurposing. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.kb / feature.cms / feature.email); reads/optimizes the ad platforms provider-agnostically via the core.openwop.connectors.ad-* capability nodes (Meta or Google, whichever the tenant connected). The optimization loop routes within-guardrail changes to auto-apply and out-of-guardrail changes to a core.chat.approvalGate via a core.flow.if conditional node (open-question resolution: a flow conditional, not a new primitive). Every launch/publish/apply is approval- or guardrail-gated; all tenant values are run parameters (replay-deterministic). Published under core.openwop.workflows.* (openwop-team key).</td>
+          <td class="desc">Real-work workflow pack — the Marketing &amp; Advertising cluster: Full Campaign Launch, Ad Performance Optimization Loop, Content Brief Generator, and Content Repurposing. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.kb / feature.cms / feature.email); reads/optimizes the ad platforms provider-agnostically via the core.openwop.connectors.ad-* capability nodes (Meta or Google, whichever the tenant connected). The optimization loop routes within-guardrail changes to auto-apply and out-of-guardrail changes to a core.chat.approvalGate via a core.flow.if conditional node (open-question resolution: a flow conditional, not a new primitive). Every launch/publish/apply is approval- or guardrail-gated; all tenant values are run parameters (replay-deterministic). Published under core.openwop.workflows.* (openwop-team key).</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.workflows.marketing/-/1.1.0.json" title="version manifest (JSON)">manifest</a>
@@ -1660,7 +1660,7 @@
           <td class="name"><code>core.openwop.workflows.people-hr</code> </td>
           <td class="version">1.2.0</td>
           <td class="count" title="chains in latest manifest">3</td>
-          <td class="desc">Real-work workflow pack (RFC 0013) — the People / HR cluster: Employee Onboarding Orchestrator, Offboarding &amp; Access Revocation, and Leave/PTO Request Routing. Reasons with core.ai.chatCompletion; binds Microsoft 365 via core.openwop.http.openapi-call connectionRef, recommends HRIS actions provider-agnostically via core.openwop.connectors.hris-action (Workday today), and provider-agnostic ticketing (Jira/ServiceNow) via the core.openwop.connectors.ticket-* capability nodes; every account/HRIS mutation and every team-facing send is gated by core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + integration packs; connections are configured under Access &amp; data → Connections. Published under core.openwop.workflows.* (openwop-team key).</td>
+          <td class="desc">Real-work workflow pack — the People / HR cluster: Employee Onboarding Orchestrator, Offboarding &amp; Access Revocation, and Leave/PTO Request Routing. Reasons with core.ai.chatCompletion; binds Microsoft 365 via core.openwop.http.openapi-call connectionRef, recommends HRIS actions provider-agnostically via core.openwop.connectors.hris-action (Workday today), and provider-agnostic ticketing (Jira/ServiceNow) via the core.openwop.connectors.ticket-* capability nodes; every account/HRIS mutation and every team-facing send is gated by core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + integration packs; connections are configured under Access &amp; data → Connections. Published under core.openwop.workflows.* (openwop-team key).</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.workflows.people-hr/-/1.2.0.json" title="version manifest (JSON)">manifest</a>
@@ -1672,7 +1672,7 @@
           <td class="name"><code>core.openwop.workflows.research</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="chains in latest manifest">1</td>
-          <td class="desc">Real-work workflow pack (RFC 0013) — the Research cluster: turn a question into a short, cited web brief. Rides the unified web search (core.web.search → the host.webResearch surface): live results when a search key is configured (BYOK secret &#39;web-search&#39; on the keys page, or the host&#39;s OPENWOP_WEBSEARCH_API_KEY), an honest demo placeholder when not — the synthesis says so plainly instead of pretending. For deep, multi-source, long-horizon research use the Deep Research AGENT in chat; this chain is the quick-brief shape. All tenant values are run parameters (replay-deterministic).</td>
+          <td class="desc">Real-work workflow pack — the Research cluster: turn a question into a short, cited web brief. Rides the unified web search (core.web.search → the host.webResearch surface): live results when a search key is configured (BYOK secret &#39;web-search&#39; on the keys page, or the host&#39;s OPENWOP_WEBSEARCH_API_KEY), an honest demo placeholder when not — the synthesis says so plainly instead of pretending. For deep, multi-source, long-horizon research use the Deep Research AGENT in chat; this chain is the quick-brief shape. All tenant values are run parameters (replay-deterministic).</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.workflows.research/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
@@ -1684,7 +1684,7 @@
           <td class="name"><code>core.openwop.workflows.starters</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="chains in latest manifest">6</td>
-          <td class="desc">Starter workflow pack (RFC 0013) — the simple-pipe on-ramp tier: short single-trigger→action recipes (webhook→notify, form→table, schedule→digest, fetch→store) that run in under a minute with zero connections, before you graduate to the AI-agent packs. Trigger-shaped starters begin with a core.trigger.* pass-through entry node: bind them to a live source with a trigger subscription (POST /v1/trigger-subscriptions — webhook, email, or form; RFC 0099) or a Schedule; on a manual run the trigger payload is empty, so bind a source to see them shine. External sends stay behind a human approval gate; in-app notifications are direct. All tenant values are run parameters (replay-deterministic).</td>
+          <td class="desc">Starter workflow pack — the simple-pipe on-ramp tier: short single-trigger→action recipes (webhook→notify, form→table, schedule→digest, fetch→store) that run in under a minute with zero connections, before you graduate to the AI-agent packs. Trigger-shaped starters begin with a core.trigger.* pass-through entry node: bind them to a live source with a trigger subscription (POST /v1/trigger-subscriptions — webhook, email, or form) or a Schedule; on a manual run the trigger payload is empty, so bind a source to see them shine. External sends stay behind a human approval gate; in-app notifications are direct. All tenant values are run parameters (replay-deterministic).</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.workflows.starters/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
@@ -1696,7 +1696,7 @@
           <td class="name"><code>core.openwop.workflows.support</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="chains in latest manifest">5</td>
-          <td class="desc">Real-work workflow pack (RFC 0013) — the Customer Support cluster, the #1 surveyed agent use case the gallery previously had zero templates for: KB-grounded answering, email triage (draft-only — the human sends), customer-ticket routing, sentiment/brand-risk escalation, and CSAT follow-up. Authored entirely over node typeIds shipped with this host (feature.kb + core.ai.chatCompletion + core.flow.if + core.chat.approvalGate + core.email.draft + core.openwop.connectors.ticket-create + core.openwop.integration.*). Every external SEND waits on a human approval gate (core.email.draft creates a draft and never sends — the draft itself is the human gate). Distinct from core.openwop.workflows.it-support: that pack routes IT incidents by severity; this one serves customer-facing support (intent, queues, CSAT). All tenant values are run parameters (replay-deterministic).</td>
+          <td class="desc">Real-work workflow pack — the Customer Support cluster, the #1 surveyed agent use case the gallery previously had zero templates for: KB-grounded answering, email triage (draft-only — the human sends), customer-ticket routing, sentiment/brand-risk escalation, and CSAT follow-up. Authored entirely over node typeIds shipped with this host (feature.kb + core.ai.chatCompletion + core.flow.if + core.chat.approvalGate + core.email.draft + core.openwop.connectors.ticket-create + core.openwop.integration.*). Every external SEND waits on a human approval gate (core.email.draft creates a draft and never sends — the draft itself is the human gate). Distinct from core.openwop.workflows.it-support: that pack routes IT incidents by severity; this one serves customer-facing support (intent, queues, CSAT). All tenant values are run parameters (replay-deterministic).</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/core.openwop.workflows.support/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
@@ -1708,7 +1708,7 @@
           <td class="name"><code>vendor.openwop.workflow-chain-sample</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="chains in latest manifest">2</td>
-          <td class="desc">Reference workflow-chain pack proving the RFC 0013 manifest format works end-to-end across schema validation, registry indexing, and the reference expansion library. Two chains: a 1-node &#39;summarize text&#39; chain showing literal parameter substitution, and a 2-node &#39;fetch-and-summarize&#39; chain showing multi-node DAG composition with edge wiring and capability propagation. In-tree only (NOT published to packs.openwop.dev); the canonical proof that the chain-pack contract is implementable with real-world-shaped content.</td>
+          <td class="desc">Reference workflow-chain pack proving the manifest format works end-to-end across schema validation, registry indexing, and the reference expansion library. Two chains: a 1-node &#39;summarize text&#39; chain showing literal parameter substitution, and a 2-node &#39;fetch-and-summarize&#39; chain showing multi-node DAG composition with edge wiring and capability propagation. In-tree only (NOT published to packs.openwop.dev); the canonical proof that the chain-pack contract is implementable with real-world-shaped content.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/vendor.openwop.workflow-chain-sample/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
@@ -1738,7 +1738,7 @@
           <td class="name"><code>vendor.openwop.prompt-sample</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="prompt templates in latest manifest">2</td>
-          <td class="desc">Reference prompt pack proving the RFC 0028 §B manifest format works end-to-end across schema validation, registry indexing, and the in-memory PromptStore&#39;s installPackTemplates() seam. Two templates: a writer-system prompt and a critic-system prompt — the minimal pair that lets a multi-agent workflow author point a `writer` + `critic` node pair at vendor-published prompts via `prompt:writer-system@1.0.0` / `prompt:critic-system@1.0.0` refs. In-tree only (NOT published to packs.openwop.dev); the canonical proof that the prompt-pack contract is implementable with real-world-shaped content.</td>
+          <td class="desc">Reference prompt pack proving the manifest format works end-to-end across schema validation, registry indexing, and the in-memory PromptStore&#39;s installPackTemplates seam. Two templates: a writer-system prompt and a critic-system prompt — the minimal pair that lets a multi-agent workflow author point a `writer` + `critic` node pair at vendor-published prompts via `prompt:writer-system@1.0.0` / `prompt:critic-system@1.0.0` refs. In-tree only (NOT published to packs.openwop.dev); the canonical proof that the prompt-pack contract is implementable with real-world-shaped content.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/vendor.openwop.prompt-sample/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
@@ -1770,7 +1770,7 @@
           <td class="name"><code>vendor.openwop.card-sample</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="cards in latest manifest">2</td>
-          <td class="desc">Reference chat-card pack (RFC 0071) — two portable, host-agnostic AI chat cards: a text summarizer and a meeting action-item extractor. Demonstrates the card manifest contract (typed inputs from the portable subset, a prompt template with placeholder mapping, no runtime).</td>
+          <td class="desc">Reference chat-card pack — two portable, host-agnostic AI chat cards: a text summarizer and a meeting action-item extractor. Demonstrates the card manifest contract (typed inputs from the portable subset, a prompt template with placeholder mapping, no runtime).</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
             <a href="/v1/packs/vendor.openwop.card-sample/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
@@ -1829,7 +1829,7 @@ const ok = verify(null, readFileSync('pack.tgz'), pub, readFileSync('pack.sig'))
   </section>
 
   <footer>
-    Generated 2026-07-07T11:56:50.920Z · <a href="https://openwop.dev/">openwop.dev</a> · <a href="https://github.com/openwop/openwop">openwop on GitHub</a>
+    Generated 2026-07-07T12:08:30.502Z · <a href="https://openwop.dev/">openwop.dev</a> · <a href="https://github.com/openwop/openwop">openwop on GitHub</a>
   </footer>
 </main>
 </body>

@@ -2,7 +2,7 @@
   "name": "core.openwop.workflows.lighthouse",
   "version": "1.1.0",
   "kind": "workflow-chain",
-  "description": "Real-work workflow pack (RFC 0013 follow-on). The five zero-config 'lighthouse' workflows from the catalog — Lead Triage, Account Brief, Renewal & Churn-Risk Digest, RFP Response, and Post-Meeting Follow-up — authored entirely over node typeIds shipped with this host (feature.crm/kb/analytics + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.integration.*). Each rides real tenant data through the feature node packs, reasons with the LLM node, gates every external send behind a human approval, and delivers a usable artifact. Tenant-specific values are RUN PARAMETERS (never hardcoded) so the expansion stays replay-deterministic. Picking one in the builder instantiates a fully-editable, runnable, assignable workflow.",
+  "description": "Real-work workflow pack (follow-on). The five zero-config 'lighthouse' workflows from the catalog — Lead Triage, Account Brief, Renewal & Churn-Risk Digest, RFP Response, and Post-Meeting Follow-up — authored entirely over node typeIds shipped with this host (feature.crm/kb/analytics + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.integration.*). Each rides real tenant data through the feature node packs, reasons with the LLM node, gates every external send behind a human approval, and delivers a usable artifact. Tenant-specific values are RUN PARAMETERS (never hardcoded) so the expansion stays replay-deterministic. Picking one in the builder instantiates a fully-editable, runnable, assignable workflow.",
   "author": "openwop",
   "license": "Apache-2.0",
   "engines": {
@@ -465,5 +465,5 @@
     "publicKeyRef": "openwop-team-1",
     "signatureRef": "keys/pack.json.sig"
   },
-  "integrity": "sha256-ymTaPPvyBIUo13Wn/h2O9cDonVbbH++vxFvs3eDExqE="
+  "integrity": "sha256-S2t07iGRTtKUqY11MXYssKc6OBzz00gbFXHBYb3Kh1s="
 }

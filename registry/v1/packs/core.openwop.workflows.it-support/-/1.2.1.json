@@ -2,7 +2,7 @@
   "name": "core.openwop.workflows.it-support",
   "version": "1.2.1",
   "kind": "workflow-chain",
-  "description": "Real-work workflow pack (RFC 0013) — the IT / Support cluster: Incident Triage & Major-Incident Comms. An AI classifier assesses each incident's severity; routine incidents go to a recommended knowledge-base article and a ticket, while major incidents go to human-approved stakeholder updates in Slack — and each incident finishes with a post-incident summary. All tenant values are run parameters (replay-deterministic). Resolves on hosts shipping the kb + http + ai + chat + integration packs. Published under core.openwop.workflows.* (openwop-team key).",
+  "description": "Real-work workflow pack — the IT / Support cluster: Incident Triage & Major-Incident Comms. An AI classifier assesses each incident's severity; routine incidents go to a recommended knowledge-base article and a ticket, while major incidents go to human-approved stakeholder updates in Slack — and each incident finishes with a post-incident summary. All tenant values are run parameters (replay-deterministic). Resolves on hosts shipping the kb + http + ai + chat + integration packs. Published under core.openwop.workflows.* (openwop-team key).",
   "author": "openwop",
   "license": "Apache-2.0",
   "engines": {
@@ -232,5 +232,5 @@
     "publicKeyRef": "openwop-team-1",
     "signatureRef": "keys/pack.json.sig"
   },
-  "integrity": "sha256-l43ddE9nSlb7i8Oj1E0sP0tNJDVnTQ80KftusXa7QhM="
+  "integrity": "sha256-Pxdf0PruC8AkowcvNL1J2GkhwHSAudMxRh01CQHteUA="
 }

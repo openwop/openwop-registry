@@ -8,7 +8,7 @@
       "type": "library",
       "name": "core.openwop.connections.meta-ads",
       "version": "1.0.0",
-      "description": "Meta (Facebook/Instagram) Ads connection pack (RFC 0095) — OAuth2 provider for the Meta Marketing API. Reach is `openapi`: the manifest declares the global Meta OAuth hosts and points at the Marketing API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the app id/secret host-side. An available provider (the parallel ad platform to google-ads); one of the three ad platforms Campaign Studio syncs.",
+      "description": "Meta (Facebook/Instagram) Ads connection pack — OAuth2 provider for the Meta Marketing API. Reach is `openapi`: the manifest declares the global Meta OAuth hosts and points at the Marketing API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the app id/secret host-side. An available provider (the parallel ad platform to google-ads); one of the three ad platforms Campaign Studio syncs.",
       "licenses": [
         {
           "license": {
@@ -20,7 +20,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "db7b0eb2d279f62faa02d4a66d5d01f0f534712194f7ec928b53482600bd78fb"
+          "content": "3b406ed52d19b1b8b3ebcdc353bf36528c5ae43dcc4c5bc0e513e5f75348fde7"
         }
       ],
       "purl": "pkg:openwop/core.openwop.connections.meta-ads@1.0.0"
@@ -40,7 +40,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "61740aed83e35b2b8bfa9f148000f140ee399cbd21fc01b72ec0bad75f4722ce"
+          "content": "17c21dd068b878bb645c3642b8a86817f17cdcb83abac4d860106897db45509c"
         }
       ],
       "properties": [
@@ -56,13 +56,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "6044b4e9a1f40afeccb7b878abe99d571fa770f67ab793fe427f53d26bfce7fe"
+          "content": "2b1d5b8bfc355d536e0f44b82ff098c7f4d95b7930aeae17908608dc08418310"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "1430"
+          "value": "1419"
         }
       ]
     }
