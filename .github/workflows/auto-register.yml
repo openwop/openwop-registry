@@ -1,0 +1,79 @@
+name: Auto-register packs
+
+# Publishes first-party packs (core.openwop.* / vendor.openwop.*) added to packs/
+# in a PR but not yet under registry/v1/. Signs each with the openwop-team-1 key,
+# stages {tgz,json,sig}, reindexes, and commits the artifacts back to the PR
+# branch — so the pack source and its signed registry entry are reviewed and
+# merged together (which then triggers registry-publish's deploy on merge).
+#
+# Requires the repo secret OPENWOP_TEAM_1_SIGNING_KEY (the openwop-team-1 Ed25519
+# private-key PEM). No-ops with a notice if the secret is unset or on fork PRs
+# (where the token is read-only) — nothing breaks, packs just aren't auto-added.
+# workflow_dispatch runs a dry-run detection (no commit).
+
+on:
+  pull_request:
+    paths:
+      - 'packs/**'
+  workflow_dispatch:
+
+concurrency:
+  group: auto-register-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  auto-register:
+    name: Auto-register first-party packs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0            # full history so --changed-base can diff vs the PR base
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
+      - name: Detect + sign + stage unpublished packs
+        id: reg
+        env:
+          SIGNING_KEY: ${{ secrets.OPENWOP_TEAM_1_SIGNING_KEY }}
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            node scripts/auto-register.mjs --dry-run
+            exit 0
+          fi
+          if [ -z "${SIGNING_KEY:-}" ]; then
+            echo "::notice::OPENWOP_TEAM_1_SIGNING_KEY not set — skipping auto-registration (add the secret to enable)."
+            echo "published=0" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          umask 077
+          printf '%s' "$SIGNING_KEY" > "$RUNNER_TEMP/key.pem"
+          # Scope to packs this PR changed (not the whole backlog); base_ref is the target branch.
+          node scripts/auto-register.mjs \
+            --key "$RUNNER_TEMP/key.pem" --key-id openwop-team-1 \
+            --changed-base "origin/${{ github.base_ref }}"
+          rm -f "$RUNNER_TEMP/key.pem"
+
+      - name: Reindex, validate + commit to the PR branch
+        if: >-
+          github.event_name == 'pull_request' &&
+          steps.reg.outputs.published != '0' &&
+          steps.reg.outputs.published != ''
+        run: |
+          set -euo pipefail
+          node registry/scripts/generate-sbom.mjs
+          node registry/scripts/build-index.mjs
+          bash scripts/registry-check.sh          # fail the PR if the generated artifacts don't pass all 8 gates
+          git config user.name  "openwop-registry-bot"
+          git config user.email "actions@github.com"
+          git add registry/ packs/
+          git commit -m "publish(auto): register ${{ steps.reg.outputs.published }} first-party pack(s)"
+          git push origin "HEAD:${{ github.head_ref }}"
+          echo "::notice::Auto-registered ${{ steps.reg.outputs.published }} pack(s) into this PR."
