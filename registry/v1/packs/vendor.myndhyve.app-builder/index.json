@@ -23,10 +23,10 @@
       "signingMethod": "manual",
       "signingKeyId": "myndhyve-internal-1",
       "integrity": "sha256-9WrTm1Ivv17Hev3772TPyod17DB/cY7sz6sdsXsV3AE=",
-      "deprecated": false,
-      "yanked": false
+      "deprecated": true,
+      "yanked": true
     }
   ],
   "latest": "1.0.0",
-  "deprecated": false
+  "deprecated": true
 }

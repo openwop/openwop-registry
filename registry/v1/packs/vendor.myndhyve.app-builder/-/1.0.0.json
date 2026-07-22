@@ -1,7 +1,7 @@
 {
   "name": "vendor.myndhyve.app-builder",
   "version": "1.0.0",
-  "description": "MyndHyve App Builder typeIds — app-builder.per-screen (single-task screen generation: chat-send → typed-envelope-await with bounded retry) + app-builder.iterate-tasks (multi-task serial loop over feature tasks with task-level failure isolation). Both consume host.chat + host.aiEnvelope.await. Host concerns (progress cards, telemetry, pilot materializer) intentionally NOT in pack — pack returns categorized task results that host MAY render however it wishes.",
+  "description": "MyndHyve App Builder typeIds \u2014 app-builder.per-screen (single-task screen generation: chat-send \u2192 typed-envelope-await with bounded retry) + app-builder.iterate-tasks (multi-task serial loop over feature tasks with task-level failure isolation). Both consume host.chat + host.aiEnvelope.await. Host concerns (progress cards, telemetry, pilot materializer) intentionally NOT in pack \u2014 pack returns categorized task results that host MAY render however it wishes.",
   "author": "MyndHyve",
   "license": "Apache-2.0",
   "homepage": "https://myndhyve.ai/packs/app-builder",
@@ -46,7 +46,7 @@
       "typeId": "app-builder.iterate-tasks",
       "version": "1.0.0",
       "label": "Iterate Feature Tasks",
-      "description": "Multi-task serial loop. Extracts feature tasks from a plan artifact (robust to 4 observed AI plan shapes — canonical PlanModel, AI default, AI-confused envelope, AI-nested phase wrapper) and runs per-screen sequentially. Task-level failure isolation by default; config.failOnAnyTaskError aborts on first failure. Returns taskResults[] with per-task success + screenId + categorized failure reason + failuresByReason histogram.",
+      "description": "Multi-task serial loop. Extracts feature tasks from a plan artifact (robust to 4 observed AI plan shapes \u2014 canonical PlanModel, AI default, AI-confused envelope, AI-nested phase wrapper) and runs per-screen sequentially. Task-level failure isolation by default; config.failOnAnyTaskError aborts on first failure. Returns taskResults[] with per-task success + screenId + categorized failure reason + failuresByReason histogram.",
       "category": "data",
       "role": "action",
       "capabilities": [
@@ -62,5 +62,8 @@
     "publicKeyRef": "myndhyve-internal-1",
     "signatureRef": "keys/pack.json.sig"
   },
-  "integrity": "sha256-9WrTm1Ivv17Hev3772TPyod17DB/cY7sz6sdsXsV3AE="
+  "integrity": "sha256-9WrTm1Ivv17Hev3772TPyod17DB/cY7sz6sdsXsV3AE=",
+  "deprecated": true,
+  "yanked": true,
+  "yankedReason": "Tombstoned 2026-07-13 (openwop-app LLM-exchange audit, architect-ratified): both nodes require the host ctx.aiEnvelope.await surface, which no host binds \u2014 the declared node contract has never been executable. Zero downstream references. Published artifacts remain for immutability; the pack is delisted from browse/install."
 }
