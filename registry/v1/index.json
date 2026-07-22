@@ -1689,7 +1689,7 @@
       ],
       "nodeCount": 2,
       "agentCount": 0,
-      "deprecated": false,
+      "deprecated": true,
       "yanked": false
     },
     {
