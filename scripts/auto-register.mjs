@@ -31,7 +31,7 @@ const keyPath = arg('--key');
 const keyId = arg('--key-id') ?? 'openwop-team-1';
 const changedBase = arg('--changed-base');
 // Namespaces the openwop-team-1 key is permitted to sign (see registry .well-known).
-const AUTHORIZED = [/^core\.openwop\./, /^vendor\.openwop\./];
+const AUTHORIZED = [/^core\.openwop\./, /^vendor\.openwop\./, /^vendor\.openwop-app\./];
 
 // When scoping to a PR, only consider packs whose source changed since the base.
 let changedPacks = null;
