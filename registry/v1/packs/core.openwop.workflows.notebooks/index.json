@@ -1,0 +1,33 @@
+{
+  "name": "core.openwop.workflows.notebooks",
+  "kind": "workflow-chain",
+  "description": "Notebooks workflows (summarize, transform, ingest-audio, ingest-youtube), migrated from the deprecated builtins (ADR 0472 P4). chainIds keep the original ids so ignition + replay resolve unchanged; node outputRoles restored at registration.",
+  "author": "",
+  "license": "",
+  "tags": [],
+  "typeIds": [
+    "notebooks.summarize",
+    "notebooks.transform",
+    "notebooks.ingest-audio",
+    "notebooks.ingest-youtube"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 4,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.workflows.notebooks/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.workflows.notebooks/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.workflows.notebooks/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-Q/z2LoIFUnkXJ5C6oLxKKQkrciW7pv2TVupUoIKxCsI=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

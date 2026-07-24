@@ -1,0 +1,50 @@
+{
+  "name": "core.openwop.workflows.kicktodo-integrations",
+  "version": "1.0.0",
+  "kind": "workflow-chain",
+  "description": "Migrated from deprecated builtins (ADR 0472 P4).",
+  "keywords": [
+    "KickTodo"
+  ],
+  "engines": {
+    "openwop": ">=1.0.0"
+  },
+  "chains": [
+    {
+      "chainId": "openwop-app.kicktodo.calendar-sync",
+      "version": "1.0.0",
+      "label": "Sync a plan to the calendar",
+      "description": "Write a participant’s plan to their connected calendar — opt-in and consent-gated.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "enrollmentId": {
+            "type": "string"
+          },
+          "ownerSubject": {
+            "type": "string"
+          }
+        }
+      },
+      "dag": {
+        "nodes": [
+          {
+            "id": "calendar-sync",
+            "typeId": "feature.kicktodo.nodes.calendar-sync",
+            "inputs": {
+              "enrollmentId": "{{params.enrollmentId}}",
+              "ownerSubject": "{{params.ownerSubject}}"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "signing": {
+    "method": "manual",
+    "publicKeyRef": "openwop-team-1",
+    "signatureRef": "keys/pack.json.sig"
+  },
+  "integrity": "sha256-tdP15I5fSu/O1hPq5zh7qOstfT5acv1VP0fN2v4zgY4="
+}

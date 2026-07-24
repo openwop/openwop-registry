@@ -1,0 +1,32 @@
+{
+  "name": "core.openwop.workflows.kicktodo-loops",
+  "kind": "workflow-chain",
+  "description": "KickTodo enrollment + scheduled loops (enrollment, daily-loop, reminder-loop), migrated from the deprecated builtins (ADR 0472 P4). chainIds keep the original ids so scheduler-continuation ignition + replay resolve unchanged. Enrollment demonstrates RFC 0133 produced variables: `enroll` writes `enrollmentId` to the bag, `materialize` reads it.",
+  "author": "",
+  "license": "",
+  "tags": [],
+  "typeIds": [
+    "openwop-app.kicktodo.enrollment",
+    "openwop-app.kicktodo.daily-loop",
+    "openwop-app.kicktodo.reminder-loop"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 3,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.workflows.kicktodo-loops/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.workflows.kicktodo-loops/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.workflows.kicktodo-loops/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-um+r4ndjNLuCO7OD0g0TMSJe68/zMGglxUQKTqlCnA4=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

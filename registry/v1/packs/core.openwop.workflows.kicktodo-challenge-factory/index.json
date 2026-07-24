@@ -1,0 +1,31 @@
+{
+  "name": "core.openwop.workflows.kicktodo-challenge-factory",
+  "kind": "workflow-chain",
+  "description": "The Challenge Factory (ADR 0458) + its lesson-batch child — migrated from the deprecated builtins (ADR 0472 P4, the terminal quarantine step). chainIds keep the original ids; build-0..3 reference lesson-batch via RFC 0133 config.subChainRef (host-default binds it to the shared same-id child); truthy/falsy reject-safe barriers ride RFC 0134; produced vars (plan/evidenceSummary/planBrief) declared per RFC 0133 §2.2.",
+  "author": "",
+  "license": "",
+  "tags": [],
+  "typeIds": [
+    "openwop-app.kicktodo.challenge-factory",
+    "openwop-app.kicktodo.lesson-batch"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 2,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.workflows.kicktodo-challenge-factory/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.workflows.kicktodo-challenge-factory/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.workflows.kicktodo-challenge-factory/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-xHsID6wURKzhs1dWB0+fZejjmO43VuapU7naTCSQnug=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

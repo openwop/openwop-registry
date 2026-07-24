@@ -1,0 +1,258 @@
+{
+  "name": "core.openwop.workflows.insights-suite",
+  "version": "1.0.0",
+  "kind": "workflow-chain",
+  "description": "Insights & Drafting meta-workflows as an RFC 0013 chain pack (migrated from the deprecated ADR 0082/0072 builtins, ADR 0472 Phase 2). Three real source\u2192analysis\u2192LLM\u2192draft\u2192notify pipelines over BYOK-connected sources (BigQuery, Workday, chat completion, email-draft, notification-push). chainIds keep the original `openwop-app.insights.*` ids so scheduler/trigger ignition + replay are unchanged; the host registers them chain-backed (resolve-by-id, stable id) AND they are gallery-editable chains. Per-node outputRole (not expressible in the portable fragment) is re-applied at registration via the feature's postProcess.",
+  "keywords": [
+    "Insights",
+    "HR",
+    "Finance"
+  ],
+  "engines": {
+    "openwop": ">=1.0.0"
+  },
+  "chains": [
+    {
+      "chainId": "openwop-app.insights.weekly-variance",
+      "version": "1.0.0",
+      "label": "Weekly variance (Actual vs Plan)",
+      "description": "Pull financials \u2192 compute variance \u2192 human red-team \u2192 render PDF \u2192 notify.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "description": "BigQuery project for the financials read."
+          },
+          "businessUnit": {
+            "type": "string",
+            "description": "Business unit to analyze."
+          }
+        }
+      },
+      "dag": {
+        "nodes": [
+          {
+            "id": "query",
+            "typeId": "core.bigquery.query",
+            "name": "Query financials",
+            "inputs": {
+              "projectId": "{{params.projectId}}"
+            }
+          },
+          {
+            "id": "compute",
+            "typeId": "feature.insights-suite.nodes.variance-compute",
+            "name": "Compute variance",
+            "inputs": {
+              "businessUnit": "{{params.businessUnit}}"
+            }
+          },
+          {
+            "id": "redteam",
+            "typeId": "core.approvalGate",
+            "name": "Variance red-team",
+            "config": {
+              "title": "Variance red-team",
+              "prompt": "Confirm the variance figures before surfacing.",
+              "requiredApprovals": 1,
+              "rejectionPolicy": "block"
+            }
+          },
+          {
+            "id": "render",
+            "typeId": "feature.documents.nodes.render",
+            "name": "Render summary"
+          },
+          {
+            "id": "notify",
+            "typeId": "core.openwop.integration.notification-push",
+            "name": "Notify"
+          }
+        ],
+        "edges": [
+          {
+            "from": "query",
+            "to": "compute",
+            "triggerRule": "all_success"
+          },
+          {
+            "from": "compute",
+            "to": "redteam",
+            "triggerRule": "all_success"
+          },
+          {
+            "from": "redteam",
+            "to": "render",
+            "triggerRule": "all_success"
+          },
+          {
+            "from": "render",
+            "to": "notify",
+            "triggerRule": "all_success"
+          }
+        ]
+      }
+    },
+    {
+      "chainId": "openwop-app.insights.anniversary-draft",
+      "version": "1.0.0",
+      "label": "Work-anniversary recognition draft",
+      "description": "Pull milestones \u2192 retrieve voice exemplars \u2192 LLM drafts \u2192 email DRAFT (never sends) \u2192 approval \u2192 notify.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "subjectId": {
+            "type": "string",
+            "description": "The person being recognized."
+          },
+          "milestone": {
+            "type": "string",
+            "description": "The anniversary/milestone."
+          },
+          "workdayResource": {
+            "type": "string",
+            "description": "Workday resource the trigger reads \u2014 defaults to serviceDates; override for other milestone types.",
+            "default": "serviceDates"
+          }
+        }
+      },
+      "dag": {
+        "nodes": [
+          {
+            "id": "milestones",
+            "typeId": "core.workday.query",
+            "name": "Milestones",
+            "config": {
+              "resource": "serviceDates"
+            },
+            "inputs": {
+              "resource": "{{params.workdayResource}}"
+            }
+          },
+          {
+            "id": "retrieve",
+            "typeId": "knowledge.retrieve",
+            "name": "Retrieve exemplars"
+          },
+          {
+            "id": "generate",
+            "typeId": "core.ai.chatCompletion",
+            "name": "Draft recognition",
+            "config": {
+              "provider": "anthropic",
+              "model": "claude-sonnet-4-6",
+              "systemPrompt": "Draft a warm, specific work-anniversary recognition message in the principal\u2019s voice, grounded in the retrieved exemplars and the milestone. Plain text, no salutation block."
+            },
+            "inputs": {
+              "subjectId": "{{params.subjectId}}",
+              "milestone": "{{params.milestone}}"
+            }
+          },
+          {
+            "id": "emailDraft",
+            "typeId": "core.email.draft",
+            "name": "Email draft (never sends)"
+          },
+          {
+            "id": "approve",
+            "typeId": "core.approvalGate",
+            "name": "Approve draft",
+            "config": {
+              "title": "Approve draft",
+              "prompt": "Review the recognition draft. It is a DRAFT only \u2014 nothing is sent.",
+              "requiredApprovals": 1
+            }
+          },
+          {
+            "id": "notify",
+            "typeId": "core.openwop.integration.notification-push",
+            "name": "Notify"
+          }
+        ],
+        "edges": [
+          {
+            "from": "milestones",
+            "to": "retrieve",
+            "triggerRule": "all_success"
+          },
+          {
+            "from": "retrieve",
+            "to": "generate",
+            "triggerRule": "all_success"
+          },
+          {
+            "from": "generate",
+            "to": "emailDraft",
+            "triggerRule": "all_success"
+          },
+          {
+            "from": "emailDraft",
+            "to": "approve",
+            "triggerRule": "all_success"
+          },
+          {
+            "from": "approve",
+            "to": "notify",
+            "triggerRule": "all_success"
+          }
+        ]
+      }
+    },
+    {
+      "chainId": "openwop-app.insights.talent-prep",
+      "version": "1.0.0",
+      "label": "Talent readiness prep",
+      "description": "Pull performance data \u2192 9-box readiness score \u2192 notify.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "subjectId": {
+            "type": "string",
+            "description": "The person to score."
+          }
+        }
+      },
+      "dag": {
+        "nodes": [
+          {
+            "id": "pull",
+            "typeId": "core.workday.query",
+            "name": "Pull performance",
+            "config": {
+              "resource": "performanceReviews"
+            }
+          },
+          {
+            "id": "score",
+            "typeId": "feature.insights-suite.nodes.talent-score",
+            "name": "Talent score",
+            "inputs": {
+              "subjectId": "{{params.subjectId}}"
+            }
+          },
+          {
+            "id": "notify",
+            "typeId": "core.openwop.integration.notification-push",
+            "name": "Notify"
+          }
+        ],
+        "edges": [
+          {
+            "from": "pull",
+            "to": "score",
+            "triggerRule": "all_success"
+          },
+          {
+            "from": "score",
+            "to": "notify",
+            "triggerRule": "all_success"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "name": "core.openwop.workflows.campaign-journeys",
+  "kind": "workflow-chain",
+  "description": "Contact-level lifecycle journeys as RFC 0013 chains on the ONE engine (ADR 0222 / campaign gap plan C6) — NOT a journey engine. Trigger with an ADR 0208 host-event binding (e.g. host.crm.contact.created → Welcome Series), guard with the enrollment + eligibility verbs (one run per contact per journey; every send behind consent + suppression), wait with core.flow.wait, send with the existing email node, log with the CRM activity verb. Enrollment state is the run itself — monitor in Runs, reset re-enrollment via the campaign-journeys API.",
+  "author": "openwop",
+  "license": "Apache-2.0",
+  "tags": [],
+  "typeIds": [
+    "campaign-journeys.welcome-series",
+    "campaign-journeys.re-engage-contact",
+    "campaign-journeys.segment-winback"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 3,
+  "versions": [
+    {
+      "version": "1.1.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.workflows.campaign-journeys/-/1.1.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.workflows.campaign-journeys/-/1.1.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.workflows.campaign-journeys/-/1.1.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-K1m+XiUHLPFy+kaVtGmO7kbkWjKzRqxGGpLSLu24Xz8=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.1.0",
+  "deprecated": false
+}

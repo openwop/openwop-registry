@@ -1,0 +1,30 @@
+{
+  "name": "core.openwop.workflows.kicktodo-accountability",
+  "kind": "workflow-chain",
+  "description": "Migrated from deprecated builtins (ADR 0472 P4).",
+  "author": "",
+  "license": "",
+  "tags": [],
+  "typeIds": [
+    "openwop-app.kicktodo.session-reminder"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 1,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.workflows.kicktodo-accountability/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.workflows.kicktodo-accountability/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.workflows.kicktodo-accountability/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-jirlrEboMNAgVAKxgAZr3iYTu2KFHsHpdoP4SFFnS10=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

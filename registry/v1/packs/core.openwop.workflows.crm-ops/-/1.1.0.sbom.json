@@ -1,0 +1,108 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.crm-ops@1.1.0",
+      "type": "library",
+      "name": "core.openwop.workflows.crm-ops",
+      "version": "1.1.0",
+      "description": "Governed CRM write-verb workflows (RFC 0013, ADR 0208 §2, ADR 0252). Where feature.crm.agents.sales-ops is read-mostly (plus two assistive writes), these chains carry the riskier CRM mutations — owner assignment off a new-lead event, stale-deal follow-up, and the scheduler-fired Gmail inbox sync — with a human in the loop where the ADR calls for one. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts that ship the feature.crm feature + node pack (the OpenWOP reference app).",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b68166fd11fa560eb9d4c41b2ccb0928d7e3b9693534618397a7e7340abaafb2"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.crm-ops@1.1.0"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d2018e1ff8d20f3797d9b2747a9250e16e797c58dda124012566732bc202ea22"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "888"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "aaa8c36863ed52afe999d9c24c9075fcfc93e109f86827e247e890dbdaacc0c3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cf8ccdad7e30860e86372580301eabc9d9f39851aaa22f3a7acdd2caccc8964c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "5573"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.crm-ops@1.1.0",
+      "dependsOn": []
+    }
+  ]
+}

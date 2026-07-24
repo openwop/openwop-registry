@@ -1,0 +1,32 @@
+{
+  "name": "core.openwop.workflows.insights-suite",
+  "kind": "workflow-chain",
+  "description": "Insights & Drafting meta-workflows as an RFC 0013 chain pack (migrated from the deprecated ADR 0082/0072 builtins, ADR 0472 Phase 2). Three real source→analysis→LLM→draft→notify pipelines over BYOK-connected sources (BigQuery, Workday, chat completion, email-draft, notification-push). chainIds keep the original `openwop-app.insights.*` ids so scheduler/trigger ignition + replay are unchanged; the host registers them chain-backed (resolve-by-id, stable id) AND they are gallery-editable chains. Per-node outputRole (not expressible in the portable fragment) is re-applied at registration via the feature's postProcess.",
+  "author": "",
+  "license": "",
+  "tags": [],
+  "typeIds": [
+    "openwop-app.insights.weekly-variance",
+    "openwop-app.insights.anniversary-draft",
+    "openwop-app.insights.talent-prep"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 3,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.workflows.insights-suite/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.workflows.insights-suite/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.workflows.insights-suite/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-Bvq+2flBXiFFeYj3cALD5Z4sfgUMlCnWbReVR2GhhUA=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

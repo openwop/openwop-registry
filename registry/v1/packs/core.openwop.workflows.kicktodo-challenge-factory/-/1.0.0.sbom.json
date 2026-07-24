@@ -1,0 +1,102 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.kicktodo-challenge-factory@1.0.0",
+      "type": "library",
+      "name": "core.openwop.workflows.kicktodo-challenge-factory",
+      "version": "1.0.0",
+      "description": "The Challenge Factory (ADR 0458) + its lesson-batch child — migrated from the deprecated builtins (ADR 0472 P4, the terminal quarantine step). chainIds keep the original ids; build-0..3 reference lesson-batch via RFC 0133 config.subChainRef (host-default binds it to the shared same-id child); truthy/falsy reject-safe barriers ride RFC 0134; produced vars (plan/evidenceSummary/planBrief) declared per RFC 0133 §2.2.",
+      "licenses": [],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c47b080fac1444ace1b35756074f9f65e8e398ee3756e6a953b9da4c24909ee8"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.kicktodo-challenge-factory@1.0.0"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0ce634cfadb53cd4236097be2eae0627cc2d33eef4eddffed8e6bb168e3b7f88"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "871"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c8caca0bb8241c8ac4ce1ca5c8ea1d99976e8e5c3dcdbb32e4406a4ccfc4213f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d90d6a17fa7fa64d1df66fb8b64a7bcc7f3ddc6d0b2ef73cc9702f41f8c9d511"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "9818"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.kicktodo-challenge-factory@1.0.0",
+      "dependsOn": []
+    }
+  ]
+}
