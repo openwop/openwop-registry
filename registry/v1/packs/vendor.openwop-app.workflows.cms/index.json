@@ -1,0 +1,30 @@
+{
+  "name": "vendor.openwop-app.workflows.cms",
+  "kind": "workflow-chain",
+  "description": "CMS content workflows (RFC 0013 / ADR 0204 C6) — chains over the feature.cms.nodes governed verbs. `cms.localize-and-submit` translates ONE draft section into a target locale and submits the page for editorial review: read the draft section, AI-translate its base data (structure-preserving), store the overlay on the draft (sanitized like an editor save), then submit — the SAME approval-gate composition as the editor UI, so when `cms-approval-gate` is ON the run ends at a human ApprovalsInbox row. There is deliberately NO publish step: a node can draft and submit, never publish (the Phase-C architecture ruling). All tenant/org/page values are run parameters (replay-deterministic).",
+  "author": "OpenWOP App",
+  "license": "Apache-2.0",
+  "tags": [],
+  "typeIds": [
+    "cms.localize-and-submit"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 1,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/vendor.openwop-app.workflows.cms/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/vendor.openwop-app.workflows.cms/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/vendor.openwop-app.workflows.cms/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-ROnGzjnyXGwHsIIHN8hAn7Brvmr+iDY9T40DvajHC3Q=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

@@ -1,0 +1,38 @@
+{
+  "name": "vendor.openwop-app.workflows.forms-intake",
+  "version": "1.1.0",
+  "kind": "workflow-chain",
+  "description": "Self-serve intake portal (ADR 0246/0247, STRAT-PORTAL). Bridges the forms feature to priority-matrix idea intake WITHOUT either feature importing the other: a public/authed form submission emits host.forms.submission.created (ADR 0208), this chain re-reads the submission under authz via ctx.features.forms.getSubmission, and — when the form's owner has configured an intake binding — files it as an idea on the bound priority-matrix list through the existing submit-idea verb, which also stamps the idea's intake overlay with sourceChannel='form' + the sourceSubmissionId for provenance (ADR 0247 OQ-5). A form with no binding cleanly no-ops (the conditional edge). The anonymous submitter never chooses the list (owner-configured binding); the target list's org-ownership is enforced at the submit-idea write boundary (expectedOrgId). Bind it per tenant to host.forms.submission.created via the ADR 0208 event→workflow bindings.",
+  "author": "openwop-app",
+  "license": "Apache-2.0",
+  "engines": { "openwop": ">=1.0.0" },
+  "keywords": ["Forms", "Priority Matrix", "Intake"],
+  "chains": [
+    {
+      "chainId": "forms-intake.route-submission",
+      "version": "1.1.0",
+      "label": "Forms: Route Submission to Intake",
+      "description": "On host.forms.submission.created, re-read the submission under authz and — if the form has an intake binding — file it as a priority-matrix idea (title/notes from the bound fields, list from the owner-configured binding), stamping form provenance (sourceChannel='form' + submissionId) on the idea. No binding ⇒ no-op. If the owner-bound list was deleted after binding, submit-idea 404s but the run still COMPLETES cleanly via the `done` terminal's `all_complete` edge (RFC 0125 fan-in / error-routing) — the submission is always captured, so a stale binding degrades gracefully instead of failing the run (ADR 0247 OQ-2).",
+      "parameters": { "type": "object", "additionalProperties": false, "required": [], "properties": {} },
+      "capabilities": ["side-effectful"],
+      "dag": {
+        "nodes": [
+          { "id": "trigger", "typeId": "core.trigger.event", "name": "Form submission created", "position": { "x": 0, "y": 0 }, "config": { "eventName": "host.forms.submission.created" }, "inputs": {} },
+          { "id": "get", "typeId": "feature.forms.nodes.get-submission", "name": "Read submission + binding", "position": { "x": 320, "y": 0 }, "config": {}, "inputs": {} },
+          { "id": "file", "typeId": "feature.priority-matrix.nodes.submit-idea", "name": "File as idea (+ provenance)", "position": { "x": 640, "y": 0 }, "config": {}, "inputs": {} },
+          { "id": "skip", "typeId": "core.flow.noop", "name": "No binding — nothing to file", "position": { "x": 640, "y": 160 }, "config": {}, "inputs": {} },
+          { "id": "done", "typeId": "core.flow.noop", "name": "Filing attempted — complete regardless (OQ-2)", "position": { "x": 960, "y": 0 }, "config": {}, "inputs": {} }
+        ],
+        "edges": [
+          { "from": "trigger.payload", "to": "get" },
+          { "from": "get", "to": "file", "condition": { "type": "equals", "left": "willFile", "right": "yes" } },
+          { "from": "get", "to": "skip", "condition": { "type": "notEquals", "left": "willFile", "right": "yes" } },
+          { "from": "file", "to": "done", "triggerRule": "all_complete" }
+        ]
+      },
+      "outputs": {
+        "cardId": { "type": "string", "description": "The filed idea's card id (absent when the form has no intake binding)." }
+      }
+    }
+  ]
+}

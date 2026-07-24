@@ -33,16 +33,16 @@
       "keyId": "openwop-registry-root",
       "algorithm": "ed25519",
       "publicKeyUrl": "/keys/openwop-registry-root.pub",
-      "permittedNamespaces": ["core.openwop.*", "community.openwop-team.*", "vendor.openwop.*"],
+      "permittedNamespaces": ["core.openwop.*", "community.openwop-team.*", "vendor.openwop.*", "vendor.openwop-app.*"],
       "operator": "openwop project",
       "status": "active",
-      "_note": "Pre-existing root key. Signed the v1.0 reference packs published during the registry MVP. Reserved for openwop-project-owned namespaces. Held offline (sealed envelope / hardware token)."
+      "_note": "Pre-existing root key. Signed the v1.0 reference packs published during the registry MVP. Reserved for openwop-project-owned namespaces. Held offline (sealed envelope / hardware token). Namespace grant 2026-07-24: vendor.openwop-app.* — the openwop-app reference app is project-owned (same operator + key custody as core.openwop.*); steward decision, openwop-registry#31."
     },
     {
       "keyId": "openwop-team-1",
       "algorithm": "ed25519",
       "publicKeyUrl": "/keys/openwop-team-1.pub",
-      "permittedNamespaces": ["core.openwop.*", "community.openwop-team.*", "vendor.openwop.*"],
+      "permittedNamespaces": ["core.openwop.*", "community.openwop-team.*", "vendor.openwop.*", "vendor.openwop-app.*"],
       "operator": "openwop team",
       "status": "active",
       "_note": "Day-to-day publisher key for the openwop team. Same authority scope as openwop-registry-root but used online; root stays sealed for emergency rotation."

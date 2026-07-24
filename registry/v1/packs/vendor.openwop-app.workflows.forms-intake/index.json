@@ -1,0 +1,30 @@
+{
+  "name": "vendor.openwop-app.workflows.forms-intake",
+  "kind": "workflow-chain",
+  "description": "Self-serve intake portal (ADR 0246/0247, STRAT-PORTAL). Bridges the forms feature to priority-matrix idea intake WITHOUT either feature importing the other: a public/authed form submission emits host.forms.submission.created (ADR 0208), this chain re-reads the submission under authz via ctx.features.forms.getSubmission, and — when the form's owner has configured an intake binding — files it as an idea on the bound priority-matrix list through the existing submit-idea verb, which also stamps the idea's intake overlay with sourceChannel='form' + the sourceSubmissionId for provenance (ADR 0247 OQ-5). A form with no binding cleanly no-ops (the conditional edge). The anonymous submitter never chooses the list (owner-configured binding); the target list's org-ownership is enforced at the submit-idea write boundary (expectedOrgId). Bind it per tenant to host.forms.submission.created via the ADR 0208 event→workflow bindings.",
+  "author": "openwop-app",
+  "license": "Apache-2.0",
+  "tags": [],
+  "typeIds": [
+    "forms-intake.route-submission"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 1,
+  "versions": [
+    {
+      "version": "1.1.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/vendor.openwop-app.workflows.forms-intake/-/1.1.0.json",
+      "tarballUrl": "/v1/packs/vendor.openwop-app.workflows.forms-intake/-/1.1.0.tgz",
+      "signatureUrl": "/v1/packs/vendor.openwop-app.workflows.forms-intake/-/1.1.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-pL7f5L6jBJ+Zn+MTyYCamPU//83N95GhcgAQS469zjM=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.1.0",
+  "deprecated": false
+}

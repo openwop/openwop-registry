@@ -1,0 +1,32 @@
+{
+  "name": "vendor.openwop-app.workflows.strategy",
+  "kind": "workflow-chain",
+  "description": "Strategy operating-rhythm workflows (RFC 0013, ADR 0231). The KR measurement cadence: a weekly check-in nudge that finds measured key results with no recent confirmed check-in and notifies their owners, and a metric-sync pass that refreshes every sourced key result from its configured data owner (CRM deal totals, analytics conversions) through the one governed check-in path. Both are scheduled via the strategy cadence config (GET/PUT /v1/host/openwop-app/strategy/cadence) — no auto-boot jobs. All writes ride ctx.features.strategy.checkIn: agent writes are structurally proposals; sync writes are confirmed only by a human-configured measure.source (fail-closed).",
+  "author": "openwop-app",
+  "license": "Apache-2.0",
+  "tags": [],
+  "typeIds": [
+    "strategy.weekly-checkin",
+    "strategy.board-pack",
+    "strategy.metric-sync"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 3,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/vendor.openwop-app.workflows.strategy/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/vendor.openwop-app.workflows.strategy/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/vendor.openwop-app.workflows.strategy/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-+vCaB3djjaAR+mmsSjEyk5s2PC3fgx/kUIp2amBnhpg=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}
