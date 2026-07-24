@@ -1,0 +1,102 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.destination-sync@1.0.0",
+      "type": "library",
+      "name": "core.openwop.workflows.destination-sync",
+      "version": "1.0.0",
+      "description": "CDP → peer-OpenWOP-host onward-sync (ADR 0289/RFC 0128), migrated from the deprecated builtin (ADR 0472 P4). chainId keeps the original id; peerIngestUrl resolves at runtime via the http node config template.",
+      "licenses": [],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4e8793368fb4e8a2adddf59a40709d014ef1d9edfab9988a7ae2e2a424a62966"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.destination-sync@1.0.0"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6b088e3ae41c33a87a18ca0d7804a365a97ea25f3382080f19185e67d2aa2c8c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "520"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5b8bf851341d8686a59350ee2b006877ec9f8b8fff84da8a2005658edabd5448"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "57c79dbef0564fff90889e8ed6168bf6d19c1e962c3620202f5cff533c31856f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1412"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.destination-sync@1.0.0",
+      "dependsOn": []
+    }
+  ]
+}

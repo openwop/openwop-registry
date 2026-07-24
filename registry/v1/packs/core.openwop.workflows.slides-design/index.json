@@ -1,0 +1,30 @@
+{
+  "name": "core.openwop.workflows.slides-design",
+  "kind": "workflow-chain",
+  "description": "The slides design workflow (outline → gate → draft → deepen → notes → audit → review), migrated from the deprecated builtin `slides.design` (ADR 0472 P4). Explicit port dataflow + two HITL approval gates (ordering, not conditional). chainId keeps the original id so ignition + replay resolve unchanged; also a gallery-editable chain.",
+  "author": "",
+  "license": "",
+  "tags": [],
+  "typeIds": [
+    "slides.design"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 1,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.workflows.slides-design/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.workflows.slides-design/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.workflows.slides-design/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-UEXrVaEwXHeqghAebWsX74Vr6U80ZB4HyBdt/Fm9lmM=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

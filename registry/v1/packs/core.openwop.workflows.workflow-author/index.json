@@ -1,0 +1,30 @@
+{
+  "name": "core.openwop.workflows.workflow-author",
+  "kind": "workflow-chain",
+  "description": "The AI workflow-author meta-workflow (draft → validate → persist), migrated from the deprecated builtin `openwop-app.workflow-author` (ADR 0472 P4). chainId keeps the original id so the Create-with-AI route ignition + replay resolve unchanged; also a gallery-editable chain.",
+  "author": "",
+  "license": "",
+  "tags": [],
+  "typeIds": [
+    "openwop-app.workflow-author"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 1,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.workflows.workflow-author/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.workflows.workflow-author/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.workflows.workflow-author/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-j3Fp/0E7xZ6M/IJikWgDAFRW1NwKOumkRPUSPpfe0EM=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

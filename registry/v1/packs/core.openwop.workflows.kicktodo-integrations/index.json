@@ -1,0 +1,30 @@
+{
+  "name": "core.openwop.workflows.kicktodo-integrations",
+  "kind": "workflow-chain",
+  "description": "Migrated from deprecated builtins (ADR 0472 P4).",
+  "author": "",
+  "license": "",
+  "tags": [],
+  "typeIds": [
+    "openwop-app.kicktodo.calendar-sync"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 1,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.workflows.kicktodo-integrations/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.workflows.kicktodo-integrations/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.workflows.kicktodo-integrations/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-tdP15I5fSu/O1hPq5zh7qOstfT5acv1VP0fN2v4zgY4=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

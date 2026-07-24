@@ -1,0 +1,30 @@
+{
+  "name": "core.openwop.workflows.creative-briefs-reel",
+  "kind": "workflow-chain",
+  "description": "Generate a text-to-video reel from a creative brief (migrated from the deprecated ADR 0411 builtin `openwop-app.creative-briefs-reel`, ADR 0472 Phase 2/4). A single `generate-reel` node — the boundary-clean reel path run through the workflow engine. chainId keeps the original id so the route ignition + replay resolve unchanged; the host registers it chain-backed AND it is a gallery-editable chain.",
+  "author": "",
+  "license": "",
+  "tags": [],
+  "typeIds": [
+    "openwop-app.creative-briefs-reel"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 1,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.workflows.creative-briefs-reel/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.workflows.creative-briefs-reel/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.workflows.creative-briefs-reel/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-cp+QMgOlgcYEdVOHf60cSgjrsvx9J9YoQPjxaBMg2oU=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

@@ -1,0 +1,31 @@
+{
+  "name": "core.openwop.workflows.campaign-brief",
+  "kind": "workflow-chain",
+  "description": "Campaign-brief messaging-kernel + market-intel workflows, migrated from the deprecated builtins (ADR 0472 P4). chainIds keep the original ids; outputRoles restored at registration.",
+  "author": "",
+  "license": "",
+  "tags": [],
+  "typeIds": [
+    "campaign-studio.messaging-kernel",
+    "campaign-studio.market-intel"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 2,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.workflows.campaign-brief/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.workflows.campaign-brief/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.workflows.campaign-brief/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-4xg3+PRhaNIafSNQ2ENoSvNbeIWkMQ4DCNiMUuFWIn8=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

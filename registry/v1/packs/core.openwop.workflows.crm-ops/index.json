@@ -1,0 +1,32 @@
+{
+  "name": "core.openwop.workflows.crm-ops",
+  "kind": "workflow-chain",
+  "description": "Governed CRM write-verb workflows (RFC 0013, ADR 0208 §2, ADR 0252). Where feature.crm.agents.sales-ops is read-mostly (plus two assistive writes), these chains carry the riskier CRM mutations — owner assignment off a new-lead event, stale-deal follow-up, and the scheduler-fired Gmail inbox sync — with a human in the loop where the ADR calls for one. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts that ship the feature.crm feature + node pack (the OpenWOP reference app).",
+  "author": "openwop",
+  "license": "Apache-2.0",
+  "tags": [],
+  "typeIds": [
+    "crm-ops.route-new-lead",
+    "crm-ops.deal-hygiene",
+    "crm-ops.gmail-sync"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 3,
+  "versions": [
+    {
+      "version": "1.1.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.workflows.crm-ops/-/1.1.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.workflows.crm-ops/-/1.1.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.workflows.crm-ops/-/1.1.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-toFm/RH6Vg651MQbLMsJKNfjuWk1NGGDl6fnNAq6r7I=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.1.0",
+  "deprecated": false
+}

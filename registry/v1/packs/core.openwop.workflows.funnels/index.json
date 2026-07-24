@@ -1,0 +1,30 @@
+{
+  "name": "core.openwop.workflows.funnels",
+  "kind": "workflow-chain",
+  "description": "Funnel optimization chains (ADR 0294 / Funnel A, Phase 6) — read-only analysis over the funnels feature nodes: per-step stats in, a grounded optimization proposal out. Proposals only: publishing, step edits, and experiment starts remain human actions in the Funnels page.",
+  "author": "OpenWOP App",
+  "license": "Apache-2.0",
+  "tags": [],
+  "typeIds": [
+    "funnels.optimize-step"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 1,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.workflows.funnels/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.workflows.funnels/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.workflows.funnels/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-WxWG2sSC/0xkW1hP+0wumslOkpbQLf3A237Axx3xVyQ=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

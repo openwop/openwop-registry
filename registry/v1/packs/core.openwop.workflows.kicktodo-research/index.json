@@ -1,0 +1,30 @@
+{
+  "name": "core.openwop.workflows.kicktodo-research",
+  "kind": "workflow-chain",
+  "description": "KickTodo research spine as an RFC 0013 chain pack (migrated from the deprecated ADR 0072 builtin `openwop-app.kicktodo.research`, ADR 0472 Phase 2). Frame deterministic research questions, search the web (honestly demo or live per the host adapter), normalize to canonical source records, and build a structure-checked evidence graph. Conversion tightened the builtin's implicit ordering into EXPLICIT edge dataflow (the audit's honesty note): search's `{results,engine}` flows to normalize, normalize's sources flow to the evidence graph.",
+  "author": "",
+  "license": "",
+  "tags": [],
+  "typeIds": [
+    "kicktodo.research"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 1,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.workflows.kicktodo-research/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.workflows.kicktodo-research/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.workflows.kicktodo-research/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-qmK64muMlFUMkTx7eVL4yGEmw8pJxIFY4/WLQiiqOu0=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

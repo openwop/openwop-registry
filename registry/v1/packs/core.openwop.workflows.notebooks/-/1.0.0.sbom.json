@@ -1,0 +1,102 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.notebooks@1.0.0",
+      "type": "library",
+      "name": "core.openwop.workflows.notebooks",
+      "version": "1.0.0",
+      "description": "Notebooks workflows (summarize, transform, ingest-audio, ingest-youtube), migrated from the deprecated builtins (ADR 0472 P4). chainIds keep the original ids so ignition + replay resolve unchanged; node outputRoles restored at registration.",
+      "licenses": [],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "43fcf62e82055279172790baa0bc4a29092b7225bba6fd9356ea54a082b10ac2"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.notebooks@1.0.0"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a132d595c8e580d7309b2c81677aba88b4639cb1ca8dea5f38788f40fa153ff2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "689"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "07d436b4deb065a23894c84a17e21427539d5af6bb036905d5c1c1d136f4a538"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3820a3bfdff356667aad4856b02a83a135cec5950eb1886712ce057ec8690af4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "5669"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.notebooks@1.0.0",
+      "dependsOn": []
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "name": "core.openwop.workflows.campaign-orchestration",
+  "kind": "workflow-chain",
+  "description": "Campaign Studio orchestration spine (ADR 0158/RFC 0118), parallel channel fan-out shape — migrated from the deprecated builtin (ADR 0472 P4). chainId keeps the original id; the 5 channel children resolve by id at runtime via core.dispatch.",
+  "author": "",
+  "license": "",
+  "tags": [],
+  "typeIds": [
+    "campaign-studio.campaign-orchestration"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 1,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.workflows.campaign-orchestration/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.workflows.campaign-orchestration/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.workflows.campaign-orchestration/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-ycl6c6Frg1y7d9ciYalq/+XqsXUNWi/mZd/9i6QgNjo=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

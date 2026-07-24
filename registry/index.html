@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>openwop registry — packs.openwop.dev</title>
-<meta name="description" content="The canonical signed node-pack registry for the openwop workflow orchestration protocol. 117 pack(s), 160 version(s) published.">
+<meta name="description" content="The canonical signed node-pack registry for the openwop workflow orchestration protocol. 144 pack(s), 187 version(s) published.">
 <meta name="robots" content="index, follow">
 
 <meta property="og:type" content="website">
@@ -411,8 +411,8 @@
     </h1>
     <p class="lead">Canonical signed node-pack registry for the <a href="https://openwop.dev/">openwop</a> workflow orchestration protocol.</p>
     <div class="summary">
-      <div><strong>117</strong><span>packs published</span></div>
-      <div><strong>160</strong><span>versions total</span></div>
+      <div><strong>144</strong><span>packs published</span></div>
+      <div><strong>187</strong><span>versions total</span></div>
       <div><strong>Ed25519</strong><span>signing algorithm</span></div>
     </div>
   </header>
@@ -447,7 +447,7 @@
         </label>
         <label class="tab" for="tab-workflow-chains" role="tab">
           <span class="tab-label">Workflow-chain packs</span>
-          <span class="tab-count">17</span>
+          <span class="tab-count">44</span>
         </label>
         <label class="tab" for="tab-prompts" role="tab">
           <span class="tab-label">Prompt packs</span>
@@ -908,7 +908,7 @@
           </td>
         </tr>
         <tr>
-          <td class="name"><code>vendor.myndhyve.app-builder</code> </td>
+          <td class="name"><code>vendor.myndhyve.app-builder</code> <span class="flag flag-deprecated">deprecated</span> <span class="flag flag-yanked">yanked</span></td>
           <td class="version">1.0.0</td>
           <td class="count" title="nodes in latest manifest">2</td>
           <td class="desc">MyndHyve App Builder typeIds — app-builder.per-screen (single-task screen generation: chat-send → typed-envelope-await with bounded retry) + app-builder.iterate-tasks (multi-task serial loop over feature tasks with task-level failure isolation). Both consume host.chat + host.aiEnvelope.await. Host concerns (progress cards, telemetry, pilot materializer) intentionally NOT in pack — pack returns categorized task results that host MAY render however it wishes.</td>
@@ -1777,6 +1777,78 @@
           </td>
         </tr>
         <tr>
+          <td class="name"><code>core.openwop.workflows.campaign-brief</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">2</td>
+          <td class="desc">Campaign-brief messaging-kernel + market-intel workflows, migrated from the deprecated builtins (ADR 0472 P4). chainIds keep the original ids; outputRoles restored at registration.</td>
+          <td class="license">—</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.campaign-brief/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.campaign-brief/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.campaign-brief/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.workflows.campaign-channels</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">5</td>
+          <td class="desc">The five campaign channel child workflows (ADR 0157) — generate→approve DAGs the orchestration fans out over — migrated from the deprecated builtins (ADR 0472 P4). chainIds keep the original ids.</td>
+          <td class="license">—</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.campaign-channels/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.campaign-channels/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.campaign-channels/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.workflows.campaign-journeys</code> </td>
+          <td class="version">1.1.0</td>
+          <td class="count" title="chains in latest manifest">3</td>
+          <td class="desc">Contact-level lifecycle journeys as RFC 0013 chains on the ONE engine (ADR 0222 / campaign gap plan C6) — NOT a journey engine. Trigger with an ADR 0208 host-event binding (e.g. host.crm.contact.created → Welcome Series), guard with the enrollment + eligibility verbs (one run per contact per journey; every send behind consent + suppression), wait with core.flow.wait, send with the existing email node, log with the CRM activity verb. Enrollment state is the run itself — monitor in Runs, reset re-enrollment via the campaign-journeys API.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.campaign-journeys/-/1.1.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.campaign-journeys/-/1.1.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.campaign-journeys/-/1.1.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.workflows.campaign-orchestration</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">1</td>
+          <td class="desc">Campaign Studio orchestration spine (ADR 0158/RFC 0118), parallel channel fan-out shape — migrated from the deprecated builtin (ADR 0472 P4). chainId keeps the original id; the 5 channel children resolve by id at runtime via core.dispatch.</td>
+          <td class="license">—</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.campaign-orchestration/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.campaign-orchestration/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.campaign-orchestration/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.workflows.campaign-sync</code> </td>
+          <td class="version">1.1.0</td>
+          <td class="count" title="chains in latest manifest">2</td>
+          <td class="desc">Campaign Studio metrics-sync chain (RFC 0013; campaign gap plan C2 on ADR 0159). Pulls yesterday&#39;s ad metrics for every dispatched campaign through the acting user&#39;s platform connection (ctx.ads, window-scoped so rows never double-count) into the unified performance store, then delivers a short sync summary as a notification. Schedule it daily on the ONE scheduler, or run it ad hoc — the 15-minute cooldown makes overlapping fires harmless. Also carries the daily budget-pacing check (ADR 0220).</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.campaign-sync/-/1.1.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.campaign-sync/-/1.1.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.campaign-sync/-/1.1.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.workflows.commerce</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">3</td>
+          <td class="desc">Real-work workflow pack (RFC 0013, ADR 0152) — the Commerce operations cluster (ecommerce gap plan §5C C8): Post-Purchase Thank-You, Low-Stock Reorder Draft, and the Order Exception Digest. Designed to bind to the ADR 0221 host events (host.commerce.order.paid, host.commerce.inventory.low-stock — create a host-event binding to enroll; ADR 0208) or the schedule trigger. Every outbound send rides the governed email-send integration node (drafts/approval per the tenant&#39;s actionPolicy — ADR 0033) and the ONE notification seam; order data flows through feature.commerce.nodes over ctx.features.commerce, so the ADR 0221 audit rows + spend thresholds apply by construction. Enrollment state = the run itself; a binding fires one run per event.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.commerce/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.commerce/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.commerce/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
           <td class="name"><code>core.openwop.workflows.content</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="chains in latest manifest">2</td>
@@ -1789,6 +1861,42 @@
           </td>
         </tr>
         <tr>
+          <td class="name"><code>core.openwop.workflows.creative-briefs-reel</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">1</td>
+          <td class="desc">Generate a text-to-video reel from a creative brief (migrated from the deprecated ADR 0411 builtin `openwop-app.creative-briefs-reel`, ADR 0472 Phase 2/4). A single `generate-reel` node — the boundary-clean reel path run through the workflow engine. chainId keeps the original id so the route ignition + replay resolve unchanged; the host registers it chain-backed AND it is a gallery-editable chain.</td>
+          <td class="license">—</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.creative-briefs-reel/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.creative-briefs-reel/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.creative-briefs-reel/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.workflows.crm-ops</code> </td>
+          <td class="version">1.1.0</td>
+          <td class="count" title="chains in latest manifest">3</td>
+          <td class="desc">Governed CRM write-verb workflows (RFC 0013, ADR 0208 §2, ADR 0252). Where feature.crm.agents.sales-ops is read-mostly (plus two assistive writes), these chains carry the riskier CRM mutations — owner assignment off a new-lead event, stale-deal follow-up, and the scheduler-fired Gmail inbox sync — with a human in the loop where the ADR calls for one. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts that ship the feature.crm feature + node pack (the OpenWOP reference app).</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.crm-ops/-/1.1.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.crm-ops/-/1.1.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.crm-ops/-/1.1.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.workflows.csm-ops</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">2</td>
+          <td class="desc">CSM↔CRM linkage workflows (ADR 0212, RFC 0013). Where feature.csm.agents.health-insights is read-only, these two chains carry the CSM write surface: computing an Account&#39;s healthScore/healthFactors from its linked CRM company&#39;s deals/tasks (the scoring recipe as visible, editable workflow configuration rather than buried code — ADR 0212 §3), and a human-gated renewal-risk follow-up over the deal-hygiene shape (ADR 0212 §4 — renewals are deals, not a new entity). All tenant/org-specific values are run parameters (replay-deterministic). Resolves on hosts that ship the feature.crm + feature.csm features + node packs (the OpenWOP reference app).</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.csm-ops/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.csm-ops/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.csm-ops/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
           <td class="name"><code>core.openwop.workflows.data-ops</code> </td>
           <td class="version">1.1.0</td>
           <td class="count" title="chains in latest manifest">4</td>
@@ -1798,6 +1906,18 @@
             <a href="/v1/packs/core.openwop.workflows.data-ops/-/1.1.0.json" title="version manifest (JSON)">manifest</a>
             · <a href="/v1/packs/core.openwop.workflows.data-ops/-/1.1.0.tgz" title="signed tarball (tgz)">tgz</a>
             · <a href="/v1/packs/core.openwop.workflows.data-ops/-/1.1.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.workflows.destination-sync</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">1</td>
+          <td class="desc">CDP → peer-OpenWOP-host onward-sync (ADR 0289/RFC 0128), migrated from the deprecated builtin (ADR 0472 P4). chainId keeps the original id; peerIngestUrl resolves at runtime via the http node config template.</td>
+          <td class="license">—</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.destination-sync/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.destination-sync/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.destination-sync/-/1.0.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr>
@@ -1837,6 +1957,18 @@
           </td>
         </tr>
         <tr>
+          <td class="name"><code>core.openwop.workflows.funnels</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">1</td>
+          <td class="desc">Funnel optimization chains (ADR 0294 / Funnel A, Phase 6) — read-only analysis over the funnels feature nodes: per-step stats in, a grounded optimization proposal out. Proposals only: publishing, step edits, and experiment starts remain human actions in the Funnels page.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.funnels/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.funnels/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.funnels/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
           <td class="name"><code>core.openwop.workflows.inbox</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="chains in latest manifest">3</td>
@@ -1849,6 +1981,18 @@
           </td>
         </tr>
         <tr>
+          <td class="name"><code>core.openwop.workflows.insights-suite</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">3</td>
+          <td class="desc">Insights &amp; Drafting meta-workflows as an RFC 0013 chain pack (migrated from the deprecated ADR 0082/0072 builtins, ADR 0472 Phase 2). Three real source→analysis→LLM→draft→notify pipelines over BYOK-connected sources (BigQuery, Workday, chat completion, email-draft, notification-push). chainIds keep the original `openwop-app.insights.*` ids so scheduler/trigger ignition + replay are unchanged; the host registers them chain-backed (resolve-by-id, stable id) AND they are gallery-editable chains. Per-node outputRole (not expressible in the portable fragment) is re-applied at registration via the feature&#39;s postProcess.</td>
+          <td class="license">—</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.insights-suite/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.insights-suite/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.insights-suite/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
           <td class="name"><code>core.openwop.workflows.it-support</code> </td>
           <td class="version">1.2.1</td>
           <td class="count" title="chains in latest manifest">1</td>
@@ -1858,6 +2002,90 @@
             <a href="/v1/packs/core.openwop.workflows.it-support/-/1.2.1.json" title="version manifest (JSON)">manifest</a>
             · <a href="/v1/packs/core.openwop.workflows.it-support/-/1.2.1.tgz" title="signed tarball (tgz)">tgz</a>
             · <a href="/v1/packs/core.openwop.workflows.it-support/-/1.2.1.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.workflows.kicktodo-accountability</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">1</td>
+          <td class="desc">Migrated from deprecated builtins (ADR 0472 P4).</td>
+          <td class="license">—</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.kicktodo-accountability/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.kicktodo-accountability/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.kicktodo-accountability/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.workflows.kicktodo-challenge-factory</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">2</td>
+          <td class="desc">The Challenge Factory (ADR 0458) + its lesson-batch child — migrated from the deprecated builtins (ADR 0472 P4, the terminal quarantine step). chainIds keep the original ids; build-0..3 reference lesson-batch via RFC 0133 config.subChainRef (host-default binds it to the shared same-id child); truthy/falsy reject-safe barriers ride RFC 0134; produced vars (plan/evidenceSummary/planBrief) declared per RFC 0133 §2.2.</td>
+          <td class="license">—</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.kicktodo-challenge-factory/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.kicktodo-challenge-factory/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.kicktodo-challenge-factory/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.workflows.kicktodo-integrations</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">1</td>
+          <td class="desc">Migrated from deprecated builtins (ADR 0472 P4).</td>
+          <td class="license">—</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.kicktodo-integrations/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.kicktodo-integrations/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.kicktodo-integrations/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.workflows.kicktodo-loops</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">3</td>
+          <td class="desc">KickTodo enrollment + scheduled loops (enrollment, daily-loop, reminder-loop), migrated from the deprecated builtins (ADR 0472 P4). chainIds keep the original ids so scheduler-continuation ignition + replay resolve unchanged. Enrollment demonstrates RFC 0133 produced variables: `enroll` writes `enrollmentId` to the bag, `materialize` reads it.</td>
+          <td class="license">—</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.kicktodo-loops/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.kicktodo-loops/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.kicktodo-loops/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.workflows.kicktodo-plan-generation</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">1</td>
+          <td class="desc">KickTodo plan generation as an RFC 0013 / RFC 0133 chain pack (migrated from the deprecated ADR 0072 builtin `openwop-app.kicktodo.plan-generation`). Generate a validated challenge plan with the run-scoped provider (closed-world validatePlan + one bounded repair inside the node; fails closed on stub providers), then decompose it into a draft. Demonstrates RFC 0133 produced variables: `generate` writes the validated `plan` to the run bag and `decompose` reads it by name — no typed output port, so an explicit edge is not the right shape.</td>
+          <td class="license">—</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.kicktodo-plan-generation/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.kicktodo-plan-generation/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.kicktodo-plan-generation/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.workflows.kicktodo-replan</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">1</td>
+          <td class="desc">Participant-replan workflow (ADR 0459/0463), migrated from the deprecated builtin (ADR 0472 P4). chainId keeps the original id; the falsy reject-safe barrier rides RFC 0134.</td>
+          <td class="license">—</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.kicktodo-replan/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.kicktodo-replan/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.kicktodo-replan/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.workflows.kicktodo-research</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">1</td>
+          <td class="desc">KickTodo research spine as an RFC 0013 chain pack (migrated from the deprecated ADR 0072 builtin `openwop-app.kicktodo.research`, ADR 0472 Phase 2). Frame deterministic research questions, search the web (honestly demo or live per the host adapter), normalize to canonical source records, and build a structure-checked evidence graph. Conversion tightened the builtin&#39;s implicit ordering into EXPLICIT edge dataflow (the audit&#39;s honesty note): search&#39;s `{results,engine}` flows to normalize, normalize&#39;s sources flow to the evidence graph.</td>
+          <td class="license">—</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.kicktodo-research/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.kicktodo-research/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.kicktodo-research/-/1.0.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr>
@@ -1909,6 +2137,30 @@
           </td>
         </tr>
         <tr>
+          <td class="name"><code>core.openwop.workflows.mcp-tool-projections</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">19</td>
+          <td class="desc">MCP tool-projection workflows (core.openwop.mcp.expose-tool → backing node), migrated from the deprecated builtinWorkflows seam (ADR 0472 P4). chainIds keep the original *.mcp.* ids; registered chain-backed with the EXACT original metadata (the ADR 0087 mcp gates) restored, and the MCP mount enumerates them.</td>
+          <td class="license">—</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.mcp-tool-projections/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.mcp-tool-projections/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.mcp-tool-projections/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.workflows.notebooks</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">4</td>
+          <td class="desc">Notebooks workflows (summarize, transform, ingest-audio, ingest-youtube), migrated from the deprecated builtins (ADR 0472 P4). chainIds keep the original ids so ignition + replay resolve unchanged; node outputRoles restored at registration.</td>
+          <td class="license">—</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.notebooks/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.notebooks/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.notebooks/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
           <td class="name"><code>core.openwop.workflows.people-hr</code> </td>
           <td class="version">1.2.0</td>
           <td class="count" title="chains in latest manifest">3</td>
@@ -1921,6 +2173,30 @@
           </td>
         </tr>
         <tr>
+          <td class="name"><code>core.openwop.workflows.podcasts</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">1</td>
+          <td class="desc">Migrated from the deprecated builtin (ADR 0472 P4). chainId keeps the original id; outputRoles restored at registration.</td>
+          <td class="license">—</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.podcasts/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.podcasts/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.podcasts/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.workflows.production-plan</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">1</td>
+          <td class="desc">Migrated from the deprecated builtin (ADR 0472 P4). chainId keeps the original id; outputRoles restored at registration.</td>
+          <td class="license">—</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.production-plan/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.production-plan/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.production-plan/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
           <td class="name"><code>core.openwop.workflows.research</code> </td>
           <td class="version">1.0.0</td>
           <td class="count" title="chains in latest manifest">1</td>
@@ -1930,6 +2206,18 @@
             <a href="/v1/packs/core.openwop.workflows.research/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
             · <a href="/v1/packs/core.openwop.workflows.research/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
             · <a href="/v1/packs/core.openwop.workflows.research/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.workflows.slides-design</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">1</td>
+          <td class="desc">The slides design workflow (outline → gate → draft → deepen → notes → audit → review), migrated from the deprecated builtin `slides.design` (ADR 0472 P4). Explicit port dataflow + two HITL approval gates (ordering, not conditional). chainId keeps the original id so ignition + replay resolve unchanged; also a gallery-editable chain.</td>
+          <td class="license">—</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.slides-design/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.slides-design/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.slides-design/-/1.0.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr>
@@ -1954,6 +2242,42 @@
             <a href="/v1/packs/core.openwop.workflows.support/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
             · <a href="/v1/packs/core.openwop.workflows.support/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
             · <a href="/v1/packs/core.openwop.workflows.support/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.workflows.walkthroughs</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">25</td>
+          <td class="desc">The first-party SYSTEM guided walkthroughs (single-step page tours), migrated from the deprecated builtinWorkflows seam (ADR 0472 P4). Each chainId keeps its original walkthrough.* id so the FE player + replay resolve unchanged; registered chain-backed with metadata.walkthrough=true so the walkthroughs surface lists them.</td>
+          <td class="license">—</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.walkthroughs/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.walkthroughs/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.walkthroughs/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>core.openwop.workflows.workflow-author</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">1</td>
+          <td class="desc">The AI workflow-author meta-workflow (draft → validate → persist), migrated from the deprecated builtin `openwop-app.workflow-author` (ADR 0472 P4). chainId keeps the original id so the Create-with-AI route ignition + replay resolve unchanged; also a gallery-editable chain.</td>
+          <td class="license">—</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.workflows.workflow-author/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.workflow-author/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.workflow-author/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr>
+          <td class="name"><code>vendor.openwop.app-builder.workflows</code> </td>
+          <td class="version">1.3.0</td>
+          <td class="count" title="chains in latest manifest">2</td>
+          <td class="desc">The App Builder production chains (ADR 0346 / RFC 0013). The design chain is the portable source of truth for `app-builder.design` — the host registers it at boot via the feature&#39;s registration adapter (RFC 0124 deferred expansion), and it remains instantiable from the chain gallery like any chain.</td>
+          <td class="license">—</td>
+          <td class="artifacts">
+            <a href="/v1/packs/vendor.openwop.app-builder.workflows/-/1.3.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/vendor.openwop.app-builder.workflows/-/1.3.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/vendor.openwop.app-builder.workflows/-/1.3.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr>
@@ -2081,7 +2405,7 @@ const ok = verify(null, readFileSync('pack.tgz'), pub, readFileSync('pack.sig'))
   </section>
 
   <footer>
-    Generated 2026-07-07T18:07:06.069Z · <a href="https://openwop.dev/">openwop.dev</a> · <a href="https://github.com/openwop/openwop">openwop on GitHub</a>
+    Generated 2026-07-24T04:13:56.371Z · <a href="https://openwop.dev/">openwop.dev</a> · <a href="https://github.com/openwop/openwop">openwop on GitHub</a>
   </footer>
 </main>
 </body>

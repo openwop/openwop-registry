@@ -1,0 +1,34 @@
+{
+  "name": "core.openwop.workflows.campaign-channels",
+  "kind": "workflow-chain",
+  "description": "The five campaign channel child workflows (ADR 0157) — generate→approve DAGs the orchestration fans out over — migrated from the deprecated builtins (ADR 0472 P4). chainIds keep the original ids.",
+  "author": "",
+  "license": "",
+  "tags": [],
+  "typeIds": [
+    "campaign-studio.channel.landing-page",
+    "campaign-studio.channel.ad-variants",
+    "campaign-studio.channel.email-sequence",
+    "campaign-studio.channel.creative-briefs",
+    "campaign-studio.channel.social-posts"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 5,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.workflows.campaign-channels/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.workflows.campaign-channels/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.workflows.campaign-channels/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-ixvUYZK+cNSVKOSAcFRf8pbrVQzrbMPnIY/6NvzrPeg=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

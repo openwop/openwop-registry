@@ -1,0 +1,102 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.mcp-tool-projections@1.0.0",
+      "type": "library",
+      "name": "core.openwop.workflows.mcp-tool-projections",
+      "version": "1.0.0",
+      "description": "MCP tool-projection workflows (core.openwop.mcp.expose-tool → backing node), migrated from the deprecated builtinWorkflows seam (ADR 0472 P4). chainIds keep the original *.mcp.* ids; registered chain-backed with the EXACT original metadata (the ADR 0087 mcp gates) restored, and the MCP mount enumerates them.",
+      "licenses": [],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f1084dd1de6975b0850bb443a9e224790eccc2d276411534543c79d012b33e88"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.mcp-tool-projections@1.0.0"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "eefb1e9582b7ce803173a6b6113c6f4257252ee4dc0549406dcd12ada140d52e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1696"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6bcf257ec35d1541c241981edb849148528b4d935a3f101504fe29c4f72eb9fa"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ecb05469b78f1e4ba35c688e8d085d7c96f59adffbc03a00eefd8859b1160e3f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "19954"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.mcp-tool-projections@1.0.0",
+      "dependsOn": []
+    }
+  ]
+}
