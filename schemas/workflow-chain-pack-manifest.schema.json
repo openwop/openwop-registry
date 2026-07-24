@@ -86,6 +86,10 @@
           "type": "string",
           "description": "One-paragraph description of what the chain produces. Surfaced in host editor tile hover-text."
         },
+        "internal": {
+          "type": "boolean",
+          "description": "RFC 0135 — when true, this chain is a composition-only fragment (typically an RFC 0133 sub-chain child): hosts MUST omit it from default template-gallery/picker listings while keeping it loadable, resolvable by id, composable, and expandable exactly like any other chain. Presentational/discovery semantics only — NOT an authorization boundary (a host MUST NOT treat it as access control). Absent ⇒ false (listed). See workflow-chain-packs.md §\"Chain visibility (RFC 0135)\"."
+        },
         "parameters": {
           "type": "object",
           "description": "JSON Schema 2020-12 fragment describing the parameter values the host editor MUST collect from the author at drop time. Authors-supplied values are validated against this schema before expansion proceeds; invalid input MUST be rejected with `chain_parameter_invalid`. RECOGNIZED EXTENSION KEY (RFC 0124 / WCP4): a property MAY carry `x-openwop-sensitive: true` to declare the parameter secret-class. A host that recognizes it MUST NOT expansion-time-freeze that parameter (plaintext secret-at-rest leak, SR-1) and MUST NOT materialize it as a plaintext `source:\"variable\"` binding (the value would land in the run-scoped bag / `RunSnapshot.variables` — the same SR-1 leak one layer down). Instead, per the 2026-07-04 §Security amendment: it is deferrable ONLY in a prompt-body position, where it MUST be materialized as a `source:\"secret\"` `PromptVariable` (BYOK-resolved via `capabilities.secrets`, redacted to `[REDACTED:<secretId>]` in `prompt.composed`, never bagged); in ANY other position (whole-value `node.inputs`, embedded non-prompt `config`, or a host lacking deferred / `secrets` support) it MUST fail closed with `sensitive_param_not_deferrable` (422). Per-run supply is a `credentialRef` secret reference, never plaintext. See `workflow-chain-packs.md` §\"Deferred-parameter expansion\" / RFC 0124 §Security.",
@@ -106,6 +110,76 @@
           },
           "uniqueItems": true,
           "description": "Capability traits to propagate to every expanded node. Hosts MUST copy this array into each expanded `WorkflowNode.capabilities` so existing capability gates apply uniformly."
+        },
+        "subChains": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/SubChainRef" },
+          "description": "RFC 0133 §1.1. OPTIONAL. Child chains this chain composes at RUN TIME. Each entry names a chain (a sibling `chainId` in this pack, or an externally published chain) that a node references via `config.subChainRef`. Unlike RFC 0013's author-time inline splice, a referenced sub-chain is co-instantiated as its own registered workflow and dispatched by the parent as a child run (both parent and child stay owned + builder-editable). A host without runtime child dispatch MUST refuse instantiation with `sub_chain_unsupported` (422) rather than flatten. Requires `capabilities.workflowChainPacks.subChains.supported: true`. See `workflow-chain-packs.md` §\"Sub-chain composition (RFC 0133)\"."
+        },
+        "producedVariables": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/ProducedVariable" },
+          "description": "RFC 0133 §2.2. OPTIONAL. Run-scoped values a node writes to the executor's variable bag during the run and downstream nodes read by name via a `{ type:\"variable\", variableName }` input binding — where the value is NOT an author-time `parameter` and rides no typed output port. Prefer edges (a typed `sourceOutput`→`targetInput` hand-off) wherever a node exposes a value on a port; `producedVariables` is only for values written to the run bag with no typed port. On expansion the host emits these into `WorkflowDefinition.variables[]` as run-scoped entries (name + type, no value). Any `{ type:\"variable\" }` read of an UNDECLARED name (not here and not a materialized parameter) is a `variable_undeclared` manifest error. See `workflow-chain-packs.md` §\"Produced (run-scoped) variables (RFC 0133)\"."
+        }
+      },
+      "additionalProperties": false
+    },
+    "SubChainRef": {
+      "type": "object",
+      "required": ["ref"],
+      "description": "RFC 0133 §1.1. A reference to a child chain the parent composes. `ref` is EITHER a string naming a SIBLING `chainId` in this pack's `chains[]`, OR an object naming an externally published chain (resolved + signature-verified like any pack dependency). A sibling `ref` that matches no `chainId`, or an external `ref` that fails resolution/verification, is `sub_chain_unresolved`. A chain that transitively composes itself is `sub_chain_cycle`.",
+      "properties": {
+        "ref": {
+          "oneOf": [
+            {
+              "type": "string",
+              "description": "A sibling `chainId` in the same pack's `chains[]`.",
+              "pattern": "^[a-z][a-zA-Z0-9._-]*$",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            {
+              "type": "object",
+              "required": ["packName", "chainId", "version"],
+              "description": "An externally published chain, resolved + signature-verified like any pack dependency.",
+              "properties": {
+                "packName": { "type": "string", "minLength": 1, "maxLength": 256 },
+                "chainId": { "type": "string", "pattern": "^[a-z][a-zA-Z0-9._-]*$", "minLength": 1, "maxLength": 256 },
+                "version": {
+                  "type": "string",
+                  "description": "Semver range for the external chain. Co-registration SHOULD pin the resolved version into the parent's ownership record for reproducibility (RFC 0133 §Unresolved #1, resolved: pin)."
+                }
+              },
+              "additionalProperties": false
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "ProducedVariable": {
+      "type": "object",
+      "required": ["name", "producedBy", "type"],
+      "description": "RFC 0133 §2.2. A run-scoped variable a chain declares: written by one node and read by others via a `{ type:\"variable\", variableName }` input binding. Run-scoped — carries NO author-time value (that is what `parameters` are for); the manifest distinguishes the two.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The variable-bag key downstream nodes read via `{ type:\"variable\", variableName:\"<name>\" }`."
+        },
+        "producedBy": {
+          "type": "string",
+          "minLength": 1,
+          "description": "The `nodes[].id` (within this same fragment) that writes the value."
+        },
+        "type": {
+          "type": "string",
+          "enum": ["string", "number", "boolean", "object", "array"],
+          "description": "JSON-Schema type token for validation/inspection."
+        },
+        "description": {
+          "type": "string",
+          "description": "One-line description of the produced value's meaning."
         }
       },
       "additionalProperties": false
@@ -171,9 +245,17 @@
         },
         "config": {
           "type": "object",
-          "description": "Node config — host-validated against the referenced typeId's config schema. String fields MAY contain `{{params.<name>}}` placeholders that the host MUST substitute at expansion time.",
+          "description": "Node config — host-validated against the referenced typeId's config schema. String fields MAY contain `{{params.<name>}}` placeholders that the host MUST substitute at expansion time. RFC 0133: a `core.subWorkflow` / `core.dispatch` (child-run) node MAY carry `subChainRef: string` — a declared `subChains[].ref` (sibling `chainId` or external ref) the host rewrites to the minted child `workflowId` at co-expansion time (§1.3 step 3). A concrete `config.workflowId` inside a fragment remains INVALID — a chain MUST NOT pin a host-specific workflow id (the `not` guard below enforces it).",
           "additionalProperties": true,
-          "$comment": "Open by design — node config shapes are per-typeId and only known to the host at expansion time when the referenced typeId's config schema is resolved. Cross-typeId enforcement happens at the expansion step, not at manifest-validation time."
+          "not": { "required": ["workflowId"] },
+          "properties": {
+            "subChainRef": {
+              "type": "string",
+              "pattern": "^[a-z][a-zA-Z0-9._-]*$",
+              "description": "RFC 0133 §1.2. A declared `subChains[].ref` this node dispatches as a child run. The host rewrites it to the minted child `config.workflowId` at co-expansion time. MUST match a `subChains[].ref` (sibling `chainId` or external ref's `chainId`), else `sub_chain_unresolved`."
+            }
+          },
+          "$comment": "Open by design — node config shapes are per-typeId and only known to the host at expansion time when the referenced typeId's config schema is resolved. Cross-typeId enforcement happens at the expansion step, not at manifest-validation time. The `not: { required: ['workflowId'] }` guard is the ONE closed constraint: RFC 0133 forbids pinning a concrete host-specific workflow id inside a portable chain fragment (use `subChainRef` instead)."
         },
         "inputs": {
           "type": "object",
@@ -211,14 +293,15 @@
     },
     "EdgeCondition": {
       "type": "object",
-      "description": "Edge condition — identical to workflow-definition.schema.json §EdgeCondition (RFC 0013 §edges: 'same shape as a top-level workflow definition'). Inlined here so the manifest schema is self-contained for pack-loader validators.",
+      "description": "Edge condition — identical to workflow-definition.schema.json §EdgeCondition (RFC 0013 §edges: 'same shape as a top-level workflow definition'). Inlined here so the manifest schema is self-contained for pack-loader validators. RFC 0134 added `truthy`/`falsy` (kept in sync with the top-level def).",
       "properties": {
         "type": {
           "type": "string",
-          "enum": ["expression", "equals", "notEquals", "contains", "regex"]
+          "enum": ["expression", "equals", "notEquals", "contains", "regex", "truthy", "falsy"],
+          "description": "RFC 0134: `truthy`/`falsy` test the resolved value at `left` for truthiness and take NO `right` operand; `left` is required for all operators except `expression`."
         },
-        "left": { "type": "string", "description": "Left operand path (e.g., 'status', 'output.approved')." },
-        "right": { "description": "Right operand value (any JSON value)." },
+        "left": { "type": "string", "description": "Left operand path (e.g., 'status', 'output.approved'). Required for every operator except `expression`." },
+        "right": { "description": "Right operand value (any JSON value). Meaningless for `truthy`/`falsy` (RFC 0134)." },
         "expression": { "type": "string", "description": "Used when type='expression'." }
       },
       "additionalProperties": false
