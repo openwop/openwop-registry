@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.support",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "kind": "workflow-chain",
   "description": "Real-work workflow pack (RFC 0013, ADR 0190) — the Customer Support cluster, the #1 surveyed agent use case the gallery previously had zero templates for: KB-grounded answering, email triage (draft-only — the human sends), customer-ticket routing, sentiment/brand-risk escalation, and CSAT follow-up. Authored entirely over node typeIds shipped with this host (feature.kb + core.ai.chatCompletion + core.flow.if + core.chat.approvalGate + core.email.draft + core.openwop.connectors.ticket-create + core.openwop.integration.*). Every external SEND waits on a human approval gate (core.email.draft creates a draft and never sends — the draft itself is the human gate). Distinct from core.openwop.workflows.it-support: that pack routes IT incidents by severity; this one serves customer-facing support (intent, queues, CSAT). All tenant values are run parameters (replay-deterministic).",
   "author": "openwop",
@@ -184,7 +184,7 @@
           "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Defaults to the host's chat-class preference; override at instantiation for a different vendor or your own BYOK provider." },
           "model": { "type": "string", "default": "claude-sonnet-4-6", "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation." },
           "senderEmail": { "type": "string", "description": "Verified sender address these emails are sent from." },
-          "recipientEmail": { "type": "string", "description": "Who this email goes to. The chain has no upstream node that produces a recipient, so it is supplied at instantiation." },
+          "recipientEmail": { "type": "string", "description": "The address this email is sent to." },
           "emailSubject": { "type": "string", "default": "How did we do?", "description": "Subject line for the sent email." }
         }
       },
