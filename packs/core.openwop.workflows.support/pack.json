@@ -1,8 +1,8 @@
 {
   "name": "core.openwop.workflows.support",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "kind": "workflow-chain",
-  "description": "Real-work workflow pack — the Customer Support cluster, the #1 surveyed agent use case the gallery previously had zero templates for: KB-grounded answering, email triage (draft-only — the human sends), customer-ticket routing, sentiment/brand-risk escalation, and CSAT follow-up. Authored entirely over node typeIds shipped with this host (feature.kb + core.ai.chatCompletion + core.flow.if + core.chat.approvalGate + core.email.draft + core.openwop.connectors.ticket-create + core.openwop.integration.*). Every external SEND waits on a human approval gate (core.email.draft creates a draft and never sends — the draft itself is the human gate). Distinct from core.openwop.workflows.it-support: that pack routes IT incidents by severity; this one serves customer-facing support (intent, queues, CSAT). All tenant values are run parameters (replay-deterministic).",
+  "description": "Real-work workflow pack (RFC 0013, ADR 0190) — the Customer Support cluster, the #1 surveyed agent use case the gallery previously had zero templates for: KB-grounded answering, email triage (draft-only — the human sends), customer-ticket routing, sentiment/brand-risk escalation, and CSAT follow-up. Authored entirely over node typeIds shipped with this host (feature.kb + core.ai.chatCompletion + core.flow.if + core.chat.approvalGate + core.email.draft + core.openwop.connectors.ticket-create + core.openwop.integration.*). Every external SEND waits on a human approval gate (core.email.draft creates a draft and never sends — the draft itself is the human gate). Distinct from core.openwop.workflows.it-support: that pack routes IT incidents by severity; this one serves customer-facing support (intent, queues, CSAT). All tenant values are run parameters (replay-deterministic).",
   "author": "openwop",
   "license": "Apache-2.0",
   "engines": { "openwop": ">=1.0.0" },
@@ -16,27 +16,38 @@
       "parameters": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["question"],
+        "required": ["question", "orgId", "collectionId"],
         "properties": {
           "question": { "type": "string", "description": "The customer question to answer." },
-          "escalationChannel": { "type": "string", "default": "#support-escalations", "description": "Slack channel for low-confidence escalations." }
+          "escalationChannel": { "type": "string", "default": "#support-escalations", "description": "Slack channel for low-confidence escalations." },
+          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Defaults to the host's chat-class preference; override at instantiation for a different vendor or your own BYOK provider." },
+          "model": { "type": "string", "default": "claude-sonnet-4-6", "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation." },
+          "orgId": { "type": "string", "description": "The org whose KB is searched (feature.kb.nodes.rag reads ctx.inputs.orgId — an exact match against the collection's org, so this MUST be set or the retrieval never resolves the collection)." },
+          "collectionId": { "type": "string", "description": "The KB collection id to search (create via the Knowledge feature or knowledge-sync)." }
         }
       },
       "capabilities": ["side-effectful"],
       "dag": {
         "nodes": [
-          { "id": "retrieve", "typeId": "feature.kb.nodes.rag", "name": "Retrieve KB context", "position": { "x": 0, "y": 80 }, "config": { "query": "{{params.question}}" }, "inputs": {} },
-          { "id": "answer", "typeId": "core.ai.chatCompletion", "name": "Draft grounded answer", "position": { "x": 280, "y": 80 }, "config": { "systemPrompt": "You are a support agent. Answer the customer question using ONLY the retrieved knowledge-base passages — cite each passage you rely on. If the KB does not cover the question, say so plainly. End with a line 'CONFIDENCE: high' or 'CONFIDENCE: low' (low when the KB coverage is partial or absent). Question: {{params.question}}" }, "inputs": {} },
-          { "id": "route", "typeId": "core.flow.if", "name": "Confident?", "position": { "x": 560, "y": 80 }, "config": {}, "inputs": {} },
+          { "id": "retrieve", "typeId": "feature.kb.nodes.rag", "name": "Retrieve KB context", "position": { "x": 0, "y": 80 }, "config": { "query": "{{params.question}}" }, "inputs": {
+              "query": "{{params.question}}",
+              "orgId": "{{params.orgId}}",
+              "collectionId": "{{params.collectionId}}"
+            } },
+          { "id": "answer", "typeId": "core.ai.chatCompletion", "name": "Draft grounded answer", "position": { "x": 280, "y": 80 }, "config": { "systemPrompt": "You are a support agent. Answer the customer question using ONLY the retrieved knowledge-base passages — cite each passage you rely on. If the KB does not cover the question, say so plainly. End with a line 'CONFIDENCE: high' or 'CONFIDENCE: low' (low when the KB coverage is partial or absent). Question: {{params.question}}",
+            "provider": "{{params.provider}}",
+            "model": "{{params.model}}"
+          }, "inputs": {} },
+          { "id": "route", "typeId": "core.flow.if", "name": "Confident?", "position": { "x": 560, "y": 80 }, "config": {"predicate": {"path": "", "op": "contains", "value": "CONFIDENCE: high"}}, "inputs": {} },
           { "id": "deliver", "typeId": "core.openwop.integration.notification-push", "name": "Deliver answer", "position": { "x": 840, "y": 0 }, "config": {}, "inputs": {} },
           { "id": "approveEscalation", "typeId": "core.chat.approvalGate", "name": "Approve escalation", "position": { "x": 840, "y": 160 }, "config": {}, "inputs": {} },
           { "id": "escalate", "typeId": "core.openwop.integration.slack-message", "name": "Escalate to Slack", "position": { "x": 1120, "y": 160 }, "config": { "channel": "{{params.escalationChannel}}" }, "inputs": {} }
         ],
         "edges": [
           { "from": "retrieve", "to": "answer" },
-          { "from": "answer", "to": "route" },
-          { "from": "route", "to": "deliver" },
-          { "from": "route", "to": "approveEscalation" },
+          { "from": "answer.content", "to": "route.value" },
+          { "from": "route", "to": "deliver", "condition": {"type": "equals", "left": "branch", "right": "then"} },
+          { "from": "route", "to": "approveEscalation", "condition": {"type": "equals", "left": "branch", "right": "else"} },
           { "from": "approveEscalation", "to": "escalate" }
         ]
       },
@@ -55,14 +66,22 @@
         "required": ["emailText"],
         "properties": {
           "emailText": { "type": "string", "description": "The inbound support email body (with subject if available)." },
-          "replyTone": { "type": "string", "default": "empathetic, clear, and concise", "description": "Tone for the drafted reply." }
+          "replyTone": { "type": "string", "default": "empathetic, clear, and concise", "description": "Tone for the drafted reply." },
+          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Defaults to the host's chat-class preference; override at instantiation for a different vendor or your own BYOK provider." },
+          "model": { "type": "string", "default": "claude-sonnet-4-6", "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation." }
         }
       },
       "capabilities": ["side-effectful"],
       "dag": {
         "nodes": [
-          { "id": "classify", "typeId": "core.ai.chatCompletion", "name": "Classify intent & urgency", "position": { "x": 0, "y": 0 }, "config": { "systemPrompt": "You are a support triage specialist. Classify this inbound email: intent (question / bug / billing / refund / feedback / other), urgency (low / normal / high), and the suggested queue. Then outline the key points a reply must address. Email: {{params.emailText}}" }, "inputs": {} },
-          { "id": "draft", "typeId": "core.ai.chatCompletion", "name": "Compose reply text", "position": { "x": 280, "y": 0 }, "config": { "systemPrompt": "Write a {{params.replyTone}} reply to the customer email, addressing every key point from the triage. Do not invent policy or promises — where information is missing, say the team will follow up." }, "inputs": {} },
+          { "id": "classify", "typeId": "core.ai.chatCompletion", "name": "Classify intent & urgency", "position": { "x": 0, "y": 0 }, "config": { "systemPrompt": "You are a support triage specialist. Classify this inbound email: intent (question / bug / billing / refund / feedback / other), urgency (low / normal / high), and the suggested queue. Then outline the key points a reply must address. Email: {{params.emailText}}",
+            "provider": "{{params.provider}}",
+            "model": "{{params.model}}"
+          }, "inputs": {} },
+          { "id": "draft", "typeId": "core.ai.chatCompletion", "name": "Compose reply text", "position": { "x": 280, "y": 0 }, "config": { "systemPrompt": "Write a {{params.replyTone}} reply to the customer email, addressing every key point from the triage. Do not invent policy or promises — where information is missing, say the team will follow up.",
+            "provider": "{{params.provider}}",
+            "model": "{{params.model}}"
+          }, "inputs": {} },
           { "id": "toDrafts", "typeId": "core.email.draft", "name": "Save to Drafts (never sends)", "position": { "x": 560, "y": 0 }, "config": {}, "inputs": {} },
           { "id": "notify", "typeId": "core.openwop.integration.notification-push", "name": "Notify: draft ready", "position": { "x": 840, "y": 0 }, "config": {}, "inputs": {} }
         ],
@@ -88,13 +107,18 @@
         "properties": {
           "requestText": { "type": "string", "description": "The inbound customer request text." },
           "ticketingBaseUrl": { "type": "string", "default": "", "description": "The tenant's ticketing instance REST base (e.g. https://acme.atlassian.net). Empty ⇒ no ticket is created." },
-          "ticketProject": { "type": "string", "default": "SUP", "description": "Project/queue key for the created ticket." }
+          "ticketProject": { "type": "string", "default": "SUP", "description": "Project/queue key for the created ticket." },
+          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Defaults to the host's chat-class preference; override at instantiation for a different vendor or your own BYOK provider." },
+          "model": { "type": "string", "default": "claude-sonnet-4-6", "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation." }
         }
       },
       "capabilities": ["side-effectful"],
       "dag": {
         "nodes": [
-          { "id": "classify", "typeId": "core.ai.chatCompletion", "name": "Classify team & priority", "position": { "x": 0, "y": 0 }, "config": { "systemPrompt": "You are a support-ops router. For this customer request, decide: owning team (billing / technical / account / product), priority (P1–P4 with rationale), and a one-line first-response suggestion. Request: {{params.requestText}}" }, "inputs": {} },
+          { "id": "classify", "typeId": "core.ai.chatCompletion", "name": "Classify team & priority", "position": { "x": 0, "y": 0 }, "config": { "systemPrompt": "You are a support-ops router. For this customer request, decide: owning team (billing / technical / account / product), priority (P1–P4 with rationale), and a one-line first-response suggestion. Request: {{params.requestText}}",
+            "provider": "{{params.provider}}",
+            "model": "{{params.model}}"
+          }, "inputs": {} },
           { "id": "ticket", "typeId": "core.openwop.connectors.ticket-create", "name": "Create ticket", "position": { "x": 280, "y": 0 }, "config": { "baseUrl": "{{params.ticketingBaseUrl}}", "project": "{{params.ticketProject}}", "summary": "Customer request: {{params.requestText}}" }, "inputs": {} },
           { "id": "notify", "typeId": "core.openwop.integration.notification-push", "name": "Notify owning queue", "position": { "x": 560, "y": 0 }, "config": {}, "inputs": {} }
         ],
@@ -118,22 +142,27 @@
         "required": ["message"],
         "properties": {
           "message": { "type": "string", "description": "The inbound message, review, or mention to score." },
-          "escalationChannel": { "type": "string", "default": "#cx-escalations", "description": "Slack channel for high-risk escalations." }
+          "escalationChannel": { "type": "string", "default": "#cx-escalations", "description": "Slack channel for high-risk escalations." },
+          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Defaults to the host's chat-class preference; override at instantiation for a different vendor or your own BYOK provider." },
+          "model": { "type": "string", "default": "claude-sonnet-4-6", "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation." }
         }
       },
       "capabilities": ["side-effectful"],
       "dag": {
         "nodes": [
-          { "id": "score", "typeId": "core.ai.chatCompletion", "name": "Score sentiment & risk", "position": { "x": 0, "y": 80 }, "config": { "systemPrompt": "You are a CX analyst. Score this message: sentiment (positive / neutral / negative), brand risk (none / low / high — high means churn threat, public escalation, legal or safety language), and the single best next action. Message: {{params.message}}" }, "inputs": {} },
-          { "id": "route", "typeId": "core.flow.if", "name": "High risk?", "position": { "x": 280, "y": 80 }, "config": {}, "inputs": {} },
+          { "id": "score", "typeId": "core.ai.chatCompletion", "name": "Score sentiment & risk", "position": { "x": 0, "y": 80 }, "config": { "systemPrompt": "You are a CX analyst. Score this message: sentiment (positive / neutral / negative), brand risk (none / low / high — high means churn threat, public escalation, legal or safety language), and the single best next action. Message: {{params.message}}",
+            "provider": "{{params.provider}}",
+            "model": "{{params.model}}"
+          }, "inputs": {} },
+          { "id": "route", "typeId": "core.flow.if", "name": "High risk?", "position": { "x": 280, "y": 80 }, "config": {"predicate": {"path": "", "op": "contains", "value": "BRAND RISK: high"}}, "inputs": {} },
           { "id": "log", "typeId": "core.openwop.integration.notification-push", "name": "Log assessment", "position": { "x": 560, "y": 0 }, "config": {}, "inputs": {} },
           { "id": "approveEscalation", "typeId": "core.chat.approvalGate", "name": "Approve escalation", "position": { "x": 560, "y": 160 }, "config": {}, "inputs": {} },
           { "id": "escalate", "typeId": "core.openwop.integration.slack-message", "name": "Escalate to Slack", "position": { "x": 840, "y": 160 }, "config": { "channel": "{{params.escalationChannel}}" }, "inputs": {} }
         ],
         "edges": [
-          { "from": "score", "to": "route" },
-          { "from": "route", "to": "log" },
-          { "from": "route", "to": "approveEscalation" },
+          { "from": "score.content", "to": "route.value" },
+          { "from": "route", "to": "log", "condition": {"type": "equals", "left": "branch", "right": "then"} },
+          { "from": "route", "to": "approveEscalation", "condition": {"type": "equals", "left": "branch", "right": "else"} },
           { "from": "approveEscalation", "to": "escalate" }
         ]
       },
@@ -149,21 +178,35 @@
       "parameters": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["resolutionSummary"],
+        "required": ["recipientEmail", "resolutionSummary", "senderEmail"],
         "properties": {
-          "resolutionSummary": { "type": "string", "description": "Short summary of the resolved ticket (what was fixed, for whom)." }
+          "resolutionSummary": { "type": "string", "description": "Short summary of the resolved ticket (what was fixed, for whom)." },
+          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Defaults to the host's chat-class preference; override at instantiation for a different vendor or your own BYOK provider." },
+          "model": { "type": "string", "default": "claude-sonnet-4-6", "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation." },
+          "senderEmail": { "type": "string", "description": "Verified sender address these emails are sent from." },
+          "recipientEmail": { "type": "string", "description": "Who this email goes to. The chain has no upstream node that produces a recipient, so it is supplied at instantiation." },
+          "emailSubject": { "type": "string", "default": "How did we do?", "description": "Subject line for the sent email." }
         }
       },
       "capabilities": ["side-effectful"],
       "dag": {
         "nodes": [
-          { "id": "draft", "typeId": "core.ai.chatCompletion", "name": "Draft CSAT email", "position": { "x": 0, "y": 0 }, "config": { "systemPrompt": "Draft a short, warm satisfaction-survey email referencing this resolved ticket. Ask for a 1–5 rating and one sentence of feedback. Keep it under 120 words. Resolution: {{params.resolutionSummary}}" }, "inputs": {} },
+          { "id": "draft", "typeId": "core.ai.chatCompletion", "name": "Draft CSAT email", "position": { "x": 0, "y": 0 }, "config": { "systemPrompt": "Draft a short, warm satisfaction-survey email referencing this resolved ticket. Ask for a 1–5 rating and one sentence of feedback. Keep it under 120 words. Resolution: {{params.resolutionSummary}}",
+            "provider": "{{params.provider}}",
+            "model": "{{params.model}}"
+          }, "inputs": {} },
           { "id": "approve", "typeId": "core.chat.approvalGate", "name": "Approve before send", "position": { "x": 280, "y": 0 }, "config": {}, "inputs": {} },
-          { "id": "send", "typeId": "core.openwop.integration.email-send", "name": "Send survey", "position": { "x": 560, "y": 0 }, "config": {}, "inputs": {} }
+          { "id": "send", "typeId": "core.openwop.integration.email-send", "name": "Send survey", "position": { "x": 560, "y": 0 }, "config": {
+            "from": "{{params.senderEmail}}"
+          }, "inputs": {
+            "to": "{{params.recipientEmail}}",
+            "subject": "{{params.emailSubject}}"
+          } }
         ],
         "edges": [
           { "from": "draft", "to": "approve" },
-          { "from": "approve", "to": "send" }
+          { "from": "approve", "to": "send" },
+          { "from": "draft.content", "to": "send.text" }
         ]
       },
       "outputs": {

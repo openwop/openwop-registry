@@ -1,8 +1,8 @@
 {
   "name": "core.openwop.workflows.starters",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "workflow-chain",
-  "description": "Starter workflow pack — the simple-pipe on-ramp tier: short single-trigger→action recipes (webhook→notify, form→table, schedule→digest, fetch→store) that run in under a minute with zero connections, before you graduate to the AI-agent packs. Trigger-shaped starters begin with a core.trigger.* pass-through entry node: bind them to a live source with a trigger subscription (POST /v1/trigger-subscriptions — webhook, email, or form) or a Schedule; on a manual run the trigger payload is empty, so bind a source to see them shine. External sends stay behind a human approval gate; in-app notifications are direct. All tenant values are run parameters (replay-deterministic).",
+  "description": "Starter workflow pack (RFC 0013, ADR 0190) — the simple-pipe on-ramp tier: short single-trigger→action recipes (webhook→notify, form→table, schedule→digest, fetch→store) that run in under a minute with zero connections, before you graduate to the AI-agent packs. Trigger-shaped starters begin with a core.trigger.* pass-through entry node: bind them to a live source with a trigger subscription (POST /v1/trigger-subscriptions — webhook, email, or form; RFC 0099) or a Schedule; on a manual run the trigger payload is empty, so bind a source to see them shine. External sends stay behind a human approval gate; in-app notifications are direct. All tenant values are run parameters (replay-deterministic).",
   "author": "openwop",
   "license": "Apache-2.0",
   "engines": { "openwop": ">=1.0.0" },
@@ -17,12 +17,16 @@
         "type": "object",
         "additionalProperties": false,
         "required": [],
-        "properties": {}
+        "properties": {
+          "webhookPath": { "type": "string", "default": "/webhook-notify", "description": "URL path segment this workflow listens on (e.g. `ci-failure`)." }
+        }
       },
       "capabilities": [],
       "dag": {
         "nodes": [
-          { "id": "hook", "typeId": "core.trigger.webhook", "name": "Webhook event", "position": { "x": 0, "y": 0 }, "config": {}, "inputs": {} },
+          { "id": "hook", "typeId": "core.trigger.webhook", "name": "Webhook event", "position": { "x": 0, "y": 0 }, "config": {
+            "path": "{{params.webhookPath}}"
+          }, "inputs": {} },
           { "id": "notify", "typeId": "core.openwop.integration.notification-push", "name": "Notify me", "position": { "x": 280, "y": 0 }, "config": {}, "inputs": {} }
         ],
         "edges": [
@@ -72,14 +76,22 @@
         "additionalProperties": false,
         "required": [],
         "properties": {
-          "topic": { "type": "string", "default": "a short daily focus note for the team", "description": "The digest topic." }
+          "topic": { "type": "string", "default": "a short daily focus note for the team", "description": "The digest topic." },
+          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Defaults to the host's chat-class preference; override at instantiation for a different vendor or your own BYOK provider." },
+          "model": { "type": "string", "default": "claude-sonnet-4-6", "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation." },
+          "scheduleCron": { "type": "string", "default": "0 9 * * *", "description": "Cron expression for when this workflow runs (e.g. `0 9 * * 1` = Mondays 09:00)." }
         }
       },
       "capabilities": [],
       "dag": {
         "nodes": [
-          { "id": "tick", "typeId": "core.trigger.schedule", "name": "Scheduled tick", "position": { "x": 0, "y": 0 }, "config": {}, "inputs": {} },
-          { "id": "digest", "typeId": "core.ai.chatCompletion", "name": "Write one-paragraph digest", "position": { "x": 280, "y": 0 }, "config": { "systemPrompt": "Write a single crisp paragraph (max 80 words) on: {{params.topic}}. Plain text, no preamble." }, "inputs": {} },
+          { "id": "tick", "typeId": "core.trigger.schedule", "name": "Scheduled tick", "position": { "x": 0, "y": 0 }, "config": {
+            "cron": "{{params.scheduleCron}}"
+          }, "inputs": {} },
+          { "id": "digest", "typeId": "core.ai.chatCompletion", "name": "Write one-paragraph digest", "position": { "x": 280, "y": 0 }, "config": { "systemPrompt": "Write a single crisp paragraph (max 80 words) on: {{params.topic}}. Plain text, no preamble.",
+            "provider": "{{params.provider}}",
+            "model": "{{params.model}}"
+          }, "inputs": {} },
           { "id": "notify", "typeId": "core.openwop.integration.notification-push", "name": "Notify me", "position": { "x": 560, "y": 0 }, "config": {}, "inputs": {} }
         ],
         "edges": [
@@ -131,23 +143,26 @@
         "additionalProperties": false,
         "required": [],
         "properties": {
-          "family": { "type": "string", "default": "github", "description": "Signature family to verify: stripe, github, slack, or raw-hmac." }
+          "family": { "type": "string", "default": "github", "description": "Signature family to verify: stripe, github, slack, or raw-hmac." },
+          "webhookPath": { "type": "string", "default": "/verified-webhook-router", "description": "URL path segment this workflow listens on (e.g. `ci-failure`)." }
         }
       },
       "capabilities": [],
       "dag": {
         "nodes": [
-          { "id": "hook", "typeId": "core.trigger.webhook", "name": "Webhook event", "position": { "x": 0, "y": 80 }, "config": {}, "inputs": {} },
+          { "id": "hook", "typeId": "core.trigger.webhook", "name": "Webhook event", "position": { "x": 0, "y": 80 }, "config": {
+            "path": "{{params.webhookPath}}"
+          }, "inputs": {} },
           { "id": "verify", "typeId": "core.openwop.http.webhook-verify", "name": "Verify signature", "position": { "x": 280, "y": 80 }, "config": { "family": "{{params.family}}" }, "inputs": {} },
-          { "id": "route", "typeId": "core.flow.if", "name": "Signature valid?", "position": { "x": 560, "y": 80 }, "config": {}, "inputs": {} },
+          { "id": "route", "typeId": "core.flow.if", "name": "Signature valid?", "position": { "x": 560, "y": 80 }, "config": {"predicate": {"path": "valid", "op": "truthy"}}, "inputs": {} },
           { "id": "notify", "typeId": "core.openwop.integration.notification-push", "name": "Notify (verified)", "position": { "x": 840, "y": 0 }, "config": {}, "inputs": {} },
           { "id": "drop", "typeId": "core.flow.noop", "name": "Drop (failed signature)", "position": { "x": 840, "y": 160 }, "config": {}, "inputs": {} }
         ],
         "edges": [
           { "from": "hook", "to": "verify" },
-          { "from": "verify", "to": "route" },
-          { "from": "route", "to": "notify" },
-          { "from": "route", "to": "drop" }
+          { "from": "verify", "to": "route.value" },
+          { "from": "route", "to": "notify", "condition": {"type": "equals", "left": "branch", "right": "then"} },
+          { "from": "route", "to": "drop", "condition": {"type": "equals", "left": "branch", "right": "else"} }
         ]
       },
       "outputs": {
@@ -164,14 +179,22 @@
         "additionalProperties": false,
         "required": [],
         "properties": {
-          "channel": { "type": "string", "default": "#activity", "description": "Slack channel to post to." }
+          "channel": { "type": "string", "default": "#activity", "description": "Slack channel to post to." },
+          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Defaults to the host's chat-class preference; override at instantiation for a different vendor or your own BYOK provider." },
+          "model": { "type": "string", "default": "claude-sonnet-4-6", "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation." },
+          "webhookPath": { "type": "string", "default": "/webhook-to-slack", "description": "URL path segment this workflow listens on (e.g. `ci-failure`)." }
         }
       },
       "capabilities": ["side-effectful"],
       "dag": {
         "nodes": [
-          { "id": "hook", "typeId": "core.trigger.webhook", "name": "Webhook event", "position": { "x": 0, "y": 0 }, "config": {}, "inputs": {} },
-          { "id": "summarize", "typeId": "core.ai.chatCompletion", "name": "One-line summary", "position": { "x": 280, "y": 0 }, "config": { "systemPrompt": "Summarize this event payload in one plain-text line a teammate can scan in Slack. No markdown, no preamble." }, "inputs": {} },
+          { "id": "hook", "typeId": "core.trigger.webhook", "name": "Webhook event", "position": { "x": 0, "y": 0 }, "config": {
+            "path": "{{params.webhookPath}}"
+          }, "inputs": {} },
+          { "id": "summarize", "typeId": "core.ai.chatCompletion", "name": "One-line summary", "position": { "x": 280, "y": 0 }, "config": { "systemPrompt": "Summarize this event payload in one plain-text line a teammate can scan in Slack. No markdown, no preamble.",
+            "provider": "{{params.provider}}",
+            "model": "{{params.model}}"
+          }, "inputs": {} },
           { "id": "approve", "typeId": "core.chat.approvalGate", "name": "Approve before post", "position": { "x": 560, "y": 0 }, "config": {}, "inputs": {} },
           { "id": "post", "typeId": "core.openwop.integration.slack-message", "name": "Post to Slack", "position": { "x": 840, "y": 0 }, "config": { "channel": "{{params.channel}}" }, "inputs": {} }
         ],
