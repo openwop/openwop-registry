@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>openwop registry — packs.openwop.dev</title>
-<meta name="description" content="The canonical signed node-pack registry for the openwop workflow orchestration protocol. 147 pack(s), 190 version(s) published.">
+<meta name="description" content="The canonical signed node-pack registry for the openwop workflow orchestration protocol. 147 pack(s), 195 version(s) published.">
 <meta name="robots" content="index, follow">
 
 <meta property="og:type" content="website">
@@ -412,7 +412,7 @@
     <p class="lead">Canonical signed node-pack registry for the <a href="https://openwop.dev/">openwop</a> workflow orchestration protocol.</p>
     <div class="summary">
       <div><strong>147</strong><span>packs published</span></div>
-      <div><strong>190</strong><span>versions total</span></div>
+      <div><strong>195</strong><span>versions total</span></div>
       <div><strong>Ed25519</strong><span>signing algorithm</span></div>
     </div>
   </header>
@@ -1970,14 +1970,14 @@
         </tr>
         <tr>
           <td class="name"><code>core.openwop.workflows.inbox</code> </td>
-          <td class="version">1.0.0</td>
+          <td class="version">1.0.1</td>
           <td class="count" title="chains in latest manifest">3</td>
-          <td class="desc">Real-work workflow pack — the personal-productivity Inbox cluster: triage your own inbox (classify, draft the urgent reply, digest the rest), nudge unanswered threads, and debrief calls into coaching notes. Distinct from core.openwop.workflows.support (a customer-support mailbox with queue routing): these serve YOUR inbox and YOUR calls. Drafting uses core.email.draft — it creates a draft in your mailbox and never sends (the draft is the human gate); the one real send (follow-up nudger) waits on an approval. All tenant values are run parameters (replay-deterministic).</td>
+          <td class="desc">Real-work workflow pack (RFC 0013, ADR 0190 Phase 2) — the personal-productivity Inbox cluster: triage your own inbox (classify, draft the urgent reply, digest the rest), nudge unanswered threads, and debrief calls into coaching notes. Distinct from core.openwop.workflows.support (a customer-support mailbox with queue routing): these serve YOUR inbox and YOUR calls. Drafting uses core.email.draft — it creates a draft in your mailbox and never sends (the draft is the human gate); the one real send (follow-up nudger) waits on an approval. All tenant values are run parameters (replay-deterministic).</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v1/packs/core.openwop.workflows.inbox/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v1/packs/core.openwop.workflows.inbox/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v1/packs/core.openwop.workflows.inbox/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+            <a href="/v1/packs/core.openwop.workflows.inbox/-/1.0.1.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.inbox/-/1.0.1.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.inbox/-/1.0.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr>
@@ -2102,14 +2102,14 @@
         </tr>
         <tr>
           <td class="name"><code>core.openwop.workflows.lighthouse</code> </td>
-          <td class="version">1.1.0</td>
+          <td class="version">1.1.1</td>
           <td class="count" title="chains in latest manifest">5</td>
-          <td class="desc">Real-work workflow pack (follow-on). The five zero-config &#39;lighthouse&#39; workflows from the catalog — Lead Triage, Account Brief, Renewal &amp; Churn-Risk Digest, RFP Response, and Post-Meeting Follow-up — authored entirely over node typeIds shipped with this host (feature.crm/kb/analytics + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.integration.*). Each rides real tenant data through the feature node packs, reasons with the LLM node, gates every external send behind a human approval, and delivers a usable artifact. Tenant-specific values are RUN PARAMETERS (never hardcoded) so the expansion stays replay-deterministic. Picking one in the builder instantiates a fully-editable, runnable, assignable workflow.</td>
+          <td class="desc">Real-work workflow pack (RFC 0013, ADR 0149 / ADR 0155 follow-on). The five zero-config &#39;lighthouse&#39; workflows from the ADR 0149 catalog — Lead Triage, Account Brief, Renewal &amp; Churn-Risk Digest, RFP Response, and Post-Meeting Follow-up — authored entirely over node typeIds shipped with this host (feature.crm/kb/analytics + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.integration.*). Each rides real tenant data through the feature node packs, reasons with the LLM node, gates every external send behind a human approval, and delivers a usable artifact. Tenant-specific values are RUN PARAMETERS (never hardcoded) so the expansion stays replay-deterministic. Picking one in the builder instantiates a fully-editable, runnable, assignable workflow.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v1/packs/core.openwop.workflows.lighthouse/-/1.1.0.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v1/packs/core.openwop.workflows.lighthouse/-/1.1.0.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v1/packs/core.openwop.workflows.lighthouse/-/1.1.0.sig" title="Ed25519 signature">sig</a>
+            <a href="/v1/packs/core.openwop.workflows.lighthouse/-/1.1.1.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.lighthouse/-/1.1.1.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.lighthouse/-/1.1.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr>
@@ -2126,14 +2126,14 @@
         </tr>
         <tr>
           <td class="name"><code>core.openwop.workflows.marketing</code> </td>
-          <td class="version">1.1.0</td>
+          <td class="version">1.1.1</td>
           <td class="count" title="chains in latest manifest">4</td>
-          <td class="desc">Real-work workflow pack — the Marketing &amp; Advertising cluster: Full Campaign Launch, Ad Performance Optimization Loop, Content Brief Generator, and Content Repurposing. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.kb / feature.cms / feature.email); reads/optimizes the ad platforms provider-agnostically via the core.openwop.connectors.ad-* capability nodes (Meta or Google, whichever the tenant connected). The optimization loop routes within-guardrail changes to auto-apply and out-of-guardrail changes to a core.chat.approvalGate via a core.flow.if conditional node (open-question resolution: a flow conditional, not a new primitive). Every launch/publish/apply is approval- or guardrail-gated; all tenant values are run parameters (replay-deterministic). Published under core.openwop.workflows.* (openwop-team key).</td>
+          <td class="desc">Real-work workflow pack (RFC 0013, ADR 0149) — the Marketing &amp; Advertising cluster: Full Campaign Launch, Ad Performance Optimization Loop, Content Brief Generator, and Content Repurposing. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.kb / feature.cms / feature.email); reads/optimizes the ad platforms provider-agnostically via the core.openwop.connectors.ad-* capability nodes (Meta or Google, whichever the tenant connected — ADR 0186). The optimization loop routes within-guardrail changes to auto-apply and out-of-guardrail changes to a core.chat.approvalGate via a core.flow.if conditional node (ADR 0149 open-question resolution: a flow conditional, not a new primitive). Every launch/publish/apply is approval- or guardrail-gated; all tenant values are run parameters (replay-deterministic). Published under core.openwop.workflows.* (openwop-team key).</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v1/packs/core.openwop.workflows.marketing/-/1.1.0.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v1/packs/core.openwop.workflows.marketing/-/1.1.0.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v1/packs/core.openwop.workflows.marketing/-/1.1.0.sig" title="Ed25519 signature">sig</a>
+            <a href="/v1/packs/core.openwop.workflows.marketing/-/1.1.1.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.marketing/-/1.1.1.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.marketing/-/1.1.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr>
@@ -2222,26 +2222,26 @@
         </tr>
         <tr>
           <td class="name"><code>core.openwop.workflows.starters</code> </td>
-          <td class="version">1.0.0</td>
+          <td class="version">1.0.1</td>
           <td class="count" title="chains in latest manifest">6</td>
-          <td class="desc">Starter workflow pack — the simple-pipe on-ramp tier: short single-trigger→action recipes (webhook→notify, form→table, schedule→digest, fetch→store) that run in under a minute with zero connections, before you graduate to the AI-agent packs. Trigger-shaped starters begin with a core.trigger.* pass-through entry node: bind them to a live source with a trigger subscription (POST /v1/trigger-subscriptions — webhook, email, or form) or a Schedule; on a manual run the trigger payload is empty, so bind a source to see them shine. External sends stay behind a human approval gate; in-app notifications are direct. All tenant values are run parameters (replay-deterministic).</td>
+          <td class="desc">Starter workflow pack (RFC 0013, ADR 0190) — the simple-pipe on-ramp tier: short single-trigger→action recipes (webhook→notify, form→table, schedule→digest, fetch→store) that run in under a minute with zero connections, before you graduate to the AI-agent packs. Trigger-shaped starters begin with a core.trigger.* pass-through entry node: bind them to a live source with a trigger subscription (POST /v1/trigger-subscriptions — webhook, email, or form; RFC 0099) or a Schedule; on a manual run the trigger payload is empty, so bind a source to see them shine. External sends stay behind a human approval gate; in-app notifications are direct. All tenant values are run parameters (replay-deterministic).</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v1/packs/core.openwop.workflows.starters/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v1/packs/core.openwop.workflows.starters/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v1/packs/core.openwop.workflows.starters/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+            <a href="/v1/packs/core.openwop.workflows.starters/-/1.0.1.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.starters/-/1.0.1.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.starters/-/1.0.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr>
           <td class="name"><code>core.openwop.workflows.support</code> </td>
-          <td class="version">1.0.0</td>
+          <td class="version">1.0.2</td>
           <td class="count" title="chains in latest manifest">5</td>
-          <td class="desc">Real-work workflow pack — the Customer Support cluster, the #1 surveyed agent use case the gallery previously had zero templates for: KB-grounded answering, email triage (draft-only — the human sends), customer-ticket routing, sentiment/brand-risk escalation, and CSAT follow-up. Authored entirely over node typeIds shipped with this host (feature.kb + core.ai.chatCompletion + core.flow.if + core.chat.approvalGate + core.email.draft + core.openwop.connectors.ticket-create + core.openwop.integration.*). Every external SEND waits on a human approval gate (core.email.draft creates a draft and never sends — the draft itself is the human gate). Distinct from core.openwop.workflows.it-support: that pack routes IT incidents by severity; this one serves customer-facing support (intent, queues, CSAT). All tenant values are run parameters (replay-deterministic).</td>
+          <td class="desc">Real-work workflow pack (RFC 0013, ADR 0190) — the Customer Support cluster, the #1 surveyed agent use case the gallery previously had zero templates for: KB-grounded answering, email triage (draft-only — the human sends), customer-ticket routing, sentiment/brand-risk escalation, and CSAT follow-up. Authored entirely over node typeIds shipped with this host (feature.kb + core.ai.chatCompletion + core.flow.if + core.chat.approvalGate + core.email.draft + core.openwop.connectors.ticket-create + core.openwop.integration.*). Every external SEND waits on a human approval gate (core.email.draft creates a draft and never sends — the draft itself is the human gate). Distinct from core.openwop.workflows.it-support: that pack routes IT incidents by severity; this one serves customer-facing support (intent, queues, CSAT). All tenant values are run parameters (replay-deterministic).</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v1/packs/core.openwop.workflows.support/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v1/packs/core.openwop.workflows.support/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v1/packs/core.openwop.workflows.support/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+            <a href="/v1/packs/core.openwop.workflows.support/-/1.0.2.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.workflows.support/-/1.0.2.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.workflows.support/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr>
@@ -2441,7 +2441,7 @@ const ok = verify(null, readFileSync('pack.tgz'), pub, readFileSync('pack.sig'))
   </section>
 
   <footer>
-    Generated 2026-07-24T13:50:42.573Z · <a href="https://openwop.dev/">openwop.dev</a> · <a href="https://github.com/openwop/openwop">openwop on GitHub</a>
+    Generated 2026-07-31T13:46:57.171Z · <a href="https://openwop.dev/">openwop.dev</a> · <a href="https://github.com/openwop/openwop">openwop on GitHub</a>
   </footer>
 </main>
 </body>
