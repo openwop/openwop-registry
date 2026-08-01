@@ -1,0 +1,108 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.commerce@1.0.2",
+      "type": "library",
+      "name": "core.openwop.workflows.commerce",
+      "version": "1.0.2",
+      "description": "Real-work workflow pack (RFC 0013, ADR 0152) — the Commerce operations cluster (ecommerce gap plan §5C C8): Post-Purchase Thank-You, Low-Stock Reorder Draft, and the Order Exception Digest. Designed to bind to the ADR 0221 host events (host.commerce.order.paid, host.commerce.inventory.low-stock — create a host-event binding to enroll; ADR 0208) or the schedule trigger. Every outbound send rides the governed email-send integration node (drafts/approval per the tenant's actionPolicy — ADR 0033) and the ONE notification seam; order data flows through feature.commerce.nodes over ctx.features.commerce, so the ADR 0221 audit rows + spend thresholds apply by construction. Enrollment state = the run itself; a binding fires one run per event.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "84561bbc75a042f82f4bec0cd6dbaf03e49e563fe30f44eaff8da2991336dc58"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.commerce@1.0.2"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b7fc079196f8215499eae834cc34213f56b93806bb4a7b5a6d146dc3b4943478"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1168"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d5446d037981ce8632a914eb4ccd89e998741c9ae5d05e8533b02fdf39e394ab"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "61ca132629386eb4dbfc399cebe97fa029cc7b9dfa8b907ac96915fd9347a92d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "9614"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.commerce@1.0.2",
+      "dependsOn": []
+    }
+  ]
+}

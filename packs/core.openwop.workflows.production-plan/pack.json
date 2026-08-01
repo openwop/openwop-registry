@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.production-plan",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "workflow-chain",
   "description": "Migrated from the deprecated builtin (ADR 0472 P4). chainId keeps the original id; outputRoles restored at registration.",
   "keywords": [
@@ -32,10 +32,10 @@
             "type": "string"
           },
           "provider": {
-            "type": "string"
+            "type": "string", "default": "anthropic"
           },
           "model": {
-            "type": "string"
+            "type": "string", "default": "claude-sonnet-4-6"
           }
         }
       },

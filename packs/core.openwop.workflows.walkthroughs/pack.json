@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.walkthroughs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "workflow-chain",
   "description": "The first-party SYSTEM guided walkthroughs (single-step page tours), migrated from the deprecated builtinWorkflows seam (ADR 0472 P4). Each chainId keeps its original walkthrough.* id so the FE player + replay resolve unchanged; registered chain-backed with metadata.walkthrough=true so the walkthroughs surface lists them.",
   "keywords": [
@@ -581,6 +581,29 @@
             "config": {
               "actionId": "example-data.page.view",
               "narration": "exampleDataWalkthrough"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "chainId": "walkthrough.commerce.catalog",
+      "version": "1.0.0",
+      "label": "Commerce: your product catalog",
+      "description": "Commerce: your product catalog — a guided page tour.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {}
+      },
+      "dag": {
+        "nodes": [
+          {
+            "id": "t1",
+            "typeId": "ui.walkthrough.step",
+            "config": {
+              "actionId": "commerce.page.view",
+              "narration": "commerceWalkthroughCatalog"
             }
           }
         ]

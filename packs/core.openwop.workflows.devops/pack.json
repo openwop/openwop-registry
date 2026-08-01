@@ -1,8 +1,8 @@
 {
   "name": "core.openwop.workflows.devops",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "workflow-chain",
-  "description": "Real-work workflow pack — the DevOps cluster: senior-style code review of a diff, changelog/release-notes drafting from a commit log, CI-failure diagnosis from a signature-verified webhook, and a stale-issue gardener over the public GitHub API. All four are ADVISORY — they analyze and notify in-app, never write to your repo or post comments (an authenticated GitHub write path would bind a connection behind an approval gate; deferred until the MCP-reach connection binding has a chain precedent). These chains do not run the Code Reviewer / Git Author AGENTS — those remain chat-drivable via the agents surface; the chains use short chain-local prompts over core.ai.chatCompletion. All tenant values are run parameters (replay-deterministic).",
+  "description": "Real-work workflow pack (RFC 0013, ADR 0190 Phase 4) — the DevOps cluster: senior-style code review of a diff, changelog/release-notes drafting from a commit log, CI-failure diagnosis from a signature-verified webhook, and a stale-issue gardener over the public GitHub API. All four are ADVISORY — they analyze and notify in-app, never write to your repo or post comments (an authenticated GitHub write path would bind a connection behind an approval gate; deferred until the MCP-reach connection binding has a chain precedent). These chains do not run the Code Reviewer / Git Author AGENTS — those remain chat-drivable via the agents surface; the chains use short chain-local prompts over core.ai.chatCompletion. All tenant values are run parameters (replay-deterministic).",
   "author": "openwop",
   "license": "Apache-2.0",
   "engines": { "openwop": ">=1.0.0" },
@@ -18,13 +18,18 @@
         "additionalProperties": false,
         "required": ["diffText"],
         "properties": {
-          "diffText": { "type": "string", "description": "The unified diff to review." }
+          "diffText": { "type": "string", "description": "The unified diff to review." },
+          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own." },
+          "model": { "type": "string", "default": "claude-sonnet-4-6", "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation." }
         }
       },
       "capabilities": [],
       "dag": {
         "nodes": [
-          { "id": "review", "typeId": "core.ai.chatCompletion", "name": "Review the diff", "position": { "x": 0, "y": 0 }, "config": { "systemPrompt": "You are a senior engineer reviewing a diff. Report findings in severity order (correctness first, then security, then tests/maintainability), each citing file:line from the diff and stating the concrete failure scenario. If the diff is clean, say so plainly. Do not invent context beyond the diff. Diff: {{params.diffText}}" }, "inputs": {} },
+          { "id": "review", "typeId": "core.ai.chatCompletion", "name": "Review the diff", "position": { "x": 0, "y": 0 }, "config": { "systemPrompt": "You are a senior engineer reviewing a diff. Report findings in severity order (correctness first, then security, then tests/maintainability), each citing file:line from the diff and stating the concrete failure scenario. If the diff is clean, say so plainly. Do not invent context beyond the diff. Diff: {{params.diffText}}",
+            "provider": "{{params.provider}}",
+            "model": "{{params.model}}"
+          }, "inputs": {} },
           { "id": "notify", "typeId": "core.openwop.integration.notification-push", "name": "Deliver review", "position": { "x": 280, "y": 0 }, "config": {}, "inputs": {} }
         ],
         "edges": [
@@ -46,13 +51,18 @@
         "required": ["commitLog"],
         "properties": {
           "commitLog": { "type": "string", "description": "The commit log for the release range." },
-          "audience": { "type": "string", "default": "users and operators", "description": "Who the release notes are written for." }
+          "audience": { "type": "string", "default": "users and operators", "description": "Who the release notes are written for." },
+          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own." },
+          "model": { "type": "string", "default": "claude-sonnet-4-6", "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation." }
         }
       },
       "capabilities": [],
       "dag": {
         "nodes": [
-          { "id": "draft", "typeId": "core.ai.chatCompletion", "name": "Draft notes", "position": { "x": 0, "y": 0 }, "config": { "systemPrompt": "From this commit log, draft: (1) a changelog entry grouped Added / Changed / Fixed / Security, breaking changes first and clearly marked; (2) short release notes readable by {{params.audience}} — what improved and why it matters, no commit hashes. Be faithful to the log; do not invent features. Log: {{params.commitLog}}" }, "inputs": {} },
+          { "id": "draft", "typeId": "core.ai.chatCompletion", "name": "Draft notes", "position": { "x": 0, "y": 0 }, "config": { "systemPrompt": "From this commit log, draft: (1) a changelog entry grouped Added / Changed / Fixed / Security, breaking changes first and clearly marked; (2) short release notes readable by {{params.audience}} — what improved and why it matters, no commit hashes. Be faithful to the log; do not invent features. Log: {{params.commitLog}}",
+            "provider": "{{params.provider}}",
+            "model": "{{params.model}}"
+          }, "inputs": {} },
           { "id": "notify", "typeId": "core.openwop.integration.notification-push", "name": "Deliver draft", "position": { "x": 280, "y": 0 }, "config": {}, "inputs": {} }
         ],
         "edges": [
@@ -67,26 +77,31 @@
       "chainId": "devops.ci-failure-explainer",
       "version": "1.0.0",
       "label": "CI Failure Explainer",
-      "description": "Bind your CI's webhook via the trigger-subscriptions API (signature-verified — the secret stays host-side) and every failed run arrives as a diagnosis, not a wall of logs: the failing step, the probable cause, and the first thing to try. CI-specialized analysis — for generic webhook routing use the starter Verified Webhook Router.",
+      "description": "Bind your CI's webhook via the trigger-subscriptions API (signature-verified host-side — the secret never leaves the host, RFC 0099 §F — before the run ever starts) and every failed run arrives as a diagnosis, not a wall of logs: the failing step, the probable cause, and the first thing to try. CI-specialized analysis — for generic webhook routing use the starter Verified Webhook Router.",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
         "required": [],
         "properties": {
-          "family": { "type": "string", "default": "github", "description": "Webhook signature family: github, stripe, slack, or raw-hmac." }
+          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own." },
+          "model": { "type": "string", "default": "claude-sonnet-4-6", "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation." },
+          "webhookPath": { "type": "string", "default": "/ci-failure-explainer", "description": "URL path segment this workflow listens on (e.g. `ci-failure`)." }
         }
       },
       "capabilities": [],
       "dag": {
         "nodes": [
-          { "id": "hook", "typeId": "core.trigger.webhook", "name": "CI webhook", "position": { "x": 0, "y": 0 }, "config": {}, "inputs": {} },
-          { "id": "verify", "typeId": "core.openwop.http.webhook-verify", "name": "Verify signature", "position": { "x": 260, "y": 0 }, "config": { "family": "{{params.family}}" }, "inputs": {} },
-          { "id": "diagnose", "typeId": "core.ai.chatCompletion", "name": "Diagnose the failure", "position": { "x": 520, "y": 0 }, "config": { "systemPrompt": "You are a CI-failure analyst. From this CI webhook payload (workflow run / check suite / job logs excerpt), report: the failing step, the probable root cause in one sentence, the evidence, and the single first thing to try. If the payload is not a failure event, say so in one line." }, "inputs": {} },
+          { "id": "hook", "typeId": "core.trigger.webhook", "name": "CI webhook", "position": { "x": 0, "y": 0 }, "config": {
+            "path": "{{params.webhookPath}}"
+          }, "inputs": {} },
+          { "id": "diagnose", "typeId": "core.ai.chatCompletion", "name": "Diagnose the failure", "position": { "x": 520, "y": 0 }, "config": { "systemPrompt": "You are a CI-failure analyst. From this CI webhook payload (workflow run / check suite / job logs excerpt), report: the failing step, the probable root cause in one sentence, the evidence, and the single first thing to try. If the payload is not a failure event, say so in one line.",
+            "provider": "{{params.provider}}",
+            "model": "{{params.model}}"
+          }, "inputs": {} },
           { "id": "notify", "typeId": "core.openwop.integration.notification-push", "name": "Deliver diagnosis", "position": { "x": 780, "y": 0 }, "config": {}, "inputs": {} }
         ],
         "edges": [
-          { "from": "hook", "to": "verify" },
-          { "from": "verify", "to": "diagnose" },
+          { "from": "hook", "to": "diagnose" },
           { "from": "diagnose", "to": "notify" }
         ]
       },
@@ -104,14 +119,19 @@
         "additionalProperties": false,
         "required": ["repo"],
         "properties": {
-          "repo": { "type": "string", "description": "The public GitHub repo as owner/name (e.g. openwop/openwop)." }
+          "repo": { "type": "string", "description": "The public GitHub repo as owner/name (e.g. openwop/openwop)." },
+          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own." },
+          "model": { "type": "string", "default": "claude-sonnet-4-6", "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation." }
         }
       },
       "capabilities": ["side-effectful"],
       "dag": {
         "nodes": [
           { "id": "fetch", "typeId": "core.openwop.http.fetch", "name": "Fetch oldest open issues", "position": { "x": 0, "y": 0 }, "config": { "url": "https://api.github.com/repos/{{params.repo}}/issues?state=open&sort=updated&direction=asc&per_page=20" }, "inputs": {} },
-          { "id": "garden", "typeId": "core.ai.chatCompletion", "name": "Gardener report", "position": { "x": 280, "y": 0 }, "config": { "systemPrompt": "You are an issue gardener for {{params.repo}}. From these least-recently-updated open issues (SKIP any entry with a pull_request field — those are PRs, not issues), produce: CLOSE CANDIDATES (looks answered/obsolete — say why), NEEDS A NUDGE (waiting on someone — who), and a one-line suggested comment for each. Be specific; cite issue numbers and titles." }, "inputs": {} },
+          { "id": "garden", "typeId": "core.ai.chatCompletion", "name": "Gardener report", "position": { "x": 280, "y": 0 }, "config": { "systemPrompt": "You are an issue gardener for {{params.repo}}. From these least-recently-updated open issues (SKIP any entry with a pull_request field — those are PRs, not issues), produce: CLOSE CANDIDATES (looks answered/obsolete — say why), NEEDS A NUDGE (waiting on someone — who), and a one-line suggested comment for each. Be specific; cite issue numbers and titles.",
+            "provider": "{{params.provider}}",
+            "model": "{{params.model}}"
+          }, "inputs": {} },
           { "id": "notify", "typeId": "core.openwop.integration.notification-push", "name": "Deliver report", "position": { "x": 560, "y": 0 }, "config": {}, "inputs": {} }
         ],
         "edges": [

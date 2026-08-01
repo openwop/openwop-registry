@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.kicktodo-challenge-factory",
-  "version": "1.0.0",
+  "version": "1.3.0",
   "kind": "workflow-chain",
   "description": "The Challenge Factory (ADR 0458) + its lesson-batch child — migrated from the deprecated builtins (ADR 0472 P4, the terminal quarantine step). chainIds keep the original ids; build-0..3 reference lesson-batch via RFC 0133 config.subChainRef (host-default binds it to the shared same-id child); truthy/falsy reject-safe barriers ride RFC 0134; produced vars (plan/evidenceSummary/planBrief) declared per RFC 0133 §2.2.",
   "keywords": [
@@ -12,7 +12,7 @@
   "chains": [
     {
       "chainId": "openwop-app.kicktodo.challenge-factory",
-      "version": "1.0.0",
+      "version": "1.3.0",
       "label": "Challenge Factory",
       "description": "Research a topic → draft an outline → approve → build lesson batches (each checkpoint approved) → simulate with three personas → submit for publication.",
       "parameters": {
@@ -32,10 +32,12 @@
             "type": "string"
           },
           "provider": {
-            "type": "string"
+            "type": "string",
+            "default": "anthropic"
           },
           "model": {
-            "type": "string"
+            "type": "string",
+            "default": "claude-sonnet-4-6"
           },
           "checkpointEvery": {
             "type": "string"
@@ -61,15 +63,50 @@
           {
             "id": "search",
             "typeId": "core.web.search",
+            "config": { "suitability": "durable" },
             "inputs": {
               "query": "{{params.topic}}",
-              "maxResults": 8
+              "maxResults": 8,
+              "suitability": "durable"
             }
           },
           {
             "id": "normalize",
             "typeId": "feature.kicktodo.nodes.source-normalize",
             "inputs": {}
+          },
+          {
+            "id": "fetch",
+            "typeId": "core.web.fetch",
+            "name": "Read the sources",
+            "position": {
+              "x": 180,
+              "y": 140
+            },
+            "config": {
+              "maxPages": 6,
+              "extractReadable": true
+            }
+          },
+          {
+            "id": "extract-claims",
+            "typeId": "feature.kicktodo.nodes.claim-extract",
+            "name": "Extract cited claims",
+            "position": {
+              "x": 540,
+              "y": 0
+            },
+            "config": {}
+          },
+          {
+            "id": "verify-claims",
+            "typeId": "feature.kicktodo.nodes.claim-verify",
+            "name": "Verify each claim against its source",
+            "position": {
+              "x": 720,
+              "y": 0
+            },
+            "config": {}
           },
           {
             "id": "evidence-graph",
@@ -347,10 +384,6 @@
             "to": "normalize"
           },
           {
-            "from": "normalize",
-            "to": "evidence-graph"
-          },
-          {
             "from": "evidence-graph",
             "to": "generate"
           },
@@ -521,6 +554,61 @@
           {
             "from": "sim-collect",
             "to": "submit",
+            "triggerRule": "all_success"
+          },
+          {
+            "from": "search",
+            "to": "fetch",
+            "triggerRule": "all_success"
+          },
+          {
+            "from": "normalize.sources",
+            "to": "extract-claims.sources",
+            "triggerRule": "all_success"
+          },
+          {
+            "from": "fetch.pages",
+            "to": "extract-claims.pages",
+            "triggerRule": "all_success"
+          },
+          {
+            "from": "research-frame.questions",
+            "to": "extract-claims.questions",
+            "triggerRule": "all_success"
+          },
+          {
+            "from": "normalize.sources",
+            "to": "evidence-graph.sources",
+            "triggerRule": "all_success"
+          },
+          {
+            "from": "research-frame.questions",
+            "to": "evidence-graph.questions",
+            "triggerRule": "all_success"
+          },
+          {
+            "from": "extract-claims.claims",
+            "to": "verify-claims.claims",
+            "triggerRule": "all_success"
+          },
+          {
+            "from": "normalize.sources",
+            "to": "verify-claims.sources",
+            "triggerRule": "all_success"
+          },
+          {
+            "from": "fetch.pages",
+            "to": "verify-claims.pages",
+            "triggerRule": "all_success"
+          },
+          {
+            "from": "verify-claims.claims",
+            "to": "evidence-graph.claims",
+            "triggerRule": "all_success"
+          },
+          {
+            "from": "extract-claims.readSourceHashes",
+            "to": "evidence-graph.readSourceHashes",
             "triggerRule": "all_success"
           }
         ]

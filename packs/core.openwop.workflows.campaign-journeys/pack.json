@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.campaign-journeys",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "kind": "workflow-chain",
   "description": "Contact-level lifecycle journeys as RFC 0013 chains on the ONE engine (ADR 0222 / campaign gap plan C6) — NOT a journey engine. Trigger with an ADR 0208 host-event binding (e.g. host.crm.contact.created → Welcome Series), guard with the enrollment + eligibility verbs (one run per contact per journey; every send behind consent + suppression), wait with core.flow.wait, send with the existing email node, log with the CRM activity verb. Enrollment state is the run itself — monitor in Runs, reset re-enrollment via the campaign-journeys API.",
   "author": "openwop",
@@ -22,17 +22,11 @@
       "parameters": {
         "type": "object",
         "additionalProperties": false,
-        "required": [
-          "fromAddress"
-        ],
+        "required": ["triggerEventName", "senderEmail"],
         "properties": {
           "contactId": {
             "type": "string",
             "description": "The contact to enroll (omit when event-triggered — it rides the trigger payload)."
-          },
-          "fromAddress": {
-            "type": "string",
-            "description": "The verified sender address."
           },
           "welcomeSubject": {
             "type": "string",
@@ -53,7 +47,9 @@
             "type": "string",
             "default": "A few favorite starting points, one day in.",
             "description": "Body of the day-2 email."
-          }
+          },
+          "triggerEventName": { "type": "string", "description": "Host event name that starts this workflow (e.g. `crm.deal.won`)." },
+          "senderEmail": { "type": "string", "description": "Verified sender address these emails are sent from." }
         }
       },
       "capabilities": [
@@ -69,7 +65,9 @@
               "x": 0,
               "y": 0
             },
-            "config": {},
+            "config": {
+              "eventName": "{{params.triggerEventName}}"
+            },
             "inputs": {}
           },
           {
@@ -121,11 +119,12 @@
               "x": 660,
               "y": 0
             },
-            "config": {},
+            "config": {
+              "from": "{{params.senderEmail}}"
+            },
             "inputs": {
-              "from": "{{params.fromAddress}}",
               "subject": "{{params.welcomeSubject}}",
-              "body": "{{params.welcomeBody}}"
+              "text": "{{params.welcomeBody}}"
             }
           },
           {
@@ -163,11 +162,12 @@
               "x": 1320,
               "y": 0
             },
-            "config": {},
+            "config": {
+              "from": "{{params.senderEmail}}"
+            },
             "inputs": {
-              "from": "{{params.fromAddress}}",
               "subject": "{{params.followUpSubject}}",
-              "body": "{{params.followUpBody}}"
+              "text": "{{params.followUpBody}}"
             }
           }
         ],
@@ -193,6 +193,10 @@
             "to": "welcome.gate1"
           },
           {
+            "from": "gate1.email",
+            "to": "welcome.to"
+          },
+          {
             "from": "welcome",
             "to": "wait"
           },
@@ -203,6 +207,10 @@
           {
             "from": "gate2",
             "to": "followup"
+          },
+          {
+            "from": "gate2.email",
+            "to": "followup.to"
           }
         ]
       },
@@ -221,23 +229,15 @@
       "parameters": {
         "type": "object",
         "additionalProperties": false,
-        "required": [
-          "contactId",
-          "fromAddress",
-          "orgId"
-        ],
+        "required": ["contactId", "orgId", "senderEmail"],
         "properties": {
           "contactId": {
             "type": "string",
             "description": "The contact to re-engage."
           },
-          "fromAddress": {
-            "type": "string",
-            "description": "The verified sender address."
-          },
           "orgId": {
             "type": "string",
-            "description": "The CRM org that owns the follow-up task (feature.crm.nodes.create-task is org-scoped)."
+            "description": "The CRM org that owns the follow-up task."
           },
           "subject": {
             "type": "string",
@@ -248,7 +248,8 @@
             "type": "string",
             "default": "It has been a while — here is what changed since your last visit.",
             "description": "Re-engagement body."
-          }
+          },
+          "senderEmail": { "type": "string", "description": "Verified sender address these emails are sent from." }
         }
       },
       "capabilities": [
@@ -305,11 +306,12 @@
               "x": 660,
               "y": 0
             },
-            "config": {},
+            "config": {
+              "from": "{{params.senderEmail}}"
+            },
             "inputs": {
-              "from": "{{params.fromAddress}}",
               "subject": "{{params.subject}}",
-              "body": "{{params.body}}"
+              "text": "{{params.body}}"
             }
           },
           {
@@ -347,6 +349,10 @@
           {
             "from": "gate",
             "to": "send.gate"
+          },
+          {
+            "from": "gate.email",
+            "to": "send.to"
           }
         ]
       },
@@ -424,7 +430,7 @@
               "fromAddress": "{{params.fromAddress}}",
               "orgId": "{{params.orgId}}",
               "subject": "{{params.subject}}",
-              "body": "{{params.body}}"
+              "text": "{{params.body}}"
             },
             "inputs": {}
           },
