@@ -1,0 +1,271 @@
+{
+  "name": "core.openwop.workflows.it-support",
+  "version": "1.2.2",
+  "kind": "workflow-chain",
+  "description": "Real-work workflow pack (RFC 0013, ADR 0149, ADR 0208) — the IT / Support cluster: Incident Triage & Major-Incident Comms. An AI classifier assesses each incident's severity; routine incidents go to a recommended knowledge-base article and a ticket, while major incidents go to human-approved stakeholder updates in Slack — and each incident finishes with a post-incident summary. All tenant values are run parameters (replay-deterministic). Resolves on hosts shipping the kb + http + ai + chat + integration packs. Published under core.openwop.workflows.* (openwop-team key).",
+  "author": "openwop",
+  "license": "Apache-2.0",
+  "engines": {
+    "openwop": ">=1.0.0"
+  },
+  "keywords": [
+    "IT"
+  ],
+  "chains": [
+    {
+      "chainId": "it-support.incident-triage",
+      "version": "1.1.1",
+      "label": "Incident Triage & Major-Incident Comms",
+      "description": "Assesses each incident's severity, then routes routine incidents to a recommended knowledge-base article and a ticket, and major incidents to human-approved stakeholder updates in Slack — finishing with a post-incident summary.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "alert",
+          "slackChannel",
+          "orgId",
+          "collectionId"
+        ],
+        "properties": {
+          "alert": {
+            "type": "string",
+            "description": "The incoming alert/ticket text."
+          },
+          "ticketingBaseUrl": {
+            "type": "string",
+            "default": "",
+            "description": "The tenant's ticketing instance REST base (e.g. https://acme.atlassian.net or https://acme.service-now.com). Empty ⇒ no ticket is created."
+          },
+          "ticketProject": {
+            "type": "string",
+            "default": "OPS",
+            "description": "Project/queue key for the created ticket."
+          },
+          "provider": {
+            "type": "string",
+            "default": "anthropic",
+            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own."
+          },
+          "model": {
+            "type": "string",
+            "default": "claude-sonnet-4-6",
+            "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation."
+          },
+          "slackChannel": {
+            "type": "string",
+            "description": "Slack channel these messages post to (e.g. `#ops`)."
+          },
+          "orgId": {
+            "type": "string",
+            "description": "The org whose knowledge base is searched. Must be the same org the collection belongs to, or nothing is found."
+          },
+          "collectionId": {
+            "type": "string",
+            "description": "The KB collection id to search (create via the Knowledge feature or knowledge-sync)."
+          }
+        }
+      },
+      "capabilities": [
+        "side-effectful"
+      ],
+      "dag": {
+        "nodes": [
+          {
+            "id": "classify",
+            "typeId": "core.ai.structuredOutput",
+            "name": "Classify severity",
+            "position": {
+              "x": 0,
+              "y": 60
+            },
+            "config": {
+              "systemPrompt": "Classify this IT incident's severity. 'major' = widespread outage, security incident, or SLA-breaching impact; 'routine' = single-user or low-impact. Alert: {{params.alert}}",
+              "outputSchema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "severity"
+                ],
+                "properties": {
+                  "severity": {
+                    "type": "string",
+                    "enum": [
+                      "major",
+                      "routine"
+                    ],
+                    "description": "The assigned severity."
+                  }
+                }
+              },
+              "provider": "{{params.provider}}",
+              "model": "{{params.model}}"
+            },
+            "inputs": {}
+          },
+          {
+            "id": "route",
+            "typeId": "core.flow.router",
+            "name": "Route by severity",
+            "position": {
+              "x": 280,
+              "y": 60
+            },
+            "config": {
+              "mode": "first-match",
+              "defaultLabel": "routine",
+              "routes": [
+                {
+                  "label": "major",
+                  "predicate": {
+                    "path": "severity",
+                    "op": "eq",
+                    "value": "major"
+                  }
+                }
+              ]
+            },
+            "inputs": {}
+          },
+          {
+            "id": "kbArticle",
+            "typeId": "feature.kb.nodes.rag",
+            "name": "Recommend KB article",
+            "position": {
+              "x": 560,
+              "y": 0
+            },
+            "config": {
+              "query": "{{params.alert}}"
+            },
+            "inputs": {
+              "query": "{{params.alert}}",
+              "orgId": "{{params.orgId}}",
+              "collectionId": "{{params.collectionId}}"
+            }
+          },
+          {
+            "id": "ticket",
+            "typeId": "core.openwop.connectors.ticket-create",
+            "name": "Route on-call (ticketing)",
+            "position": {
+              "x": 840,
+              "y": 0
+            },
+            "config": {
+              "baseUrl": "{{params.ticketingBaseUrl}}",
+              "project": "{{params.ticketProject}}",
+              "summary": "On-call incident: {{params.alert}}"
+            },
+            "inputs": {}
+          },
+          {
+            "id": "majorApprove",
+            "typeId": "core.chat.approvalGate",
+            "name": "Approve stakeholder comms",
+            "position": {
+              "x": 560,
+              "y": 160
+            },
+            "config": {},
+            "inputs": {}
+          },
+          {
+            "id": "stakeholders",
+            "typeId": "core.openwop.integration.slack-message",
+            "name": "Cadence updates (Slack)",
+            "position": {
+              "x": 840,
+              "y": 160
+            },
+            "config": {
+              "channel": "{{params.slackChannel}}"
+            },
+            "inputs": {}
+          },
+          {
+            "id": "summary",
+            "typeId": "core.ai.chatCompletion",
+            "name": "Post-incident summary",
+            "position": {
+              "x": 1120,
+              "y": 80
+            },
+            "config": {
+              "systemPrompt": "Write a post-incident summary: timeline, impact, resolution, and follow-ups.",
+              "provider": "{{params.provider}}",
+              "model": "{{params.model}}"
+            },
+            "inputs": {}
+          },
+          {
+            "id": "notify",
+            "typeId": "core.openwop.integration.notification-push",
+            "name": "Distribute summary",
+            "position": {
+              "x": 1400,
+              "y": 80
+            },
+            "config": {},
+            "inputs": {}
+          }
+        ],
+        "edges": [
+          {
+            "from": "classify.data",
+            "to": "route.value"
+          },
+          {
+            "from": "route",
+            "to": "kbArticle",
+            "condition": {
+              "type": "contains",
+              "left": "branches",
+              "right": "routine"
+            }
+          },
+          {
+            "from": "route",
+            "to": "majorApprove",
+            "condition": {
+              "type": "contains",
+              "left": "branches",
+              "right": "major"
+            }
+          },
+          {
+            "from": "kbArticle",
+            "to": "ticket"
+          },
+          {
+            "from": "majorApprove",
+            "to": "stakeholders"
+          },
+          {
+            "from": "ticket",
+            "to": "summary.ticket"
+          },
+          {
+            "from": "stakeholders",
+            "to": "summary.stakeholders"
+          },
+          {
+            "from": "summary",
+            "to": "notify"
+          }
+        ]
+      },
+      "outputs": {
+        "postmortem": {
+          "type": "string",
+          "description": "Routed incident + status updates + post-mortem."
+        }
+      }
+    }
+  ],
+  "signing": {
+    "method": "manual",
+    "publicKeyRef": "openwop-team-1",
+    "signatureRef": "keys/pack.json.sig"
+  },
+  "integrity": "sha256-Sun/LKi4hpN7ZhwjoslT5v0aewHi68u076bdaVl6/Hw="
+}
