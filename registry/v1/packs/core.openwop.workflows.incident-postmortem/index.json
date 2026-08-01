@@ -1,0 +1,31 @@
+{
+  "name": "core.openwop.workflows.incident-postmortem",
+  "kind": "workflow-chain",
+  "description": "Incident-postmortem chains (RFC 0013): after an incident resolves, draft a blameless postmortem from the timeline and turn its action items into tracked tasks. Draft-first (the human edits before anything is shared). Replay-deterministic.",
+  "author": "openwop",
+  "license": "Apache-2.0",
+  "tags": [],
+  "typeIds": [
+    "postmortem.draft-blameless",
+    "postmortem.action-items"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 2,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.workflows.incident-postmortem/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.workflows.incident-postmortem/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.workflows.incident-postmortem/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-OOmOHLl3ms/Pp/s8H/2RC9GdKfXD8mKOeuGrOgzlszI=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

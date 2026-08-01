@@ -1,0 +1,31 @@
+{
+  "name": "core.openwop.workflows.weekly-digest",
+  "kind": "workflow-chain",
+  "description": "Weekly-digest chains (RFC 0013): scheduled roundups that keep a team informed without a meeting — a research digest on a watched topic, and a team status roll-up. In-app + gated-send sinks; replay-deterministic.",
+  "author": "openwop",
+  "license": "Apache-2.0",
+  "tags": [],
+  "typeIds": [
+    "digest.topic-watch",
+    "digest.team-status"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 2,
+  "versions": [
+    {
+      "version": "1.1.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.workflows.weekly-digest/-/1.1.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.workflows.weekly-digest/-/1.1.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.workflows.weekly-digest/-/1.1.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-K0KWyGJe+NvmQ6jSk5Y1/JBiuvs3gwtg8NeTR84Wsks=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.1.0",
+  "deprecated": false
+}

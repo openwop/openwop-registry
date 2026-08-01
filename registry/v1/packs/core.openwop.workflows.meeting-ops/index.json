@@ -1,0 +1,31 @@
+{
+  "name": "core.openwop.workflows.meeting-ops",
+  "kind": "workflow-chain",
+  "description": "Meeting-ops chains (RFC 0013): less time in and around meetings — an agenda from a stated goal, and notes turned into owned action items. In-app and draft sinks only; replay-deterministic.",
+  "author": "openwop",
+  "license": "Apache-2.0",
+  "tags": [],
+  "typeIds": [
+    "meeting.agenda-prep",
+    "meeting.notes-to-actions"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 2,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.workflows.meeting-ops/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.workflows.meeting-ops/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.workflows.meeting-ops/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-+Na1/tHXBJwmW+qksQwYex8UHRvF3hTz8uKKfmLrsXk=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

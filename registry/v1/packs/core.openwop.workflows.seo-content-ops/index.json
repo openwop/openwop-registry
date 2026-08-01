@@ -1,0 +1,31 @@
+{
+  "name": "core.openwop.workflows.seo-content-ops",
+  "kind": "workflow-chain",
+  "description": "SEO content-ops chains (RFC 0013): a research-grounded content pipeline — a keyword brief from live search, a drafted article for human review, and an on-publish internal-link suggestion pass. Drafts are reviewed before anything is treated as final. Replay-deterministic.",
+  "author": "openwop",
+  "license": "Apache-2.0",
+  "tags": [],
+  "typeIds": [
+    "seo.keyword-brief",
+    "seo.draft-for-review"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 2,
+  "versions": [
+    {
+      "version": "1.1.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.workflows.seo-content-ops/-/1.1.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.workflows.seo-content-ops/-/1.1.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.workflows.seo-content-ops/-/1.1.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-T6u8OE/Wyd7G++7k68H7WN6GV993wrHEkq6TlqrNXaM=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.1.0",
+  "deprecated": false
+}
