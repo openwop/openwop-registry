@@ -1,0 +1,108 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.customer-onboarding@1.0.2",
+      "type": "library",
+      "name": "core.openwop.workflows.customer-onboarding",
+      "version": "1.0.2",
+      "description": "Customer-onboarding chains (RFC 0013): the post-sale first-mile — a warm welcome, a personalized kickoff checklist, and a scheduled 30-day health check. All external sends sit behind a human approval gate; tenant values are run parameters (replay-deterministic).",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a59df56b15312b7524472f9e91bbf6b2638cfce7cc6977d6b2ebd6c12ddcc0af"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.customer-onboarding@1.0.2"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "60f85cc55941890e6f1ebea685046711f14b42d596c2760aa2f89cf3cf76526c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "480"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ca7a1e86e5996642688b4d24c3cf75e6d8b8d4ed4c98c315b36ce7f2927ee4c2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4e5d7ea5b799bfb5063168bed6a6ab6ceba8958439c1e42ab05ac1e77c2acb72"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "8435"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.customer-onboarding@1.0.2",
+      "dependsOn": []
+    }
+  ]
+}

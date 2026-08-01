@@ -1,0 +1,32 @@
+{
+  "name": "core.openwop.workflows.customer-onboarding",
+  "kind": "workflow-chain",
+  "description": "Customer-onboarding chains (RFC 0013): the post-sale first-mile — a warm welcome, a personalized kickoff checklist, and a scheduled 30-day health check. All external sends sit behind a human approval gate; tenant values are run parameters (replay-deterministic).",
+  "author": "openwop",
+  "license": "Apache-2.0",
+  "tags": [],
+  "typeIds": [
+    "onboarding.welcome-sequence",
+    "onboarding.kickoff-checklist",
+    "onboarding.health-check-30d"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 3,
+  "versions": [
+    {
+      "version": "1.0.2",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.workflows.customer-onboarding/-/1.0.2.json",
+      "tarballUrl": "/v1/packs/core.openwop.workflows.customer-onboarding/-/1.0.2.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.workflows.customer-onboarding/-/1.0.2.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-pZ31axUxK3UkRy+ekbv2smOM/OfMaXfWsuvWwS3cwK8=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.2",
+  "deprecated": false
+}

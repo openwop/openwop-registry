@@ -1,7 +1,7 @@
 {
   "registryVersion": "1.0.0",
   "generatedAt": "2026-05-10T00:00:00Z",
-  "packCount": 147,
+  "packCount": 155,
   "packs": [
     {
       "name": "community.openwop-team.demo",
@@ -1340,6 +1340,23 @@
       "yanked": false
     },
     {
+      "name": "core.openwop.workflows.customer-onboarding",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.2",
+      "description": "Customer-onboarding chains (RFC 0013): the post-sale first-mile — a warm welcome, a personalized kickoff checklist, and a scheduled 30-day health check. All external sends sit behind a human approval gate; tenant values are run parameters (replay-deterministic).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "onboarding.welcome-sequence",
+        "onboarding.kickoff-checklist",
+        "onboarding.health-check-30d"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
       "name": "core.openwop.workflows.data-ops",
       "kind": "workflow-chain",
       "latestVersion": "1.1.1",
@@ -1408,6 +1425,22 @@
       "yanked": false
     },
     {
+      "name": "core.openwop.workflows.feedback-triage",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.0",
+      "description": "Feedback-triage chains (RFC 0013): turn raw inbound feedback into classified, routed, actionable items. A form submission is classified and (on approval) filed as a follow-up task; a batch is themed into a weekly digest. Replay-deterministic.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "feedback-triage.classify-and-route",
+        "feedback-triage.weekly-themes"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
       "name": "core.openwop.workflows.finance",
       "kind": "workflow-chain",
       "latestVersion": "1.1.1",
@@ -1450,6 +1483,22 @@
         "inbox.triage",
         "inbox.followup-nudger",
         "inbox.call-debrief"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.incident-postmortem",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.0",
+      "description": "Incident-postmortem chains (RFC 0013): after an incident resolves, draft a blameless postmortem from the timeline and turn its action items into tracked tasks. Draft-first (the human edits before anything is shared). Replay-deterministic.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "postmortem.draft-blameless",
+        "postmortem.action-items"
       ],
       "nodeCount": 0,
       "agentCount": 0,
@@ -1700,6 +1749,22 @@
       "yanked": false
     },
     {
+      "name": "core.openwop.workflows.meeting-ops",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.0",
+      "description": "Meeting-ops chains (RFC 0013): less time in and around meetings — an agenda from a stated goal, and notes turned into owned action items. In-app and draft sinks only; replay-deterministic.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "meeting.agenda-prep",
+        "meeting.notes-to-actions"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
       "name": "core.openwop.workflows.notebooks",
       "kind": "workflow-chain",
       "latestVersion": "1.0.0",
@@ -1765,6 +1830,22 @@
       "yanked": false
     },
     {
+      "name": "core.openwop.workflows.release-comms",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.0",
+      "description": "Release-comms chains (RFC 0013): ship-day communications — customer-facing release notes from a raw changelog, and an internal launch announcement. Every external/team send is human-gated. Replay-deterministic.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "release.notes-from-changelog",
+        "release.internal-announce"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
       "name": "core.openwop.workflows.research",
       "kind": "workflow-chain",
       "latestVersion": "1.0.1",
@@ -1773,6 +1854,38 @@
       "tags": [],
       "typeIds": [
         "research.web-brief"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.sales-outreach",
+      "kind": "workflow-chain",
+      "latestVersion": "1.1.2",
+      "description": "Sales-outreach chains (RFC 0013): research-grounded, human-gated outreach — a personalized first-touch from live research, and a polite quiet-thread nudge. Every send is reviewed by a human first. Replay-deterministic.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "outreach.researched-firsttouch",
+        "outreach.quiet-thread-nudge"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.seo-content-ops",
+      "kind": "workflow-chain",
+      "latestVersion": "1.1.0",
+      "description": "SEO content-ops chains (RFC 0013): a research-grounded content pipeline — a keyword brief from live search, a drafted article for human review, and an on-publish internal-link suggestion pass. Drafts are reviewed before anything is treated as final. Replay-deterministic.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "seo.keyword-brief",
+        "seo.draft-for-review"
       ],
       "nodeCount": 0,
       "agentCount": 0,
@@ -1867,6 +1980,22 @@
         "walkthrough.connections.list",
         "walkthrough.example-data.dashboard",
         "walkthrough.commerce.catalog"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.weekly-digest",
+      "kind": "workflow-chain",
+      "latestVersion": "1.1.0",
+      "description": "Weekly-digest chains (RFC 0013): scheduled roundups that keep a team informed without a meeting — a research digest on a watched topic, and a team status roll-up. In-app + gated-send sinks; replay-deterministic.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "digest.topic-watch",
+        "digest.team-status"
       ],
       "nodeCount": 0,
       "agentCount": 0,
