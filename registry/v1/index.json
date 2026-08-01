@@ -98,7 +98,7 @@
     {
       "name": "core.openwop.agents.api-designer",
       "kind": "node",
-      "latestVersion": "1.0.0",
+      "latestVersion": "1.0.1",
       "description": "API design agent. Authors OpenAPI 3.1, AsyncAPI 3.0, and JSON Schema 2020-12 documents from natural-language briefs. Pure-agent pack.",
       "license": "Apache-2.0",
       "tags": [],
@@ -143,7 +143,7 @@
     {
       "name": "core.openwop.agents.code-reviewer",
       "kind": "node",
-      "latestVersion": "1.0.0",
+      "latestVersion": "1.0.1",
       "description": "Code review agent. Reviews diffs or files for correctness, style, security, and design. Diff-aware prompting; cites file:line in findings. Pure-agent pack.",
       "license": "Apache-2.0",
       "tags": [],
@@ -173,8 +173,8 @@
     {
       "name": "core.openwop.agents.devops-crew",
       "kind": "node",
-      "latestVersion": "1.0.0",
-      "description": "DevOps crew. Planner decomposes runbook → executor runs steps via host.fs + host.queueBus + http → verifier confirms desired state. Gated on host fs + queue capabilities.",
+      "latestVersion": "1.0.1",
+      "description": "DevOps crew. Planner decomposes a runbook into safe ordered steps → executor performs http step actions (fs / queue / crypto steps run through the enclosing workflow's nodes, not conversational tools) → verifier confirms desired state via read-only http checks.",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -190,7 +190,7 @@
     {
       "name": "core.openwop.agents.doc-writer",
       "kind": "node",
-      "latestVersion": "1.0.0",
+      "latestVersion": "1.0.1",
       "description": "Technical documentation author. Produces README sections, API docs, architecture notes, and changelogs from source material. RAG-grounded. Pure-agent pack.",
       "license": "Apache-2.0",
       "tags": [],
@@ -205,7 +205,7 @@
     {
       "name": "core.openwop.agents.document-author",
       "kind": "node",
-      "latestVersion": "1.0.0",
+      "latestVersion": "1.0.1",
       "description": "Office-document authoring agent — produces PDF / Word / Excel / PowerPoint deliverables from briefs. Pure-agent pack.",
       "license": "Apache-2.0",
       "tags": [],
@@ -235,7 +235,7 @@
     {
       "name": "core.openwop.agents.frontend-designer",
       "kind": "node",
-      "latestVersion": "1.0.0",
+      "latestVersion": "1.0.1",
       "description": "Frontend / UI design agent. Produces design-system-aware component specs, page layouts, and Storybook-style mocks from briefs. Mirrors Anthropic's `frontend-design` skill (top-installed in marketplace).",
       "license": "Apache-2.0",
       "tags": [],
@@ -265,7 +265,7 @@
     {
       "name": "core.openwop.agents.invoice-extractor",
       "kind": "node",
-      "latestVersion": "1.0.0",
+      "latestVersion": "1.0.1",
       "description": "Invoice extraction agent. OCR-aware structured extraction of vendor, line items, totals, tax, payment terms from PDF or scanned-image invoices. Pure-agent pack.",
       "license": "Apache-2.0",
       "tags": [],
@@ -450,7 +450,7 @@
     {
       "name": "core.openwop.agents.test-author",
       "kind": "node",
-      "latestVersion": "1.0.0",
+      "latestVersion": "1.0.1",
       "description": "Test authoring agent. Generates unit, integration, and e2e tests from source code or specs. Pure-agent pack.",
       "license": "Apache-2.0",
       "tags": [],

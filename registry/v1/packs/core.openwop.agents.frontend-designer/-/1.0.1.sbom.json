@@ -1,0 +1,168 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.agents.frontend-designer@1.0.1",
+      "type": "library",
+      "name": "core.openwop.agents.frontend-designer",
+      "version": "1.0.1",
+      "description": "Frontend / UI design agent. Produces design-system-aware component specs, page layouts, and Storybook-style mocks from briefs. Mirrors Anthropic's `frontend-design` skill (top-installed in marketplace).",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/packs/core.openwop.agents.frontend-designer"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "41989e2e857dcd3188aa7f219d7335ddc815dac1643bd80e3cdce5a886d2a8d9"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.agents.frontend-designer@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b1bd91eb14ddbcd2c91b184a35c046b2be5a346945b230db3c51f7813dfdbb93"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1674"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "696fc60c391661da3e1321a2f67ca9f73a7acf319e3b527fa823d9b0da931476"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4f81d3402b4cfbd4ae39ac2cba4e0877aa3d9c0f6bf8df7a51af5683e21fb684"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1651"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/frontend-designer.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c6b90df7444e6d21df6388bf5bb08bd8dda38f29f8c107b7e55c38dbea38f93c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3129"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/frontend-designer.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e55323e94f9d9dccb9ed1b865830a80457876eb8eafb84c1c8891dfe06691598"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2382"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/frontend-designer.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f41f1ed6f09e72bdc6b146407aff57dd326e79fcfda20c6dafe118ae51ef098c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "997"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.agents.frontend-designer@1.0.1",
+      "dependsOn": [
+        "host:aiProviders",
+        "host:host.agentRuntime"
+      ]
+    }
+  ]
+}

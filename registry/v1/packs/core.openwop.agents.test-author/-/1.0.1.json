@@ -1,0 +1,57 @@
+{
+  "name": "core.openwop.agents.test-author",
+  "version": "1.0.1",
+  "description": "Test authoring agent. Generates unit, integration, and e2e tests from source code or specs. Pure-agent pack.",
+  "author": "OpenWOP Working Group",
+  "license": "Apache-2.0",
+  "homepage": "https://openwop.dev/packs/core.openwop.agents.test-author",
+  "repository": "https://github.com/openwop/openwop",
+  "keywords": [
+    "core",
+    "agents",
+    "testing",
+    "coding",
+    "tdd",
+    "skill"
+  ],
+  "engines": {
+    "openwop": ">=1.1.0 <2.0.0"
+  },
+  "peerDependencies": {
+    "aiProviders": "supported",
+    "host.agentRuntime": "supported"
+  },
+  "agents": [
+    {
+      "agentId": "core.openwop.agents.test-author.default",
+      "persona": "Test Author",
+      "label": "Test Author Agent",
+      "description": "Generates unit, integration, or e2e tests from source code or specs. Framework-aware (Jest/Vitest/Pytest/Go test/Playwright). Matches house style from a neighbor test supplied inline; returns the test file for the enclosing workflow to persist.",
+      "modelClass": "coding",
+      "systemPromptRef": "prompts/test-author.md",
+      "toolAllowlist": [],
+      "memoryShape": {
+        "scratchpad": true,
+        "conversation": false,
+        "longTerm": false
+      },
+      "handoff": {
+        "taskSchemaRef": "schemas/test-author.task.schema.json",
+        "returnSchemaRef": "schemas/test-author.return.schema.json"
+      },
+      "confidence": {
+        "defaultThreshold": 0.7
+      }
+    }
+  ],
+  "runtime": {
+    "language": "remote",
+    "entry": "pack.json"
+  },
+  "signing": {
+    "method": "manual",
+    "publicKeyRef": "openwop-team-1",
+    "signatureRef": "keys/pack.json.sig"
+  },
+  "integrity": "sha256-4xjnejcJUz5x6EzYCTi1hVLg8CcKKM11VItivwpxDCs="
+}

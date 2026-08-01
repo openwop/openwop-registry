@@ -1,0 +1,106 @@
+{
+  "name": "core.openwop.agents.devops-crew",
+  "version": "1.0.1",
+  "description": "DevOps crew. Planner decomposes a runbook into safe ordered steps → executor performs http step actions (fs / queue / crypto steps run through the enclosing workflow's nodes, not conversational tools) → verifier confirms desired state via read-only http checks.",
+  "author": "OpenWOP Working Group",
+  "license": "Apache-2.0",
+  "homepage": "https://openwop.dev/packs/core.openwop.agents.devops-crew",
+  "repository": "https://github.com/openwop/openwop",
+  "keywords": [
+    "core",
+    "agents",
+    "crew",
+    "devops",
+    "ops",
+    "multi-agent",
+    "pattern"
+  ],
+  "engines": {
+    "openwop": ">=1.1.0 <2.0.0"
+  },
+  "peerDependencies": {
+    "aiProviders": "supported",
+    "host.agentRuntime": "supported",
+    "host.fs": "supported",
+    "host.queueBus": "supported"
+  },
+  "agents": [
+    {
+      "agentId": "core.openwop.agents.devops-crew.planner",
+      "persona": "DevOps Planner",
+      "label": "DevOps Planner",
+      "description": "Reads a runbook or operational goal (supplied in the task payload), decomposes into safe ordered steps (with pre-checks, action, post-checks), flags steps requiring human approval, dispatches executor. Reasons over the provided text; holds no conversational tools.",
+      "modelClass": "reasoning",
+      "systemPromptRef": "prompts/planner.md",
+      "toolAllowlist": [],
+      "memoryShape": {
+        "scratchpad": true,
+        "conversation": false,
+        "longTerm": false
+      },
+      "handoff": {
+        "taskSchemaRef": "schemas/planner.task.schema.json",
+        "returnSchemaRef": "schemas/planner.return.schema.json"
+      },
+      "confidence": {
+        "defaultThreshold": 0.8
+      }
+    },
+    {
+      "agentId": "core.openwop.agents.devops-crew.executor",
+      "persona": "DevOps Executor",
+      "label": "DevOps Executor",
+      "description": "Executes one runbook step at a time. Performs http step actions as specified by the planner; refuses steps whose action tool is outside its allowlist. Halts on first failure or unexpected state.",
+      "modelClass": "coding",
+      "systemPromptRef": "prompts/executor.md",
+      "toolAllowlist": [
+        "openwop:core.openwop.http.fetch"
+      ],
+      "memoryShape": {
+        "scratchpad": true,
+        "conversation": false,
+        "longTerm": false
+      },
+      "handoff": {
+        "taskSchemaRef": "schemas/executor.task.schema.json",
+        "returnSchemaRef": "schemas/executor.return.schema.json"
+      },
+      "confidence": {
+        "defaultThreshold": 0.85
+      }
+    },
+    {
+      "agentId": "core.openwop.agents.devops-crew.verifier",
+      "persona": "DevOps Verifier",
+      "label": "DevOps Verifier",
+      "description": "Runs read-only http checks to confirm that the desired post-state holds after executor steps. Returns pass/fail per check with evidence.",
+      "modelClass": "reasoning",
+      "systemPromptRef": "prompts/verifier.md",
+      "toolAllowlist": [
+        "openwop:core.openwop.http.fetch"
+      ],
+      "memoryShape": {
+        "scratchpad": true,
+        "conversation": false,
+        "longTerm": false
+      },
+      "handoff": {
+        "taskSchemaRef": "schemas/verifier.task.schema.json",
+        "returnSchemaRef": "schemas/verifier.return.schema.json"
+      },
+      "confidence": {
+        "defaultThreshold": 0.85
+      }
+    }
+  ],
+  "runtime": {
+    "language": "remote",
+    "entry": "pack.json"
+  },
+  "signing": {
+    "method": "manual",
+    "publicKeyRef": "openwop-team-1",
+    "signatureRef": "keys/pack.json.sig"
+  },
+  "integrity": "sha256-dVnXkW80xNuh/OQ/zlyOuPTOvuqbosKa4FXvYEhZgvk="
+}
