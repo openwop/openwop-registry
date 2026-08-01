@@ -1,0 +1,168 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.agents.doc-writer@1.0.1",
+      "type": "library",
+      "name": "core.openwop.agents.doc-writer",
+      "version": "1.0.1",
+      "description": "Technical documentation author. Produces README sections, API docs, architecture notes, and changelogs from source material. RAG-grounded. Pure-agent pack.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/packs/core.openwop.agents.doc-writer"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7c9508c2a87f5475f620ab53af16dbd6e3509a516bcee9c1a7e67daebc145d07"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.agents.doc-writer@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b6543610bbdaa9dfa3d323da244d23ae37fcce27a04b8be2af9c709f787a2865"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1858"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "07206a5864acde21f71f279647cd41538de0b7a281ae9fd6a0e7f46e8fac46ff"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5679e07199d76a35659ec5bfc5dffd8bf36954e071a641741de444ae2950c373"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1494"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/doc-writer.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d50966e6206cf176dd2f295324994049de9484813739f7a0b9f966c0a1b8d2c8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3419"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/doc-writer.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4023e160da8dfb3b26e51c8f400202a9fd0f2041ae885f5122a0a709d3677137"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "982"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/doc-writer.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c93a11357a018d5d11d4f863442c9af8c820721d6c10e1290a4dae3f76ed7f72"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1162"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.agents.doc-writer@1.0.1",
+      "dependsOn": [
+        "host:aiProviders",
+        "host:host.agentRuntime"
+      ]
+    }
+  ]
+}
