@@ -1,7 +1,7 @@
 {
   "name": "core.openwop.ai",
   "version": "1.3.2",
-  "description": "Spec-canonical AI-call pack. v1.0 (chatCompletion, structuredOutput, toolCalling, embeddings) plus v1.1 multi-modal + LLM helpers \u2014 image generate/edit/upscale, audio transcribe/synthesize, video generate, rerank, classify, extract, guardrails, transform. Routes through host BYOK aiProviders. v1.3.1: image-generate output schema now declares the real runtime shape (images[].url + mimeType, never contentBase64) \u2014 the host persists each image as a Media asset and returns a serve URL, never raw bytes.",
+  "description": "Spec-canonical AI-call pack. v1.0 (chatCompletion, structuredOutput, toolCalling, embeddings) plus v1.1 multi-modal + LLM helpers — image generate/edit/upscale, audio transcribe/synthesize, video generate, rerank, classify, extract, guardrails, transform. Routes through host BYOK aiProviders. v1.3.1: image-generate output schema now declares the real runtime shape (images[].url + mimeType, never contentBase64) — the host persists each image as a Media asset and returns a serve URL, never raw bytes.",
   "author": "OpenWOP Working Group",
   "license": "Apache-2.0",
   "homepage": "https://openwop.dev/packs/core.openwop.ai",
@@ -25,7 +25,7 @@
       "typeId": "core.ai.chatCompletion",
       "version": "1.0.0",
       "label": "Chat Completion",
-      "description": "Free-form LLM chat. Returns the model's text response + token usage. Side-effectful + cacheable \u2014 replays return the cached node.completed payload via the host's Layer-2 invocation log keyed on (runId, nodeId, request-hash).",
+      "description": "Free-form LLM chat. Returns the model's text response + token usage. Side-effectful + cacheable — replays return the cached node.completed payload via the host's Layer-2 invocation log keyed on (runId, nodeId, request-hash).",
       "category": "data",
       "role": "side-effect",
       "capabilities": [
@@ -58,7 +58,7 @@
       "typeId": "core.ai.toolCalling",
       "version": "1.0.0",
       "label": "Tool Calling",
-      "description": "LLM call with declared tools \u2014 model may emit tool_call entries the workflow handles in downstream nodes. Requires the host to advertise `aiProviders.toolCalling` (ctx.callAIWithTools); refuses to register otherwise.",
+      "description": "LLM call with declared tools — model may emit tool_call entries the workflow handles in downstream nodes. Requires the host to advertise `aiProviders.toolCalling` (ctx.callAIWithTools); refuses to register otherwise.",
       "category": "data",
       "role": "side-effect",
       "capabilities": [
@@ -91,7 +91,7 @@
       "typeId": "core.openwop.ai.image-generate",
       "version": "1.0.0",
       "label": "AI Image Generate",
-      "description": "Image generation via host.aiProviders.imageGeneration (e.g., DALL\u00b7E / Imagen / SD).",
+      "description": "Image generation via host.aiProviders.imageGeneration (e.g., DALL·E / Imagen / SD).",
       "category": "data",
       "role": "side-effect",
       "capabilities": [
@@ -106,7 +106,7 @@
       "typeId": "core.openwop.ai.image-edit",
       "version": "1.0.0",
       "label": "AI Image Edit",
-      "description": "Edits an image via the host callImageEditor capability (ADR 0401): op=edit (whole-image, prompt), op=inpaint (prompt + maskBase64, white = repaint), op=background-remove (no prompt, transparent PNG). Provider capability matrix is HONEST \u2014 openai: edit/inpaint; replicate (default): edit/inpaint/background-remove/upscale; google: none \u2014 an unsupported (provider, op) fails typed host_capability_missing, never a silent fallback. Results persist as host Media assets; the node returns asset URLs, never raw bytes.",
+      "description": "Edits an image via the host callImageEditor capability (ADR 0401): op=edit (whole-image, prompt), op=inpaint (prompt + maskBase64, white = repaint), op=background-remove (no prompt, transparent PNG). Provider capability matrix is HONEST — openai: edit/inpaint; replicate (default): edit/inpaint/background-remove/upscale; google: none — an unsupported (provider, op) fails typed host_capability_missing, never a silent fallback. Results persist as host Media assets; the node returns asset URLs, never raw bytes.",
       "category": "data",
       "role": "side-effect",
       "capabilities": [
@@ -258,5 +258,11 @@
     "format": "esm",
     "entry": "./index.mjs",
     "minRuntimeVersion": "node>=20"
-  }
+  },
+  "signing": {
+    "method": "manual",
+    "publicKeyRef": "openwop-team-1",
+    "signatureRef": "keys/pack.json.sig"
+  },
+  "integrity": "sha256-P09hSvs/dmaT8s+7U2oPN+nxkPtTXN4eYwQ8cYBLlic="
 }
