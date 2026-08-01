@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.support",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "kind": "workflow-chain",
   "description": "Real-work workflow pack (RFC 0013, ADR 0190) — the Customer Support cluster, the #1 surveyed agent use case the gallery previously had zero templates for: KB-grounded answering, email triage (draft-only — the human sends), customer-ticket routing, sentiment/brand-risk escalation, and CSAT follow-up. Authored entirely over node typeIds shipped with this host (feature.kb + core.ai.chatCompletion + core.flow.if + core.chat.approvalGate + core.email.draft + core.openwop.connectors.ticket-create + core.openwop.integration.*). Every external SEND waits on a human approval gate (core.email.draft creates a draft and never sends — the draft itself is the human gate). Distinct from core.openwop.workflows.it-support: that pack routes IT incidents by severity; this one serves customer-facing support (intent, queues, CSAT). All tenant values are run parameters (replay-deterministic).",
   "author": "openwop",
@@ -20,9 +20,9 @@
         "properties": {
           "question": { "type": "string", "description": "The customer question to answer." },
           "escalationChannel": { "type": "string", "default": "#support-escalations", "description": "Slack channel for low-confidence escalations." },
-          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Defaults to the host's chat-class preference; override at instantiation for a different vendor or your own BYOK provider." },
+          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own." },
           "model": { "type": "string", "default": "claude-sonnet-4-6", "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation." },
-          "orgId": { "type": "string", "description": "The org whose KB is searched (feature.kb.nodes.rag reads ctx.inputs.orgId — an exact match against the collection's org, so this MUST be set or the retrieval never resolves the collection)." },
+          "orgId": { "type": "string", "description": "The org whose knowledge base is searched. Must be the same org the collection belongs to, or nothing is found." },
           "collectionId": { "type": "string", "description": "The KB collection id to search (create via the Knowledge feature or knowledge-sync)." }
         }
       },
@@ -67,7 +67,7 @@
         "properties": {
           "emailText": { "type": "string", "description": "The inbound support email body (with subject if available)." },
           "replyTone": { "type": "string", "default": "empathetic, clear, and concise", "description": "Tone for the drafted reply." },
-          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Defaults to the host's chat-class preference; override at instantiation for a different vendor or your own BYOK provider." },
+          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own." },
           "model": { "type": "string", "default": "claude-sonnet-4-6", "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation." }
         }
       },
@@ -108,7 +108,7 @@
           "requestText": { "type": "string", "description": "The inbound customer request text." },
           "ticketingBaseUrl": { "type": "string", "default": "", "description": "The tenant's ticketing instance REST base (e.g. https://acme.atlassian.net). Empty ⇒ no ticket is created." },
           "ticketProject": { "type": "string", "default": "SUP", "description": "Project/queue key for the created ticket." },
-          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Defaults to the host's chat-class preference; override at instantiation for a different vendor or your own BYOK provider." },
+          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own." },
           "model": { "type": "string", "default": "claude-sonnet-4-6", "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation." }
         }
       },
@@ -143,7 +143,7 @@
         "properties": {
           "message": { "type": "string", "description": "The inbound message, review, or mention to score." },
           "escalationChannel": { "type": "string", "default": "#cx-escalations", "description": "Slack channel for high-risk escalations." },
-          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Defaults to the host's chat-class preference; override at instantiation for a different vendor or your own BYOK provider." },
+          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own." },
           "model": { "type": "string", "default": "claude-sonnet-4-6", "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation." }
         }
       },
@@ -181,7 +181,7 @@
         "required": ["recipientEmail", "resolutionSummary", "senderEmail"],
         "properties": {
           "resolutionSummary": { "type": "string", "description": "Short summary of the resolved ticket (what was fixed, for whom)." },
-          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Defaults to the host's chat-class preference; override at instantiation for a different vendor or your own BYOK provider." },
+          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own." },
           "model": { "type": "string", "default": "claude-sonnet-4-6", "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation." },
           "senderEmail": { "type": "string", "description": "Verified sender address these emails are sent from." },
           "recipientEmail": { "type": "string", "description": "The address this email is sent to." },
