@@ -47,7 +47,9 @@
         "cacheable",
         "side-effectful"
       ],
-      "requiredModelCapabilities": ["structured-output"],
+      "requiredModelCapabilities": [
+        "structured-output"
+      ],
       "configSchemaRef": "schemas/structured-output.config.json",
       "inputSchemaRef": "schemas/structured-output.input.json",
       "outputSchemaRef": "schemas/structured-output.output.json"
@@ -63,7 +65,9 @@
         "cacheable",
         "side-effectful"
       ],
-      "requiredModelCapabilities": ["function-calling"],
+      "requiredModelCapabilities": [
+        "function-calling"
+      ],
       "configSchemaRef": "schemas/tool-calling.config.json",
       "inputSchemaRef": "schemas/tool-calling.input.json",
       "outputSchemaRef": "schemas/tool-calling.output.json"
@@ -254,5 +258,11 @@
     "format": "esm",
     "entry": "./index.mjs",
     "minRuntimeVersion": "node>=20"
-  }
+  },
+  "signing": {
+    "method": "manual",
+    "publicKeyRef": "openwop-team-1",
+    "signatureRef": "keys/pack.json.sig"
+  },
+  "integrity": "sha256-7EuHk8cq1KyHvEnmATHMCTv3YgTddJTQTtobx1rou2c="
 }
