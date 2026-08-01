@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.inbox",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "kind": "workflow-chain",
   "description": "Real-work workflow pack (RFC 0013, ADR 0190 Phase 2) — the personal-productivity Inbox cluster: triage your own inbox (classify, draft the urgent reply, digest the rest), nudge unanswered threads, and debrief calls into coaching notes. Distinct from core.openwop.workflows.support (a customer-support mailbox with queue routing): these serve YOUR inbox and YOUR calls. Drafting uses core.email.draft — it creates a draft in your mailbox and never sends (the draft is the human gate); the one real send (follow-up nudger) waits on an approval. All tenant values are run parameters (replay-deterministic).",
   "author": "openwop",
@@ -22,7 +22,7 @@
           "replyTone": { "type": "string", "default": "warm, direct, and brief", "description": "Tone for any drafted reply." },
           "replyToAddress": { "type": "string", "description": "The recipient address for a drafted reply (typically the original sender) — core.email.draft requires an explicit recipient; it cannot infer one from emailText." },
           "replySubject": { "type": "string", "default": "Re: your message", "description": "Subject line for a drafted reply." },
-          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Defaults to the host's chat-class preference; override at instantiation for a different vendor or your own BYOK provider." },
+          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own." },
           "model": { "type": "string", "default": "claude-sonnet-4-6", "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation." }
         }
       },
@@ -65,7 +65,7 @@
         "properties": {
           "threadText": { "type": "string", "description": "The unanswered thread (most recent messages)." },
           "daysQuiet": { "type": "string", "default": "5", "description": "How many days the thread has been quiet." },
-          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Defaults to the host's chat-class preference; override at instantiation for a different vendor or your own BYOK provider." },
+          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own." },
           "model": { "type": "string", "default": "claude-sonnet-4-6", "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation." },
           "senderEmail": { "type": "string", "description": "Verified sender address these emails are sent from." },
           "recipientEmail": { "type": "string", "description": "The address this email is sent to." },
@@ -108,7 +108,7 @@
         "required": ["transcript"],
         "properties": {
           "transcript": { "type": "string", "description": "The call transcript." },
-          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Defaults to the host's chat-class preference; override at instantiation for a different vendor or your own BYOK provider." },
+          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own." },
           "model": { "type": "string", "default": "claude-sonnet-4-6", "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation." }
         }
       },

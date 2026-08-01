@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.commerce",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "kind": "workflow-chain",
   "description": "Real-work workflow pack (RFC 0013, ADR 0152) \u2014 the Commerce operations cluster (ecommerce gap plan \u00a75C C8): Post-Purchase Thank-You, Low-Stock Reorder Draft, and the Order Exception Digest. Designed to bind to the ADR 0221 host events (host.commerce.order.paid, host.commerce.inventory.low-stock \u2014 create a host-event binding to enroll; ADR 0208) or the schedule trigger. Every outbound send rides the governed email-send integration node (drafts/approval per the tenant's actionPolicy \u2014 ADR 0033) and the ONE notification seam; order data flows through feature.commerce.nodes over ctx.features.commerce, so the ADR 0221 audit rows + spend thresholds apply by construction. Enrollment state = the run itself; a binding fires one run per event.",
   "author": "openwop",
@@ -20,9 +20,7 @@
       "parameters": {
         "type": "object",
         "additionalProperties": false,
-        "required": [
-          "orgId"
-        ],
+        "required": ["orgId", "recipientEmail", "senderEmail"],
         "properties": {
           "orgId": {
             "type": "string",
@@ -37,7 +35,12 @@
             "type": "string",
             "default": "warm, brief, no upsell",
             "description": "Voice for the thank-you note."
-          }
+          },
+          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own." },
+          "model": { "type": "string", "default": "claude-sonnet-4-6", "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation." },
+          "senderEmail": { "type": "string", "description": "Verified sender address these emails are sent from." },
+          "recipientEmail": { "type": "string", "description": "The address this email is sent to." },
+          "emailSubject": { "type": "string", "default": "Thank you for your order", "description": "Subject line for the sent email." }
         }
       },
       "capabilities": [
@@ -68,7 +71,9 @@
               "y": 0
             },
             "config": {
-              "systemPrompt": "Write a short post-purchase thank-you email for this order (tone: {{params.tone}}). Ground every detail in the order data; never invent items or amounts."
+              "systemPrompt": "Write a short post-purchase thank-you email for this order (tone: {{params.tone}}). Ground every detail in the order data; never invent items or amounts.",
+              "provider": "{{params.provider}}",
+              "model": "{{params.model}}"
             },
             "inputs": {}
           },
@@ -91,8 +96,13 @@
               "x": 640,
               "y": 0
             },
-            "config": {},
-            "inputs": {}
+            "config": {
+              "from": "{{params.senderEmail}}"
+            },
+            "inputs": {
+              "to": "{{params.recipientEmail}}",
+              "subject": "{{params.emailSubject}}"
+            }
           }
         ],
         "edges": [
@@ -111,6 +121,10 @@
           {
             "from": "compose",
             "to": "send.compose"
+          },
+          {
+            "from": "compose.content",
+            "to": "send.text"
           }
         ]
       },
@@ -129,9 +143,7 @@
       "parameters": {
         "type": "object",
         "additionalProperties": false,
-        "required": [
-          "orgId"
-        ],
+        "required": ["orgId", "recipientEmail", "senderEmail"],
         "properties": {
           "orgId": {
             "type": "string",
@@ -146,7 +158,12 @@
             "type": "string",
             "default": "",
             "description": "Optional supplier name/email to address the draft to."
-          }
+          },
+          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own." },
+          "model": { "type": "string", "default": "claude-sonnet-4-6", "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation." },
+          "senderEmail": { "type": "string", "description": "Verified sender address these emails are sent from." },
+          "recipientEmail": { "type": "string", "description": "The address this email is sent to." },
+          "emailSubject": { "type": "string", "default": "Reorder request", "description": "Subject line for the sent email." }
         }
       },
       "capabilities": [
@@ -177,7 +194,9 @@
               "y": 0
             },
             "config": {
-              "systemPrompt": "Draft a concise supplier reorder email for the low-stock product {{params.productId}} (supplier hint: {{params.supplierHint}}). Include current stock and a sensible reorder quantity based on the catalog data; flag assumptions."
+              "systemPrompt": "Draft a concise supplier reorder email for the low-stock product {{params.productId}} (supplier hint: {{params.supplierHint}}). Include current stock and a sensible reorder quantity based on the catalog data; flag assumptions.",
+              "provider": "{{params.provider}}",
+              "model": "{{params.model}}"
             },
             "inputs": {}
           },
@@ -200,8 +219,13 @@
               "x": 960,
               "y": 0
             },
-            "config": {},
-            "inputs": {}
+            "config": {
+              "from": "{{params.senderEmail}}"
+            },
+            "inputs": {
+              "to": "{{params.recipientEmail}}",
+              "subject": "{{params.emailSubject}}"
+            }
           },
           {
             "id": "notify",
@@ -231,6 +255,10 @@
           {
             "from": "approve",
             "to": "notify"
+          },
+          {
+            "from": "draft.content",
+            "to": "send.text"
           }
         ]
       },
@@ -261,7 +289,9 @@
             "type": "string",
             "default": "3",
             "description": "Paid-but-unfulfilled SLA in days before an order counts as an exception."
-          }
+          },
+          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own." },
+          "model": { "type": "string", "default": "claude-sonnet-4-6", "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation." }
         }
       },
       "capabilities": [],
@@ -289,7 +319,9 @@
               "y": 0
             },
             "config": {
-              "systemPrompt": "From these orders, list the exceptions: paid but not fulfilled for more than {{params.slaDays}} days, and pending orders close to reservation expiry. One line each with order id, age, and amount; totals at the top. If none, say so plainly."
+              "systemPrompt": "From these orders, list the exceptions: paid but not fulfilled for more than {{params.slaDays}} days, and pending orders close to reservation expiry. One line each with order id, age, and amount; totals at the top. If none, say so plainly.",
+              "provider": "{{params.provider}}",
+              "model": "{{params.model}}"
             },
             "inputs": {}
           },
