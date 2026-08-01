@@ -1,0 +1,108 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.funnels@1.0.1",
+      "type": "library",
+      "name": "core.openwop.workflows.funnels",
+      "version": "1.0.1",
+      "description": "Funnel optimization chains (ADR 0294 / Funnel A, Phase 6) — read-only analysis over the funnels feature nodes: per-step stats in, a grounded optimization proposal out. Proposals only: publishing, step edits, and experiment starts remain human actions in the Funnels page.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fa7edd973ee3726d81c62435599f926a2761693cd095edf0eed5e9ab2b55e490"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.funnels@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "be7d6f9ee435160f5c61da5efddac4476037e629898965b5f5ef4d63bbe966b2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "552"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "19c17f0942a98396483b4dacc4ecb9ee7e0c9955f0bbf7b0dd501509ad984ad8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "84a2133653356c9b19fc051f50d868592eeb72525ed345a2140a4f9ce6da79e9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3507"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.funnels@1.0.1",
+      "dependsOn": []
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.data-ops@1.1.1",
+      "type": "library",
+      "name": "core.openwop.workflows.data-ops",
+      "version": "1.1.1",
+      "description": "Real-work workflow pack (RFC 0013, ADR 0200/0201) — the Data Ops cluster, the one shape-family the Zapier/n8n and Microsoft canons don't cover (surfaced by the Make/Workato research): collapsing many records into one output (the aggregator canon), one-way movement of records between systems, and content routing (send a record down the right branch). Roll Up, Records → Table, Records → System (one-way upsert behind a human sign-off), and Content Router (route a record to the matching branch by a field predicate — the Make router shape, gated via edge conditions, ADR 0201). Uses only shipped, executable nodes (core.flow.aggregate-{numeric,text,table} + core.flow.router + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.http.openapi-call + core.openwop.integration.notification-push). The write is ONE-WAY movement keyed on an external id (re-runs update, never duplicate) behind a human approval — it is NOT a bidirectional sync. All tenant values are run parameters (replay-deterministic).",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d48826fb01485baa1edb40713fe04656ace6f2ec6558f82b544d81f87e1eb3d3"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.data-ops@1.1.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "eba76a59e15a0e2a62d13875993fc91046c05cf1d5079abbc4dbc7e8e6f75c04"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "126"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "21e19430c9203507119a35fd1cc745637cf58d33c1044f0ca4bee1e745de2afd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "80e008fd998959cd7eec549cd937c675f0133ebc8c2f919bb3b767297875fdfe"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "12093"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.data-ops@1.1.1",
+      "dependsOn": []
+    }
+  ]
+}
