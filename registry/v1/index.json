@@ -1162,7 +1162,7 @@
     {
       "name": "core.openwop.workflows.approvals",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.1",
+      "latestVersion": "1.0.2",
       "description": "Real-work workflow pack (RFC 0013, ADR 0198) — the Approvals cluster, the single most-used enterprise automation shape (Power Automate's #1 template is a sign-off flow with ~3.35M instantiations): Request Sign-off (an open gate any team member can approve — the zero-config marquee) and Two-Stage Sign-off (an ordered approval chain: stage two is only asked after stage one approves — sequential chains are DAG composition, not a new primitive). Gates support quorum (requiredApprovals), named approvers (approverRefs), and out-of-office delegation (an approver's active delegation lets their delegate act, counted as ONE identity — ADR 0198). All tenant values are run parameters (replay-deterministic).",
       "license": "Apache-2.0",
       "tags": [],
@@ -1245,7 +1245,7 @@
     {
       "name": "core.openwop.workflows.campaign-sync",
       "kind": "workflow-chain",
-      "latestVersion": "1.1.0",
+      "latestVersion": "1.1.1",
       "description": "Campaign Studio metrics-sync chain (RFC 0013; campaign gap plan C2 on ADR 0159). Pulls yesterday's ad metrics for every dispatched campaign through the acting user's platform connection (ctx.ads, window-scoped so rows never double-count) into the unified performance store, then delivers a short sync summary as a notification. Schedule it daily on the ONE scheduler, or run it ad hoc — the 15-minute cooldown makes overlapping fires harmless. Also carries the daily budget-pacing check (ADR 0220).",
       "license": "Apache-2.0",
       "tags": [],
@@ -1261,7 +1261,7 @@
     {
       "name": "core.openwop.workflows.commerce",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.2",
+      "latestVersion": "1.0.3",
       "description": "Real-work workflow pack (RFC 0013, ADR 0152) — the Commerce operations cluster (ecommerce gap plan §5C C8): Post-Purchase Thank-You, Low-Stock Reorder Draft, and the Order Exception Digest. Designed to bind to the ADR 0221 host events (host.commerce.order.paid, host.commerce.inventory.low-stock — create a host-event binding to enroll; ADR 0208) or the schedule trigger. Every outbound send rides the governed email-send integration node (drafts/approval per the tenant's actionPolicy — ADR 0033) and the ONE notification seam; order data flows through feature.commerce.nodes over ctx.features.commerce, so the ADR 0221 audit rows + spend thresholds apply by construction. Enrollment state = the run itself; a binding fires one run per event.",
       "license": "Apache-2.0",
       "tags": [],
@@ -1278,7 +1278,7 @@
     {
       "name": "core.openwop.workflows.content",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.1",
+      "latestVersion": "1.0.2",
       "description": "Real-work workflow pack (RFC 0013, ADR 0190 Phase 3) — the Content & Monitoring cluster: watch an RSS/Atom feed for new items and watch any web page for changes, each pairing a schedule trigger with durable seen-state in host KV storage (deterministic per-source key; the first run treats everything as new and seeds the state). NO host RSS poller exists — adding an 'rss' ingestion source to /v1/trigger-subscriptions is RFC 0099 wire territory (see ADR 0190) — so these chains ARE the poller: pair each with a Schedule and the scheduler does the polling. Authored over shipped node typeIds (core.trigger.schedule + core.openwop.http.fetch + core.storage.kv-get/kv-set + core.ai.chatCompletion + core.openwop.integration.notification-push). No external sends — digests are in-app notifications, so no approval gate is needed. All tenant values are run parameters (replay-deterministic).",
       "license": "Apache-2.0",
       "tags": [],
@@ -1342,7 +1342,7 @@
     {
       "name": "core.openwop.workflows.customer-onboarding",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.2",
+      "latestVersion": "1.0.3",
       "description": "Customer-onboarding chains (RFC 0013): the post-sale first-mile — a warm welcome, a personalized kickoff checklist, and a scheduled 30-day health check. All external sends sit behind a human approval gate; tenant values are run parameters (replay-deterministic).",
       "license": "Apache-2.0",
       "tags": [],
@@ -1359,7 +1359,7 @@
     {
       "name": "core.openwop.workflows.data-ops",
       "kind": "workflow-chain",
-      "latestVersion": "1.1.1",
+      "latestVersion": "1.1.2",
       "description": "Real-work workflow pack (RFC 0013, ADR 0200/0201) — the Data Ops cluster, the one shape-family the Zapier/n8n and Microsoft canons don't cover (surfaced by the Make/Workato research): collapsing many records into one output (the aggregator canon), one-way movement of records between systems, and content routing (send a record down the right branch). Roll Up, Records → Table, Records → System (one-way upsert behind a human sign-off), and Content Router (route a record to the matching branch by a field predicate — the Make router shape, gated via edge conditions, ADR 0201). Uses only shipped, executable nodes (core.flow.aggregate-{numeric,text,table} + core.flow.router + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.http.openapi-call + core.openwop.integration.notification-push). The write is ONE-WAY movement keyed on an external id (re-runs update, never duplicate) behind a human approval — it is NOT a bidirectional sync. All tenant values are run parameters (replay-deterministic).",
       "license": "Apache-2.0",
       "tags": [],
@@ -1392,7 +1392,7 @@
     {
       "name": "core.openwop.workflows.devops",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.1",
+      "latestVersion": "1.0.2",
       "description": "Real-work workflow pack (RFC 0013, ADR 0190 Phase 4) — the DevOps cluster: senior-style code review of a diff, changelog/release-notes drafting from a commit log, CI-failure diagnosis from a signature-verified webhook, and a stale-issue gardener over the public GitHub API. All four are ADVISORY — they analyze and notify in-app, never write to your repo or post comments (an authenticated GitHub write path would bind a connection behind an approval gate; deferred until the MCP-reach connection binding has a chain precedent). These chains do not run the Code Reviewer / Git Author AGENTS — those remain chat-drivable via the agents surface; the chains use short chain-local prompts over core.ai.chatCompletion. All tenant values are run parameters (replay-deterministic).",
       "license": "Apache-2.0",
       "tags": [],
@@ -1410,7 +1410,7 @@
     {
       "name": "core.openwop.workflows.exec-ops",
       "kind": "workflow-chain",
-      "latestVersion": "1.1.1",
+      "latestVersion": "1.1.2",
       "description": "Real-work workflow pack (RFC 0013, ADR 0149). The Executive / Chief-of-Staff cluster: Daily Executive Briefing, Meeting Prep & Attendee Dossier, and Board / Investor Update Pack. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.analytics) and, where a workflow touches an external system, binds a connection pack via core.openwop.http.openapi-call (connectionRef) — so a configured connection runs live and an unconfigured one surfaces a connect prompt rather than failing. Every external send is gated by core.chat.approvalGate; the read-only briefing is ungated. All tenant-specific values are run parameters (replay-deterministic). Resolves fully on hosts that ship the feature + http/mcp + chat packs (the OpenWOP reference app); the connection bindings are configured by the operator under Access & data → Connections.",
       "license": "Apache-2.0",
       "tags": [],
@@ -1427,7 +1427,7 @@
     {
       "name": "core.openwop.workflows.feedback-triage",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.0",
+      "latestVersion": "1.0.1",
       "description": "Feedback-triage chains (RFC 0013): turn raw inbound feedback into classified, routed, actionable items. A form submission is classified and (on approval) filed as a follow-up task; a batch is themed into a weekly digest. Replay-deterministic.",
       "license": "Apache-2.0",
       "tags": [],
@@ -1443,7 +1443,7 @@
     {
       "name": "core.openwop.workflows.finance",
       "kind": "workflow-chain",
-      "latestVersion": "1.1.1",
+      "latestVersion": "1.1.2",
       "description": "Real-work workflow pack (RFC 0013, ADR 0149) — the Finance cluster: Invoice → AP Processing, Month-End Close Checklist, and Expense/Budget Approval + anomaly detection. Reasons with core.ai.chatCompletion; recommends ERP actions (validation + posting) provider-agnostically via core.openwop.connectors.erp-action (NetSuite when connected); every posting/reimbursement runs through a threshold core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + kb + integration packs. Published under core.openwop.workflows.* (openwop-team key).",
       "license": "Apache-2.0",
       "tags": [],
@@ -1475,7 +1475,7 @@
     {
       "name": "core.openwop.workflows.inbox",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.3",
+      "latestVersion": "1.0.4",
       "description": "Real-work workflow pack (RFC 0013, ADR 0190 Phase 2) — the personal-productivity Inbox cluster: triage your own inbox (classify, draft the urgent reply, digest the rest), nudge unanswered threads, and debrief calls into coaching notes. Distinct from core.openwop.workflows.support (a customer-support mailbox with queue routing): these serve YOUR inbox and YOUR calls. Drafting uses core.email.draft — it creates a draft in your mailbox and never sends (the draft is the human gate); the one real send (follow-up nudger) waits on an approval. All tenant values are run parameters (replay-deterministic).",
       "license": "Apache-2.0",
       "tags": [],
@@ -1508,7 +1508,7 @@
     {
       "name": "core.openwop.workflows.insights-suite",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.0",
+      "latestVersion": "1.0.1",
       "description": "Insights & Drafting meta-workflows as an RFC 0013 chain pack (migrated from the deprecated ADR 0082/0072 builtins, ADR 0472 Phase 2). Three real source→analysis→LLM→draft→notify pipelines over BYOK-connected sources (BigQuery, Workday, chat completion, email-draft, notification-push). chainIds keep the original `openwop-app.insights.*` ids so scheduler/trigger ignition + replay are unchanged; the host registers them chain-backed (resolve-by-id, stable id) AND they are gallery-editable chains. Per-node outputRole (not expressible in the portable fragment) is re-applied at registration via the feature's postProcess.",
       "license": "",
       "tags": [],
@@ -1525,7 +1525,7 @@
     {
       "name": "core.openwop.workflows.it-support",
       "kind": "workflow-chain",
-      "latestVersion": "1.2.2",
+      "latestVersion": "1.2.3",
       "description": "Real-work workflow pack (RFC 0013, ADR 0149, ADR 0208) — the IT / Support cluster: Incident Triage & Major-Incident Comms. An AI classifier assesses each incident's severity; routine incidents go to a recommended knowledge-base article and a ticket, while major incidents go to human-approved stakeholder updates in Slack — and each incident finishes with a post-incident summary. All tenant values are run parameters (replay-deterministic). Resolves on hosts shipping the kb + http + ai + chat + integration packs. Published under core.openwop.workflows.* (openwop-team key).",
       "license": "Apache-2.0",
       "tags": [],
@@ -1648,7 +1648,7 @@
     {
       "name": "core.openwop.workflows.knowledge",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.2",
+      "latestVersion": "1.0.3",
       "description": "Real-work workflow pack (RFC 0013, ADR 0190 Phase 2) — the internal Knowledge cluster: employee policy/HR Q&A grounded in your Knowledge Base, compliance review of documents against your policy corpus, and structured document summarization. Distinct from core.openwop.workflows.support (customer-facing): these serve EMPLOYEES over internal policy collections. Authored entirely over shipped node typeIds (feature.kb.nodes.rag + core.ai.chatCompletion + core.flow.if + core.chat.approvalGate + core.openwop.integration.*). Populate the underlying collections in the Knowledge feature (or via knowledge-sync from Drive/OneDrive/Dropbox/Box) — these chains READ the app KB; they do not build a separate index. Every external send waits on a human approval gate. All tenant values are run parameters (replay-deterministic).",
       "license": "Apache-2.0",
       "tags": [],
@@ -1665,7 +1665,7 @@
     {
       "name": "core.openwop.workflows.lighthouse",
       "kind": "workflow-chain",
-      "latestVersion": "1.1.3",
+      "latestVersion": "1.1.4",
       "description": "Real-work workflow pack (RFC 0013, ADR 0149 / ADR 0155 follow-on). The five zero-config 'lighthouse' workflows from the ADR 0149 catalog — Lead Triage, Account Brief, Renewal & Churn-Risk Digest, RFP Response, and Post-Meeting Follow-up — authored entirely over node typeIds shipped with this host (feature.crm/kb/analytics + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.integration.*). Each rides real tenant data through the feature node packs, reasons with the LLM node, gates every external send behind a human approval, and delivers a usable artifact. Tenant-specific values are RUN PARAMETERS (never hardcoded) so the expansion stays replay-deterministic. Picking one in the builder instantiates a fully-editable, runnable, assignable workflow.",
       "license": "Apache-2.0",
       "tags": [],
@@ -1700,7 +1700,7 @@
     {
       "name": "core.openwop.workflows.marketing",
       "kind": "workflow-chain",
-      "latestVersion": "1.1.3",
+      "latestVersion": "1.1.4",
       "description": "Real-work workflow pack (RFC 0013, ADR 0149) — the Marketing & Advertising cluster: Full Campaign Launch, Ad Performance Optimization Loop, Content Brief Generator, and Content Repurposing. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.kb / feature.cms / feature.email); reads/optimizes the ad platforms provider-agnostically via the core.openwop.connectors.ad-* capability nodes (Meta or Google, whichever the tenant connected — ADR 0186). The optimization loop routes within-guardrail changes to auto-apply and out-of-guardrail changes to a core.chat.approvalGate via a core.flow.if conditional node (ADR 0149 open-question resolution: a flow conditional, not a new primitive). Every launch/publish/apply is approval- or guardrail-gated; all tenant values are run parameters (replay-deterministic). Published under core.openwop.workflows.* (openwop-team key).",
       "license": "Apache-2.0",
       "tags": [],
@@ -1751,7 +1751,7 @@
     {
       "name": "core.openwop.workflows.meeting-ops",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.0",
+      "latestVersion": "1.0.1",
       "description": "Meeting-ops chains (RFC 0013): less time in and around meetings — an agenda from a stated goal, and notes turned into owned action items. In-app and draft sinks only; replay-deterministic.",
       "license": "Apache-2.0",
       "tags": [],
@@ -1785,7 +1785,7 @@
     {
       "name": "core.openwop.workflows.people-hr",
       "kind": "workflow-chain",
-      "latestVersion": "1.2.1",
+      "latestVersion": "1.2.2",
       "description": "Real-work workflow pack (RFC 0013, ADR 0149) — the People / HR cluster: Employee Onboarding Orchestrator, Offboarding & Access Revocation, and Leave/PTO Request Routing. Reasons with core.ai.chatCompletion; binds Microsoft 365 via core.openwop.http.openapi-call connectionRef, recommends HRIS actions provider-agnostically via core.openwop.connectors.hris-action (Workday today), and provider-agnostic ticketing (Jira/ServiceNow) via the core.openwop.connectors.ticket-* capability nodes (ADR 0186); every account/HRIS mutation and every team-facing send is gated by core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + integration packs; connections are configured under Access & data → Connections. Published under core.openwop.workflows.* (openwop-team key).",
       "license": "Apache-2.0",
       "tags": [],
@@ -1848,7 +1848,7 @@
     {
       "name": "core.openwop.workflows.research",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.1",
+      "latestVersion": "1.0.2",
       "description": "Real-work workflow pack (RFC 0013, ADR 0190 Phase 5) — the Research cluster: turn a question into a short, cited web brief. Rides the ADR 0101 unified web search (core.web.search → the host.webResearch surface): live results when a search key is configured (BYOK secret 'web-search' on the keys page, or the host's OPENWOP_WEBSEARCH_API_KEY), an honest demo placeholder when not — the synthesis says so plainly instead of pretending. For deep, multi-source, long-horizon research use the Deep Research AGENT in chat; this chain is the quick-brief shape. All tenant values are run parameters (replay-deterministic).",
       "license": "Apache-2.0",
       "tags": [],
@@ -1910,7 +1910,7 @@
     {
       "name": "core.openwop.workflows.starters",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.2",
+      "latestVersion": "1.0.3",
       "description": "Starter workflow pack (RFC 0013, ADR 0190) — the simple-pipe on-ramp tier: short single-trigger→action recipes (webhook→notify, form→table, schedule→digest, fetch→store) that run in under a minute with zero connections, before you graduate to the AI-agent packs. Trigger-shaped starters begin with a core.trigger.* pass-through entry node: bind them to a live source with a trigger subscription (POST /v1/trigger-subscriptions — webhook, email, or form; RFC 0099) or a Schedule; on a manual run the trigger payload is empty, so bind a source to see them shine. External sends stay behind a human approval gate; in-app notifications are direct. All tenant values are run parameters (replay-deterministic).",
       "license": "Apache-2.0",
       "tags": [],
@@ -1930,7 +1930,7 @@
     {
       "name": "core.openwop.workflows.support",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.4",
+      "latestVersion": "1.0.5",
       "description": "Real-work workflow pack (RFC 0013, ADR 0190) — the Customer Support cluster, the #1 surveyed agent use case the gallery previously had zero templates for: KB-grounded answering, email triage (draft-only — the human sends), customer-ticket routing, sentiment/brand-risk escalation, and CSAT follow-up. Authored entirely over node typeIds shipped with this host (feature.kb + core.ai.chatCompletion + core.flow.if + core.chat.approvalGate + core.email.draft + core.openwop.connectors.ticket-create + core.openwop.integration.*). Every external SEND waits on a human approval gate (core.email.draft creates a draft and never sends — the draft itself is the human gate). Distinct from core.openwop.workflows.it-support: that pack routes IT incidents by severity; this one serves customer-facing support (intent, queues, CSAT). All tenant values are run parameters (replay-deterministic).",
       "license": "Apache-2.0",
       "tags": [],
@@ -1989,7 +1989,7 @@
     {
       "name": "core.openwop.workflows.weekly-digest",
       "kind": "workflow-chain",
-      "latestVersion": "1.1.0",
+      "latestVersion": "1.1.1",
       "description": "Weekly-digest chains (RFC 0013): scheduled roundups that keep a team informed without a meeting — a research digest on a watched topic, and a team status roll-up. In-app + gated-send sinks; replay-deterministic.",
       "license": "Apache-2.0",
       "tags": [],
@@ -2691,7 +2691,7 @@
     {
       "name": "vendor.openwop-app.workflows.strategy",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.1",
+      "latestVersion": "1.0.2",
       "description": "Strategy operating-rhythm workflows (RFC 0013, ADR 0231). The KR measurement cadence: a weekly check-in nudge that finds measured key results with no recent confirmed check-in and notifies their owners, and a metric-sync pass that refreshes every sourced key result from its configured data owner (CRM deal totals, analytics conversions) through the one governed check-in path. Both are scheduled via the strategy cadence config (GET/PUT /v1/host/openwop-app/strategy/cadence) — no auto-boot jobs. All writes ride ctx.features.strategy.checkIn: agent writes are structurally proposals; sync writes are confirmed only by a human-configured measure.source (fail-closed).",
       "license": "Apache-2.0",
       "tags": [],

@@ -52,8 +52,20 @@
       "integrity": "sha256-xkvJUdjaU2hrIbbhsRcMz8wyOAkViix4iMdnuk/4cUM=",
       "deprecated": false,
       "yanked": false
+    },
+    {
+      "version": "1.0.3",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.workflows.starters/-/1.0.3.json",
+      "tarballUrl": "/v1/packs/core.openwop.workflows.starters/-/1.0.3.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.workflows.starters/-/1.0.3.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-euIRcZ3jkmmtsXue3rdSx7TWEGx8pjg1sYwSJzeIF4k=",
+      "deprecated": false,
+      "yanked": false
     }
   ],
-  "latest": "1.0.2",
+  "latest": "1.0.3",
   "deprecated": false
 }
