@@ -1,12 +1,9 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://packs.openwop.dev/core.openwop.agents.supervisor/1.0.2/supervisor.task.schema.json",
+  "$id": "https://packs.openwop.dev/core.openwop.agents.supervisor/1.0.1/supervisor.task.schema.json",
   "title": "SupervisorTask",
   "type": "object",
-  "required": [
-    "goal",
-    "subagents"
-  ],
+  "required": ["goal", "subagents"],
   "properties": {
     "goal": {
       "type": "string",
@@ -19,35 +16,15 @@
       "maxItems": 32,
       "items": {
         "type": "object",
-        "required": [
-          "agentId",
-          "persona",
-          "modelClass"
-        ],
+        "required": ["agentId", "persona", "modelClass"],
         "properties": {
-          "agentId": {
-            "type": "string",
-            "minLength": 3
-          },
-          "persona": {
-            "type": "string",
-            "minLength": 1
-          },
+          "agentId": { "type": "string", "minLength": 3 },
+          "persona": { "type": "string", "minLength": 1 },
           "modelClass": {
             "type": "string",
-            "enum": [
-              "reasoning",
-              "writing",
-              "coding",
-              "research",
-              "classification",
-              "general"
-            ]
+            "enum": ["reasoning", "writing", "coding", "research", "classification", "general"]
           },
-          "description": {
-            "type": "string",
-            "maxLength": 500
-          }
+          "description": { "type": "string", "maxLength": 500 }
         },
         "additionalProperties": false
       }
@@ -58,10 +35,7 @@
       "maximum": 16,
       "default": 4
     },
-    "context": {
-      "type": "object",
-      "additionalProperties": true
-    }
+    "context": { "type": "object", "additionalProperties": true }
   },
   "additionalProperties": false
 }
