@@ -252,6 +252,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.agents.deep-research@1.0.3",
+      "type": "library",
+      "name": "core.openwop.agents.deep-research",
+      "version": "1.0.3",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v1/packs/core.openwop.agents.deep-research/-/1.0.3.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "44712be09fab1b6f087485e52c835f49c4aebe6a7d7a087cc787c8fc12a1c119"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.agents.devops-crew@1.0.0",
       "type": "library",
       "name": "core.openwop.agents.devops-crew",
@@ -558,6 +576,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.agents.react@1.0.3",
+      "type": "library",
+      "name": "core.openwop.agents.react",
+      "version": "1.0.3",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v1/packs/core.openwop.agents.react/-/1.0.3.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "f32cbc3bf6f70858d4964dca5d54886c48f0c7d5c90f21dda21ef6cd00a46e74"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.agents.research-crew@1.0.0",
       "type": "library",
       "name": "core.openwop.agents.research-crew",
@@ -678,6 +714,24 @@
             {
               "alg": "SHA-256",
               "content": "c9a3d874a61f3404d09ffb2f2be891d118529abd70777b086c638877195252cc"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.agents.supervisor@1.0.3",
+      "type": "library",
+      "name": "core.openwop.agents.supervisor",
+      "version": "1.0.3",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v1/packs/core.openwop.agents.supervisor/-/1.0.3.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "e033bb84ab6d1a68c7391554890e7bc53605e8f116944d97c4dd351dc0ed9c16"
             }
           ]
         }
