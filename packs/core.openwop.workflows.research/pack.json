@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.research",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "kind": "workflow-chain",
   "description": "Real-work workflow pack (RFC 0013, ADR 0190 Phase 5) — the Research cluster: turn a question into a short, cited web brief. Rides the ADR 0101 unified web search (core.web.search → the host.webResearch surface): live results when a search key is configured (BYOK secret 'web-search' on the keys page, or the host's OPENWOP_WEBSEARCH_API_KEY), an honest demo placeholder when not — the synthesis says so plainly instead of pretending. For deep, multi-source, long-horizon research use the Deep Research AGENT in chat; this chain is the quick-brief shape. All tenant values are run parameters (replay-deterministic).",
   "author": "openwop",
@@ -31,7 +31,7 @@
             "provider": "{{params.provider}}",
             "model": "{{params.model}}"
           }, "inputs": {} },
-          { "id": "notify", "typeId": "core.openwop.integration.notification-push", "name": "Deliver brief", "position": { "x": 560, "y": 0 }, "config": {}, "inputs": {} }
+          { "id": "notify", "typeId": "feature.notifications.nodes.notify", "name": "Deliver brief", "position": { "x": 560, "y": 0 }, "config": { "audience": "tenant" }, "inputs": { "title": "Cited Web Brief" } }
         ],
         "edges": [
           { "from": "search", "to": "synthesize" },

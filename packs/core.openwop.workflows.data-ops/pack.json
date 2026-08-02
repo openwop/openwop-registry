@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.data-ops",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "kind": "workflow-chain",
   "description": "Real-work workflow pack (RFC 0013, ADR 0200/0201) — the Data Ops cluster, the one shape-family the Zapier/n8n and Microsoft canons don't cover (surfaced by the Make/Workato research): collapsing many records into one output (the aggregator canon), one-way movement of records between systems, and content routing (send a record down the right branch). Roll Up, Records → Table, Records → System (one-way upsert behind a human sign-off), and Content Router (route a record to the matching branch by a field predicate — the Make router shape, gated via edge conditions, ADR 0201). Uses only shipped, executable nodes (core.flow.aggregate-{numeric,text,table} + core.flow.router + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.http.openapi-call + core.openwop.integration.notification-push). The write is ONE-WAY movement keyed on an external id (re-runs update, never duplicate) behind a human approval — it is NOT a bidirectional sync. All tenant values are run parameters (replay-deterministic).",
   "author": "openwop",
@@ -34,7 +34,7 @@
             "provider": "{{params.provider}}",
             "model": "{{params.model}}"
           }, "inputs": {} },
-          { "id": "notify", "typeId": "core.openwop.integration.notification-push", "name": "Deliver digest", "position": { "x": 560, "y": 80 }, "config": {}, "inputs": {} }
+          { "id": "notify", "typeId": "feature.notifications.nodes.notify", "name": "Deliver digest", "position": { "x": 560, "y": 80 }, "config": { "audience": "tenant" }, "inputs": { "title": "Roll Up a List of Records" } }
         ],
         "edges": [
           { "from": "total", "to": "digest.total" },
@@ -68,8 +68,8 @@
           { "id": "scan", "typeId": "core.ai.chatCompletion", "name": "Scan for anomalies", "position": { "x": 300, "y": 0 }, "config": { "systemPrompt": "You are a data analyst. Given a table of rows and columns, call out outliers, missing/empty values, and rows worth a second look. Be specific (cite the row). If the table looks clean, say so.",
             "provider": "{{params.provider}}",
             "model": "{{params.model}}"
-          }, "inputs": {} },
-          { "id": "notify", "typeId": "core.openwop.integration.notification-push", "name": "Deliver findings", "position": { "x": 560, "y": 0 }, "config": {}, "inputs": {} }
+          }, "inputs": { "title": "Records → Table + Anomaly Scan" } },
+          { "id": "notify", "typeId": "feature.notifications.nodes.notify", "name": "Deliver findings", "position": { "x": 560, "y": 0 }, "config": { "audience": "tenant" }, "inputs": { "title": "Roll Up a List of Records" } }
         ],
         "edges": [
           { "from": "table", "to": "scan" },
@@ -102,12 +102,12 @@
       "capabilities": ["side-effectful"],
       "dag": {
         "nodes": [
-          { "id": "read", "typeId": "core.openwop.http.openapi-call", "name": "Read source records", "position": { "x": 0, "y": 0 }, "config": { "connectionRef": "{{params.sourceConnectionRef}}", "operationId": "{{params.readOperationId}}" }, "inputs": {} },
+          { "id": "read", "typeId": "core.openwop.http.openapi-call", "name": "Read source records", "position": { "x": 0, "y": 0 }, "config": { "connectionRef": "{{params.sourceConnectionRef}}", "operationId": "{{params.readOperationId}}" }, "inputs": { "title": "Records → Table + Anomaly Scan" } },
           { "id": "reshape", "typeId": "core.ai.chatCompletion", "name": "Reshape for the destination", "position": { "x": 280, "y": 0 }, "config": { "systemPrompt": "You map source records to the destination's shape. Return a JSON array; for every field you cannot determine from the source, output the string \"unknown\" — never guess or invent a value that would be written to a system of record. Preserve the external key ({{params.keyField}}) on every record.",
             "provider": "{{params.provider}}",
             "model": "{{params.model}}"
           }, "inputs": {} },
-          { "id": "approve", "typeId": "core.chat.approvalGate", "name": "Review before write", "position": { "x": 560, "y": 0 }, "config": {}, "inputs": {} },
+          { "id": "approve", "typeId": "core.chat.approvalGate", "name": "Review before write", "position": { "x": 560, "y": 0 }, "config": { "audience": "tenant" }, "inputs": {} },
           { "id": "upsert", "typeId": "core.openwop.http.openapi-call", "name": "Upsert into destination", "position": { "x": 840, "y": 0 }, "config": { "connectionRef": "{{params.destConnectionRef}}", "operationId": "{{params.upsertOperationId}}" }, "inputs": {} }
         ],
         "edges": [
@@ -138,9 +138,9 @@
       "dag": {
         "nodes": [
           { "id": "route", "typeId": "core.flow.router", "name": "Route by field", "position": { "x": 0, "y": 120 }, "config": { "mode": "first-match", "defaultLabel": "normal", "routes": [ { "label": "high", "predicate": { "path": "{{params.routeField}}", "op": "eq", "value": "high" } }, { "label": "low", "predicate": { "path": "{{params.routeField}}", "op": "eq", "value": "low" } }, { "label": "normal", "predicate": { "path": "{{params.routeField}}", "op": "eq", "value": "normal" } } ] }, "inputs": { "value": "{{params.value}}" } },
-          { "id": "high", "typeId": "core.openwop.integration.notification-push", "name": "High-priority branch", "position": { "x": 320, "y": 0 }, "config": {}, "inputs": {} },
-          { "id": "normal", "typeId": "core.openwop.integration.notification-push", "name": "Normal branch", "position": { "x": 320, "y": 120 }, "config": {}, "inputs": {} },
-          { "id": "low", "typeId": "core.openwop.integration.notification-push", "name": "Low-priority branch", "position": { "x": 320, "y": 240 }, "config": {}, "inputs": {} }
+          { "id": "high", "typeId": "feature.notifications.nodes.notify", "name": "High-priority branch", "position": { "x": 320, "y": 0 }, "config": { "audience": "tenant" }, "inputs": { "title": "Content Router" } },
+          { "id": "normal", "typeId": "feature.notifications.nodes.notify", "name": "Normal branch", "position": { "x": 320, "y": 120 }, "config": { "audience": "tenant" }, "inputs": { "title": "Content Router" } },
+          { "id": "low", "typeId": "feature.notifications.nodes.notify", "name": "Low-priority branch", "position": { "x": 320, "y": 240 }, "config": { "audience": "tenant" }, "inputs": { "title": "Content Router" } }
         ],
         "edges": [
           { "from": "route", "to": "high", "condition": { "type": "contains", "left": "branches", "right": "high" } },
