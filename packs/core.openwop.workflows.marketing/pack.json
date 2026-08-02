@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.marketing",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "kind": "workflow-chain",
   "description": "Real-work workflow pack (RFC 0013, ADR 0149) — the Marketing & Advertising cluster: Full Campaign Launch, Ad Performance Optimization Loop, Content Brief Generator, and Content Repurposing. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.kb / feature.cms / feature.email); reads/optimizes the ad platforms provider-agnostically via the core.openwop.connectors.ad-* capability nodes (Meta or Google, whichever the tenant connected — ADR 0186). The optimization loop routes within-guardrail changes to auto-apply and out-of-guardrail changes to a core.chat.approvalGate via a core.flow.if conditional node (ADR 0149 open-question resolution: a flow conditional, not a new primitive). Every launch/publish/apply is approval- or guardrail-gated; all tenant values are run parameters (replay-deterministic). Published under core.openwop.workflows.* (openwop-team key).",
   "author": "openwop",
@@ -123,7 +123,7 @@
           { "id": "brief", "typeId": "core.ai.chatCompletion", "name": "Structured SEO brief", "position": { "x": 320, "y": 0 }, "config": { "systemPrompt": "Produce a structured SEO content brief for \"{{params.topic}}\" grounded in the gathered sources: intent, outline, key questions, and target keywords.",
             "provider": "{{params.provider}}",
             "model": "{{params.model}}"
-          }, "inputs": { "title": "Ad Performance Optimization Loop" } },
+          }, "inputs": {} },
           { "id": "deliver", "typeId": "feature.notifications.nodes.notify", "name": "Deliver brief", "position": { "x": 600, "y": 0 }, "config": { "audience": "tenant" }, "inputs": { "title": "Content Brief Generator" } }
         ],
         "edges": [
@@ -156,7 +156,7 @@
           { "id": "outline", "typeId": "core.ai.chatCompletion", "name": "Outline", "position": { "x": 0, "y": 120 }, "config": { "systemPrompt": "Outline the key angles to repurpose this content across channels. Source: {{params.sourceText}}",
             "provider": "{{params.provider}}",
             "model": "{{params.model}}"
-          }, "inputs": { "title": "Content Brief Generator" } },
+          }, "inputs": {} },
           { "id": "linkedin", "typeId": "core.ai.chatCompletion", "name": "LinkedIn post", "position": { "x": 320, "y": 0 }, "config": { "systemPrompt": "Write a LinkedIn post from the outline.",
             "provider": "{{params.provider}}",
             "model": "{{params.model}}"
@@ -165,8 +165,8 @@
             "provider": "{{params.provider}}",
             "model": "{{params.model}}"
           }, "inputs": {} },
-          { "id": "newsletter", "typeId": "feature.email.nodes.render", "name": "Newsletter render", "position": { "x": 320, "y": 240 }, "config": { "audience": "tenant" }, "inputs": { "orgId": "{{params.orgId}}", "templateId": "{{params.templateId}}" } },
-          { "id": "review", "typeId": "core.chat.approvalGate", "name": "Approve before publish", "position": { "x": 640, "y": 120 }, "config": { "audience": "tenant" }, "inputs": {} },
+          { "id": "newsletter", "typeId": "feature.email.nodes.render", "name": "Newsletter render", "position": { "x": 320, "y": 240 }, "config": {}, "inputs": { "orgId": "{{params.orgId}}", "templateId": "{{params.templateId}}" } },
+          { "id": "review", "typeId": "core.chat.approvalGate", "name": "Approve before publish", "position": { "x": 640, "y": 120 }, "config": {}, "inputs": {} },
           { "id": "schedule", "typeId": "feature.notifications.nodes.notify", "name": "Schedule + notify", "position": { "x": 960, "y": 120 }, "config": { "audience": "tenant" }, "inputs": { "title": "Content Repurposing" } }
         ],
         "edges": [

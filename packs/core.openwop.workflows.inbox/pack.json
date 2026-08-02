@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.inbox",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "kind": "workflow-chain",
   "description": "Real-work workflow pack (RFC 0013, ADR 0190 Phase 2) — the personal-productivity Inbox cluster: triage your own inbox (classify, draft the urgent reply, digest the rest), nudge unanswered threads, and debrief calls into coaching notes. Distinct from core.openwop.workflows.support (a customer-support mailbox with queue routing): these serve YOUR inbox and YOUR calls. Drafting uses core.email.draft — it creates a draft in your mailbox and never sends (the draft is the human gate); the one real send (follow-up nudger) waits on an approval. All tenant values are run parameters (replay-deterministic).",
   "author": "openwop",
@@ -78,8 +78,8 @@
           { "id": "draft", "typeId": "core.ai.chatCompletion", "name": "Draft polite follow-up", "position": { "x": 0, "y": 0 }, "config": { "systemPrompt": "Draft a short, polite follow-up to this thread, quiet for {{params.daysQuiet}} days: restate the one ask in a single sentence, offer an easy out ('if now isn't the time…'), keep it under 80 words, first person. Thread: {{params.threadText}}",
             "provider": "{{params.provider}}",
             "model": "{{params.model}}"
-          }, "inputs": { "title": "Call Debrief & Coaching Notes" } },
-          { "id": "approve", "typeId": "core.chat.approvalGate", "name": "Approve before send", "position": { "x": 280, "y": 0 }, "config": { "audience": "tenant" }, "inputs": { "title": "Personal Inbox Triage" } },
+          }, "inputs": {} },
+          { "id": "approve", "typeId": "core.chat.approvalGate", "name": "Approve before send", "position": { "x": 280, "y": 0 }, "config": {}, "inputs": {} },
           { "id": "send", "typeId": "core.openwop.integration.email-send", "name": "Send follow-up", "position": { "x": 560, "y": 0 }, "config": {
             "from": "{{params.senderEmail}}"
           }, "inputs": {

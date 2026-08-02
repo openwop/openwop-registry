@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.lighthouse",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "kind": "workflow-chain",
   "description": "Real-work workflow pack (RFC 0013, ADR 0149 / ADR 0155 follow-on). The five zero-config 'lighthouse' workflows from the ADR 0149 catalog — Lead Triage, Account Brief, Renewal & Churn-Risk Digest, RFP Response, and Post-Meeting Follow-up — authored entirely over node typeIds shipped with this host (feature.crm/kb/analytics + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.integration.*). Each rides real tenant data through the feature node packs, reasons with the LLM node, gates every external send behind a human approval, and delivers a usable artifact. Tenant-specific values are RUN PARAMETERS (never hardcoded) so the expansion stays replay-deterministic. Picking one in the builder instantiates a fully-editable, runnable, assignable workflow.",
   "author": "openwop",
@@ -111,8 +111,8 @@
       "capabilities": ["side-effectful"],
       "dag": {
         "nodes": [
-          { "id": "deals", "typeId": "feature.crm.nodes.list-deals", "name": "List open deals", "position": { "x": 0, "y": 0 }, "config": { "orgId": "{{params.orgId}}" }, "inputs": { "title": "Renewal & Churn-Risk Digest" } },
-          { "id": "usage", "typeId": "feature.analytics.nodes.query", "name": "Query usage analytics", "position": { "x": 0, "y": 160 }, "config": { "orgId": "{{params.orgId}}" }, "inputs": { "title": "Account Brief & Next-Step Draft" } },
+          { "id": "deals", "typeId": "feature.crm.nodes.list-deals", "name": "List open deals", "position": { "x": 0, "y": 0 }, "config": { "orgId": "{{params.orgId}}" }, "inputs": {} },
+          { "id": "usage", "typeId": "feature.analytics.nodes.query", "name": "Query usage analytics", "position": { "x": 0, "y": 160 }, "config": { "orgId": "{{params.orgId}}" }, "inputs": {} },
           { "id": "score", "typeId": "core.ai.chatCompletion", "name": "Score risk + save plays", "position": { "x": 300, "y": 80 }, "config": { "systemPrompt": "You are a customer-success analyst. For {{params.segment}}, combine the open deals with the usage analytics to score renewal/churn risk. Produce a ranked at-risk list with the driver of risk and a concrete save play for each.",
             "provider": "{{params.provider}}",
             "model": "{{params.model}}"
@@ -158,7 +158,7 @@
             "provider": "{{params.provider}}",
             "model": "{{params.model}}"
           }, "inputs": {} },
-          { "id": "approve", "typeId": "core.chat.approvalGate", "name": "SME review", "position": { "x": 560, "y": 0 }, "config": { "audience": "tenant" }, "inputs": {} }
+          { "id": "approve", "typeId": "core.chat.approvalGate", "name": "SME review", "position": { "x": 560, "y": 0 }, "config": {}, "inputs": {} }
         ],
         "edges": [
           { "from": "retrieve", "to": "draft" },
@@ -194,7 +194,7 @@
             "provider": "{{params.provider}}",
             "model": "{{params.model}}"
           }, "inputs": {} },
-          { "id": "approve", "typeId": "core.chat.approvalGate", "name": "Approve follow-up", "position": { "x": 300, "y": 0 }, "config": { "audience": "tenant" }, "inputs": {} },
+          { "id": "approve", "typeId": "core.chat.approvalGate", "name": "Approve follow-up", "position": { "x": 300, "y": 0 }, "config": {}, "inputs": {} },
           { "id": "send", "typeId": "core.openwop.integration.email-send", "name": "Send follow-up", "position": { "x": 560, "y": 0 }, "config": {
             "from": "{{params.senderEmail}}"
           }, "inputs": {

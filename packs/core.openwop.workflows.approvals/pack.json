@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.approvals",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "kind": "workflow-chain",
   "description": "Real-work workflow pack (RFC 0013, ADR 0198) — the Approvals cluster, the single most-used enterprise automation shape (Power Automate's #1 template is a sign-off flow with ~3.35M instantiations): Request Sign-off (an open gate any team member can approve — the zero-config marquee) and Two-Stage Sign-off (an ordered approval chain: stage two is only asked after stage one approves — sequential chains are DAG composition, not a new primitive). Gates support quorum (requiredApprovals), named approvers (approverRefs), and out-of-office delegation (an approver's active delegation lets their delegate act, counted as ONE identity — ADR 0198). All tenant values are run parameters (replay-deterministic).",
   "author": "openwop",
@@ -65,8 +65,8 @@
           { "id": "summarize", "typeId": "core.ai.chatCompletion", "name": "Summarize for sign-off", "position": { "x": 0, "y": 0 }, "config": { "systemPrompt": "Write a crisp sign-off card for this item: WHAT is being approved (1 line), WHY it matters, and what saying yes commits us to. Under 120 words. Item: {{params.item}}",
             "provider": "{{params.provider}}",
             "model": "{{params.model}}"
-          }, "inputs": { "title": "Two-Stage Sign-off" } },
-          { "id": "stageOne", "typeId": "core.chat.approvalGate", "name": "Stage 1 approval", "position": { "x": 280, "y": 0 }, "config": { "approverRefs": ["{{params.stageOneApprover}}"] }, "inputs": { "title": "Request Sign-off" } },
+          }, "inputs": {} },
+          { "id": "stageOne", "typeId": "core.chat.approvalGate", "name": "Stage 1 approval", "position": { "x": 280, "y": 0 }, "config": { "approverRefs": ["{{params.stageOneApprover}}"] }, "inputs": {} },
           { "id": "stageTwo", "typeId": "core.chat.approvalGate", "name": "Stage 2 approval (after stage 1)", "position": { "x": 560, "y": 0 }, "config": { "approverRefs": ["{{params.stageTwoApprover}}"] }, "inputs": {} },
           { "id": "notify", "typeId": "feature.notifications.nodes.notify", "name": "Decision back to requester", "position": { "x": 840, "y": 0 }, "config": { "audience": "tenant" }, "inputs": { "title": "Two-Stage Sign-off" } }
         ],

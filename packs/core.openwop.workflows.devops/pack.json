@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.devops",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "kind": "workflow-chain",
   "description": "Real-work workflow pack (RFC 0013, ADR 0190 Phase 4) — the DevOps cluster: senior-style code review of a diff, changelog/release-notes drafting from a commit log, CI-failure diagnosis from a signature-verified webhook, and a stale-issue gardener over the public GitHub API. All four are ADVISORY — they analyze and notify in-app, never write to your repo or post comments (an authenticated GitHub write path would bind a connection behind an approval gate; deferred until the MCP-reach connection binding has a chain precedent). These chains do not run the Code Reviewer / Git Author AGENTS — those remain chat-drivable via the agents surface; the chains use short chain-local prompts over core.ai.chatCompletion. All tenant values are run parameters (replay-deterministic).",
   "author": "openwop",
@@ -62,8 +62,8 @@
           { "id": "draft", "typeId": "core.ai.chatCompletion", "name": "Draft notes", "position": { "x": 0, "y": 0 }, "config": { "systemPrompt": "From this commit log, draft: (1) a changelog entry grouped Added / Changed / Fixed / Security, breaking changes first and clearly marked; (2) short release notes readable by {{params.audience}} — what improved and why it matters, no commit hashes. Be faithful to the log; do not invent features. Log: {{params.commitLog}}",
             "provider": "{{params.provider}}",
             "model": "{{params.model}}"
-          }, "inputs": { "title": "Release Notes Drafter" } },
-          { "id": "notify", "typeId": "feature.notifications.nodes.notify", "name": "Deliver draft", "position": { "x": 280, "y": 0 }, "config": { "audience": "tenant" }, "inputs": { "title": "CI Failure Explainer" } }
+          }, "inputs": {} },
+          { "id": "notify", "typeId": "feature.notifications.nodes.notify", "name": "Deliver draft", "position": { "x": 280, "y": 0 }, "config": { "audience": "tenant" }, "inputs": { "title": "Release Notes Drafter" } }
         ],
         "edges": [
           { "from": "draft", "to": "notify" }
@@ -93,12 +93,12 @@
         "nodes": [
           { "id": "hook", "typeId": "core.trigger.webhook", "name": "CI webhook", "position": { "x": 0, "y": 0 }, "config": {
             "path": "{{params.webhookPath}}"
-          }, "inputs": { "title": "Stale-Issue Gardener" } },
+          }, "inputs": {} },
           { "id": "diagnose", "typeId": "core.ai.chatCompletion", "name": "Diagnose the failure", "position": { "x": 520, "y": 0 }, "config": { "systemPrompt": "You are a CI-failure analyst. From this CI webhook payload (workflow run / check suite / job logs excerpt), report: the failing step, the probable root cause in one sentence, the evidence, and the single first thing to try. If the payload is not a failure event, say so in one line.",
             "provider": "{{params.provider}}",
             "model": "{{params.model}}"
-          }, "inputs": { "title": "Diff Review (advisory)" } },
-          { "id": "notify", "typeId": "feature.notifications.nodes.notify", "name": "Deliver diagnosis", "position": { "x": 780, "y": 0 }, "config": { "audience": "tenant" }, "inputs": { "title": "Release Notes Drafter" } }
+          }, "inputs": {} },
+          { "id": "notify", "typeId": "feature.notifications.nodes.notify", "name": "Deliver diagnosis", "position": { "x": 780, "y": 0 }, "config": { "audience": "tenant" }, "inputs": { "title": "CI Failure Explainer" } }
         ],
         "edges": [
           { "from": "hook", "to": "diagnose" },
@@ -127,7 +127,7 @@
       "capabilities": ["side-effectful"],
       "dag": {
         "nodes": [
-          { "id": "fetch", "typeId": "core.openwop.http.fetch", "name": "Fetch oldest open issues", "position": { "x": 0, "y": 0 }, "config": { "url": "https://api.github.com/repos/{{params.repo}}/issues?state=open&sort=updated&direction=asc&per_page=20" }, "inputs": { "title": "CI Failure Explainer" } },
+          { "id": "fetch", "typeId": "core.openwop.http.fetch", "name": "Fetch oldest open issues", "position": { "x": 0, "y": 0 }, "config": { "url": "https://api.github.com/repos/{{params.repo}}/issues?state=open&sort=updated&direction=asc&per_page=20" }, "inputs": {} },
           { "id": "garden", "typeId": "core.ai.chatCompletion", "name": "Gardener report", "position": { "x": 280, "y": 0 }, "config": { "systemPrompt": "You are an issue gardener for {{params.repo}}. From these least-recently-updated open issues (SKIP any entry with a pull_request field — those are PRs, not issues), produce: CLOSE CANDIDATES (looks answered/obsolete — say why), NEEDS A NUDGE (waiting on someone — who), and a one-line suggested comment for each. Be specific; cite issue numbers and titles.",
             "provider": "{{params.provider}}",
             "model": "{{params.model}}"

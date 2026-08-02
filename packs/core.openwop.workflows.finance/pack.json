@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.finance",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "kind": "workflow-chain",
   "description": "Real-work workflow pack (RFC 0013, ADR 0149) — the Finance cluster: Invoice → AP Processing, Month-End Close Checklist, and Expense/Budget Approval + anomaly detection. Reasons with core.ai.chatCompletion; recommends ERP actions (validation + posting) provider-agnostically via core.openwop.connectors.erp-action (NetSuite when connected); every posting/reimbursement runs through a threshold core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + kb + integration packs. Published under core.openwop.workflows.* (openwop-team key).",
   "author": "openwop",
@@ -71,13 +71,13 @@
           { "id": "checklist", "typeId": "core.ai.chatCompletion", "name": "Close checklist", "position": { "x": 0, "y": 0 }, "config": { "systemPrompt": "Build the month-end close checklist for {{params.period}} across teams, with owners and dependencies.",
             "provider": "{{params.provider}}",
             "model": "{{params.model}}"
-          }, "inputs": { "title": "Invoice → AP Processing" } },
+          }, "inputs": {} },
           { "id": "docs", "typeId": "feature.kb.nodes.rag", "name": "Collect supporting docs", "position": { "x": 0, "y": 140 }, "config": { "query": "month-end close supporting documents {{params.period}}" }, "inputs": { "query": "{{params.query}}", "orgId": "{{params.orgId}}", "collectionId": "{{params.collectionId}}" } },
           { "id": "variance", "typeId": "core.ai.chatCompletion", "name": "Draft variance notes", "position": { "x": 320, "y": 70 }, "config": { "systemPrompt": "Draft variance commentary for {{params.period}} from the checklist status and supporting docs; flag missing items.",
             "provider": "{{params.provider}}",
             "model": "{{params.model}}"
           }, "inputs": {} },
-          { "id": "chase", "typeId": "core.chat.approvalGate", "name": "Chase approvals", "position": { "x": 640, "y": 70 }, "config": { "audience": "tenant" }, "inputs": {} },
+          { "id": "chase", "typeId": "core.chat.approvalGate", "name": "Chase approvals", "position": { "x": 640, "y": 70 }, "config": {}, "inputs": {} },
           { "id": "report", "typeId": "feature.notifications.nodes.notify", "name": "Close-readiness report", "position": { "x": 960, "y": 70 }, "config": { "audience": "tenant" }, "inputs": { "title": "Month-End Close Checklist" } }
         ],
         "edges": [
@@ -113,8 +113,8 @@
           { "id": "check", "typeId": "core.ai.chatCompletion", "name": "Policy + anomaly check", "position": { "x": 0, "y": 0 }, "config": { "systemPrompt": "Assess the expense against policy and detect duplicates/anomalies. Expense: {{params.expenseContext}}",
             "provider": "{{params.provider}}",
             "model": "{{params.model}}"
-          }, "inputs": { "title": "Month-End Close Checklist" } },
-          { "id": "approve", "typeId": "core.chat.approvalGate", "name": "Threshold approval", "position": { "x": 320, "y": 0 }, "config": { "audience": "tenant" }, "inputs": {} },
+          }, "inputs": {} },
+          { "id": "approve", "typeId": "core.chat.approvalGate", "name": "Threshold approval", "position": { "x": 320, "y": 0 }, "config": {}, "inputs": {} },
           { "id": "reimburse", "typeId": "core.openwop.connectors.erp-action", "name": "Reimburse (ERP)", "position": { "x": 640, "y": 0 }, "config": { "action": "create-expense-report", "baseUrl": "{{params.erpBaseUrl}}", "employeeId": "{{params.employeeId}}", "amount": "{{params.expenseAmount}}" }, "inputs": {} },
           { "id": "flag", "typeId": "feature.notifications.nodes.notify", "name": "Flag outliers", "position": { "x": 960, "y": 0 }, "config": { "audience": "tenant" }, "inputs": { "title": "Expense / Budget Approval + Anomaly Detection" } }
         ],

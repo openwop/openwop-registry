@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.support",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "kind": "workflow-chain",
   "description": "Real-work workflow pack (RFC 0013, ADR 0190) — the Customer Support cluster, the #1 surveyed agent use case the gallery previously had zero templates for: KB-grounded answering, email triage (draft-only — the human sends), customer-ticket routing, sentiment/brand-risk escalation, and CSAT follow-up. Authored entirely over node typeIds shipped with this host (feature.kb + core.ai.chatCompletion + core.flow.if + core.chat.approvalGate + core.email.draft + core.openwop.connectors.ticket-create + core.openwop.integration.*). Every external SEND waits on a human approval gate (core.email.draft creates a draft and never sends — the draft itself is the human gate). Distinct from core.openwop.workflows.it-support: that pack routes IT incidents by severity; this one serves customer-facing support (intent, queues, CSAT). All tenant values are run parameters (replay-deterministic).",
   "author": "openwop",
@@ -40,7 +40,7 @@
           }, "inputs": {} },
           { "id": "route", "typeId": "core.flow.if", "name": "Confident?", "position": { "x": 560, "y": 80 }, "config": {"predicate": {"path": "", "op": "contains", "value": "CONFIDENCE: high"}}, "inputs": {} },
           { "id": "deliver", "typeId": "feature.notifications.nodes.notify", "name": "Deliver answer", "position": { "x": 840, "y": 0 }, "config": { "audience": "tenant" }, "inputs": { "title": "Knowledge-Base Support Agent" } },
-          { "id": "approveEscalation", "typeId": "core.chat.approvalGate", "name": "Approve escalation", "position": { "x": 840, "y": 160 }, "config": { "audience": "tenant" }, "inputs": { "title": "Knowledge-Base Support Agent" } },
+          { "id": "approveEscalation", "typeId": "core.chat.approvalGate", "name": "Approve escalation", "position": { "x": 840, "y": 160 }, "config": {}, "inputs": {} },
           { "id": "escalate", "typeId": "core.openwop.integration.slack-message", "name": "Escalate to Slack", "position": { "x": 1120, "y": 160 }, "config": { "channel": "{{params.escalationChannel}}" }, "inputs": {} }
         ],
         "edges": [
@@ -118,8 +118,8 @@
           { "id": "classify", "typeId": "core.ai.chatCompletion", "name": "Classify team & priority", "position": { "x": 0, "y": 0 }, "config": { "systemPrompt": "You are a support-ops router. For this customer request, decide: owning team (billing / technical / account / product), priority (P1–P4 with rationale), and a one-line first-response suggestion. Request: {{params.requestText}}",
             "provider": "{{params.provider}}",
             "model": "{{params.model}}"
-          }, "inputs": { "title": "Customer Ticket Routing & Prioritization" } },
-          { "id": "ticket", "typeId": "core.openwop.connectors.ticket-create", "name": "Create ticket", "position": { "x": 280, "y": 0 }, "config": { "baseUrl": "{{params.ticketingBaseUrl}}", "project": "{{params.ticketProject}}", "summary": "Customer request: {{params.requestText}}" }, "inputs": { "title": "Support Email Triage & Reply Draft" } },
+          }, "inputs": {} },
+          { "id": "ticket", "typeId": "core.openwop.connectors.ticket-create", "name": "Create ticket", "position": { "x": 280, "y": 0 }, "config": { "baseUrl": "{{params.ticketingBaseUrl}}", "project": "{{params.ticketProject}}", "summary": "Customer request: {{params.requestText}}" }, "inputs": {} },
           { "id": "notify", "typeId": "feature.notifications.nodes.notify", "name": "Notify owning queue", "position": { "x": 560, "y": 0 }, "config": { "audience": "tenant" }, "inputs": { "title": "Customer Ticket Routing & Prioritization" } }
         ],
         "edges": [
@@ -156,7 +156,7 @@
           }, "inputs": {} },
           { "id": "route", "typeId": "core.flow.if", "name": "High risk?", "position": { "x": 280, "y": 80 }, "config": {"predicate": {"path": "", "op": "contains", "value": "BRAND RISK: high"}}, "inputs": {} },
           { "id": "log", "typeId": "feature.notifications.nodes.notify", "name": "Log assessment", "position": { "x": 560, "y": 0 }, "config": { "audience": "tenant" }, "inputs": { "title": "Sentiment & Brand-Risk Watch" } },
-          { "id": "approveEscalation", "typeId": "core.chat.approvalGate", "name": "Approve escalation", "position": { "x": 560, "y": 160 }, "config": { "audience": "tenant" }, "inputs": { "title": "Sentiment & Brand-Risk Watch" } },
+          { "id": "approveEscalation", "typeId": "core.chat.approvalGate", "name": "Approve escalation", "position": { "x": 560, "y": 160 }, "config": {}, "inputs": {} },
           { "id": "escalate", "typeId": "core.openwop.integration.slack-message", "name": "Escalate to Slack", "position": { "x": 840, "y": 160 }, "config": { "channel": "{{params.escalationChannel}}" }, "inputs": {} }
         ],
         "edges": [
@@ -195,7 +195,7 @@
             "provider": "{{params.provider}}",
             "model": "{{params.model}}"
           }, "inputs": {} },
-          { "id": "approve", "typeId": "core.chat.approvalGate", "name": "Approve before send", "position": { "x": 280, "y": 0 }, "config": { "audience": "tenant" }, "inputs": {} },
+          { "id": "approve", "typeId": "core.chat.approvalGate", "name": "Approve before send", "position": { "x": 280, "y": 0 }, "config": {}, "inputs": {} },
           { "id": "send", "typeId": "core.openwop.integration.email-send", "name": "Send survey", "position": { "x": 560, "y": 0 }, "config": {
             "from": "{{params.senderEmail}}"
           }, "inputs": {

@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.knowledge",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "kind": "workflow-chain",
   "description": "Real-work workflow pack (RFC 0013, ADR 0190 Phase 2) — the internal Knowledge cluster: employee policy/HR Q&A grounded in your Knowledge Base, compliance review of documents against your policy corpus, and structured document summarization. Distinct from core.openwop.workflows.support (customer-facing): these serve EMPLOYEES over internal policy collections. Authored entirely over shipped node typeIds (feature.kb.nodes.rag + core.ai.chatCompletion + core.flow.if + core.chat.approvalGate + core.openwop.integration.*). Populate the underlying collections in the Knowledge feature (or via knowledge-sync from Drive/OneDrive/Dropbox/Box) — these chains READ the app KB; they do not build a separate index. Every external send waits on a human approval gate. All tenant values are run parameters (replay-deterministic).",
   "author": "openwop",
@@ -36,7 +36,7 @@
           }, "inputs": {} },
           { "id": "route", "typeId": "core.flow.if", "name": "Covered by policy?", "position": { "x": 560, "y": 80 }, "config": { "predicate": { "path": "", "op": "contains", "value": "COVERED: yes" } }, "inputs": {} },
           { "id": "deliver", "typeId": "feature.notifications.nodes.notify", "name": "Deliver answer", "position": { "x": 840, "y": 0 }, "config": { "audience": "tenant" }, "inputs": { "title": "HR & Policy Q&A Agent" } },
-          { "id": "approveEscalation", "typeId": "core.chat.approvalGate", "name": "Approve escalation", "position": { "x": 840, "y": 160 }, "config": { "audience": "tenant" }, "inputs": { "title": "HR & Policy Q&A Agent" } },
+          { "id": "approveEscalation", "typeId": "core.chat.approvalGate", "name": "Approve escalation", "position": { "x": 840, "y": 160 }, "config": {}, "inputs": {} },
           { "id": "escalate", "typeId": "core.openwop.integration.slack-message", "name": "Escalate to people team", "position": { "x": 1120, "y": 160 }, "config": { "channel": "{{params.escalationChannel}}" }, "inputs": {} }
         ],
         "edges": [
@@ -80,7 +80,7 @@
           }, "inputs": {} },
           { "id": "route", "typeId": "core.flow.if", "name": "Any flags?", "position": { "x": 560, "y": 80 }, "config": { "predicate": { "path": "", "op": "contains", "value": "FLAGS: 0" } }, "inputs": {} },
           { "id": "pass", "typeId": "feature.notifications.nodes.notify", "name": "Notify: passes", "position": { "x": 840, "y": 0 }, "config": { "audience": "tenant" }, "inputs": { "title": "Compliance Review vs Your Policies" } },
-          { "id": "approveEscalation", "typeId": "core.chat.approvalGate", "name": "Approve escalation", "position": { "x": 840, "y": 160 }, "config": { "audience": "tenant" }, "inputs": { "title": "Compliance Review vs Your Policies" } },
+          { "id": "approveEscalation", "typeId": "core.chat.approvalGate", "name": "Approve escalation", "position": { "x": 840, "y": 160 }, "config": {}, "inputs": {} },
           { "id": "escalate", "typeId": "core.openwop.integration.slack-message", "name": "Escalate to compliance", "position": { "x": 1120, "y": 160 }, "config": { "channel": "{{params.escalationChannel}}" }, "inputs": {} }
         ],
         "edges": [
