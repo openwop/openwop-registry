@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.customer-onboarding",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "kind": "workflow-chain",
   "description": "Customer-onboarding chains (RFC 0013): the post-sale first-mile — a warm welcome, a personalized kickoff checklist, and a scheduled 30-day health check. All external sends sit behind a human approval gate; tenant values are run parameters (replay-deterministic).",
   "author": "openwop",
@@ -182,14 +182,14 @@
           },
           {
             "id": "notify",
-            "typeId": "core.openwop.integration.notification-push",
+            "typeId": "feature.notifications.nodes.notify",
             "name": "Notify CSM",
             "position": {
               "x": 560,
               "y": 0
             },
-            "config": {},
-            "inputs": {}
+            "config": { "audience": "tenant" },
+            "inputs": { "title": "Kickoff → Personalized Checklist" }
           }
         ],
         "edges": [
@@ -249,7 +249,7 @@
             "config": {
               "cron": "{{params.scheduleCron}}"
             },
-            "inputs": {}
+            "inputs": { "title": "Kickoff → Personalized Checklist" }
           },
           {
             "id": "draft",

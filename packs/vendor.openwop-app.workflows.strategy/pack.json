@@ -1,6 +1,6 @@
 {
   "name": "vendor.openwop-app.workflows.strategy",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "kind": "workflow-chain",
   "description": "Strategy operating-rhythm workflows (RFC 0013, ADR 0231). The KR measurement cadence: a weekly check-in nudge that finds measured key results with no recent confirmed check-in and notifies their owners, and a metric-sync pass that refreshes every sourced key result from its configured data owner (CRM deal totals, analytics conversions) through the one governed check-in path. Both are scheduled via the strategy cadence config (GET/PUT /v1/host/openwop-app/strategy/cadence) — no auto-boot jobs. All writes ride ctx.features.strategy.checkIn: agent writes are structurally proposals; sync writes are confirmed only by a human-configured measure.source (fail-closed).",
   "author": "openwop-app",
@@ -31,7 +31,7 @@
             "provider": "{{params.provider}}",
             "model": "{{params.model}}"
           }, "inputs": {} },
-          { "id": "deliver", "typeId": "core.openwop.integration.notification-push", "name": "Deliver nudge", "position": { "x": 640, "y": 0 }, "config": {}, "inputs": {} }
+          { "id": "deliver", "typeId": "feature.notifications.nodes.notify", "name": "Deliver nudge", "position": { "x": 640, "y": 0 }, "config": { "audience": "tenant" }, "inputs": { "title": "Strategy: Weekly Check-in Nudge" } }
         ],
         "edges": [
           { "from": "stale", "to": "digest" },
@@ -61,13 +61,13 @@
       "capabilities": ["side-effectful"],
       "dag": {
         "nodes": [
-          { "id": "health", "typeId": "feature.strategy.nodes.get-health", "name": "Portfolio health", "position": { "x": 0, "y": 0 }, "config": {}, "inputs": {} },
+          { "id": "health", "typeId": "feature.strategy.nodes.get-health", "name": "Portfolio health", "position": { "x": 0, "y": 0 }, "config": { "audience": "tenant" }, "inputs": { "title": "Strategy: Board Pack Pre-read" } },
           { "id": "memo", "typeId": "core.ai.chatCompletion", "name": "Compose pre-read", "position": { "x": 320, "y": 0 }, "config": { "systemPrompt": "You are a chief of staff writing a board pre-read for {{params.audience}}. From the portfolio health rows and their signals, write a concise MBR/QBR-shaped markdown memo: 1) headline progress (weighted KR progress where measured), 2) strategies at risk or off-track and WHY (use the signals — never invent numbers), 3) stale measurements and pending agent proposals needing decisions, 4) asks. Ground every claim in the provided signals.",
             "provider": "{{params.provider}}",
             "model": "{{params.model}}"
-          }, "inputs": {} },
-          { "id": "persist", "typeId": "feature.strategy.nodes.create-board-memo", "name": "Persist board-update", "position": { "x": 640, "y": 0 }, "config": { "orgId": "{{params.orgId}}", "title": "Board pre-read" }, "inputs": {} },
-          { "id": "deliver", "typeId": "core.openwop.integration.notification-push", "name": "Deliver pre-read", "position": { "x": 960, "y": 0 }, "config": {}, "inputs": {} }
+          }, "inputs": { "title": "Strategy: Sync Sourced Metrics" } },
+          { "id": "persist", "typeId": "feature.strategy.nodes.create-board-memo", "name": "Persist board-update", "position": { "x": 640, "y": 0 }, "config": { "orgId": "{{params.orgId}}", "title": "Board pre-read" }, "inputs": { "title": "Strategy: Weekly Check-in Nudge" } },
+          { "id": "deliver", "typeId": "feature.notifications.nodes.notify", "name": "Deliver pre-read", "position": { "x": 960, "y": 0 }, "config": { "audience": "tenant" }, "inputs": { "title": "Strategy: Board Pack Pre-read" } }
         ],
         "edges": [
           { "from": "health", "to": "memo" },
@@ -91,12 +91,12 @@
       "capabilities": ["side-effectful"],
       "dag": {
         "nodes": [
-          { "id": "sync", "typeId": "feature.strategy.nodes.sync-metrics", "name": "Sync sourced KRs", "position": { "x": 0, "y": 0 }, "config": {}, "inputs": {} },
+          { "id": "sync", "typeId": "feature.strategy.nodes.sync-metrics", "name": "Sync sourced KRs", "position": { "x": 0, "y": 0 }, "config": { "audience": "tenant" }, "inputs": {} },
           { "id": "summary", "typeId": "core.ai.chatCompletion", "name": "Summarize sync", "position": { "x": 320, "y": 0 }, "config": { "systemPrompt": "Summarize this strategy metric sync in 3 lines or fewer: how many key results synced, how many skipped and the dominant skip reasons. Plain text.",
             "provider": "{{params.provider}}",
             "model": "{{params.model}}"
           }, "inputs": {} },
-          { "id": "deliver", "typeId": "core.openwop.integration.notification-push", "name": "Deliver summary", "position": { "x": 640, "y": 0 }, "config": {}, "inputs": {} }
+          { "id": "deliver", "typeId": "feature.notifications.nodes.notify", "name": "Deliver summary", "position": { "x": 640, "y": 0 }, "config": { "audience": "tenant" }, "inputs": { "title": "Strategy: Sync Sourced Metrics" } }
         ],
         "edges": [
           { "from": "sync", "to": "summary" },

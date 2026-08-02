@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.campaign-sync",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "kind": "workflow-chain",
   "description": "Campaign Studio metrics-sync chain (RFC 0013; campaign gap plan C2 on ADR 0159). Pulls yesterday's ad metrics for every dispatched campaign through the acting user's platform connection (ctx.ads, window-scoped so rows never double-count) into the unified performance store, then delivers a short sync summary as a notification. Schedule it daily on the ONE scheduler, or run it ad hoc — the 15-minute cooldown makes overlapping fires harmless. Also carries the daily budget-pacing check (ADR 0220).",
   "author": "openwop",
@@ -59,14 +59,14 @@
           },
           {
             "id": "notify",
-            "typeId": "core.openwop.integration.notification-push",
+            "typeId": "feature.notifications.nodes.notify",
             "name": "Deliver sync summary",
             "position": {
               "x": 300,
               "y": 0
             },
-            "config": {},
-            "inputs": {}
+            "config": { "audience": "tenant" },
+            "inputs": { "title": "Daily Ad-Metrics Sync" }
           }
         ],
         "edges": [
@@ -112,7 +112,7 @@
               "x": 0,
               "y": 0
             },
-            "config": {},
+            "config": { "audience": "tenant" },
             "inputs": {
               "orgId": "{{params.orgId}}"
             }

@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.starters",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "kind": "workflow-chain",
   "description": "Starter workflow pack (RFC 0013, ADR 0190) — the simple-pipe on-ramp tier: short single-trigger→action recipes (webhook→notify, form→table, schedule→digest, fetch→store) that run in under a minute with zero connections, before you graduate to the AI-agent packs. Trigger-shaped starters begin with a core.trigger.* pass-through entry node: bind them to a live source with a trigger subscription (POST /v1/trigger-subscriptions — webhook, email, or form; RFC 0099) or a Schedule; on a manual run the trigger payload is empty, so bind a source to see them shine. External sends stay behind a human approval gate; in-app notifications are direct. All tenant values are run parameters (replay-deterministic).",
   "author": "openwop",
@@ -27,7 +27,7 @@
           { "id": "hook", "typeId": "core.trigger.webhook", "name": "Webhook event", "position": { "x": 0, "y": 0 }, "config": {
             "path": "{{params.webhookPath}}"
           }, "inputs": {} },
-          { "id": "notify", "typeId": "core.openwop.integration.notification-push", "name": "Notify me", "position": { "x": 280, "y": 0 }, "config": {}, "inputs": {} }
+          { "id": "notify", "typeId": "feature.notifications.nodes.notify", "name": "Notify me", "position": { "x": 280, "y": 0 }, "config": { "audience": "tenant" }, "inputs": { "title": "Webhook → Notification" } }
         ],
         "edges": [
           { "from": "hook", "to": "notify" }
@@ -53,9 +53,9 @@
       "capabilities": ["side-effectful"],
       "dag": {
         "nodes": [
-          { "id": "form", "typeId": "core.trigger.form", "name": "Form submission", "position": { "x": 0, "y": 0 }, "config": {}, "inputs": {} },
-          { "id": "insert", "typeId": "core.storage.table-insert", "name": "Append row", "position": { "x": 280, "y": 0 }, "config": { "table": "{{params.table}}" }, "inputs": {} },
-          { "id": "notify", "typeId": "core.openwop.integration.notification-push", "name": "Notify me", "position": { "x": 560, "y": 0 }, "config": {}, "inputs": {} }
+          { "id": "form", "typeId": "core.trigger.form", "name": "Form submission", "position": { "x": 0, "y": 0 }, "config": { "audience": "tenant" }, "inputs": { "title": "Form Submission → Table Row" } },
+          { "id": "insert", "typeId": "core.storage.table-insert", "name": "Append row", "position": { "x": 280, "y": 0 }, "config": { "table": "{{params.table}}" }, "inputs": { "title": "Scheduled One-Line Digest" } },
+          { "id": "notify", "typeId": "feature.notifications.nodes.notify", "name": "Notify me", "position": { "x": 560, "y": 0 }, "config": { "audience": "tenant" }, "inputs": { "title": "Fetch URL → Blob Storage" } }
         ],
         "edges": [
           { "from": "form", "to": "insert" },
@@ -87,12 +87,12 @@
         "nodes": [
           { "id": "tick", "typeId": "core.trigger.schedule", "name": "Scheduled tick", "position": { "x": 0, "y": 0 }, "config": {
             "cron": "{{params.scheduleCron}}"
-          }, "inputs": {} },
+          }, "inputs": { "title": "Verified Webhook Router" } },
           { "id": "digest", "typeId": "core.ai.chatCompletion", "name": "Write one-paragraph digest", "position": { "x": 280, "y": 0 }, "config": { "systemPrompt": "Write a single crisp paragraph (max 80 words) on: {{params.topic}}. Plain text, no preamble.",
             "provider": "{{params.provider}}",
             "model": "{{params.model}}"
-          }, "inputs": {} },
-          { "id": "notify", "typeId": "core.openwop.integration.notification-push", "name": "Notify me", "position": { "x": 560, "y": 0 }, "config": {}, "inputs": {} }
+          }, "inputs": { "title": "Webhook → Notification" } },
+          { "id": "notify", "typeId": "feature.notifications.nodes.notify", "name": "Notify me", "position": { "x": 560, "y": 0 }, "config": { "audience": "tenant" }, "inputs": { "title": "Form Submission → Table Row" } }
         ],
         "edges": [
           { "from": "tick", "to": "digest" },
@@ -120,9 +120,9 @@
       "capabilities": ["side-effectful"],
       "dag": {
         "nodes": [
-          { "id": "fetch", "typeId": "core.openwop.http.fetch", "name": "Fetch file", "position": { "x": 0, "y": 0 }, "config": { "url": "{{params.url}}" }, "inputs": {} },
+          { "id": "fetch", "typeId": "core.openwop.http.fetch", "name": "Fetch file", "position": { "x": 0, "y": 0 }, "config": { "url": "{{params.url}}" }, "inputs": { "title": "Scheduled One-Line Digest" } },
           { "id": "store", "typeId": "core.storage.blob-put", "name": "Store blob", "position": { "x": 280, "y": 0 }, "config": { "bucket": "{{params.bucket}}" }, "inputs": {} },
-          { "id": "notify", "typeId": "core.openwop.integration.notification-push", "name": "Notify me", "position": { "x": 560, "y": 0 }, "config": {}, "inputs": {} }
+          { "id": "notify", "typeId": "feature.notifications.nodes.notify", "name": "Notify me", "position": { "x": 560, "y": 0 }, "config": { "audience": "tenant" }, "inputs": { "title": "Fetch URL → Blob Storage" } }
         ],
         "edges": [
           { "from": "fetch", "to": "store" },
@@ -155,8 +155,8 @@
           }, "inputs": {} },
           { "id": "verify", "typeId": "core.openwop.http.webhook-verify", "name": "Verify signature", "position": { "x": 280, "y": 80 }, "config": { "family": "{{params.family}}" }, "inputs": {} },
           { "id": "route", "typeId": "core.flow.if", "name": "Signature valid?", "position": { "x": 560, "y": 80 }, "config": {"predicate": {"path": "valid", "op": "truthy"}}, "inputs": {} },
-          { "id": "notify", "typeId": "core.openwop.integration.notification-push", "name": "Notify (verified)", "position": { "x": 840, "y": 0 }, "config": {}, "inputs": {} },
-          { "id": "drop", "typeId": "core.flow.noop", "name": "Drop (failed signature)", "position": { "x": 840, "y": 160 }, "config": {}, "inputs": {} }
+          { "id": "notify", "typeId": "feature.notifications.nodes.notify", "name": "Notify (verified)", "position": { "x": 840, "y": 0 }, "config": { "audience": "tenant" }, "inputs": { "title": "Verified Webhook Router" } },
+          { "id": "drop", "typeId": "core.flow.noop", "name": "Drop (failed signature)", "position": { "x": 840, "y": 160 }, "config": { "audience": "tenant" }, "inputs": {} }
         ],
         "edges": [
           { "from": "hook", "to": "verify" },
@@ -195,7 +195,7 @@
             "provider": "{{params.provider}}",
             "model": "{{params.model}}"
           }, "inputs": {} },
-          { "id": "approve", "typeId": "core.chat.approvalGate", "name": "Approve before post", "position": { "x": 560, "y": 0 }, "config": {}, "inputs": {} },
+          { "id": "approve", "typeId": "core.chat.approvalGate", "name": "Approve before post", "position": { "x": 560, "y": 0 }, "config": { "audience": "tenant" }, "inputs": {} },
           { "id": "post", "typeId": "core.openwop.integration.slack-message", "name": "Post to Slack", "position": { "x": 840, "y": 0 }, "config": { "channel": "{{params.channel}}" }, "inputs": {} }
         ],
         "edges": [

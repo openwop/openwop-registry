@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.weekly-digest",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "kind": "workflow-chain",
   "description": "Weekly-digest chains (RFC 0013): scheduled roundups that keep a team informed without a meeting — a research digest on a watched topic, and a team status roll-up. In-app + gated-send sinks; replay-deterministic.",
   "author": "openwop",
@@ -76,14 +76,14 @@
           },
           {
             "id": "notify",
-            "typeId": "core.openwop.integration.notification-push",
+            "typeId": "feature.notifications.nodes.notify",
             "name": "Post digest",
             "position": {
               "x": 840,
               "y": 0
             },
-            "config": {},
-            "inputs": {}
+            "config": { "audience": "tenant" },
+            "inputs": { "title": "Weekly Topic Watch → Digest" }
           }
         ],
         "edges": [
@@ -140,7 +140,7 @@
             "config": {
               "cron": "{{params.scheduleCron}}"
             },
-            "inputs": {}
+            "inputs": { "title": "Weekly Topic Watch → Digest" }
           },
           {
             "id": "rollup",

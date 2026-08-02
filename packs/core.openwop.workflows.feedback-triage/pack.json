@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.feedback-triage",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "workflow-chain",
   "description": "Feedback-triage chains (RFC 0013): turn raw inbound feedback into classified, routed, actionable items. A form submission is classified and (on approval) filed as a follow-up task; a batch is themed into a weekly digest. Replay-deterministic.",
   "author": "openwop",
@@ -165,14 +165,14 @@
           },
           {
             "id": "notify",
-            "typeId": "core.openwop.integration.notification-push",
+            "typeId": "feature.notifications.nodes.notify",
             "name": "Post digest",
             "position": {
               "x": 560,
               "y": 0
             },
-            "config": {},
-            "inputs": {}
+            "config": { "audience": "tenant" },
+            "inputs": { "title": "Weekly Feedback → Theme Digest" }
           }
         ],
         "edges": [

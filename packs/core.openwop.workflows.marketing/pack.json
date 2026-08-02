@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.marketing",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "kind": "workflow-chain",
   "description": "Real-work workflow pack (RFC 0013, ADR 0149) — the Marketing & Advertising cluster: Full Campaign Launch, Ad Performance Optimization Loop, Content Brief Generator, and Content Repurposing. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.kb / feature.cms / feature.email); reads/optimizes the ad platforms provider-agnostically via the core.openwop.connectors.ad-* capability nodes (Meta or Google, whichever the tenant connected — ADR 0186). The optimization loop routes within-guardrail changes to auto-apply and out-of-guardrail changes to a core.chat.approvalGate via a core.flow.if conditional node (ADR 0149 open-question resolution: a flow conditional, not a new primitive). Every launch/publish/apply is approval- or guardrail-gated; all tenant values are run parameters (replay-deterministic). Published under core.openwop.workflows.* (openwop-team key).",
   "author": "openwop",
@@ -81,7 +81,7 @@
           { "id": "autoApply", "typeId": "core.openwop.connectors.ad-budget-update", "name": "Recommend change (within guardrail)", "position": { "x": 840, "y": 0 }, "config": { "platform": "{{params.platform}}", "adAccountId": "{{params.adAccountId}}", "campaignId": "{{params.campaignId}}" }, "inputs": {} },
           { "id": "review", "typeId": "core.chat.approvalGate", "name": "Approve (beyond guardrail)", "position": { "x": 840, "y": 140 }, "config": {}, "inputs": {} },
           { "id": "applyReviewed", "typeId": "core.openwop.connectors.ad-budget-update", "name": "Recommend approved change", "position": { "x": 1120, "y": 140 }, "config": { "platform": "{{params.platform}}", "adAccountId": "{{params.adAccountId}}", "campaignId": "{{params.campaignId}}" }, "inputs": {} },
-          { "id": "log", "typeId": "core.openwop.integration.notification-push", "name": "Log learnings", "position": { "x": 1400, "y": 60 }, "config": {}, "inputs": {} }
+          { "id": "log", "typeId": "feature.notifications.nodes.notify", "name": "Log learnings", "position": { "x": 1400, "y": 60 }, "config": { "audience": "tenant" }, "inputs": { "title": "Ad Performance Optimization Loop" } }
         ],
         "edges": [
           { "from": "fetch", "to": "diagnose" },
@@ -123,8 +123,8 @@
           { "id": "brief", "typeId": "core.ai.chatCompletion", "name": "Structured SEO brief", "position": { "x": 320, "y": 0 }, "config": { "systemPrompt": "Produce a structured SEO content brief for \"{{params.topic}}\" grounded in the gathered sources: intent, outline, key questions, and target keywords.",
             "provider": "{{params.provider}}",
             "model": "{{params.model}}"
-          }, "inputs": {} },
-          { "id": "deliver", "typeId": "core.openwop.integration.notification-push", "name": "Deliver brief", "position": { "x": 600, "y": 0 }, "config": {}, "inputs": {} }
+          }, "inputs": { "title": "Ad Performance Optimization Loop" } },
+          { "id": "deliver", "typeId": "feature.notifications.nodes.notify", "name": "Deliver brief", "position": { "x": 600, "y": 0 }, "config": { "audience": "tenant" }, "inputs": { "title": "Content Brief Generator" } }
         ],
         "edges": [
           { "from": "gather", "to": "brief" },
@@ -156,7 +156,7 @@
           { "id": "outline", "typeId": "core.ai.chatCompletion", "name": "Outline", "position": { "x": 0, "y": 120 }, "config": { "systemPrompt": "Outline the key angles to repurpose this content across channels. Source: {{params.sourceText}}",
             "provider": "{{params.provider}}",
             "model": "{{params.model}}"
-          }, "inputs": {} },
+          }, "inputs": { "title": "Content Brief Generator" } },
           { "id": "linkedin", "typeId": "core.ai.chatCompletion", "name": "LinkedIn post", "position": { "x": 320, "y": 0 }, "config": { "systemPrompt": "Write a LinkedIn post from the outline.",
             "provider": "{{params.provider}}",
             "model": "{{params.model}}"
@@ -165,9 +165,9 @@
             "provider": "{{params.provider}}",
             "model": "{{params.model}}"
           }, "inputs": {} },
-          { "id": "newsletter", "typeId": "feature.email.nodes.render", "name": "Newsletter render", "position": { "x": 320, "y": 240 }, "config": {}, "inputs": { "orgId": "{{params.orgId}}", "templateId": "{{params.templateId}}" } },
-          { "id": "review", "typeId": "core.chat.approvalGate", "name": "Approve before publish", "position": { "x": 640, "y": 120 }, "config": {}, "inputs": {} },
-          { "id": "schedule", "typeId": "core.openwop.integration.notification-push", "name": "Schedule + notify", "position": { "x": 960, "y": 120 }, "config": {}, "inputs": {} }
+          { "id": "newsletter", "typeId": "feature.email.nodes.render", "name": "Newsletter render", "position": { "x": 320, "y": 240 }, "config": { "audience": "tenant" }, "inputs": { "orgId": "{{params.orgId}}", "templateId": "{{params.templateId}}" } },
+          { "id": "review", "typeId": "core.chat.approvalGate", "name": "Approve before publish", "position": { "x": 640, "y": 120 }, "config": { "audience": "tenant" }, "inputs": {} },
+          { "id": "schedule", "typeId": "feature.notifications.nodes.notify", "name": "Schedule + notify", "position": { "x": 960, "y": 120 }, "config": { "audience": "tenant" }, "inputs": { "title": "Content Repurposing" } }
         ],
         "edges": [
           { "from": "outline", "to": "linkedin" },

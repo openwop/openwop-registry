@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.commerce",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "kind": "workflow-chain",
   "description": "Real-work workflow pack (RFC 0013, ADR 0152) \u2014 the Commerce operations cluster (ecommerce gap plan \u00a75C C8): Post-Purchase Thank-You, Low-Stock Reorder Draft, and the Order Exception Digest. Designed to bind to the ADR 0221 host events (host.commerce.order.paid, host.commerce.inventory.low-stock \u2014 create a host-event binding to enroll; ADR 0208) or the schedule trigger. Every outbound send rides the governed email-send integration node (drafts/approval per the tenant's actionPolicy \u2014 ADR 0033) and the ONE notification seam; order data flows through feature.commerce.nodes over ctx.features.commerce, so the ADR 0221 audit rows + spend thresholds apply by construction. Enrollment state = the run itself; a binding fires one run per event.",
   "author": "openwop",
@@ -229,14 +229,14 @@
           },
           {
             "id": "notify",
-            "typeId": "core.openwop.integration.notification-push",
+            "typeId": "feature.notifications.nodes.notify",
             "name": "Notify owner",
             "position": {
               "x": 960,
               "y": 140
             },
-            "config": {},
-            "inputs": {}
+            "config": { "audience": "tenant" },
+            "inputs": { "title": "Low-Stock Reorder Draft" }
           }
         ],
         "edges": [
@@ -305,7 +305,7 @@
               "x": 0,
               "y": 0
             },
-            "config": {},
+            "config": { "audience": "tenant" },
             "inputs": {
               "orgId": "{{params.orgId}}"
             }
@@ -323,18 +323,18 @@
               "provider": "{{params.provider}}",
               "model": "{{params.model}}"
             },
-            "inputs": {}
+            "inputs": { "title": "Order Exception Digest" }
           },
           {
             "id": "notify",
-            "typeId": "core.openwop.integration.notification-push",
+            "typeId": "feature.notifications.nodes.notify",
             "name": "Push digest",
             "position": {
               "x": 640,
               "y": 0
             },
-            "config": {},
-            "inputs": {}
+            "config": { "audience": "tenant" },
+            "inputs": { "title": "Low-Stock Reorder Draft" }
           }
         ],
         "edges": [

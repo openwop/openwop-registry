@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.meeting-ops",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "workflow-chain",
   "description": "Meeting-ops chains (RFC 0013): less time in and around meetings — an agenda from a stated goal, and notes turned into owned action items. In-app and draft sinks only; replay-deterministic.",
   "author": "openwop",
@@ -65,14 +65,14 @@
           },
           {
             "id": "notify",
-            "typeId": "core.openwop.integration.notification-push",
+            "typeId": "feature.notifications.nodes.notify",
             "name": "Share agenda",
             "position": {
               "x": 560,
               "y": 0
             },
-            "config": {},
-            "inputs": {}
+            "config": { "audience": "tenant" },
+            "inputs": { "title": "Goal → Meeting Agenda" }
           }
         ],
         "edges": [
@@ -129,7 +129,7 @@
             "config": {
               "eventName": "{{params.triggerEventName}}"
             },
-            "inputs": {}
+            "inputs": { "title": "Goal → Meeting Agenda" }
           },
           {
             "id": "debrief",

@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.insights-suite",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "workflow-chain",
   "description": "Insights & Drafting meta-workflows as an RFC 0013 chain pack (migrated from the deprecated ADR 0082/0072 builtins, ADR 0472 Phase 2). Three real source\u2192analysis\u2192LLM\u2192draft\u2192notify pipelines over BYOK-connected sources (BigQuery, Workday, chat completion, email-draft, notification-push). chainIds keep the original `openwop-app.insights.*` ids so scheduler/trigger ignition + replay are unchanged; the host registers them chain-backed (resolve-by-id, stable id) AND they are gallery-editable chains. Per-node outputRole (not expressible in the portable fragment) is re-applied at registration via the feature's postProcess.",
   "keywords": [
@@ -67,8 +67,10 @@
           },
           {
             "id": "notify",
-            "typeId": "core.openwop.integration.notification-push",
-            "name": "Notify"
+            "typeId": "feature.notifications.nodes.notify",
+            "name": "Notify",
+            "config": { "audience": "tenant" },
+            "inputs": { "title": "Weekly variance (Actual vs Plan)" }
           }
         ],
         "edges": [
@@ -168,8 +170,10 @@
           },
           {
             "id": "notify",
-            "typeId": "core.openwop.integration.notification-push",
-            "name": "Notify"
+            "typeId": "feature.notifications.nodes.notify",
+            "name": "Notify",
+            "config": { "audience": "tenant" },
+            "inputs": { "title": "Work-anniversary recognition draft" }
           }
         ],
         "edges": [
@@ -236,8 +240,10 @@
           },
           {
             "id": "notify",
-            "typeId": "core.openwop.integration.notification-push",
-            "name": "Notify"
+            "typeId": "feature.notifications.nodes.notify",
+            "name": "Notify",
+            "config": { "audience": "tenant" },
+            "inputs": { "title": "Talent readiness prep" }
           }
         ],
         "edges": [
