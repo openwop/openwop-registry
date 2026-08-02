@@ -15,7 +15,7 @@ Canonical ReAct (Reason + Act) loop agent. The "hello world" of openwop agents �
 
 Implements the ReAct prompting pattern (Yao et al., 2022): the agent alternates between **reasoning** ("what should I do next?") and **acting** (one tool call, or a final answer). Each iteration reads the prior observation back into the prompt context, then decides the next step.
 
-Default tool allowlist permits `openwop:core.http.fetch`. Workflows extend the allowlist at dispatch time via the `RunOptions.configurable.toolAllowlist` override (per RFC 0002 §F + host policy).
+Default tool allowlist permits `openwop:core.openwop.http.fetch`. Workflows extend the allowlist at dispatch time via the `RunOptions.configurable.toolAllowlist` override (per RFC 0002 §F + host policy).
 
 ## When to use it vs. when not to
 
@@ -55,8 +55,8 @@ The reference Postgres host (`examples/hosts/postgres/`) advertises both.
 ## See also
 
 - `spec/v1/agent-dispatch.md` (not yet drafted)
-- [`RFCS/0002-agent-identity-and-reasoning-events.md`](https://github.com/openwop/openwop/blob/main/RFCS/0002-agent-identity-and-reasoning-events.md)
-- [`RFCS/0007-dispatch.md`](https://github.com/openwop/openwop/blob/main/RFCS/0007-dispatch.md)
+- [`RFCS/0002-agent-identity-and-reasoning-events.md`](../../RFCS/0002-agent-identity-and-reasoning-events.md)
+- [`RFCS/0007-dispatch.md`](../../RFCS/0007-dispatch.md)
 - [`packs/core.openwop.agents/`](../core.openwop.agents/) — n8n-style root+sub-nodes for in-workflow agent composition (this pack is the alternative: a standalone agent persona, no sub-nodes)
 - [`packs/core.openwop.agents.supervisor/`](../core.openwop.agents.supervisor/) — multi-agent supervisor
 - [`packs/core.openwop.agents.deep-research/`](../core.openwop.agents.deep-research/) — long-horizon research variant
