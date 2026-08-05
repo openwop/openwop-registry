@@ -23,7 +23,7 @@
       "signatureUrl": "/v1/packs/core.openwop.forms.starters/-/1.0.0.sig",
       "signingMethod": "manual",
       "signingKeyId": "openwop-team-1",
-      "integrity": "sha256-e6qsAT1C3FzeyTs7y/RwyNOVl/XQGwuKY4uG2qzIui4=",
+      "integrity": "sha256-+WxOjtwX1NNlNZyMZduMm5Vo4uSZdH2BQHfqqbaSUvM=",
       "deprecated": false,
       "yanked": false
     }

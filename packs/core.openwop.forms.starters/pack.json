@@ -10,7 +10,7 @@
     "Templates"
   ],
   "engines": {
-    "openwop-app": ">=0.1.0"
+    "openwop": ">=1.0.0"
   },
   "templates": [
     {

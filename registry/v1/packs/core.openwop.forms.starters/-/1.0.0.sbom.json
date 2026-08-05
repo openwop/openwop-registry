@@ -20,7 +20,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "7baaac013d42dc5cdec93b3bcbf470c8d39597f5d01b0b8a638b86daacc8ba2e"
+          "content": "f96c4e8edc17d4d365359c8c65db8c9b9568e2e499747d814077eaa9b69252f3"
         }
       ],
       "purl": "pkg:openwop/core.openwop.forms.starters@1.0.0"
@@ -72,7 +72,7 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "788a1c2b52787b4cf187486beef6b7aa6fc9990504b7f257048711a310db7a52"
+          "content": "b38ff4f5dc5ed6d6a70a3cd48d59b2ee8df42923b477207b721d0510659412d8"
         }
       ],
       "properties": [
@@ -88,13 +88,13 @@
       "hashes": [
         {
           "alg": "SHA-256",
-          "content": "3b928ad97d04e9b2909928dee41fc7611e3f711aa0f562d47fca8427ec140f1a"
+          "content": "c709751db0c856f5ee8d47a07991cc85cabbfb98d510627cc85749aee414dbfd"
         }
       ],
       "properties": [
         {
           "name": "openwop:size",
-          "value": "3151"
+          "value": "3147"
         }
       ]
     }

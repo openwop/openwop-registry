@@ -10,7 +10,7 @@
     "Templates"
   ],
   "engines": {
-    "openwop-app": ">=0.1.0"
+    "openwop": ">=1.0.0"
   },
   "templates": [
     {
@@ -180,5 +180,5 @@
     "publicKeyRef": "openwop-team-1",
     "signatureRef": "keys/pack.json.sig"
   },
-  "integrity": "sha256-e6qsAT1C3FzeyTs7y/RwyNOVl/XQGwuKY4uG2qzIui4="
+  "integrity": "sha256-+WxOjtwX1NNlNZyMZduMm5Vo4uSZdH2BQHfqqbaSUvM="
 }
