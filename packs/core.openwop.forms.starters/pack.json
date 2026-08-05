@@ -1,0 +1,182 @@
+{
+  "name": "core.openwop.forms.starters",
+  "version": "1.0.0",
+  "kind": "form-content",
+  "description": "Starter form templates — the shapes almost every first form takes. Instantiated through the normal create path, so every field is sanitized exactly as typed input is.",
+  "license": "Apache-2.0",
+  "author": "openwop",
+  "keywords": [
+    "Forms",
+    "Templates"
+  ],
+  "engines": {
+    "openwop-app": ">=0.1.0"
+  },
+  "templates": [
+    {
+      "templateId": "forms.contact-us",
+      "version": "1.0.0",
+      "label": "Contact us",
+      "description": "Name, email, and a message. The shape almost every site needs first.",
+      "category": "marketing",
+      "title": "Contact us",
+      "fields": [
+        {
+          "key": "name",
+          "label": "Your name",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "email",
+          "label": "Email",
+          "type": "email",
+          "required": true
+        },
+        {
+          "key": "message",
+          "label": "How can we help?",
+          "type": "textarea",
+          "required": true,
+          "description": "Tell us a little about what you need."
+        }
+      ]
+    },
+    {
+      "templateId": "forms.event-rsvp",
+      "version": "1.0.0",
+      "label": "Event RSVP",
+      "description": "Attendance, guest count, and dietary notes for an event invite.",
+      "category": "events",
+      "title": "RSVP",
+      "fields": [
+        {
+          "key": "name",
+          "label": "Your name",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "email",
+          "label": "Email",
+          "type": "email",
+          "required": true
+        },
+        {
+          "key": "attending",
+          "label": "Will you attend?",
+          "type": "select",
+          "required": true,
+          "options": [
+            "Yes",
+            "No",
+            "Maybe"
+          ]
+        },
+        {
+          "key": "guests",
+          "label": "Additional guests",
+          "type": "select",
+          "options": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5+"
+          ],
+          "description": "Not counting yourself."
+        },
+        {
+          "key": "dietary",
+          "label": "Dietary requirements",
+          "type": "text",
+          "description": "Optional — allergies, preferences."
+        },
+        {
+          "key": "accessibility",
+          "label": "Accessibility or accommodation needs",
+          "type": "textarea",
+          "description": "Mobility, hearing, visual, or any other access needs. Optional."
+        }
+      ]
+    },
+    {
+      "templateId": "forms.job-application",
+      "version": "1.0.0",
+      "label": "Job application",
+      "description": "Candidate details, role, and a cover note. Deliberately does NOT collect demographic data.",
+      "category": "hr",
+      "title": "Job application",
+      "fields": [
+        {
+          "key": "name",
+          "label": "Full name",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "email",
+          "label": "Email",
+          "type": "email",
+          "required": true
+        },
+        {
+          "key": "role",
+          "label": "Role you are applying for",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "portfolio",
+          "label": "Portfolio or LinkedIn",
+          "type": "text"
+        },
+        {
+          "key": "cover",
+          "label": "Why this role?",
+          "type": "textarea",
+          "description": "A short note — a few sentences is fine."
+        }
+      ]
+    },
+    {
+      "templateId": "forms.feedback",
+      "version": "1.0.0",
+      "label": "Product feedback",
+      "description": "A rating plus free text — the minimum that produces usable signal.",
+      "category": "product",
+      "title": "Share your feedback",
+      "fields": [
+        {
+          "key": "rating",
+          "label": "How satisfied were you with your experience?",
+          "type": "select",
+          "required": true,
+          "options": [
+            "Very satisfied",
+            "Satisfied",
+            "Neutral",
+            "Dissatisfied",
+            "Very dissatisfied"
+          ]
+        },
+        {
+          "key": "what_worked",
+          "label": "What worked well?",
+          "type": "textarea"
+        },
+        {
+          "key": "what_didnt",
+          "label": "What could be better?",
+          "type": "textarea"
+        },
+        {
+          "key": "email",
+          "label": "Email (optional — only if you want a reply)",
+          "type": "email"
+        }
+      ]
+    }
+  ]
+}

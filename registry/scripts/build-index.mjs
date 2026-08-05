@@ -234,6 +234,8 @@ function rebuildPack(packName) {
       ? (pack?.artifactTypes ?? []).map((t) => t.artifactTypeId).filter(Boolean)
       : kind === 'connection'
       ? (pack?.provider?.id ? [pack.provider.id] : [])
+      : kind === 'form-content'
+      ? (pack?.templates ?? []).map((t) => t.templateId).filter(Boolean)
       : [
           ...(pack?.nodes ?? []).map((n) => n.typeId),
           ...(pack?.agents ?? []).map((a) => a.agentId),
@@ -249,6 +251,7 @@ function rebuildPack(packName) {
   const providerCount = pack?.provider?.id ? 1 : 0;
   const chainCount = Array.isArray(pack?.chains) ? pack.chains.length : 0;
   const promptCount = Array.isArray(pack?.prompts) ? pack.prompts.length : 0;
+  const templateCount = Array.isArray(pack?.templates) ? pack.templates.length : 0;
   const cardCount = Array.isArray(pack?.cards) ? pack.cards.length : 0;
 
   const indexDoc = {
@@ -267,6 +270,7 @@ function rebuildPack(packName) {
     providerCount,
     chainCount,
     promptCount,
+    templateCount,
     cardCount,
     versions: versionEntries,
     latest,
@@ -280,6 +284,7 @@ function rebuildPack(packName) {
   if (!providerCount) delete indexDoc.providerCount;
   if (!chainCount) delete indexDoc.chainCount;
   if (!promptCount) delete indexDoc.promptCount;
+  if (!templateCount) delete indexDoc.templateCount;
   if (!cardCount) delete indexDoc.cardCount;
 
   writeJson(join(PACKS_DIR, packName, 'index.json'), indexDoc);
@@ -361,6 +366,7 @@ function emitLandingPage(packDocs) {
   const workflowChainPacks = packDocs.filter((p) => p.kind === 'workflow-chain');
   const promptPacks        = packDocs.filter((p) => p.kind === 'prompt');
   const cardPacks          = packDocs.filter((p) => p.kind === 'card');
+  const formContentPacks   = packDocs.filter((p) => p.kind === 'form-content');
 
   const rowFor = (p, kindHint) => {
     const v = p.versions[p.versions.length - 1];
@@ -446,6 +452,7 @@ function emitLandingPage(packDocs) {
   const workflowChainRows = buildRows(workflowChainPacks, 'workflow-chain');
   const promptRows         = buildRows(promptPacks,        'prompt');
   const cardRows           = buildRows(cardPacks,          'card');
+  const formContentRows    = buildRows(formContentPacks,   'form-content');
 
   const tableFor = (rows, countHeader) =>
     `    <table>
@@ -746,7 +753,8 @@ ${rows}
   #tab-connections:focus-visible    ~ .tab-list .tab[for="tab-connections"],
   #tab-workflow-chains:focus-visible ~ .tab-list .tab[for="tab-workflow-chains"],
   #tab-prompts:focus-visible         ~ .tab-list .tab[for="tab-prompts"],
-  #tab-cards:focus-visible           ~ .tab-list .tab[for="tab-cards"] {
+  #tab-cards:focus-visible           ~ .tab-list .tab[for="tab-cards"],
+  #tab-form-content:focus-visible           ~ .tab-list .tab[for="tab-form-content"] {
     outline: 2px solid var(--clay);
     outline-offset: 2px;
     border-radius: 2px;
@@ -758,7 +766,8 @@ ${rows}
   #tab-connections:checked    ~ .tab-list .tab[for="tab-connections"],
   #tab-workflow-chains:checked ~ .tab-list .tab[for="tab-workflow-chains"],
   #tab-prompts:checked         ~ .tab-list .tab[for="tab-prompts"],
-  #tab-cards:checked           ~ .tab-list .tab[for="tab-cards"] {
+  #tab-cards:checked           ~ .tab-list .tab[for="tab-cards"],
+  #tab-form-content:checked           ~ .tab-list .tab[for="tab-form-content"] {
     color: var(--ink);
     border-bottom-color: var(--clay);
   }
@@ -768,7 +777,8 @@ ${rows}
   #tab-connections:checked    ~ .tab-list .tab[for="tab-connections"] .tab-count,
   #tab-workflow-chains:checked ~ .tab-list .tab[for="tab-workflow-chains"] .tab-count,
   #tab-prompts:checked         ~ .tab-list .tab[for="tab-prompts"] .tab-count,
-  #tab-cards:checked           ~ .tab-list .tab[for="tab-cards"] .tab-count {
+  #tab-cards:checked           ~ .tab-list .tab[for="tab-cards"] .tab-count,
+  #tab-form-content:checked           ~ .tab-list .tab[for="tab-form-content"] .tab-count {
     background: var(--clay-soft);
     color: var(--clay);
   }
@@ -781,6 +791,7 @@ ${rows}
   #tab-workflow-chains:checked ~ .tab-panel-workflow-chains { display: block; }
   #tab-prompts:checked         ~ .tab-panel-prompts         { display: block; }
   #tab-cards:checked           ~ .tab-panel-cards           { display: block; }
+  #tab-form-content:checked    ~ .tab-panel-form-content    { display: block; }
   .tab-desc {
     color: var(--ink-2);
     font-size: 14.5px;
@@ -889,6 +900,7 @@ ${
       <input type="radio" name="catalog-tab" id="tab-workflow-chains" class="tab-radio">
       <input type="radio" name="catalog-tab" id="tab-prompts" class="tab-radio">
       <input type="radio" name="catalog-tab" id="tab-cards" class="tab-radio">
+      <input type="radio" name="catalog-tab" id="tab-form-content" class="tab-radio">
 
       <div class="tab-list" role="tablist" aria-label="Pack categories">
         <label class="tab" for="tab-nodes" role="tab">
@@ -918,6 +930,10 @@ ${
         <label class="tab" for="tab-cards" role="tab">
           <span class="tab-label">Card packs</span>
           <span class="tab-count">${cardPacks.length}</span>
+        </label>
+        <label class="tab" for="tab-form-content" role="tab">
+          <span class="tab-label">Form-content packs</span>
+          <span class="tab-count">${formContentPacks.length}</span>
         </label>
       </div>
 
@@ -1026,6 +1042,20 @@ ${
         ${cardPacks.length === 0
           ? '<div class="empty">No card packs published yet.</div>'
           : tableFor(cardRows, 'Cards')}
+      </div>
+
+      <div class="tab-panel tab-panel-form-content" role="tabpanel" aria-labelledby="tab-form-content">
+        <p class="tab-desc">
+          <strong>Form-content packs</strong> ship reusable <em>form templates</em> — a title
+          plus a field list — that a host instantiates into an ordinary, fully editable form.
+          They are <em>declarative</em>: a manifest with <code>kind: "form-content"</code> and a
+          <code>templates[]</code> array, no runtime and no code. Instantiation goes through the
+          host's normal create path, so every field is sanitized exactly as hand-typed input is,
+          and the resulting form is the tenant's to edit or delete.
+        </p>
+        ${formContentPacks.length === 0
+          ? '<div class="empty">No form-content packs published yet.</div>'
+          : tableFor(formContentRows, 'Templates')}
       </div>
     </div>`
 }
