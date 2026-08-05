@@ -50,28 +50,4 @@ jobs:
         # §"Pack-internal JSON Schemas". This catches drift on schemas the
         # current batch touched while allowing the legacy partials a separate
         # cleanup track.
-        run: |
-          node -e "
-            const fs = require('fs');
-            const path = require('path');
-            let problems = 0;
-            const dirs = fs.readdirSync('packs').filter(d => fs.existsSync(path.join('packs', d, 'pack.json')));
-            for (const dir of dirs) {
-              const packJson = JSON.parse(fs.readFileSync(path.join('packs', dir, 'pack.json'), 'utf8'));
-              const version = packJson.version;
-              const schemasDir = path.join('packs', dir, 'schemas');
-              if (!fs.existsSync(schemasDir)) continue;
-              for (const file of fs.readdirSync(schemasDir)) {
-                if (!file.endsWith('.json')) continue;
-                const sch = JSON.parse(fs.readFileSync(path.join(schemasDir, file), 'utf8'));
-                if (!sch['\$id']) continue;
-                const expected = 'https://packs.openwop.dev/' + dir + '/' + version + '/' + file;
-                if (sch['\$id'] !== expected) {
-                  console.error('  drift: ' + dir + '/schemas/' + file + ' \$id=\"' + sch['\$id'] + '\" expected=\"' + expected + '\"');
-                  problems++;
-                }
-              }
-            }
-            if (problems > 0) { console.error('  ' + problems + ' pack-internal schema \$id mismatches.'); process.exit(1); }
-            console.log('  OK — all pack-internal schemas with \$id match <pack>/<version>/.');
-          "
+        run: node scripts/check-pack-schema-ids.mjs
