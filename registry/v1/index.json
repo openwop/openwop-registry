@@ -893,10 +893,10 @@
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
-        "forms.contact-us",
-        "forms.event-rsvp",
-        "forms.job-application",
-        "forms.feedback"
+        "core.openwop.form.contact-us",
+        "core.openwop.form.event-rsvp",
+        "core.openwop.form.job-application",
+        "core.openwop.form.feedback"
       ],
       "nodeCount": 0,
       "agentCount": 0,

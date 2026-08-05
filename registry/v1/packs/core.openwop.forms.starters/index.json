@@ -6,10 +6,10 @@
   "license": "Apache-2.0",
   "tags": [],
   "typeIds": [
-    "forms.contact-us",
-    "forms.event-rsvp",
-    "forms.job-application",
-    "forms.feedback"
+    "core.openwop.form.contact-us",
+    "core.openwop.form.event-rsvp",
+    "core.openwop.form.job-application",
+    "core.openwop.form.feedback"
   ],
   "nodeCount": 0,
   "agentCount": 0,
@@ -23,7 +23,7 @@
       "signatureUrl": "/v1/packs/core.openwop.forms.starters/-/1.0.0.sig",
       "signingMethod": "manual",
       "signingKeyId": "openwop-team-1",
-      "integrity": "sha256-LGuVWqEfCCtbEw/+2LZg3D9kDikcvCaOxdYH1DLP2p8=",
+      "integrity": "sha256-e6qsAT1C3FzeyTs7y/RwyNOVl/XQGwuKY4uG2qzIui4=",
       "deprecated": false,
       "yanked": false
     }
