@@ -14,7 +14,7 @@
   },
   "templates": [
     {
-      "templateId": "forms.contact-us",
+      "templateId": "core.openwop.form.contact-us",
       "version": "1.0.0",
       "label": "Contact us",
       "description": "Name, email, and a message. The shape almost every site needs first.",
@@ -22,28 +22,29 @@
       "title": "Contact us",
       "fields": [
         {
-          "key": "name",
+          "id": "name",
           "label": "Your name",
           "type": "text",
           "required": true
         },
         {
-          "key": "email",
+          "id": "email",
           "label": "Email",
-          "type": "email",
+          "type": "text",
+          "format": "email",
           "required": true
         },
         {
-          "key": "message",
+          "id": "message",
           "label": "How can we help?",
-          "type": "textarea",
+          "type": "longtext",
           "required": true,
           "description": "Tell us a little about what you need."
         }
       ]
     },
     {
-      "templateId": "forms.event-rsvp",
+      "templateId": "core.openwop.form.event-rsvp",
       "version": "1.0.0",
       "label": "Event RSVP",
       "description": "Attendance, guest count, and dietary notes for an event invite.",
@@ -51,19 +52,20 @@
       "title": "RSVP",
       "fields": [
         {
-          "key": "name",
+          "id": "name",
           "label": "Your name",
           "type": "text",
           "required": true
         },
         {
-          "key": "email",
+          "id": "email",
           "label": "Email",
-          "type": "email",
+          "type": "text",
+          "format": "email",
           "required": true
         },
         {
-          "key": "attending",
+          "id": "attending",
           "label": "Will you attend?",
           "type": "select",
           "required": true,
@@ -74,35 +76,27 @@
           ]
         },
         {
-          "key": "guests",
+          "id": "guests",
           "label": "Additional guests",
-          "type": "select",
-          "options": [
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5+"
-          ],
+          "type": "number",
           "description": "Not counting yourself."
         },
         {
-          "key": "dietary",
+          "id": "dietary",
           "label": "Dietary requirements",
           "type": "text",
           "description": "Optional — allergies, preferences."
         },
         {
-          "key": "accessibility",
+          "id": "accessibility",
           "label": "Accessibility or accommodation needs",
-          "type": "textarea",
+          "type": "longtext",
           "description": "Mobility, hearing, visual, or any other access needs. Optional."
         }
       ]
     },
     {
-      "templateId": "forms.job-application",
+      "templateId": "core.openwop.form.job-application",
       "version": "1.0.0",
       "label": "Job application",
       "description": "Candidate details, role, and a cover note. Deliberately does NOT collect demographic data.",
@@ -110,38 +104,39 @@
       "title": "Job application",
       "fields": [
         {
-          "key": "name",
+          "id": "name",
           "label": "Full name",
           "type": "text",
           "required": true
         },
         {
-          "key": "email",
+          "id": "email",
           "label": "Email",
-          "type": "email",
+          "type": "text",
+          "format": "email",
           "required": true
         },
         {
-          "key": "role",
+          "id": "role",
           "label": "Role you are applying for",
           "type": "text",
           "required": true
         },
         {
-          "key": "portfolio",
+          "id": "portfolio",
           "label": "Portfolio or LinkedIn",
           "type": "text"
         },
         {
-          "key": "cover",
+          "id": "cover",
           "label": "Why this role?",
-          "type": "textarea",
+          "type": "longtext",
           "description": "A short note — a few sentences is fine."
         }
       ]
     },
     {
-      "templateId": "forms.feedback",
+      "templateId": "core.openwop.form.feedback",
       "version": "1.0.0",
       "label": "Product feedback",
       "description": "A rating plus free text — the minimum that produces usable signal.",
@@ -149,7 +144,7 @@
       "title": "Share your feedback",
       "fields": [
         {
-          "key": "rating",
+          "id": "rating",
           "label": "How satisfied were you with your experience?",
           "type": "select",
           "required": true,
@@ -162,19 +157,20 @@
           ]
         },
         {
-          "key": "what_worked",
+          "id": "what_worked",
           "label": "What worked well?",
-          "type": "textarea"
+          "type": "longtext"
         },
         {
-          "key": "what_didnt",
+          "id": "what_didnt",
           "label": "What could be better?",
-          "type": "textarea"
+          "type": "longtext"
         },
         {
-          "key": "email",
+          "id": "email",
           "label": "Email (optional — only if you want a reply)",
-          "type": "email"
+          "type": "text",
+          "format": "email"
         }
       ]
     }
