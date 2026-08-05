@@ -27,6 +27,10 @@ import { join } from 'node:path';
 
 const FIX = process.argv.includes('--fix');
 const PACKS = 'packs';
+/** Floors near the measured population — see the guard below. */
+const MIN_PACKS = 150;
+const MISSING_ID_CEILING = 60;
+const MIN_SCHEMAS = 1100;
 
 if (!existsSync(PACKS)) {
   console.error(`✗ check-pack-schema-ids: no ${PACKS}/ directory — run from the registry repo root.`);
@@ -36,6 +40,8 @@ if (!existsSync(PACKS)) {
 const drifts = [];
 let packsScanned = 0;
 let schemasScanned = 0;
+/** Schemas with no `$id` at all — normatively required, so absence is a finding. */
+const missingId = [];
 
 for (const dir of readdirSync(PACKS)) {
   const manifest = join(PACKS, dir, 'pack.json');
@@ -53,7 +59,15 @@ for (const dir of readdirSync(PACKS)) {
   // registry actually serves from, which is what a caching consumer resolves.
   const version = pack.version;
   const schemasDir = join(PACKS, dir, 'schemas');
-  if (!version || !existsSync(schemasDir)) continue;
+  // §Correction (code review): `!version` used to `continue` — a SKIP. But
+  // `packsScanned` was already incremented above, so deleting `"version"` from a
+  // manifest left every `$id` in that pack unchecked while the gate exited 0.
+  // A missing version is a broken manifest, not a pack to ignore.
+  if (!version) {
+    console.error(`✗ ${manifest} has no \`version\` — cannot check its schema $ids.`);
+    process.exit(1);
+  }
+  if (!existsSync(schemasDir)) continue;
 
   for (const file of readdirSync(schemasDir)) {
     if (!file.endsWith('.json')) continue;
@@ -66,9 +80,12 @@ for (const dir of readdirSync(PACKS)) {
       console.error(`✗ ${path} is not valid JSON: ${err.message}`);
       process.exit(1);
     }
-    // A schema with no `$id` makes no identity claim, so it cannot drift.
-    if (typeof schema.$id !== 'string') continue;
+    // Count the file BEFORE the `$id` test. §Correction (grade-code): counting
+    // after meant DELETING an `$id` silenced its drift AND shrank the number the
+    // anti-vacuity floor watches — so removing the field was a way to go green.
+    // CONTRIBUTING.md makes `$id` normative, so absence is itself reportable.
     schemasScanned += 1;
+    if (typeof schema.$id !== 'string') { missingId.push(path); continue; }
     const expected = `https://packs.openwop.dev/${dir}/${version}/${file}`;
     if (schema.$id === expected) continue;
 
@@ -80,12 +97,36 @@ for (const dir of readdirSync(PACKS)) {
 // Anti-vacuity: a gate that scanned nothing must not report success. This is the
 // failure mode that let a sibling tripwire in openwop-app read 1407 files while
 // examining zero nodes — it guarded on the FILE count, not on what it asserted.
-if (packsScanned === 0 || schemasScanned === 0) {
+// A `> 0` floor is not a guard: 204 of 205 packs could lose their schemas and it
+// would still pass. Pin FLOORS near the measured population so a collapse in
+// coverage fails loudly, the way a count-what-you-assert guard must.
+if (packsScanned < MIN_PACKS || schemasScanned < MIN_SCHEMAS) {
   console.error(
-    `✗ check-pack-schema-ids: scanned ${packsScanned} pack(s) and ${schemasScanned} schema(s) with an $id — `
-    + 'nothing was actually checked. Refusing to report success.',
+    `✗ check-pack-schema-ids: scanned ${packsScanned} pack(s) (floor ${MIN_PACKS}) and `
+    + `${schemasScanned} schema(s) with an $id (floor ${MIN_SCHEMAS}) — coverage collapsed. `
+    + 'Refusing to report success. If the corpus legitimately shrank, lower the floors deliberately.',
   );
   process.exit(1);
+}
+
+// `$id` is normatively required, and 64 shipped schemas omit it. MEASURED before
+// enforcing (ADR 0504's lesson: I once built a correct gate that would have
+// blocked 67% of chains and did not ship it). Failing on a 64-case pre-existing
+// population would block every unrelated change, so this is a NO-GROWTH ceiling:
+// loud about the debt, fatal only if it grows. Whether these schemas should
+// carry an `$id` at all is the same normative question as the narrower-rule
+// proposal in ADR 0525 §"What this deliberately does NOT do" — decide it cold.
+if (missingId.length > MISSING_ID_CEILING) {
+  console.error(
+    `✗ check-pack-schema-ids: ${missingId.length} schema(s) declare no $id, above the `
+    + `recorded ceiling of ${MISSING_ID_CEILING}. CONTRIBUTING.md makes $id normative — `
+    + 'add one rather than raising the ceiling.',
+  );
+  for (const p of missingId.slice(0, 10)) console.error(`  ${p}`);
+  process.exit(1);
+}
+if (missingId.length > 0) {
+  console.warn(`⚠ check-pack-schema-ids: ${missingId.length} schema(s) declare no $id (ceiling ${MISSING_ID_CEILING}, pre-existing — tracked).`);
 }
 
 if (drifts.length === 0) {
