@@ -1,0 +1,33 @@
+{
+  "name": "core.openwop.forms.starters",
+  "kind": "form-content",
+  "description": "Starter form templates — the shapes almost every first form takes. Instantiated through the normal create path, so every field is sanitized exactly as typed input is.",
+  "author": "openwop",
+  "license": "Apache-2.0",
+  "tags": [],
+  "typeIds": [
+    "forms.contact-us",
+    "forms.event-rsvp",
+    "forms.job-application",
+    "forms.feedback"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "templateCount": 4,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "publishedAt": "2026-05-10T00:00:00Z",
+      "manifestUrl": "/v1/packs/core.openwop.forms.starters/-/1.0.0.json",
+      "tarballUrl": "/v1/packs/core.openwop.forms.starters/-/1.0.0.tgz",
+      "signatureUrl": "/v1/packs/core.openwop.forms.starters/-/1.0.0.sig",
+      "signingMethod": "manual",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-LGuVWqEfCCtbEw/+2LZg3D9kDikcvCaOxdYH1DLP2p8=",
+      "deprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

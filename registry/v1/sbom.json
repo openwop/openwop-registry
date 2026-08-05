@@ -1494,6 +1494,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.forms.starters@1.0.0",
+      "type": "library",
+      "name": "core.openwop.forms.starters",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v1/packs/core.openwop.forms.starters/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "9617f9c780e00b7b3719b725ab8965b2494d54161538e80a1070df191d5f7ed6"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.hitl@1.0.0",
       "type": "library",
       "name": "core.openwop.hitl",

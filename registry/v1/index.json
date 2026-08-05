@@ -1,7 +1,7 @@
 {
   "registryVersion": "1.0.0",
   "generatedAt": "2026-05-10T00:00:00Z",
-  "packCount": 155,
+  "packCount": 156,
   "packs": [
     {
       "name": "community.openwop-team.demo",
@@ -881,6 +881,24 @@
         "core.parallel"
       ],
       "nodeCount": 29,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.forms.starters",
+      "kind": "form-content",
+      "latestVersion": "1.0.0",
+      "description": "Starter form templates — the shapes almost every first form takes. Instantiated through the normal create path, so every field is sanitized exactly as typed input is.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "forms.contact-us",
+        "forms.event-rsvp",
+        "forms.job-application",
+        "forms.feedback"
+      ],
+      "nodeCount": 0,
       "agentCount": 0,
       "deprecated": false,
       "yanked": false

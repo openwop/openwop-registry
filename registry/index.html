@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>openwop registry — packs.openwop.dev</title>
-<meta name="description" content="The canonical signed node-pack registry for the openwop workflow orchestration protocol. 155 pack(s), 280 version(s) published.">
+<meta name="description" content="The canonical signed node-pack registry for the openwop workflow orchestration protocol. 156 pack(s), 281 version(s) published.">
 <meta name="robots" content="index, follow">
 
 <meta property="og:type" content="website">
@@ -287,7 +287,8 @@
   #tab-connections:focus-visible    ~ .tab-list .tab[for="tab-connections"],
   #tab-workflow-chains:focus-visible ~ .tab-list .tab[for="tab-workflow-chains"],
   #tab-prompts:focus-visible         ~ .tab-list .tab[for="tab-prompts"],
-  #tab-cards:focus-visible           ~ .tab-list .tab[for="tab-cards"] {
+  #tab-cards:focus-visible           ~ .tab-list .tab[for="tab-cards"],
+  #tab-form-content:focus-visible           ~ .tab-list .tab[for="tab-form-content"] {
     outline: 2px solid var(--clay);
     outline-offset: 2px;
     border-radius: 2px;
@@ -299,7 +300,8 @@
   #tab-connections:checked    ~ .tab-list .tab[for="tab-connections"],
   #tab-workflow-chains:checked ~ .tab-list .tab[for="tab-workflow-chains"],
   #tab-prompts:checked         ~ .tab-list .tab[for="tab-prompts"],
-  #tab-cards:checked           ~ .tab-list .tab[for="tab-cards"] {
+  #tab-cards:checked           ~ .tab-list .tab[for="tab-cards"],
+  #tab-form-content:checked           ~ .tab-list .tab[for="tab-form-content"] {
     color: var(--ink);
     border-bottom-color: var(--clay);
   }
@@ -309,7 +311,8 @@
   #tab-connections:checked    ~ .tab-list .tab[for="tab-connections"] .tab-count,
   #tab-workflow-chains:checked ~ .tab-list .tab[for="tab-workflow-chains"] .tab-count,
   #tab-prompts:checked         ~ .tab-list .tab[for="tab-prompts"] .tab-count,
-  #tab-cards:checked           ~ .tab-list .tab[for="tab-cards"] .tab-count {
+  #tab-cards:checked           ~ .tab-list .tab[for="tab-cards"] .tab-count,
+  #tab-form-content:checked           ~ .tab-list .tab[for="tab-form-content"] .tab-count {
     background: var(--clay-soft);
     color: var(--clay);
   }
@@ -322,6 +325,7 @@
   #tab-workflow-chains:checked ~ .tab-panel-workflow-chains { display: block; }
   #tab-prompts:checked         ~ .tab-panel-prompts         { display: block; }
   #tab-cards:checked           ~ .tab-panel-cards           { display: block; }
+  #tab-form-content:checked    ~ .tab-panel-form-content    { display: block; }
   .tab-desc {
     color: var(--ink-2);
     font-size: 14.5px;
@@ -411,8 +415,8 @@
     </h1>
     <p class="lead">Canonical signed node-pack registry for the <a href="https://openwop.dev/">openwop</a> workflow orchestration protocol.</p>
     <div class="summary">
-      <div><strong>155</strong><span>packs published</span></div>
-      <div><strong>280</strong><span>versions total</span></div>
+      <div><strong>156</strong><span>packs published</span></div>
+      <div><strong>281</strong><span>versions total</span></div>
       <div><strong>Ed25519</strong><span>signing algorithm</span></div>
     </div>
   </header>
@@ -427,6 +431,7 @@
       <input type="radio" name="catalog-tab" id="tab-workflow-chains" class="tab-radio">
       <input type="radio" name="catalog-tab" id="tab-prompts" class="tab-radio">
       <input type="radio" name="catalog-tab" id="tab-cards" class="tab-radio">
+      <input type="radio" name="catalog-tab" id="tab-form-content" class="tab-radio">
 
       <div class="tab-list" role="tablist" aria-label="Pack categories">
         <label class="tab" for="tab-nodes" role="tab">
@@ -455,6 +460,10 @@
         </label>
         <label class="tab" for="tab-cards" role="tab">
           <span class="tab-label">Card packs</span>
+          <span class="tab-count">1</span>
+        </label>
+        <label class="tab" for="tab-form-content" role="tab">
+          <span class="tab-label">Form-content packs</span>
           <span class="tab-count">1</span>
         </label>
       </div>
@@ -2489,6 +2498,36 @@
       </tbody>
     </table>
       </div>
+
+      <div class="tab-panel tab-panel-form-content" role="tabpanel" aria-labelledby="tab-form-content">
+        <p class="tab-desc">
+          <strong>Form-content packs</strong> ship reusable <em>form templates</em> — a title
+          plus a field list — that a host instantiates into an ordinary, fully editable form.
+          They are <em>declarative</em>: a manifest with <code>kind: "form-content"</code> and a
+          <code>templates[]</code> array, no runtime and no code. Instantiation goes through the
+          host's normal create path, so every field is sanitized exactly as hand-typed input is,
+          and the resulting form is the tenant's to edit or delete.
+        </p>
+            <table>
+      <thead>
+        <tr><th>Name</th><th>Version</th><th class="count-h">Templates</th><th>Description</th><th>License</th><th>Artifacts</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="name"><code>core.openwop.forms.starters</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="provider in latest manifest">0</td>
+          <td class="desc">Starter form templates — the shapes almost every first form takes. Instantiated through the normal create path, so every field is sanitized exactly as typed input is.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v1/packs/core.openwop.forms.starters/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v1/packs/core.openwop.forms.starters/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v1/packs/core.openwop.forms.starters/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+      </div>
     </div>
   </section>
 
@@ -2537,7 +2576,7 @@ const ok = verify(null, readFileSync('pack.tgz'), pub, readFileSync('pack.sig'))
   </section>
 
   <footer>
-    Generated 2026-08-02T16:07:12.921Z · <a href="https://openwop.dev/">openwop.dev</a> · <a href="https://github.com/openwop/openwop">openwop on GitHub</a>
+    Generated 2026-08-05T19:32:19.745Z · <a href="https://openwop.dev/">openwop.dev</a> · <a href="https://github.com/openwop/openwop">openwop on GitHub</a>
   </footer>
 </main>
 </body>
