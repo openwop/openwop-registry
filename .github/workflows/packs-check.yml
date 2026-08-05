@@ -18,12 +18,14 @@ on:
     paths:
       - 'packs/**'
       - 'scripts/check-agent-tool-allowlist.mjs'
+      - 'scripts/check-pack-schema-ids.mjs'
       - '.github/workflows/packs-check.yml'
   push:
     branches: [main]
     paths:
       - 'packs/**'
       - 'scripts/check-agent-tool-allowlist.mjs'
+      - 'scripts/check-pack-schema-ids.mjs'
       - '.github/workflows/packs-check.yml'
 
 concurrency:
