@@ -270,6 +270,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.agents.deep-research@1.0.4",
+      "type": "library",
+      "name": "core.openwop.agents.deep-research",
+      "version": "1.0.4",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v1/packs/core.openwop.agents.deep-research/-/1.0.4.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "1cd21c5f4c2b6abbd22013a2fc92297008646e48ed31df7c78ccd70211ed5714"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.agents.devops-crew@1.0.0",
       "type": "library",
       "name": "core.openwop.agents.devops-crew",
