@@ -1,0 +1,59 @@
+{
+  "name": "core.openwop.agents.doc-writer",
+  "version": "1.0.2",
+  "description": "Technical documentation author. Produces README sections, API docs, architecture notes, and changelogs from source material. RAG-grounded. Pure-agent pack.",
+  "author": "OpenWOP Working Group",
+  "license": "Apache-2.0",
+  "homepage": "https://openwop.dev/packs/core.openwop.agents.doc-writer",
+  "repository": "https://github.com/openwop/openwop",
+  "keywords": [
+    "core",
+    "agents",
+    "documentation",
+    "writing",
+    "rag",
+    "pattern"
+  ],
+  "engines": {
+    "openwop": ">=1.1.0 <3.0.0"
+  },
+  "peerDependencies": {
+    "aiProviders": "supported",
+    "agentRuntime": "supported"
+  },
+  "agents": [
+    {
+      "agentId": "core.openwop.agents.doc-writer.default",
+      "persona": "Doc Writer",
+      "label": "Documentation Writer Agent",
+      "description": "Produces technical documentation in one of several supported shapes (readme-section, api-reference, architecture-note, changelog, runbook). Grounds claims via openwop:core.rag.retriever-basic and returns the document for the enclosing workflow to persist.",
+      "modelClass": "writing",
+      "systemPromptRef": "prompts/doc-writer.md",
+      "toolAllowlist": [
+        "openwop:core.rag.retriever-basic"
+      ],
+      "memoryShape": {
+        "scratchpad": true,
+        "conversation": false,
+        "longTerm": false
+      },
+      "handoff": {
+        "taskSchemaRef": "schemas/doc-writer.task.schema.json",
+        "returnSchemaRef": "schemas/doc-writer.return.schema.json"
+      },
+      "confidence": {
+        "defaultThreshold": 0.7
+      }
+    }
+  ],
+  "runtime": {
+    "language": "remote",
+    "entry": "pack.json"
+  },
+  "kind": "node",
+  "signing": {
+    "keyId": "openwop-team-1",
+    "scheme": "ed25519-canonical-json"
+  },
+  "integrity": "sha256-c/4GWaN9ll+P+nxyrmGv9qNzJNJ0rGXL6L18NHCQmJs="
+}

@@ -1,0 +1,169 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.agents.audit-summarizer@1.0.1",
+      "type": "library",
+      "name": "core.openwop.agents.audit-summarizer",
+      "version": "1.0.1",
+      "description": "Audit-trail summarizer agent. Compresses raw audit logs into executive summaries, highlights anomalies, tracks pattern shifts over time via long-term memory. Pure-agent pack.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/packs/core.openwop.agents.audit-summarizer"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "67393ee6372b90b71b979ac233196b9a46b8710b7e831b341c1a5647db16332a"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.agents.audit-summarizer@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9783173c0d47d0b39746a5e4204fd334e50276232ae65d2ed01135461b6f3b20"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1545"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f9e5eaeba3334de81753b3115b3bb19ed870ca801602493a208f915b0e23e5f3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "380a32d0f348e48b7d664e3f56bbe554637f43da1412e6a2148214cce417dd9f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1647"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/audit-summarizer.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "215e6d85b7c505f25372641e46e8a5442cf36450493d4ce532c06b0d22d9f4ea"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3083"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/audit-summarizer.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "215467c3a4fcc2ba60cce9e5d0825971555d21428ea6e8f7618cf1e268dd15dc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3815"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/audit-summarizer.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6b6e3d6724bb945b378a28565d53a470a736cb735f780173ecd318694f0482f1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1965"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.agents.audit-summarizer@1.0.1",
+      "dependsOn": [
+        "host:agentRuntime",
+        "host:agents",
+        "host:aiProviders"
+      ]
+    }
+  ]
+}

@@ -3,8 +3,8 @@
 Bridges the Anthropic / OpenAI Agent Skills format (SKILL.md, open standard since Dec 2025) to openwop AgentManifests. Hybrid pack: one converter node + one adapter agent.
 
 | Pack name | `core.openwop.skills-bridge` |
-| Version | `1.0.0` |
-| Engine | OpenWOP `>=1.1.0 <2.0.0` |
+| Version | `1.0.1` |
+| Engine | OpenWOP `>=1.1.0 <3.0.0` |
 | Runtime | `language: javascript` (ESM, Node ≥20) |
 | Nodes | 1 (`core.skills-bridge.convert`) |
 | Agents | 1 (`core.openwop.skills-bridge.adapter`) |

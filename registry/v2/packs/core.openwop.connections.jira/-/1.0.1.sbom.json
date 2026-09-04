@@ -1,0 +1,76 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.connections.jira@1.0.1",
+      "type": "library",
+      "name": "core.openwop.connections.jira",
+      "version": "1.0.1",
+      "description": "Jira connection pack — Atlassian OAuth2 (3LO) provider for Jira Cloud. DEPLOY-GATED. Reach is `mcp` against Atlassian's official first-party remote MCP server (the Rovo MCP server, https://mcp.atlassian.com/v1/mcp), which fronts Jira (and Confluence) under the signed-in user's permissions. Carries NO secret; the operator supplies the OAuth client id/secret host-side.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "673ce8addc90cdacd7e95b5aa2ffb3350eb4d48ae379e6135052981dfe40b8c8"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.connections.jira@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2110c4de6f9d8b138af4f1d71754bbe1cb35531a97f8133f96a15de30bd44085"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "704047b4e5884757e0418f0978ef9c7711c7e8f0f426e79cd3786c76d7c0519a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1390"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.connections.jira@1.0.1",
+      "dependsOn": []
+    }
+  ]
+}

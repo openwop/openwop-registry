@@ -1,0 +1,76 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.connections.tiktok-ads@1.0.1",
+      "type": "library",
+      "name": "core.openwop.connections.tiktok-ads",
+      "version": "1.0.1",
+      "description": "TikTok Ads connection pack — OAuth2 provider for the TikTok Business (Marketing) API. Reach is `openapi`: the manifest declares the TikTok business-api OAuth hosts and points at the Marketing API reference. Carries NO secret; the operator supplies the app id/secret host-side. The third ad platform Campaign Studio dispatches to — TikTok authenticates with an `Access-Token` header (not `Authorization: Bearer`), handled host-side by the ads-dispatch adapter.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1380a41ae714e7464175824c2863e888bb8161a625649b003921b63ef2d7791b"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.connections.tiktok-ads@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3d217e903c564ba2aea6218fa30c245f05f8e6f1b8d2f2241632d1784c09ff42"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ddb447c927653993e839c5faf6d023b69ce650ef5c232bd7af18e534bf187f08"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1423"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.connections.tiktok-ads@1.0.1",
+      "dependsOn": []
+    }
+  ]
+}

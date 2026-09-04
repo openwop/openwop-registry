@@ -1,0 +1,102 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.campaign-channels@1.0.1",
+      "type": "library",
+      "name": "core.openwop.workflows.campaign-channels",
+      "version": "1.0.1",
+      "description": "The five campaign channel child workflows (ADR 0157) — generate→approve DAGs the orchestration fans out over — migrated from the deprecated builtins (ADR 0472 P4). chainIds keep the original ids.",
+      "licenses": [],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ac54147cd6fdb7eca8bee27d7174b09031e1d03206ddf0973c892b09fdd3765e"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.campaign-channels@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "50c9e19c5c2923d9bff41901f2a4becdd55401bf7deb67360ea3d9415b469603"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "763"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3c64b8fdfdb497ef27202b3a2eb4f57b6bb450c52b2ea72dc54e72ec6c4e32ee"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "902f56c7c2c1d3180bcec4d66af69611dab63da76d3b76ef9f458c8b5a480f1f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "4136"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.campaign-channels@1.0.1",
+      "dependsOn": []
+    }
+  ]
+}

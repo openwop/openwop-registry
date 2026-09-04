@@ -1,0 +1,58 @@
+{
+  "name": "core.openwop.agents.code-reviewer",
+  "version": "1.0.2",
+  "description": "Code review agent. Reviews diffs or files for correctness, style, security, and design. Diff-aware prompting; cites file:line in findings. Pure-agent pack.",
+  "author": "OpenWOP Working Group",
+  "license": "Apache-2.0",
+  "homepage": "https://openwop.dev/packs/core.openwop.agents.code-reviewer",
+  "repository": "https://github.com/openwop/openwop",
+  "keywords": [
+    "core",
+    "agents",
+    "code-review",
+    "coding",
+    "pattern"
+  ],
+  "engines": {
+    "openwop": ">=1.1.0 <3.0.0"
+  },
+  "peerDependencies": {
+    "aiProviders": "supported",
+    "agentRuntime": "supported"
+  },
+  "agents": [
+    {
+      "agentId": "core.openwop.agents.code-reviewer.default",
+      "persona": "Code Reviewer",
+      "label": "Code Reviewer Agent",
+      "description": "Reviews a diff or set of files for correctness, security, style, and design issues. Cites file:line for every finding. Severity-classifies findings (blocking / important / nit). Reasons over the diff and files supplied in the task payload; may fetch external API docs via openwop:core.openwop.http.fetch.",
+      "modelClass": "coding",
+      "systemPromptRef": "prompts/code-reviewer.md",
+      "toolAllowlist": [
+        "openwop:core.openwop.http.fetch"
+      ],
+      "memoryShape": {
+        "scratchpad": true,
+        "conversation": false,
+        "longTerm": false
+      },
+      "handoff": {
+        "taskSchemaRef": "schemas/code-reviewer.task.schema.json",
+        "returnSchemaRef": "schemas/code-reviewer.return.schema.json"
+      },
+      "confidence": {
+        "defaultThreshold": 0.7
+      }
+    }
+  ],
+  "runtime": {
+    "language": "remote",
+    "entry": "pack.json"
+  },
+  "kind": "node",
+  "signing": {
+    "keyId": "openwop-team-1",
+    "scheme": "ed25519-canonical-json"
+  },
+  "integrity": "sha256-TAr1CVqbuLhCa+T3zykbbeMG50GH+nt4rd8cIL45bGM="
+}

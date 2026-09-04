@@ -1,0 +1,42 @@
+{
+  "name": "core.openwop.agents",
+  "kind": "node",
+  "description": "Agent composition primitives. Root agent.run + sub-nodes (tools, memory, parsers, model selector). Composes via expansion semantics and consumes host.aiProviders + host.agentRuntime.",
+  "author": "OpenWOP Working Group",
+  "license": "Apache-2.0",
+  "homepage": "https://openwop.dev/packs/core.openwop.agents",
+  "repository": "https://github.com/openwop/openwop",
+  "tags": [],
+  "typeIds": [
+    "core.agents.run",
+    "core.agents.tool-function",
+    "core.agents.tool-workflow",
+    "core.agents.tool-mcp",
+    "core.agents.tool-http",
+    "core.agents.memory-window",
+    "core.agents.memory-summary",
+    "core.agents.memory-kv-store",
+    "core.agents.output-parser-structured",
+    "core.agents.output-parser-list",
+    "core.agents.output-parser-auto-fix",
+    "core.agents.model-selector"
+  ],
+  "nodeCount": 12,
+  "agentCount": 0,
+  "versions": [
+    {
+      "version": "1.0.2",
+      "manifestUrl": "/v2/packs/core.openwop.agents/-/1.0.2.json",
+      "tarballUrl": "/v2/packs/core.openwop.agents/-/1.0.2.tgz",
+      "signatureUrl": "/v2/packs/core.openwop.agents/-/1.0.2.sig",
+      "sbomUrl": "/v2/packs/core.openwop.agents/-/1.0.2.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-WiD3Eph7xhu63dJw+3DTttSKWkA6pFkirRRD9szuCak=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.2",
+  "deprecated": false
+}

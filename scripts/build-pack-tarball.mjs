@@ -19,10 +19,24 @@
  *                       whose name doesn't start with `private.` —
  *                       the registry's verifyPublishSignature() refuses
  *                       unsigned tarballs for those.
- *   --key-id <id>       publicKeyRef written into the signing block.
- *                       Defaults to "openwop-team-1". The registry's
- *                       keychain MUST have the matching public key
- *                       pre-registered under this id.
+ *   --key-id <id>       publicKeyRef (v1) / keyId (v2) written into the
+ *                       signing block. Defaults to "openwop-team-1". The
+ *                       registry's keychain MUST have the matching public
+ *                       key pre-registered under this id.
+ *   --key-file <path>   Alias of --key.
+ *   --tree v1|v2        Which registry tree the artifact is for (default v1).
+ *                       RFC 0177 §C.3–§C.5: under v2 the signing block is
+ *                       `{ keyId, scheme }` (keyId first; no `method`, no
+ *                       `publicKeyRef`, no `signatureRef` — the scheme fixes
+ *                       the in-tarball signature path), `kind` MUST be
+ *                       present, and `engines.openwop` MUST admit protocol
+ *                       major 2 (a v2 host would refuse the pack otherwise).
+ *   --scheme <s>        Signing scheme. The only scheme is
+ *                       `ed25519-canonical-json` (a detached 64-byte Ed25519
+ *                       signature over the canonical-JSON pack.json inside a
+ *                       deterministic tarball). REQUIRED under --tree v2 —
+ *                       there is no default, and a bare `ed25519` (the v1
+ *                       signature-over-tarball-bytes convention) is refused.
  *
  * For each pack the script produces:
  *
@@ -72,19 +86,22 @@ function parseArgs(argv) {
   const args = {
     pack: null, all: false, filter: null, key: null, out: DEFAULT_OUT,
     validateOnly: false, signed: false, keyId: 'openwop-team-1',
+    tree: 'v1', scheme: null,
   };
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (a === '--pack') args.pack = argv[++i];
     else if (a === '--all') args.all = true;
     else if (a === '--filter') args.filter = argv[++i];
-    else if (a === '--key') args.key = argv[++i];
+    else if (a === '--key' || a === '--key-file') args.key = argv[++i];
+    else if (a === '--tree') args.tree = argv[++i];
+    else if (a === '--scheme') args.scheme = argv[++i];
     else if (a === '--out') args.out = argv[++i];
     else if (a === '--validate-only') args.validateOnly = true;
     else if (a === '--signed') args.signed = true;
     else if (a === '--key-id') args.keyId = argv[++i];
     else if (a === '--help' || a === '-h') {
-      console.log('Usage: build-pack-tarball.mjs [--pack <name> | --all [--filter <prefix>]] [--key <path>] [--out <dir>] [--validate-only] [--signed [--key-id <id>]]');
+      console.log('Usage: build-pack-tarball.mjs [--pack <name> | --all [--filter <prefix>]] [--key <path>] [--out <dir>] [--validate-only] [--signed [--key-id <id>]] [--tree v1|v2] [--scheme ed25519-canonical-json]');
       console.log('');
       console.log('  --filter <prefix>  Match pack names by prefix when used with --all.');
       console.log('                     Useful for per-publisher signing — e.g.,');
@@ -96,8 +113,33 @@ function parseArgs(argv) {
       process.exit(2);
     }
   }
+  if (args.tree !== 'v1' && args.tree !== 'v2') {
+    fail(`✗ --tree must be v1 or v2 (got "${args.tree}")`);
+    process.exit(2);
+  }
+  if (args.tree === 'v2' && args.signed) {
+    // RFC 0177 §C.3 — one scheme, no default. `ed25519` names the retired
+    // signature-over-tarball-bytes convention; refusing it here is what keeps a
+    // v2 artifact from ever being signed over the wrong bytes.
+    if (args.scheme === null) {
+      fail(`✗ --tree v2 --signed requires an explicit --scheme ${V2_SCHEME} (no default; RFC 0177 §C.3)`);
+      process.exit(2);
+    }
+    if (args.scheme !== V2_SCHEME) {
+      fail(`✗ --scheme "${args.scheme}" is not a v2 signing scheme; the only scheme is ${V2_SCHEME}${args.scheme === 'ed25519' ? ' (bare ed25519 = signature over tarball bytes, retired by RFC 0177 §C.3 — re-sign, do not relabel)' : ''}`);
+      process.exit(2);
+    }
+  }
+  if (args.tree === 'v1' && args.scheme !== null) {
+    fail('✗ --scheme applies to --tree v2 only; the v1 tree keeps `signing.method: manual`');
+    process.exit(2);
+  }
   return args;
 }
+
+/** RFC 0177 §C.3 — the one v2 signing scheme. */
+const V2_SCHEME = 'ed25519-canonical-json';
+const V2_RANGE = /^>=\d+(\.\d+){0,2} <(\d+)\.0\.0$/;
 
 // ─── canonical JSON (RFC 8785-style key-sorted) ──────────────────────
 
@@ -281,8 +323,38 @@ function buildPack(packName, args) {
     warn(`  ⚠ ${packName} is non-private; registry will reject unsigned tarball. Add --signed.`);
   }
 
+  if (args.tree === 'v2') {
+    // RFC 0177 §A.1 / §C.5 — never produce a v2 artifact a v2 host refuses.
+    const range = manifest.engines?.openwop;
+    const m = typeof range === 'string' ? V2_RANGE.exec(range) : null;
+    if (!m || Number(m[2]) <= 2) {
+      fail(`✗ ${packName}@${manifest.version} — engines.openwop "${range}" does not admit protocol major 2 with an explicit ceiling (RFC 0177 §A.1); not a v2 manifest`);
+      return false;
+    }
+    if (typeof manifest.kind !== 'string') {
+      fail(`✗ ${packName}@${manifest.version} — \`kind\` is REQUIRED on a v2 manifest (RFC 0177 §C.5); run scripts/codemod-pack-manifest-v2.mjs`);
+      return false;
+    }
+    if (manifest.signing && ('method' in manifest.signing || 'publicKeyRef' in manifest.signing)) {
+      fail(`✗ ${packName}@${manifest.version} — source signing block carries v1 fields (method/publicKeyRef); RFC 0177 §C.3/§C.4`);
+      return false;
+    }
+  }
+
   let signedManifest = manifest;
-  if (args.signed) {
+  if (args.signed && args.tree === 'v2') {
+    // RFC 0177 §C.3/§C.4 — `signing` is exactly { keyId, scheme }, keyId first.
+    // The signature lives at keys/pack.json.sig inside the tarball; the scheme
+    // fixes that path, so there is no signatureRef. The canonical JSON we sign
+    // is computed over the AUGMENTED manifest, as for v1.
+    signedManifest = {
+      ...manifest,
+      signing: {
+        keyId: args.keyId,
+        scheme: V2_SCHEME,
+      },
+    };
+  } else if (args.signed) {
     // Schema for the `signing` object (per node-pack-manifest.schema.json
     // §Signing) only allows {publicKeyRef, signatureRef, method} —
     // additionalProperties: false. Don't add `algorithm` or anything
@@ -370,7 +442,7 @@ function buildPack(packName, args) {
   writeFileSync(join(args.out, `${base}.sig.b64`), sig.toString('base64'));
   writeFileSync(join(args.out, `${base}.integrity.txt`), `sha256:${sha}\n`);
 
-  ok(`✓ ${packName}@${manifest.version}${args.signed ? ' [signed]' : ''}`);
+  ok(`✓ ${packName}@${manifest.version}${args.signed ? ` [signed${args.tree === 'v2' ? ` ${V2_SCHEME}` : ''}]` : ''}`);
   dim(`  entries: ${entries.length}  size: ${tgz.length}b  sha256: ${sha.slice(0, 16)}…`);
   return true;
 }

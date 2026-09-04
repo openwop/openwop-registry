@@ -1,0 +1,32 @@
+{
+  "name": "core.openwop.workflows.exec-ops",
+  "kind": "workflow-chain",
+  "description": "Real-work workflow pack (RFC 0013, ADR 0149). The Executive / Chief-of-Staff cluster: Daily Executive Briefing, Meeting Prep & Attendee Dossier, and Board / Investor Update Pack. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.analytics) and, where a workflow touches an external system, binds a connection pack via core.openwop.http.openapi-call (connectionRef) — so a configured connection runs live and an unconfigured one surfaces a connect prompt rather than failing. Every external send is gated by core.chat.approvalGate; the read-only briefing is ungated. All tenant-specific values are run parameters (replay-deterministic). Resolves fully on hosts that ship the feature + http/mcp + chat packs (the OpenWOP reference app); the connection bindings are configured by the operator under Access & data → Connections.",
+  "author": "openwop",
+  "license": "Apache-2.0",
+  "tags": [],
+  "typeIds": [
+    "exec-ops.daily-briefing",
+    "exec-ops.meeting-prep",
+    "exec-ops.board-update"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 3,
+  "versions": [
+    {
+      "version": "1.1.4",
+      "manifestUrl": "/v2/packs/core.openwop.workflows.exec-ops/-/1.1.4.json",
+      "tarballUrl": "/v2/packs/core.openwop.workflows.exec-ops/-/1.1.4.tgz",
+      "signatureUrl": "/v2/packs/core.openwop.workflows.exec-ops/-/1.1.4.sig",
+      "sbomUrl": "/v2/packs/core.openwop.workflows.exec-ops/-/1.1.4.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-wQto0ZJ4PRQeQA6+KdxrvPtHbFxSkJfKCGpTfeuPcWo=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.1.4",
+  "deprecated": false
+}

@@ -24,8 +24,11 @@
  * Pure Node 20 stdlib — no npm install required.
  *
  * Usage:
- *   node registry/scripts/generate-sbom.mjs           # write
- *   node registry/scripts/generate-sbom.mjs --check   # fail if files would change
+ *   node registry/scripts/generate-sbom.mjs [--tree v1|v2]   # write
+ *   node registry/scripts/generate-sbom.mjs --check           # fail if files would change
+ *
+ * `--tree v2` (RFC 0177 §A.2, default v1) generates for `registry/v2/` with
+ * `/v2/` sbomUrl templates and the aggregate at registry/v2/sbom.json.
  *
  * @see https://cyclonedx.org/specification/overview/ (CycloneDX 1.6)
  */
@@ -35,10 +38,12 @@ import { createHash } from 'node:crypto';
 import { gunzipSync } from 'node:zlib';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { treeFromArgv } from '../../scripts/lib/registry-tree.mjs';
 
 const REGISTRY_ROOT = dirname(dirname(fileURLToPath(import.meta.url))); // registry/
-const PACKS_ROOT = join(REGISTRY_ROOT, 'v1', 'packs');
-const AGGREGATE_PATH = join(REGISTRY_ROOT, 'v1', 'sbom.json');
+const TREE = treeFromArgv();
+const PACKS_ROOT = join(REGISTRY_ROOT, TREE, 'packs');
+const AGGREGATE_PATH = join(REGISTRY_ROOT, TREE, 'sbom.json');
 
 const args = new Set(process.argv.slice(2));
 const CHECK_MODE = args.has('--check');
@@ -296,7 +301,7 @@ function serialize(obj) {
 
 function main() {
   if (!existsSync(PACKS_ROOT)) {
-    warn('no registry/v1/packs/ directory; nothing to generate');
+    warn(`no registry/${TREE}/packs/ directory; nothing to generate`);
     process.exit(0);
   }
 
@@ -351,7 +356,7 @@ function main() {
       perVersion.push({
         packName: pack,
         version,
-        sbomUrl: `/v1/packs/${pack}/-/${version}.sbom.json`,
+        sbomUrl: `/${TREE}/packs/${pack}/-/${version}.sbom.json`,
         sbomSha256: createHash('sha256').update(sbomBytes).digest('hex'),
       });
     }

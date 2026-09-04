@@ -1,0 +1,168 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.agents.invoice-extractor@1.0.2",
+      "type": "library",
+      "name": "core.openwop.agents.invoice-extractor",
+      "version": "1.0.2",
+      "description": "Invoice extraction agent. OCR-aware structured extraction of vendor, line items, totals, tax, payment terms from PDF or scanned-image invoices. Pure-agent pack.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/packs/core.openwop.agents.invoice-extractor"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "dcc96faf902c1a9316cc8248c14c690b8319d8135f9c3ea82fabe3f9c91e2674"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.agents.invoice-extractor@1.0.2"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a5d6f0521d1e295ba451d695d8dac173dc735ffd2ef21a35b9b1c062f0524b0b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1275"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6a32c8ddbe55947cba4a3026462e51cd809630b666464a2cda95b58f6aea85f4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "53bb0b00123b2660cb9fb119d41ff6c8272b45c23c6d992935d83366f0d3a23a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1467"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/invoice-extractor.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5da754c39adf085cbaf0ec2691e89d416d4f029dbbf1ddd789da871df016a491"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2641"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/invoice-extractor.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3725a433a0d27ffbb6c9f2b4357ba508f5143f051f80bf721c61391c20fd8430"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "5194"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/invoice-extractor.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5abe63967bfae89fb44ea6ac01084667a2e25cf904c750cbf70c201fe0a57f97"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "961"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.agents.invoice-extractor@1.0.2",
+      "dependsOn": [
+        "host:agentRuntime",
+        "host:aiProviders"
+      ]
+    }
+  ]
+}

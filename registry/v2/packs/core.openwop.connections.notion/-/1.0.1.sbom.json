@@ -1,0 +1,76 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.connections.notion@1.0.1",
+      "type": "library",
+      "name": "core.openwop.connections.notion",
+      "version": "1.0.1",
+      "description": "Notion connection pack — OAuth2 provider for Notion pages + databases. DEPLOY-GATED. Reach is `mcp` against Notion's official first-party hosted MCP server (https://mcp.notion.com/mcp, Streamable HTTP), which searches/reads/creates/updates workspace content under the connected user's permissions. Notion consent is a static developer-portal capability set rather than per-request OAuth scopes (scopeModel `capabilities`). Carries NO secret; the operator supplies the OAuth client id/secret host-side.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "129d577c18e632f013d35f3ed33a4bcd6dc3ce56cbcb5f52ba0caf3c6513a9ee"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.connections.notion@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "41e5d909b5b900f2ad55c67d453c92e90b63453e197050bccf5be7a6acd889f2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1c1bf39d14683e8faac628ecae379b518f86dd56051d5388961cf7320b10fbbc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1394"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.connections.notion@1.0.1",
+      "dependsOn": []
+    }
+  ]
+}

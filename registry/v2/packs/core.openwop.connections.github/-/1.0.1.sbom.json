@@ -1,0 +1,76 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.connections.github@1.0.1",
+      "type": "library",
+      "name": "core.openwop.connections.github",
+      "version": "1.0.1",
+      "description": "GitHub connection pack — OAuth2 provider definition, reached via the official GitHub MCP server. Demonstrates the openwop-app connection-pack loader: drop this pack in and `github` becomes a resolvable provider. Carries NO secret; the operator supplies the OAuth client id/secret host-side.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "aaf848aa84abd8fbdaf70a1480169b9f3610329949909e4f93c12237ab294b8b"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.connections.github@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "eed1638d2f577440452b3a434135dfab815e965dd73e3b013e37527bbbdc67b5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "71a2a76c4800e35e4af18d35dac0c3c734e41f3f87ddbd9e73d2f9d805f052fc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1187"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.connections.github@1.0.1",
+      "dependsOn": []
+    }
+  ]
+}

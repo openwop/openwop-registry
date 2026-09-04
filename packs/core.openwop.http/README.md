@@ -3,8 +3,8 @@
 Spec-canonical HTTP fetch node. Single typeId `core.openwop.http.fetch` covering the universal "call an HTTP endpoint" use case with retry, backoff, and deterministic idempotency.
 
 | Pack name | `core.openwop.http` |
-| Version | `2.0.0` |
-| Engine | OpenWOP `>=1.0.0 <2.0.0` |
+| Version | `2.0.1` |
+| Engine | OpenWOP `>=1.0.0 <3.0.0` |
 | Runtime | JavaScript (ESM), Node `>=20` |
 | Runtime requires | `net.dns`, `net.outbound` (RFC 0076 §A — for the fallback path; satisfied trivially when the host mediates via `safeFetch`) |
 | External deps | None (uses Node 20's built-in `fetch`) |

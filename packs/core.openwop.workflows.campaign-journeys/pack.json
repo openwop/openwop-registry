@@ -1,12 +1,12 @@
 {
   "name": "core.openwop.workflows.campaign-journeys",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "kind": "workflow-chain",
   "description": "Contact-level lifecycle journeys as RFC 0013 chains on the ONE engine (ADR 0222 / campaign gap plan C6) — NOT a journey engine. Trigger with an ADR 0208 host-event binding (e.g. host.crm.contact.created → Welcome Series), guard with the enrollment + eligibility verbs (one run per contact per journey; every send behind consent + suppression), wait with core.flow.wait, send with the existing email node, log with the CRM activity verb. Enrollment state is the run itself — monitor in Runs, reset re-enrollment via the campaign-journeys API.",
   "author": "openwop",
   "license": "Apache-2.0",
   "engines": {
-    "openwop": ">=1.0.0"
+    "openwop": ">=1.0.0 <3.0.0"
   },
   "keywords": [
     "Marketing",
@@ -22,7 +22,10 @@
       "parameters": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["triggerEventName", "senderEmail"],
+        "required": [
+          "triggerEventName",
+          "senderEmail"
+        ],
         "properties": {
           "contactId": {
             "type": "string",
@@ -48,8 +51,14 @@
             "default": "A few favorite starting points, one day in.",
             "description": "Body of the day-2 email."
           },
-          "triggerEventName": { "type": "string", "description": "Host event name that starts this workflow (e.g. `crm.deal.won`)." },
-          "senderEmail": { "type": "string", "description": "Verified sender address these emails are sent from." }
+          "triggerEventName": {
+            "type": "string",
+            "description": "Host event name that starts this workflow (e.g. `crm.deal.won`)."
+          },
+          "senderEmail": {
+            "type": "string",
+            "description": "Verified sender address these emails are sent from."
+          }
         }
       },
       "capabilities": [
@@ -229,7 +238,11 @@
       "parameters": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["contactId", "orgId", "senderEmail"],
+        "required": [
+          "contactId",
+          "orgId",
+          "senderEmail"
+        ],
         "properties": {
           "contactId": {
             "type": "string",
@@ -249,7 +262,10 @@
             "default": "It has been a while — here is what changed since your last visit.",
             "description": "Re-engagement body."
           },
-          "senderEmail": { "type": "string", "description": "Verified sender address these emails are sent from." }
+          "senderEmail": {
+            "type": "string",
+            "description": "Verified sender address these emails are sent from."
+          }
         }
       },
       "capabilities": [

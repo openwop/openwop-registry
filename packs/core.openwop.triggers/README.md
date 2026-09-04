@@ -3,8 +3,8 @@
 Workflow entry-point pack. Four universal trigger shapes — webhook, schedule, event, envelope — for external-event-driven workflow dispatch.
 
 | Pack name | `core.openwop.triggers` |
-| Version | `1.0.0` |
-| Engine | OpenWOP `>=1.0.0 <2.0.0` |
+| Version | `1.1.1` |
+| Engine | OpenWOP `>=1.0.0 <3.0.0` |
 | Runtime | JavaScript (ESM), Node `>=20` |
 | External deps | None — pure pass-through of `ctx.triggerData` |
 | License | Apache-2.0 |

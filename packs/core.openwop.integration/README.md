@@ -3,8 +3,8 @@
 Universal communication-integration pack. Phase 1 v1.0.0 ships email-send + slack-message — both side-effectful with engine Layer-2 cost-once caching via deterministic Idempotency-Key derivation.
 
 | Pack name | `core.openwop.integration` |
-| Version | `1.0.0` |
-| Engine | OpenWOP `>=1.0.0 <2.0.0` |
+| Version | `1.1.1` |
+| Engine | OpenWOP `>=1.0.0 <3.0.0` |
 | Runtime | JavaScript (ESM), Node `>=20` |
 | External deps | None — pack speaks no SMTP / Slack API directly |
 | License | Apache-2.0 |

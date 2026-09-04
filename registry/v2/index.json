@@ -1,0 +1,2023 @@
+{
+  "registryVersion": "1.0.0",
+  "generatedAt": "2026-05-10T00:00:00Z",
+  "packCount": 109,
+  "packs": [
+    {
+      "name": "core.openwop.a2a",
+      "kind": "node",
+      "latestVersion": "1.1.1",
+      "description": "Full A2A (Agent-to-Agent) primitives. Client-side: 12 nodes (discover, send, stream, list/get/cancel tasks, resubscribe, multi-turn coordinator, push-config CRUD). Server-side: workflow IS an A2A agent (server-trigger, agent-card-publish, emit-status, emit-artifact, push-send). Routes through ctx.a2a.* host surface. Tracks spec/v1/a2a-integration.md.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.a2a.discover-agent",
+        "core.openwop.a2a.send-message",
+        "core.openwop.a2a.send-and-stream",
+        "core.openwop.a2a.get-task",
+        "core.openwop.a2a.list-tasks",
+        "core.openwop.a2a.cancel-task",
+        "core.openwop.a2a.resubscribe",
+        "core.openwop.a2a.multi-turn-coordinator",
+        "core.openwop.a2a.push-config-create",
+        "core.openwop.a2a.push-config-get",
+        "core.openwop.a2a.push-config-list",
+        "core.openwop.a2a.push-config-delete",
+        "core.openwop.a2a.server-trigger",
+        "core.openwop.a2a.agent-card-publish",
+        "core.openwop.a2a.emit-status",
+        "core.openwop.a2a.emit-artifact",
+        "core.openwop.a2a.push-send"
+      ],
+      "nodeCount": 17,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agent-examples",
+      "kind": "node",
+      "latestVersion": "1.1.1",
+      "description": "Reference / smoke-fixture agent pack. Exercises every shape on agent-manifest.schema.json: inline systemPrompt, systemPromptRef, conversation memory, scratchpad memory, non-empty toolAllowlist, and handoff.{task,return}SchemaRef. Validates the `agents[]` extension to the pack manifest (per agent-manifest.schema.json +). Vendor-neutral: no model pinned — hosts resolve via their BYOK aiProviders surface.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agent-examples.echo-agent",
+        "core.openwop.agent-examples.summarizer",
+        "core.openwop.agent-examples.chat",
+        "core.openwop.agent-examples.structured-fixture",
+        "core.openwop.agent-examples.tool-caller"
+      ],
+      "nodeCount": 0,
+      "agentCount": 5,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents",
+      "kind": "node",
+      "latestVersion": "1.0.2",
+      "description": "Agent composition primitives. Root agent.run + sub-nodes (tools, memory, parsers, model selector). Composes via expansion semantics and consumes host.aiProviders + host.agentRuntime.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.agents.run",
+        "core.agents.tool-function",
+        "core.agents.tool-workflow",
+        "core.agents.tool-mcp",
+        "core.agents.tool-http",
+        "core.agents.memory-window",
+        "core.agents.memory-summary",
+        "core.agents.memory-kv-store",
+        "core.agents.output-parser-structured",
+        "core.agents.output-parser-list",
+        "core.agents.output-parser-auto-fix",
+        "core.agents.model-selector"
+      ],
+      "nodeCount": 12,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.api-designer",
+      "kind": "node",
+      "latestVersion": "1.0.2",
+      "description": "API design agent. Authors OpenAPI 3.1, AsyncAPI 3.0, and JSON Schema 2020-12 documents from natural-language briefs. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.api-designer.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.audit-summarizer",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "Audit-trail summarizer agent. Compresses raw audit logs into executive summaries, highlights anomalies, tracks pattern shifts over time via long-term memory. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.audit-summarizer.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.classifier",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "Fast classification agent. Caller supplies labels + optional rationale schema; agent picks the best-fit label(s). Stateless, single-shot. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.classifier.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.code-reviewer",
+      "kind": "node",
+      "latestVersion": "1.0.2",
+      "description": "Code review agent. Reviews diffs or files for correctness, style, security, and design. Diff-aware prompting; cites file:line in findings. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.code-reviewer.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.deep-research",
+      "kind": "node",
+      "latestVersion": "1.0.5",
+      "description": "Long-horizon research agent. Plans, dispatches sub-investigations, retrieves from RAG + web, writes up findings. Mirrors LangGraph Deep Agents (planner + subagents + filesystem). Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.deep-research.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.devops-crew",
+      "kind": "node",
+      "latestVersion": "1.0.2",
+      "description": "DevOps crew. Planner decomposes a runbook into safe ordered steps → executor performs http step actions (fs / queue / crypto steps run through the enclosing workflow's nodes, not conversational tools) → verifier confirms desired state via read-only http checks.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.devops-crew.planner",
+        "core.openwop.agents.devops-crew.executor",
+        "core.openwop.agents.devops-crew.verifier"
+      ],
+      "nodeCount": 0,
+      "agentCount": 3,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.doc-writer",
+      "kind": "node",
+      "latestVersion": "1.0.2",
+      "description": "Technical documentation author. Produces README sections, API docs, architecture notes, and changelogs from source material. RAG-grounded. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.doc-writer.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.document-author",
+      "kind": "node",
+      "latestVersion": "1.0.2",
+      "description": "Office-document authoring agent — produces PDF / Word / Excel / PowerPoint deliverables from briefs. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.document-author.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.expense-categorizer",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "Expense categorization agent. Classifies expenses against a policy-defined chart of accounts and flags policy violations. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.expense-categorizer.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.frontend-designer",
+      "kind": "node",
+      "latestVersion": "1.0.2",
+      "description": "Frontend / UI design agent. Produces design-system-aware component specs, page layouts, and Storybook-style mocks from briefs. Mirrors Anthropic's `frontend-design` skill (top-installed in marketplace).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.frontend-designer.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.git-author",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "Git authoring agent — drafts commit messages, PR bodies, release notes, and changelog entries from diffs. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.git-author.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.invoice-extractor",
+      "kind": "node",
+      "latestVersion": "1.0.2",
+      "description": "Invoice extraction agent. OCR-aware structured extraction of vendor, line items, totals, tax, payment terms from PDF or scanned-image invoices. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.invoice-extractor.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.long-doc-summarizer",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "Long-document summarizer using map-reduce. Splits input into chunks, summarizes each, then synthesizes a final summary. Handles documents that exceed any single LLM's context window. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.long-doc-summarizer.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.policy-reviewer",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "Policy reviewer agent. Reads content (docs, emails, ads, code) against a set of policy rules and flags violations with rationale. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.policy-reviewer.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.react",
+      "kind": "node",
+      "latestVersion": "1.0.4",
+      "description": "Canonical ReAct (Reason + Act) loop agent. Pure-agent pack — ships one agent manifest with a configurable toolAllowlist. Composes via dispatch and consumes host.aiProviders + host.agentRuntime. The 'hello world' of openwop agents.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.react.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.research-crew",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "Multi-agent research crew. 4 specialists — planner / retriever / critic / writer — bundled into one pack for dispatch via orchestrator. Mirrors CrewAI's sequential/hierarchical crew templates.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.research-crew.planner",
+        "core.openwop.agents.research-crew.retriever",
+        "core.openwop.agents.research-crew.critic",
+        "core.openwop.agents.research-crew.writer"
+      ],
+      "nodeCount": 0,
+      "agentCount": 4,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.sales-coach",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "Sales Coach agent. Analyzes call transcripts, identifies coaching moments, recommends next steps, and tracks rep development over time via long-term memory. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.sales-coach.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.sdr",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "Sales Development Representative agent. Researches prospects, drafts outreach (email/LinkedIn/SMS), schedules follow-ups. Persists prospect history to long-term memory. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.sdr.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.structured-extractor",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "Production-grade structured extraction agent. Caller supplies a JSON Schema; agent extracts conforming output with an auto-fix loop on validation failure. Mirrors LangGraph Trustcall. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.structured-extractor.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.supervisor",
+      "kind": "node",
+      "latestVersion": "1.0.4",
+      "description": "Multi-agent supervisor. Routes user tasks to specialized subagents via dispatch + orchestrator semantics. Mirrors LangGraph Supervisor and CrewAI's hierarchical-process pattern. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.supervisor.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.support-crew",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "Support 3-agent crew. Triage → Resolver → Escalator. Single dispatch handles the full ticket lifecycle.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.support-crew.triage",
+        "core.openwop.agents.support-crew.resolver",
+        "core.openwop.agents.support-crew.escalator"
+      ],
+      "nodeCount": 0,
+      "agentCount": 3,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.support-resolver",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "Customer support resolver agent. KB-grounded answers with explicit citation, escalation handoff on low confidence. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.support-resolver.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.support-triage",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "Customer support triage agent. Categorizes inbound tickets, routes to the right queue, surfaces severity + customer-segment signals. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.support-triage.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.agents.test-author",
+      "kind": "node",
+      "latestVersion": "1.0.2",
+      "description": "Test authoring agent. Generates unit, integration, and e2e tests from source code or specs. Pure-agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.agents.test-author.default"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.ai",
+      "kind": "node",
+      "latestVersion": "1.3.3",
+      "description": "Spec-canonical AI-call pack. v1.0 (chatCompletion, structuredOutput, toolCalling, embeddings) plus v1.1 multi-modal + LLM helpers — image generate/edit/upscale, audio transcribe/synthesize, video generate, rerank, classify, extract, guardrails, transform. Routes through host BYOK aiProviders. v1.3.1: image-generate output schema now declares the real runtime shape (images[].url + mimeType, never contentBase64) — the host persists each image as a Media asset and returns a serve URL, never raw bytes.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.ai.chatCompletion",
+        "core.ai.structuredOutput",
+        "core.ai.toolCalling",
+        "core.openwop.ai.embeddings",
+        "core.openwop.ai.image-generate",
+        "core.openwop.ai.image-edit",
+        "core.openwop.ai.image-upscale",
+        "core.openwop.ai.audio-transcribe",
+        "core.openwop.ai.audio-synthesize",
+        "core.openwop.ai.video-generate",
+        "core.openwop.ai.rerank",
+        "core.openwop.ai.classify",
+        "core.openwop.ai.extract",
+        "core.openwop.ai.guardrails",
+        "core.openwop.ai.transform"
+      ],
+      "nodeCount": 15,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.artifact-types",
+      "kind": "artifact-type",
+      "latestVersion": "1.0.1",
+      "description": "Example artifact-type pack — proves the kind:'artifact-type' pack tier registers its declared types through the host artifact-type registry (registrationSource:'pack'), advertised under host.artifactTypes and served at /schemas/artifacts/{id}.schema.json.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "doc.one-pager",
+        "brand.kit"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.connections.github",
+      "kind": "connection",
+      "latestVersion": "1.0.1",
+      "description": "GitHub connection pack — OAuth2 provider definition, reached via the official GitHub MCP server. Demonstrates the openwop-app connection-pack loader: drop this pack in and `github` becomes a resolvable provider. Carries NO secret; the operator supplies the OAuth client id/secret host-side.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "github"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.connections.google-ads",
+      "kind": "connection",
+      "latestVersion": "1.0.1",
+      "description": "Google Ads connection pack — OAuth2 provider for the Google Ads REST API. Reach is `openapi`: Google Ads has no first-party global MCP server; the manifest declares the global Google OAuth hosts and points at the REST API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the OAuth client id/secret + developer token host-side. One of the three ad platforms Campaign Studio syncs (Google / Meta / LinkedIn Ads).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "google-ads"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.connections.google-workspace",
+      "kind": "connection",
+      "latestVersion": "1.0.1",
+      "description": "Google Workspace connection pack — OAuth2 PKCE provider for Drive, Calendar, and Gmail via the Google APIs. Registry parity for the reference app's BUILT-IN `google` provider (day-1 UX P10 / C3): the app itself never loads this pack (the builtin wins by id precedence anyway — this pack deliberately uses the distinct id `google-workspace` so OTHER hosts can adopt it without shadowing semantics); it exists so packs.openwop.dev offers a Google productivity-suite connection alongside microsoft365 — previously the registry's only Google entry was google-ads. Read scopes are the day-1 consent; gmail.send / calendar.events are WRITE groups behind a separate re-consent. Carries NO secret; the operator supplies the OAuth client id/secret host-side.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "google-workspace"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.connections.jira",
+      "kind": "connection",
+      "latestVersion": "1.0.1",
+      "description": "Jira connection pack — Atlassian OAuth2 (3LO) provider for Jira Cloud. DEPLOY-GATED. Reach is `mcp` against Atlassian's official first-party remote MCP server (the Rovo MCP server, https://mcp.atlassian.com/v1/mcp), which fronts Jira (and Confluence) under the signed-in user's permissions. Carries NO secret; the operator supplies the OAuth client id/secret host-side.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "jira"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.connections.linkedin-ads",
+      "kind": "connection",
+      "latestVersion": "1.0.1",
+      "description": "LinkedIn Ads connection pack — OAuth2 provider for the LinkedIn Marketing API. Reach is `openapi`: the manifest declares the global LinkedIn OAuth hosts and points at the Marketing API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the client id/secret host-side. One of the three ad platforms Campaign Studio syncs (Google / Meta / LinkedIn Ads).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "linkedin-ads"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.connections.meta-ads",
+      "kind": "connection",
+      "latestVersion": "1.0.1",
+      "description": "Meta (Facebook/Instagram) Ads connection pack — OAuth2 provider for the Meta Marketing API. Reach is `openapi`: the manifest declares the global Meta OAuth hosts and points at the Marketing API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the app id/secret host-side. An available provider (the parallel ad platform to google-ads); one of the three ad platforms Campaign Studio syncs.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "meta-ads"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.connections.microsoft365",
+      "kind": "connection",
+      "latestVersion": "1.0.1",
+      "description": "Microsoft 365 connection pack — OAuth2 provider for Teams, Outlook (Mail/Calendar), and SharePoint via the Microsoft Graph API. DEPLOY-GATED. Reach is `openapi` against the Microsoft Graph OpenAPI surface: Microsoft's first-party remote MCP servers are per-tenant/preview (a tenant-templated URL, not a single global https endpoint the manifest can fix), so a stable Graph OpenAPI path is the honest day-1 reach (capability honesty). Carries NO secret; the operator supplies the OAuth client id/secret host-side.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "microsoft365"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.connections.netsuite",
+      "kind": "connection",
+      "latestVersion": "1.0.1",
+      "description": "Oracle NetSuite connection pack — OAuth2 provider for the NetSuite SuiteTalk REST API (ERP / finance). Reach is `openapi`: NetSuite has no first-party global MCP server, and its REST base + OAuth hosts are PER-ACCOUNT (`https://{account}.suitetalk.api.netsuite.com`), supplied per connection via instanceUrlTemplate (the schema's own NetSuite example). Carries NO secret; the operator supplies the integration/client credentials host-side. Bound by lib.finance.invoice-ap (post to ERP).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "netsuite"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.connections.notion",
+      "kind": "connection",
+      "latestVersion": "1.0.1",
+      "description": "Notion connection pack — OAuth2 provider for Notion pages + databases. DEPLOY-GATED. Reach is `mcp` against Notion's official first-party hosted MCP server (https://mcp.notion.com/mcp, Streamable HTTP), which searches/reads/creates/updates workspace content under the connected user's permissions. Notion consent is a static developer-portal capability set rather than per-request OAuth scopes (scopeModel `capabilities`). Carries NO secret; the operator supplies the OAuth client id/secret host-side.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "notion"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.connections.salesforce",
+      "kind": "connection",
+      "latestVersion": "1.0.1",
+      "description": "Salesforce connection pack — OAuth2 (web-server flow) provider for the Salesforce REST API. DEPLOY-GATED. Reach is `openapi`: Salesforce has no single global first-party MCP server (the API lives on a per-org `*.my.salesforce.com` instance host, supplied per connection via instanceUrlTemplate), so a documented OpenAPI/REST surface is the honest day-1 reach. Carries NO secret; the operator supplies the connected-app consumer key/secret host-side.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "salesforce"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.connections.tiktok-ads",
+      "kind": "connection",
+      "latestVersion": "1.0.1",
+      "description": "TikTok Ads connection pack — OAuth2 provider for the TikTok Business (Marketing) API. Reach is `openapi`: the manifest declares the TikTok business-api OAuth hosts and points at the Marketing API reference. Carries NO secret; the operator supplies the app id/secret host-side. The third ad platform Campaign Studio dispatches to — TikTok authenticates with an `Access-Token` header (not `Authorization: Bearer`), handled host-side by the ads-dispatch adapter.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "tiktok-ads"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.connections.workday",
+      "kind": "connection",
+      "latestVersion": "1.0.1",
+      "description": "Workday connection pack — OAuth2 provider for the Workday REST API (HCM / People). DEPLOY-GATED. Reach is `openapi`: Workday has no first-party global MCP server, and its OAuth authorize/token endpoints plus REST base are TENANT-SPECIFIC (`https://{instance}.workday.com/{tenant}/.`), supplied per connection via instanceUrlTemplate. The manifest declares the global https hosts and the per-tenant template; the operator fills the tenant at connection time (capability honesty). Carries NO secret; the operator supplies the API-client id/secret host-side.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "workday"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.crypto",
+      "kind": "node",
+      "latestVersion": "1.0.5",
+      "description": "Pure cryptographic primitives: hashing, HMAC, AEAD encrypt/decrypt, asymmetric sign/verify, JWT mint/verify, TOTP, x509 parse + chain verify. Built on node:crypto (Node 20+). Zero npm deps. Pure with respect to keys passed in via inputs.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.crypto.hash",
+        "core.crypto.hmac-sign",
+        "core.crypto.hmac-verify",
+        "core.crypto.aead-encrypt",
+        "core.crypto.aead-decrypt",
+        "core.crypto.sign",
+        "core.crypto.verify",
+        "core.crypto.jwt-mint",
+        "core.crypto.jwt-verify",
+        "core.crypto.totp-generate",
+        "core.crypto.totp-verify",
+        "core.crypto.x509-parse",
+        "core.crypto.x509-verify-chain"
+      ],
+      "nodeCount": 13,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.data",
+      "kind": "node",
+      "latestVersion": "1.2.2",
+      "description": "Spec-canonical data-utility pack. v1.0 baseline (string-case, string-split, array-filter, array-map, object-merge) plus v1.1 additions: string format/regex/encode, array sort/unique/flatten/chunk/zip/reduce, object pick/omit/rename/get-path/set-path, json parse/stringify/schema-validate, jsonpath query, csv parse/stringify, datetime suite, number format/round/clamp, uuid. Zero npm deps (Node 20+).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.data.string-case",
+        "core.openwop.data.string-split",
+        "core.openwop.data.array-filter",
+        "core.openwop.data.array-map",
+        "core.openwop.data.object-merge",
+        "core.openwop.data.string-format",
+        "core.openwop.data.string-regex-match",
+        "core.openwop.data.string-regex-replace",
+        "core.openwop.data.string-regex-extract",
+        "core.openwop.data.string-encode",
+        "core.openwop.data.array-sort",
+        "core.openwop.data.array-unique",
+        "core.openwop.data.array-flatten",
+        "core.openwop.data.array-chunk",
+        "core.openwop.data.array-zip",
+        "core.openwop.data.array-reduce",
+        "core.openwop.data.array-group-by",
+        "core.openwop.data.object-pick",
+        "core.openwop.data.object-omit",
+        "core.openwop.data.object-rename-keys",
+        "core.openwop.data.object-get-path",
+        "core.openwop.data.object-set-path",
+        "core.openwop.data.json-parse",
+        "core.openwop.data.json-stringify",
+        "core.openwop.data.json-schema-validate",
+        "core.openwop.data.jsonpath-query",
+        "core.openwop.data.csv-parse",
+        "core.openwop.data.csv-stringify",
+        "core.openwop.data.datetime-now",
+        "core.openwop.data.datetime-parse",
+        "core.openwop.data.datetime-format",
+        "core.openwop.data.datetime-add",
+        "core.openwop.data.datetime-diff",
+        "core.openwop.data.datetime-timezone",
+        "core.openwop.data.number-format",
+        "core.openwop.data.number-round",
+        "core.openwop.data.number-clamp",
+        "core.openwop.data.uuid"
+      ],
+      "nodeCount": 38,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.db",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "Database adapter primitives — sql, nosql, search, vector. Each gated on its host capability (host.sql, host.nosql, host.searchIndex, host.vectorStore) per. Pack speaks no driver — delegates to ctx.db.*. Parametric SQL only (host enforces).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.db.sql-query",
+        "core.db.sql-execute",
+        "core.db.sql-transaction",
+        "core.db.nosql-find",
+        "core.db.nosql-insert",
+        "core.db.nosql-update",
+        "core.db.nosql-delete",
+        "core.db.search-index",
+        "core.db.search-query",
+        "core.db.vector-upsert",
+        "core.db.vector-query",
+        "core.db.vector-delete"
+      ],
+      "nodeCount": 12,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.examples",
+      "kind": "node",
+      "latestVersion": "1.0.2",
+      "description": "Spec-canonical examples pack — three minimal nodes (echo, coin-flip, delay-with-progress) that exercise the core node-pack contract end-to-end. Zero npm deps; runs on any Node 20+ host advertising the openwop-node-packs profile. See docs/PACKS-MVP-PLAN.md.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.examples.echo",
+        "core.openwop.examples.coin-flip",
+        "core.openwop.examples.delay-with-progress"
+      ],
+      "nodeCount": 3,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.files",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "File + binary primitives — fs CRUD, base64, mime detection, image / PDF / archive processing, FTP / SFTP / SSH. Capability-gated on host.fs. Hosts MUST enforce sandbox root + path-traversal protection.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.files.read",
+        "core.files.write",
+        "core.files.delete",
+        "core.files.stat",
+        "core.files.list",
+        "core.files.to-base64",
+        "core.files.from-base64",
+        "core.files.detect-mime",
+        "core.files.image-resize",
+        "core.files.image-crop",
+        "core.files.image-format-convert",
+        "core.files.pdf-extract-text",
+        "core.files.pdf-split",
+        "core.files.pdf-merge",
+        "core.files.archive-create",
+        "core.files.archive-extract",
+        "core.files.ftp",
+        "core.files.sftp",
+        "core.files.ssh-run"
+      ],
+      "nodeCount": 19,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.flow",
+      "kind": "node",
+      "latestVersion": "1.1.1",
+      "description": "Spec-canonical flow-control primitives. 25 nodes covering branching, merging, iteration, aggregation, batching, sorting, deduplication, repetition, suspension, sub-workflow invocation, and Make-style error handlers. Pure or suspending — no external I/O. Zero npm deps. Engine >=1.0.0 <2.0.0.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.flow.if",
+        "core.flow.switch",
+        "core.flow.router",
+        "core.flow.filter",
+        "core.flow.merge",
+        "core.flow.iterator",
+        "core.flow.aggregate-array",
+        "core.flow.aggregate-numeric",
+        "core.flow.aggregate-text",
+        "core.flow.aggregate-table",
+        "core.flow.split-in-batches",
+        "core.flow.sort",
+        "core.flow.limit",
+        "core.flow.distinct",
+        "core.flow.compare-datasets",
+        "core.flow.repeater",
+        "core.flow.noop",
+        "core.flow.stop-and-error",
+        "core.flow.wait",
+        "core.flow.sub-workflow-invoke",
+        "core.flow.error-handler-resume",
+        "core.flow.error-handler-ignore",
+        "core.flow.error-handler-break",
+        "core.flow.error-handler-commit",
+        "core.flow.error-handler-rollback",
+        "core.conditional",
+        "core.delay",
+        "core.loop",
+        "core.parallel"
+      ],
+      "nodeCount": 29,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.forms.starters",
+      "kind": "form-content",
+      "latestVersion": "1.0.1",
+      "description": "Starter form templates — the shapes almost every first form takes. Instantiated through the normal create path, so every field is sanitized exactly as typed input is.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.form.contact-us",
+        "core.openwop.form.event-rsvp",
+        "core.openwop.form.job-application",
+        "core.openwop.form.feedback"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.hitl",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "Human-in-the-loop primitives. form-request, approval-request, ask-user — each suspends the run via the existing interrupt mechanism. Zero npm deps.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.hitl.form-request",
+        "core.hitl.approval-request",
+        "core.hitl.ask-user"
+      ],
+      "nodeCount": 3,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.http",
+      "kind": "node",
+      "latestVersion": "2.0.1",
+      "description": "HTTP + general transport pack. v2.0: prefers the host-mediated, SSRF-guarded `ctx.http.safeFetch` for all outbound when the host exposes it, falling back to the pack's own `assertPublicUrl` (node:dns) + `globalThis.fetch` otherwise; declares `runtime.requires: [\"net.dns\",\"net.outbound\"]` for the fallback path. v1.0 baseline: core.openwop.http.fetch (retry, backoff, idempotency). v1.1 additions: openapi-call, GraphQL (query/mutation/subscription), SOAP, gRPC (4 streaming variants), SSE consume, WebSocket client, long-poll, upload (multipart + resumable), download stream, pagination decorators (cursor/offset/link-header), rate-limit-aware retry, circuit breaker, idempotency-key generator, webhook signature verifier (Stripe/GitHub/Slack/raw-hmac). Zero npm deps — Node 20+ fetch/undici; transports requiring native libs delegate to host capabilities.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.http.fetch",
+        "core.openwop.http.openapi-call",
+        "core.openwop.http.graphql-query",
+        "core.openwop.http.graphql-mutation",
+        "core.openwop.http.graphql-subscription",
+        "core.openwop.http.soap-call",
+        "core.openwop.http.grpc-unary",
+        "core.openwop.http.grpc-server-stream",
+        "core.openwop.http.grpc-client-stream",
+        "core.openwop.http.grpc-bidi",
+        "core.openwop.http.sse-consume",
+        "core.openwop.http.websocket-client",
+        "core.openwop.http.long-poll",
+        "core.openwop.http.upload-multipart",
+        "core.openwop.http.upload-resumable",
+        "core.openwop.http.download-stream",
+        "core.openwop.http.pagination-cursor",
+        "core.openwop.http.pagination-offset",
+        "core.openwop.http.pagination-link-header",
+        "core.openwop.http.retry-rate-limit-aware",
+        "core.openwop.http.circuit-breaker",
+        "core.openwop.http.idempotency-key",
+        "core.openwop.http.webhook-verify"
+      ],
+      "nodeCount": 23,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.integration",
+      "kind": "node",
+      "latestVersion": "1.1.1",
+      "description": "Integration-layer primitives. v1.0 (email-send, slack-message) plus v1.1 (chat-message-generic, sms-send, voice-call-place, voice-call-tts-greet, notification-push) — provider-neutral cross-cutting integration helpers.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.integration.email-send",
+        "core.openwop.integration.slack-message",
+        "core.openwop.integration.chat-message-generic",
+        "core.openwop.integration.sms-send",
+        "core.openwop.integration.voice-call-place",
+        "core.openwop.integration.voice-call-tts-greet",
+        "core.openwop.integration.notification-push"
+      ],
+      "nodeCount": 7,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.mcp",
+      "kind": "node",
+      "latestVersion": "1.1.2",
+      "description": "Spec-canonical MCP (Model Context Protocol) pack. v1.0 four-node client baseline (list-tools, invoke-tool, read-resource, server-status) plus the v1.1 additions: full client-side surface (resources, prompts, completion, logging, ping) AND server-side (workflow IS an MCP server — server-trigger + expose-tool/resource/prompt + handle-sampling/elicitation + provide-roots). Tracks modelcontextprotocol.io 2025-06-18 spec via spec/v1/mcp-integration.md.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.openwop.mcp.list-tools",
+        "core.openwop.mcp.invoke-tool",
+        "core.openwop.mcp.read-resource",
+        "core.openwop.mcp.server-status",
+        "core.openwop.mcp.list-resources",
+        "core.openwop.mcp.list-resource-templates",
+        "core.openwop.mcp.subscribe-resource",
+        "core.openwop.mcp.list-prompts",
+        "core.openwop.mcp.get-prompt",
+        "core.openwop.mcp.completion",
+        "core.openwop.mcp.set-log-level",
+        "core.openwop.mcp.log-listener",
+        "core.openwop.mcp.ping",
+        "core.openwop.mcp.server-trigger",
+        "core.openwop.mcp.expose-tool",
+        "core.openwop.mcp.expose-resource",
+        "core.openwop.mcp.expose-resource-template",
+        "core.openwop.mcp.expose-prompt",
+        "core.openwop.mcp.handle-sampling",
+        "core.openwop.mcp.handle-elicitation",
+        "core.openwop.mcp.provide-roots"
+      ],
+      "nodeCount": 21,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.messaging",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "Queue + stream primitives — publish, consume (trigger), ack/nack/dead-letter, stream subscribe/publish. Capability-gated on host.queueBus. Sibling to host.messaging (outbound-egress-only).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.messaging.publish",
+        "core.messaging.consume",
+        "core.messaging.ack",
+        "core.messaging.nack",
+        "core.messaging.dead-letter",
+        "core.messaging.stream-subscribe",
+        "core.messaging.stream-publish"
+      ],
+      "nodeCount": 7,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.obs",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "Observability emission primitives. Workflows publish logs / metrics / traces / alerts under the canonical openwop.* OTel namespace. Delegates to ctx.observability when the host advertises it, no-ops gracefully otherwise. Zero npm deps.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.obs.log",
+        "core.obs.metric-counter",
+        "core.obs.metric-gauge",
+        "core.obs.metric-histogram",
+        "core.obs.trace-span-start",
+        "core.obs.trace-span-end",
+        "core.obs.alert-fire"
+      ],
+      "nodeCount": 7,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.rag",
+      "kind": "node",
+      "latestVersion": "1.0.2",
+      "description": "Retrieval-Augmented-Generation primitives: loaders, splitters, vector ops (thin wrappers over core.openwop.db.vector-*), and retrievers (basic / multi-query / contextual-compression).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.rag.loader-url",
+        "core.rag.loader-file",
+        "core.rag.loader-github",
+        "core.rag.loader-s3",
+        "core.rag.splitter-recursive",
+        "core.rag.splitter-character",
+        "core.rag.splitter-token",
+        "core.rag.vector-upsert",
+        "core.rag.vector-query",
+        "core.rag.vector-delete",
+        "core.rag.retriever-basic",
+        "core.rag.retriever-multi-query",
+        "core.rag.retriever-contextual-compression"
+      ],
+      "nodeCount": 13,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.skills-bridge",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "Hybrid pack bridging Anthropic / OpenAI Agent Skills (SKILL.md format, open standard since Dec 2025) to openwop AgentManifests. One converter node + one adapter agent. Positions openwop as the orchestration layer above the Skills standard rather than in competition.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.skills-bridge.convert",
+        "core.openwop.skills-bridge.adapter"
+      ],
+      "nodeCount": 1,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.storage",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "State primitives — kv / table / cache / blob / queue. Each node gated on its specific host capability block (host.kvStorage, host.tableStorage, host.cache, host.blobStorage, host.queue) per RFCs 0015–0019. Pack delegates to ctx.storage.* host surface. Zero npm deps.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.storage.kv-get",
+        "core.storage.kv-set",
+        "core.storage.kv-delete",
+        "core.storage.kv-list",
+        "core.storage.kv-atomic-increment",
+        "core.storage.kv-cas",
+        "core.storage.table-insert",
+        "core.storage.table-update",
+        "core.storage.table-upsert",
+        "core.storage.table-delete",
+        "core.storage.table-query",
+        "core.storage.table-count",
+        "core.storage.cache-get",
+        "core.storage.cache-put",
+        "core.storage.cache-evict",
+        "core.storage.blob-put",
+        "core.storage.blob-get",
+        "core.storage.blob-presign",
+        "core.storage.queue-enqueue",
+        "core.storage.queue-dequeue"
+      ],
+      "nodeCount": 20,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.triggers",
+      "kind": "node",
+      "latestVersion": "1.1.1",
+      "description": "Workflow-trigger pack. Sixteen entry-point shapes — original seven (webhook, schedule, event, envelope, chatMessage, canvas, artifact) plus the v1.1 additions (mailhook, email-imap, form, rss, manual, error, sub-workflow, cron-advanced) and the webhook-response action. Trigger nodes are pass-through executors: they forward `ctx.triggerData` (set by the engine when the trigger fires) to outputs.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.trigger.webhook",
+        "core.trigger.schedule",
+        "core.trigger.event",
+        "core.trigger.envelope",
+        "core.trigger.chatMessage",
+        "core.trigger.canvas",
+        "core.trigger.artifact",
+        "core.trigger.webhook-respond",
+        "core.trigger.mailhook",
+        "core.trigger.email-imap",
+        "core.trigger.form",
+        "core.trigger.rss",
+        "core.trigger.manual",
+        "core.trigger.error",
+        "core.trigger.sub-workflow",
+        "core.trigger.cron-advanced"
+      ],
+      "nodeCount": 16,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.web-search",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "Spec-canonical web-search pack. A single capability-advertised search node that routes through the host's `host.webSearch` adapter (search API + scraping policy + rate-limit + cache layer). When the host does not advertise the surface — as in the OpenWOP demo backend — the node returns a deterministic fixture result so replay determinism holds. This is a PROTOCOL-LAYER node pack (capability-advertised), NOT a host-side exec tool.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.web.search"
+      ],
+      "nodeCount": 1,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.approvals",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.4",
+      "description": "Real-work workflow pack (RFC 0013, ADR 0198) — the Approvals cluster, the single most-used enterprise automation shape (Power Automate's #1 template is a sign-off flow with ~3.35M instantiations): Request Sign-off (an open gate any team member can approve — the zero-config marquee) and Two-Stage Sign-off (an ordered approval chain: stage two is only asked after stage one approves — sequential chains are DAG composition, not a new primitive). Gates support quorum (requiredApprovals), named approvers (approverRefs), and out-of-office delegation (an approver's active delegation lets their delegate act, counted as ONE identity — ADR 0198). All tenant values are run parameters (replay-deterministic).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "approvals.request-sign-off",
+        "approvals.two-stage-sign-off"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.campaign-brief",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.1",
+      "description": "Campaign-brief messaging-kernel + market-intel workflows, migrated from the deprecated builtins (ADR 0472 P4). chainIds keep the original ids; outputRoles restored at registration.",
+      "license": "",
+      "tags": [],
+      "typeIds": [
+        "campaign-studio.messaging-kernel",
+        "campaign-studio.market-intel"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.campaign-channels",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.1",
+      "description": "The five campaign channel child workflows (ADR 0157) — generate→approve DAGs the orchestration fans out over — migrated from the deprecated builtins (ADR 0472 P4). chainIds keep the original ids.",
+      "license": "",
+      "tags": [],
+      "typeIds": [
+        "campaign-studio.channel.landing-page",
+        "campaign-studio.channel.ad-variants",
+        "campaign-studio.channel.email-sequence",
+        "campaign-studio.channel.creative-briefs",
+        "campaign-studio.channel.social-posts"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.campaign-journeys",
+      "kind": "workflow-chain",
+      "latestVersion": "1.1.3",
+      "description": "Contact-level lifecycle journeys as RFC 0013 chains on the ONE engine (ADR 0222 / campaign gap plan C6) — NOT a journey engine. Trigger with an ADR 0208 host-event binding (e.g. host.crm.contact.created → Welcome Series), guard with the enrollment + eligibility verbs (one run per contact per journey; every send behind consent + suppression), wait with core.flow.wait, send with the existing email node, log with the CRM activity verb. Enrollment state is the run itself — monitor in Runs, reset re-enrollment via the campaign-journeys API.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "campaign-journeys.welcome-series",
+        "campaign-journeys.re-engage-contact",
+        "campaign-journeys.segment-winback"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.campaign-orchestration",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.1",
+      "description": "Campaign Studio orchestration spine (ADR 0158/RFC 0118), parallel channel fan-out shape — migrated from the deprecated builtin (ADR 0472 P4). chainId keeps the original id; the 5 channel children resolve by id at runtime via core.dispatch.",
+      "license": "",
+      "tags": [],
+      "typeIds": [
+        "campaign-studio.campaign-orchestration"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.campaign-sync",
+      "kind": "workflow-chain",
+      "latestVersion": "1.1.2",
+      "description": "Campaign Studio metrics-sync chain (RFC 0013; campaign gap plan C2 on ADR 0159). Pulls yesterday's ad metrics for every dispatched campaign through the acting user's platform connection (ctx.ads, window-scoped so rows never double-count) into the unified performance store, then delivers a short sync summary as a notification. Schedule it daily on the ONE scheduler, or run it ad hoc — the 15-minute cooldown makes overlapping fires harmless. Also carries the daily budget-pacing check (ADR 0220).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "campaign-sync.daily-metrics",
+        "campaign-sync.pacing-check"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.commerce",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.4",
+      "description": "Real-work workflow pack (RFC 0013, ADR 0152) — the Commerce operations cluster (ecommerce gap plan §5C C8): Post-Purchase Thank-You, Low-Stock Reorder Draft, and the Order Exception Digest. Designed to bind to the ADR 0221 host events (host.commerce.order.paid, host.commerce.inventory.low-stock — create a host-event binding to enroll; ADR 0208) or the schedule trigger. Every outbound send rides the governed email-send integration node (drafts/approval per the tenant's actionPolicy — ADR 0033) and the ONE notification seam; order data flows through feature.commerce.nodes over ctx.features.commerce, so the ADR 0221 audit rows + spend thresholds apply by construction. Enrollment state = the run itself; a binding fires one run per event.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "commerce.post-purchase-thankyou",
+        "commerce.low-stock-reorder",
+        "commerce.order-exception-digest"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.content",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.4",
+      "description": "Real-work workflow pack (RFC 0013, ADR 0190 Phase 3) — the Content & Monitoring cluster: watch an RSS/Atom feed for new items and watch any web page for changes, each pairing a schedule trigger with durable seen-state in host KV storage (deterministic per-source key; the first run treats everything as new and seeds the state). NO host RSS poller exists — adding an 'rss' ingestion source to /v1/trigger-subscriptions is RFC 0099 wire territory (see ADR 0190) — so these chains ARE the poller: pair each with a Schedule and the scheduler does the polling. Authored over shipped node typeIds (core.trigger.schedule + core.openwop.http.fetch + core.storage.kv-get/kv-set + core.ai.chatCompletion + core.openwop.integration.notification-push). No external sends — digests are in-app notifications, so no approval gate is needed. All tenant values are run parameters (replay-deterministic).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "content.feed-watch",
+        "content.page-watch"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.creative-briefs-reel",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.1",
+      "description": "Generate a text-to-video reel from a creative brief (migrated from the deprecated ADR 0411 builtin `openwop-app.creative-briefs-reel`, ADR 0472 Phase 2/4). A single `generate-reel` node — the boundary-clean reel path run through the workflow engine. chainId keeps the original id so the route ignition + replay resolve unchanged; the host registers it chain-backed AND it is a gallery-editable chain.",
+      "license": "",
+      "tags": [],
+      "typeIds": [
+        "openwop-app.creative-briefs-reel"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.crm-ops",
+      "kind": "workflow-chain",
+      "latestVersion": "1.1.1",
+      "description": "Governed CRM write-verb workflows (RFC 0013, ADR 0208 §2, ADR 0252). Where feature.crm.agents.sales-ops is read-mostly (plus two assistive writes), these chains carry the riskier CRM mutations — owner assignment off a new-lead event, stale-deal follow-up, and the scheduler-fired Gmail inbox sync — with a human in the loop where the ADR calls for one. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts that ship the feature.crm feature + node pack (the OpenWOP reference app).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "crm-ops.route-new-lead",
+        "crm-ops.deal-hygiene",
+        "crm-ops.gmail-sync"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.csm-ops",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.1",
+      "description": "CSM↔CRM linkage workflows (ADR 0212, RFC 0013). Where feature.csm.agents.health-insights is read-only, these two chains carry the CSM write surface: computing an Account's healthScore/healthFactors from its linked CRM company's deals/tasks (the scoring recipe as visible, editable workflow configuration rather than buried code — ADR 0212 §3), and a human-gated renewal-risk follow-up over the deal-hygiene shape (ADR 0212 §4 — renewals are deals, not a new entity). All tenant/org-specific values are run parameters (replay-deterministic). Resolves on hosts that ship the feature.crm + feature.csm features + node packs (the OpenWOP reference app).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "csm-ops.health-from-crm",
+        "csm-ops.renewal-risk"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.customer-onboarding",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.4",
+      "description": "Customer-onboarding chains (RFC 0013): the post-sale first-mile — a warm welcome, a personalized kickoff checklist, and a scheduled 30-day health check. All external sends sit behind a human approval gate; tenant values are run parameters (replay-deterministic).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "onboarding.welcome-sequence",
+        "onboarding.kickoff-checklist",
+        "onboarding.health-check-30d"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.data-ops",
+      "kind": "workflow-chain",
+      "latestVersion": "1.1.4",
+      "description": "Real-work workflow pack (RFC 0013, ADR 0200/0201) — the Data Ops cluster, the one shape-family the Zapier/n8n and Microsoft canons don't cover (surfaced by the Make/Workato research): collapsing many records into one output (the aggregator canon), one-way movement of records between systems, and content routing (send a record down the right branch). Roll Up, Records → Table, Records → System (one-way upsert behind a human sign-off), and Content Router (route a record to the matching branch by a field predicate — the Make router shape, gated via edge conditions, ADR 0201). Uses only shipped, executable nodes (core.flow.aggregate-{numeric,text,table} + core.flow.router + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.http.openapi-call + core.openwop.integration.notification-push). The write is ONE-WAY movement keyed on an external id (re-runs update, never duplicate) behind a human approval — it is NOT a bidirectional sync. All tenant values are run parameters (replay-deterministic).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "data-ops.rollup",
+        "data-ops.to-table",
+        "data-ops.records-to-system",
+        "data-ops.content-router"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.destination-sync",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.1",
+      "description": "CDP → peer-OpenWOP-host onward-sync (ADR 0289/RFC 0128), migrated from the deprecated builtin (ADR 0472 P4). chainId keeps the original id; peerIngestUrl resolves at runtime via the http node config template.",
+      "license": "",
+      "tags": [],
+      "typeIds": [
+        "openwop-app.cdp.sync-to-openwop-host"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.devops",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.4",
+      "description": "Real-work workflow pack (RFC 0013, ADR 0190 Phase 4) — the DevOps cluster: senior-style code review of a diff, changelog/release-notes drafting from a commit log, CI-failure diagnosis from a signature-verified webhook, and a stale-issue gardener over the public GitHub API. All four are ADVISORY — they analyze and notify in-app, never write to your repo or post comments (an authenticated GitHub write path would bind a connection behind an approval gate; deferred until the MCP-reach connection binding has a chain precedent). These chains do not run the Code Reviewer / Git Author AGENTS — those remain chat-drivable via the agents surface; the chains use short chain-local prompts over core.ai.chatCompletion. All tenant values are run parameters (replay-deterministic).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "devops.pr-review",
+        "devops.release-notes",
+        "devops.ci-failure-explainer",
+        "devops.stale-issues"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.exec-ops",
+      "kind": "workflow-chain",
+      "latestVersion": "1.1.4",
+      "description": "Real-work workflow pack (RFC 0013, ADR 0149). The Executive / Chief-of-Staff cluster: Daily Executive Briefing, Meeting Prep & Attendee Dossier, and Board / Investor Update Pack. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.analytics) and, where a workflow touches an external system, binds a connection pack via core.openwop.http.openapi-call (connectionRef) — so a configured connection runs live and an unconfigured one surfaces a connect prompt rather than failing. Every external send is gated by core.chat.approvalGate; the read-only briefing is ungated. All tenant-specific values are run parameters (replay-deterministic). Resolves fully on hosts that ship the feature + http/mcp + chat packs (the OpenWOP reference app); the connection bindings are configured by the operator under Access & data → Connections.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "exec-ops.daily-briefing",
+        "exec-ops.meeting-prep",
+        "exec-ops.board-update"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.feedback-triage",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.2",
+      "description": "Feedback-triage chains (RFC 0013): turn raw inbound feedback into classified, routed, actionable items. A form submission is classified and (on approval) filed as a follow-up task; a batch is themed into a weekly digest. Replay-deterministic.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "feedback-triage.classify-and-route",
+        "feedback-triage.weekly-themes"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.finance",
+      "kind": "workflow-chain",
+      "latestVersion": "1.1.4",
+      "description": "Real-work workflow pack (RFC 0013, ADR 0149) — the Finance cluster: Invoice → AP Processing, Month-End Close Checklist, and Expense/Budget Approval + anomaly detection. Reasons with core.ai.chatCompletion; recommends ERP actions (validation + posting) provider-agnostically via core.openwop.connectors.erp-action (NetSuite when connected); every posting/reimbursement runs through a threshold core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + kb + integration packs. Published under core.openwop.workflows.* (openwop-team key).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "finance.invoice-ap",
+        "finance.month-end-close",
+        "finance.expense-approval"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.funnels",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.2",
+      "description": "Funnel optimization chains (ADR 0294 / Funnel A, Phase 6) — read-only analysis over the funnels feature nodes: per-step stats in, a grounded optimization proposal out. Proposals only: publishing, step edits, and experiment starts remain human actions in the Funnels page.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "funnels.optimize-step"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.inbox",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.6",
+      "description": "Real-work workflow pack (RFC 0013, ADR 0190 Phase 2) — the personal-productivity Inbox cluster: triage your own inbox (classify, draft the urgent reply, digest the rest), nudge unanswered threads, and debrief calls into coaching notes. Distinct from core.openwop.workflows.support (a customer-support mailbox with queue routing): these serve YOUR inbox and YOUR calls. Drafting uses core.email.draft — it creates a draft in your mailbox and never sends (the draft is the human gate); the one real send (follow-up nudger) waits on an approval. All tenant values are run parameters (replay-deterministic).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "inbox.triage",
+        "inbox.followup-nudger",
+        "inbox.call-debrief"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.incident-postmortem",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.1",
+      "description": "Incident-postmortem chains (RFC 0013): after an incident resolves, draft a blameless postmortem from the timeline and turn its action items into tracked tasks. Draft-first (the human edits before anything is shared). Replay-deterministic.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "postmortem.draft-blameless",
+        "postmortem.action-items"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.insights-suite",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.2",
+      "description": "Insights & Drafting meta-workflows as an RFC 0013 chain pack (migrated from the deprecated ADR 0082/0072 builtins, ADR 0472 Phase 2). Three real source→analysis→LLM→draft→notify pipelines over BYOK-connected sources (BigQuery, Workday, chat completion, email-draft, notification-push). chainIds keep the original `openwop-app.insights.*` ids so scheduler/trigger ignition + replay are unchanged; the host registers them chain-backed (resolve-by-id, stable id) AND they are gallery-editable chains. Per-node outputRole (not expressible in the portable fragment) is re-applied at registration via the feature's postProcess.",
+      "license": "",
+      "tags": [],
+      "typeIds": [
+        "openwop-app.insights.weekly-variance",
+        "openwop-app.insights.anniversary-draft",
+        "openwop-app.insights.talent-prep"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.it-support",
+      "kind": "workflow-chain",
+      "latestVersion": "1.2.4",
+      "description": "Real-work workflow pack (RFC 0013, ADR 0149, ADR 0208) — the IT / Support cluster: Incident Triage & Major-Incident Comms. An AI classifier assesses each incident's severity; routine incidents go to a recommended knowledge-base article and a ticket, while major incidents go to human-approved stakeholder updates in Slack — and each incident finishes with a post-incident summary. All tenant values are run parameters (replay-deterministic). Resolves on hosts shipping the kb + http + ai + chat + integration packs. Published under core.openwop.workflows.* (openwop-team key).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "it-support.incident-triage"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.kicktodo-accountability",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.1",
+      "description": "Migrated from deprecated builtins (ADR 0472 P4).",
+      "license": "",
+      "tags": [],
+      "typeIds": [
+        "openwop-app.kicktodo.session-reminder"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.kicktodo-challenge-factory",
+      "kind": "workflow-chain",
+      "latestVersion": "1.3.1",
+      "description": "The Challenge Factory (ADR 0458) + its lesson-batch child — migrated from the deprecated builtins (ADR 0472 P4, the terminal quarantine step). chainIds keep the original ids; build-0..3 reference lesson-batch via RFC 0133 config.subChainRef (host-default binds it to the shared same-id child); truthy/falsy reject-safe barriers ride RFC 0134; produced vars (plan/evidenceSummary/planBrief) declared per RFC 0133 §2.2.",
+      "license": "",
+      "tags": [],
+      "typeIds": [
+        "openwop-app.kicktodo.challenge-factory",
+        "openwop-app.kicktodo.lesson-batch"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.kicktodo-integrations",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.1",
+      "description": "Migrated from deprecated builtins (ADR 0472 P4).",
+      "license": "",
+      "tags": [],
+      "typeIds": [
+        "openwop-app.kicktodo.calendar-sync"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.kicktodo-loops",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.1",
+      "description": "KickTodo enrollment + scheduled loops (enrollment, daily-loop, reminder-loop), migrated from the deprecated builtins (ADR 0472 P4). chainIds keep the original ids so scheduler-continuation ignition + replay resolve unchanged. Enrollment demonstrates RFC 0133 produced variables: `enroll` writes `enrollmentId` to the bag, `materialize` reads it.",
+      "license": "",
+      "tags": [],
+      "typeIds": [
+        "openwop-app.kicktodo.enrollment",
+        "openwop-app.kicktodo.daily-loop",
+        "openwop-app.kicktodo.reminder-loop"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.kicktodo-plan-generation",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.1",
+      "description": "KickTodo plan generation as an RFC 0013 / RFC 0133 chain pack (migrated from the deprecated ADR 0072 builtin `openwop-app.kicktodo.plan-generation`). Generate a validated challenge plan with the run-scoped provider (closed-world validatePlan + one bounded repair inside the node; fails closed on stub providers), then decompose it into a draft. Demonstrates RFC 0133 produced variables: `generate` writes the validated `plan` to the run bag and `decompose` reads it by name — no typed output port, so an explicit edge is not the right shape.",
+      "license": "",
+      "tags": [],
+      "typeIds": [
+        "kicktodo.plan-generation"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.kicktodo-replan",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.1",
+      "description": "Participant-replan workflow (ADR 0459/0463), migrated from the deprecated builtin (ADR 0472 P4). chainId keeps the original id; the falsy reject-safe barrier rides RFC 0134.",
+      "license": "",
+      "tags": [],
+      "typeIds": [
+        "openwop-app.kicktodo.replan"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.kicktodo-research",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.2",
+      "description": "KickTodo research spine as an RFC 0013 chain pack (migrated from the deprecated ADR 0072 builtin `openwop-app.kicktodo.research`, ADR 0472 Phase 2). Frame deterministic research questions, search the web (honestly demo or live per the host adapter), normalize to canonical source records, and build a structure-checked evidence graph. Conversion tightened the builtin's implicit ordering into EXPLICIT edge dataflow (the audit's honesty note): search's `{results,engine}` flows to normalize, normalize's sources flow to the evidence graph.",
+      "license": "",
+      "tags": [],
+      "typeIds": [
+        "kicktodo.research"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.knowledge",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.5",
+      "description": "Real-work workflow pack (RFC 0013, ADR 0190 Phase 2) — the internal Knowledge cluster: employee policy/HR Q&A grounded in your Knowledge Base, compliance review of documents against your policy corpus, and structured document summarization. Distinct from core.openwop.workflows.support (customer-facing): these serve EMPLOYEES over internal policy collections. Authored entirely over shipped node typeIds (feature.kb.nodes.rag + core.ai.chatCompletion + core.flow.if + core.chat.approvalGate + core.openwop.integration.*). Populate the underlying collections in the Knowledge feature (or via knowledge-sync from Drive/OneDrive/Dropbox/Box) — these chains READ the app KB; they do not build a separate index. Every external send waits on a human approval gate. All tenant values are run parameters (replay-deterministic).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "knowledge.policy-qa",
+        "knowledge.compliance-review",
+        "knowledge.doc-summarizer"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.lighthouse",
+      "kind": "workflow-chain",
+      "latestVersion": "1.1.6",
+      "description": "Real-work workflow pack (RFC 0013, ADR 0149 / ADR 0155 follow-on). The five zero-config 'lighthouse' workflows from the ADR 0149 catalog — Lead Triage, Account Brief, Renewal & Churn-Risk Digest, RFP Response, and Post-Meeting Follow-up — authored entirely over node typeIds shipped with this host (feature.crm/kb/analytics + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.integration.*). Each rides real tenant data through the feature node packs, reasons with the LLM node, gates every external send behind a human approval, and delivers a usable artifact. Tenant-specific values are RUN PARAMETERS (never hardcoded) so the expansion stays replay-deterministic. Picking one in the builder instantiates a fully-editable, runnable, assignable workflow.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "lighthouse.lead-triage",
+        "lighthouse.account-brief",
+        "lighthouse.renewal-risk",
+        "lighthouse.rfp-response",
+        "lighthouse.post-meeting"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.market-intel",
+      "kind": "workflow-chain",
+      "latestVersion": "1.1.2",
+      "description": "Real-work workflow pack (RFC 0013, ADR 0149/0150 + ADR 0174). Market-intelligence digest + a SHIFT digest (research the current period, then diff against the prior run via market-intel.shift-detect → an in-voice shift summary) authored entirely over PUBLISHED node packs (vendor.myndhyve.market-intel-* + core.openwop.ai), so they expand + run on any conformant host. Published under the `core.openwop.workflows.*` namespace (openwop-team signing key); the registry adds `signing` at publish time.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "market-intel.digest",
+        "market-intel.shift-digest"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.marketing",
+      "kind": "workflow-chain",
+      "latestVersion": "1.1.6",
+      "description": "Real-work workflow pack (RFC 0013, ADR 0149) — the Marketing & Advertising cluster: Full Campaign Launch, Ad Performance Optimization Loop, Content Brief Generator, and Content Repurposing. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.kb / feature.cms / feature.email); reads/optimizes the ad platforms provider-agnostically via the core.openwop.connectors.ad-* capability nodes (Meta or Google, whichever the tenant connected — ADR 0186). The optimization loop routes within-guardrail changes to auto-apply and out-of-guardrail changes to a core.chat.approvalGate via a core.flow.if conditional node (ADR 0149 open-question resolution: a flow conditional, not a new primitive). Every launch/publish/apply is approval- or guardrail-gated; all tenant values are run parameters (replay-deterministic). Published under core.openwop.workflows.* (openwop-team key).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "marketing.campaign-launch",
+        "marketing.ad-optimization",
+        "marketing.content-brief",
+        "marketing.content-repurposing"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.mcp-tool-projections",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.1",
+      "description": "MCP tool-projection workflows (core.openwop.mcp.expose-tool → backing node), migrated from the deprecated builtinWorkflows seam (ADR 0472 P4). chainIds keep the original *.mcp.* ids; registered chain-backed with the EXACT original metadata (the ADR 0087 mcp gates) restored, and the MCP mount enumerates them.",
+      "license": "",
+      "tags": [],
+      "typeIds": [
+        "commerce.ucp.mcp.catalog-search",
+        "commerce.ucp.mcp.place-order",
+        "docs.mcp.docs_search",
+        "docs.mcp.docs_get",
+        "notebooks.mcp.list",
+        "notebooks.mcp.get",
+        "notebooks.mcp.list-sources",
+        "notebooks.mcp.list-notes",
+        "notebooks.mcp.search",
+        "notebooks.mcp.ask",
+        "notebooks.mcp.add-source",
+        "notebooks.mcp.create-note",
+        "app-builder.mcp.create-project",
+        "app-builder.mcp.open-project",
+        "app-builder.mcp.get-design",
+        "app-builder.mcp.catalog",
+        "app-builder.mcp.render-design",
+        "app-builder.mcp.get-preview-url",
+        "app-builder.mcp.resolve-paused-task"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.meeting-ops",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.2",
+      "description": "Meeting-ops chains (RFC 0013): less time in and around meetings — an agenda from a stated goal, and notes turned into owned action items. In-app and draft sinks only; replay-deterministic.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "meeting.agenda-prep",
+        "meeting.notes-to-actions"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.notebooks",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.1",
+      "description": "Notebooks workflows (summarize, transform, ingest-audio, ingest-youtube), migrated from the deprecated builtins (ADR 0472 P4). chainIds keep the original ids so ignition + replay resolve unchanged; node outputRoles restored at registration.",
+      "license": "",
+      "tags": [],
+      "typeIds": [
+        "notebooks.summarize",
+        "notebooks.transform",
+        "notebooks.ingest-audio",
+        "notebooks.ingest-youtube"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.people-hr",
+      "kind": "workflow-chain",
+      "latestVersion": "1.2.4",
+      "description": "Real-work workflow pack (RFC 0013, ADR 0149) — the People / HR cluster: Employee Onboarding Orchestrator, Offboarding & Access Revocation, and Leave/PTO Request Routing. Reasons with core.ai.chatCompletion; binds Microsoft 365 via core.openwop.http.openapi-call connectionRef, recommends HRIS actions provider-agnostically via core.openwop.connectors.hris-action (Workday today), and provider-agnostic ticketing (Jira/ServiceNow) via the core.openwop.connectors.ticket-* capability nodes (ADR 0186); every account/HRIS mutation and every team-facing send is gated by core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + integration packs; connections are configured under Access & data → Connections. Published under core.openwop.workflows.* (openwop-team key).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "people-hr.onboarding",
+        "people-hr.offboarding",
+        "people-hr.pto-routing"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.podcasts",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.1",
+      "description": "Migrated from the deprecated builtin (ADR 0472 P4). chainId keeps the original id; outputRoles restored at registration.",
+      "license": "",
+      "tags": [],
+      "typeIds": [
+        "podcasts.generate"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.production-plan",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.2",
+      "description": "Migrated from the deprecated builtin (ADR 0472 P4). chainId keeps the original id; outputRoles restored at registration.",
+      "license": "",
+      "tags": [],
+      "typeIds": [
+        "openwop-app.production.plan"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.release-comms",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.1",
+      "description": "Release-comms chains (RFC 0013): ship-day communications — customer-facing release notes from a raw changelog, and an internal launch announcement. Every external/team send is human-gated. Replay-deterministic.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "release.notes-from-changelog",
+        "release.internal-announce"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.research",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.3",
+      "description": "Real-work workflow pack (RFC 0013, ADR 0190 Phase 5) — the Research cluster: turn a question into a short, cited web brief. Rides the ADR 0101 unified web search (core.web.search → the host.webResearch surface): live results when a search key is configured (BYOK secret 'web-search' on the keys page, or the host's OPENWOP_WEBSEARCH_API_KEY), an honest demo placeholder when not — the synthesis says so plainly instead of pretending. For deep, multi-source, long-horizon research use the Deep Research AGENT in chat; this chain is the quick-brief shape. All tenant values are run parameters (replay-deterministic).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "research.web-brief"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.sales-outreach",
+      "kind": "workflow-chain",
+      "latestVersion": "1.1.3",
+      "description": "Sales-outreach chains (RFC 0013): research-grounded, human-gated outreach — a personalized first-touch from live research, and a polite quiet-thread nudge. Every send is reviewed by a human first. Replay-deterministic.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "outreach.researched-firsttouch",
+        "outreach.quiet-thread-nudge"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.seo-content-ops",
+      "kind": "workflow-chain",
+      "latestVersion": "1.1.1",
+      "description": "SEO content-ops chains (RFC 0013): a research-grounded content pipeline — a keyword brief from live search, a drafted article for human review, and an on-publish internal-link suggestion pass. Drafts are reviewed before anything is treated as final. Replay-deterministic.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "seo.keyword-brief",
+        "seo.draft-for-review"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.slides-design",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.1",
+      "description": "The slides design workflow (outline → gate → draft → deepen → notes → audit → review), migrated from the deprecated builtin `slides.design` (ADR 0472 P4). Explicit port dataflow + two HITL approval gates (ordering, not conditional). chainId keeps the original id so ignition + replay resolve unchanged; also a gallery-editable chain.",
+      "license": "",
+      "tags": [],
+      "typeIds": [
+        "slides.design"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.starters",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.5",
+      "description": "Starter workflow pack (RFC 0013, ADR 0190) — the simple-pipe on-ramp tier: short single-trigger→action recipes (webhook→notify, form→table, schedule→digest, fetch→store) that run in under a minute with zero connections, before you graduate to the AI-agent packs. Trigger-shaped starters begin with a core.trigger.* pass-through entry node: bind them to a live source with a trigger subscription (POST /v1/trigger-subscriptions — webhook, email, or form; RFC 0099) or a Schedule; on a manual run the trigger payload is empty, so bind a source to see them shine. External sends stay behind a human approval gate; in-app notifications are direct. All tenant values are run parameters (replay-deterministic).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "starters.webhook-notify",
+        "starters.form-to-table",
+        "starters.scheduled-digest",
+        "starters.fetch-to-storage",
+        "starters.verified-webhook-router",
+        "starters.webhook-to-slack"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.support",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.7",
+      "description": "Real-work workflow pack (RFC 0013, ADR 0190) — the Customer Support cluster, the #1 surveyed agent use case the gallery previously had zero templates for: KB-grounded answering, email triage (draft-only — the human sends), customer-ticket routing, sentiment/brand-risk escalation, and CSAT follow-up. Authored entirely over node typeIds shipped with this host (feature.kb + core.ai.chatCompletion + core.flow.if + core.chat.approvalGate + core.email.draft + core.openwop.connectors.ticket-create + core.openwop.integration.*). Every external SEND waits on a human approval gate (core.email.draft creates a draft and never sends — the draft itself is the human gate). Distinct from core.openwop.workflows.it-support: that pack routes IT incidents by severity; this one serves customer-facing support (intent, queues, CSAT). All tenant values are run parameters (replay-deterministic).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "support.kb-answer",
+        "support.email-triage",
+        "support.ticket-routing",
+        "support.sentiment-escalation",
+        "support.csat-followup"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.walkthroughs",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.2",
+      "description": "The first-party SYSTEM guided walkthroughs (single-step page tours), migrated from the deprecated builtinWorkflows seam (ADR 0472 P4). Each chainId keeps its original walkthrough.* id so the FE player + replay resolve unchanged; registered chain-backed with metadata.walkthrough=true so the walkthroughs surface lists them.",
+      "license": "",
+      "tags": [],
+      "typeIds": [
+        "tour.campaign-studio.first-brief",
+        "walkthrough.agents.roster",
+        "walkthrough.workflows.dashboard",
+        "walkthrough.runs.index",
+        "walkthrough.keys.providers",
+        "walkthrough.funnels.list",
+        "walkthrough.models.hub",
+        "walkthrough.boards.kanban",
+        "walkthrough.workforces.gallery",
+        "walkthrough.inbox.notifications",
+        "walkthrough.projects.list",
+        "walkthrough.agent-templates.list",
+        "walkthrough.roster.orgchart",
+        "walkthrough.media.library",
+        "walkthrough.cms.pages",
+        "walkthrough.publishing.settings",
+        "walkthrough.prompts.library",
+        "walkthrough.memory.ledger",
+        "walkthrough.capabilities.panel",
+        "walkthrough.cli.quickstart",
+        "walkthrough.feature-toggles.list",
+        "walkthrough.orgs.list",
+        "walkthrough.users.list",
+        "walkthrough.connections.list",
+        "walkthrough.example-data.dashboard",
+        "walkthrough.commerce.catalog"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.weekly-digest",
+      "kind": "workflow-chain",
+      "latestVersion": "1.1.2",
+      "description": "Weekly-digest chains (RFC 0013): scheduled roundups that keep a team informed without a meeting — a research digest on a watched topic, and a team status roll-up. In-app + gated-send sinks; replay-deterministic.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "digest.topic-watch",
+        "digest.team-status"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.workflow-author",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.1",
+      "description": "The AI workflow-author meta-workflow (draft → validate → persist), migrated from the deprecated builtin `openwop-app.workflow-author` (ADR 0472 P4). chainId keeps the original id so the Create-with-AI route ignition + replay resolve unchanged; also a gallery-editable chain.",
+      "license": "",
+      "tags": [],
+      "typeIds": [
+        "openwop-app.workflow-author"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.agents.support-triage",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Customer support triage agent. Categorizes inbound tickets, routes to the right queue, surfaces severity + customer-segment signals. Pure-agent pack.",
   "author": "OpenWOP Working Group",
   "license": "Apache-2.0",
@@ -15,7 +15,7 @@
     "vertical"
   ],
   "engines": {
-    "openwop": ">=1.1.0 <2.0.0"
+    "openwop": ">=1.1.0 <3.0.0"
   },
   "peerDependencies": {
     "aiProviders": "supported"
@@ -47,5 +47,6 @@
   "runtime": {
     "language": "remote",
     "entry": "pack.json"
-  }
+  },
+  "kind": "node"
 }

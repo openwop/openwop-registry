@@ -1,0 +1,31 @@
+{
+  "name": "core.openwop.agents.supervisor",
+  "kind": "node",
+  "description": "Multi-agent supervisor. Routes user tasks to specialized subagents via dispatch + orchestrator semantics. Mirrors LangGraph Supervisor and CrewAI's hierarchical-process pattern. Pure-agent pack.",
+  "author": "OpenWOP Working Group",
+  "license": "Apache-2.0",
+  "homepage": "https://openwop.dev/packs/core.openwop.agents.supervisor",
+  "repository": "https://github.com/openwop/openwop",
+  "tags": [],
+  "typeIds": [
+    "core.openwop.agents.supervisor.default"
+  ],
+  "nodeCount": 0,
+  "agentCount": 1,
+  "versions": [
+    {
+      "version": "1.0.4",
+      "manifestUrl": "/v2/packs/core.openwop.agents.supervisor/-/1.0.4.json",
+      "tarballUrl": "/v2/packs/core.openwop.agents.supervisor/-/1.0.4.tgz",
+      "signatureUrl": "/v2/packs/core.openwop.agents.supervisor/-/1.0.4.sig",
+      "sbomUrl": "/v2/packs/core.openwop.agents.supervisor/-/1.0.4.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-iTlC634D2KEDBU4LWXjnXo0AmGPYAJ/b3c5wJH0/mEg=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.4",
+  "deprecated": false
+}

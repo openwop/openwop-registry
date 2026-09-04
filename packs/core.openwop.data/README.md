@@ -3,8 +3,8 @@
 Spec-canonical data-utility pack. Five pure, replay-safe nodes for the most common workflow data transformations.
 
 | Pack name | `core.openwop.data` |
-| Version | `1.0.0` |
-| Engine | OpenWOP `>=1.0.0 <2.0.0` |
+| Version | `1.2.2` |
+| Engine | OpenWOP `>=1.0.0 <3.0.0` |
 | Runtime | JavaScript (ESM), Node `>=20` |
 | External deps | None |
 | License | Apache-2.0 |

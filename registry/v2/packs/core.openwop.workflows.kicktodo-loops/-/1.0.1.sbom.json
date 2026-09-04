@@ -1,0 +1,102 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.kicktodo-loops@1.0.1",
+      "type": "library",
+      "name": "core.openwop.workflows.kicktodo-loops",
+      "version": "1.0.1",
+      "description": "KickTodo enrollment + scheduled loops (enrollment, daily-loop, reminder-loop), migrated from the deprecated builtins (ADR 0472 P4). chainIds keep the original ids so scheduler-continuation ignition + replay resolve unchanged. Enrollment demonstrates RFC 0133 produced variables: `enroll` writes `enrollmentId` to the bag, `materialize` reads it.",
+      "licenses": [],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7cd7ca0f25c3672b1f6f651472e1becb7c2e01042799b6c3d3b84782d0205e81"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.kicktodo-loops@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e2beacb2f83e0d66b19245c6186380b2a8f4462f77e2da712c93fb8d9c9de4f8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "771"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "469582022b35d96acdf7911fa1403446c7e230ce1383e6c2403d9d41b86ba4b2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1dd7a755b02155266cc54be9c82f9d601f0c9465e300ec73e98e5d2a626355c2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3246"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.kicktodo-loops@1.0.1",
+      "dependsOn": []
+    }
+  ]
+}

@@ -1,0 +1,469 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.obs@1.0.1",
+      "type": "library",
+      "name": "core.openwop.obs",
+      "version": "1.0.1",
+      "description": "Observability emission primitives. Workflows publish logs / metrics / traces / alerts under the canonical openwop.* OTel namespace. Delegates to ctx.observability when the host advertises it, no-ops gracefully otherwise. Zero npm deps.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/packs/core.openwop.obs"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "60e421ee3d1dd639e35c126fccf36a1145a9432a1f26437461e4fc3e05e74af9"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.obs@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d159d9f1ed61703b56c9f2473ff7b8540fa271fc7f9d1172a16044ae46cf6999"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1283"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "index.mjs",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2e828596cf3d76273e1f0b2b37de8b21080ba64228994e14510084cb1f09638f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3207"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "071cf1e8d285ca9b626a72f31e9d08fca856b4be7a845905a46045d2cd8b3602"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2c26de383a8ebf75b3de04ecd8ea6120ded13f3b29c3751c7f6ee6b230f634e7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3532"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/alert-fire.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4a5cc2f883ddec17c4b13d6236846f8e2d2edde9fcb1d1990572a64e8f4f5ef9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "425"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/alert-fire.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a05d3a9e00fc9c28c4fc0111179ea22ed7752b582b9ec548d41cb63ac71145b9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "562"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/alert-fire.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4f3fcbf5cfda51898583d3f98e3be9fc2c6e384e9a055115fdb6459f4639609d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "413"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/log.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8af282c111298a04fb7c0afb64383b5ab194f33a5b295f8d253f789644063edb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "400"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/log.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2f5bdcfeb5ab2d70e76ec3d03023a35426685c2bb0635631194ee098f381bfbc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "451"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/log.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6b2fa121ba8891db1d641dc1730a28e5b773c6c4b7717ace7b829a81d0b65017"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "415"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/metric-counter.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ada13f9c983512eedf8f82d035a91ff77941cfad7fa75e969bdcadd086903c66"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "349"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/metric-counter.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c8b217888197c41347a46ecd4673bef830c5490fc75d3ab1e3728d5e6a08b634"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "454"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/metric-counter.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8a4387751027c52f65b5d69e7c750e9b476bc778884d0498520e8f42dc207e3f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "477"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/metric-gauge.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b3ee3962d7432b7a121cc457a9672bf8f1c6ab52e38a3c8c346b81a24d7bcb69"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "345"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/metric-gauge.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "14e7695e04ca407912211b5318798edac86047a4b6544da7de8a000cd1ed4292"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "463"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/metric-gauge.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c08364a15c2b0c0f7b9fbf198ca0accbc27c034d31e613eb68c471702a245ffe"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "473"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/metric-histogram.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2ffd3236cd78bc160cfa601abd84d0dbe20a8ee23b9dbcb73c0d6fe6a2f8b224"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "353"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/metric-histogram.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "26482132eba9d1cc4d064235c98eafd2703a48b256d2538ad8f708a787dd7497"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "471"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/metric-histogram.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4815ec828e750c5b77c9072612306c5a4728b6d5aad686631003c096d52bc979"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "481"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/trace-span-end.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "374b31ba13022a4ee981a02ce577879558c1e97e57a726bec29caf5279713281"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "258"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/trace-span-end.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0918958d690d7affae0463deb34967416a18d6abfe85319092f6c64474075d23"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "505"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/trace-span-end.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d130fc050e626afa53c9eaf33f44aad43e665218d875b509b2d9342322c7a018"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "339"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/trace-span-start.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "29ceb3d9d9ea9c85b25920a23abeb654f6a54385669ae8c916b40d110ea414d7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "308"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/trace-span-start.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "997e1447e5e9ef44b507be53ad52023f16caeec1203da2c268d71296867d4633"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "392"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/trace-span-start.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e3fc8c7ca6fcc91d16ae6479b6467d70c6ea6970cee9197fc218229973a92173"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "380"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.obs@1.0.1",
+      "dependsOn": []
+    }
+  ]
+}

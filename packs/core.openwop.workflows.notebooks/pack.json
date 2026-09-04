@@ -1,13 +1,13 @@
 {
   "name": "core.openwop.workflows.notebooks",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "workflow-chain",
   "description": "Notebooks workflows (summarize, transform, ingest-audio, ingest-youtube), migrated from the deprecated builtins (ADR 0472 P4). chainIds keep the original ids so ignition + replay resolve unchanged; node outputRoles restored at registration.",
   "keywords": [
     "Notebooks"
   ],
   "engines": {
-    "openwop": ">=1.0.0"
+    "openwop": ">=1.0.0 <3.0.0"
   },
   "chains": [
     {

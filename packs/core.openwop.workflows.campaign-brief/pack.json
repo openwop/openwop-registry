@@ -1,13 +1,13 @@
 {
   "name": "core.openwop.workflows.campaign-brief",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "workflow-chain",
   "description": "Campaign-brief messaging-kernel + market-intel workflows, migrated from the deprecated builtins (ADR 0472 P4). chainIds keep the original ids; outputRoles restored at registration.",
   "keywords": [
     "Campaign"
   ],
   "engines": {
-    "openwop": ">=1.0.0"
+    "openwop": ">=1.0.0 <3.0.0"
   },
   "chains": [
     {

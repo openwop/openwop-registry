@@ -1,0 +1,76 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.connections.meta-ads@1.0.1",
+      "type": "library",
+      "name": "core.openwop.connections.meta-ads",
+      "version": "1.0.1",
+      "description": "Meta (Facebook/Instagram) Ads connection pack — OAuth2 provider for the Meta Marketing API. Reach is `openapi`: the manifest declares the global Meta OAuth hosts and points at the Marketing API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the app id/secret host-side. An available provider (the parallel ad platform to google-ads); one of the three ad platforms Campaign Studio syncs.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c6393334a28fa4e827130ed02f6e12bf0c6c40df88a2e4801e38d905744f83eb"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.connections.meta-ads@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bc44ea97842c100eeaa7585cca25ad3300bc1828e1ed4863c40fab3dedc77d25"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "21cf144d371daeca5ca1792661b2a2a54543a421344ec8eead4d5a6423168ee3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1399"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.connections.meta-ads@1.0.1",
+      "dependsOn": []
+    }
+  ]
+}

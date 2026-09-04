@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.agents.classifier",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Fast classification agent. Caller supplies labels + optional rationale schema; agent picks the best-fit label(s). Stateless, single-shot. Pure-agent pack.",
   "author": "OpenWOP Working Group",
   "license": "Apache-2.0",
@@ -14,7 +14,7 @@
     "pattern"
   ],
   "engines": {
-    "openwop": ">=1.1.0 <2.0.0"
+    "openwop": ">=1.1.0 <3.0.0"
   },
   "peerDependencies": {
     "aiProviders": "supported"
@@ -46,5 +46,6 @@
   "runtime": {
     "language": "remote",
     "entry": "pack.json"
-  }
+  },
+  "kind": "node"
 }

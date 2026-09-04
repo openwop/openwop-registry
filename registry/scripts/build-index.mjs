@@ -15,8 +15,18 @@
  * Pure Node 20 stdlib — no `npm install` required.
  *
  * Usage:
- *   node registry/scripts/build-index.mjs
+ *   node registry/scripts/build-index.mjs [--tree v1|v2]
  *   node registry/scripts/build-index.mjs --check   # fail if files would change
+ *
+ * `--tree v2` (RFC 0177 §A.2/§A.3, default v1) rebuilds `registry/v2/` instead:
+ * every URL template carries the `/v2/` prefix (the registry is versioned by
+ * tree — the prefix IS the version), catalog rows carry `signingScheme` +
+ * `signingKeyId` read from the manifest's `signing.keyId` with NO default (the
+ * v1 `'ed25519'` / `'openwop-registry-root'` fallbacks are the thing RFC 0177
+ * §C.3 retires — a v2 manifest without a v2 signing block fails loudly), and
+ * `versionDeprecated` (RFC 0178 C11.2) replaces `deprecated` on the manifest.
+ * The landing page and robots.txt are emitted by the v1 run only (they describe
+ * the whole registry); the schema mirror at /{name}/{version}/ is shared.
  */
 
 import { readFileSync, writeFileSync, readdirSync, existsSync, statSync, mkdirSync, rmSync } from 'node:fs';
@@ -25,13 +35,16 @@ import { execFileSync } from 'node:child_process';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { tmpdir } from 'node:os';
+import { treeFromArgv, signerOf, V2_SCHEME } from '../../scripts/lib/registry-tree.mjs';
 
 const ROOT = dirname(dirname(fileURLToPath(import.meta.url))); // registry/
-const PACKS_DIR = join(ROOT, 'v1', 'packs');
-const REGISTRY_INDEX = join(ROOT, 'v1', 'index.json');
+const TREE = treeFromArgv();
+const PACKS_DIR = join(ROOT, TREE, 'packs');
+const REGISTRY_INDEX = join(ROOT, TREE, 'index.json');
 
 const args = new Set(process.argv.slice(2));
 const checkMode = args.has('--check');
+const fatal = [];
 
 const warnings = [];
 
@@ -181,24 +194,51 @@ function rebuildPack(packName) {
       );
     }
 
-    versionEntries.push({
-      version,
-      publishedAt: manifest.publishedAt ?? '2026-05-10T00:00:00Z',
-      manifestUrl: `/v1/packs/${packName}/-/${version}.json`,
-      tarballUrl: `/v1/packs/${packName}/-/${version}.tgz`,
-      signatureUrl: `/v1/packs/${packName}/-/${version}.sig`,
-      signingMethod: manifest.signing?.method ?? 'ed25519',
-      // The signed manifest records the publisher key as `signing.publicKeyRef`
-      // (node-pack-manifest.schema.json §Signing); `signing.keyId` is a legacy
-      // alias. Read publicKeyRef FIRST — reading only `keyId` made this always
-      // fall through to the hardcoded default, mislabeling every pack's signer
-      // as `openwop-registry-root` (the drift check-registry-signer-consistency
-      // guards). Verified by verify-signatures.mjs against registry/keys/<id>.pub.
-      signingKeyId: manifest.signing?.publicKeyRef ?? manifest.signing?.keyId ?? 'openwop-registry-root',
-      integrity: manifest.integrity ?? 'sha256-PENDING-FIRST-BUILD',
-      deprecated: Boolean(manifest.deprecated),
-      yanked: Boolean(manifest.yanked),
-    });
+    if (TREE === 'v2') {
+      // RFC 0177 §C.3/§C.4/§C.5 — no defaults. A v2 manifest names its signer
+      // as `signing.keyId` under the one scheme, and carries `kind`; anything
+      // else is a build failure, not a mislabeled row.
+      const signer = signerOf(manifest, 'v2');
+      if (signer.problems.length) fatal.push(`${packName}@${version}: ${signer.problems.join('; ')}`);
+      if (typeof manifest.kind !== 'string') fatal.push(`${packName}@${version}: \`kind\` is REQUIRED on a v2 manifest (RFC 0177 §C.5)`);
+      const row = {
+        version,
+        // No fabricated first-publish date on the v2 tree: the row carries
+        // `publishedAt` only when the manifest records one (the v1 fallback
+        // stamped the MVP date on everything). build-index is deterministic
+        // (--check), so "now" is not an option either.
+        ...(manifest.publishedAt ? { publishedAt: manifest.publishedAt } : {}),
+        manifestUrl: `/v2/packs/${packName}/-/${version}.json`,
+        tarballUrl: `/v2/packs/${packName}/-/${version}.tgz`,
+        signatureUrl: `/v2/packs/${packName}/-/${version}.sig`,
+        sbomUrl: `/v2/packs/${packName}/-/${version}.sbom.json`,
+        signingScheme: V2_SCHEME,
+        signingKeyId: signer.keyId,
+        integrity: manifest.integrity ?? 'sha256-PENDING-FIRST-BUILD',
+        versionDeprecated: Boolean(manifest.versionDeprecated),
+        yanked: Boolean(manifest.yanked),
+      };
+      versionEntries.push(row);
+    } else {
+      versionEntries.push({
+        version,
+        publishedAt: manifest.publishedAt ?? '2026-05-10T00:00:00Z',
+        manifestUrl: `/v1/packs/${packName}/-/${version}.json`,
+        tarballUrl: `/v1/packs/${packName}/-/${version}.tgz`,
+        signatureUrl: `/v1/packs/${packName}/-/${version}.sig`,
+        signingMethod: manifest.signing?.method ?? 'ed25519',
+        // The signed manifest records the publisher key as `signing.publicKeyRef`
+        // (node-pack-manifest.schema.json §Signing); `signing.keyId` is a legacy
+        // alias. Read publicKeyRef FIRST — reading only `keyId` made this always
+        // fall through to the hardcoded default, mislabeling every pack's signer
+        // as `openwop-registry-root` (the drift check-registry-signer-consistency
+        // guards). Verified by verify-signatures.mjs against registry/keys/<id>.pub.
+        signingKeyId: manifest.signing?.publicKeyRef ?? manifest.signing?.keyId ?? 'openwop-registry-root',
+        integrity: manifest.integrity ?? 'sha256-PENDING-FIRST-BUILD',
+        deprecated: Boolean(manifest.deprecated),
+        yanked: Boolean(manifest.yanked),
+      });
+    }
 
     pack = manifest;
   }
@@ -209,7 +249,7 @@ function rebuildPack(packName) {
   // `kind: "workflow-chain"`. Consumers MUST inspect `kind` before
   // assuming dispatch semantics (workflow-chain packs aren't directly
   // dispatchable — they expand at workflow-author time).
-  const kind = pack?.kind ?? 'node';
+  const kind = TREE === 'v2' ? pack?.kind : (pack?.kind ?? 'node');
   // Per-pack typeIds[] surfaced for catalog/discovery. The semantics:
   //   - node packs (kind=node, the default): merge nodes[].typeId AND
   //     agents[].agentId so pure-agent packs (per RFC 0003) and mixed
@@ -274,7 +314,7 @@ function rebuildPack(packName) {
     cardCount,
     versions: versionEntries,
     latest,
-    deprecated: versionEntries.every((v) => v.deprecated),
+    deprecated: versionEntries.every((v) => TREE === 'v2' ? v.versionDeprecated : v.deprecated),
   };
   if (!indexDoc.homepage) delete indexDoc.homepage;
   if (!indexDoc.repository) delete indexDoc.repository;
@@ -1135,6 +1175,7 @@ function emitRobotsTxt() {
 Allow: /$
 Allow: /index.html
 Disallow: /v1/
+Disallow: /v2/
 Disallow: /keys/
 Disallow: /.well-known/
 
@@ -1153,10 +1194,21 @@ Sitemap: https://packs.openwop.dev/
 }
 
 const packs = listPackNames();
+if (TREE === 'v2' && packs.length === 0) {
+  console.log(`[build-index] no registry/v2/packs — nothing to rebuild for the v2 tree`);
+  process.exit(0);
+}
 const docs = packs.map(rebuildPack).filter((p) => p !== null);
+if (fatal.length > 0) {
+  console.error(`[build-index --tree ${TREE}] ${fatal.length} manifest(s) are not valid for this tree:`);
+  for (const f of fatal) console.error(`  - ${f}`);
+  process.exit(1);
+}
 rebuildRegistryIndex(docs);
-emitLandingPage(docs);
-emitRobotsTxt();
+if (TREE === 'v1') {
+  emitLandingPage(docs);
+  emitRobotsTxt();
+}
 
 if (warnings.length > 0) {
   console.error('build-index warnings:');
@@ -1167,4 +1219,4 @@ if (process.exitCode === 1) {
   console.error('[build-index] check mode: files would change; run without --check to fix');
   process.exit(1);
 }
-console.log(`[build-index] rebuilt ${docs.length} pack(s); ${warnings.length} warning(s)`);
+console.log(`[build-index --tree ${TREE}] rebuilt ${docs.length} pack(s); ${warnings.length} warning(s)`);

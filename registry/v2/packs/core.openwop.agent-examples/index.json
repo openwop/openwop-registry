@@ -1,0 +1,35 @@
+{
+  "name": "core.openwop.agent-examples",
+  "kind": "node",
+  "description": "Reference / smoke-fixture agent pack. Exercises every shape on agent-manifest.schema.json: inline systemPrompt, systemPromptRef, conversation memory, scratchpad memory, non-empty toolAllowlist, and handoff.{task,return}SchemaRef. Validates the `agents[]` extension to the pack manifest (per agent-manifest.schema.json +). Vendor-neutral: no model pinned — hosts resolve via their BYOK aiProviders surface.",
+  "author": "OpenWOP Working Group",
+  "license": "Apache-2.0",
+  "homepage": "https://openwop.dev/packs/core.openwop.agent-examples",
+  "repository": "https://github.com/openwop/openwop",
+  "tags": [],
+  "typeIds": [
+    "core.openwop.agent-examples.echo-agent",
+    "core.openwop.agent-examples.summarizer",
+    "core.openwop.agent-examples.chat",
+    "core.openwop.agent-examples.structured-fixture",
+    "core.openwop.agent-examples.tool-caller"
+  ],
+  "nodeCount": 0,
+  "agentCount": 5,
+  "versions": [
+    {
+      "version": "1.1.1",
+      "manifestUrl": "/v2/packs/core.openwop.agent-examples/-/1.1.1.json",
+      "tarballUrl": "/v2/packs/core.openwop.agent-examples/-/1.1.1.tgz",
+      "signatureUrl": "/v2/packs/core.openwop.agent-examples/-/1.1.1.sig",
+      "sbomUrl": "/v2/packs/core.openwop.agent-examples/-/1.1.1.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-Rtkd0Cqk2o7Shhs0F3QJKVFOamBuNddt1GK585Lo5nM=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.1.1",
+  "deprecated": false
+}

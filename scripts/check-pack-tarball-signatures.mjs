@@ -33,18 +33,30 @@
  *
  * Pure Node 20 stdlib (zlib + crypto) — no system `tar`, no npm install.
  *
- * Usage: node scripts/check-pack-tarball-signatures.mjs
+ * Usage: node scripts/check-pack-tarball-signatures.mjs [--tree v1|v2]
  * Exit 0 = every non-yanked version verifies; exit 1 = at least one failure.
+ *
+ * `--tree v2` (RFC 0177 §C.3/§C.4): the in-tarball signing block MUST be
+ * `{ keyId, scheme: ed25519-canonical-json }` — `keyId` is REQUIRED, `scheme`
+ * is accepted only as that one value, and `method` / `publicKeyRef` are
+ * refused (a v2 manifest carrying them fails validation). The bytes verified
+ * are the same (the exact in-tarball pack.json), because the scheme names the
+ * `manual` convention — the only one that survives.
+ *
+ * OPENWOP_REGISTRY_KEYS_DIR overrides registry/keys/ (a local exercise of the
+ * v2 pipeline with an ephemeral key; CI never sets it).
  */
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { gunzipSync } from 'node:zlib';
 import { createPublicKey, verify as edVerify } from 'node:crypto';
+import { treeFromArgv, signerOf } from './lib/registry-tree.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-const PACKS_DIR = join(ROOT, 'registry', 'v1', 'packs');
-const KEYS_DIR = join(ROOT, 'registry', 'keys');
+const TREE = treeFromArgv();
+const PACKS_DIR = join(ROOT, 'registry', TREE, 'packs');
+const KEYS_DIR = process.env.OPENWOP_REGISTRY_KEYS_DIR ?? join(ROOT, 'registry', 'keys');
 
 /** Minimal USTAR reader — returns Map<name, Buffer> for a gunzipped tar. */
 function readTar(gz) {
@@ -110,16 +122,24 @@ for (const pack of readdirSync(PACKS_DIR).sort()) {
       failures.push(`${pack}@${ver}: UNSIGNED — tarball has no keys/pack.json.sig (catalog claims signingKeyId="${keyId}")`);
       continue;
     }
-    // B. in-tarball signing.publicKeyRef agrees with catalog signingKeyId
-    let embeddedRef;
+    // B. in-tarball signer agrees with catalog signingKeyId. v1 reads
+    //    signing.publicKeyRef; v2 reads signing.keyId and REQUIRES the one scheme
+    //    (RFC 0177 §C.3/§C.4 — method/publicKeyRef are refused).
+    let embedded;
     try {
-      embeddedRef = JSON.parse(packJson.toString('utf8'))?.signing?.publicKeyRef;
+      embedded = JSON.parse(packJson.toString('utf8'));
     } catch (err) {
       failures.push(`${pack}@${ver}: in-tarball pack.json not valid JSON — ${err.message}`);
       continue;
     }
+    const signer = signerOf(embedded, TREE);
+    if (TREE === 'v2' && signer.problems.length) {
+      failures.push(`${pack}@${ver}: in-tarball signing block is not v2 — ${signer.problems.join('; ')}`);
+      continue;
+    }
+    const embeddedRef = signer.keyId;
     if (!embeddedRef) {
-      failures.push(`${pack}@${ver}: in-tarball pack.json has no signing.publicKeyRef (unsigned manifest)`);
+      failures.push(`${pack}@${ver}: in-tarball pack.json has no signing.${TREE === 'v2' ? 'keyId' : 'publicKeyRef'} (unsigned manifest)`);
       continue;
     }
     if (keyId !== undefined && embeddedRef !== keyId) {
@@ -160,4 +180,4 @@ if (failures.length) {
   for (const f of failures) console.error(`  - ${f}`);
   process.exit(1);
 }
-console.log(`✓ pack tarball signatures: ${checked} non-yanked version(s) verify against their declared key`);
+console.log(`✓ pack tarball signatures [${TREE}]: ${checked} non-yanked version(s) verify against their declared key`);

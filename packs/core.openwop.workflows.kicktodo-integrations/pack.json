@@ -1,13 +1,13 @@
 {
   "name": "core.openwop.workflows.kicktodo-integrations",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "workflow-chain",
   "description": "Migrated from deprecated builtins (ADR 0472 P4).",
   "keywords": [
     "KickTodo"
   ],
   "engines": {
-    "openwop": ">=1.0.0"
+    "openwop": ">=1.0.0 <3.0.0"
   },
   "chains": [
     {

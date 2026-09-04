@@ -1,0 +1,313 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.agents.research-crew@1.0.1",
+      "type": "library",
+      "name": "core.openwop.agents.research-crew",
+      "version": "1.0.1",
+      "description": "Multi-agent research crew. 4 specialists — planner / retriever / critic / writer — bundled into one pack for dispatch via orchestrator. Mirrors CrewAI's sequential/hierarchical crew templates.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/packs/core.openwop.agents.research-crew"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8a2349c6271bccdff9447c4221dae2da14936a0fa4eab14755edd35666d56904"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.agents.research-crew@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6949c1bc9e57c7ef6c3b4b73750cac54384541f6ae5bcf95df95d01cc298e46f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2521"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4f66e87d583b1a06eaa6fc7d522584f7c75b8f4012155a0e079cdb1ea83c6632"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "10132f73989e7f13eeb0009ec52ae61919dc75587de0620e4ca41b8d01c6a46c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3396"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/critic.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2d085ac4a494b1e04466c1e24007d8c1a6299a427a398f63f4a334e7c4f86f61"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1572"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/planner.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5fc080e06e8546020513a7ab3aa0d00a612a11daaed41021e0c526703b302ae3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1848"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/retriever.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "886977b6c88dfc0962f123fd69ed00879cf4c5a08243eaa9e2cf2165a0d5c692"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1222"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/writer.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "76c5a68955e7b63cf397ad9c387dbf4dfd4d3b5153bfbc092c8d8965008a8a36"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1900"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/critic.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "12faf3711e6a2fcc4b81743257dc05bd01c508f880eddaa856b3079bb486f542"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "988"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/critic.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4c6f8573bd8e399b79c6a54d76b48d27b94c34e14e32ef8afbdc0cc68f9a5058"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1056"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/planner.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "448db5e68ee631674a902eb38f84acd799c9e6528416b2515e10f6029de468f4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "707"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/planner.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f63b0766f3ffde65e17bf454119659eccd4af1e6707fb704b80c656a97934112"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "826"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/retriever.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "03b1cbebe252f050c85a7e1e91afa9cb6ee4b1522fca73e62af889ae28f1eb2e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "984"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/retriever.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8ca4d37d3ef9f4631ea9faebe1af5d37c1abc0db767f6e643d2ab5ba6b8b8a79"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "549"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/writer.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b05cdcd2bee2549241424908297ba892a40250f9b8f61df7a7b2226098f85546"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1643"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/writer.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d0ce00740ed01f6efab3a2bebcacbc3bbc578ba7e497c35a94fce3fadb06a9e6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "907"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.agents.research-crew@1.0.1",
+      "dependsOn": [
+        "host:agentRuntime",
+        "host:agents",
+        "host:aiProviders"
+      ]
+    }
+  ]
+}

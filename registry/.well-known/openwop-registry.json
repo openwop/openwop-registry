@@ -6,17 +6,37 @@
   "url": "https://packs.openwop.dev",
   "supportedNamespaces": ["core", "vendor", "community"],
   "supportedSigningMethods": ["ed25519", "sigstore"],
+  "supportedSigningSchemes": ["ed25519-canonical-json"],
   "supportedTrustModes": ["trusted", "verified"],
   "endpoints": {
+    "_note": "RFC 0177 §A.3 / spec/v2/core/packs.md §\"The registry tree\": this registry is versioned BY TREE, not by header, and this map is the negotiation — a client MUST resolve every registry path through it rather than constructing one. `v1` and `v2` name the two trees; the flat keys are the v1-era aliases of `v1.*` and stay for clients that predate `v2`. `publicKey` is unversioned by design: keys are not protocol-versioned (the same signingKeys[] sign both trees under their permittedNamespaces). `supportedSigningSchemes` is the v2 signing vocabulary (`signing.scheme`); `supportedSigningMethods` is the v1 one (`signing.method`).",
     "registryIndex": "/v1/index.json",
     "packMetadata": "/v1/packs/{name}/index.json",
     "versionManifest": "/v1/packs/{name}/-/{version}.json",
     "versionTarball": "/v1/packs/{name}/-/{version}.tgz",
     "versionSignature": "/v1/packs/{name}/-/{version}.sig",
-    "publicKey": "/keys/{keyId}.pub"
+    "publicKey": "/keys/{keyId}.pub",
+    "v1": {
+      "registryIndex": "/v1/index.json",
+      "packMetadata": "/v1/packs/{name}/index.json",
+      "versionManifest": "/v1/packs/{name}/-/{version}.json",
+      "versionTarball": "/v1/packs/{name}/-/{version}.tgz",
+      "versionSignature": "/v1/packs/{name}/-/{version}.sig",
+      "versionSbom": "/v1/packs/{name}/-/{version}.sbom.json",
+      "registrySbom": "/v1/sbom.json"
+    },
+    "v2": {
+      "registryIndex": "/v2/index.json",
+      "packMetadata": "/v2/packs/{name}/index.json",
+      "versionManifest": "/v2/packs/{name}/-/{version}.json",
+      "versionTarball": "/v2/packs/{name}/-/{version}.tgz",
+      "versionSignature": "/v2/packs/{name}/-/{version}.sig",
+      "versionSbom": "/v2/packs/{name}/-/{version}.sbom.json",
+      "registrySbom": "/v2/sbom.json"
+    }
   },
   "endpointAliases": {
-    "_note": "Filesystem-backed registries (Firebase Hosting, S3+CDN, etc.) serve packMetadata at the file path because dot-containing path segments don't reliably trigger CDN URL rewrites. Clients SHOULD consult `endpoints` rather than hardcoding paths. Dynamic registries MAY accept `/v1/packs/{name}` and alias to `/v1/packs/{name}/index.json`."
+    "_note": "Filesystem-backed registries (Firebase Hosting, S3+CDN, etc.) serve packMetadata at the file path because dot-containing path segments don't reliably trigger CDN URL rewrites. Clients SHOULD consult `endpoints` rather than hardcoding paths. Dynamic registries MAY accept `/v1/packs/{name}` (and `/v2/packs/{name}`) and alias to `/<tree>/packs/{name}/index.json`."
   },
   "writeApi": {
     "supported": false,

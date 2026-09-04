@@ -1,9 +1,11 @@
 name: Vendored spec sync
 
-# Finding-1 drift guard: schemas/ here are vendored copies of normative artifacts
-# whose source of truth is the openwop/openwop spec corpus. This fails if a copy
-# drifts. Runs weekly (catches upstream changes that didn't touch this repo) and
-# on PRs that touch the vendored paths.
+# Finding-1 drift guard: schemas/ (v1 at the root, v2 under schemas/v2/) and
+# spec/v2/*.json here are vendored copies of normative artifacts whose source of
+# truth is the openwop/openwop spec corpus AT THE TAG IN ./CORPUS_TAG (RFC 0176
+# §E.1, RFC 0177 §C.6). This fails if a copy drifts. Runs weekly (catches a tag
+# bump that was not re-vendored) and on PRs that touch the vendored paths or the
+# pin. Re-vendor with `node scripts/check-vendored-sync.mjs --write`.
 
 on:
   schedule:
@@ -12,7 +14,9 @@ on:
   pull_request:
     paths:
       - 'schemas/**'
+      - 'spec/v2/**'
       - 'api/**'
+      - 'CORPUS_TAG'
       - 'scripts/check-vendored-sync.mjs'
 
 jobs:

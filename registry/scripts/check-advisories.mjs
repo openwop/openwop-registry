@@ -42,9 +42,11 @@
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { treeFromArgv } from '../../scripts/lib/registry-tree.mjs';
 
 const REGISTRY_ROOT = dirname(dirname(fileURLToPath(import.meta.url))); // registry/
-const PACKS_ROOT = join(REGISTRY_ROOT, 'v1', 'packs');
+const TREE = treeFromArgv(); // --tree v1|v2 (RFC 0177 §A.2) — one advisory feed, checked against each tree
+const PACKS_ROOT = join(REGISTRY_ROOT, TREE, 'packs');
 const ADVISORIES_PATH = join(REGISTRY_ROOT, 'security', 'advisories.json');
 
 const TTY = process.stdout.isTTY;
@@ -191,7 +193,7 @@ function isYanked(packName, version) {
 
 function main() {
   if (!existsSync(PACKS_ROOT)) {
-    warn('no registry/v1/packs/ directory; nothing to check');
+    warn(`no registry/${TREE}/packs/ directory; nothing to check`);
     process.exit(0);
   }
 
@@ -257,7 +259,7 @@ function main() {
   if (violations === 0) {
     ok(
       `${advisories.length} advisory record(s) cross-checked, ` +
-        `${totalChecks} affected version(s) all correctly yanked`
+        `${totalChecks} affected version(s) all correctly yanked [${TREE}]`
     );
     process.exit(0);
   } else {

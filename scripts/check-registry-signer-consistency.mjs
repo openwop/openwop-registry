@@ -16,15 +16,22 @@
  * `signing.publicKeyRef` — it lives next to the tarball + verifies against the actual
  * `.sig`. The catalog `index.json` MUST agree with it.
  *
- * Usage: node scripts/check-registry-signer-consistency.mjs
+ * Usage: node scripts/check-registry-signer-consistency.mjs [--tree v1|v2]
  * Exit 0 = consistent; exit 1 = drift found (lists every mismatch).
+ *
+ * `--tree v2` (RFC 0177 §C.3/§C.4): the authoritative field is `signing.keyId`
+ * (REQUIRED; `publicKeyRef` is deleted), `signing.scheme` MUST be
+ * `ed25519-canonical-json`, and the catalog row's `signingScheme` MUST agree.
+ * A v2 manifest that lacks `keyId` is a failure, not a skip.
  */
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { treeFromArgv, signerOf, V2_SCHEME } from './lib/registry-tree.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-const PACKS_DIR = join(ROOT, 'registry', 'v1', 'packs');
+const TREE = treeFromArgv();
+const PACKS_DIR = join(ROOT, 'registry', TREE, 'packs');
 
 function readJson(p) {
   return JSON.parse(readFileSync(p, 'utf8'));
@@ -58,16 +65,27 @@ for (const pack of readdirSync(PACKS_DIR).sort()) {
       mismatches.push(`${pack}@${ver}: index.json declares signingKeyId="${declared}" but per-version manifest ${ver}.json is missing`);
       continue;
     }
-    let actual;
+    let manifest;
     try {
-      actual = readJson(manPath)?.signing?.publicKeyRef;
+      manifest = readJson(manPath);
     } catch (err) {
       mismatches.push(`${pack}@${ver}: manifest ${ver}.json not valid JSON — ${err.message}`);
       continue;
     }
     checked += 1;
+    const signer = signerOf(manifest, TREE);
+    if (TREE === 'v2') {
+      if (signer.problems.length) {
+        mismatches.push(`${pack}@${ver}: manifest signing block is not v2 — ${signer.problems.join('; ')}`);
+        continue;
+      }
+      if (v.signingScheme !== V2_SCHEME) {
+        mismatches.push(`${pack}@${ver}: index.json signingScheme=${JSON.stringify(v.signingScheme)} ≠ ${V2_SCHEME}`);
+      }
+    }
+    const actual = signer.keyId;
     if (actual && declared !== actual) {
-      mismatches.push(`${pack}@${ver}: index.json signingKeyId="${declared}" ≠ manifest signing.publicKeyRef="${actual}"`);
+      mismatches.push(`${pack}@${ver}: index.json signingKeyId="${declared}" ≠ manifest signing.${TREE === 'v2' ? 'keyId' : 'publicKeyRef'}="${actual}"`);
     }
   }
 }
@@ -82,4 +100,4 @@ if (mismatches.length > 0) {
   process.exit(1);
 }
 
-console.log(`check-registry-signer-consistency OK — ${checked} published pack-version(s); catalog signingKeyId matches the per-version manifest signer.`);
+console.log(`check-registry-signer-consistency OK [${TREE}] — ${checked} published pack-version(s); catalog signingKeyId matches the per-version manifest signer.`);

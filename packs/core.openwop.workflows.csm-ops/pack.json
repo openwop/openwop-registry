@@ -1,12 +1,16 @@
 {
   "name": "core.openwop.workflows.csm-ops",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "workflow-chain",
   "description": "CSM↔CRM linkage workflows (ADR 0212, RFC 0013). Where feature.csm.agents.health-insights is read-only, these two chains carry the CSM write surface: computing an Account's healthScore/healthFactors from its linked CRM company's deals/tasks (the scoring recipe as visible, editable workflow configuration rather than buried code — ADR 0212 §3), and a human-gated renewal-risk follow-up over the deal-hygiene shape (ADR 0212 §4 — renewals are deals, not a new entity). All tenant/org-specific values are run parameters (replay-deterministic). Resolves on hosts that ship the feature.crm + feature.csm features + node packs (the OpenWOP reference app).",
   "author": "openwop",
   "license": "Apache-2.0",
-  "engines": { "openwop": ">=1.0.0" },
-  "keywords": ["Customer Success"],
+  "engines": {
+    "openwop": ">=1.0.0 <3.0.0"
+  },
+  "keywords": [
+    "Customer Success"
+  ],
   "chains": [
     {
       "chainId": "csm-ops.health-from-crm",
@@ -16,27 +20,89 @@
       "parameters": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["orgId", "companyId", "accountId"],
+        "required": [
+          "orgId",
+          "companyId",
+          "accountId"
+        ],
         "properties": {
-          "orgId": { "type": "string", "description": "The org the linked CRM company belongs to." },
-          "companyId": { "type": "string", "description": "The linked CRM company (Account.crmRef.companyId) whose deals/tasks feed the score." },
-          "accountId": { "type": "string", "description": "The csm Account to update. Its crmRef MUST already reference orgId/companyId." }
+          "orgId": {
+            "type": "string",
+            "description": "The org the linked CRM company belongs to."
+          },
+          "companyId": {
+            "type": "string",
+            "description": "The linked CRM company (Account.crmRef.companyId) whose deals/tasks feed the score."
+          },
+          "accountId": {
+            "type": "string",
+            "description": "The csm Account to update. Its crmRef MUST already reference orgId/companyId."
+          }
         }
       },
-      "capabilities": ["side-effectful"],
+      "capabilities": [
+        "side-effectful"
+      ],
       "dag": {
         "nodes": [
-          { "id": "deals", "typeId": "feature.crm.nodes.list-deals", "name": "Company deals", "position": { "x": 0, "y": 0 }, "config": { "orgId": "{{params.orgId}}", "companyId": "{{params.companyId}}" }, "inputs": {} },
-          { "id": "tasks", "typeId": "feature.crm.nodes.list-tasks", "name": "Org open tasks", "position": { "x": 0, "y": 140 }, "config": { "orgId": "{{params.orgId}}" }, "inputs": {} },
-          { "id": "health-write", "typeId": "feature.csm.nodes.health-set", "name": "Compute + write health", "position": { "x": 320, "y": 70 }, "config": { "accountId": "{{params.accountId}}", "companyId": "{{params.companyId}}" }, "inputs": {} }
+          {
+            "id": "deals",
+            "typeId": "feature.crm.nodes.list-deals",
+            "name": "Company deals",
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "config": {
+              "orgId": "{{params.orgId}}",
+              "companyId": "{{params.companyId}}"
+            },
+            "inputs": {}
+          },
+          {
+            "id": "tasks",
+            "typeId": "feature.crm.nodes.list-tasks",
+            "name": "Org open tasks",
+            "position": {
+              "x": 0,
+              "y": 140
+            },
+            "config": {
+              "orgId": "{{params.orgId}}"
+            },
+            "inputs": {}
+          },
+          {
+            "id": "health-write",
+            "typeId": "feature.csm.nodes.health-set",
+            "name": "Compute + write health",
+            "position": {
+              "x": 320,
+              "y": 70
+            },
+            "config": {
+              "accountId": "{{params.accountId}}",
+              "companyId": "{{params.companyId}}"
+            },
+            "inputs": {}
+          }
         ],
         "edges": [
-          { "from": "deals.deals", "to": "health-write.deals" },
-          { "from": "tasks.tasks", "to": "health-write.tasks" }
+          {
+            "from": "deals.deals",
+            "to": "health-write.deals"
+          },
+          {
+            "from": "tasks.tasks",
+            "to": "health-write.tasks"
+          }
         ]
       },
       "outputs": {
-        "account": { "type": "object", "description": "The csm Account after the write — healthScore, healthFactors, and healthComputedAt." }
+        "account": {
+          "type": "object",
+          "description": "The csm Account after the write — healthScore, healthFactors, and healthComputedAt."
+        }
       }
     },
     {
@@ -47,25 +113,78 @@
       "parameters": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["orgId"],
+        "required": [
+          "orgId"
+        ],
         "properties": {
-          "orgId": { "type": "string", "description": "The org whose open deals (the renewal book) to review." }
+          "orgId": {
+            "type": "string",
+            "description": "The org whose open deals (the renewal book) to review."
+          }
         }
       },
-      "capabilities": ["side-effectful"],
+      "capabilities": [
+        "side-effectful"
+      ],
       "dag": {
         "nodes": [
-          { "id": "open-deals", "typeId": "feature.crm.nodes.list-deals", "name": "Open deals", "position": { "x": 0, "y": 0 }, "config": { "orgId": "{{params.orgId}}" }, "inputs": {} },
-          { "id": "review", "typeId": "core.chat.approvalGate", "name": "Review for renewal risk", "position": { "x": 320, "y": 0 }, "config": { "title": "Review open deals — flag any at renewal risk for follow-up" }, "inputs": {} },
-          { "id": "follow-up", "typeId": "feature.crm.nodes.create-task", "name": "Create renewal follow-up task", "position": { "x": 640, "y": 0 }, "config": { "orgId": "{{params.orgId}}", "title": "Follow up on at-risk renewal" }, "inputs": {} }
+          {
+            "id": "open-deals",
+            "typeId": "feature.crm.nodes.list-deals",
+            "name": "Open deals",
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "config": {
+              "orgId": "{{params.orgId}}"
+            },
+            "inputs": {}
+          },
+          {
+            "id": "review",
+            "typeId": "core.chat.approvalGate",
+            "name": "Review for renewal risk",
+            "position": {
+              "x": 320,
+              "y": 0
+            },
+            "config": {
+              "title": "Review open deals — flag any at renewal risk for follow-up"
+            },
+            "inputs": {}
+          },
+          {
+            "id": "follow-up",
+            "typeId": "feature.crm.nodes.create-task",
+            "name": "Create renewal follow-up task",
+            "position": {
+              "x": 640,
+              "y": 0
+            },
+            "config": {
+              "orgId": "{{params.orgId}}",
+              "title": "Follow up on at-risk renewal"
+            },
+            "inputs": {}
+          }
         ],
         "edges": [
-          { "from": "open-deals", "to": "review" },
-          { "from": "review", "to": "follow-up" }
+          {
+            "from": "open-deals",
+            "to": "review"
+          },
+          {
+            "from": "review",
+            "to": "follow-up"
+          }
         ]
       },
       "outputs": {
-        "task": { "type": "object", "description": "The follow-up task created after the reviewer confirms a renewal is at risk." }
+        "task": {
+          "type": "object",
+          "description": "The follow-up task created after the reviewer confirms a renewal is at risk."
+        }
       }
     }
   ]

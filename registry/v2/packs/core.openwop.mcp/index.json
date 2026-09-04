@@ -1,0 +1,51 @@
+{
+  "name": "core.openwop.mcp",
+  "kind": "node",
+  "description": "Spec-canonical MCP (Model Context Protocol) pack. v1.0 four-node client baseline (list-tools, invoke-tool, read-resource, server-status) plus the v1.1 additions: full client-side surface (resources, prompts, completion, logging, ping) AND server-side (workflow IS an MCP server — server-trigger + expose-tool/resource/prompt + handle-sampling/elicitation + provide-roots). Tracks modelcontextprotocol.io 2025-06-18 spec via spec/v1/mcp-integration.md.",
+  "author": "OpenWOP Working Group",
+  "license": "Apache-2.0",
+  "homepage": "https://openwop.dev/packs/core.openwop.mcp",
+  "repository": "https://github.com/openwop/openwop",
+  "tags": [],
+  "typeIds": [
+    "core.openwop.mcp.list-tools",
+    "core.openwop.mcp.invoke-tool",
+    "core.openwop.mcp.read-resource",
+    "core.openwop.mcp.server-status",
+    "core.openwop.mcp.list-resources",
+    "core.openwop.mcp.list-resource-templates",
+    "core.openwop.mcp.subscribe-resource",
+    "core.openwop.mcp.list-prompts",
+    "core.openwop.mcp.get-prompt",
+    "core.openwop.mcp.completion",
+    "core.openwop.mcp.set-log-level",
+    "core.openwop.mcp.log-listener",
+    "core.openwop.mcp.ping",
+    "core.openwop.mcp.server-trigger",
+    "core.openwop.mcp.expose-tool",
+    "core.openwop.mcp.expose-resource",
+    "core.openwop.mcp.expose-resource-template",
+    "core.openwop.mcp.expose-prompt",
+    "core.openwop.mcp.handle-sampling",
+    "core.openwop.mcp.handle-elicitation",
+    "core.openwop.mcp.provide-roots"
+  ],
+  "nodeCount": 21,
+  "agentCount": 0,
+  "versions": [
+    {
+      "version": "1.1.2",
+      "manifestUrl": "/v2/packs/core.openwop.mcp/-/1.1.2.json",
+      "tarballUrl": "/v2/packs/core.openwop.mcp/-/1.1.2.tgz",
+      "signatureUrl": "/v2/packs/core.openwop.mcp/-/1.1.2.sig",
+      "sbomUrl": "/v2/packs/core.openwop.mcp/-/1.1.2.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-68IpKuLNupRMZMOuoy/6fb4tjzHQUSkLhNxy1WeiMFU=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.1.2",
+  "deprecated": false
+}

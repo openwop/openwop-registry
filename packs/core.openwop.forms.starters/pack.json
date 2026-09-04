@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.forms.starters",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "form-content",
   "description": "Starter form templates — the shapes almost every first form takes. Instantiated through the normal create path, so every field is sanitized exactly as typed input is.",
   "license": "Apache-2.0",
@@ -10,7 +10,7 @@
     "Templates"
   ],
   "engines": {
-    "openwop": ">=1.0.0"
+    "openwop": ">=1.0.0 <3.0.0"
   },
   "templates": [
     {

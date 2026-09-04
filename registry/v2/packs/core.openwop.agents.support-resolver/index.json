@@ -1,0 +1,31 @@
+{
+  "name": "core.openwop.agents.support-resolver",
+  "kind": "node",
+  "description": "Customer support resolver agent. KB-grounded answers with explicit citation, escalation handoff on low confidence. Pure-agent pack.",
+  "author": "OpenWOP Working Group",
+  "license": "Apache-2.0",
+  "homepage": "https://openwop.dev/packs/core.openwop.agents.support-resolver",
+  "repository": "https://github.com/openwop/openwop",
+  "tags": [],
+  "typeIds": [
+    "core.openwop.agents.support-resolver.default"
+  ],
+  "nodeCount": 0,
+  "agentCount": 1,
+  "versions": [
+    {
+      "version": "1.0.1",
+      "manifestUrl": "/v2/packs/core.openwop.agents.support-resolver/-/1.0.1.json",
+      "tarballUrl": "/v2/packs/core.openwop.agents.support-resolver/-/1.0.1.tgz",
+      "signatureUrl": "/v2/packs/core.openwop.agents.support-resolver/-/1.0.1.sig",
+      "sbomUrl": "/v2/packs/core.openwop.agents.support-resolver/-/1.0.1.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-mRg5ytFC6AmC00qkeaCf7e3MLv0vBzpFwifXSJfrkR8=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.1",
+  "deprecated": false
+}

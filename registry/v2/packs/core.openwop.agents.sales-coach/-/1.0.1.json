@@ -1,0 +1,68 @@
+{
+  "name": "core.openwop.agents.sales-coach",
+  "version": "1.0.1",
+  "description": "Sales Coach agent. Analyzes call transcripts, identifies coaching moments, recommends next steps, and tracks rep development over time via long-term memory. Pure-agent pack.",
+  "author": "OpenWOP Working Group",
+  "license": "Apache-2.0",
+  "homepage": "https://openwop.dev/packs/core.openwop.agents.sales-coach",
+  "repository": "https://github.com/openwop/openwop",
+  "keywords": [
+    "core",
+    "agents",
+    "sales",
+    "coaching",
+    "calls",
+    "vertical"
+  ],
+  "engines": {
+    "openwop": ">=1.1.0 <3.0.0"
+  },
+  "peerDependencies": {
+    "aiProviders": "supported",
+    "agentRuntime": "supported",
+    "agents": ">=longTerm"
+  },
+  "agents": [
+    {
+      "agentId": "core.openwop.agents.sales-coach.default",
+      "persona": "Sales Coach",
+      "label": "Sales Coach Agent",
+      "description": "Analyzes call transcripts (or call summaries) for coaching moments — talk ratio, discovery quality, objection handling, next-step clarity. Recommends concrete next actions. Tracks per-rep development arc in long-term memory.",
+      "modelClass": "reasoning",
+      "systemPromptRef": "prompts/sales-coach.md",
+      "toolAllowlist": [
+        "openwop:core.rag.retriever-basic"
+      ],
+      "memoryShape": {
+        "scratchpad": true,
+        "conversation": false,
+        "longTerm": false
+      },
+      "handoff": {
+        "taskSchemaRef": "schemas/sales-coach.task.schema.json",
+        "returnSchemaRef": "schemas/sales-coach.return.schema.json"
+      },
+      "confidence": {
+        "defaultThreshold": 0.7
+      },
+      "role": "skill"
+    }
+  ],
+  "runtime": {
+    "language": "remote",
+    "entry": "pack.json"
+  },
+  "kind": "node",
+  "peerDependenciesMeta": {
+    "agents": {
+      "facets": [
+        "memoryBackends"
+      ]
+    }
+  },
+  "signing": {
+    "keyId": "openwop-team-1",
+    "scheme": "ed25519-canonical-json"
+  },
+  "integrity": "sha256-lAWuCswwc6qf1oQmNeqKFBviayl+UugTOnyOQibtNvA="
+}

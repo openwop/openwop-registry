@@ -3,8 +3,8 @@
 Spec-canonical examples pack. Three minimal nodes used as smoke probes in conformance fixtures and as the simplest end-to-end demonstration of the OpenWOP pack contract.
 
 | Pack name | `core.openwop.examples` |
-| Version | `1.0.0` |
-| Engine | OpenWOP `>=1.0.0 <2.0.0` |
+| Version | `1.0.2` |
+| Engine | OpenWOP `>=1.0.0 <3.0.0` |
 | Runtime | JavaScript (ESM), Node `>=20` |
 | External deps | None (uses `node:crypto` only) |
 | License | Apache-2.0 |

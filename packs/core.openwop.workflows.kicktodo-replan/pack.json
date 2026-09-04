@@ -1,13 +1,13 @@
 {
   "name": "core.openwop.workflows.kicktodo-replan",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "workflow-chain",
   "description": "Participant-replan workflow (ADR 0459/0463), migrated from the deprecated builtin (ADR 0472 P4). chainId keeps the original id; the falsy reject-safe barrier rides RFC 0134.",
   "keywords": [
     "KickTodo"
   ],
   "engines": {
-    "openwop": ">=1.0.0"
+    "openwop": ">=1.0.0 <3.0.0"
   },
   "chains": [
     {

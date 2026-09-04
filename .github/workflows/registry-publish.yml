@@ -209,6 +209,49 @@ jobs:
           # yank-with-advisory invariant the maintainer process depends on.
           node registry/scripts/check-advisories.mjs
 
+      - name: Validate registry/v2 with the same gate (RFC 0177 §A.2)
+        run: |
+          # v2 charter Phase 3 (RFC 0177): registry/v2/ is a parallel tree of
+          # re-signed manifests and gets the SAME validation as v1 — integrity,
+          # cryptographic signatures under the ONE scheme (ed25519-canonical-json,
+          # keyId required), signer consistency, structural conformance, SBOMs,
+          # advisories, plus ajv validation of every version manifest against
+          # the VENDORED v2 schemas pinned to CORPUS_TAG. Skips with a printed
+          # reason while registry/v2 is absent: the signed tree is produced only
+          # by the registry-v2-sign job in auto-register.yml (the signing key
+          # lives there and nowhere else).
+          npm install --no-audit --no-fund
+          if [ ! -d registry/v2/packs ]; then
+            echo "::notice::registry/v2 is absent — nothing to validate; the signed v2 tree is produced only by the registry-v2-sign job (OPENWOP_TEAM_1_SIGNING_KEY)."
+            node --test scripts/test-registry-v2-schemas.mjs   # the vendored-schema self-tests still run
+            exit 0
+          fi
+          node scripts/check-vendored-sync.mjs                 # RFC 0177 §C.6 — never validate v2 against a drifted copy
+          node registry/scripts/build-index.mjs --tree v2 --check
+          node scripts/check-pack-tarball-signatures.mjs --tree v2
+          node scripts/check-registry-signer-consistency.mjs --tree v2
+          node registry/scripts/verify-signatures.mjs --tree v2
+          node registry/scripts/conformance-check.mjs --tree v2
+          node registry/scripts/generate-sbom.mjs --tree v2 --check
+          node registry/scripts/check-advisories.mjs --tree v2
+          node --test scripts/test-registry-v2-schemas.mjs
+          # Integrity hashes for the v2 tree (same rule as the v1 step above).
+          python3 - <<'PY'
+          import hashlib, base64, json, sys
+          from pathlib import Path
+          errors = []
+          for tgz in Path('registry/v2/packs').glob('*/-/*.tgz'):
+              manifest_path = tgz.with_suffix('.json')
+              if not manifest_path.exists():
+                  errors.append(f'{tgz}: no matching manifest'); continue
+              expected = json.load(open(manifest_path)).get('integrity', '')
+              actual = 'sha256-' + base64.b64encode(hashlib.sha256(tgz.read_bytes()).digest()).decode('ascii')
+              if expected != actual:
+                  errors.append(f'{tgz}: integrity mismatch (manifest {expected!r}, file {actual!r})')
+          for e in errors: print(f'::error::{e}')
+          sys.exit(1 if errors else 0)
+          PY
+
   deploy:
     name: Deploy to packs.openwop.dev
     needs: validate

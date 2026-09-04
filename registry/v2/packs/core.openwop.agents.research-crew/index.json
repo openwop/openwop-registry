@@ -1,0 +1,34 @@
+{
+  "name": "core.openwop.agents.research-crew",
+  "kind": "node",
+  "description": "Multi-agent research crew. 4 specialists — planner / retriever / critic / writer — bundled into one pack for dispatch via orchestrator. Mirrors CrewAI's sequential/hierarchical crew templates.",
+  "author": "OpenWOP Working Group",
+  "license": "Apache-2.0",
+  "homepage": "https://openwop.dev/packs/core.openwop.agents.research-crew",
+  "repository": "https://github.com/openwop/openwop",
+  "tags": [],
+  "typeIds": [
+    "core.openwop.agents.research-crew.planner",
+    "core.openwop.agents.research-crew.retriever",
+    "core.openwop.agents.research-crew.critic",
+    "core.openwop.agents.research-crew.writer"
+  ],
+  "nodeCount": 0,
+  "agentCount": 4,
+  "versions": [
+    {
+      "version": "1.0.1",
+      "manifestUrl": "/v2/packs/core.openwop.agents.research-crew/-/1.0.1.json",
+      "tarballUrl": "/v2/packs/core.openwop.agents.research-crew/-/1.0.1.tgz",
+      "signatureUrl": "/v2/packs/core.openwop.agents.research-crew/-/1.0.1.sig",
+      "sbomUrl": "/v2/packs/core.openwop.agents.research-crew/-/1.0.1.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-iiNJxicbzN/5RHxCIdri2hSTag+k6rFHVe3TVmbVaQQ=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.1",
+  "deprecated": false
+}

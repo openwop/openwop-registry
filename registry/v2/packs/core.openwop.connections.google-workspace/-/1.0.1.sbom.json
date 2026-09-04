@@ -1,0 +1,76 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.connections.google-workspace@1.0.1",
+      "type": "library",
+      "name": "core.openwop.connections.google-workspace",
+      "version": "1.0.1",
+      "description": "Google Workspace connection pack — OAuth2 PKCE provider for Drive, Calendar, and Gmail via the Google APIs. Registry parity for the reference app's BUILT-IN `google` provider (day-1 UX P10 / C3): the app itself never loads this pack (the builtin wins by id precedence anyway — this pack deliberately uses the distinct id `google-workspace` so OTHER hosts can adopt it without shadowing semantics); it exists so packs.openwop.dev offers a Google productivity-suite connection alongside microsoft365 — previously the registry's only Google entry was google-ads. Read scopes are the day-1 consent; gmail.send / calendar.events are WRITE groups behind a separate re-consent. Carries NO secret; the operator supplies the OAuth client id/secret host-side.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c0cc4826c8faed38afd42504659e7ce39eb0ad14bc23aa909ca3b3f0d75178be"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.connections.google-workspace@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1bdcf5090253a4f1fecffaae4758c5990a1db2366f3bd75df72a19a34af66b37"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "195cebffdcb58b549dc514b4b8ee3689a9b2ac10756ef5164ec3558f72c0409f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2108"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.connections.google-workspace@1.0.1",
+      "dependsOn": []
+    }
+  ]
+}

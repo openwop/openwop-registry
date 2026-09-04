@@ -1,0 +1,76 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.connections.netsuite@1.0.1",
+      "type": "library",
+      "name": "core.openwop.connections.netsuite",
+      "version": "1.0.1",
+      "description": "Oracle NetSuite connection pack — OAuth2 provider for the NetSuite SuiteTalk REST API (ERP / finance). Reach is `openapi`: NetSuite has no first-party global MCP server, and its REST base + OAuth hosts are PER-ACCOUNT (`https://{account}.suitetalk.api.netsuite.com`), supplied per connection via instanceUrlTemplate (the schema's own NetSuite example). Carries NO secret; the operator supplies the integration/client credentials host-side. Bound by lib.finance.invoice-ap (post to ERP).",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "98f3ad8f5d336de07172a7cc2a5cbde495387c4ddb17d525fb27202cd48968de"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.connections.netsuite@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2b01ad35db28e8d3cff950114d8fbf5eeca9b378abe95f67deeab0b0e803ba93"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "65c42bdaab54cb9d7d09edb2b218d4c3d3921313ffa957da52d031657714d768"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1438"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.connections.netsuite@1.0.1",
+      "dependsOn": []
+    }
+  ]
+}

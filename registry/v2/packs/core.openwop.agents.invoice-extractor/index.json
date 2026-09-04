@@ -1,0 +1,31 @@
+{
+  "name": "core.openwop.agents.invoice-extractor",
+  "kind": "node",
+  "description": "Invoice extraction agent. OCR-aware structured extraction of vendor, line items, totals, tax, payment terms from PDF or scanned-image invoices. Pure-agent pack.",
+  "author": "OpenWOP Working Group",
+  "license": "Apache-2.0",
+  "homepage": "https://openwop.dev/packs/core.openwop.agents.invoice-extractor",
+  "repository": "https://github.com/openwop/openwop",
+  "tags": [],
+  "typeIds": [
+    "core.openwop.agents.invoice-extractor.default"
+  ],
+  "nodeCount": 0,
+  "agentCount": 1,
+  "versions": [
+    {
+      "version": "1.0.2",
+      "manifestUrl": "/v2/packs/core.openwop.agents.invoice-extractor/-/1.0.2.json",
+      "tarballUrl": "/v2/packs/core.openwop.agents.invoice-extractor/-/1.0.2.tgz",
+      "signatureUrl": "/v2/packs/core.openwop.agents.invoice-extractor/-/1.0.2.sig",
+      "sbomUrl": "/v2/packs/core.openwop.agents.invoice-extractor/-/1.0.2.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-3Mlvr5AsGpMWzIJIwUxpC4MZ2BNfnD6oL6vj+ckeJnQ=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.2",
+  "deprecated": false
+}

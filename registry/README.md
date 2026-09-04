@@ -11,7 +11,7 @@ registry/
 ├── README.md                           (this file — excluded from deploy)
 ├── .well-known/
 │   └── openwop-registry.json           served at /.well-known/openwop-registry (rewritten)
-├── v1/
+├── v1/                                 the v1 tree — served read-only through the v1/v2 overlap (RFC 0177 §A.2)
 │   ├── index.json                      served at /v1/index.json (registry-wide listing)
 │   └── packs/
 │       └── <pack-name>/
@@ -21,6 +21,10 @@ registry/
 │               ├── <version>.tgz       signed pack tarball
 │               ├── <version>.sig       signature (ed25519 or sigstore bundle)
 │               └── <version>.sbom.json CycloneDX 1.6 SBOM (files, hashes, peer deps)
+├── v2/                                 the v2 tree (RFC 0177 §A.2): the same layout, re-signed under the one
+│   ├── index.json                      scheme `ed25519-canonical-json` (`signing: { keyId, scheme }`), SBOMs +
+│   ├── sbom.json                       indexes regenerated. Produced ONLY by the `registry-v2-sign` CI job
+│   └── packs/<pack-name>/…             (auto-register.yml) from the openwop-team-1 signing secret.
 ├── keys/
 │   └── <keyId>.pub                     signing public key(s); served at /keys/<keyId>.pub
 ├── security/
@@ -49,6 +53,7 @@ Per `spec/v1/node-packs.md` §"Registry HTTP API" + `spec/v1/registry-operations
 | `GET /keys/{keyId}.pub` | Registry signing public key. |
 | `GET /v1/packs/{name}/-/{version}.sbom.json` | Per-version SBOM (CycloneDX 1.6). |
 | `GET /v1/sbom.json` | Aggregate SBOM listing every published version. |
+| `GET /v2/index.json`, `/v2/packs/{name}/index.json`, `/v2/packs/{name}/-/{version}.{json,tgz,sig,sbom.json}`, `/v2/sbom.json` | The v2 tree (RFC 0177 §A.2/§A.3, `spec/v2/core/packs.md`) — same shapes, `/v2/` prefix, `signing: { keyId, scheme: "ed25519-canonical-json" }`, `kind` required, explicit `engines.openwop` ceiling. The registry is versioned by tree; `.well-known` `endpoints.v1` / `endpoints.v2` name both. |
 
 **Discovery is authoritative.** Clients SHOULD substitute `{name}` / `{version}` into the templates declared in `.well-known/openwop-registry` `endpoints` rather than hardcoding paths. Filesystem-backed registries (this one and other static-CDN deployments) serve pack metadata at `/index.json` because CDN URL-rewrite engines don't reliably match dot-containing path segments — clients reach the abstract `/v1/packs/{name}` endpoint described by `node-packs.md` via the discovery template.
 

@@ -10,6 +10,18 @@ name: Auto-register packs
 # private-key PEM). No-ops with a notice if the secret is unset or on fork PRs
 # (where the token is read-only) — nothing breaks, packs just aren't auto-added.
 # workflow_dispatch runs a dry-run detection (no commit).
+#
+# Two jobs, one per registry tree (RFC 0177 §A.2 — the registry is versioned by
+# tree). `auto-register` is the v1 job; it now SKIPS any source manifest whose
+# engines ceiling admits protocol major 2 (a v2-wave manifest — see
+# scripts/lib/registry-tree.mjs publicationTree), so the v1 tree stays
+# read-only through the overlap. `registry-v2-sign` publishes exactly those
+# manifests into registry/v2/ under the one scheme (ed25519-canonical-json),
+# with SBOMs + indexes regenerated for the v2 tree, and commits them to the PR
+# branch the same way. It runs AFTER the v1 job (needs:) so the two never race
+# a push to the same branch. The signing key exists ONLY here: the v2 signed
+# tree can be produced by this job alone — a local run can only exercise the
+# pipeline with a throwaway key and must not commit its output.
 
 on:
   pull_request:
@@ -56,7 +68,7 @@ jobs:
           umask 077
           printf '%s' "$SIGNING_KEY" > "$RUNNER_TEMP/key.pem"
           # Scope to packs this PR changed (not the whole backlog); base_ref is the target branch.
-          node scripts/auto-register.mjs \
+          node scripts/auto-register.mjs --tree v1 \
             --key "$RUNNER_TEMP/key.pem" --key-id openwop-team-1 \
             --changed-base "origin/${{ github.base_ref }}"
           rm -f "$RUNNER_TEMP/key.pem"
@@ -77,3 +89,61 @@ jobs:
           git commit -m "publish(auto): register ${{ steps.reg.outputs.published }} first-party pack(s)"
           git push origin "HEAD:${{ github.head_ref }}"
           echo "::notice::Auto-registered ${{ steps.reg.outputs.published }} pack(s) into this PR."
+
+  registry-v2-sign:
+    name: Sign + stage the v2 tree (RFC 0177 §A.2)
+    needs: auto-register
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0            # full history so --changed-base can diff vs the PR base
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - run: npm install --no-audit --no-fund   # ajv for the v2 schema test in registry-check.sh
+
+      - name: Vendored v2 schemas match CORPUS_TAG (RFC 0177 §C.6 — re-sync before any v2 publication)
+        run: node scripts/check-vendored-sync.mjs
+
+      - name: Detect + sign + stage v2 manifests
+        id: reg2
+        env:
+          SIGNING_KEY: ${{ secrets.OPENWOP_TEAM_1_SIGNING_KEY }}
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            node scripts/auto-register.mjs --tree v2 --dry-run
+            exit 0
+          fi
+          if [ -z "${SIGNING_KEY:-}" ]; then
+            echo "::notice::OPENWOP_TEAM_1_SIGNING_KEY not set — skipping v2 auto-registration (add the secret to enable)."
+            echo "published=0" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          umask 077
+          printf '%s' "$SIGNING_KEY" > "$RUNNER_TEMP/key.pem"
+          # --scheme is REQUIRED under --tree v2 (no default; a bare ed25519 is refused).
+          # auto-register --tree v2 also runs generate-sbom + build-index for the v2 tree.
+          node scripts/auto-register.mjs \
+            --tree v2 --scheme ed25519-canonical-json \
+            --key-file "$RUNNER_TEMP/key.pem" --key-id openwop-team-1 \
+            --changed-base "origin/${{ github.base_ref }}"
+          rm -f "$RUNNER_TEMP/key.pem"
+
+      - name: Validate the v2 tree + commit to the PR branch
+        if: >-
+          github.event_name == 'pull_request' &&
+          steps.reg2.outputs.published != '0' &&
+          steps.reg2.outputs.published != ''
+        run: |
+          set -euo pipefail
+          bash scripts/registry-check.sh          # both legs — the v2 leg runs now that registry/v2 exists
+          git config user.name  "openwop-registry-bot"
+          git config user.email "actions@github.com"
+          git add registry/ packs/
+          git commit -m "publish(auto): register ${{ steps.reg2.outputs.published }} first-party pack(s) into registry/v2 (RFC 0177 §A.2)"
+          git push origin "HEAD:${{ github.head_ref }}"
+          echo "::notice::Auto-registered ${{ steps.reg2.outputs.published }} pack(s) into registry/v2 in this PR."
