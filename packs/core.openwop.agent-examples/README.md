@@ -3,8 +3,8 @@
 Reference / smoke-fixture agent pack. Exercises every shape on `agent-manifest.schema.json` so the conformance suite, registry verifier, and reference hosts have a canonical pack to validate against. Validates the `agents[]` extension to `pack.json` (per `agent-manifest.schema.json` + RFC 0003 §`agents[]` extension).
 
 | Pack name | `core.openwop.agent-examples` |
-| Version | `1.1.0` |
-| Engine | OpenWOP `>=1.1.0 <2.0.0` |
+| Version | `1.1.1` |
+| Engine | OpenWOP `>=1.1.0 <3.0.0` |
 | Runtime | `language: remote` (no executable artifact — agents are host-interpreted) |
 | Nodes | 0 — pure agent pack |
 | Agents | 5 |

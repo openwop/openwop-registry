@@ -3,8 +3,8 @@
 Spec-canonical web-search pack. One capability-advertised node that routes through the host's web-search adapter.
 
 | Pack name | `core.openwop.web-search` |
-| Version | `1.0.0` |
-| Engine | OpenWOP `>=1.0.0 <2.0.0` |
+| Version | `1.0.1` |
+| Engine | OpenWOP `>=1.0.0 <3.0.0` |
 | Runtime | JavaScript (ESM), Node `>=20` |
 | External deps | None — pack makes NO HTTP calls |
 | peerDependencies | `host.webSearch: optional` |

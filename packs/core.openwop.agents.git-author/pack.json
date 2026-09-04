@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.agents.git-author",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Git authoring agent — drafts commit messages, PR bodies, release notes, and changelog entries from diffs. Pure-agent pack.",
   "author": "OpenWOP Working Group",
   "license": "Apache-2.0",
@@ -16,7 +16,7 @@
     "skill"
   ],
   "engines": {
-    "openwop": ">=1.1.0 <2.0.0"
+    "openwop": ">=1.1.0 <3.0.0"
   },
   "peerDependencies": {
     "aiProviders": "supported",

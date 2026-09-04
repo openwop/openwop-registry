@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.agents.support-crew",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Support 3-agent crew. Triage → Resolver → Escalator. Single dispatch handles the full ticket lifecycle.",
   "author": "OpenWOP Working Group",
   "license": "Apache-2.0",
@@ -15,7 +15,7 @@
     "pattern"
   ],
   "engines": {
-    "openwop": ">=1.1.0 <2.0.0"
+    "openwop": ">=1.1.0 <3.0.0"
   },
   "peerDependencies": {
     "aiProviders": "supported",

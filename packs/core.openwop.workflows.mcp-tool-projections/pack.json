@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.mcp-tool-projections",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "workflow-chain",
   "description": "MCP tool-projection workflows (core.openwop.mcp.expose-tool → backing node), migrated from the deprecated builtinWorkflows seam (ADR 0472 P4). chainIds keep the original *.mcp.* ids; registered chain-backed with the EXACT original metadata (the ADR 0087 mcp gates) restored, and the MCP mount enumerates them.",
   "keywords": [
@@ -8,7 +8,7 @@
     "Tools"
   ],
   "engines": {
-    "openwop": ">=1.0.0"
+    "openwop": ">=1.0.0 <3.0.0"
   },
   "chains": [
     {

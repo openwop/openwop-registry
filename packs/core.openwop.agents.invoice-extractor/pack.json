@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.agents.invoice-extractor",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Invoice extraction agent. OCR-aware structured extraction of vendor, line items, totals, tax, payment terms from PDF or scanned-image invoices. Pure-agent pack.",
   "author": "OpenWOP Working Group",
   "license": "Apache-2.0",
@@ -15,7 +15,7 @@
     "vertical"
   ],
   "engines": {
-    "openwop": ">=1.1.0 <2.0.0"
+    "openwop": ">=1.1.0 <3.0.0"
   },
   "peerDependencies": {
     "aiProviders": "supported",

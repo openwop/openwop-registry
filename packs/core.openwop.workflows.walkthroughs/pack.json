@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.walkthroughs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "kind": "workflow-chain",
   "description": "The first-party SYSTEM guided walkthroughs (single-step page tours), migrated from the deprecated builtinWorkflows seam (ADR 0472 P4). Each chainId keeps its original walkthrough.* id so the FE player + replay resolve unchanged; registered chain-backed with metadata.walkthrough=true so the walkthroughs surface lists them.",
   "keywords": [
@@ -8,7 +8,7 @@
     "Onboarding"
   ],
   "engines": {
-    "openwop": ">=1.0.0"
+    "openwop": ">=1.0.0 <3.0.0"
   },
   "chains": [
     {

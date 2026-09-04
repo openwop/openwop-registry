@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.agents.audit-summarizer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Audit-trail summarizer agent. Compresses raw audit logs into executive summaries, highlights anomalies, tracks pattern shifts over time via long-term memory. Pure-agent pack.",
   "author": "OpenWOP Working Group",
   "license": "Apache-2.0",
@@ -15,7 +15,7 @@
     "vertical"
   ],
   "engines": {
-    "openwop": ">=1.1.0 <2.0.0"
+    "openwop": ">=1.1.0 <3.0.0"
   },
   "peerDependencies": {
     "aiProviders": "supported",

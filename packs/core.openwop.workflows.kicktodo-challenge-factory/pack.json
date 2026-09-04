@@ -1,13 +1,13 @@
 {
   "name": "core.openwop.workflows.kicktodo-challenge-factory",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "kind": "workflow-chain",
   "description": "The Challenge Factory (ADR 0458) + its lesson-batch child — migrated from the deprecated builtins (ADR 0472 P4, the terminal quarantine step). chainIds keep the original ids; build-0..3 reference lesson-batch via RFC 0133 config.subChainRef (host-default binds it to the shared same-id child); truthy/falsy reject-safe barriers ride RFC 0134; produced vars (plan/evidenceSummary/planBrief) declared per RFC 0133 §2.2.",
   "keywords": [
     "KickTodo"
   ],
   "engines": {
-    "openwop": ">=1.0.0"
+    "openwop": ">=1.0.0 <3.0.0"
   },
   "chains": [
     {
@@ -63,7 +63,9 @@
           {
             "id": "search",
             "typeId": "core.web.search",
-            "config": { "suitability": "durable" },
+            "config": {
+              "suitability": "durable"
+            },
             "inputs": {
               "query": "{{params.topic}}",
               "maxResults": 8,

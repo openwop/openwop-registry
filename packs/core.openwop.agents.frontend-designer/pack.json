@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.agents.frontend-designer",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Frontend / UI design agent. Produces design-system-aware component specs, page layouts, and Storybook-style mocks from briefs. Mirrors Anthropic's `frontend-design` skill (top-installed in marketplace).",
   "author": "OpenWOP Working Group",
   "license": "Apache-2.0",
@@ -15,7 +15,7 @@
     "skill"
   ],
   "engines": {
-    "openwop": ">=1.1.0 <2.0.0"
+    "openwop": ">=1.1.0 <3.0.0"
   },
   "peerDependencies": {
     "aiProviders": "supported",

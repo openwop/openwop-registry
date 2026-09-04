@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.rag",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Retrieval-Augmented-Generation primitives: loaders, splitters, vector ops (thin wrappers over core.openwop.db.vector-*), and retrievers (basic / multi-query / contextual-compression).",
   "author": "OpenWOP Working Group",
   "license": "Apache-2.0",
@@ -16,7 +16,7 @@
     "splitter"
   ],
   "engines": {
-    "openwop": ">=1.0.0 <2.0.0"
+    "openwop": ">=1.0.0 <3.0.0"
   },
   "peerDependencies": {
     "aiProviders": "supported"

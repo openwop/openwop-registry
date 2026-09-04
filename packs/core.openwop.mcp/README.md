@@ -3,8 +3,8 @@
 Workflow-author-direct MCP operation pack. Four nodes for invoking the Model Context Protocol explicitly from a workflow DAG — complementing the implicit LLM-mediated tool-call path documented in `spec/v1/mcp-integration.md`.
 
 | Pack name | `core.openwop.mcp` |
-| Version | `1.0.0` |
-| Engine | OpenWOP `>=1.0.0 <2.0.0` |
+| Version | `1.1.2` |
+| Engine | OpenWOP `>=1.0.0 <3.0.0` |
 | Runtime | JavaScript (ESM), Node `>=20` |
 | External deps | None — pack speaks NO MCP protocol; routes through `ctx.mcp.*` |
 | peerDependencies | `mcp: supported` |

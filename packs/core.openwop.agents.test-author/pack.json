@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.agents.test-author",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Test authoring agent. Generates unit, integration, and e2e tests from source code or specs. Pure-agent pack.",
   "author": "OpenWOP Working Group",
   "license": "Apache-2.0",
@@ -15,7 +15,7 @@
     "skill"
   ],
   "engines": {
-    "openwop": ">=1.1.0 <2.0.0"
+    "openwop": ">=1.1.0 <3.0.0"
   },
   "peerDependencies": {
     "aiProviders": "supported",

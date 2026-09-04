@@ -1,13 +1,13 @@
 {
   "name": "core.openwop.workflows.destination-sync",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "workflow-chain",
   "description": "CDP → peer-OpenWOP-host onward-sync (ADR 0289/RFC 0128), migrated from the deprecated builtin (ADR 0472 P4). chainId keeps the original id; peerIngestUrl resolves at runtime via the http node config template.",
   "keywords": [
     "CDP"
   ],
   "engines": {
-    "openwop": ">=1.0.0"
+    "openwop": ">=1.0.0 <3.0.0"
   },
   "chains": [
     {

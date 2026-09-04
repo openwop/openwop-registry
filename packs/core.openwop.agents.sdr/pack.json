@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.agents.sdr",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Sales Development Representative agent. Researches prospects, drafts outreach (email/LinkedIn/SMS), schedules follow-ups. Persists prospect history to long-term memory. Pure-agent pack.",
   "author": "OpenWOP Working Group",
   "license": "Apache-2.0",
@@ -15,7 +15,7 @@
     "vertical"
   ],
   "engines": {
-    "openwop": ">=1.1.0 <2.0.0"
+    "openwop": ">=1.1.0 <3.0.0"
   },
   "peerDependencies": {
     "aiProviders": "supported",

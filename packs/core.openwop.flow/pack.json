@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.flow",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Spec-canonical flow-control primitives. 25 nodes covering branching, merging, iteration, aggregation, batching, sorting, deduplication, repetition, suspension, sub-workflow invocation, and Make-style error handlers. Pure or suspending — no external I/O. Zero npm deps. Engine >=1.0.0 <2.0.0.",
   "author": "OpenWOP Working Group",
   "license": "Apache-2.0",
@@ -16,7 +16,7 @@
     "aggregation"
   ],
   "engines": {
-    "openwop": ">=1.0.0 <2.0.0"
+    "openwop": ">=1.0.0 <3.0.0"
   },
   "nodes": [
     {

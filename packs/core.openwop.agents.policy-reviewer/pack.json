@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.agents.policy-reviewer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Policy reviewer agent. Reads content (docs, emails, ads, code) against a set of policy rules and flags violations with rationale. Pure-agent pack.",
   "author": "OpenWOP Working Group",
   "license": "Apache-2.0",
@@ -15,7 +15,7 @@
     "vertical"
   ],
   "engines": {
-    "openwop": ">=1.1.0 <2.0.0"
+    "openwop": ">=1.1.0 <3.0.0"
   },
   "peerDependencies": {
     "aiProviders": "supported",

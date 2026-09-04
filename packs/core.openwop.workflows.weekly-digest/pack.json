@@ -1,12 +1,12 @@
 {
   "name": "core.openwop.workflows.weekly-digest",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "kind": "workflow-chain",
   "description": "Weekly-digest chains (RFC 0013): scheduled roundups that keep a team informed without a meeting — a research digest on a watched topic, and a team status roll-up. In-app + gated-send sinks; replay-deterministic.",
   "author": "openwop",
   "license": "Apache-2.0",
   "engines": {
-    "openwop": ">=1.0.0"
+    "openwop": ">=1.0.0 <3.0.0"
   },
   "keywords": [
     "Weekly digest"
@@ -20,16 +20,29 @@
       "parameters": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["scheduleCron"],
+        "required": [
+          "scheduleCron"
+        ],
         "properties": {
           "topic": {
             "type": "string",
             "default": "",
             "description": "The topic to watch."
           },
-          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own." },
-          "model": { "type": "string", "default": "claude-sonnet-4-6", "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation." },
-          "scheduleCron": { "type": "string", "description": "Cron expression for when this workflow runs (e.g. `0 9 * * 1` = Mondays 09:00)." }
+          "provider": {
+            "type": "string",
+            "default": "anthropic",
+            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own."
+          },
+          "model": {
+            "type": "string",
+            "default": "claude-sonnet-4-6",
+            "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation."
+          },
+          "scheduleCron": {
+            "type": "string",
+            "description": "Cron expression for when this workflow runs (e.g. `0 9 * * 1` = Mondays 09:00)."
+          }
         }
       },
       "capabilities": [],
@@ -82,8 +95,12 @@
               "x": 840,
               "y": 0
             },
-            "config": { "audience": "tenant" },
-            "inputs": { "title": "Weekly Topic Watch → Digest" }
+            "config": {
+              "audience": "tenant"
+            },
+            "inputs": {
+              "title": "Weekly Topic Watch → Digest"
+            }
           }
         ],
         "edges": [
@@ -116,12 +133,29 @@
       "parameters": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["scheduleCron", "slackChannel"],
+        "required": [
+          "scheduleCron",
+          "slackChannel"
+        ],
         "properties": {
-          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own." },
-          "model": { "type": "string", "default": "claude-sonnet-4-6", "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation." },
-          "scheduleCron": { "type": "string", "description": "Cron expression for when this workflow runs (e.g. `0 9 * * 1` = Mondays 09:00)." },
-          "slackChannel": { "type": "string", "description": "Slack channel these messages post to (e.g. `#ops`)." }
+          "provider": {
+            "type": "string",
+            "default": "anthropic",
+            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own."
+          },
+          "model": {
+            "type": "string",
+            "default": "claude-sonnet-4-6",
+            "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation."
+          },
+          "scheduleCron": {
+            "type": "string",
+            "description": "Cron expression for when this workflow runs (e.g. `0 9 * * 1` = Mondays 09:00)."
+          },
+          "slackChannel": {
+            "type": "string",
+            "description": "Slack channel these messages post to (e.g. `#ops`)."
+          }
         }
       },
       "capabilities": [
@@ -140,7 +174,9 @@
             "config": {
               "cron": "{{params.scheduleCron}}"
             },
-            "inputs": { "title": "Weekly Topic Watch → Digest" }
+            "inputs": {
+              "title": "Weekly Topic Watch → Digest"
+            }
           },
           {
             "id": "rollup",
