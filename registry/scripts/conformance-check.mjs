@@ -39,10 +39,12 @@ import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { treeFromArgv } from '../../scripts/lib/registry-tree.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const REGISTRY_ROOT = dirname(dirname(__filename));
-const PACKS_ROOT = join(REGISTRY_ROOT, 'v1', 'packs');
+const TREE = treeFromArgv(); // --tree v1|v2 (RFC 0177 §A.2), default v1
+const PACKS_ROOT = join(REGISTRY_ROOT, TREE, 'packs');
 
 const TTY = process.stdout.isTTY;
 const C = TTY
@@ -299,7 +301,7 @@ function check(packName, version, errors) {
 
 function main() {
   if (!existsSync(PACKS_ROOT)) {
-    console.log('no registry/v1/packs/ directory; nothing to check');
+    console.log(`no registry/${TREE}/packs/ directory; nothing to check`);
     process.exit(0);
   }
 
@@ -331,7 +333,7 @@ function main() {
 
   console.log('');
   if (errors.length === 0) {
-    ok(`${checked} pack(s) pass structural conformance`);
+    ok(`${checked} pack(s) pass structural conformance [${TREE}]`);
     process.exit(0);
   } else {
     fail(`${errors.length} error(s) across ${checked} pack(s)`);

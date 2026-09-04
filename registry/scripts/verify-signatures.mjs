@@ -22,6 +22,17 @@
  * Exits 1 on first failure; reports the count of verified vs failed.
  * Pure Node 20 stdlib — no npm install required.
  *
+ * `--tree v1|v2` (RFC 0177 §A.2, default v1) selects the tree. Under v2 there is
+ * ONE scheme (§C.3): `signing` MUST be `{ keyId, scheme: ed25519-canonical-json }`
+ * (`method` / `publicKeyRef` are refused, §C.4) and the bytes verified are the
+ * exact in-tarball pack.json — a signature over tarball bytes is not a v2
+ * signature (re-sign, do not relabel). Namespace authorization is unchanged:
+ * the same signingKeys[].permittedNamespaces govern both trees, and keys are
+ * not protocol-versioned (§A.3).
+ *
+ * OPENWOP_REGISTRY_KEYS_DIR overrides registry/keys/ for a LOCAL exercise of
+ * the v2 pipeline with an ephemeral key; CI never sets it.
+ *
  * @see services/workflow-runtime/src/registry/signatures.ts (host-side
  *      verifier used at request time; this script mirrors its logic at
  *      publish-PR time)
@@ -32,11 +43,13 @@ import { createPublicKey, verify as cryptoVerify } from 'node:crypto';
 import { gunzipSync } from 'node:zlib';
 import { join, dirname, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { treeFromArgv, signerOf } from '../../scripts/lib/registry-tree.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const REGISTRY_ROOT = dirname(dirname(__filename)); // registry/
-const PACKS_ROOT = join(REGISTRY_ROOT, 'v1', 'packs');
-const KEYS_ROOT = join(REGISTRY_ROOT, 'keys');
+const TREE = treeFromArgv();
+const PACKS_ROOT = join(REGISTRY_ROOT, TREE, 'packs');
+const KEYS_ROOT = process.env.OPENWOP_REGISTRY_KEYS_DIR ?? join(REGISTRY_ROOT, 'keys');
 const DISCOVERY_PATH = join(REGISTRY_ROOT, '.well-known', 'openwop-registry.json');
 
 const TTY = process.stdout.isTTY;
@@ -129,7 +142,11 @@ function verifyOne(packName, version, discovery) {
   const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
   const signing = manifest.signing;
   if (!signing) throw new Error('manifest missing `signing` block');
-  const keyId = signing.keyId ?? signing.publicKeyRef;
+  const signer = signerOf(manifest, TREE);
+  if (TREE === 'v2' && signer.problems.length) {
+    throw new Error(`not a v2 signing block (RFC 0177 §C.3/§C.4): ${signer.problems.join('; ')}`);
+  }
+  const keyId = signer.keyId;
   if (!keyId) throw new Error('manifest signing block missing keyId/publicKeyRef');
 
   // 1. Authorize keyId against the namespace allow-list.
@@ -160,7 +177,12 @@ function verifyOne(packName, version, discovery) {
   const method = signing.method;
   let signedBytes;
   let signedKind;
-  if (method === 'ed25519') {
+  if (TREE === 'v2') {
+    // RFC 0177 §C.3 — the one scheme signs the canonical-JSON pack.json inside
+    // the deterministic tarball. `scheme` was already checked by signerOf.
+    signedBytes = extractPackJson(tarballBytes);
+    signedKind = `pack.json (${signing.scheme})`;
+  } else if (method === 'ed25519') {
     signedBytes = tarballBytes;
     signedKind = 'tarball';
   } else if (method === 'manual') {
@@ -189,7 +211,7 @@ function verifyOne(packName, version, discovery) {
 
 function main() {
   if (!existsSync(PACKS_ROOT)) {
-    warn('no registry/v1/packs/ directory; nothing to verify');
+    warn(`no registry/${TREE}/packs/ directory; nothing to verify`);
     process.exit(0);
   }
   const discovery = loadDiscovery();
@@ -219,7 +241,7 @@ function main() {
 
   console.log('');
   if (failed === 0) {
-    ok(`verified ${checked} signed pack(s)`);
+    ok(`verified ${checked} signed pack(s) [${TREE}]`);
     process.exit(0);
   } else {
     fail(`${failed} of ${checked} pack(s) failed signature verification`);
