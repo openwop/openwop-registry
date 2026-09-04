@@ -20,6 +20,7 @@ const PORT = Number(process.env.OPENWOP_REGISTRY_PORT ?? 4319);
 
 const REWRITES = [
   { match: /^\/v1\/packs\/([^/]+)$/, to: (m) => `/v1/packs/${m[1]}/index.json` },
+  { match: /^\/v2\/packs\/([^/]+)$/, to: (m) => `/v2/packs/${m[1]}/index.json` }, // RFC 0177 §A.3 — the v2 tree
   { match: /^\/\.well-known\/openwop-registry$/, to: () => `/.well-known/openwop-registry.json` },
 ];
 
