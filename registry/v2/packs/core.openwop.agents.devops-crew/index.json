@@ -1,0 +1,33 @@
+{
+  "name": "core.openwop.agents.devops-crew",
+  "kind": "node",
+  "description": "DevOps crew. Planner decomposes a runbook into safe ordered steps → executor performs http step actions (fs / queue / crypto steps run through the enclosing workflow's nodes, not conversational tools) → verifier confirms desired state via read-only http checks.",
+  "author": "OpenWOP Working Group",
+  "license": "Apache-2.0",
+  "homepage": "https://openwop.dev/packs/core.openwop.agents.devops-crew",
+  "repository": "https://github.com/openwop/openwop",
+  "tags": [],
+  "typeIds": [
+    "core.openwop.agents.devops-crew.planner",
+    "core.openwop.agents.devops-crew.executor",
+    "core.openwop.agents.devops-crew.verifier"
+  ],
+  "nodeCount": 0,
+  "agentCount": 3,
+  "versions": [
+    {
+      "version": "1.0.2",
+      "manifestUrl": "/v2/packs/core.openwop.agents.devops-crew/-/1.0.2.json",
+      "tarballUrl": "/v2/packs/core.openwop.agents.devops-crew/-/1.0.2.tgz",
+      "signatureUrl": "/v2/packs/core.openwop.agents.devops-crew/-/1.0.2.sig",
+      "sbomUrl": "/v2/packs/core.openwop.agents.devops-crew/-/1.0.2.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-rsFx1H6qnsqBeeqWCZGg3eO+hV/b5TU62ldi1TS5pM8=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.2",
+  "deprecated": false
+}

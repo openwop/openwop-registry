@@ -1,0 +1,30 @@
+{
+  "name": "core.openwop.connections.salesforce",
+  "kind": "connection",
+  "description": "Salesforce connection pack — OAuth2 (web-server flow) provider for the Salesforce REST API. DEPLOY-GATED. Reach is `openapi`: Salesforce has no single global first-party MCP server (the API lives on a per-org `*.my.salesforce.com` instance host, supplied per connection via instanceUrlTemplate), so a documented OpenAPI/REST surface is the honest day-1 reach. Carries NO secret; the operator supplies the connected-app consumer key/secret host-side.",
+  "author": "",
+  "license": "Apache-2.0",
+  "tags": [],
+  "typeIds": [
+    "salesforce"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "providerCount": 1,
+  "versions": [
+    {
+      "version": "1.0.1",
+      "manifestUrl": "/v2/packs/core.openwop.connections.salesforce/-/1.0.1.json",
+      "tarballUrl": "/v2/packs/core.openwop.connections.salesforce/-/1.0.1.tgz",
+      "signatureUrl": "/v2/packs/core.openwop.connections.salesforce/-/1.0.1.sig",
+      "sbomUrl": "/v2/packs/core.openwop.connections.salesforce/-/1.0.1.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-U3uq1nmIuju0PaLZU43vDUsN0tgO521g6Xba9jC8qZI=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.1",
+  "deprecated": false
+}

@@ -1,0 +1,167 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.agents.expense-categorizer@1.0.1",
+      "type": "library",
+      "name": "core.openwop.agents.expense-categorizer",
+      "version": "1.0.1",
+      "description": "Expense categorization agent. Classifies expenses against a policy-defined chart of accounts and flags policy violations. Pure-agent pack.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/packs/core.openwop.agents.expense-categorizer"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f3d10071f38968bd8db2696bd48ac93b59f4a0272f51dc5572b7ee03a6dbd62c"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.agents.expense-categorizer@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4e9072c9566922642f0c3065e98491bf6c59ebd2f0b3a692650e4e31c5f594dc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "996"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2cd795b929347eb4eeb18910aa38b8828cd2a9e1bbaa2912566daa1c1cff3d0a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8132871263b527ecf2080b2f01cf4ce50d1d52b4905ef6b2d309b2d514c55ccc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1424"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/expense-categorizer.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e24931267917dc8dad5f3f4fb4d217edb365c14fd8ba3a04bb71d9cdafbd21db"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2212"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/expense-categorizer.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "26b9fbb016349cb394df9be31cc2b9de09e07f97b01ad21afdd5fe863ccbd8ab"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1913"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/expense-categorizer.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d89eda07171895b2f39fa311a43ed26f357bc325f6a58cc246e8e0704cc26721"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2686"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.agents.expense-categorizer@1.0.1",
+      "dependsOn": [
+        "host:aiProviders"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "name": "core.openwop.workflows.destination-sync",
+  "kind": "workflow-chain",
+  "description": "CDP → peer-OpenWOP-host onward-sync (ADR 0289/RFC 0128), migrated from the deprecated builtin (ADR 0472 P4). chainId keeps the original id; peerIngestUrl resolves at runtime via the http node config template.",
+  "author": "",
+  "license": "",
+  "tags": [],
+  "typeIds": [
+    "openwop-app.cdp.sync-to-openwop-host"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 1,
+  "versions": [
+    {
+      "version": "1.0.1",
+      "manifestUrl": "/v2/packs/core.openwop.workflows.destination-sync/-/1.0.1.json",
+      "tarballUrl": "/v2/packs/core.openwop.workflows.destination-sync/-/1.0.1.tgz",
+      "signatureUrl": "/v2/packs/core.openwop.workflows.destination-sync/-/1.0.1.sig",
+      "sbomUrl": "/v2/packs/core.openwop.workflows.destination-sync/-/1.0.1.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-abpRVD2/hP1b40ayX+U3mbV6GUot5SpQ9DZUm5sQlXE=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.1",
+  "deprecated": false
+}

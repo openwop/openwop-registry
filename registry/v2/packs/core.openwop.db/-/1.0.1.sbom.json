@@ -1,0 +1,709 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.db@1.0.1",
+      "type": "library",
+      "name": "core.openwop.db",
+      "version": "1.0.1",
+      "description": "Database adapter primitives — sql, nosql, search, vector. Each gated on its host capability (host.sql, host.nosql, host.searchIndex, host.vectorStore) per. Pack speaks no driver — delegates to ctx.db.*. Parametric SQL only (host enforces).",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/packs/core.openwop.db"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "486108b84b7aef98871e24f81d57d86635ea6bf2de992765afc1a2900ee5c148"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.db@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e2b6e5797aed34f758cbe944e556dcc189e87547a93bd311c619de2cdd532559"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "705"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "index.mjs",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c1723648662b5cdee703fc17bbbf965aaa3414034ab07792d00ea6f52f3a1ea1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1504"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8fda8b4c707e60c9f1a5eef249f873725f84ba9c265705135f0be28d85dea23f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "44848da93b0f3d86a10a879b68584ed619a6e35d713956960408d7d6d8b94ffc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "5227"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/nosql-delete.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a2c6506ebea5da8004295f5e50cf410a73196382818a85f75564e6637a157c31"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "412"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/nosql-delete.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cb8beba3868200bb703be0bd8f330e38afb718fa75e4d81a307e018dd14d8d51"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "370"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/nosql-delete.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b6d3b04769674573688fa3847fa96688a1cc8971832ddf5eda38a2199ca4ee28"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "339"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/nosql-find.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e4d1470d81c486123b980a08a09b6514cfb534fc933260d52c2242d1d2147c6a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "454"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/nosql-find.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "76467496d175ea606dc40ce00a266c5f4a385319297be1dde2a7e4a98689dcbd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "498"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/nosql-find.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2768abcc9278bd97de41a0088644e4dc11b073e8564a074d030de45ea3c08447"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "416"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/nosql-insert.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6003ea42bc6ef9998d860b937e6293c782c7012e3ceceb15831035ed0d784a34"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "412"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/nosql-insert.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "426168958ace1e6e2cfeee45e14954fe6b26a1d46aa30ef1dec4717d8fabf905"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "418"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/nosql-insert.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2954bfba55287dc3a1cab654286d37c4ee3cb721036fe527ccb839626d3afed3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "383"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/nosql-update.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2534508c282ec7fcd8339682095db1038b1a68d5784b35a0971517a19f3325e8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "459"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/nosql-update.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1f9367bb8df99afbb6ce8be5d114e43ef6664e9e58a625ebd949112b8076dd81"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "466"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/nosql-update.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4c6942fcdc4920cee05da8f54b9cde4b272de506a04ff066b454a76598b0d805"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "388"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/search-index.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0dfa4ff9d8493f128e68d9c3650417819607cbcf36c85e242f2343fa5670aea0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "334"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/search-index.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d013c808675090ebb7ca28ff5bef884c594f0b8396310b17f10cc6315acfe85f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "426"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/search-index.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "da44b5f76fcb6856801efc6ab7ca1e7a4f0230f9274a68b0908585d828e22d85"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "352"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/search-query.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "92865e7e38221cc94132eab65ffb068275f1065f1a2ddfd43150615c4553d829"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "380"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/search-query.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "95f06560cbcd2b296d2cae5d5978c7e584232a236fd0da8962b7610698a2421d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "414"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/search-query.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f2d6731e6bba010d0d5e9c1582352dc4b2f64d6f755a9c75028a9f1f9fb2c515"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "381"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/sql-execute.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0ba73c6be5b541926409b1f91ad5ef283872d1fd38ca68d7c53202ebec39bfa9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "342"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/sql-execute.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0b73dd478ef3a7ea71e7b54ffc7e609b745fe0fd623bff8c62ab182addc5af29"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "390"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/sql-execute.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "26e25ad7863bc616b70761bbb35c6535d4cdbdcd5b571ac48ecb8b6b8c433993"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "440"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/sql-query.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d26108de5384aff9e7670086dc28644e2283ad6316d995edcce5f4bc67520e25"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "338"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/sql-query.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a1dfe6640eb907fafb54c2f9dd3f3be884c95d62f28bfc1624ac72c449a65d04"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "386"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/sql-query.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "681e13b4d6975c0bec9505b33d0234a2ddf3eabc5f57a2cc5201912a40c39318"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "463"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/sql-transaction.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "37eb3d408326e07fc05a9d82f347ffb10fdccf46a6087c5c4d6f7c7193355813"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "350"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/sql-transaction.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f327cf0e902eb95867321deb159dc54c56dca7710ddb46055046a6e45b971359"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "736"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/sql-transaction.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2381c72f372fbf80306e8d7852eeeecd9aab16530df03dfa0e0a095d3c3db058"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "395"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/vector-delete.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9dab12f1fb93fcea89cacaf25000eb879050b617bf6a3a8d8dfeb84aab8e51e0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "346"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/vector-delete.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a96063b52e67facfb27ab458dd94894130c0f0a57636061f8eb1477ccf5d1288"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "431"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/vector-delete.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fa36b41c51ec07a62beded19f3771066cd28e4647f205d0e323213dd30e30b7b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "341"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/vector-query.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d7415574650213fc0aa2c747f398bb9bea621d0b9c313db58cd0ee475df54477"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "410"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/vector-query.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d0a5132bfe7d90af193005e7199931f982825ef97ff8591eb96e2dabf5b25fcf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "466"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/vector-query.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5f33dbbd6be57bf7e0e6aa7a1424ca350d93f09844a621c51a60c755a4cd795a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "331"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/vector-upsert.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f459ac9bb1ccbdbe659ada30c7b07e251b8e4e7edf401e9a5bec2debc766d0e5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "346"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/vector-upsert.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3d11ad2483b25bf8c24a67ced36a10b05d5f31032de1bfe0813c39c7c5984b25"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "921"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/vector-upsert.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8adc59576f17654a5d17343f238c383c09dae1581bb31d2c9da496b6f881dc81"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "343"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.db@1.0.1",
+      "dependsOn": []
+    }
+  ]
+}

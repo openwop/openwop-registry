@@ -1,0 +1,168 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.agents.test-author@1.0.2",
+      "type": "library",
+      "name": "core.openwop.agents.test-author",
+      "version": "1.0.2",
+      "description": "Test authoring agent. Generates unit, integration, and e2e tests from source code or specs. Pure-agent pack.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/packs/core.openwop.agents.test-author"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b23c561be9018c8ca2fef6e1d09c7f62e95b37efbc011518c6469320dc654254"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.agents.test-author@1.0.2"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bc9f4356fd75c76a91fa3b06835d807192bf258105b6da8866a5234387aedd5c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "969"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c496ab6c208b6701270045d735b832febbd46bef0cbf6fec71275f36827bd3dd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "70b0ee09dc60edf3666e0c110cd0b9b521f9705d6c2d36530c293654fbe57ea2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1372"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/test-author.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a376ed36785bd5773c55027aad52dc0dfaa4e6a7d8bd399220a88f552f526c2b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3133"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/test-author.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6eafeda17f0df447cf01cf5dac6cce81dc226ad36abc89eb807bde12616645ef"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1372"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/test-author.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "685d133e99740fdb3292e5c7a08fab39d98c813d76e2e9a9c945179236abaf59"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1046"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.agents.test-author@1.0.2",
+      "dependsOn": [
+        "host:agentRuntime",
+        "host:aiProviders"
+      ]
+    }
+  ]
+}

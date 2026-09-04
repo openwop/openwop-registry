@@ -1,0 +1,266 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.agents.devops-crew@1.0.2",
+      "type": "library",
+      "name": "core.openwop.agents.devops-crew",
+      "version": "1.0.2",
+      "description": "DevOps crew. Planner decomposes a runbook into safe ordered steps → executor performs http step actions (fs / queue / crypto steps run through the enclosing workflow's nodes, not conversational tools) → verifier confirms desired state via read-only http checks.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/packs/core.openwop.agents.devops-crew"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "aec171d47eaa9eca8179ea960991a0dde3be855fdbe5353ada5762d534b9a4cf"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.agents.devops-crew@1.0.2"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a740e2fe76dc10e5a4dc4a3bbc68386d30528f25fa3eb71ed62c2c7006f3b379"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1474"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "12da801f99a96efbadd726b277f40d23a4819efcf22ab872d37f045270671c61"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3fab7f4746eef326fda2930b50bd76f96d773c920922c8fd1efb59ff09040cc8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2868"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/executor.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "06baa10b07aa565051cfad3ec5a4b4c5af3a872f04248661ce7aee30be3a621c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1623"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/planner.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e6ba553ffae0d73bfefb140919e249748b71ef20c7fae295dd5441ed80bbe713"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2261"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/verifier.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "11dde3676c1435a08dd624ee45de08960228262be611c3024c05e6df18d22270"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1446"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/executor.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "77025a49999e1145af286ba58cf5810dc6c5854e6345da8b3b52750de75e22cf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "791"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/executor.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7387d37e84cacfd7823c1b7cdee66f24af5208b3794d72e20ef585fe94ecb93e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "997"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/planner.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0692a35256629b974f5894332f66f439c0dfe329ef7b481331806ce151b8ee23"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1709"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/planner.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1ec5e5f8eb4f8db9cc492baf37f928f1bcb7ead3fccd1e05aab7eeac45a53c33"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "841"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/verifier.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "de55550b1b562402a0b7310c01939790ae394a752da312d494509d5361fcd18c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "989"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/verifier.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6f12676c31cb43873c77ddc82f2ea3f29a5e1bc8e28c078f70c89c9f8e2b1d42"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "766"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.agents.devops-crew@1.0.2",
+      "dependsOn": [
+        "host:agentRuntime",
+        "host:aiProviders",
+        "host:fs",
+        "host:queueBus"
+      ]
+    }
+  ]
+}

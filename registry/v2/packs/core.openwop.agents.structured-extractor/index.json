@@ -1,0 +1,31 @@
+{
+  "name": "core.openwop.agents.structured-extractor",
+  "kind": "node",
+  "description": "Production-grade structured extraction agent. Caller supplies a JSON Schema; agent extracts conforming output with an auto-fix loop on validation failure. Mirrors LangGraph Trustcall. Pure-agent pack.",
+  "author": "OpenWOP Working Group",
+  "license": "Apache-2.0",
+  "homepage": "https://openwop.dev/packs/core.openwop.agents.structured-extractor",
+  "repository": "https://github.com/openwop/openwop",
+  "tags": [],
+  "typeIds": [
+    "core.openwop.agents.structured-extractor.default"
+  ],
+  "nodeCount": 0,
+  "agentCount": 1,
+  "versions": [
+    {
+      "version": "1.0.1",
+      "manifestUrl": "/v2/packs/core.openwop.agents.structured-extractor/-/1.0.1.json",
+      "tarballUrl": "/v2/packs/core.openwop.agents.structured-extractor/-/1.0.1.tgz",
+      "signatureUrl": "/v2/packs/core.openwop.agents.structured-extractor/-/1.0.1.sig",
+      "sbomUrl": "/v2/packs/core.openwop.agents.structured-extractor/-/1.0.1.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-E7Oqhj2Th4wLUry7yPlTV2zIbL8h+WNYlQ5ADu+8nzg=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.1",
+  "deprecated": false
+}

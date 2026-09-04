@@ -1,0 +1,31 @@
+{
+  "name": "core.openwop.artifact-types",
+  "kind": "artifact-type",
+  "description": "Example artifact-type pack — proves the kind:'artifact-type' pack tier registers its declared types through the host artifact-type registry (registrationSource:'pack'), advertised under host.artifactTypes and served at /schemas/artifacts/{id}.schema.json.",
+  "author": "OpenWOP App",
+  "license": "Apache-2.0",
+  "tags": [],
+  "typeIds": [
+    "doc.one-pager",
+    "brand.kit"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "artifactTypeCount": 2,
+  "versions": [
+    {
+      "version": "1.0.1",
+      "manifestUrl": "/v2/packs/core.openwop.artifact-types/-/1.0.1.json",
+      "tarballUrl": "/v2/packs/core.openwop.artifact-types/-/1.0.1.tgz",
+      "signatureUrl": "/v2/packs/core.openwop.artifact-types/-/1.0.1.sig",
+      "sbomUrl": "/v2/packs/core.openwop.artifact-types/-/1.0.1.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-drwL9CKLbIRrInyuVaInrxxs2ByEeRwY9iGxkWhMzpw=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.1",
+  "deprecated": false
+}

@@ -1,0 +1,31 @@
+{
+  "name": "core.openwop.workflows.sales-outreach",
+  "kind": "workflow-chain",
+  "description": "Sales-outreach chains (RFC 0013): research-grounded, human-gated outreach — a personalized first-touch from live research, and a polite quiet-thread nudge. Every send is reviewed by a human first. Replay-deterministic.",
+  "author": "openwop",
+  "license": "Apache-2.0",
+  "tags": [],
+  "typeIds": [
+    "outreach.researched-firsttouch",
+    "outreach.quiet-thread-nudge"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 2,
+  "versions": [
+    {
+      "version": "1.1.3",
+      "manifestUrl": "/v2/packs/core.openwop.workflows.sales-outreach/-/1.1.3.json",
+      "tarballUrl": "/v2/packs/core.openwop.workflows.sales-outreach/-/1.1.3.tgz",
+      "signatureUrl": "/v2/packs/core.openwop.workflows.sales-outreach/-/1.1.3.sig",
+      "sbomUrl": "/v2/packs/core.openwop.workflows.sales-outreach/-/1.1.3.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-ssC/OB9IteKlcQdCSJA3PMHBjY1RVAXzHepWa4wWc2s=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.1.3",
+  "deprecated": false
+}

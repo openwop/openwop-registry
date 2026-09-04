@@ -1,0 +1,168 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.agents.long-doc-summarizer@1.0.1",
+      "type": "library",
+      "name": "core.openwop.agents.long-doc-summarizer",
+      "version": "1.0.1",
+      "description": "Long-document summarizer using map-reduce. Splits input into chunks, summarizes each, then synthesizes a final summary. Handles documents that exceed any single LLM's context window. Pure-agent pack.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/packs/core.openwop.agents.long-doc-summarizer"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "488103c89b254d7241b958f96522810b7535dd799e67a61daf67385ee616f09c"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.agents.long-doc-summarizer@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "83399284e3d6b63239f41fc4f8b38fb822644931ab16e6ee4fa3ade7f5792e32"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1447"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e4f35df13a391f184888832616adc6b1eb483d070e19dec3f30a28425cb385e6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f91fc68640322d962b22b31fb790786bee878b8912e4a4f187819808f97a49c0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1590"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/long-doc-summarizer.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "82acba65b5e834bc7a234fbf4c5351b64f9c3bb9c4d18db57e645f0f8e298e80"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2318"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/long-doc-summarizer.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fdcd2a0d811c4a0c538e0dcf7f8a70da2e2073c4d421e17ec961c897008a137e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "997"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/long-doc-summarizer.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a9bc339837fc53e59b1765c3cb0540230c823e90c3f4039686d7844d9c741de0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1228"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.agents.long-doc-summarizer@1.0.1",
+      "dependsOn": [
+        "host:agentRuntime",
+        "host:aiProviders"
+      ]
+    }
+  ]
+}

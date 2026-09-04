@@ -1,0 +1,76 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.connections.google-ads@1.0.1",
+      "type": "library",
+      "name": "core.openwop.connections.google-ads",
+      "version": "1.0.1",
+      "description": "Google Ads connection pack — OAuth2 provider for the Google Ads REST API. Reach is `openapi`: Google Ads has no first-party global MCP server; the manifest declares the global Google OAuth hosts and points at the REST API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the OAuth client id/secret + developer token host-side. One of the three ad platforms Campaign Studio syncs (Google / Meta / LinkedIn Ads).",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3f5066ba0f1bcb23a418586a803f54bc5a04b08137fce96f6e867ae653516578"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.connections.google-ads@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "49ef96a488c966e98b3512382c318ce24c2fc9c8f02d144fa1e7260727eb4f69"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ea78311d2af7d8e8f836557c321ebdcf4afba504b68327512fc5d65e45d009dc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1552"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.connections.google-ads@1.0.1",
+      "dependsOn": []
+    }
+  ]
+}

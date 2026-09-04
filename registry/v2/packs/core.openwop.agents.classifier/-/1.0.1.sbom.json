@@ -1,0 +1,167 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.agents.classifier@1.0.1",
+      "type": "library",
+      "name": "core.openwop.agents.classifier",
+      "version": "1.0.1",
+      "description": "Fast classification agent. Caller supplies labels + optional rationale schema; agent picks the best-fit label(s). Stateless, single-shot. Pure-agent pack.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/packs/core.openwop.agents.classifier"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b487891503455e7ed5c0eb3d50d62d05d6790321c84afcbb82c8cee6d5f3f1b8"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.agents.classifier@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "daac930b3744b441c9553b78675b837840105b3b85d9259cac276703c749fd80"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1235"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6f143b01bdb05ff0759f5614ae6d6c146eaf8b91ea883dc9fe22803ea661bc69"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5ef1935a964a1b97a32ea95ec08e1c49663ee8d0957bbad6f30faf69b48c23cb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1348"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/classifier.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "32a0860ef12b16e0f5994f18778dbbd2ebc9800b52e6397ae6316e4dbd98b649"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2230"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/classifier.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3f715a2a6ba3979c79701b7dd0580f907bb0342a80f5de9ee19dde9dd6330f6f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1059"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/classifier.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1eccf13466e806e8048c90af6ab24b89a5bb65d6067c4519840d889448fbde5e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1345"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.agents.classifier@1.0.1",
+      "dependsOn": [
+        "host:aiProviders"
+      ]
+    }
+  ]
+}

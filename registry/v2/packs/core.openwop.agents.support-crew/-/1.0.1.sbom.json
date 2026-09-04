@@ -1,0 +1,265 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.agents.support-crew@1.0.1",
+      "type": "library",
+      "name": "core.openwop.agents.support-crew",
+      "version": "1.0.1",
+      "description": "Support 3-agent crew. Triage → Resolver → Escalator. Single dispatch handles the full ticket lifecycle.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/packs/core.openwop.agents.support-crew"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c0aaee07554d28e1c198788ef33aca651606b7f9b5b790e075ccc3bf0f8e39e5"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.agents.support-crew@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "de42b66a7478362b618996d1ad2be4fbc02260222f986d44f52f00f91f39e0fe"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1258"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a70c2a85de119e6677abe0d41eba13da07c7774be59cd4c81031b2371fb2b05d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ff7ccdde83dec847b00f87e9b12cb3412c873e6a7cc33a0924eb648a44c7e7a3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2666"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/escalator.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4e074ae6a739518586243894b19bdd93714829b44951d325174894f6358f83de"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1998"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/resolver.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "46f9e195d0dccff91cffee6680933dd3c8dc7288957a7c14c3098e0457581b4f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1057"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/triage.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ab5910045317911cebd079e9bf56a9516ca57dd77c9f79e86e65330521e39663"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "799"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/escalator.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f224c3c82d653f90881a245c02056eaa5e451766f84f7398a262feca7a742637"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1305"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/escalator.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c49e2347f61a2df7c255ef92cda8066563a2dc042d63dab289053dfdb76c1c9a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1076"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/resolver.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7792f7b1ea1829b2b08780a77dd4b4812e31a454210e43ab80e47c8de874abd0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1659"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/resolver.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6b22248b7075b88f7e3ee67ad4be95becd4b0b705f6854e753b77b17d274b45f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "813"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/triage.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e4536f9e80829e45fef2c4161e81d330765746e87df34710f7ec69b124917e43"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "833"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/triage.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "88d074ba7f44f8beb41f24a8b50d1d93ecb381caea44fc8491eee002d8572948"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "963"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.agents.support-crew@1.0.1",
+      "dependsOn": [
+        "host:agentRuntime",
+        "host:agents",
+        "host:aiProviders"
+      ]
+    }
+  ]
+}

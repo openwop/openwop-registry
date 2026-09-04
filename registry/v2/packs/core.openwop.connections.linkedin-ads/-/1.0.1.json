@@ -1,0 +1,62 @@
+{
+  "name": "core.openwop.connections.linkedin-ads",
+  "version": "1.0.1",
+  "kind": "connection",
+  "description": "LinkedIn Ads connection pack — OAuth2 provider for the LinkedIn Marketing API. Reach is `openapi`: the manifest declares the global LinkedIn OAuth hosts and points at the Marketing API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the client id/secret host-side. One of the three ad platforms Campaign Studio syncs (Google / Meta / LinkedIn Ads).",
+  "license": "Apache-2.0",
+  "engines": {
+    "openwop": ">=1.0.0 <3.0.0"
+  },
+  "provider": {
+    "id": "linkedin-ads",
+    "displayName": "LinkedIn Ads",
+    "category": "marketing",
+    "auth": {
+      "kind": "oauth2",
+      "authFlow": "manual",
+      "scopeModel": "groups",
+      "endpoints": {
+        "authorize": "https://www.linkedin.com/oauth/v2/authorization",
+        "token": "https://www.linkedin.com/oauth/v2/accessToken"
+      },
+      "scopes": {
+        "read": [
+          {
+            "key": "ads.read",
+            "label": "Read LinkedIn Ads reporting",
+            "scopes": [
+              "r_ads_reporting",
+              "r_ads"
+            ]
+          }
+        ],
+        "write": [
+          {
+            "key": "ads.manage",
+            "label": "Manage LinkedIn Ads campaigns",
+            "scopes": [
+              "rw_ads"
+            ]
+          }
+        ]
+      }
+    },
+    "reach": {
+      "openapi": {
+        "ref": "https://learn.microsoft.com/en-us/linkedin/marketing/"
+      }
+    },
+    "consumerNodes": [
+      "core.openwop.http"
+    ],
+    "docsUrl": "https://learn.microsoft.com/en-us/linkedin/marketing/integrations/ads/account-structure/create-and-manage-campaigns",
+    "apiHosts": [
+      "linkedin.com"
+    ]
+  },
+  "signing": {
+    "keyId": "openwop-team-1",
+    "scheme": "ed25519-canonical-json"
+  },
+  "integrity": "sha256-WtEyxZPq419pzttcyK/wATDMWc1jv2n+/g5xrbOES54="
+}

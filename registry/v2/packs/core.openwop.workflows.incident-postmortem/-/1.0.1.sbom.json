@@ -1,0 +1,108 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.incident-postmortem@1.0.1",
+      "type": "library",
+      "name": "core.openwop.workflows.incident-postmortem",
+      "version": "1.0.1",
+      "description": "Incident-postmortem chains (RFC 0013): after an incident resolves, draft a blameless postmortem from the timeline and turn its action items into tracked tasks. Draft-first (the human edits before anything is shared). Replay-deterministic.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "539dc84c5d22709c14d5f5bb59f007037adcd621c09a4f69bd7a97d3a3528b6a"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.incident-postmortem@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ac0b720944e5fc92f92492f3ba62f10890ecff03669f8ac2cd54c95b05d0037c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "454"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cb65f35a294f045d517e85d9ef109203faf97a5ab55e4bb933c9eefc9e64e3c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "96784324a0e6cad77bb5b6df1b33dc839f3638abbf8bee7ed2a7567eb7c29efc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "5081"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.incident-postmortem@1.0.1",
+      "dependsOn": []
+    }
+  ]
+}

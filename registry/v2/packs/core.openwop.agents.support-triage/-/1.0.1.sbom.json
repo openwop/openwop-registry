@@ -1,0 +1,167 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.agents.support-triage@1.0.1",
+      "type": "library",
+      "name": "core.openwop.agents.support-triage",
+      "version": "1.0.1",
+      "description": "Customer support triage agent. Categorizes inbound tickets, routes to the right queue, surfaces severity + customer-segment signals. Pure-agent pack.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/packs/core.openwop.agents.support-triage"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4f3407ba185508eb265f7ea8da340f775c63e3b4aea22138e5b30c4ed30c9643"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.agents.support-triage@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b38e1a7e36053fd2f7f220ca7b26b86368bc604c3dc148ebbce13a5d14b253fb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1314"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c0c83382377b73ae0d596017fc4dcca3cb1b8975e688ff40a210d78a3d593019"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "93637a5439adc46d899a050d9bbda5102d0e2818961292d59a1f2b6d417b6265"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1398"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/support-triage.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c4d26040a3ffc702afb284c4a542383fdc55e5ac129fd45c5c4c871454f3b7ed"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2668"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/support-triage.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8b5b5ff9510e54df86791aaf095a4083a2d819810e2129d2d36694b924810e54"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1656"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/support-triage.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4ee2d6ca3357cb2eb933341f6be48a1dc6582d76047669a8321637aa57f238c2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1371"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.agents.support-triage@1.0.1",
+      "dependsOn": [
+        "host:aiProviders"
+      ]
+    }
+  ]
+}

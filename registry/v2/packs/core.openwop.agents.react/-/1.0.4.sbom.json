@@ -1,0 +1,168 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.agents.react@1.0.4",
+      "type": "library",
+      "name": "core.openwop.agents.react",
+      "version": "1.0.4",
+      "description": "Canonical ReAct (Reason + Act) loop agent. Pure-agent pack — ships one agent manifest with a configurable toolAllowlist. Composes via dispatch and consumes host.aiProviders + host.agentRuntime. The 'hello world' of openwop agents.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/packs/core.openwop.agents.react"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f64a32e83c9c6f730ab12186af5a1c442b5c8ecd1aac3c6cd4ac34a7f08284db"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.agents.react@1.0.4"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a53b7a6ab028656e5dd012f4cfb2736e8a48b48b7b4e730fdefdab3c17262452"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3623"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1ac2fdaf380b9f356e9245e71a5a2981557b2b582ce89a21b738572de6dfdf29"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fbdb1e566427702d963831b15e2a815d0a5d25d5f5ac90cd024752bfd06a0a43"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1468"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/react.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "18996def96669ddd59edaae8fa458996d4cfe92bf64e70edd4045075cd02212e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2669"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/react.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2ab6a0d886486b824d1555bf08f4acf9093526ee061b529890eac82187b6465f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2576"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/react.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d28ada6c7a5b91affe62ac98399ade82b5143758b372bee1691f6ef79d3ca575"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1270"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.agents.react@1.0.4",
+      "dependsOn": [
+        "host:agentRuntime",
+        "host:aiProviders"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "name": "core.openwop.agents.support-crew",
+  "version": "1.0.1",
+  "description": "Support 3-agent crew. Triage → Resolver → Escalator. Single dispatch handles the full ticket lifecycle.",
+  "author": "OpenWOP Working Group",
+  "license": "Apache-2.0",
+  "homepage": "https://openwop.dev/packs/core.openwop.agents.support-crew",
+  "repository": "https://github.com/openwop/openwop",
+  "keywords": [
+    "core",
+    "agents",
+    "crew",
+    "support",
+    "multi-agent",
+    "pattern"
+  ],
+  "engines": {
+    "openwop": ">=1.1.0 <3.0.0"
+  },
+  "peerDependencies": {
+    "aiProviders": "supported",
+    "agentRuntime": "supported",
+    "agents": ">=longTerm"
+  },
+  "agents": [
+    {
+      "agentId": "core.openwop.agents.support-crew.triage",
+      "persona": "Triage",
+      "label": "Support Triage (Crew)",
+      "description": "Identical contract to core.openwop.agents.support-triage. Bundled here for atomic crew dispatch.",
+      "modelClass": "classification",
+      "systemPromptRef": "prompts/triage.md",
+      "toolAllowlist": [],
+      "memoryShape": {
+        "scratchpad": false,
+        "conversation": false,
+        "longTerm": false
+      },
+      "handoff": {
+        "taskSchemaRef": "schemas/triage.task.schema.json",
+        "returnSchemaRef": "schemas/triage.return.schema.json"
+      },
+      "confidence": {
+        "defaultThreshold": 0.75
+      },
+      "role": "skill"
+    },
+    {
+      "agentId": "core.openwop.agents.support-crew.resolver",
+      "persona": "Resolver",
+      "label": "Support Resolver (Crew)",
+      "description": "Identical contract to core.openwop.agents.support-resolver. Bundled here so the crew can dispatch end-to-end without external pack lookups.",
+      "modelClass": "writing",
+      "systemPromptRef": "prompts/resolver.md",
+      "toolAllowlist": [
+        "openwop:core.rag.retriever-basic",
+        "openwop:core.rag.retriever-contextual-compression"
+      ],
+      "memoryShape": {
+        "scratchpad": true,
+        "conversation": false,
+        "longTerm": false
+      },
+      "handoff": {
+        "taskSchemaRef": "schemas/resolver.task.schema.json",
+        "returnSchemaRef": "schemas/resolver.return.schema.json"
+      },
+      "confidence": {
+        "defaultThreshold": 0.75
+      },
+      "role": "skill"
+    },
+    {
+      "agentId": "core.openwop.agents.support-crew.escalator",
+      "persona": "Escalator",
+      "label": "Support Escalator",
+      "description": "Builds the escalation packet — context summary + classification + suggested specialist — when the Resolver returns escalation. Persists escalation patterns to long-term memory for staffing analytics.",
+      "modelClass": "writing",
+      "systemPromptRef": "prompts/escalator.md",
+      "toolAllowlist": [],
+      "memoryShape": {
+        "scratchpad": true,
+        "conversation": false,
+        "longTerm": false
+      },
+      "handoff": {
+        "taskSchemaRef": "schemas/escalator.task.schema.json",
+        "returnSchemaRef": "schemas/escalator.return.schema.json"
+      },
+      "confidence": {
+        "defaultThreshold": 0.8
+      },
+      "role": "skill"
+    }
+  ],
+  "runtime": {
+    "language": "remote",
+    "entry": "pack.json"
+  },
+  "kind": "node",
+  "peerDependenciesMeta": {
+    "agents": {
+      "facets": [
+        "memoryBackends"
+      ]
+    }
+  },
+  "signing": {
+    "keyId": "openwop-team-1",
+    "scheme": "ed25519-canonical-json"
+  },
+  "integrity": "sha256-wKruB1VNKOHBmHiO8zrKZRYGt/m1t5DgdczDvw+OOeU="
+}

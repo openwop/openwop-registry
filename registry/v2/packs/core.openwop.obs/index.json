@@ -1,0 +1,37 @@
+{
+  "name": "core.openwop.obs",
+  "kind": "node",
+  "description": "Observability emission primitives. Workflows publish logs / metrics / traces / alerts under the canonical openwop.* OTel namespace. Delegates to ctx.observability when the host advertises it, no-ops gracefully otherwise. Zero npm deps.",
+  "author": "OpenWOP Working Group",
+  "license": "Apache-2.0",
+  "homepage": "https://openwop.dev/packs/core.openwop.obs",
+  "repository": "https://github.com/openwop/openwop",
+  "tags": [],
+  "typeIds": [
+    "core.obs.log",
+    "core.obs.metric-counter",
+    "core.obs.metric-gauge",
+    "core.obs.metric-histogram",
+    "core.obs.trace-span-start",
+    "core.obs.trace-span-end",
+    "core.obs.alert-fire"
+  ],
+  "nodeCount": 7,
+  "agentCount": 0,
+  "versions": [
+    {
+      "version": "1.0.1",
+      "manifestUrl": "/v2/packs/core.openwop.obs/-/1.0.1.json",
+      "tarballUrl": "/v2/packs/core.openwop.obs/-/1.0.1.tgz",
+      "signatureUrl": "/v2/packs/core.openwop.obs/-/1.0.1.sig",
+      "sbomUrl": "/v2/packs/core.openwop.obs/-/1.0.1.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-YOQh7j0d1jnjXBJvzPNqEUWpQyofJkN0YeT8PgXnSvk=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.1",
+  "deprecated": false
+}

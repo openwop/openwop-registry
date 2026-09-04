@@ -1,0 +1,76 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.connections.linkedin-ads@1.0.1",
+      "type": "library",
+      "name": "core.openwop.connections.linkedin-ads",
+      "version": "1.0.1",
+      "description": "LinkedIn Ads connection pack — OAuth2 provider for the LinkedIn Marketing API. Reach is `openapi`: the manifest declares the global LinkedIn OAuth hosts and points at the Marketing API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the client id/secret host-side. One of the three ad platforms Campaign Studio syncs (Google / Meta / LinkedIn Ads).",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5ad132c593eae35f69cedb5cc8aff00130cc59cd63bf69fefe0e71adb3844b9e"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.connections.linkedin-ads@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ff8ba1e81942447e63c2a69cfebbd4ea9017f683bbed02d381016c1c3766136e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2b2f23e2f46bb55e5875b4c7ce35e305b4138a19c687b44e6fc46d1e268ba7a5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1398"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.connections.linkedin-ads@1.0.1",
+      "dependsOn": []
+    }
+  ]
+}
