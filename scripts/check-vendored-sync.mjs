@@ -74,6 +74,12 @@ export const VENDORED_V2 = [
   'schemas/v2/prompt-ref.schema.json',
   'schemas/v2/prompt-kind.schema.json',
   'schemas/v2/ids.schema.json',
+  // RFC 0177 §B — the peer-dependency identifier is the declaration-file key;
+  // the alias table is generated from it. The codemod driver
+  // (scripts/codemod-pack-manifest-v2.mjs) reads both; vendored so the
+  // rewrite is pinned to the same tag as the schemas it must satisfy.
+  'spec/v2/declaration.json',
+  'spec/v2/peer-dependency-aliases.json',
 ];
 
 // Vendored paths to verify, relative to repo root. These mirror the canonical

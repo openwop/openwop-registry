@@ -204,5 +204,6 @@
       "inputSchemaRef": "schemas/vector-delete.input.json",
       "outputSchemaRef": "schemas/vector-delete.output.json"
     }
-  ]
+  ],
+  "kind": "node"
 }

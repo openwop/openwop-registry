@@ -325,5 +325,6 @@
       "inputSchemaRef": "schemas/queue-dequeue.input.json",
       "outputSchemaRef": "schemas/queue-dequeue.output.json"
     }
-  ]
+  ],
+  "kind": "node"
 }

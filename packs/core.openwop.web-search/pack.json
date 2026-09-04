@@ -17,7 +17,7 @@
     "openwop": ">=1.0.0 <3.0.0"
   },
   "peerDependencies": {
-    "host.webSearch": "optional"
+    "webResearch": "optional"
   },
   "runtime": {
     "language": "javascript",
@@ -41,5 +41,6 @@
       "inputSchemaRef": "schemas/search.input.json",
       "outputSchemaRef": "schemas/search.output.json"
     }
-  ]
+  ],
+  "kind": "node"
 }

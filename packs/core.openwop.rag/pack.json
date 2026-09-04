@@ -220,5 +220,6 @@
       "inputSchemaRef": "schemas/retriever-contextual-compression.input.json",
       "outputSchemaRef": "schemas/retriever-contextual-compression.output.json"
     }
-  ]
+  ],
+  "kind": "node"
 }

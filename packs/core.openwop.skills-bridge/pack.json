@@ -19,7 +19,7 @@
   },
   "peerDependencies": {
     "aiProviders": "supported",
-    "host.agentRuntime": "supported"
+    "agentRuntime": "supported"
   },
   "nodes": [
     {
@@ -65,5 +65,6 @@
     "format": "esm",
     "entry": "./index.mjs",
     "minRuntimeVersion": "node>=20"
-  }
+  },
+  "kind": "node"
 }

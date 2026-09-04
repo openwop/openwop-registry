@@ -384,5 +384,6 @@
       "net.dns",
       "net.outbound"
     ]
-  }
+  },
+  "kind": "node"
 }

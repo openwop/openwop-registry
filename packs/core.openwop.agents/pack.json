@@ -200,5 +200,6 @@
       "inputSchemaRef": "schemas/model-selector.input.json",
       "outputSchemaRef": "schemas/model-selector.output.json"
     }
-  ]
+  ],
+  "kind": "node"
 }
