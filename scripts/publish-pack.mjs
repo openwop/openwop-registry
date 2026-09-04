@@ -5,6 +5,9 @@
  *   node scripts/publish-pack.mjs --pack <name> [--version <v>]
  *   node scripts/publish-pack.mjs --all
  *   node scripts/publish-pack.mjs --all --dry-run    (print, don't POST)
+ *   node scripts/publish-pack.mjs --all --tree v2    (PUT /v2/packs/... — RFC 0177 §A.3: the
+ *                                                     registry is versioned by tree; the
+ *                                                     /v2/ prefix is the v2 tree's template)
  *
  * Environment:
  *   OPENWOP_PACK_REGISTRY_URL   Base URL of the registry, e.g.
@@ -36,10 +39,12 @@
 import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { join, resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { treeFromArgv } from './lib/registry-tree.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = resolve(__dirname, '..');
 const DEFAULT_DIST = join(REPO_ROOT, 'dist', 'packs');
+const TREE = treeFromArgv();
 
 const TTY = process.stdout.isTTY;
 const C = TTY
@@ -60,8 +65,9 @@ function parseArgs(argv) {
     else if (a === '--all') args.all = true;
     else if (a === '--dist') args.dist = argv[++i];
     else if (a === '--dry-run') args.dryRun = true;
+    else if (a === '--tree') i++; // consumed by treeFromArgv
     else if (a === '--help' || a === '-h') {
-      console.log('Usage: publish-pack.mjs [--pack <name> [--version <v>] | --all] [--dist <dir>] [--dry-run]');
+      console.log('Usage: publish-pack.mjs [--pack <name> [--version <v>] | --all] [--dist <dir>] [--dry-run] [--tree v1|v2]');
       console.log('Env: OPENWOP_PACK_REGISTRY_URL, OPENWOP_PACK_PUBLISH_KEY');
       process.exit(0);
     } else {
@@ -131,7 +137,7 @@ console.log('');
 
 async function publishOne({ name, version, path }) {
   const size = statSync(path).size;
-  const url = `${REGISTRY_URL ?? '<registry>'}/v1/packs/${name}/-/${version}.tgz`;
+  const url = `${REGISTRY_URL ?? '<registry>'}/${TREE}/packs/${name}/-/${version}.tgz`;
 
   if (args.dryRun) {
     cyan(`→ ${name}@${version}  (${size} bytes)`);

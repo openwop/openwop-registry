@@ -187,7 +187,9 @@ function main() {
   console.log(`       --key ~/.openwop-keys/${parsed.org}-internal-1.private.pem \\`);
   console.log(`       --key-id ${parsed.org}-internal-1`);
   console.log('');
-  console.log(`  6. Open a PR against openwop/openwop with the registry/v1/packs/${parsed.fullName}/-/1.0.0.{tgz,sig,json} files`);
+  console.log(`       [--tree v2 --scheme ed25519-canonical-json   # RFC 0177: a v2 manifest (explicit <3.0.0 ceiling, \`kind\`, declaration-key peers) publishes to registry/v2]`);
+  console.log('');
+  console.log(`  6. Open a PR against openwop/openwop-registry with the registry/<tree>/packs/${parsed.fullName}/-/1.0.0.{tgz,sig,json} files (tree = v1 for a \`<2.0.0\` manifest, v2 for a v2 manifest)`);
   console.log('');
   dim('   See docs/AUTHORING-CANVAS-PACKS.md for the full pattern guide.');
 }
