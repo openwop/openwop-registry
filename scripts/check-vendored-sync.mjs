@@ -24,6 +24,12 @@
 //        not yet on disk) from the tag. `--source` reads the tag out of a local
 //        corpus checkout's object store — never its working tree — so an offline
 //        re-vendor is still tag-pinned. CI re-vendors over the network.
+//   node scripts/check-vendored-sync.mjs --write --source <dir> --ref <commit>
+//        re-vendor AHEAD of the pin from a specific corpus commit (only with
+//        --source; the ref is resolved in that checkout's object store). Used
+//        between a corpus fix landing and its tag being cut; the plain check
+//        (at CORPUS_TAG) reports the re-vendored files as drift until the tag is
+//        bumped, which is the intended reminder.
 //
 // OPENWOP_SPEC_RAW_BASE still overrides the network base (e.g. a mirror), but
 // the default is derived from CORPUS_TAG and the script refuses to run without it.
@@ -37,6 +43,8 @@ const argv = process.argv.slice(2);
 const arg = (n) => { const i = argv.indexOf(n); return i >= 0 ? argv[i + 1] : undefined; };
 const WRITE = argv.includes('--write');
 const SOURCE = arg('--source');
+const REF = arg('--ref');
+if (REF && !SOURCE) { console.error('check-vendored-sync: --ref requires --source <corpus-checkout>'); process.exit(2); }
 
 const TAG_FILE = join(ROOT, 'CORPUS_TAG');
 const TAG = existsSync(TAG_FILE) ? readFileSync(TAG_FILE, 'utf8').trim() : '';
@@ -107,15 +115,17 @@ if (vendored.length === 0) {
   process.exit(0);
 }
 
-/** Returns the canonical text at the tag, or null when the path does not exist there. */
+const SRC_REF = REF ?? TAG;
+
+/** Returns the canonical text at the ref (the tag, or --ref), or null when the path does not exist there. */
 async function canonicalText(rel) {
   if (SOURCE) {
     try {
-      execFileSync('git', ['-C', SOURCE, 'cat-file', '-e', `${TAG}:${rel}`], { stdio: 'pipe' });
+      execFileSync('git', ['-C', SOURCE, 'cat-file', '-e', `${SRC_REF}:${rel}`], { stdio: 'pipe' });
     } catch {
       return null;
     }
-    return execFileSync('git', ['-C', SOURCE, 'show', `${TAG}:${rel}`], { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
+    return execFileSync('git', ['-C', SOURCE, 'show', `${SRC_REF}:${rel}`], { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
   }
   const res = await fetch(`${BASE}/${rel}`);
   if (res.status === 404) return null;
@@ -126,7 +136,7 @@ async function canonicalText(rel) {
   return res.text();
 }
 
-console.log(`check-vendored-sync: canonical ref = ${SOURCE ? `${TAG} (git object store at ${SOURCE})` : process.env.OPENWOP_SPEC_RAW_BASE ? 'OPENWOP_SPEC_RAW_BASE' : TAG}${WRITE ? ' [--write]' : ''}`);
+console.log(`check-vendored-sync: canonical ref = ${SOURCE ? `${SRC_REF}${REF ? ` (--ref, AHEAD of CORPUS_TAG ${TAG})` : ''} (git object store at ${SOURCE})` : process.env.OPENWOP_SPEC_RAW_BASE ? 'OPENWOP_SPEC_RAW_BASE' : TAG}${WRITE ? ' [--write]' : ''}`);
 
 const drift = [];
 const missing = [];
@@ -169,5 +179,5 @@ if (missing.length || drift.length) {
   process.exit(1);
 }
 
-if (WRITE) console.log(`  ok: ${written} file(s) written; ${checked} vendored spec artifact(s) now match openwop/openwop@${TAG}.`);
-else console.log(`  ok: all ${checked} vendored spec artifact(s) match openwop/openwop@${TAG}.`);
+if (WRITE) console.log(`  ok: ${written} file(s) written; ${checked} vendored spec artifact(s) now match openwop/openwop@${SRC_REF}.`);
+else console.log(`  ok: all ${checked} vendored spec artifact(s) match openwop/openwop@${SRC_REF}.`);
