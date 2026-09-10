@@ -1,7 +1,7 @@
 {
   "registryVersion": "1.0.0",
   "generatedAt": "2026-05-10T00:00:00Z",
-  "packCount": 109,
+  "packCount": 116,
   "packs": [
     {
       "name": "core.openwop.a2a",
@@ -2013,6 +2013,117 @@
       "tags": [],
       "typeIds": [
         "openwop-app.workflow-author"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.openwop-app.workflows.cms",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.1",
+      "description": "CMS content workflows (RFC 0013 / ADR 0204 C6) — chains over the feature.cms.nodes governed verbs. `cms.localize-and-submit` translates ONE draft section into a target locale and submits the page for editorial review: read the draft section, AI-translate its base data (structure-preserving), store the overlay on the draft (sanitized like an editor save), then submit — the SAME approval-gate composition as the editor UI, so when `cms-approval-gate` is ON the run ends at a human ApprovalsInbox row. There is deliberately NO publish step: a node can draft and submit, never publish (the Phase-C architecture ruling). All tenant/org/page values are run parameters (replay-deterministic).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "cms.localize-and-submit"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.openwop-app.workflows.forms-intake",
+      "kind": "workflow-chain",
+      "latestVersion": "1.1.1",
+      "description": "Self-serve intake portal (ADR 0246/0247, STRAT-PORTAL). Bridges the forms feature to priority-matrix idea intake WITHOUT either feature importing the other: a public/authed form submission emits host.forms.submission.created (ADR 0208), this chain re-reads the submission under authz via ctx.features.forms.getSubmission, and — when the form's owner has configured an intake binding — files it as an idea on the bound priority-matrix list through the existing submit-idea verb, which also stamps the idea's intake overlay with sourceChannel='form' + the sourceSubmissionId for provenance (ADR 0247 OQ-5). A form with no binding cleanly no-ops (the conditional edge). The anonymous submitter never chooses the list (owner-configured binding); the target list's org-ownership is enforced at the submit-idea write boundary (expectedOrgId). Bind it per tenant to host.forms.submission.created via the ADR 0208 event→workflow bindings.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "forms-intake.route-submission"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.openwop-app.workflows.strategy",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.3",
+      "description": "Strategy operating-rhythm workflows (RFC 0013, ADR 0231). The KR measurement cadence: a weekly check-in nudge that finds measured key results with no recent confirmed check-in and notifies their owners, and a metric-sync pass that refreshes every sourced key result from its configured data owner (CRM deal totals, analytics conversions) through the one governed check-in path. Both are scheduled via the strategy cadence config (GET/PUT /v1/host/openwop-app/strategy/cadence) — no auto-boot jobs. All writes ride ctx.features.strategy.checkIn: agent writes are structurally proposals; sync writes are confirmed only by a human-configured measure.source (fail-closed).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "strategy.weekly-checkin",
+        "strategy.board-pack",
+        "strategy.metric-sync"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.openwop.app-builder.workflows",
+      "kind": "workflow-chain",
+      "latestVersion": "1.3.1",
+      "description": "The App Builder production chains (ADR 0346 / RFC 0013). The design chain is the portable source of truth for `app-builder.design` — the host registers it at boot via the feature's registration adapter (RFC 0124 deferred expansion), and it remains instantiable from the chain gallery like any chain.",
+      "license": "",
+      "tags": [],
+      "typeIds": [
+        "app-builder.design",
+        "app-builder.repair"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.openwop.card-sample",
+      "kind": "card",
+      "latestVersion": "1.0.1",
+      "description": "Reference chat-card pack — two portable, host-agnostic AI chat cards: a text summarizer and a meeting action-item extractor. Demonstrates the card manifest contract (typed inputs from the portable subset, a prompt template with placeholder mapping, no runtime).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "vendor.openwop.card-sample.summarize",
+        "vendor.openwop.card-sample.extract-action-items"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.openwop.prompt-sample",
+      "kind": "prompt",
+      "latestVersion": "1.0.1",
+      "description": "Reference prompt pack proving the manifest format works end-to-end across schema validation, registry indexing, and the in-memory PromptStore's installPackTemplates seam. Two templates: a writer-system prompt and a critic-system prompt — the minimal pair that lets a multi-agent workflow author point a `writer` + `critic` node pair at vendor-published prompts via `prompt:writer-system@1.0.0` / `prompt:critic-system@1.0.0` refs. In-tree only (NOT published to packs.openwop.dev); the canonical proof that the prompt-pack contract is implementable with real-world-shaped content.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "writer-system",
+        "critic-system"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.openwop.workflow-chain-sample",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.1",
+      "description": "Reference workflow-chain pack proving the manifest format works end-to-end across schema validation, registry indexing, and the reference expansion library. Two chains: a 1-node 'summarize text' chain showing literal parameter substitution, and a 2-node 'fetch-and-summarize' chain showing multi-node DAG composition with edge wiring and capability propagation. In-tree only (NOT published to packs.openwop.dev); the canonical proof that the chain-pack contract is implementable with real-world-shaped content.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "vendor.openwop.workflow-chain-sample.summarize-text",
+        "vendor.openwop.workflow-chain-sample.fetch-and-summarize"
       ],
       "nodeCount": 0,
       "agentCount": 0,

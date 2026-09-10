@@ -1,0 +1,31 @@
+{
+  "name": "vendor.openwop.app-builder.workflows",
+  "kind": "workflow-chain",
+  "description": "The App Builder production chains (ADR 0346 / RFC 0013). The design chain is the portable source of truth for `app-builder.design` — the host registers it at boot via the feature's registration adapter (RFC 0124 deferred expansion), and it remains instantiable from the chain gallery like any chain.",
+  "author": "",
+  "license": "",
+  "tags": [],
+  "typeIds": [
+    "app-builder.design",
+    "app-builder.repair"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 2,
+  "versions": [
+    {
+      "version": "1.3.1",
+      "manifestUrl": "/v2/packs/vendor.openwop.app-builder.workflows/-/1.3.1.json",
+      "tarballUrl": "/v2/packs/vendor.openwop.app-builder.workflows/-/1.3.1.tgz",
+      "signatureUrl": "/v2/packs/vendor.openwop.app-builder.workflows/-/1.3.1.sig",
+      "sbomUrl": "/v2/packs/vendor.openwop.app-builder.workflows/-/1.3.1.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-jf4RT0NYYUseN9u3D5V2HoqyPkbF4Rx5eKOss6T96Mo=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.3.1",
+  "deprecated": false
+}
