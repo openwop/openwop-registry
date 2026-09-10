@@ -3,8 +3,8 @@
 First **community-namespace** pack. Mixed shape (1 node + 1 agent) demonstrating that non-steward contributors can publish without OIDC infrastructure — manual Ed25519 signing only.
 
 | Pack name | `community.openwop-team.demo` |
-| Version | `0.1.0` |
-| Engine | OpenWOP `>=1.0.0 <2.0.0` |
+| Version | `0.1.1` |
+| Engine | OpenWOP `>=1.0.0 <3.0.0` |
 | Runtime | JavaScript (ESM), Node `>=20` |
 | External deps | None |
 | Signing | **Manual Ed25519** (not Sigstore) |
