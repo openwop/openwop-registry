@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://packs.openwop.dev/vendor.myndhyve.ads-studio-core/1.0.0/winner-synthesize.input.json",
+  "$id": "https://packs.openwop.dev/vendor.myndhyve.ads-studio-core/1.0.1/winner-synthesize.input.json",
   "title": "AdsWinnerSynthesizeInput",
   "type": "object",
   "required": ["testResults", "variantPlanId", "platforms"],

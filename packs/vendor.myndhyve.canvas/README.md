@@ -3,8 +3,8 @@
 First vendor-namespace pack. Ships MyndHyve canvas-coordination nodes.
 
 | Pack name | `vendor.myndhyve.canvas` |
-| Version | `1.0.0` |
-| Engine | OpenWOP `>=1.0.0 <2.0.0` |
+| Version | `1.0.1` |
+| Engine | OpenWOP `>=1.0.0 <3.0.0` |
 | Runtime | JavaScript (ESM), Node `>=20` |
 | External deps | None — speaks no Firestore directly; routes through `ctx.canvas.*` |
 | peerDependencies | `host.canvas: supported` |

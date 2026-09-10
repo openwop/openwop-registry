@@ -3,8 +3,8 @@
 Vendor showcase agent pack. Wraps 14 `vendor.myndhyve.ads-*` node typeIds into a single chat-driven Creative Director persona.
 
 | Pack name | `vendor.myndhyve.ads-crew` |
-| Version | `1.0.0` |
-| Engine | OpenWOP `>=1.1.0 <2.0.0` |
+| Version | `1.0.1` |
+| Engine | OpenWOP `>=1.1.0 <3.0.0` |
 | Agents | 1 (`creative-director`) |
 | Signing key | `myndhyve-internal-1` |
 | Required host capabilities | `aiProviders`, `aiProviders.imageGeneration`, `host.agentRuntime`, `openwop.agents.memoryBackends ≥ longTerm` |
