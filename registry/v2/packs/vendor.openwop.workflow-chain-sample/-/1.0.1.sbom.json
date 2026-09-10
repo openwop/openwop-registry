@@ -1,0 +1,101 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/vendor.openwop.workflow-chain-sample@1.0.1",
+      "type": "library",
+      "name": "vendor.openwop.workflow-chain-sample",
+      "version": "1.0.1",
+      "description": "Reference workflow-chain pack proving the manifest format works end-to-end across schema validation, registry indexing, and the reference expansion library. Two chains: a 1-node 'summarize text' chain showing literal parameter substitution, and a 2-node 'fetch-and-summarize' chain showing multi-node DAG composition with edge wiring and capability propagation. In-tree only (NOT published to packs.openwop.dev); the canonical proof that the chain-pack contract is implementable with real-world-shaped content.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/spec/v1/workflow-chain-packs.md"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f24ed566edb132b4240291cf9f9d01de9d445439c5d843e09b568f60b35418fc"
+        }
+      ],
+      "purl": "pkg:openwop/vendor.openwop.workflow-chain-sample@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ea747c890d40d9bd1f08474831680489373367271eececcbc345a385085f6e2c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "5722"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fbc86e074e49caaf5928cb7433060c719e433f6881e1a2617d2d0c67de74618a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5ac96df345abefe0c42721280e52e89dae29da469ed98681248b2f667007879a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3961"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/vendor.openwop.workflow-chain-sample@1.0.1",
+      "dependsOn": []
+    }
+  ]
+}

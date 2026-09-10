@@ -153,5 +153,10 @@
         "side-effectful"
       ]
     }
-  ]
+  ],
+  "signing": {
+    "keyId": "openwop-team-1",
+    "scheme": "ed25519-canonical-json"
+  },
+  "integrity": "sha256-8k7VZu2xMrQkApHPn50B3p1EVDnF2EPgm1aPYLNUGPw="
 }

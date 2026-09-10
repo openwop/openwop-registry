@@ -130,5 +130,10 @@
         }
       }
     }
-  ]
+  ],
+  "signing": {
+    "keyId": "openwop-team-1",
+    "scheme": "ed25519-canonical-json"
+  },
+  "integrity": "sha256-Sq6yCVw6+V7ew1uRH5XD1FDmPiXmo3H5yvfJRelibU8="
 }
