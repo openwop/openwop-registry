@@ -1,14 +1,22 @@
 {
   "name": "vendor.myndhyve.ads-studio-core",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MyndHyve Ads Studio core — four pure-logic executors lifted from src/canvas-types/campaign-studio/nodes/adsStudioPack/. ads.brief.build (CreativeBriefBuilder), ads.variant.plan (VariantPlanService), ads.video.qa (VideoQAService), ads.winner.synthesize (WinnerSynthesisService). All four executors are deterministic — no host capabilities required beyond the core NodeContext. Marks the Phase A pilot of the canvas-type executor migration per openwop/openwop#11.",
   "author": "MyndHyve",
   "license": "Apache-2.0",
   "homepage": "https://myndhyve.ai/packs/ads-studio-core",
   "repository": "https://github.com/openwop/openwop",
-  "keywords": ["vendor", "myndhyve", "ads", "campaign", "creative-brief", "variant-plan", "video-qa"],
+  "keywords": [
+    "vendor",
+    "myndhyve",
+    "ads",
+    "campaign",
+    "creative-brief",
+    "variant-plan",
+    "video-qa"
+  ],
   "engines": {
-    "openwop": ">=1.0.0 <2.0.0"
+    "openwop": ">=1.0.0 <3.0.0"
   },
   "runtime": {
     "language": "javascript",

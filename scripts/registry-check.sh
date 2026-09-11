@@ -54,22 +54,24 @@ if [ ! -d registry/v2/packs ]; then
   echo "[v2 0/8] Vendored v2 schema self-tests still run (the schema itself enforces RFC 0177 §A.1/§C.3–§C.5; tree legs skip with their reason)..."
   node --test scripts/test-registry-v2-schemas.mjs
 else
-  echo "[v2 1/8] Registry v2 index up to date (build-index --tree v2 --check)..."
+  echo "[v2 1/9] Registry v2 index up to date (build-index --tree v2 --check)..."
   node registry/scripts/build-index.mjs --tree v2 --check
-  echo "[v2 2/8] Pack tarball signatures — one scheme, keyId required (check-pack-tarball-signatures --tree v2)..."
+  echo "[v2 2/9] Pack tarball signatures — one scheme, keyId required (check-pack-tarball-signatures --tree v2)..."
   node scripts/check-pack-tarball-signatures.mjs --tree v2
-  echo "[v2 3/8] Registry signer-metadata consistency (--tree v2)..."
+  echo "[v2 3/9] Registry signer-metadata consistency (--tree v2)..."
   node scripts/check-registry-signer-consistency.mjs --tree v2
-  echo "[v2 4/8] Published-tarball signatures + namespace authorization (verify-signatures --tree v2)..."
+  echo "[v2 4/9] Published-tarball signatures + namespace authorization (verify-signatures --tree v2)..."
   node registry/scripts/verify-signatures.mjs --tree v2
-  echo "[v2 5/8] Structural conformance (conformance-check --tree v2)..."
+  echo "[v2 5/9] Structural conformance (conformance-check --tree v2)..."
   node registry/scripts/conformance-check.mjs --tree v2
-  echo "[v2 6/8] SBOMs up to date (generate-sbom --tree v2 --check)..."
+  echo "[v2 6/9] SBOMs up to date (generate-sbom --tree v2 --check)..."
   node registry/scripts/generate-sbom.mjs --tree v2 --check
-  echo "[v2 7/8] Security advisories cross-checked against the v2 tree..."
+  echo "[v2 7/9] Security advisories cross-checked against the v2 tree..."
   node registry/scripts/check-advisories.mjs --tree v2
-  echo "[v2 8/8] Every v2 version manifest validates against the VENDORED v2 schemas (ajv, CORPUS_TAG) + schema self-tests..."
+  echo "[v2 8/9] Every v2 version manifest validates against the VENDORED v2 schemas (ajv, CORPUS_TAG) + schema self-tests..."
   node --test scripts/test-registry-v2-schemas.mjs
+  echo "[v2 9/9] Every pack is INSTALLABLE on a major-2 host (engines.openwop admits major 2, RFC 0177 §A.1)..."
+  node scripts/check-pack-engines-admit-major.mjs --major 2
 fi
 
 echo "=== registry:check OK ==="

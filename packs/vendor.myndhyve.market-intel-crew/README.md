@@ -3,8 +3,8 @@
 Vendor showcase agent pack. Wraps the existing 9 `vendor.myndhyve.market-intel-*` node typeIds into a single chat-driven Research Director persona.
 
 | Pack name | `vendor.myndhyve.market-intel-crew` |
-| Version | `1.0.0` |
-| Engine | OpenWOP `>=1.1.0 <2.0.0` |
+| Version | `1.0.1` |
+| Engine | OpenWOP `>=1.1.0 <3.0.0` |
 | Agents | 1 (`research-director`) |
 | Signing key | `myndhyve-internal-1` |
 | Required host capabilities | `aiProviders`, `host.agentRuntime`, `openwop.agents.memoryBackends ≥ longTerm` |

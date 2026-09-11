@@ -3,7 +3,7 @@
 MyndHyve chat-bridge pack. Routes through the host's chat adapter to post messages, emit rich cards (progress + custom), patch existing cards, and gate runs on user phase-input.
 
 | Pack name | `vendor.myndhyve.chat` |
-| Version | `1.0.0` |
+| Version | `1.0.1` |
 | peerDependencies | `host.chat: supported` |
 | License | Apache-2.0 |
 
