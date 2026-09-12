@@ -37,6 +37,7 @@ import { execFileSync } from 'node:child_process';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { treeFromArgv, publicationTree, V2_SCHEME } from './lib/registry-tree.mjs';
+import { keyMaySign, keysPermittedFor, assignedKeyId } from './lib/namespace-authority.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const argv = process.argv.slice(2);
@@ -48,8 +49,14 @@ const keyId = arg('--key-id') ?? 'openwop-team-1';
 const scheme = arg('--scheme');
 const changedBase = arg('--changed-base');
 const reindex = tree === 'v2' && !argv.includes('--no-reindex');
-// Namespaces the openwop-team-1 key is permitted to sign (see registry .well-known).
-const AUTHORIZED = [/^core\.openwop\./, /^vendor\.openwop\./, /^vendor\.openwop-app\./];
+// Which namespaces this run may sign is READ from the registry's own
+// `.well-known/openwop-registry.json` (`signingKeys[].permittedNamespaces`),
+// not restated here. `packs.md` §Signing makes that document the authority, and
+// the literal this replaced had drifted from it in both directions: it omitted
+// `community.openwop-team.*`, which `openwop-team-1` is permitted and which sat
+// unpublished on v2 as a result, and it had no way to say that
+// `vendor.myndhyve.*` belongs to a registered key this runner does not hold.
+const mayPublish = (name) => keyMaySign(keyId, name).ok;
 
 if (tree === 'v2' && !dryRun && scheme !== V2_SCHEME) {
   console.error(`auto-register: --tree v2 requires --scheme ${V2_SCHEME} (RFC 0177 §C.3 — one scheme, no default)`);
@@ -80,7 +87,7 @@ const foreign = [];
 for (const name of readdirSync(packsDir).sort()) {
   const pj = join(packsDir, name, 'pack.json');
   if (!existsSync(pj)) continue;
-  if (!AUTHORIZED.some((re) => re.test(name))) { foreign.push(name); continue; }
+  if (!mayPublish(name)) { foreign.push(name); continue; }
   if (changedPacks && !changedPacks.has(name)) continue; // PR scope: only what this PR touched
   const manifest = JSON.parse(readFileSync(pj, 'utf-8'));
   const ver = manifest.version;
@@ -99,8 +106,17 @@ for (const name of readdirSync(packsDir).sort()) {
 // tree": signatures authorize by namespace, and `openwop-team-1` does not own
 // `vendor.myndhyve.*` — so what needed fixing was the sentence, not the filter.
 if (foreign.length) {
-  console.log(`auto-register [${tree}]: ${foreign.length} pack(s) in packs/ are OUTSIDE this key's namespaces (${AUTHORIZED.map((re) => re.source).join(', ')}) and CANNOT be published by this pipeline — their owner must publish them with a key that owns the namespace:`);
-  for (const name of foreign) console.log(`  – ${name}`);
+  console.log(`auto-register [${tree}]: ${foreign.length} pack(s) in packs/ are outside the namespaces "${keyId}" may sign and CANNOT be published by this run. Each is listed with the registered key that MAY sign it, so an unpublishable pack names its owner instead of vanishing:`);
+  for (const name of foreign) {
+    const assigned = assignedKeyId(name);
+    const permitted = keysPermittedFor(name).map((k) => k.keyId);
+    const owner = assigned
+      ? `owned by ${assigned.owner} under key "${assigned.keyId}" — that owner publishes it`
+      : permitted.length
+        ? `signable by [${permitted.join(', ')}], none of which this run holds`
+        : `NO registered key permits this namespace — it cannot be published by anyone until a key claims it`;
+    console.log(`  – ${name}: ${owner}`);
+  }
 }
 if (otherTree.length) {
   console.log(`auto-register [${tree}]: skipping ${otherTree.length} pack(s) whose publication tree is not ${tree} (RFC 0177 §A.1/§A.2 — the engines ceiling decides):`);
@@ -114,7 +130,7 @@ if (todo.length === 0) {
   console.log(
     dropped === 0
       ? `auto-register [${tree}]: nothing to publish — every pack in ${scope} this key may sign is already on the ${tree} tree.`
-      : `auto-register [${tree}]: nothing to publish HERE — of ${scope}, ${foreign.length} are outside this key's namespaces and ${otherTree.length} belong to another tree; 0 remained for this pipeline. This is NOT a statement that they are published.`,
+      : `auto-register [${tree}]: nothing to publish HERE — of ${scope}, ${foreign.length} are outside the namespaces this key may sign and ${otherTree.length} belong to another tree; 0 remained for this pipeline. This is NOT a statement that they are published.`,
   );
   emit(0);
   process.exit(0);
