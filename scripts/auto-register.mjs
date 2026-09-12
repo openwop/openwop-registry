@@ -76,10 +76,11 @@ const packsDir = join(ROOT, 'packs');
 const treeDir = join(ROOT, 'registry', tree, 'packs');
 const todo = [];
 const otherTree = [];
+const foreign = [];
 for (const name of readdirSync(packsDir).sort()) {
   const pj = join(packsDir, name, 'pack.json');
   if (!existsSync(pj)) continue;
-  if (!AUTHORIZED.some((re) => re.test(name))) continue;
+  if (!AUTHORIZED.some((re) => re.test(name))) { foreign.push(name); continue; }
   if (changedPacks && !changedPacks.has(name)) continue; // PR scope: only what this PR touched
   const manifest = JSON.parse(readFileSync(pj, 'utf-8'));
   const ver = manifest.version;
@@ -89,11 +90,35 @@ for (const name of readdirSync(packsDir).sort()) {
   todo.push({ name, ver });
 }
 
+// A pack this key may not sign is a real answer, not an absence. Reporting it as
+// "all first-party packs are up to date" is how 39 vendor.myndhyve packs went
+// from an engines wave (openwop-registry#49) to zero published v2 artifacts
+// with a green run in between: the run said `scoped to 39 pack(s) changed`,
+// then `nothing to publish`, and both sentences were true of different sets.
+// Measured 2026-09-12. The exclusion is correct — `packs.md` §"The registry
+// tree": signatures authorize by namespace, and `openwop-team-1` does not own
+// `vendor.myndhyve.*` — so what needed fixing was the sentence, not the filter.
+if (foreign.length) {
+  console.log(`auto-register [${tree}]: ${foreign.length} pack(s) in packs/ are OUTSIDE this key's namespaces (${AUTHORIZED.map((re) => re.source).join(', ')}) and CANNOT be published by this pipeline — their owner must publish them with a key that owns the namespace:`);
+  for (const name of foreign) console.log(`  – ${name}`);
+}
 if (otherTree.length) {
   console.log(`auto-register [${tree}]: skipping ${otherTree.length} pack(s) whose publication tree is not ${tree} (RFC 0177 §A.1/§A.2 — the engines ceiling decides):`);
   for (const { name, ver, belongs } of otherTree) console.log(`  – ${name}@${ver} → ${belongs}`);
 }
-if (todo.length === 0) { console.log(`auto-register [${tree}]: nothing to publish — all first-party packs are up to date.`); emit(0); process.exit(0); }
+if (todo.length === 0) {
+  // Say which set is up to date. "Nothing to publish" over an input the filters
+  // emptied reads as "your packs are published" and is the opposite of true.
+  const dropped = foreign.length + otherTree.length;
+  const scope = changedPacks ? `the ${changedPacks.size} pack(s) in scope` : 'packs/';
+  console.log(
+    dropped === 0
+      ? `auto-register [${tree}]: nothing to publish — every pack in ${scope} this key may sign is already on the ${tree} tree.`
+      : `auto-register [${tree}]: nothing to publish HERE — of ${scope}, ${foreign.length} are outside this key's namespaces and ${otherTree.length} belong to another tree; 0 remained for this pipeline. This is NOT a statement that they are published.`,
+  );
+  emit(0);
+  process.exit(0);
+}
 console.log(`auto-register [${tree}]: ${todo.length} unpublished first-party pack(s):`);
 for (const { name, ver } of todo) console.log(`  • ${name}@${ver}`);
 if (dryRun) { emit(0); process.exit(0); }
