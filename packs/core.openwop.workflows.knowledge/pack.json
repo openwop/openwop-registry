@@ -1,8 +1,8 @@
 {
   "name": "core.openwop.workflows.knowledge",
-  "version": "1.0.5",
+  "version": "1.2.2",
   "kind": "workflow-chain",
-  "description": "Real-work workflow pack (RFC 0013, ADR 0190 Phase 2) — the internal Knowledge cluster: employee policy/HR Q&A grounded in your Knowledge Base, compliance review of documents against your policy corpus, and structured document summarization. Distinct from core.openwop.workflows.support (customer-facing): these serve EMPLOYEES over internal policy collections. Authored entirely over shipped node typeIds (feature.kb.nodes.rag + core.ai.chatCompletion + core.flow.if + core.chat.approvalGate + core.openwop.integration.*). Populate the underlying collections in the Knowledge feature (or via knowledge-sync from Drive/OneDrive/Dropbox/Box) — these chains READ the app KB; they do not build a separate index. Every external send waits on a human approval gate. All tenant values are run parameters (replay-deterministic).",
+  "description": "Real-work workflow pack (RFC 0013, ADR 0190 Phase 2) — the internal Knowledge cluster: employee policy/HR Q&A grounded in your Knowledge Base, compliance review of documents against your policy corpus, and structured document summarization. Distinct from core.openwop.workflows.support: these serve EMPLOYEES over internal policy collections. Authored over shipped node typeIds (feature.kb.nodes.rag + core.ai.chatCompletion + core.flow.if + core.chat.approvalGate + core.openwop.integration.*). Populate the collections in the Knowledge feature — these chains READ the app KB. All tenant values are run parameters (replay-deterministic). EVERY delivery edge is PORT-QUALIFIED (ADR 0583) — a bare edge binds no named port at all. Every external send waits on a human approval gate AND ONLY FIRES ON AN APPROVAL — Slack takes its content BACK OFF THE GATE (`approveEscalation.artifact → escalate.text`, `{truthy approved}`), so it has NO unconditional incoming edge and every non-approving outcome folds it to `skipped`.",
   "author": "openwop",
   "license": "Apache-2.0",
   "engines": {
@@ -14,9 +14,9 @@
   "chains": [
     {
       "chainId": "knowledge.policy-qa",
-      "version": "1.0.0",
+      "version": "1.2.1",
       "label": "HR & Policy Q&A Agent",
-      "description": "Answer an employee's policy or HR question grounded ONLY in your internal policy docs (Knowledge Base), citing the specific policy sections. Covered questions are answered as a notification; questions your policies don't cover route to a human-approved escalation to your people team instead of guessing. Add policy docs under Knowledge to ground it.",
+      "description": "Answer an employee's policy or HR question grounded ONLY in your internal policy docs (Knowledge Base), citing the specific policy sections. Covered questions are answered as a notification CARRYING THE ANSWER TEXT (`route.value → deliver.message`); questions your policies don't cover route to a human-approved escalation to your people team instead of guessing — the approver SEES the answer (`route.value → approveEscalation.artifact`) and the Slack escalation takes that same content BACK OFF THE GATE (`approveEscalation.artifact → escalate.text`, conditioned `{truthy approved}`). That is the whole gate: reject, time out, or ask for changes and `escalate`'s only upstream folds to `skipped`, so the uncovered-policy answer never reaches #people-ops. Add policy docs under Knowledge to ground it.",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
@@ -68,9 +68,7 @@
               "x": 0,
               "y": 80
             },
-            "config": {
-              "query": "{{params.query}}"
-            },
+            "config": {},
             "inputs": {
               "query": "{{params.query}}",
               "orgId": "{{params.orgId}}",
@@ -110,21 +108,6 @@
             "inputs": {}
           },
           {
-            "id": "deliver",
-            "typeId": "feature.notifications.nodes.notify",
-            "name": "Deliver answer",
-            "position": {
-              "x": 840,
-              "y": 0
-            },
-            "config": {
-              "audience": "tenant"
-            },
-            "inputs": {
-              "title": "HR & Policy Q&A Agent"
-            }
-          },
-          {
             "id": "approveEscalation",
             "typeId": "core.chat.approvalGate",
             "name": "Approve escalation",
@@ -132,7 +115,9 @@
               "x": 840,
               "y": 160
             },
-            "config": {},
+            "config": {
+              "title": "Approve escalating this uncovered policy question"
+            },
             "inputs": {}
           },
           {
@@ -147,20 +132,35 @@
               "channel": "{{params.escalationChannel}}"
             },
             "inputs": {}
+          },
+          {
+            "id": "deliver",
+            "typeId": "feature.notifications.nodes.notify",
+            "name": "Deliver answer",
+            "position": {
+              "x": 840,
+              "y": 0
+            },
+            "config": {
+              "audience": "tenant"
+            },
+            "inputs": {
+              "title": "HR & Policy Q&A Agent"
+            }
           }
         ],
         "edges": [
           {
-            "from": "retrieve",
-            "to": "answer"
+            "from": "retrieve.augmentedPrompt",
+            "to": "answer.prompt"
           },
           {
             "from": "answer.content",
             "to": "route.value"
           },
           {
-            "from": "route",
-            "to": "deliver",
+            "from": "route.value",
+            "to": "deliver.message",
             "condition": {
               "type": "equals",
               "left": "branch",
@@ -168,8 +168,8 @@
             }
           },
           {
-            "from": "route",
-            "to": "approveEscalation",
+            "from": "route.value",
+            "to": "approveEscalation.artifact",
             "condition": {
               "type": "equals",
               "left": "branch",
@@ -177,23 +177,21 @@
             }
           },
           {
-            "from": "approveEscalation",
-            "to": "escalate"
+            "from": "approveEscalation.artifact",
+            "to": "escalate.text",
+            "condition": {
+              "type": "truthy",
+              "left": "approved"
+            }
           }
         ]
-      },
-      "outputs": {
-        "answer": {
-          "type": "string",
-          "description": "The policy-grounded answer with section citations, or the escalation note."
-        }
       }
     },
     {
       "chainId": "knowledge.compliance-review",
-      "version": "1.0.0",
+      "version": "1.2.1",
       "label": "Compliance Review vs Your Policies",
-      "description": "Check a document (contract clause, marketing copy, announcement) against your internal policies: retrieve the relevant ones from the Knowledge Base, flag every deviation with the policy it conflicts with, and route flagged documents to a human-approved compliance escalation. Clean documents just notify you.",
+      "description": "Check a document (contract clause, marketing copy, announcement) against your internal policies: retrieve the relevant ones from the Knowledge Base, flag every deviation with the policy it conflicts with, and route flagged documents to a human-approved compliance escalation. Clean documents notify you WITH the review text (`route.value → pass.message`); flagged ones show the reviewer the deviation list (`route.value → approveEscalation.artifact`) and Slack receives that list BACK OFF THE GATE (`approveEscalation.artifact → escalate.text`, conditioned `{truthy approved}`) — so a rejected, timed-out or sent-back review posts nothing to #compliance.",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
@@ -250,9 +248,7 @@
               "x": 0,
               "y": 80
             },
-            "config": {
-              "query": "{{params.query}}"
-            },
+            "config": {},
             "inputs": {
               "query": "{{params.query}}",
               "orgId": "{{params.orgId}}",
@@ -292,21 +288,6 @@
             "inputs": {}
           },
           {
-            "id": "pass",
-            "typeId": "feature.notifications.nodes.notify",
-            "name": "Notify: passes",
-            "position": {
-              "x": 840,
-              "y": 0
-            },
-            "config": {
-              "audience": "tenant"
-            },
-            "inputs": {
-              "title": "Compliance Review vs Your Policies"
-            }
-          },
-          {
             "id": "approveEscalation",
             "typeId": "core.chat.approvalGate",
             "name": "Approve escalation",
@@ -314,7 +295,9 @@
               "x": 840,
               "y": 160
             },
-            "config": {},
+            "config": {
+              "title": "Approve escalating this flagged document"
+            },
             "inputs": {}
           },
           {
@@ -329,20 +312,35 @@
               "channel": "{{params.escalationChannel}}"
             },
             "inputs": {}
+          },
+          {
+            "id": "pass",
+            "typeId": "feature.notifications.nodes.notify",
+            "name": "Notify: passes",
+            "position": {
+              "x": 840,
+              "y": 0
+            },
+            "config": {
+              "audience": "tenant"
+            },
+            "inputs": {
+              "title": "Compliance Review vs Your Policies"
+            }
           }
         ],
         "edges": [
           {
-            "from": "retrieve",
-            "to": "review"
+            "from": "retrieve.augmentedPrompt",
+            "to": "review.prompt"
           },
           {
             "from": "review.content",
             "to": "route.value"
           },
           {
-            "from": "route",
-            "to": "pass",
+            "from": "route.value",
+            "to": "pass.message",
             "condition": {
               "type": "equals",
               "left": "branch",
@@ -350,8 +348,8 @@
             }
           },
           {
-            "from": "route",
-            "to": "approveEscalation",
+            "from": "route.value",
+            "to": "approveEscalation.artifact",
             "condition": {
               "type": "equals",
               "left": "branch",
@@ -359,23 +357,21 @@
             }
           },
           {
-            "from": "approveEscalation",
-            "to": "escalate"
+            "from": "approveEscalation.artifact",
+            "to": "escalate.text",
+            "condition": {
+              "type": "truthy",
+              "left": "approved"
+            }
           }
         ]
-      },
-      "outputs": {
-        "review": {
-          "type": "string",
-          "description": "The deviation list with policy citations, or the pass note."
-        }
       }
     },
     {
       "chainId": "knowledge.doc-summarizer",
-      "version": "1.0.0",
+      "version": "1.1.1",
       "label": "Document Summarizer",
-      "description": "Turn a long document into a structured summary — purpose, key points, decisions/asks, and open questions — delivered as a notification. Paste the text (or pipe it from another workflow) and get the two-minute version.",
+      "description": "Turn a long document into a structured summary — purpose, key points, decisions/asks, and open questions — delivered as a notification whose BODY is the summary (`summarize.content → notify.message`). Paste the text (or pipe it from another workflow) and get the two-minute version.",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
@@ -435,16 +431,10 @@
         ],
         "edges": [
           {
-            "from": "summarize",
-            "to": "notify"
+            "from": "summarize.content",
+            "to": "notify.message"
           }
         ]
-      },
-      "outputs": {
-        "summary": {
-          "type": "string",
-          "description": "The structured summary."
-        }
       }
     }
   ]

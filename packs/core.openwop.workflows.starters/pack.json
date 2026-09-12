@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.starters",
-  "version": "1.0.5",
+  "version": "1.1.1",
   "kind": "workflow-chain",
   "description": "Starter workflow pack (RFC 0013, ADR 0190) — the simple-pipe on-ramp tier: short single-trigger→action recipes (webhook→notify, form→table, schedule→digest, fetch→store) that run in under a minute with zero connections, before you graduate to the AI-agent packs. Trigger-shaped starters begin with a core.trigger.* pass-through entry node: bind them to a live source with a trigger subscription (POST /v1/trigger-subscriptions — webhook, email, or form; RFC 0099) or a Schedule; on a manual run the trigger payload is empty, so bind a source to see them shine. External sends stay behind a human approval gate; in-app notifications are direct. All tenant values are run parameters (replay-deterministic).",
   "author": "openwop",
@@ -472,7 +472,7 @@
     },
     {
       "chainId": "starters.webhook-to-slack",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "label": "Webhook → Summarize → Slack",
       "description": "Turn any webhook event into a one-line summary and post it to Slack — behind a human approval, because it leaves the building. Approve a few, then decide if you want it always-on.",
       "parameters": {
@@ -543,6 +543,23 @@
               "x": 560,
               "y": 0
             },
+            "config": {
+              "title": "Approve this summary before it posts to Slack",
+              "actions": [
+                "approve",
+                "reject"
+              ]
+            },
+            "inputs": {}
+          },
+          {
+            "id": "gate-reject",
+            "typeId": "core.flow.noop",
+            "name": "Rejected — not posted",
+            "position": {
+              "x": 840,
+              "y": 160
+            },
             "config": {},
             "inputs": {}
           },
@@ -566,12 +583,24 @@
             "to": "summarize"
           },
           {
-            "from": "summarize",
-            "to": "approve"
+            "from": "summarize.content",
+            "to": "approve.artifact"
+          },
+          {
+            "from": "approve.artifact",
+            "to": "post.text",
+            "condition": {
+              "type": "truthy",
+              "left": "approved"
+            }
           },
           {
             "from": "approve",
-            "to": "post"
+            "to": "gate-reject",
+            "condition": {
+              "type": "falsy",
+              "left": "approved"
+            }
           }
         ]
       },

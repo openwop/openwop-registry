@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.exec-ops",
-  "version": "1.1.4",
+  "version": "1.3.1",
   "kind": "workflow-chain",
   "description": "Real-work workflow pack (RFC 0013, ADR 0149). The Executive / Chief-of-Staff cluster: Daily Executive Briefing, Meeting Prep & Attendee Dossier, and Board / Investor Update Pack. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.analytics) and, where a workflow touches an external system, binds a connection pack via core.openwop.http.openapi-call (connectionRef) — so a configured connection runs live and an unconfigured one surfaces a connect prompt rather than failing. Every external send is gated by core.chat.approvalGate; the read-only briefing is ungated. All tenant-specific values are run parameters (replay-deterministic). Resolves fully on hosts that ship the feature + http/mcp + chat packs (the OpenWOP reference app); the connection bindings are configured by the operator under Access & data → Connections.",
   "author": "openwop",
@@ -71,7 +71,9 @@
               "x": 0,
               "y": 140
             },
-            "config": {},
+            "config": {
+              "orgId": "{{params.orgId}}"
+            },
             "inputs": {}
           },
           {
@@ -132,8 +134,8 @@
             "to": "brief.tasks"
           },
           {
-            "from": "brief",
-            "to": "deliver"
+            "from": "brief.content",
+            "to": "deliver.message"
           }
         ]
       },
@@ -261,8 +263,8 @@
             "to": "dossier.company"
           },
           {
-            "from": "dossier",
-            "to": "deliver"
+            "from": "dossier.content",
+            "to": "deliver.message"
           }
         ]
       },
@@ -275,9 +277,9 @@
     },
     {
       "chainId": "exec-ops.board-update",
-      "version": "1.0.0",
+      "version": "1.2.0",
       "label": "Board / Investor Update Pack",
-      "description": "Assemble a monthly board/investor update: pull KPIs (analytics), pipeline (CRM), and finance figures (provider-agnostic ERP), draft a narrative with variance commentary, gate it for exec review, then deliver. Pair with a monthly scheduled trigger.",
+      "description": "Assemble a monthly board/investor update: pull KPIs (analytics), pipeline (CRM), and finance figures (provider-agnostic ERP), draft a narrative with variance commentary, gate it for exec review, then deliver ONLY on approval — the distribute step takes its body from the gate on a `truthy approved` edge, so a rejected pack is not sent. Pair with a monthly scheduled trigger.",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
@@ -324,7 +326,9 @@
               "x": 0,
               "y": 0
             },
-            "config": {},
+            "config": {
+              "orgId": "{{params.orgId}}"
+            },
             "inputs": {}
           },
           {
@@ -377,6 +381,22 @@
               "x": 600,
               "y": 140
             },
+            "config": {
+              "actions": [
+                "approve",
+                "reject"
+              ]
+            },
+            "inputs": {}
+          },
+          {
+            "id": "gate-reject",
+            "typeId": "core.flow.noop",
+            "name": "Rejected — the board pack is not distributed",
+            "position": {
+              "x": 960,
+              "y": 160
+            },
             "config": {},
             "inputs": {}
           },
@@ -410,12 +430,24 @@
             "to": "draft.finance"
           },
           {
-            "from": "draft",
-            "to": "review"
+            "from": "draft.content",
+            "to": "review.artifact"
+          },
+          {
+            "from": "review.artifact",
+            "to": "deliver.message",
+            "condition": {
+              "type": "truthy",
+              "left": "approved"
+            }
           },
           {
             "from": "review",
-            "to": "deliver"
+            "to": "gate-reject",
+            "condition": {
+              "type": "falsy",
+              "left": "approved"
+            }
           }
         ]
       },
