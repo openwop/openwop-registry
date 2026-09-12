@@ -1,0 +1,183 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.market-intel-community-rank@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.market-intel-community-rank",
+      "version": "1.0.1",
+      "description": "MyndHyve market-intel.community-rank — rank candidate communities (from a discovery step or connector) by VoC research relevance. Per-community: relevanceScore (0..1) + signalQuality (high/medium/low) + ICP problem alignment + expected intent stages + search strategy + risk factors. Distinct from market-intel.ai-discovery (which generates NEW community suggestions): this pack ranks EXISTING candidates. Ninth marketIntel pack of the Stage 5 cohort.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://myndhyve.ai/packs/market-intel-community-rank"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9e15c7a34158cf97f639a7a249f93c2091191c652c5456cea05f46da6beb38db"
+        }
+      ],
+      "purl": "pkg:openwop/vendor.myndhyve.market-intel-community-rank@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6e1c6cb5e7d84c14fa89723f26c98b6afef2f79b83c7f1c445e3245d43129519"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "4351"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "index.mjs",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "41344017e4f778a75ff05c3539c71d8782c8afcaa184113fd731d3c47c78aae6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "15021"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a129769fa973da65fd79c5b6eb19144c0ff054d526af0614df8f98cf3cda886a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5db2d042a41a16de831f6fe86dace1b1013a4c00c9c8e6a37cbd148ebd1deb34"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1876"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/community-rank.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "45acd23707b7d2fd79b370c927eff2c286988f6ffcc75bf7812bb20821257295"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "602"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/community-rank.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4565b470c60428fc80751ad9774c440c99f51cc92b204b9327fee12251af88ca"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2466"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/community-rank.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "01546a426baa90609f783d2275d8566f580a91676e6b8cf2102afddc555c96e7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3534"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/vendor.myndhyve.market-intel-community-rank@1.0.1",
+      "dependsOn": [
+        "host:aiProviders"
+      ]
+    }
+  ]
+}

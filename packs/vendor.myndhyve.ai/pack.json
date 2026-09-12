@@ -17,8 +17,8 @@
     "openwop": ">=1.0.0 <3.0.0"
   },
   "peerDependencies": {
-    "host.aiEnvelope": "supported",
-    "host.promptLibrary": "supported"
+    "aiEnvelope": "supported",
+    "promptLibrary": "supported"
   },
   "nodes": [
     {
@@ -72,5 +72,6 @@
     "format": "esm",
     "entry": "./index.mjs",
     "minRuntimeVersion": "node>=20"
-  }
+  },
+  "kind": "node"
 }

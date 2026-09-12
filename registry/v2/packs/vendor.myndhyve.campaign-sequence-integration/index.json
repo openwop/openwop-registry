@@ -1,0 +1,33 @@
+{
+  "name": "vendor.myndhyve.campaign-sequence-integration",
+  "kind": "node",
+  "description": "MyndHyve campaign-sequence integration nodes — email, sms, webhook. Companion pack to vendor.myndhyve.campaign-sequence (which carries the 3 pure-control nodes). Declares `host.campaignMessaging` peerDependency for the email + sms surface (matching MyndHyve's EmailSMSAdapterService shape); webhook is self-contained via Node 20 fetch + bundled HMAC signature.",
+  "author": "MyndHyve",
+  "license": "Apache-2.0",
+  "homepage": "https://myndhyve.ai/packs/campaign-sequence-integration",
+  "repository": "https://github.com/openwop/openwop",
+  "tags": [],
+  "typeIds": [
+    "campaign.sequence.email",
+    "campaign.sequence.sms",
+    "campaign.sequence.webhook"
+  ],
+  "nodeCount": 3,
+  "agentCount": 0,
+  "versions": [
+    {
+      "version": "1.0.2",
+      "manifestUrl": "/v2/packs/vendor.myndhyve.campaign-sequence-integration/-/1.0.2.json",
+      "tarballUrl": "/v2/packs/vendor.myndhyve.campaign-sequence-integration/-/1.0.2.tgz",
+      "signatureUrl": "/v2/packs/vendor.myndhyve.campaign-sequence-integration/-/1.0.2.sig",
+      "sbomUrl": "/v2/packs/vendor.myndhyve.campaign-sequence-integration/-/1.0.2.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "myndhyve-internal-1",
+      "integrity": "sha256-xhX3QnN1kqydBVV9dGv6WwgQ9yXE2KoVRFpklLsfR6g=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.2",
+  "deprecated": false
+}

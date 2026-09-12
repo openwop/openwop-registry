@@ -41,5 +41,6 @@
       "inputSchemaRef": "schemas/ai-discovery.input.json",
       "outputSchemaRef": "schemas/ai-discovery.output.json"
     }
-  ]
+  ],
+  "kind": "node"
 }

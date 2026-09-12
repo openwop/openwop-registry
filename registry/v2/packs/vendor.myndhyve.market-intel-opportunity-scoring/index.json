@@ -1,0 +1,31 @@
+{
+  "name": "vendor.myndhyve.market-intel-opportunity-scoring",
+  "kind": "node",
+  "description": "MyndHyve market-intel.opportunity-scoring — score and rank communities AND messaging angles on a 5-dimension scale (volume / intensity / commercialIntent / clarity / uniqueness, weighted total) given a VoC corpus + community metadata. Composable primitive slotting between voc-extraction (aggregator) and ad-angles (downstream). Source-side this prompt is used inside the market-intel.research orchestrator; published here as a standalone typeId so workflow authors can compose it directly. Fourth marketIntel pack of the Stage 5 cohort.",
+  "author": "MyndHyve",
+  "license": "Apache-2.0",
+  "homepage": "https://myndhyve.ai/packs/market-intel-opportunity-scoring",
+  "repository": "https://github.com/openwop/openwop",
+  "tags": [],
+  "typeIds": [
+    "market-intel.opportunity-scoring"
+  ],
+  "nodeCount": 1,
+  "agentCount": 0,
+  "versions": [
+    {
+      "version": "1.0.1",
+      "manifestUrl": "/v2/packs/vendor.myndhyve.market-intel-opportunity-scoring/-/1.0.1.json",
+      "tarballUrl": "/v2/packs/vendor.myndhyve.market-intel-opportunity-scoring/-/1.0.1.tgz",
+      "signatureUrl": "/v2/packs/vendor.myndhyve.market-intel-opportunity-scoring/-/1.0.1.sig",
+      "sbomUrl": "/v2/packs/vendor.myndhyve.market-intel-opportunity-scoring/-/1.0.1.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "myndhyve-internal-1",
+      "integrity": "sha256-Yw2Ma68QPov8WZUn/YWLd2m/Z4QqR0LmJfa5PVc54uc=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.1",
+  "deprecated": false
+}

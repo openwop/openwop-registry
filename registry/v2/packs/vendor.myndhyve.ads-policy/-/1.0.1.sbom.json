@@ -1,0 +1,181 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-policy@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-policy",
+      "version": "1.0.1",
+      "description": "MyndHyve ads.policy.check — built-in policy text-rule scanner. Detects claims (guarantees, income, superlatives), trademark mentions, prohibited content (before/after, deceptive urgency), discriminatory targeting. Caller-supplied placement text-limits + trust-guardrail results for fuller coverage; standalone for text-rule-only checks.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://myndhyve.ai/packs/ads-policy"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6205686de00a6bea2148dd582bca3b8505b71082382715f5b5c5fc5504054569"
+        }
+      ],
+      "purl": "pkg:openwop/vendor.myndhyve.ads-policy@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "100fb766ad5a8260ff820378e2636fdda12ec59dc0e8237a6351313a506ae863"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3036"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "index.mjs",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "70e9570937725f6fa54903666f0fa3053c6d17ff8951694a4521bd19a393cf8c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "10913"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c25aac7ee1c0284e55e19aaaadda08031914473419137ff6072d25dac6a86209"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "87288be082616ee732985e208c561a06ebc189ddf01c36bda78fd5ba6ef4376b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1596"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/policy-check.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "664b8d24b04f411b7d20fa493ccafca8dcbfb1bf015af166fe425706a40bb6c0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "630"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/policy-check.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0f99f95d13972f35c2c542e5cb4393a6a83af1773dd5393128a003a597e5d53b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2307"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/policy-check.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6320178cec9a9650460e98765d50662752839cfcaf637f1a3266b6416bc0c5a2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1464"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/vendor.myndhyve.ads-policy@1.0.1",
+      "dependsOn": []
+    }
+  ]
+}

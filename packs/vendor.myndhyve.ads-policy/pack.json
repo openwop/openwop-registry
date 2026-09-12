@@ -35,5 +35,6 @@
       "inputSchemaRef": "schemas/policy-check.input.json",
       "outputSchemaRef": "schemas/policy-check.output.json"
     }
-  ]
+  ],
+  "kind": "node"
 }

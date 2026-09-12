@@ -1,0 +1,169 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.market-intel-crew@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.market-intel-crew",
+      "version": "1.0.1",
+      "description": "MyndHyve Market Intelligence research-director crew. Wraps the 9 vendor.myndhyve.market-intel-* node typeIds into a research-director agent persona that orchestrates the VoC → ad-angles pipeline from a single chat-driven dispatch. Vendor showcase agent pack.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/packs/vendor.myndhyve.market-intel-crew"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a57deb91fa6a5e148b2e3f6096b245a89cc014132b21d77a7689139ca4ec4d53"
+        }
+      ],
+      "purl": "pkg:openwop/vendor.myndhyve.market-intel-crew@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "aebfa6a0b1b3a84bb4b6af7d2fe80553e031632259ff72a51c75834c3635ff9c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "415"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e631afff9c1e9d0116e2a75875b660bf8c03aa8d56df878edcb5178041a0a989"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1859"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ee38f220cc892d7e831741860ee1a66df799b0320f008b0bdb438fc3c4972628"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "136fe3b7e2101926d148ce6a5db6c9df80ec40825770dce98bf8bd70d6121c38"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2187"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/research-director.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3c8d9b20fec8fd4f46650c5d1f61aadcc094860d4f4df2da4425d22828965353"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3347"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/research-director.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3299a4d34ead5864c6870e844e6ec246476e3b2d9c7e1ae1079f3ae47f9295a0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1980"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/research-director.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "15e96ba0a44bb2fb11d070e0d5abc6f1da0436c4c43f8635bc0af8d750934879"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "877"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/vendor.myndhyve.market-intel-crew@1.0.1",
+      "dependsOn": [
+        "host:agentRuntime",
+        "host:agents",
+        "host:aiProviders"
+      ]
+    }
+  ]
+}

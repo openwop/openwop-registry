@@ -42,5 +42,6 @@
       "inputSchemaRef": "schemas/opportunity-scoring.input.json",
       "outputSchemaRef": "schemas/opportunity-scoring.output.json"
     }
-  ]
+  ],
+  "kind": "node"
 }

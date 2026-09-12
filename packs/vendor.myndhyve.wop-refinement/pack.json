@@ -41,5 +41,6 @@
       "inputSchemaRef": "schemas/feature-refine.input.json",
       "outputSchemaRef": "schemas/feature-refine.output.json"
     }
-  ]
+  ],
+  "kind": "node"
 }

@@ -41,5 +41,6 @@
       "inputSchemaRef": "schemas/voc-extraction.input.json",
       "outputSchemaRef": "schemas/voc-extraction.output.json"
     }
-  ]
+  ],
+  "kind": "node"
 }

@@ -1,0 +1,183 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.market-intel-opportunity-scoring@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.market-intel-opportunity-scoring",
+      "version": "1.0.1",
+      "description": "MyndHyve market-intel.opportunity-scoring — score and rank communities AND messaging angles on a 5-dimension scale (volume / intensity / commercialIntent / clarity / uniqueness, weighted total) given a VoC corpus + community metadata. Composable primitive slotting between voc-extraction (aggregator) and ad-angles (downstream). Source-side this prompt is used inside the market-intel.research orchestrator; published here as a standalone typeId so workflow authors can compose it directly. Fourth marketIntel pack of the Stage 5 cohort.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://myndhyve.ai/packs/market-intel-opportunity-scoring"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "630d8c6baf103e8bfc599527fd858b7769bf67842a4742e625f6b93d5739e2e7"
+        }
+      ],
+      "purl": "pkg:openwop/vendor.myndhyve.market-intel-opportunity-scoring@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "eca911d6a0261ab56024109d5a3b361499e3609147d5e77e2cfc9443d0fcf865"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "4711"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "index.mjs",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c9a7b0a875dad52ce0314efa2521afe5280ed1172397e88ab3315308f95ba542"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "16816"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "18f8b98271f249075bcdeef19206c9ca8355269355eaf50e2fbed4eb0df844bd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "512b6d6c3e7cbc74a74d0a25ce0cbdcd6de81ce2c3bf3cd50beb1d7c4f50d595"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2082"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/opportunity-scoring.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b485d3e48c91c1a85694879dfbc4b81e81203ae93fec9af357682d9c9278f3f6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "672"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/opportunity-scoring.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6df0961df1f9709fc81fb968ac6114040dda585bb9a4be8611ff7c5f92e25976"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3352"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/opportunity-scoring.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7fc84c59dec9a398164e1f878be57027ca67da5ad34ae96a75d711bf53438921"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3916"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/vendor.myndhyve.market-intel-opportunity-scoring@1.0.1",
+      "dependsOn": [
+        "host:aiProviders"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "vendor.myndhyve.ads-publish-tiktok",
+  "kind": "node",
+  "description": "MyndHyve ads.publish.tiktok — publish an ad to TikTok Marketing API v1.3. Third + final platform-publish pack of the Stage 5 cohort. Single OAuth secret (Access-Token header, not Bearer); TikTok envelope { code, message, data } where code !== 0 means business error even on HTTP 200; optional image upload by URL before ad creation. 3-step pipeline (campaign → adgroup → ad; no separate budget). No rollback per TikTok API semantics (no hard-delete via this surface); partialState surfaced for manual cleanup.",
+  "author": "MyndHyve",
+  "license": "Apache-2.0",
+  "homepage": "https://myndhyve.ai/packs/ads-publish-tiktok",
+  "repository": "https://github.com/openwop/openwop",
+  "tags": [],
+  "typeIds": [
+    "ads.publish.tiktok"
+  ],
+  "nodeCount": 1,
+  "agentCount": 0,
+  "versions": [
+    {
+      "version": "1.0.1",
+      "manifestUrl": "/v2/packs/vendor.myndhyve.ads-publish-tiktok/-/1.0.1.json",
+      "tarballUrl": "/v2/packs/vendor.myndhyve.ads-publish-tiktok/-/1.0.1.tgz",
+      "signatureUrl": "/v2/packs/vendor.myndhyve.ads-publish-tiktok/-/1.0.1.sig",
+      "sbomUrl": "/v2/packs/vendor.myndhyve.ads-publish-tiktok/-/1.0.1.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "myndhyve-internal-1",
+      "integrity": "sha256-YqDdl4HTyUPEqZXSUsm5x+2C/E35bz2/IptFZtAJ+4I=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.1",
+  "deprecated": false
+}

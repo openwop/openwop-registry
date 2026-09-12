@@ -37,5 +37,6 @@
       "inputSchemaRef": "schemas/platform-specs.input.json",
       "outputSchemaRef": "schemas/platform-specs.output.json"
     }
-  ]
+  ],
+  "kind": "node"
 }

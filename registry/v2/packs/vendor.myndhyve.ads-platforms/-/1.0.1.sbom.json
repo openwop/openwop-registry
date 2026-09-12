@@ -1,0 +1,181 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-platforms@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-platforms",
+      "version": "1.0.1",
+      "description": "MyndHyve ads.platform.specs — pure-data executor exposing the creative specs for 9 ad platforms (amazon, google, linkedin, meta, pinterest, reddit, snapchat, tiktok, x) across their placements. ~1500 LOC of platform spec data (aspect ratios, text limits, file sizes, format support, CTA presets, safe zones, caption + audio guidance) inlined verbatim from src/canvas-types/campaign-studio/ads-studio/platforms/. No host capabilities required.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://myndhyve.ai/packs/ads-platforms"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fdd91e847f015ae0f4679b8f2ee119c9f342fd99810f757287d02376a82ffa57"
+        }
+      ],
+      "purl": "pkg:openwop/vendor.myndhyve.ads-platforms@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "916cc4b43172077d82f08288b27c18c81c38815916bcaeea4bc0376e029d8673"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2352"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "index.mjs",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d3868f84676be29b9e41f7b32256617a2fae23a6ad167ad0fe20706904aa9484"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "43526"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3653fda9e2c207216e6525b1d58fde1fccf0381ac172c4790f119bf77f2ac41a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3cc084aaf5ae1eba9c0995f564043173ef3f57ced0a91ddbd44f681d8db7dd5c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1710"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/platform-specs.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8fe4ab43d7ee8dfe7dcc0b20e35255672e89f1f07571b9317789e1798dd82c31"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "373"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/platform-specs.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2d6064affa1a45d5ca6b5660664a0ff1307689f5ea11cea3e3c9133076f87202"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1353"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/platform-specs.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cdedf05616ce77d82cb0d504417a13665b7acb509cbead8090003f872752db68"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1957"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/vendor.myndhyve.ads-platforms@1.0.1",
+      "dependsOn": []
+    }
+  ]
+}

@@ -56,5 +56,6 @@
       "inputSchemaRef": "schemas/condition.input.json",
       "outputSchemaRef": "schemas/condition.output.json"
     }
-  ]
+  ],
+  "kind": "node"
 }

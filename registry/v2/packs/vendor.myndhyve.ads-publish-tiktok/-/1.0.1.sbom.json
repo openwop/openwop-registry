@@ -1,0 +1,183 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-publish-tiktok@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-publish-tiktok",
+      "version": "1.0.1",
+      "description": "MyndHyve ads.publish.tiktok — publish an ad to TikTok Marketing API v1.3. Third + final platform-publish pack of the Stage 5 cohort. Single OAuth secret (Access-Token header, not Bearer); TikTok envelope { code, message, data } where code !== 0 means business error even on HTTP 200; optional image upload by URL before ad creation. 3-step pipeline (campaign → adgroup → ad; no separate budget). No rollback per TikTok API semantics (no hard-delete via this surface); partialState surfaced for manual cleanup.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://myndhyve.ai/packs/ads-publish-tiktok"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "62a0dd9781d3c943c4a995d252c9b9c7ed82fc4df96f3dbf229b4566d009fb82"
+        }
+      ],
+      "purl": "pkg:openwop/vendor.myndhyve.ads-publish-tiktok@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7e3f84761407d4632ea8b14be411bf55b811695a1d3eb7848f152f44596b74c1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "6387"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "index.mjs",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "37e5586171452e63f4e162f464ec30dda9edae5dc33f922aea7fd95ada89d631"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "17244"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ddae011089afad3a15b53f55d1bc2a52eacf3fe16e6406d33bce17d11ad23543"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "30ba43351d33e2cd193c66e4f0587620e47b0e6756b78ebfe0396721ec5802a5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2177"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/publish-tiktok.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8ca8a4f5f19df9033b14687f1eeb6878e421971e44e4a8459130a6258b70ada3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "372"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/publish-tiktok.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ae463fc505e5eb069ce3a03fb8064dc220950e8968ba827c7baf52ef5a89be76"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "4038"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/publish-tiktok.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e2749594618c3459f3554012389c81a2b868ae20385ec2d548e0f1ffbfc34314"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "982"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/vendor.myndhyve.ads-publish-tiktok@1.0.1",
+      "dependsOn": [
+        "host:secrets"
+      ]
+    }
+  ]
+}

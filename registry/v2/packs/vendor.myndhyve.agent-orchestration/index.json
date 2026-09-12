@@ -1,0 +1,42 @@
+{
+  "name": "vendor.myndhyve.agent-orchestration",
+  "kind": "node",
+  "description": "MyndHyve agent-orchestration pack. Six nodes that operate on protocol primitives — spawn, delegate-smart, consensus-vote, message-send, skill-invoke, swarm-execute. Routes through the host's agent runtime (ctx.agentRuntime.*). Inherits suspend mechanics for low-confidence escalation.",
+  "author": "MyndHyve",
+  "license": "Apache-2.0",
+  "homepage": "https://myndhyve.ai/packs/agent-orchestration",
+  "repository": "https://github.com/openwop/openwop",
+  "tags": [],
+  "typeIds": [
+    "agent.spawn",
+    "agent.delegate.smart",
+    "agent.consensus.vote",
+    "agent.message.send",
+    "agent.skill.invoke",
+    "agent.swarm.execute",
+    "coordination.vote",
+    "coordination.consensus",
+    "coordination.compete",
+    "coordination.map-reduce",
+    "coordination.delegate",
+    "coordination.round-robin"
+  ],
+  "nodeCount": 12,
+  "agentCount": 0,
+  "versions": [
+    {
+      "version": "1.0.1",
+      "manifestUrl": "/v2/packs/vendor.myndhyve.agent-orchestration/-/1.0.1.json",
+      "tarballUrl": "/v2/packs/vendor.myndhyve.agent-orchestration/-/1.0.1.tgz",
+      "signatureUrl": "/v2/packs/vendor.myndhyve.agent-orchestration/-/1.0.1.sig",
+      "sbomUrl": "/v2/packs/vendor.myndhyve.agent-orchestration/-/1.0.1.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "myndhyve-internal-1",
+      "integrity": "sha256-M92MjOtIA6oTp3TySCRqBSqQbW8K5n28rEkuXJAbNMg=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.1",
+  "deprecated": false
+}

@@ -1,7 +1,7 @@
 {
   "registryVersion": "1.0.0",
   "generatedAt": "2026-05-10T00:00:00Z",
-  "packCount": 116,
+  "packCount": 155,
   "packs": [
     {
       "name": "core.openwop.a2a",
@@ -2015,6 +2015,661 @@
         "openwop-app.workflow-author"
       ],
       "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.ads-copy-generate",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve ads.copy.generate — AI-powered multi-variant ad copy generation with per-placement adaptation (truncation to caller-supplied text limits). Routes the AI call through ctx.callAI; replaces the source PlatformSpecRegistry read with caller-supplied inputs.placementTextLimits (resolve upstream from vendor.myndhyve.ads-platforms OR host.adPlatformSpecs).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "ads.copy.generate"
+      ],
+      "nodeCount": 1,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.ads-creative-validate",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve ads.creative.validate — full compliance scanner combining built-in policy text rules, placement text-length checks, AND asset-format checks (image/video dimensions, file sizes, durations). Caller supplies placement spec data via inputs (resolve upstream from vendor.myndhyve.ads-platforms OR host.adPlatformSpecs).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "ads.creative.validate"
+      ],
+      "nodeCount": 1,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.ads-crew",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve Ads Studio creative-director crew. Wraps the 14 vendor.myndhyve.ads-* node typeIds (brief → variants → copy → image → video → validate → export → publish) into a single creative-director agent persona. Vendor showcase agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "vendor.myndhyve.ads-crew.creative-director"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.ads-export",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve ads.export.pack — pure-logic export pack builder. Bundles copy variants + creative assets + tracking links into a structured AdExportPack record (JSON-serializable). Lifted from src/canvas-types/campaign-studio/ads-studio/export/AdExportPackService.ts. No host capabilities required; deterministic.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "ads.export.pack"
+      ],
+      "nodeCount": 1,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.ads-image-generate",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve ads.image.generate — generate ad creative images via the host's ctx.callImageGenerator (host.aiProviders.imageGeneration sub-capability from spec PR #48). Batches N prompts through one host call each, computes per-placement dimensions from caller-supplied placementSpec, applies platform/style/brand-color prompt enhancement, and aggregates safety-filter stats. First consumer of the new sub-capability.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "ads.image.generate"
+      ],
+      "nodeCount": 1,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.ads-metrics-import",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve ads.metrics.import — pure-logic aggregation of ad metric snapshots. Caller supplies snapshots[]; pack filters by platformAdIds + optional platform/dateRange, validates each entry, and computes weighted aggregations (overallCtr / overallCpc / overallRoas / overallConversionRate + per-platform breakdown). Mirrors source AdMetricsService.getAggregatedMetrics math. No host capabilities required.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "ads.metrics.import"
+      ],
+      "nodeCount": 1,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.ads-platforms",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve ads.platform.specs — pure-data executor exposing the creative specs for 9 ad platforms (amazon, google, linkedin, meta, pinterest, reddit, snapchat, tiktok, x) across their placements. ~1500 LOC of platform spec data (aspect ratios, text limits, file sizes, format support, CTA presets, safe zones, caption + audio guidance) inlined verbatim from src/canvas-types/campaign-studio/ads-studio/platforms/. No host capabilities required.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "ads.platform.specs"
+      ],
+      "nodeCount": 1,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.ads-policy",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve ads.policy.check — built-in policy text-rule scanner. Detects claims (guarantees, income, superlatives), trademark mentions, prohibited content (before/after, deceptive urgency), discriminatory targeting. Caller-supplied placement text-limits + trust-guardrail results for fuller coverage; standalone for text-rule-only checks.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "ads.policy.check"
+      ],
+      "nodeCount": 1,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.ads-publish-google",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve ads.publish.google — publish an ad to Google Ads API v18 (Search + Display). Symmetric companion to ads-publish-meta. Resolves 2 secrets (OAuth + developer-token) via ctx.secrets.resolve, then runs the 4-step publish pipeline (budget → campaign → ad-group → ad) with best-effort REMOVE-rollback. Supports 6 bidding strategies + 6 channel types + responsive_search & responsive_display ad formats.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "ads.publish.google"
+      ],
+      "nodeCount": 1,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.ads-publish-meta",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve ads.publish.meta — publish an ad to Meta Marketing API v21.0 (Facebook/Instagram). First consumer of the secrets.resolveInPack sub-capability (spec PR #52). Resolves OAuth token via ctx.secrets.resolve, then runs the 4-step publish pipeline (creative → campaign → ad set → ad) with best-effort rollback on failure. Validates all 6 Meta enums (objective, status, bidStrategy, billingEvent, targeting flexible-spec, placements) pre-flight. Maps Meta API errors to retryable/non-retryable per spec failure-mode glossary.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "ads.publish.meta"
+      ],
+      "nodeCount": 1,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.ads-publish-tiktok",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve ads.publish.tiktok — publish an ad to TikTok Marketing API v1.3. Third + final platform-publish pack of the Stage 5 cohort. Single OAuth secret (Access-Token header, not Bearer); TikTok envelope { code, message, data } where code !== 0 means business error even on HTTP 200; optional image upload by URL before ad creation. 3-step pipeline (campaign → adgroup → ad; no separate budget). No rollback per TikTok API semantics (no hard-delete via this surface); partialState surfaced for manual cleanup.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "ads.publish.tiktok"
+      ],
+      "nodeCount": 1,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.ads-studio-core",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve Ads Studio core — four pure-logic executors lifted from src/canvas-types/campaign-studio/nodes/adsStudioPack/. ads.brief.build (CreativeBriefBuilder), ads.variant.plan (VariantPlanService), ads.video.qa (VideoQAService), ads.winner.synthesize (WinnerSynthesisService). All four executors are deterministic — no host capabilities required beyond the core NodeContext. Marks the Phase A pilot of the canvas-type executor migration per openwop/openwop#11.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "ads.brief.build",
+        "ads.variant.plan",
+        "ads.video.qa",
+        "ads.winner.synthesize"
+      ],
+      "nodeCount": 4,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.ads-tools",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve Ads Studio tools — 2 pure-logic executors (ads.brief.extract, ads.tracking.link) lifted from src/canvas-types/campaign-studio/ads-studio/. Both are deterministic — no AI calls, no host capabilities. brief.extract derives an AdBrief from caller-supplied page sections; tracking.link builds UTM-tagged per-platform URLs with click-ID macros.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "ads.brief.extract",
+        "ads.tracking.link"
+      ],
+      "nodeCount": 2,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.ads-video-generate",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve ads.video.generate — generate ad creative videos via the host's ctx.callVideoGenerator (aiProviders.videoGeneration sub-capability from spec PR #53). Symmetric companion to ads-image-generate but adapted for video (single video per call, host hides async polling internally, typical 30-120s latency). Caller-supplied placementSpec.videoSpec replaces source's PlatformSpecRegistry lookup.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "ads.video.generate"
+      ],
+      "nodeCount": 1,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.agent-orchestration",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve agent-orchestration pack. Six nodes that operate on protocol primitives — spawn, delegate-smart, consensus-vote, message-send, skill-invoke, swarm-execute. Routes through the host's agent runtime (ctx.agentRuntime.*). Inherits suspend mechanics for low-confidence escalation.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "agent.spawn",
+        "agent.delegate.smart",
+        "agent.consensus.vote",
+        "agent.message.send",
+        "agent.skill.invoke",
+        "agent.swarm.execute",
+        "coordination.vote",
+        "coordination.consensus",
+        "coordination.compete",
+        "coordination.map-reduce",
+        "coordination.delegate",
+        "coordination.round-robin"
+      ],
+      "nodeCount": 12,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.ai",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve envelope-protocol AI nodes. Distinct from core.openwop.ai (which ships provider-agnostic chat-completion + structured-output + embeddings) — this pack ships MyndHyve-specific nodes that work with typed envelopes (`prd.create`, `theme.create`, etc.) emitted into the workflow's envelope stream, and prompts resolved from MyndHyve's prompt library by ID.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.ai.generateFromPrompt",
+        "core.ai.awaitEnvelope",
+        "core.ai.callPrompt"
+      ],
+      "nodeCount": 3,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.brand",
+      "kind": "node",
+      "latestVersion": "1.1.1",
+      "description": "MyndHyve brand-workflow pack. 14 nodes — 8 theme (analyze/discovery/generate/implement/publish/review/templates/validate) + 6 persona (discover/generate/keywordStrategy/publish/review/validate). Each is an AI-driven envelope-emitting node anchored on the brand canvas type. Routes through ctx.brand.* + ctx.aiEnvelope.generate.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "brand.theme.analyze",
+        "brand.theme.discovery",
+        "brand.theme.generate",
+        "brand.theme.implement",
+        "brand.theme.publish",
+        "brand.theme.review",
+        "brand.theme.templates",
+        "brand.theme.validate",
+        "brand.persona.discover",
+        "brand.persona.generate",
+        "brand.persona.keywordStrategy",
+        "brand.persona.publish",
+        "brand.persona.review",
+        "brand.persona.validate"
+      ],
+      "nodeCount": 14,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.campaign-sequence",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve campaign-sequence step executors — three pure-control nodes (wait, tag, condition) lifted from src/canvas-types/campaign-studio/sequences/sequenceStepModules.ts. Self-contained: only ctx.inputs + ctx.log; no host capabilities required beyond core NodeContext. The integration siblings (email, sms, webhook) ship in a follow-up pack once openwop NodeContext extensions for host.email / host.sms / host.http land.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "campaign.sequence.wait",
+        "campaign.sequence.tag",
+        "campaign.sequence.condition"
+      ],
+      "nodeCount": 3,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.campaign-sequence-integration",
+      "kind": "node",
+      "latestVersion": "1.0.2",
+      "description": "MyndHyve campaign-sequence integration nodes — email, sms, webhook. Companion pack to vendor.myndhyve.campaign-sequence (which carries the 3 pure-control nodes). Declares `host.campaignMessaging` peerDependency for the email + sms surface (matching MyndHyve's EmailSMSAdapterService shape); webhook is self-contained via Node 20 fetch + bundled HMAC signature.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "campaign.sequence.email",
+        "campaign.sequence.sms",
+        "campaign.sequence.webhook"
+      ],
+      "nodeCount": 3,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.canvas",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "First vendor-namespace pack. Ships MyndHyve canvas-coordination nodes — canvasRead / canvasWrite / canvasCreate / crossCanvasInvoke — preserving the `core.coordination.*` typeIds in the wild (typeId-preserve strategy from the migration plan §4). The pack itself is MyndHyve-internal: hosts that don't advertise `host.canvas: supported` cannot register it.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.coordination.canvasRead",
+        "core.coordination.canvasWrite",
+        "core.coordination.canvasCreate",
+        "core.coordination.crossCanvasInvoke"
+      ],
+      "nodeCount": 4,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.chat",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve chat-bridge nodes — sendMessage, progressCard, updateCard, phaseInputGate, approvalGate, clarificationGate. Routes through the host's chat adapter (ctx.chat.*) + ctx.suspend for HITL gates. Preserves the core.chat.* typeIds in the wild.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.chat.sendMessage",
+        "core.chat.progressCard",
+        "core.chat.updateCard",
+        "core.chat.phaseInputGate",
+        "core.chat.approvalGate",
+        "core.chat.clarificationGate"
+      ],
+      "nodeCount": 6,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.data-integration",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve data-integration pack. 7 nodes for fetching from typed data sources (REST / GraphQL / A2A / MCP), transforming results, applying bindings to UI templates, and managing run-scoped variables. Routes through ctx.dataIntegration.* host adapter.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "data.source.rest",
+        "data.source.graphql",
+        "data.source.a2a",
+        "data.source.mcp",
+        "data.transform",
+        "data.variable.compute",
+        "data.variable.fetch",
+        "data.binding.apply"
+      ],
+      "nodeCount": 8,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.entities",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve entities + validation + asset-decision + messaging primitives. 5 nodes covering project creation, cross-stage validation (deterministic, no LLM), workspace asset decision gates (brand / persona / KB), and chat send/reply via the messaging connector layer.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "core.entities.projectCreate",
+        "core.validation.crossStageCheck",
+        "core.workflow.assetDecisionGate",
+        "messaging.chatSend",
+        "messaging.chatReply"
+      ],
+      "nodeCount": 5,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.kanban",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve kanban-coordination pack. 7 nodes covering board lifecycle, task management (assign + AI-powered decompose), timeline planning, automation rules, and resource monitoring. Routes through ctx.kanban.* host adapter.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "kanban.board.create",
+        "kanban.board.review",
+        "kanban.task.assign",
+        "kanban.task.decompose",
+        "kanban.timeline.plan",
+        "kanban.workflow.automate",
+        "kanban.resource.monitor"
+      ],
+      "nodeCount": 7,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.knowledge-tools",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve knowledge-tools — first reference consumer of the v1 host.knowledge surface. Two typeIds: (1) knowledge.retrieve — thin pass-through over ctx.knowledge.retrieve with optional score-floor filtering; (2) knowledge.augment-prompt — composition primitive that retrieves + renders a Sources block + builds an augmented user message + emits a citation list. Host advertises host.knowledge: supported per spec/v1/host-capabilities.md §host.knowledge.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "knowledge.retrieve",
+        "knowledge.augment-prompt"
+      ],
+      "nodeCount": 2,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.landing-page",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve landing-page executors — 7 nodes (landing.{content.generate, structure.create, variants.generate, theme.apply, tracking.setup, page.validate, page.publish}). Lifted from src/canvas-types/campaign-studio/nodes/pageBuilder/. Two AI-call sites (content.generate, variants.generate) route through ctx.callAI; the original useDesignSystemStore + useIntegrationStore reads are replaced with input-passthrough — the workflow author resolves design tokens + tracking integrations upstream and feeds them into the executor.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "landing.content.generate",
+        "landing.structure.create",
+        "landing.variants.generate",
+        "landing.theme.apply",
+        "landing.tracking.setup",
+        "landing.page.validate",
+        "landing.page.publish"
+      ],
+      "nodeCount": 7,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.launch-studio",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve Launch Studio pack. 2 nodes for the LS backbone: link a project to a step + propagate inherited artifact context, and dispatch ready WOP stack items (todo → doing) for a step's canvas type.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "launch-studio.linkStep",
+        "launch-studio.dispatchStackItems"
+      ],
+      "nodeCount": 2,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.market-intel-ad-angles",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve market-intel.ad-angles — generates 5-10 ad-angle briefs from VoC research + ICP/product context via one AI call. Each brief carries angleName, segment, corePain, promise, mechanism, proof requirements, objections to handle, 3-5 hook variants, recommended CTA, source quotes, and a 5-dimension score (volume / intensity / commercialIntent / clarity / uniqueness + weighted total). Briefs are sorted by total score descending. Second marketIntel pack of the Stage 5 cohort.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "market-intel.ad-angles"
+      ],
+      "nodeCount": 1,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.market-intel-audience-targeting",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve market-intel.audience-targeting — generate per-platform paid-media targeting packs (interests + keywords + community placements + audience definitions) for 6 ad platforms (meta / google / linkedin / tiktok / reddit / x) from market-research data (communities + angles). One AI call. Outputs cross-platform insights + testing sequence (phased) + budget allocation. Seventh marketIntel pack of the Stage 5 cohort.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "market-intel.audience-targeting"
+      ],
+      "nodeCount": 1,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.market-intel-community-rank",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve market-intel.community-rank — rank candidate communities (from a discovery step or connector) by VoC research relevance. Per-community: relevanceScore (0..1) + signalQuality (high/medium/low) + ICP problem alignment + expected intent stages + search strategy + risk factors. Distinct from market-intel.ai-discovery (which generates NEW community suggestions): this pack ranks EXISTING candidates. Ninth marketIntel pack of the Stage 5 cohort.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "market-intel.community-rank"
+      ],
+      "nodeCount": 1,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.market-intel-content-extraction",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve market-intel.content-extraction — extract structured content from raw HTML via one ctx.callAI. Outputs title, cleaned content, author, publishedAt, contentType, engagement metrics, tags, summary, and relevantQuotes. Sits between host.webResearch.fetchBatch and market-intel.voc-extraction in the canonical pipeline. Fifth marketIntel pack of the Stage 5 cohort.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "market-intel.content-extraction"
+      ],
+      "nodeCount": 1,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.market-intel-crew",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve Market Intelligence research-director crew. Wraps the 9 vendor.myndhyve.market-intel-* node typeIds into a research-director agent persona that orchestrates the VoC → ad-angles pipeline from a single chat-driven dispatch. Vendor showcase agent pack.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "vendor.myndhyve.market-intel-crew.research-director"
+      ],
+      "nodeCount": 0,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.market-intel-discovery",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve market-intel.ai-discovery — AI-powered source-discovery via one ctx.callAI. Given a topic + optional industry/audience/platforms, returns relevant URLs, communities (with platform / relevanceScore / estimatedPostCount), and search queries. Replaces the manual URL-input step of the marketIntel research pipeline. Third marketIntel pack of the Stage 5 cohort.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "market-intel.ai-discovery"
+      ],
+      "nodeCount": 1,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.market-intel-opportunity-scoring",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve market-intel.opportunity-scoring — score and rank communities AND messaging angles on a 5-dimension scale (volume / intensity / commercialIntent / clarity / uniqueness, weighted total) given a VoC corpus + community metadata. Composable primitive slotting between voc-extraction (aggregator) and ad-angles (downstream). Source-side this prompt is used inside the market-intel.research orchestrator; published here as a standalone typeId so workflow authors can compose it directly. Fourth marketIntel pack of the Stage 5 cohort.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "market-intel.opportunity-scoring"
+      ],
+      "nodeCount": 1,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.market-intel-query-builder",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve market-intel.query-builder — generate intent-mapped search queries (4-8 query groups × 4 intent stages, 2-4 variations each, synonym maps, platform hints) + per-competitor query packs (comparison/switching/alternative) + topic clusters from ICP + product context. Pairs with ai-discovery: query-builder produces 'what to search for', ai-discovery produces 'where to search'. Eighth marketIntel pack of the Stage 5 cohort.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "market-intel.query-builder"
+      ],
+      "nodeCount": 1,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.market-intel-thread-triage",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve market-intel.thread-triage — cost-aware pre-filter for VoC extraction. Triages candidate threads into priority tiers (critical/high/medium/low/skip), predicts VoC value + intent stages + tag types, estimates extraction tokens per thread, and builds an extraction queue within token budget. Sits between ai-discovery and voc-extraction in the canonical pipeline. Sixth marketIntel pack of the Stage 5 cohort.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "market-intel.thread-triage"
+      ],
+      "nodeCount": 1,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.market-intel-voc",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve market-intel.voc-extraction — extract Voice of Customer records (verbatim quotes + tagType + intentStage + confidence + rationale) from a single piece of content via a single AI call. First marketIntel pack of the Stage 5 cohort. Schema validation strips invalid records with per-record warnings; output preserves source structure (records + summary + warnings).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "market-intel.voc-extraction"
+      ],
+      "nodeCount": 1,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.web-research",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve web-research pack — 4 nodes for the search → fetch → research → synthesize pipeline. webSearch + fetchUrls + researchWeb route through the host's webResearch adapter (search API + scraping policy + rate-limit + cache layer); synthesize composes results into a typed envelope via the AI envelope surface.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "data.source.webSearch",
+        "data.transform.fetchUrls",
+        "ai.research.web",
+        "ai.process.synthesize"
+      ],
+      "nodeCount": 4,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "vendor.myndhyve.wop-refinement",
+      "kind": "node",
+      "latestVersion": "1.0.1",
+      "description": "MyndHyve WOP feature-refinement node — wop.feature.refine. Driven by a `feature.breakdown` LLM envelope; decides whether a stack item is actionable as a node, executable as a chain, must be split into sub-items, needs clarification, or should be blocked. Enforces hard `maxDepth` + `maxGeneratedItems` constraints regardless of LLM proposal. Used by both runner-driven dispatch (StackAutoplayRunner) and chain-driven sub-workflows.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "wop.feature.refine"
+      ],
+      "nodeCount": 1,
       "agentCount": 0,
       "deprecated": false,
       "yanked": false

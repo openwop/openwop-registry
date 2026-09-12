@@ -19,7 +19,7 @@
     "openwop": ">=1.0.0 <3.0.0"
   },
   "peerDependencies": {
-    "host.campaignMessaging": "supported"
+    "messaging": "supported"
   },
   "runtime": {
     "language": "javascript",
@@ -75,5 +75,13 @@
       "inputSchemaRef": "schemas/webhook.input.json",
       "outputSchemaRef": "schemas/webhook.output.json"
     }
-  ]
+  ],
+  "kind": "node",
+  "peerDependenciesMeta": {
+    "messaging": {
+      "facets": [
+        "campaign"
+      ]
+    }
+  }
 }

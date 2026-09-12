@@ -18,8 +18,8 @@
     "openwop": ">=1.0.0 <3.0.0"
   },
   "peerDependencies": {
-    "host.agentRuntime": "supported",
-    "host.coordination": "supported"
+    "agentRuntime": "supported",
+    "coordination": "supported"
   },
   "nodes": [
     {
@@ -202,5 +202,6 @@
     "format": "esm",
     "entry": "./index.mjs",
     "minRuntimeVersion": "node>=20"
-  }
+  },
+  "kind": "node"
 }

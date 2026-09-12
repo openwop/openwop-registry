@@ -20,8 +20,8 @@
   },
   "peerDependencies": {
     "aiProviders": "supported",
-    "host.agentRuntime": "supported",
-    "openwop.agents.memoryBackends": ">=longTerm"
+    "agentRuntime": "supported",
+    "agents": ">=longTerm"
   },
   "agents": [
     {
@@ -59,5 +59,13 @@
   "runtime": {
     "language": "remote",
     "entry": "pack.json"
+  },
+  "kind": "node",
+  "peerDependenciesMeta": {
+    "agents": {
+      "facets": [
+        "memoryBackends"
+      ]
+    }
   }
 }

@@ -47,5 +47,6 @@
       "inputSchemaRef": "schemas/tracking-link.input.json",
       "outputSchemaRef": "schemas/tracking-link.output.json"
     }
-  ]
+  ],
+  "kind": "node"
 }

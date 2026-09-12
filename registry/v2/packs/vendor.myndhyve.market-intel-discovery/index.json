@@ -1,0 +1,31 @@
+{
+  "name": "vendor.myndhyve.market-intel-discovery",
+  "kind": "node",
+  "description": "MyndHyve market-intel.ai-discovery — AI-powered source-discovery via one ctx.callAI. Given a topic + optional industry/audience/platforms, returns relevant URLs, communities (with platform / relevanceScore / estimatedPostCount), and search queries. Replaces the manual URL-input step of the marketIntel research pipeline. Third marketIntel pack of the Stage 5 cohort.",
+  "author": "MyndHyve",
+  "license": "Apache-2.0",
+  "homepage": "https://myndhyve.ai/packs/market-intel-discovery",
+  "repository": "https://github.com/openwop/openwop",
+  "tags": [],
+  "typeIds": [
+    "market-intel.ai-discovery"
+  ],
+  "nodeCount": 1,
+  "agentCount": 0,
+  "versions": [
+    {
+      "version": "1.0.1",
+      "manifestUrl": "/v2/packs/vendor.myndhyve.market-intel-discovery/-/1.0.1.json",
+      "tarballUrl": "/v2/packs/vendor.myndhyve.market-intel-discovery/-/1.0.1.tgz",
+      "signatureUrl": "/v2/packs/vendor.myndhyve.market-intel-discovery/-/1.0.1.sig",
+      "sbomUrl": "/v2/packs/vendor.myndhyve.market-intel-discovery/-/1.0.1.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "myndhyve-internal-1",
+      "integrity": "sha256-MuhD8s6im5pzuEzgpnHbwY2HlZqHycsj27B634xaiJ0=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.1",
+  "deprecated": false
+}

@@ -41,5 +41,6 @@
       "inputSchemaRef": "schemas/audience-targeting.input.json",
       "outputSchemaRef": "schemas/audience-targeting.output.json"
     }
-  ]
+  ],
+  "kind": "node"
 }

@@ -1,0 +1,31 @@
+{
+  "name": "vendor.myndhyve.ads-policy",
+  "kind": "node",
+  "description": "MyndHyve ads.policy.check — built-in policy text-rule scanner. Detects claims (guarantees, income, superlatives), trademark mentions, prohibited content (before/after, deceptive urgency), discriminatory targeting. Caller-supplied placement text-limits + trust-guardrail results for fuller coverage; standalone for text-rule-only checks.",
+  "author": "MyndHyve",
+  "license": "Apache-2.0",
+  "homepage": "https://myndhyve.ai/packs/ads-policy",
+  "repository": "https://github.com/openwop/openwop",
+  "tags": [],
+  "typeIds": [
+    "ads.policy.check"
+  ],
+  "nodeCount": 1,
+  "agentCount": 0,
+  "versions": [
+    {
+      "version": "1.0.1",
+      "manifestUrl": "/v2/packs/vendor.myndhyve.ads-policy/-/1.0.1.json",
+      "tarballUrl": "/v2/packs/vendor.myndhyve.ads-policy/-/1.0.1.tgz",
+      "signatureUrl": "/v2/packs/vendor.myndhyve.ads-policy/-/1.0.1.sig",
+      "sbomUrl": "/v2/packs/vendor.myndhyve.ads-policy/-/1.0.1.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "myndhyve-internal-1",
+      "integrity": "sha256-YgVobeAKa+ohSN1YK8o7hQW3EII4JxX1tcX8VQQFRWk=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.1",
+  "deprecated": false
+}

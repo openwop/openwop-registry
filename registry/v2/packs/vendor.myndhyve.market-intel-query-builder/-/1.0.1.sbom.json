@@ -1,0 +1,183 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.market-intel-query-builder@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.market-intel-query-builder",
+      "version": "1.0.1",
+      "description": "MyndHyve market-intel.query-builder — generate intent-mapped search queries (4-8 query groups × 4 intent stages, 2-4 variations each, synonym maps, platform hints) + per-competitor query packs (comparison/switching/alternative) + topic clusters from ICP + product context. Pairs with ai-discovery: query-builder produces 'what to search for', ai-discovery produces 'where to search'. Eighth marketIntel pack of the Stage 5 cohort.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://myndhyve.ai/packs/market-intel-query-builder"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f98e81d7dc5634b95abb9d4712e33bda52ee08ea831529d243193d56b7b5dc55"
+        }
+      ],
+      "purl": "pkg:openwop/vendor.myndhyve.market-intel-query-builder@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "dc569ee3ff8178c28bebc5c895181359128babf96207b8bf72dbd2b14ef2f3e8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "4689"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "index.mjs",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9aafadf945972b704473e88691d39ac604b7f007070004a89ba6bff58ea7d3d0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "14194"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "28c5a03e7faff6547aa3de273109a0c19c65a1c250c84b7fcdbb40de04730a46"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4267854a7cded2e18a899d3414e1d168884f3d6c41a48934790c041fb7407a46"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1894"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/query-builder.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9d10a0fcf539446e45c5b2324fd46a5357c2493d708a998f85cc0c2021b6aedb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "685"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/query-builder.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0429084b028a30b42c993b5f3e2b33cc2500edb945b910a7bc8a0275e40d1bce"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1713"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/query-builder.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "62c11b6dd2e478c8f18e86caddc25b2e9d14f57da12f5bf922507891de61b743"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3886"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/vendor.myndhyve.market-intel-query-builder@1.0.1",
+      "dependsOn": [
+        "host:aiProviders"
+      ]
+    }
+  ]
+}
