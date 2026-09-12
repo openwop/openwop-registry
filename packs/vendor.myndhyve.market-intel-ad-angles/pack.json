@@ -41,5 +41,6 @@
       "inputSchemaRef": "schemas/ad-angles.input.json",
       "outputSchemaRef": "schemas/ad-angles.output.json"
     }
-  ]
+  ],
+  "kind": "node"
 }

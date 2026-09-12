@@ -1,0 +1,183 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-image-generate@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-image-generate",
+      "version": "1.0.1",
+      "description": "MyndHyve ads.image.generate — generate ad creative images via the host's ctx.callImageGenerator (host.aiProviders.imageGeneration sub-capability from spec PR #48). Batches N prompts through one host call each, computes per-placement dimensions from caller-supplied placementSpec, applies platform/style/brand-color prompt enhancement, and aggregates safety-filter stats. First consumer of the new sub-capability.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://myndhyve.ai/packs/ads-image-generate"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5088eb58639ae626aab80e9ae2ebbd9c2c17ba65e6799c45411fafabe83f5a6f"
+        }
+      ],
+      "purl": "pkg:openwop/vendor.myndhyve.ads-image-generate@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3b25f5c503bfcfb750b7e044ab5ebaeeba94e68dc84b019d5e2128544a4bc28e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "6146"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "index.mjs",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "157a8c9aabdc3997a1f63358bd9eff9b80ee75e26a57ace0992fdf5fe2581759"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "9217"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "04e4619decbcbcfa05aae9f9c4ae60a46621c6505e40b673719b1032f59c5c1d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e785f8144d0e3f2b121363fcb93d755ec0f09a2af89c2042a8d8f6aefe6262f9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1816"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/image-generate.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e2c73d499768ab1b02d7c487371c7099719df7534c0fd4d50625ac859b40b00d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "757"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/image-generate.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0044e4823b7b41cc428add42ff034df38bcabd109be3dff08771a92835ab07fb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2662"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/image-generate.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f5e494d8d81795bbcaa9ce349ac44805d5ac6c874d16d3d3668d7bbce88bd3a0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2871"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/vendor.myndhyve.ads-image-generate@1.0.1",
+      "dependsOn": [
+        "host:aiProviders"
+      ]
+    }
+  ]
+}

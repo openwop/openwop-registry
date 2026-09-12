@@ -1,0 +1,36 @@
+{
+  "name": "vendor.myndhyve.chat",
+  "kind": "node",
+  "description": "MyndHyve chat-bridge nodes — sendMessage, progressCard, updateCard, phaseInputGate, approvalGate, clarificationGate. Routes through the host's chat adapter (ctx.chat.*) + ctx.suspend for HITL gates. Preserves the core.chat.* typeIds in the wild.",
+  "author": "MyndHyve",
+  "license": "Apache-2.0",
+  "homepage": "https://myndhyve.ai/packs/chat",
+  "repository": "https://github.com/openwop/openwop",
+  "tags": [],
+  "typeIds": [
+    "core.chat.sendMessage",
+    "core.chat.progressCard",
+    "core.chat.updateCard",
+    "core.chat.phaseInputGate",
+    "core.chat.approvalGate",
+    "core.chat.clarificationGate"
+  ],
+  "nodeCount": 6,
+  "agentCount": 0,
+  "versions": [
+    {
+      "version": "1.0.1",
+      "manifestUrl": "/v2/packs/vendor.myndhyve.chat/-/1.0.1.json",
+      "tarballUrl": "/v2/packs/vendor.myndhyve.chat/-/1.0.1.tgz",
+      "signatureUrl": "/v2/packs/vendor.myndhyve.chat/-/1.0.1.sig",
+      "sbomUrl": "/v2/packs/vendor.myndhyve.chat/-/1.0.1.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "myndhyve-internal-1",
+      "integrity": "sha256-+ArnFu6/CAPXAF0XIfiyXTOz8GKvLTefrINRIeanYzo=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.1",
+  "deprecated": false
+}

@@ -41,5 +41,6 @@
       "inputSchemaRef": "schemas/community-rank.input.json",
       "outputSchemaRef": "schemas/community-rank.output.json"
     }
-  ]
+  ],
+  "kind": "node"
 }

@@ -1980,6 +1980,708 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-copy-generate@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-copy-generate",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.ads-copy-generate/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "2319ea0387f01ecc51913323105107f20f1fef90d2e7b12dbac44b4e52d8d28d"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-creative-validate@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-creative-validate",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.ads-creative-validate/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "602ea61e516a96ee70cf7ff21ec610c7dd2909aa42d640f47ba2b4bbbaa2f818"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-crew@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-crew",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.ads-crew/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "b496a831d0bdb3b6deb561c888ba0d19986c22706bea1b5e3a67d79a33fbec0e"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-export@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-export",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.ads-export/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "097b8fec895f810ddeaa4780d10f4e38af6275a8d062b9dd804e489aad7858a5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-image-generate@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-image-generate",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.ads-image-generate/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "11090fc8c83953dd9a7870e3346e135fed9cebff1934f560fe219ec904c4c89e"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-metrics-import@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-metrics-import",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.ads-metrics-import/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "10bdd4d2b4267623e29ebc2a1efac781698a25aff9888c98432368d9e847e075"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-platforms@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-platforms",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.ads-platforms/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "9e342b34829637ed9a27bb804a7ccd293dfc6fe4e2af9b841fbc465b58f677ac"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-policy@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-policy",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.ads-policy/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "c8c63723364330aea65fec33ef9b6951313e5e1cdfb2ec70387f4566d7c29364"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-publish-google@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-publish-google",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.ads-publish-google/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "d7edf9ec936346bf928bca287f169df6038ed248be61f61eff75600bcf069be7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-publish-meta@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-publish-meta",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.ads-publish-meta/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "88e4b0d2884c38de1733a46318c47578bd5e69ba993364dd017bb9608c836136"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-publish-tiktok@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-publish-tiktok",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.ads-publish-tiktok/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "59ac368628a4a638773187cd7b57a07226c030c934e5d4d2b3b371c3dc8e1751"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-studio-core@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-studio-core",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.ads-studio-core/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "ad29d67eb0985c9f8471e363965799aaaa3d96e5d1c11566f49757739a789cc3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-tools@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-tools",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.ads-tools/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "0bb160594a339d93e3d92166fd48a48719b0616ba347732a89636174d920d44c"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-video-generate@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-video-generate",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.ads-video-generate/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "8a584d12510a37c38e6ad5df10d9382acdce94d8013d39c0d652955141c399ea"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.agent-orchestration@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.agent-orchestration",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.agent-orchestration/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "82601f696fb010de09177f9496382381b072ed72d95ae372c8907c97f46c11e6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ai@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.ai",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.ai/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "d6f7c3adeffbc79816e84735aed986b9aa82ade28f70940b94dd20c14202b17e"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.brand@1.1.1",
+      "type": "library",
+      "name": "vendor.myndhyve.brand",
+      "version": "1.1.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.brand/-/1.1.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "08442353f17cfefeca59a82cc9598924edf4b5108e111bcca4b6dba9d4278d0a"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.campaign-sequence-integration@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.campaign-sequence-integration",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.campaign-sequence-integration/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "5799d27e2ccdc6960f8b227b0376eef730c8a906b0d88960a4b76ea26a5cd06a"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.campaign-sequence@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.campaign-sequence",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.campaign-sequence/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "bedb3d8fbb43dcb8a494dda0a10f6e93f055ef62fb8f2b8e55d162784e585a5b"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.canvas@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.canvas",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.canvas/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "63fab8fbc3b14c7bc493b8891481cd35e345950a2aaa4c3f3024905baae8e489"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.chat@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.chat",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.chat/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "710cdeba2b8c0e5f5771fb3c0c3941935c8a0c8f4a4c7c2fdab84947e239e132"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.data-integration@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.data-integration",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.data-integration/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "0b2c2b223a5835f07bb9d1313bd63f0d4e040a993784dde4bd3888cc6b60221b"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.entities@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.entities",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.entities/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "8349ad24383535ccde82f8dc31c4e60184f1e83b72bbb86de7401dcd1afd59a3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.kanban@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.kanban",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.kanban/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "a7f374d1ba1c9c13e8e53ccaf43984a14f0d907286e5ba1a1aa524993bda9bef"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.knowledge-tools@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.knowledge-tools",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.knowledge-tools/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "a376771fd28cf290c23ec81592f3742cbe48374d0ad98d4d62222b3dbe9d959d"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.landing-page@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.landing-page",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.landing-page/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "e2f9cb40714b975df2f76306a976ce9cca6e68e3f19d8efc458dedb9264b2d3b"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.launch-studio@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.launch-studio",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.launch-studio/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "5428dfefc99327f5f56719a610c9f71782372d27ffac8d3e33267fa234b175b8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.market-intel-ad-angles@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.market-intel-ad-angles",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.market-intel-ad-angles/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "bd40d1615ad890547ffa79befaff49d11c400a7cdc1a8c1ca59e20f75aab8b6f"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.market-intel-audience-targeting@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.market-intel-audience-targeting",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.market-intel-audience-targeting/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "74ed4e8e080bf7af2367853596bb0c6f0923f3dde3e15b8d210e0d4482eeb63a"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.market-intel-community-rank@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.market-intel-community-rank",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.market-intel-community-rank/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "930ebeb7728af9a006f869abd3eaff0056a3136be8fcc39eb8293e4a892af21a"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.market-intel-content-extraction@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.market-intel-content-extraction",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.market-intel-content-extraction/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "cf8436c6917ec740a6b7de6bf588a18b2a409b466ebe957b792dfd3686e3581e"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.market-intel-crew@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.market-intel-crew",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.market-intel-crew/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "f5c32b40d7e719457ed8d91511745222a7532ad39ca36b7afdd5d8178bc0321c"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.market-intel-discovery@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.market-intel-discovery",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.market-intel-discovery/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "5579adaf9103de61831d90c78ad2f29af6cf2b56489cdb7bc4a00191f1b6af13"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.market-intel-opportunity-scoring@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.market-intel-opportunity-scoring",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.market-intel-opportunity-scoring/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "87fcdd15876e780ee754f65a7fee2e153da0e83d015986f95a100220c2f82251"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.market-intel-query-builder@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.market-intel-query-builder",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.market-intel-query-builder/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "9cefe5a94455f60d219d100c064020d86039e8843a1fee3654e11e78c960b542"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.market-intel-thread-triage@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.market-intel-thread-triage",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.market-intel-thread-triage/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "a9bbc85e64b5a28bce235019640f73eb7d6d4b769fca3321a19d0187b08a8568"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.market-intel-voc@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.market-intel-voc",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.market-intel-voc/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "c8c8600939ad693603c7e4c6161b505c0a88572e47a54bbad0c0b6d7074278b1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.web-research@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.web-research",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.web-research/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "f0a8dca3ef1a63f1b557d1ca89483ad531067ae80328aaf5b288bc9541332faa"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.wop-refinement@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.wop-refinement",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.wop-refinement/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "8d6efa3a9a6ad65b20ecbc81f9e195f364a123af652ede0e3f17088d7b79be1f"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/vendor.openwop-app.workflows.cms@1.0.1",
       "type": "library",
       "name": "vendor.openwop-app.workflows.cms",

@@ -19,7 +19,7 @@
     "openwop": ">=1.0.0 <3.0.0"
   },
   "peerDependencies": {
-    "aiProviders.videoGeneration": "supported"
+    "aiProviders": "supported"
   },
   "runtime": {
     "language": "javascript",
@@ -42,5 +42,13 @@
       "inputSchemaRef": "schemas/video-generate.input.json",
       "outputSchemaRef": "schemas/video-generate.output.json"
     }
-  ]
+  ],
+  "kind": "node",
+  "peerDependenciesMeta": {
+    "aiProviders": {
+      "facets": [
+        "videoGeneration"
+      ]
+    }
+  }
 }

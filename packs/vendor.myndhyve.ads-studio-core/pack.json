@@ -69,5 +69,6 @@
       "inputSchemaRef": "schemas/winner-synthesize.input.json",
       "outputSchemaRef": "schemas/winner-synthesize.output.json"
     }
-  ]
+  ],
+  "kind": "node"
 }

@@ -1,0 +1,31 @@
+{
+  "name": "vendor.myndhyve.ads-video-generate",
+  "kind": "node",
+  "description": "MyndHyve ads.video.generate — generate ad creative videos via the host's ctx.callVideoGenerator (aiProviders.videoGeneration sub-capability from spec PR #53). Symmetric companion to ads-image-generate but adapted for video (single video per call, host hides async polling internally, typical 30-120s latency). Caller-supplied placementSpec.videoSpec replaces source's PlatformSpecRegistry lookup.",
+  "author": "MyndHyve",
+  "license": "Apache-2.0",
+  "homepage": "https://myndhyve.ai/packs/ads-video-generate",
+  "repository": "https://github.com/openwop/openwop",
+  "tags": [],
+  "typeIds": [
+    "ads.video.generate"
+  ],
+  "nodeCount": 1,
+  "agentCount": 0,
+  "versions": [
+    {
+      "version": "1.0.1",
+      "manifestUrl": "/v2/packs/vendor.myndhyve.ads-video-generate/-/1.0.1.json",
+      "tarballUrl": "/v2/packs/vendor.myndhyve.ads-video-generate/-/1.0.1.tgz",
+      "signatureUrl": "/v2/packs/vendor.myndhyve.ads-video-generate/-/1.0.1.sig",
+      "sbomUrl": "/v2/packs/vendor.myndhyve.ads-video-generate/-/1.0.1.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "myndhyve-internal-1",
+      "integrity": "sha256-4FuqA1Ld5qIKzlWQB9+PPnWQ0XKjd6378ykoX3SppnU=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.1",
+  "deprecated": false
+}

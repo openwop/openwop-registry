@@ -116,5 +116,6 @@
       "inputSchemaRef": "schemas/page-publish.input.json",
       "outputSchemaRef": "schemas/page-publish.output.json"
     }
-  ]
+  ],
+  "kind": "node"
 }

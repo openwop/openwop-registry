@@ -19,7 +19,7 @@
     "openwop": ">=1.0.0 <3.0.0"
   },
   "peerDependencies": {
-    "aiProviders.imageGeneration": "supported"
+    "aiProviders": "supported"
   },
   "runtime": {
     "language": "javascript",
@@ -42,5 +42,13 @@
       "inputSchemaRef": "schemas/image-generate.input.json",
       "outputSchemaRef": "schemas/image-generate.output.json"
     }
-  ]
+  ],
+  "kind": "node",
+  "peerDependenciesMeta": {
+    "aiProviders": {
+      "facets": [
+        "imageGeneration"
+      ]
+    }
+  }
 }

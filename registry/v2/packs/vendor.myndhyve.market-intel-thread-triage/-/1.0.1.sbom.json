@@ -1,0 +1,183 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.market-intel-thread-triage@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.market-intel-thread-triage",
+      "version": "1.0.1",
+      "description": "MyndHyve market-intel.thread-triage — cost-aware pre-filter for VoC extraction. Triages candidate threads into priority tiers (critical/high/medium/low/skip), predicts VoC value + intent stages + tag types, estimates extraction tokens per thread, and builds an extraction queue within token budget. Sits between ai-discovery and voc-extraction in the canonical pipeline. Sixth marketIntel pack of the Stage 5 cohort.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://myndhyve.ai/packs/market-intel-thread-triage"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "89c160cc8a0131a990d63e3178e64a41e62e15a116f0291e47e38d95461f9c9a"
+        }
+      ],
+      "purl": "pkg:openwop/vendor.myndhyve.market-intel-thread-triage@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7301496d5193b37cfc65b33d621250a721beeb6e752b5511028152c178010a97"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "5013"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "index.mjs",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "79e017c42e7f8e47d310f4b0e8f24314d326e71c4eec3d9b70c4f434e1e53826"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "16141"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e422d7349ce6e7caad3830c152eb9ad04b548bffe9c235d72cc9b517926c08c1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0458926b51237619fc360e34130edd894bd1fc9e1f97bff7b37c2cf49bd65743"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1875"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/thread-triage.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2d5b933c9c382c5d6814c0554686b2edb825a9007050c325c90624ce034b486a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "595"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/thread-triage.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3b1e410b7a9dcd492dd4ab7ab5557800e6193b5e6a41b13698fac4c343610146"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2552"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/thread-triage.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f768a0ac3c668de6da7a4e38768ab91bedc5ef29be85f99b26b7c5b6d4f127ad"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3754"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/vendor.myndhyve.market-intel-thread-triage@1.0.1",
+      "dependsOn": [
+        "host:aiProviders"
+      ]
+    }
+  ]
+}

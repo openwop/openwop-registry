@@ -17,7 +17,7 @@
     "openwop": ">=1.0.0 <3.0.0"
   },
   "peerDependencies": {
-    "host.chat": "supported"
+    "chat": "supported"
   },
   "nodes": [
     {
@@ -114,5 +114,6 @@
     "format": "esm",
     "entry": "./index.mjs",
     "minRuntimeVersion": "node>=20"
-  }
+  },
+  "kind": "node"
 }

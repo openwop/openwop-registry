@@ -44,5 +44,6 @@
       "inputSchemaRef": "schemas/copy-generate.input.json",
       "outputSchemaRef": "schemas/copy-generate.output.json"
     }
-  ]
+  ],
+  "kind": "node"
 }

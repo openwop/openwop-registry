@@ -41,5 +41,6 @@
       "inputSchemaRef": "schemas/content-extraction.input.json",
       "outputSchemaRef": "schemas/content-extraction.output.json"
     }
-  ]
+  ],
+  "kind": "node"
 }

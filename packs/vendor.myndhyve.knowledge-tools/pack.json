@@ -19,7 +19,7 @@
     "openwop": ">=1.0.0 <3.0.0"
   },
   "peerDependencies": {
-    "host.knowledge": "supported"
+    "knowledge": "supported"
   },
   "runtime": {
     "language": "javascript",
@@ -56,5 +56,6 @@
       "inputSchemaRef": "schemas/augment-prompt.input.json",
       "outputSchemaRef": "schemas/augment-prompt.output.json"
     }
-  ]
+  ],
+  "kind": "node"
 }

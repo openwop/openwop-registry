@@ -18,8 +18,8 @@
     "openwop": ">=1.0.0 <3.0.0"
   },
   "peerDependencies": {
-    "host.webResearch": "supported",
-    "host.aiEnvelope": "supported"
+    "webResearch": "supported",
+    "aiEnvelope": "supported"
   },
   "nodes": [
     {
@@ -88,5 +88,6 @@
     "format": "esm",
     "entry": "./index.mjs",
     "minRuntimeVersion": "node>=20"
-  }
+  },
+  "kind": "node"
 }

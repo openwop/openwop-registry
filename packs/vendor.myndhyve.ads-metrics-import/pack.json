@@ -34,5 +34,6 @@
       "inputSchemaRef": "schemas/metrics-import.input.json",
       "outputSchemaRef": "schemas/metrics-import.output.json"
     }
-  ]
+  ],
+  "kind": "node"
 }

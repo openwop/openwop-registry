@@ -19,7 +19,7 @@
     "openwop": ">=1.0.0 <3.0.0"
   },
   "peerDependencies": {
-    "secrets.resolveInPack": "supported"
+    "secrets": "supported"
   },
   "runtime": {
     "language": "javascript",
@@ -45,5 +45,13 @@
       "inputSchemaRef": "schemas/publish-google.input.json",
       "outputSchemaRef": "schemas/publish-google.output.json"
     }
-  ]
+  ],
+  "kind": "node",
+  "peerDependenciesMeta": {
+    "secrets": {
+      "facets": [
+        "resolveInPack"
+      ]
+    }
+  }
 }

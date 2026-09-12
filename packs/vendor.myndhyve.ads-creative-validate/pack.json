@@ -35,5 +35,6 @@
       "inputSchemaRef": "schemas/creative-validate.input.json",
       "outputSchemaRef": "schemas/creative-validate.output.json"
     }
-  ]
+  ],
+  "kind": "node"
 }

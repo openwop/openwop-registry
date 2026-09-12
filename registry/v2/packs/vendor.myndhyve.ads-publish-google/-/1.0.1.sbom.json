@@ -1,0 +1,183 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-publish-google@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-publish-google",
+      "version": "1.0.1",
+      "description": "MyndHyve ads.publish.google — publish an ad to Google Ads API v18 (Search + Display). Symmetric companion to ads-publish-meta. Resolves 2 secrets (OAuth + developer-token) via ctx.secrets.resolve, then runs the 4-step publish pipeline (budget → campaign → ad-group → ad) with best-effort REMOVE-rollback. Supports 6 bidding strategies + 6 channel types + responsive_search & responsive_display ad formats.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://myndhyve.ai/packs/ads-publish-google"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7d83cc53afbb8906def72824c902f594805c3ee1907f188754235b2e48cd75c5"
+        }
+      ],
+      "purl": "pkg:openwop/vendor.myndhyve.ads-publish-google@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d72d354c220832d69916137a2dce0fd4bec699e9635cd6e2b48e13fa419587cf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "5984"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "index.mjs",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ca0841a8ab85dd722b2bcc5c76491df6caa4435eba86c60b355b91a3787b868f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "18863"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "63d02b5ac5a8bc827a71ec64c0e0f888366d5db119ba406483b359eab4123e74"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1aa7896c1a333be8aa0606d8b082bfe5a6f284702302e877eb91d28722cb32fa"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2045"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/publish-google.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f3606e33502d4e8796d5af12a70ba907989b39474a3d38e3495e894d167771fe"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "372"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/publish-google.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1ac745ca27623f61fa86d4f9659cadb1dd62518b166af2be45a6156ba2311c85"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "4016"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/publish-google.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0321f6517f4801de1bd96a4af28b87ceed4ddc28ca0e75d72075e3a019dc33c1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1213"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/vendor.myndhyve.ads-publish-google@1.0.1",
+      "dependsOn": [
+        "host:secrets"
+      ]
+    }
+  ]
+}

@@ -41,5 +41,6 @@
       "inputSchemaRef": "schemas/thread-triage.input.json",
       "outputSchemaRef": "schemas/thread-triage.output.json"
     }
-  ]
+  ],
+  "kind": "node"
 }

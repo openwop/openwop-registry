@@ -41,5 +41,6 @@
       "inputSchemaRef": "schemas/query-builder.input.json",
       "outputSchemaRef": "schemas/query-builder.output.json"
     }
-  ]
+  ],
+  "kind": "node"
 }

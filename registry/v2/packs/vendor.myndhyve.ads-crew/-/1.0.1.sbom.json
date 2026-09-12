@@ -1,0 +1,169 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-crew@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-crew",
+      "version": "1.0.1",
+      "description": "MyndHyve Ads Studio creative-director crew. Wraps the 14 vendor.myndhyve.ads-* node typeIds (brief → variants → copy → image → video → validate → export → publish) into a single creative-director agent persona. Vendor showcase agent pack.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/packs/vendor.myndhyve.ads-crew"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8685851132ecc3830dcc1af7795fbf67fa8c6f8f3ed37609a6674b554e0c28c5"
+        }
+      ],
+      "purl": "pkg:openwop/vendor.myndhyve.ads-crew@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "aebfa6a0b1b3a84bb4b6af7d2fe80553e031632259ff72a51c75834c3635ff9c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "415"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b4f80032c5f9d6475a9e7410d27d5bba0ae5a3d39bda211f0d5563c1182afd1b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1921"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "da60e46958a5f2d1b4c7f4af15159160ef6e15546d5cae9d15bc5c7eca928ae8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "19507c9c5f4f50c0b74abfbd5cdf4b9194956c2de9d02d51101a068ba0be61b9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2278"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/creative-director.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7f8cf7cd70203f57192195d1f5584691a77d276edc75342e56288f5c64052518"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3673"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/creative-director.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a50916cfd3fc4d1e884045b9fc604ac4792dfe6bc0e860b050480567c34e7245"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3355"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/creative-director.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "58946d251536388a2e8f1a183318e817289f10012a40f49b9eed61e139ab840e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1115"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/vendor.myndhyve.ads-crew@1.0.1",
+      "dependsOn": [
+        "host:agentRuntime",
+        "host:agents",
+        "host:aiProviders"
+      ]
+    }
+  ]
+}

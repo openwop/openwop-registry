@@ -1,0 +1,33 @@
+{
+  "name": "vendor.myndhyve.ai",
+  "kind": "node",
+  "description": "MyndHyve envelope-protocol AI nodes. Distinct from core.openwop.ai (which ships provider-agnostic chat-completion + structured-output + embeddings) — this pack ships MyndHyve-specific nodes that work with typed envelopes (`prd.create`, `theme.create`, etc.) emitted into the workflow's envelope stream, and prompts resolved from MyndHyve's prompt library by ID.",
+  "author": "MyndHyve",
+  "license": "Apache-2.0",
+  "homepage": "https://myndhyve.ai/packs/ai",
+  "repository": "https://github.com/openwop/openwop",
+  "tags": [],
+  "typeIds": [
+    "core.ai.generateFromPrompt",
+    "core.ai.awaitEnvelope",
+    "core.ai.callPrompt"
+  ],
+  "nodeCount": 3,
+  "agentCount": 0,
+  "versions": [
+    {
+      "version": "1.0.1",
+      "manifestUrl": "/v2/packs/vendor.myndhyve.ai/-/1.0.1.json",
+      "tarballUrl": "/v2/packs/vendor.myndhyve.ai/-/1.0.1.tgz",
+      "signatureUrl": "/v2/packs/vendor.myndhyve.ai/-/1.0.1.sig",
+      "sbomUrl": "/v2/packs/vendor.myndhyve.ai/-/1.0.1.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "myndhyve-internal-1",
+      "integrity": "sha256-0hz3RyUCVKWyT31phWvkir53YGfC0pnU42CNVbY29NE=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.1",
+  "deprecated": false
+}

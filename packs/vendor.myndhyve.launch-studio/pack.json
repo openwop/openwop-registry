@@ -18,8 +18,8 @@
     "openwop": ">=1.0.0 <3.0.0"
   },
   "peerDependencies": {
-    "host.launchStudio": "supported",
-    "host.kanban": "supported"
+    "launchStudio": "supported",
+    "kanban": "supported"
   },
   "nodes": [
     {
@@ -57,5 +57,6 @@
     "format": "esm",
     "entry": "./index.mjs",
     "minRuntimeVersion": "node>=20"
-  }
+  },
+  "kind": "node"
 }

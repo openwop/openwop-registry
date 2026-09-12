@@ -1,0 +1,181 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-export@1.0.1",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-export",
+      "version": "1.0.1",
+      "description": "MyndHyve ads.export.pack — pure-logic export pack builder. Bundles copy variants + creative assets + tracking links into a structured AdExportPack record (JSON-serializable). Lifted from src/canvas-types/campaign-studio/ads-studio/export/AdExportPackService.ts. No host capabilities required; deterministic.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://myndhyve.ai/packs/ads-export"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0abb91e73e39f0a2203669785768c133228e0f9e7348441c685f56a596a84d0e"
+        }
+      ],
+      "purl": "pkg:openwop/vendor.myndhyve.ads-export@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "90764ff3672f89f82cca469b6e1ccdba052b1f93c464f71573f7544170042316"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1888"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "index.mjs",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "72f5a01cd3ec37ea699c2112ee161a454f35546e97ed69829c4fe8eedd814069"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "6169"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e6b13b7ff2b41af9e74cf51bf74fb53a1ae48e602024b732b350b9142fd3bab1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "df455c16a63e8382bf42cfddec679351aadeba9ad2ac3e9d42582033dfbdb075"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1498"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/export-pack.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bf99446ac85a894600d09b7d3cb127dbec4411cf13b4457280a5a8dfff219801"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "928"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/export-pack.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e6790f103dd21cf5c89860d0d5dfb8c7a42e6286df9b2a6efc168eae76cf0247"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3140"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/export-pack.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ee5cfad3ffcb3304d4adf3069a2d2c2d5e590a8e592487b8bdea57edbe409bd1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1478"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/vendor.myndhyve.ads-export@1.0.1",
+      "dependsOn": []
+    }
+  ]
+}

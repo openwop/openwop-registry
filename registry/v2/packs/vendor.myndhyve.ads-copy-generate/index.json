@@ -1,0 +1,31 @@
+{
+  "name": "vendor.myndhyve.ads-copy-generate",
+  "kind": "node",
+  "description": "MyndHyve ads.copy.generate — AI-powered multi-variant ad copy generation with per-placement adaptation (truncation to caller-supplied text limits). Routes the AI call through ctx.callAI; replaces the source PlatformSpecRegistry read with caller-supplied inputs.placementTextLimits (resolve upstream from vendor.myndhyve.ads-platforms OR host.adPlatformSpecs).",
+  "author": "MyndHyve",
+  "license": "Apache-2.0",
+  "homepage": "https://myndhyve.ai/packs/ads-copy-generate",
+  "repository": "https://github.com/openwop/openwop",
+  "tags": [],
+  "typeIds": [
+    "ads.copy.generate"
+  ],
+  "nodeCount": 1,
+  "agentCount": 0,
+  "versions": [
+    {
+      "version": "1.0.1",
+      "manifestUrl": "/v2/packs/vendor.myndhyve.ads-copy-generate/-/1.0.1.json",
+      "tarballUrl": "/v2/packs/vendor.myndhyve.ads-copy-generate/-/1.0.1.tgz",
+      "signatureUrl": "/v2/packs/vendor.myndhyve.ads-copy-generate/-/1.0.1.sig",
+      "sbomUrl": "/v2/packs/vendor.myndhyve.ads-copy-generate/-/1.0.1.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "myndhyve-internal-1",
+      "integrity": "sha256-8si5tGdv88gwPd7FUZKbu7AG78FhlMPZorNL2x/Neyk=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.1",
+  "deprecated": false
+}
