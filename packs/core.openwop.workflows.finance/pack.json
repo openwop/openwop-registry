@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.finance",
-  "version": "1.1.4",
+  "version": "1.1.7",
   "kind": "workflow-chain",
   "description": "Real-work workflow pack (RFC 0013, ADR 0149) — the Finance cluster: Invoice → AP Processing, Month-End Close Checklist, and Expense/Budget Approval + anomaly detection. Reasons with core.ai.chatCompletion; recommends ERP actions (validation + posting) provider-agnostically via core.openwop.connectors.erp-action (NetSuite when connected); every posting/reimbursement runs through a threshold core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + kb + integration packs. Published under core.openwop.workflows.* (openwop-team key).",
   "author": "openwop",
@@ -14,7 +14,7 @@
   "chains": [
     {
       "chainId": "finance.invoice-ap",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "label": "Invoice → AP Processing",
       "description": "Extract invoice line items, validate against the PO/ledger in the ERP (provider-agnostic), run a threshold-based approval, then post the invoice and send a payment notification.",
       "parameters": {
@@ -96,6 +96,24 @@
               "x": 640,
               "y": 0
             },
+            "config": {
+              "title": "Approve posting this invoice to the ERP",
+              "artifactType": "erp.invoice",
+              "actions": [
+                "approve",
+                "reject"
+              ]
+            },
+            "inputs": {}
+          },
+          {
+            "id": "gate-reject",
+            "typeId": "core.flow.noop",
+            "name": "Rejected — nothing posted",
+            "position": {
+              "x": 960,
+              "y": 160
+            },
             "config": {},
             "inputs": {}
           },
@@ -138,11 +156,23 @@
           },
           {
             "from": "validate",
-            "to": "approve"
+            "to": "approve.artifact"
           },
           {
             "from": "approve",
-            "to": "post"
+            "to": "post",
+            "condition": {
+              "type": "truthy",
+              "left": "approved"
+            }
+          },
+          {
+            "from": "approve",
+            "to": "gate-reject",
+            "condition": {
+              "type": "falsy",
+              "left": "approved"
+            }
           },
           {
             "from": "post",
@@ -159,7 +189,7 @@
     },
     {
       "chainId": "finance.month-end-close",
-      "version": "1.0.0",
+      "version": "1.0.2",
       "label": "Month-End Close Checklist",
       "description": "Orchestrate the close: build the task checklist, collect supporting docs from the knowledge base, draft variance notes, chase missing approvals, then produce a close-readiness report.",
       "parameters": {
@@ -228,9 +258,7 @@
               "x": 0,
               "y": 140
             },
-            "config": {
-              "query": "month-end close supporting documents {{params.period}}"
-            },
+            "config": {},
             "inputs": {
               "query": "{{params.query}}",
               "orgId": "{{params.orgId}}",
@@ -293,8 +321,8 @@
             "to": "chase"
           },
           {
-            "from": "chase",
-            "to": "report"
+            "from": "chase.decision",
+            "to": "report.message"
           }
         ]
       },
@@ -307,7 +335,7 @@
     },
     {
       "chainId": "finance.expense-approval",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "label": "Expense / Budget Approval + Anomaly Detection",
       "description": "Check an expense against policy, run a duplicate/anomaly check, route through a threshold approval chain, then reimburse via the ERP and flag outliers.",
       "parameters": {
@@ -376,6 +404,24 @@
               "x": 320,
               "y": 0
             },
+            "config": {
+              "title": "Approve reimbursing this expense via the ERP",
+              "artifactType": "erp.expense",
+              "actions": [
+                "approve",
+                "reject"
+              ]
+            },
+            "inputs": {}
+          },
+          {
+            "id": "gate-reject",
+            "typeId": "core.flow.noop",
+            "name": "Rejected — no reimbursement",
+            "position": {
+              "x": 640,
+              "y": 160
+            },
             "config": {},
             "inputs": {}
           },
@@ -414,11 +460,23 @@
         "edges": [
           {
             "from": "check",
-            "to": "approve"
+            "to": "approve.artifact"
           },
           {
             "from": "approve",
-            "to": "reimburse"
+            "to": "reimburse",
+            "condition": {
+              "type": "truthy",
+              "left": "approved"
+            }
+          },
+          {
+            "from": "approve",
+            "to": "gate-reject",
+            "condition": {
+              "type": "falsy",
+              "left": "approved"
+            }
           },
           {
             "from": "reimburse",

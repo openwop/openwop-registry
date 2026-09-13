@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.it-support",
-  "version": "1.2.4",
+  "version": "1.3.2",
   "kind": "workflow-chain",
   "description": "Real-work workflow pack (RFC 0013, ADR 0149, ADR 0208) — the IT / Support cluster: Incident Triage & Major-Incident Comms. An AI classifier assesses each incident's severity; routine incidents go to a recommended knowledge-base article and a ticket, while major incidents go to human-approved stakeholder updates in Slack — and each incident finishes with a post-incident summary. All tenant values are run parameters (replay-deterministic). Resolves on hosts shipping the kb + http + ai + chat + integration packs. Published under core.openwop.workflows.* (openwop-team key).",
   "author": "openwop",
@@ -14,7 +14,7 @@
   "chains": [
     {
       "chainId": "it-support.incident-triage",
-      "version": "1.1.1",
+      "version": "1.2.1",
       "label": "Incident Triage & Major-Incident Comms",
       "description": "Assesses each incident's severity, then routes routine incidents to a recommended knowledge-base article and a ticket, and major incidents to human-approved stakeholder updates in Slack — finishing with a post-incident summary.",
       "parameters": {
@@ -134,9 +134,7 @@
               "x": 560,
               "y": 0
             },
-            "config": {
-              "query": "{{params.alert}}"
-            },
+            "config": {},
             "inputs": {
               "query": "{{params.alert}}",
               "orgId": "{{params.orgId}}",
@@ -165,6 +163,23 @@
             "position": {
               "x": 560,
               "y": 160
+            },
+            "config": {
+              "title": "Approve the stakeholder comms before posting",
+              "actions": [
+                "approve",
+                "reject"
+              ]
+            },
+            "inputs": {}
+          },
+          {
+            "id": "majorReject",
+            "typeId": "core.flow.noop",
+            "name": "Rejected — no stakeholder post",
+            "position": {
+              "x": 840,
+              "y": 300
             },
             "config": {},
             "inputs": {}
@@ -228,8 +243,8 @@
             }
           },
           {
-            "from": "route",
-            "to": "majorApprove",
+            "from": "route.value",
+            "to": "majorApprove.artifact",
             "condition": {
               "type": "contains",
               "left": "branches",
@@ -241,8 +256,20 @@
             "to": "ticket"
           },
           {
+            "from": "majorApprove.artifact",
+            "to": "stakeholders.text",
+            "condition": {
+              "type": "truthy",
+              "left": "approved"
+            }
+          },
+          {
             "from": "majorApprove",
-            "to": "stakeholders"
+            "to": "majorReject",
+            "condition": {
+              "type": "falsy",
+              "left": "approved"
+            }
           },
           {
             "from": "ticket",

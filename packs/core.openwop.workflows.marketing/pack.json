@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.marketing",
-  "version": "1.1.6",
+  "version": "1.1.9",
   "kind": "workflow-chain",
   "description": "Real-work workflow pack (RFC 0013, ADR 0149) — the Marketing & Advertising cluster: Full Campaign Launch, Ad Performance Optimization Loop, Content Brief Generator, and Content Repurposing. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.kb / feature.cms / feature.email); reads/optimizes the ad platforms provider-agnostically via the core.openwop.connectors.ad-* capability nodes (Meta or Google, whichever the tenant connected — ADR 0186). The optimization loop routes within-guardrail changes to auto-apply and out-of-guardrail changes to a core.chat.approvalGate via a core.flow.if conditional node (ADR 0149 open-question resolution: a flow conditional, not a new primitive). Every launch/publish/apply is approval- or guardrail-gated; all tenant values are run parameters (replay-deterministic). Published under core.openwop.workflows.* (openwop-team key).",
   "author": "openwop",
@@ -14,7 +14,7 @@
   "chains": [
     {
       "chainId": "marketing.campaign-launch",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "label": "Full Campaign Launch",
       "description": "From a brief: select the audience (CRM), draft ad copy and creative, reference the landing page (CMS), consolidate for review, then launch on the ad platform after approval.",
       "parameters": {
@@ -114,6 +114,24 @@
               "x": 640,
               "y": 140
             },
+            "config": {
+              "title": "Approve launching this campaign on the ad platform",
+              "artifactType": "marketing.campaign",
+              "actions": [
+                "approve",
+                "reject"
+              ]
+            },
+            "inputs": {}
+          },
+          {
+            "id": "gate-reject",
+            "typeId": "core.flow.noop",
+            "name": "Rejected — campaign not launched",
+            "position": {
+              "x": 960,
+              "y": 300
+            },
             "config": {},
             "inputs": {}
           },
@@ -155,7 +173,19 @@
           },
           {
             "from": "review",
-            "to": "launch"
+            "to": "launch",
+            "condition": {
+              "type": "truthy",
+              "left": "approved"
+            }
+          },
+          {
+            "from": "review",
+            "to": "gate-reject",
+            "condition": {
+              "type": "falsy",
+              "left": "approved"
+            }
           }
         ]
       },
@@ -168,7 +198,7 @@
     },
     {
       "chainId": "marketing.ad-optimization",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "label": "Ad Performance Optimization Loop",
       "description": "Read ad metrics from whichever platform the tenant connected (provider-agnostic core.openwop.connectors.ad-metrics — Meta or Google, not hard-coded), diagnose anomalies and recommend a bid/budget shift, then a core.flow.if guardrail routes within-guardrail changes straight to a budget recommendation and out-of-guardrail changes through approval first — finally log the learnings. Budget changes are RECOMMENDED by default (the ad-budget-update node dry-runs unless you set config.dryRun:false); a deliberate opt-in applies the change live via ctx.ads.updateBudget behind the same guardrail + approval gate (ADR 0186 slice 4b). Pair with an hourly scheduled trigger.",
       "parameters": {
@@ -283,6 +313,24 @@
               "x": 840,
               "y": 140
             },
+            "config": {
+              "title": "Approve this beyond-guardrail budget change",
+              "artifactType": "marketing.ad-budget",
+              "actions": [
+                "approve",
+                "reject"
+              ]
+            },
+            "inputs": {}
+          },
+          {
+            "id": "gate-reject",
+            "typeId": "core.flow.noop",
+            "name": "Rejected — no budget change applied",
+            "position": {
+              "x": 1120,
+              "y": 300
+            },
             "config": {},
             "inputs": {}
           },
@@ -346,7 +394,19 @@
           },
           {
             "from": "review",
-            "to": "applyReviewed"
+            "to": "applyReviewed",
+            "condition": {
+              "type": "truthy",
+              "left": "approved"
+            }
+          },
+          {
+            "from": "review",
+            "to": "gate-reject",
+            "condition": {
+              "type": "falsy",
+              "left": "approved"
+            }
           },
           {
             "from": "autoApply",
@@ -367,7 +427,7 @@
     },
     {
       "chainId": "marketing.content-brief",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "label": "Content Brief Generator",
       "description": "Gather sources from the knowledge base and synthesize a structured SEO content brief for a topic/keyword.",
       "parameters": {
@@ -416,9 +476,7 @@
               "x": 0,
               "y": 0
             },
-            "config": {
-              "query": "{{params.topic}}"
-            },
+            "config": {},
             "inputs": {
               "query": "{{params.topic}}",
               "orgId": "{{params.orgId}}",
@@ -476,7 +534,7 @@
     },
     {
       "chainId": "marketing.content-repurposing",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "label": "Content Repurposing",
       "description": "From a published piece, outline then generate a channel-ready set (LinkedIn, X thread, newsletter), gate for approval, then schedule. Pair with a doc-published event trigger.",
       "parameters": {
@@ -584,6 +642,24 @@
               "x": 640,
               "y": 120
             },
+            "config": {
+              "title": "Approve scheduling this content set for publishing",
+              "artifactType": "marketing.content-set",
+              "actions": [
+                "approve",
+                "reject"
+              ]
+            },
+            "inputs": {}
+          },
+          {
+            "id": "gate-reject",
+            "typeId": "core.flow.noop",
+            "name": "Rejected — nothing scheduled",
+            "position": {
+              "x": 960,
+              "y": 300
+            },
             "config": {},
             "inputs": {}
           },
@@ -630,7 +706,19 @@
           },
           {
             "from": "review",
-            "to": "schedule"
+            "to": "schedule",
+            "condition": {
+              "type": "truthy",
+              "left": "approved"
+            }
+          },
+          {
+            "from": "review",
+            "to": "gate-reject",
+            "condition": {
+              "type": "falsy",
+              "left": "approved"
+            }
           }
         ]
       },

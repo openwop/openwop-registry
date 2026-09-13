@@ -1,0 +1,108 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.lighthouse@1.1.9",
+      "type": "library",
+      "name": "core.openwop.workflows.lighthouse",
+      "version": "1.1.9",
+      "description": "Real-work workflow pack (RFC 0013, ADR 0149 / ADR 0155 follow-on). The five zero-config 'lighthouse' workflows from the ADR 0149 catalog — Lead Triage, Account Brief, Renewal & Churn-Risk Digest, RFP Response, and Post-Meeting Follow-up — authored entirely over node typeIds shipped with this host (feature.crm/kb/analytics + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.integration.*). Each rides real tenant data through the feature node packs, reasons with the LLM node, gates every external send behind a human approval, and delivers a usable artifact. Tenant-specific values are RUN PARAMETERS (never hardcoded) so the expansion stays replay-deterministic. Picking one in the builder instantiates a fully-editable, runnable, assignable workflow.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "035fe50d971155d134394740fdfc1925b29d6f7dffa5bb25b7efa3470fc473dc"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.lighthouse@1.1.9"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b29db29d68f8ca9bc1c74dd40b5b5d75693ab2b1a8a5af62156e2cd70e13fe1a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "881"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b79e851849fd5f6f57957d9e35c7e571f9763c43fd4d5e585e29f28f674a107f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ebdadf47ad7d21278de4c76041d6675204e45d40ccb80c03f62c1fae43773dbe"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "15376"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.lighthouse@1.1.9",
+      "dependsOn": []
+    }
+  ]
+}

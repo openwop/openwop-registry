@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.lighthouse",
-  "version": "1.1.6",
+  "version": "1.1.9",
   "kind": "workflow-chain",
   "description": "Real-work workflow pack (RFC 0013, ADR 0149 / ADR 0155 follow-on). The five zero-config 'lighthouse' workflows from the ADR 0149 catalog — Lead Triage, Account Brief, Renewal & Churn-Risk Digest, RFP Response, and Post-Meeting Follow-up — authored entirely over node typeIds shipped with this host (feature.crm/kb/analytics + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.integration.*). Each rides real tenant data through the feature node packs, reasons with the LLM node, gates every external send behind a human approval, and delivers a usable artifact. Tenant-specific values are RUN PARAMETERS (never hardcoded) so the expansion stays replay-deterministic. Picking one in the builder instantiates a fully-editable, runnable, assignable workflow.",
   "author": "openwop",
@@ -14,9 +14,9 @@
   "chains": [
     {
       "chainId": "lighthouse.lead-triage",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "label": "Inbound Lead Triage & Routing",
-      "description": "Enrich and score an inbound lead, draft a first-touch reply, gate it for review, then send and log it. Real CRM data via feature.crm; every send behind a human approval.",
+      "description": "Enrich and score an inbound lead, draft a first-touch reply, gate it for review, then send and log it. Real CRM data via feature.crm; every send behind a human approval. ADR 0582 §11 — the send hangs off a `truthy approved` conditioned edge AND the drafted text is routed THROUGH the gate (`draft.content → approve.artifact → send.text`), so a REJECTED review sends nothing. Both halves are load-bearing: `core.chat.approvalGate` returns status:'success' on reject too, and a conditioned edge ALONE is not enough — an unconditional sibling data edge into the send node satisfies `all_success` by itself and would mail the draft anyway.",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
@@ -94,6 +94,22 @@
               "x": 520,
               "y": 0
             },
+            "config": {
+              "actions": [
+                "approve",
+                "reject"
+              ]
+            },
+            "inputs": {}
+          },
+          {
+            "id": "gate-reject",
+            "typeId": "core.flow.noop",
+            "name": "Rejected — the email is not sent",
+            "position": {
+              "x": 780,
+              "y": 160
+            },
             "config": {},
             "inputs": {}
           },
@@ -120,16 +136,24 @@
             "to": "draft"
           },
           {
-            "from": "draft",
-            "to": "approve"
+            "from": "draft.content",
+            "to": "approve.artifact"
+          },
+          {
+            "from": "approve.artifact",
+            "to": "send.text",
+            "condition": {
+              "type": "truthy",
+              "left": "approved"
+            }
           },
           {
             "from": "approve",
-            "to": "send"
-          },
-          {
-            "from": "draft.content",
-            "to": "send.text"
+            "to": "gate-reject",
+            "condition": {
+              "type": "falsy",
+              "left": "approved"
+            }
           }
         ]
       },
@@ -144,7 +168,7 @@
       "chainId": "lighthouse.account-brief",
       "version": "1.0.0",
       "label": "Account Brief & Next-Step Draft",
-      "description": "Pull a company profile and its deals, synthesize an account brief with recommended next steps and a draft outreach, gate it, then notify the owner. Real CRM data; advisory send behind approval.",
+      "description": "Pull a company profile and its deals, synthesize an account brief with recommended next steps and a draft outreach, gate it, then notify the owner. Real CRM data; advisory send behind approval. ADR 0582 §11 — the notification hangs off a `truthy approved` conditioned edge and the brief is routed THROUGH the gate (`brief.content → approve.artifact → notify.message`), so a REJECTED review notifies no one.",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
@@ -258,12 +282,16 @@
             "to": "brief.deals"
           },
           {
-            "from": "brief",
-            "to": "approve"
+            "from": "brief.content",
+            "to": "approve.artifact"
           },
           {
-            "from": "approve",
-            "to": "notify"
+            "from": "approve.artifact",
+            "to": "notify.message",
+            "condition": {
+              "type": "truthy",
+              "left": "approved"
+            }
           }
         ]
       },
@@ -276,7 +304,7 @@
     },
     {
       "chainId": "lighthouse.renewal-risk",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "label": "Renewal & Churn-Risk Digest",
       "description": "Combine open deals with usage analytics to score renewal/churn risk, then push an at-risk list with save plays to the CSM. Real CRM + analytics data; advisory, no external send.",
       "parameters": {
@@ -379,8 +407,8 @@
             "to": "score.usage"
           },
           {
-            "from": "score",
-            "to": "notify"
+            "from": "score.content",
+            "to": "notify.message"
           }
         ]
       },
@@ -393,7 +421,7 @@
     },
     {
       "chainId": "lighthouse.rfp-response",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "label": "RFP / Proposal Response Assembly",
       "description": "Retrieve answers and past proposals from the knowledge base, draft an RFP response grounded in them, and gate it for SME review. Real KB data via feature.kb RAG.",
       "parameters": {
@@ -442,9 +470,7 @@
               "x": 0,
               "y": 0
             },
-            "config": {
-              "query": "{{params.rfpText}}"
-            },
+            "config": {},
             "inputs": {
               "query": "{{params.rfpText}}",
               "orgId": "{{params.orgId}}",
@@ -498,9 +524,9 @@
     },
     {
       "chainId": "lighthouse.post-meeting",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "label": "Post-Meeting Follow-up",
-      "description": "Extract decisions, action items, and owners from a meeting transcript, draft a follow-up email, gate it, then send. Transcript supplied as a run parameter; every send behind a human approval.",
+      "description": "Extract decisions, action items, and owners from a meeting transcript, draft a follow-up email, gate it, then send. Transcript supplied as a run parameter; every send behind a human approval. ADR 0582 §11 — the send hangs off a `truthy approved` conditioned edge and the drafted text is routed THROUGH the gate (`extract.content → approve.artifact → send.text`), so a REJECTED review sends nothing.",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
@@ -567,6 +593,22 @@
               "x": 300,
               "y": 0
             },
+            "config": {
+              "actions": [
+                "approve",
+                "reject"
+              ]
+            },
+            "inputs": {}
+          },
+          {
+            "id": "gate-reject",
+            "typeId": "core.flow.noop",
+            "name": "Rejected — the email is not sent",
+            "position": {
+              "x": 780,
+              "y": 160
+            },
             "config": {},
             "inputs": {}
           },
@@ -589,16 +631,24 @@
         ],
         "edges": [
           {
-            "from": "extract",
-            "to": "approve"
+            "from": "extract.content",
+            "to": "approve.artifact"
+          },
+          {
+            "from": "approve.artifact",
+            "to": "send.text",
+            "condition": {
+              "type": "truthy",
+              "left": "approved"
+            }
           },
           {
             "from": "approve",
-            "to": "send"
-          },
-          {
-            "from": "extract.content",
-            "to": "send.text"
+            "to": "gate-reject",
+            "condition": {
+              "type": "falsy",
+              "left": "approved"
+            }
           }
         ]
       },

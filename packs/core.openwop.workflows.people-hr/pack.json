@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.people-hr",
-  "version": "1.2.4",
+  "version": "1.4.1",
   "kind": "workflow-chain",
   "description": "Real-work workflow pack (RFC 0013, ADR 0149) — the People / HR cluster: Employee Onboarding Orchestrator, Offboarding & Access Revocation, and Leave/PTO Request Routing. Reasons with core.ai.chatCompletion; binds Microsoft 365 via core.openwop.http.openapi-call connectionRef, recommends HRIS actions provider-agnostically via core.openwop.connectors.hris-action (Workday today), and provider-agnostic ticketing (Jira/ServiceNow) via the core.openwop.connectors.ticket-* capability nodes (ADR 0186); every account/HRIS mutation and every team-facing send is gated by core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + integration packs; connections are configured under Access & data → Connections. Published under core.openwop.workflows.* (openwop-team key).",
   "author": "openwop",
@@ -14,19 +14,29 @@
   "chains": [
     {
       "chainId": "people-hr.onboarding",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "label": "Employee Onboarding Orchestrator",
-      "description": "On offer-accepted, plan the onboarding checklist and provision the new hire across IT (Microsoft 365), HRIS/payroll (Workday), and provider-agnostic task tracking (Jira/ServiceNow) in parallel, then summarize completion. Exceptions are surfaced for review.",
+      "description": "On offer-accepted, plan the onboarding checklist and provision the new hire across IT (Microsoft 365), HRIS/payroll (Workday), and provider-agnostic task tracking (Jira/ServiceNow) in parallel — and, behind the same approval, invite the new hire into THIS workspace (feature.orgs.nodes.invite, ADR 0622 D3) — then summarize completion. Exceptions are surfaced for review.",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
         "required": [
-          "newHireName"
+          "newHireName",
+          "newHireEmail"
         ],
         "properties": {
           "newHireName": {
             "type": "string",
             "description": "The new hire's name."
+          },
+          "newHireEmail": {
+            "type": "string",
+            "description": "The new hire's email address. After approval, the workspace invitation is emailed here from the approving admin's own email connection. This workflow is set up for one new hire at a time."
+          },
+          "orgId": {
+            "type": "string",
+            "default": "",
+            "description": "Team (org) to invite the new hire into. Leave empty to invite them into this workspace. You need permission to manage members there."
           },
           "role": {
             "type": "string",
@@ -83,6 +93,24 @@
               "x": 160,
               "y": 120
             },
+            "config": {
+              "title": "Approve provisioning this new hire across IT, HRIS, and ticketing",
+              "artifactType": "hr.onboarding-plan",
+              "actions": [
+                "approve",
+                "reject"
+              ]
+            },
+            "inputs": {}
+          },
+          {
+            "id": "gate-reject",
+            "typeId": "core.flow.noop",
+            "name": "Rejected — no provisioning",
+            "position": {
+              "x": 320,
+              "y": 360
+            },
             "config": {},
             "inputs": {}
           },
@@ -131,6 +159,21 @@
             "inputs": {}
           },
           {
+            "id": "invite-host",
+            "typeId": "feature.orgs.nodes.invite",
+            "name": "Invite to this workspace",
+            "position": {
+              "x": 320,
+              "y": 480
+            },
+            "config": {
+              "email": "{{params.newHireEmail}}",
+              "role": "viewer",
+              "orgId": "{{params.orgId}}"
+            },
+            "inputs": {}
+          },
+          {
             "id": "track",
             "typeId": "core.ai.chatCompletion",
             "name": "Completion summary",
@@ -164,19 +207,47 @@
         "edges": [
           {
             "from": "plan",
-            "to": "approve"
+            "to": "approve.artifact"
           },
           {
             "from": "approve",
-            "to": "itProvision"
+            "to": "itProvision",
+            "condition": {
+              "type": "truthy",
+              "left": "approved"
+            }
           },
           {
             "from": "approve",
-            "to": "hris"
+            "to": "hris",
+            "condition": {
+              "type": "truthy",
+              "left": "approved"
+            }
           },
           {
             "from": "approve",
-            "to": "tickets"
+            "to": "tickets",
+            "condition": {
+              "type": "truthy",
+              "left": "approved"
+            }
+          },
+          {
+            "from": "approve",
+            "to": "invite-host",
+            "condition": {
+              "type": "truthy",
+              "left": "approved"
+            }
+          },
+          {
+            "from": "approve",
+            "to": "gate-reject",
+            "condition": {
+              "type": "falsy",
+              "left": "approved"
+            }
           },
           {
             "from": "itProvision",
@@ -189,6 +260,10 @@
           {
             "from": "tickets",
             "to": "track.tickets"
+          },
+          {
+            "from": "invite-host",
+            "to": "track.inviteHost"
           },
           {
             "from": "track",
@@ -205,9 +280,9 @@
     },
     {
       "chainId": "people-hr.offboarding",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "label": "Offboarding & Access Revocation",
-      "description": "On termination, deprovision accounts (Microsoft 365), close access tickets (provider-agnostic Jira/ServiceNow), run final-pay in the HRIS (Workday), capture a knowledge handoff, then require a compliance attestation before completing.",
+      "description": "On termination, deprovision accounts (Microsoft 365), close access tickets (provider-agnostic Jira/ServiceNow), run final-pay in the HRIS (Workday), capture a knowledge handoff, then require a compliance attestation before completing. 1.1.0 (ADR 0617 D3): the chain has TWO lanes. The SCIM-leaver lane starts from the `host.users.user.deactivated` host event (bind it on the Event Bindings page to this workflow — see the pack README); the `trigger` entry node forwards the ids-only payload. The human-started lane runs from the gallery with `userId` as a parameter. A new gated step `deprovision-host` (feature.users.nodes.deactivate) disables THIS workspace's own account BEHIND the compliance attestation — never before it — via one `{truthy approved}` edge; it reads `userId` from the event payload, else the chain parameter. It requires the run's acting user to hold host:members:manage, so on an event-started (system) run it fails closed — by design: on that lane the host account was already disabled at the identity write (ADR 0621). `notify` reports the attestation OUTCOME on both legs (decision-aware, unconditional — the NOTIFY_OF_OUTCOME allow-list).",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
@@ -234,6 +309,11 @@
             "default": "",
             "description": "The provider transition id (Jira) or target state (ServiceNow) that marks the ticket closed."
           },
+          "userId": {
+            "type": "string",
+            "default": "",
+            "description": "The departing employee's HOST account id (`user:<id>`, from Access & data → Users) for the human-started lane. Ignored when the run was started by the `host.users.user.deactivated` event, whose payload carries the id. Empty ⇒ the host-deprovision step fails typed (nothing to act on)."
+          },
           "provider": {
             "type": "string",
             "default": "anthropic",
@@ -251,6 +331,19 @@
       ],
       "dag": {
         "nodes": [
+          {
+            "id": "trigger",
+            "typeId": "core.trigger.event",
+            "name": "Leaver event (host.users.user.deactivated)",
+            "position": {
+              "x": -320,
+              "y": 120
+            },
+            "config": {
+              "eventName": "host.users.user.deactivated"
+            },
+            "inputs": {}
+          },
           {
             "id": "deprovision",
             "typeId": "core.openwop.http.openapi-call",
@@ -323,6 +416,19 @@
             "inputs": {}
           },
           {
+            "id": "deprovision-host",
+            "typeId": "feature.users.nodes.deactivate",
+            "name": "Deprovision host account",
+            "position": {
+              "x": 920,
+              "y": 0
+            },
+            "config": {
+              "userId": "{{params.userId}}"
+            },
+            "inputs": {}
+          },
+          {
             "id": "notify",
             "typeId": "feature.notifications.nodes.notify",
             "name": "Confirm offboarding",
@@ -339,6 +445,18 @@
           }
         ],
         "edges": [
+          {
+            "from": "trigger.payload",
+            "to": "deprovision.trigger"
+          },
+          {
+            "from": "trigger.payload",
+            "to": "accessTickets.trigger"
+          },
+          {
+            "from": "trigger.payload",
+            "to": "finalPay.trigger"
+          },
           {
             "from": "deprovision",
             "to": "handoff.deprovision"
@@ -357,7 +475,15 @@
           },
           {
             "from": "attest",
-            "to": "notify"
+            "to": "deprovision-host",
+            "condition": {
+              "type": "truthy",
+              "left": "approved"
+            }
+          },
+          {
+            "from": "attest.decision",
+            "to": "notify.message"
           }
         ]
       },
@@ -370,7 +496,7 @@
     },
     {
       "chainId": "people-hr.pto-routing",
-      "version": "1.0.0",
+      "version": "1.0.2",
       "label": "Leave / PTO Request Routing",
       "description": "On a PTO request, check policy, analyze coverage against the team calendar (Microsoft 365), route to the manager for approval, then update the HRIS (Workday) and notify the team.",
       "parameters": {
@@ -463,6 +589,24 @@
               "x": 320,
               "y": 70
             },
+            "config": {
+              "title": "Approve this PTO request before updating the HRIS",
+              "artifactType": "hr.pto-request",
+              "actions": [
+                "approve",
+                "reject"
+              ]
+            },
+            "inputs": {}
+          },
+          {
+            "id": "gate-reject",
+            "typeId": "core.flow.noop",
+            "name": "Rejected — HRIS not updated",
+            "position": {
+              "x": 640,
+              "y": 260
+            },
             "config": {},
             "inputs": {}
           },
@@ -509,11 +653,27 @@
           },
           {
             "from": "approve",
-            "to": "hris"
+            "to": "hris",
+            "condition": {
+              "type": "truthy",
+              "left": "approved"
+            }
           },
           {
             "from": "approve",
-            "to": "notifyTeam"
+            "to": "gate-reject",
+            "condition": {
+              "type": "falsy",
+              "left": "approved"
+            }
+          },
+          {
+            "from": "approve",
+            "to": "notifyTeam",
+            "condition": {
+              "type": "truthy",
+              "left": "approved"
+            }
           }
         ]
       },
