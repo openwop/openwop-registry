@@ -2,7 +2,7 @@
   "name": "core.openwop.workflows.campaign-journeys",
   "version": "1.1.4",
   "kind": "workflow-chain",
-  "description": "Contact-level lifecycle journeys as RFC 0013 chains on the ONE engine (ADR 0222 / campaign gap plan C6) \u2014 NOT a journey engine. Trigger with an ADR 0208 host-event binding (e.g. host.crm.contact.created \u2192 Welcome Series), guard with the enrollment + eligibility verbs (one run per contact per journey; every send behind consent + suppression), wait with core.flow.wait, send with the existing email node, log with the CRM activity verb. Enrollment state is the run itself \u2014 monitor in Runs, reset re-enrollment via the campaign-journeys API.",
+  "description": "Contact-level lifecycle journeys as RFC 0013 chains on the ONE engine (ADR 0222 / campaign gap plan C6) — NOT a journey engine. Trigger with an ADR 0208 host-event binding (e.g. host.crm.contact.created → Welcome Series), guard with the enrollment + eligibility verbs (one run per contact per journey; every send behind consent + suppression), wait with core.flow.wait, send with the existing email node, log with the CRM activity verb. Enrollment state is the run itself — monitor in Runs, reset re-enrollment via the campaign-journeys API.",
   "author": "openwop",
   "license": "Apache-2.0",
   "engines": {
@@ -18,7 +18,7 @@
       "chainId": "campaign-journeys.welcome-series",
       "version": "1.0.0",
       "label": "Welcome Series (2-step)",
-      "description": "New contact \u2192 welcome email \u2192 wait a day \u2192 follow-up email. A sign-off gate fronts the first send (approval policies can auto-clear it for hands-off runs). Bind it to host.crm.contact.created (the contact rides the event payload), or run it manually with a contactId. The enrollment guard makes redelivered events harmless; every send passes consent + suppression first.",
+      "description": "New contact → welcome email → wait a day → follow-up email. A sign-off gate fronts the first send (approval policies can auto-clear it for hands-off runs). Bind it to host.crm.contact.created (the contact rides the event payload), or run it manually with a contactId. The enrollment guard makes redelivered events harmless; every send passes consent + suppression first.",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
@@ -29,7 +29,7 @@
         "properties": {
           "contactId": {
             "type": "string",
-            "description": "The contact to enroll (omit when event-triggered \u2014 it rides the trigger payload)."
+            "description": "The contact to enroll (omit when event-triggered — it rides the trigger payload)."
           },
           "welcomeSubject": {
             "type": "string",
@@ -38,7 +38,7 @@
           },
           "welcomeBody": {
             "type": "string",
-            "default": "Thanks for joining us \u2014 here is what to expect.",
+            "default": "Thanks for joining us — here is what to expect.",
             "description": "Body of the first email."
           },
           "followUpSubject": {
@@ -53,7 +53,7 @@
           },
           "triggerEventName": {
             "type": "string",
-            "description": "Host event name that starts this workflow. MUST match the `events.md` \u00a7Types grammar: two or three kebab-case segments under a registered org, never `openwop.`-prefixed (e.g. `example.deal.won`)."
+            "description": "Host event name that starts this workflow. MUST match the `events.md` §Types grammar: two or three kebab-case segments under a registered org, never `openwop.`-prefixed (e.g. `example.deal.won`)."
           },
           "senderEmail": {
             "type": "string",
@@ -234,7 +234,7 @@
       "chainId": "campaign-journeys.re-engage-contact",
       "version": "1.0.0",
       "label": "Re-engage a Contact",
-      "description": "One quiet contact \u2192 human sign-off \u2192 re-engagement email + a CRM follow-up task. Run it manually, from the Strategist in chat, or bind it to an event carrying a contactId. Segment-wide sweeps are the recorded follow-on (they need per-member fan-out).",
+      "description": "One quiet contact → human sign-off → re-engagement email + a CRM follow-up task. Run it manually, from the Strategist in chat, or bind it to an event carrying a contactId. Segment-wide sweeps are the recorded follow-on (they need per-member fan-out).",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
@@ -259,7 +259,7 @@
           },
           "body": {
             "type": "string",
-            "default": "It has been a while \u2014 here is what changed since your last visit.",
+            "default": "It has been a while — here is what changed since your last visit.",
             "description": "Re-engagement body."
           },
           "senderEmail": {
@@ -383,7 +383,7 @@
       "chainId": "campaign-journeys.segment-winback",
       "version": "1.0.0",
       "label": "Segment Winback (per-member fan-out)",
-      "description": "One quiet SEGMENT \u2192 resolve its members (capped) \u2192 a data-driven supervisor fans ONE re-engagement child workflow out over every member, each child receiving its OWN contactId (RFC 0126 per-item input on core.dispatch, ADR 0255). This is the segment-wide sweep the single-contact `re-engage-contact` chain deferred (its own description: 'Segment-wide sweeps are the recorded follow-on \u2014 they need per-member fan-out'). WIRING: install `campaign-journeys.re-engage-contact` FIRST in DEFERRED mode (`POST /workflows/from-chain {chainId, deferred:true}`) so each fanned child binds its own contactId + shared params per run rather than a frozen one, then pass that returned workflowId as `childWorkflowId`. Every per-member child still runs the full enroll-guard + consent/suppression + sign-off + send + follow-up-task path; idempotent by the child enroll-CAS, so a re-swept segment never double-sends. Bounded by the segment-members cap (5000) and the host fan-out cap. Run it with a `segmentId` (the segment rides the run inputs).",
+      "description": "One quiet SEGMENT → resolve its members (capped) → a data-driven supervisor fans ONE re-engagement child workflow out over every member, each child receiving its OWN contactId (RFC 0126 per-item input on core.dispatch, ADR 0255). This is the segment-wide sweep the single-contact `re-engage-contact` chain deferred (its own description: 'Segment-wide sweeps are the recorded follow-on — they need per-member fan-out'). WIRING: install `campaign-journeys.re-engage-contact` FIRST in DEFERRED mode (`POST /workflows/from-chain {chainId, deferred:true}`) so each fanned child binds its own contactId + shared params per run rather than a frozen one, then pass that returned workflowId as `childWorkflowId`. Every per-member child still runs the full enroll-guard + consent/suppression + sign-off + send + follow-up-task path; idempotent by the child enroll-CAS, so a re-swept segment never double-sends. Bounded by the segment-members cap (5000) and the host fan-out cap. Run it with a `segmentId` (the segment rides the run inputs).",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
@@ -412,7 +412,7 @@
           },
           "body": {
             "type": "string",
-            "default": "It has been a while \u2014 here is what changed since your last visit.",
+            "default": "It has been a while — here is what changed since your last visit.",
             "description": "Re-engagement body, shared across the whole segment."
           }
         }
@@ -486,5 +486,10 @@
         }
       }
     }
-  ]
+  ],
+  "signing": {
+    "keyId": "openwop-team-1",
+    "scheme": "ed25519-canonical-json"
+  },
+  "integrity": "sha256-lDWRDRFGM8q81nEP5WZxXwPPHSIECn0Ry//vxpcEUoA="
 }

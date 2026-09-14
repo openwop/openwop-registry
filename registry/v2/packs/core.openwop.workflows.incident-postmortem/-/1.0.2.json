@@ -1,22 +1,22 @@
 {
-  "name": "core.openwop.workflows.meeting-ops",
-  "version": "1.0.3",
+  "name": "core.openwop.workflows.incident-postmortem",
+  "version": "1.0.2",
   "kind": "workflow-chain",
-  "description": "Meeting-ops chains (RFC 0013): less time in and around meetings \u2014 an agenda from a stated goal, and notes turned into owned action items. In-app and draft sinks only; replay-deterministic.",
+  "description": "Incident-postmortem chains (RFC 0013): after an incident resolves, draft a blameless postmortem from the timeline and turn its action items into tracked tasks. Draft-first (the human edits before anything is shared). Replay-deterministic.",
   "author": "openwop",
   "license": "Apache-2.0",
   "engines": {
     "openwop": ">=1.0.0 <3.0.0"
   },
   "keywords": [
-    "Meeting ops"
+    "Incident postmortem"
   ],
   "chains": [
     {
-      "chainId": "meeting.agenda-prep",
+      "chainId": "postmortem.draft-blameless",
       "version": "1.0.0",
-      "label": "Goal \u2192 Meeting Agenda",
-      "description": "Turns a one-line meeting goal into a tight, time-boxed agenda and posts it to the team as an in-app notification.",
+      "label": "Incident → Blameless Postmortem Draft",
+      "description": "When an incident is marked resolved, draft a blameless postmortem (summary, timeline, root cause, impact, action items) for the human to edit — as a saved draft, not an auto-send.",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
@@ -24,15 +24,10 @@
           "triggerEventName"
         ],
         "properties": {
-          "minutes": {
-            "type": "string",
-            "default": "30",
-            "description": "Meeting length in minutes."
-          },
           "provider": {
             "type": "string",
             "default": "anthropic",
-            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 \u2014 a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it \u2014 the workflow will not fall back to another provider on its own."
+            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own."
           },
           "model": {
             "type": "string",
@@ -41,7 +36,7 @@
           },
           "triggerEventName": {
             "type": "string",
-            "description": "Host event name that starts this workflow. MUST match the `events.md` \u00a7Types grammar: two or three kebab-case segments under a registered org, never `openwop.`-prefixed (e.g. `example.deal.won`)."
+            "description": "Host event name that starts this workflow. MUST match the `events.md` §Types grammar: two or three kebab-case segments under a registered org, never `openwop.`-prefixed (e.g. `example.deal.won`)."
           }
         }
       },
@@ -49,9 +44,9 @@
       "dag": {
         "nodes": [
           {
-            "id": "start",
+            "id": "resolved",
             "typeId": "core.trigger.event",
-            "name": "Meeting scheduled",
+            "name": "Incident resolved",
             "position": {
               "x": 0,
               "y": 0
@@ -62,44 +57,40 @@
             "inputs": {}
           },
           {
-            "id": "agenda",
+            "id": "draft",
             "typeId": "core.ai.chatCompletion",
-            "name": "Build agenda",
+            "name": "Draft postmortem",
             "position": {
               "x": 280,
               "y": 0
             },
             "config": {
-              "systemPrompt": "Turn this meeting goal into a tight agenda for a {{params.minutes}}-minute meeting: 3-5 time-boxed items, each with an owner-shaped prompt and the decision it should reach. Add a one-line desired outcome at the top.",
+              "systemPrompt": "Write a BLAMELESS postmortem from this incident timeline. Sections: Summary · Impact (who/how many/how long) · Timeline (detection → mitigation → resolution) · Root cause (systems, not people) · What went well · Action items (each with a clear owner-shaped ask). Factual, no speculation beyond the timeline.",
               "provider": "{{params.provider}}",
               "model": "{{params.model}}"
             },
             "inputs": {}
           },
           {
-            "id": "notify",
-            "typeId": "feature.notifications.nodes.notify",
-            "name": "Share agenda",
+            "id": "save",
+            "typeId": "core.email.draft",
+            "name": "Save postmortem draft",
             "position": {
               "x": 560,
               "y": 0
             },
-            "config": {
-              "audience": "tenant"
-            },
-            "inputs": {
-              "title": "Goal \u2192 Meeting Agenda"
-            }
+            "config": {},
+            "inputs": {}
           }
         ],
         "edges": [
           {
-            "from": "start",
-            "to": "agenda"
+            "from": "resolved",
+            "to": "draft"
           },
           {
-            "from": "agenda",
-            "to": "notify"
+            "from": "draft",
+            "to": "save"
           }
         ]
       },
@@ -111,10 +102,10 @@
       }
     },
     {
-      "chainId": "meeting.notes-to-actions",
+      "chainId": "postmortem.action-items",
       "version": "1.0.0",
-      "label": "Notes \u2192 Owned Action Items",
-      "description": "Debriefs raw meeting notes into decisions and action items; a human confirms, and each action becomes a tracked task.",
+      "label": "Postmortem → Tracked Action Items",
+      "description": "Extracts the action items from a postmortem and, after a human confirms scope, files each as a follow-up task so nothing falls through.",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
@@ -125,12 +116,12 @@
           "orgId": {
             "type": "string",
             "default": "",
-            "description": "Org the tasks belong to."
+            "description": "Org the action-item tasks belong to."
           },
           "provider": {
             "type": "string",
             "default": "anthropic",
-            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 \u2014 a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it \u2014 the workflow will not fall back to another provider on its own."
+            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own."
           },
           "model": {
             "type": "string",
@@ -139,7 +130,7 @@
           },
           "triggerEventName": {
             "type": "string",
-            "description": "Host event name that starts this workflow. MUST match the `events.md` \u00a7Types grammar: two or three kebab-case segments under a registered org, never `openwop.`-prefixed (e.g. `example.deal.won`)."
+            "description": "Host event name that starts this workflow. MUST match the `events.md` §Types grammar: two or three kebab-case segments under a registered org, never `openwop.`-prefixed (e.g. `example.deal.won`)."
           }
         }
       },
@@ -151,7 +142,7 @@
           {
             "id": "start",
             "typeId": "core.trigger.event",
-            "name": "Notes submitted",
+            "name": "Postmortem finalized",
             "position": {
               "x": 0,
               "y": 0
@@ -159,20 +150,18 @@
             "config": {
               "eventName": "{{params.triggerEventName}}"
             },
-            "inputs": {
-              "title": "Goal \u2192 Meeting Agenda"
-            }
+            "inputs": {}
           },
           {
-            "id": "debrief",
+            "id": "extract",
             "typeId": "core.ai.chatCompletion",
-            "name": "Extract decisions + actions",
+            "name": "Extract action items",
             "position": {
               "x": 280,
               "y": 0
             },
             "config": {
-              "systemPrompt": "From these meeting notes produce: Decisions (each in one line) \u00b7 Action items (each a specific task in one line) \u00b7 Open questions. Extract only what the notes support \u2014 do not invent owners or dates.",
+              "systemPrompt": "Extract every action item from this postmortem as a numbered list. Each item: a specific, verifiable task in one line. Ignore prose that isn't an action. Do not invent items.",
               "provider": "{{params.provider}}",
               "model": "{{params.model}}"
             },
@@ -181,7 +170,7 @@
           {
             "id": "gate",
             "typeId": "core.chat.approvalGate",
-            "name": "Confirm actions",
+            "name": "Confirm action items",
             "position": {
               "x": 560,
               "y": 0
@@ -194,14 +183,14 @@
           {
             "id": "task",
             "typeId": "feature.crm.nodes.create-task",
-            "name": "File action task",
+            "name": "File action-item task",
             "position": {
               "x": 840,
               "y": 0
             },
             "config": {
               "orgId": "{{params.orgId}}",
-              "title": "Meeting action item"
+              "title": "Incident action item"
             },
             "inputs": {}
           }
@@ -209,10 +198,10 @@
         "edges": [
           {
             "from": "start",
-            "to": "debrief"
+            "to": "extract"
           },
           {
-            "from": "debrief",
+            "from": "extract",
             "to": "gate"
           },
           {
@@ -228,5 +217,10 @@
         }
       }
     }
-  ]
+  ],
+  "signing": {
+    "keyId": "openwop-team-1",
+    "scheme": "ed25519-canonical-json"
+  },
+  "integrity": "sha256-5fW6moOule78GokFMahIbFVEW344XjDV1aLwyTwOkTA="
 }

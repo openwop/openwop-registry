@@ -2,7 +2,7 @@
   "name": "core.openwop.workflows.customer-onboarding",
   "version": "1.0.5",
   "kind": "workflow-chain",
-  "description": "Customer-onboarding chains (RFC 0013): the post-sale first-mile \u2014 a warm welcome, a personalized kickoff checklist, and a scheduled 30-day health check. All external sends sit behind a human approval gate; tenant values are run parameters (replay-deterministic).",
+  "description": "Customer-onboarding chains (RFC 0013): the post-sale first-mile — a warm welcome, a personalized kickoff checklist, and a scheduled 30-day health check. All external sends sit behind a human approval gate; tenant values are run parameters (replay-deterministic).",
   "author": "openwop",
   "license": "Apache-2.0",
   "engines": {
@@ -15,8 +15,8 @@
     {
       "chainId": "onboarding.welcome-sequence",
       "version": "1.0.0",
-      "label": "New Customer \u2192 Welcome Email",
-      "description": "A new customer signs up (webhook) and gets a warm, personalized welcome email drafted from their signup details \u2014 reviewed by a human before it sends.",
+      "label": "New Customer → Welcome Email",
+      "description": "A new customer signs up (webhook) and gets a warm, personalized welcome email drafted from their signup details — reviewed by a human before it sends.",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
@@ -38,7 +38,7 @@
           "provider": {
             "type": "string",
             "default": "anthropic",
-            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 \u2014 a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it \u2014 the workflow will not fall back to another provider on its own."
+            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own."
           },
           "model": {
             "type": "string",
@@ -157,7 +157,7 @@
     {
       "chainId": "onboarding.kickoff-checklist",
       "version": "1.0.0",
-      "label": "Kickoff \u2192 Personalized Checklist",
+      "label": "Kickoff → Personalized Checklist",
       "description": "Turns a new account's context into a tailored onboarding checklist and posts it to the team as an in-app notification so the CSM can act on it.",
       "parameters": {
         "type": "object",
@@ -174,7 +174,7 @@
           "provider": {
             "type": "string",
             "default": "anthropic",
-            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 \u2014 a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it \u2014 the workflow will not fall back to another provider on its own."
+            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own."
           },
           "model": {
             "type": "string",
@@ -183,7 +183,7 @@
           },
           "triggerEventName": {
             "type": "string",
-            "description": "Host event name that starts this workflow. MUST match the `events.md` \u00a7Types grammar: two or three kebab-case segments under a registered org, never `openwop.`-prefixed (e.g. `example.deal.won`)."
+            "description": "Host event name that starts this workflow. MUST match the `events.md` §Types grammar: two or three kebab-case segments under a registered org, never `openwop.`-prefixed (e.g. `example.deal.won`)."
           }
         }
       },
@@ -230,7 +230,7 @@
               "audience": "tenant"
             },
             "inputs": {
-              "title": "Kickoff \u2192 Personalized Checklist"
+              "title": "Kickoff → Personalized Checklist"
             }
           }
         ],
@@ -256,7 +256,7 @@
       "chainId": "onboarding.health-check-30d",
       "version": "1.0.0",
       "label": "30-Day Check-In (Scheduled)",
-      "description": "A scheduled check-in that drafts a personalized 30-day health-check email \u2014 reviewed by a human \u2014 asking how the rollout is going and offering help.",
+      "description": "A scheduled check-in that drafts a personalized 30-day health-check email — reviewed by a human — asking how the rollout is going and offering help.",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
@@ -274,7 +274,7 @@
           "provider": {
             "type": "string",
             "default": "anthropic",
-            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 \u2014 a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it \u2014 the workflow will not fall back to another provider on its own."
+            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own."
           },
           "model": {
             "type": "string",
@@ -317,7 +317,7 @@
               "cron": "{{params.scheduleCron}}"
             },
             "inputs": {
-              "title": "Kickoff \u2192 Personalized Checklist"
+              "title": "Kickoff → Personalized Checklist"
             }
           },
           {
@@ -391,5 +391,10 @@
         }
       }
     }
-  ]
+  ],
+  "signing": {
+    "keyId": "openwop-team-1",
+    "scheme": "ed25519-canonical-json"
+  },
+  "integrity": "sha256-aeMIaXxtZ5AnB7rPr5qCuGRWF/ijrgh8zSAvKBYR38I="
 }

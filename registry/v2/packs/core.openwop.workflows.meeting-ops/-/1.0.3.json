@@ -2,7 +2,7 @@
   "name": "core.openwop.workflows.meeting-ops",
   "version": "1.0.3",
   "kind": "workflow-chain",
-  "description": "Meeting-ops chains (RFC 0013): less time in and around meetings \u2014 an agenda from a stated goal, and notes turned into owned action items. In-app and draft sinks only; replay-deterministic.",
+  "description": "Meeting-ops chains (RFC 0013): less time in and around meetings — an agenda from a stated goal, and notes turned into owned action items. In-app and draft sinks only; replay-deterministic.",
   "author": "openwop",
   "license": "Apache-2.0",
   "engines": {
@@ -15,7 +15,7 @@
     {
       "chainId": "meeting.agenda-prep",
       "version": "1.0.0",
-      "label": "Goal \u2192 Meeting Agenda",
+      "label": "Goal → Meeting Agenda",
       "description": "Turns a one-line meeting goal into a tight, time-boxed agenda and posts it to the team as an in-app notification.",
       "parameters": {
         "type": "object",
@@ -32,7 +32,7 @@
           "provider": {
             "type": "string",
             "default": "anthropic",
-            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 \u2014 a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it \u2014 the workflow will not fall back to another provider on its own."
+            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own."
           },
           "model": {
             "type": "string",
@@ -41,7 +41,7 @@
           },
           "triggerEventName": {
             "type": "string",
-            "description": "Host event name that starts this workflow. MUST match the `events.md` \u00a7Types grammar: two or three kebab-case segments under a registered org, never `openwop.`-prefixed (e.g. `example.deal.won`)."
+            "description": "Host event name that starts this workflow. MUST match the `events.md` §Types grammar: two or three kebab-case segments under a registered org, never `openwop.`-prefixed (e.g. `example.deal.won`)."
           }
         }
       },
@@ -88,7 +88,7 @@
               "audience": "tenant"
             },
             "inputs": {
-              "title": "Goal \u2192 Meeting Agenda"
+              "title": "Goal → Meeting Agenda"
             }
           }
         ],
@@ -113,7 +113,7 @@
     {
       "chainId": "meeting.notes-to-actions",
       "version": "1.0.0",
-      "label": "Notes \u2192 Owned Action Items",
+      "label": "Notes → Owned Action Items",
       "description": "Debriefs raw meeting notes into decisions and action items; a human confirms, and each action becomes a tracked task.",
       "parameters": {
         "type": "object",
@@ -130,7 +130,7 @@
           "provider": {
             "type": "string",
             "default": "anthropic",
-            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 \u2014 a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it \u2014 the workflow will not fall back to another provider on its own."
+            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own."
           },
           "model": {
             "type": "string",
@@ -139,7 +139,7 @@
           },
           "triggerEventName": {
             "type": "string",
-            "description": "Host event name that starts this workflow. MUST match the `events.md` \u00a7Types grammar: two or three kebab-case segments under a registered org, never `openwop.`-prefixed (e.g. `example.deal.won`)."
+            "description": "Host event name that starts this workflow. MUST match the `events.md` §Types grammar: two or three kebab-case segments under a registered org, never `openwop.`-prefixed (e.g. `example.deal.won`)."
           }
         }
       },
@@ -160,7 +160,7 @@
               "eventName": "{{params.triggerEventName}}"
             },
             "inputs": {
-              "title": "Goal \u2192 Meeting Agenda"
+              "title": "Goal → Meeting Agenda"
             }
           },
           {
@@ -172,7 +172,7 @@
               "y": 0
             },
             "config": {
-              "systemPrompt": "From these meeting notes produce: Decisions (each in one line) \u00b7 Action items (each a specific task in one line) \u00b7 Open questions. Extract only what the notes support \u2014 do not invent owners or dates.",
+              "systemPrompt": "From these meeting notes produce: Decisions (each in one line) · Action items (each a specific task in one line) · Open questions. Extract only what the notes support — do not invent owners or dates.",
               "provider": "{{params.provider}}",
               "model": "{{params.model}}"
             },
@@ -228,5 +228,10 @@
         }
       }
     }
-  ]
+  ],
+  "signing": {
+    "keyId": "openwop-team-1",
+    "scheme": "ed25519-canonical-json"
+  },
+  "integrity": "sha256-hh/7XWOsWAkzmK144Nhndyjp3kljv8/kXOWxbt/bk4Y="
 }

@@ -2,7 +2,7 @@
   "name": "core.openwop.workflows.release-comms",
   "version": "1.0.2",
   "kind": "workflow-chain",
-  "description": "Release-comms chains (RFC 0013): ship-day communications \u2014 customer-facing release notes from a raw changelog, and an internal launch announcement. Every external/team send is human-gated. Replay-deterministic.",
+  "description": "Release-comms chains (RFC 0013): ship-day communications — customer-facing release notes from a raw changelog, and an internal launch announcement. Every external/team send is human-gated. Replay-deterministic.",
   "author": "openwop",
   "license": "Apache-2.0",
   "engines": {
@@ -15,8 +15,8 @@
     {
       "chainId": "release.notes-from-changelog",
       "version": "1.0.0",
-      "label": "Changelog \u2192 Customer Release Notes",
-      "description": "Turns a raw changelog into friendly, customer-facing release notes grouped by theme \u2014 reviewed by a human before it's treated as published copy.",
+      "label": "Changelog → Customer Release Notes",
+      "description": "Turns a raw changelog into friendly, customer-facing release notes grouped by theme — reviewed by a human before it's treated as published copy.",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
@@ -32,7 +32,7 @@
           "provider": {
             "type": "string",
             "default": "anthropic",
-            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 \u2014 a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it \u2014 the workflow will not fall back to another provider on its own."
+            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own."
           },
           "model": {
             "type": "string",
@@ -41,7 +41,7 @@
           },
           "triggerEventName": {
             "type": "string",
-            "description": "Host event name that starts this workflow. MUST match the `events.md` \u00a7Types grammar: two or three kebab-case segments under a registered org, never `openwop.`-prefixed (e.g. `example.deal.won`)."
+            "description": "Host event name that starts this workflow. MUST match the `events.md` §Types grammar: two or three kebab-case segments under a registered org, never `openwop.`-prefixed (e.g. `example.deal.won`)."
           }
         }
       },
@@ -111,7 +111,7 @@
     {
       "chainId": "release.internal-announce",
       "version": "1.0.0",
-      "label": "Release \u2192 Internal Launch Note",
+      "label": "Release → Internal Launch Note",
       "description": "Drafts a crisp internal launch announcement (what shipped, who it's for, talking points) and posts it to the team channel after a human approves.",
       "parameters": {
         "type": "object",
@@ -129,7 +129,7 @@
           "provider": {
             "type": "string",
             "default": "anthropic",
-            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 \u2014 a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it \u2014 the workflow will not fall back to another provider on its own."
+            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own."
           },
           "model": {
             "type": "string",
@@ -138,7 +138,7 @@
           },
           "triggerEventName": {
             "type": "string",
-            "description": "Host event name that starts this workflow. MUST match the `events.md` \u00a7Types grammar: two or three kebab-case segments under a registered org, never `openwop.`-prefixed (e.g. `example.deal.won`)."
+            "description": "Host event name that starts this workflow. MUST match the `events.md` §Types grammar: two or three kebab-case segments under a registered org, never `openwop.`-prefixed (e.g. `example.deal.won`)."
           },
           "slackChannel": {
             "type": "string",
@@ -228,5 +228,10 @@
         }
       }
     }
-  ]
+  ],
+  "signing": {
+    "keyId": "openwop-team-1",
+    "scheme": "ed25519-canonical-json"
+  },
+  "integrity": "sha256-i2oifX4KM31WgyS0xr+vOaatr0YQnwiDrOBnyS+g0E8="
 }
