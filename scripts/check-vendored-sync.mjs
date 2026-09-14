@@ -87,6 +87,11 @@ export const VENDORED_V2 = [
   // (scripts/codemod-pack-manifest-v2.mjs) reads both; vendored so the
   // rewrite is pinned to the same tag as the schemas it must satisfy.
   'spec/v2/declaration.json',
+  // RFC 0176 §A.3 — the codemap's v2 column is the protocol event vocabulary.
+  // check-pack-event-names.mjs needs it to tell a protocol type (`run.started`,
+  // which carries no `openwop.` prefix) from a vendor-shaped one, which is the
+  // whole difficulty: both are two kebab segments.
+  'spec/v2/event-codemap.json',
   'spec/v2/peer-dependency-aliases.json',
 ];
 

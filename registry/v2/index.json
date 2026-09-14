@@ -1119,7 +1119,7 @@
     {
       "name": "core.openwop.triggers",
       "kind": "node",
-      "latestVersion": "1.1.1",
+      "latestVersion": "1.1.2",
       "description": "Workflow-trigger pack. Sixteen entry-point shapes — original seven (webhook, schedule, event, envelope, chatMessage, canvas, artifact) plus the v1.1 additions (mailhook, email-imap, form, rss, manual, error, sub-workflow, cron-advanced) and the webhook-response action. Trigger nodes are pass-through executors: they forward `ctx.triggerData` (set by the engine when the trigger fires) to outputs.",
       "license": "Apache-2.0",
       "tags": [],
@@ -1311,7 +1311,7 @@
     {
       "name": "core.openwop.workflows.crm-ops",
       "kind": "workflow-chain",
-      "latestVersion": "1.1.1",
+      "latestVersion": "1.1.2",
       "description": "Governed CRM write-verb workflows (RFC 0013, ADR 0208 §2, ADR 0252). Where feature.crm.agents.sales-ops is read-mostly (plus two assistive writes), these chains carry the riskier CRM mutations — owner assignment off a new-lead event, stale-deal follow-up, and the scheduler-fired Gmail inbox sync — with a human in the loop where the ADR calls for one. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts that ship the feature.crm feature + node pack (the OpenWOP reference app).",
       "license": "Apache-2.0",
       "tags": [],
@@ -1787,7 +1787,7 @@
     {
       "name": "core.openwop.workflows.people-hr",
       "kind": "workflow-chain",
-      "latestVersion": "1.4.1",
+      "latestVersion": "1.4.2",
       "description": "Real-work workflow pack (RFC 0013, ADR 0149) — the People / HR cluster: Employee Onboarding Orchestrator, Offboarding & Access Revocation, and Leave/PTO Request Routing. Reasons with core.ai.chatCompletion; binds Microsoft 365 via core.openwop.http.openapi-call connectionRef, recommends HRIS actions provider-agnostically via core.openwop.connectors.hris-action (Workday today), and provider-agnostic ticketing (Jira/ServiceNow) via the core.openwop.connectors.ticket-* capability nodes (ADR 0186); every account/HRIS mutation and every team-facing send is gated by core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + integration packs; connections are configured under Access & data → Connections. Published under core.openwop.workflows.* (openwop-team key).",
       "license": "Apache-2.0",
       "tags": [],
@@ -2692,7 +2692,7 @@
     {
       "name": "vendor.openwop-app.workflows.forms-intake",
       "kind": "workflow-chain",
-      "latestVersion": "1.1.1",
+      "latestVersion": "1.1.2",
       "description": "Self-serve intake portal (ADR 0246/0247, STRAT-PORTAL). Bridges the forms feature to priority-matrix idea intake WITHOUT either feature importing the other: a public/authed form submission emits host.forms.submission.created (ADR 0208), this chain re-reads the submission under authz via ctx.features.forms.getSubmission, and — when the form's owner has configured an intake binding — files it as an idea on the bound priority-matrix list through the existing submit-idea verb, which also stamps the idea's intake overlay with sourceChannel='form' + the sourceSubmissionId for provenance (ADR 0247 OQ-5). A form with no binding cleanly no-ops (the conditional edge). The anonymous submitter never chooses the list (owner-configured binding); the target list's org-ownership is enforced at the submit-idea write boundary (expectedOrgId). Bind it per tenant to host.forms.submission.created via the ADR 0208 event→workflow bindings.",
       "license": "Apache-2.0",
       "tags": [],
