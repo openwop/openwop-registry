@@ -76,6 +76,7 @@ else
   node scripts/check-pack-namespace-authority.mjs --tree v2
   node scripts/check-pack-namespace-authority.mjs --tree v1
   node scripts/check-pack-event-names.mjs
+  node scripts/check-pack-chain-params-declared.mjs
   echo "[v2 11/11] Every pack that ships schemas ships them at EVERY published version (a manifest whose documents are absent serves 404s)..."
   node scripts/check-pack-schema-tree-complete.mjs --tree v2
   node scripts/check-pack-schema-tree-complete.mjs --tree v1

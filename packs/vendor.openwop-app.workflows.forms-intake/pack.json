@@ -1,8 +1,8 @@
 {
   "name": "vendor.openwop-app.workflows.forms-intake",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "kind": "workflow-chain",
-  "description": "Self-serve intake portal (ADR 0246/0247, STRAT-PORTAL). Bridges the forms feature to priority-matrix idea intake WITHOUT either feature importing the other: a public/authed form submission emits host.forms.submission.created (ADR 0208), this chain re-reads the submission under authz via ctx.features.forms.getSubmission, and — when the form's owner has configured an intake binding — files it as an idea on the bound priority-matrix list through the existing submit-idea verb, which also stamps the idea's intake overlay with sourceChannel='form' + the sourceSubmissionId for provenance (ADR 0247 OQ-5). A form with no binding cleanly no-ops (the conditional edge). The anonymous submitter never chooses the list (owner-configured binding); the target list's org-ownership is enforced at the submit-idea write boundary (expectedOrgId). Bind it per tenant to host.forms.submission.created via the ADR 0208 event→workflow bindings.",
+  "description": "Self-serve intake portal (ADR 0246/0247, STRAT-PORTAL). Bridges the forms feature to priority-matrix idea intake WITHOUT either feature importing the other: a public/authed form submission emits host.forms.submission.created (ADR 0208), this chain re-reads the submission under authz via ctx.features.forms.getSubmission, and \u2014 when the form's owner has configured an intake binding \u2014 files it as an idea on the bound priority-matrix list through the existing submit-idea verb, which also stamps the idea's intake overlay with sourceChannel='form' + the sourceSubmissionId for provenance (ADR 0247 OQ-5). A form with no binding cleanly no-ops (the conditional edge). The anonymous submitter never chooses the list (owner-configured binding); the target list's org-ownership is enforced at the submit-idea write boundary (expectedOrgId). Bind it per tenant to host.forms.submission.created via the ADR 0208 event\u2192workflow bindings.",
   "author": "openwop-app",
   "license": "Apache-2.0",
   "engines": {
@@ -18,12 +18,19 @@
       "chainId": "forms-intake.route-submission",
       "version": "1.1.0",
       "label": "Forms: Route Submission to Intake",
-      "description": "On host.forms.submission.created, re-read the submission under authz and — if the form has an intake binding — file it as a priority-matrix idea (title/notes from the bound fields, list from the owner-configured binding), stamping form provenance (sourceChannel='form' + submissionId) on the idea. No binding ⇒ no-op. If the owner-bound list was deleted after binding, submit-idea 404s but the run still COMPLETES cleanly via the `done` terminal's `all_complete` edge (RFC 0125 fan-in / error-routing) — the submission is always captured, so a stale binding degrades gracefully instead of failing the run (ADR 0247 OQ-2).",
+      "description": "On host.forms.submission.created, re-read the submission under authz and \u2014 if the form has an intake binding \u2014 file it as a priority-matrix idea (title/notes from the bound fields, list from the owner-configured binding), stamping form provenance (sourceChannel='form' + submissionId) on the idea. No binding \u21d2 no-op. If the owner-bound list was deleted after binding, submit-idea 404s but the run still COMPLETES cleanly via the `done` terminal's `all_complete` edge (RFC 0125 fan-in / error-routing) \u2014 the submission is always captured, so a stale binding degrades gracefully instead of failing the run (ADR 0247 OQ-2).",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
-        "required": [],
-        "properties": {}
+        "required": [
+          "triggerEventName"
+        ],
+        "properties": {
+          "triggerEventName": {
+            "type": "string",
+            "description": "Host event name that starts this chain. MUST match the `events.md` \u00a7Types grammar: two or three kebab-case segments, never `openwop.`-prefixed (e.g. `openwop-app.forms.submission-created`)."
+          }
+        }
       },
       "capabilities": [
         "side-effectful"
@@ -68,7 +75,7 @@
           {
             "id": "skip",
             "typeId": "core.flow.noop",
-            "name": "No binding — nothing to file",
+            "name": "No binding \u2014 nothing to file",
             "position": {
               "x": 640,
               "y": 160
@@ -79,7 +86,7 @@
           {
             "id": "done",
             "typeId": "core.flow.noop",
-            "name": "Filing attempted — complete regardless (OQ-2)",
+            "name": "Filing attempted \u2014 complete regardless (OQ-2)",
             "position": {
               "x": 960,
               "y": 0
