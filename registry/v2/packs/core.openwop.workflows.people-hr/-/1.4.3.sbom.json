@@ -1,0 +1,108 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.people-hr@1.4.3",
+      "type": "library",
+      "name": "core.openwop.workflows.people-hr",
+      "version": "1.4.3",
+      "description": "Real-work workflow pack (RFC 0013, ADR 0149) — the People / HR cluster: Employee Onboarding Orchestrator, Offboarding & Access Revocation, and Leave/PTO Request Routing. Reasons with core.ai.chatCompletion; binds Microsoft 365 via core.openwop.http.openapi-call connectionRef, recommends HRIS actions provider-agnostically via core.openwop.connectors.hris-action (Workday today), and provider-agnostic ticketing (Jira/ServiceNow) via the core.openwop.connectors.ticket-* capability nodes (ADR 0186); every account/HRIS mutation and every team-facing send is gated by core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + integration packs; connections are configured under Access & data → Connections. Published under core.openwop.workflows.* (openwop-team key).",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6a0372f198600e797094cae0091e542ede5353f397fe804394d5ac124cdea676"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.people-hr@1.4.3"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fa475a8b7e357678dadd43abd4f2ad29462b5c16e96a6f030353c3c5bfd21c95"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "211"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3485aa6e47d783c286292e96308f64e966906d769e8f36fb05760044a06a97c9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8b6c8a0bebfc70088860a3bf4e6f8b95424a0524427405c84e9aca64dee8af1c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "15622"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.people-hr@1.4.3",
+      "dependsOn": []
+    }
+  ]
+}

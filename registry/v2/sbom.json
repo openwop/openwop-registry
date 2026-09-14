@@ -1314,6 +1314,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.crm-ops@1.1.3",
+      "type": "library",
+      "name": "core.openwop.workflows.crm-ops",
+      "version": "1.1.3",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.crm-ops/-/1.1.3.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "fc5f8aaaeb7e3eee0e18c5132c447701ea0efaf15d7e441df6fa111f3c921462"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.workflows.csm-ops@1.0.1",
       "type": "library",
       "name": "core.openwop.workflows.csm-ops",
@@ -1974,6 +1992,24 @@
             {
               "alg": "SHA-256",
               "content": "9e52b2310967abbd4e8629374e89a8eb831cd1a7d021989df453c26f96287dab"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.people-hr@1.4.3",
+      "type": "library",
+      "name": "core.openwop.workflows.people-hr",
+      "version": "1.4.3",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.people-hr/-/1.4.3.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "ca8f0dc1e58d88cb43968adf8f3cfebb90512bb27a4602860ce5f9b7c9600068"
             }
           ]
         }
@@ -2982,6 +3018,24 @@
             {
               "alg": "SHA-256",
               "content": "d0066666284e0a96053d63aeecc84aac5a908cf887ce0729cdaef4df761aae79"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.openwop-app.workflows.forms-intake@1.1.3",
+      "type": "library",
+      "name": "vendor.openwop-app.workflows.forms-intake",
+      "version": "1.1.3",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.openwop-app.workflows.forms-intake/-/1.1.3.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "f8e30932c413cb684cb0c01588cc33523c319a25d61b01081197876f4b2cba00"
             }
           ]
         }
