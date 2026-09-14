@@ -24,8 +24,20 @@
       "integrity": "sha256-ssC/OB9IteKlcQdCSJA3PMHBjY1RVAXzHepWa4wWc2s=",
       "versionDeprecated": false,
       "yanked": false
+    },
+    {
+      "version": "1.1.4",
+      "manifestUrl": "/v2/packs/core.openwop.workflows.sales-outreach/-/1.1.4.json",
+      "tarballUrl": "/v2/packs/core.openwop.workflows.sales-outreach/-/1.1.4.tgz",
+      "signatureUrl": "/v2/packs/core.openwop.workflows.sales-outreach/-/1.1.4.sig",
+      "sbomUrl": "/v2/packs/core.openwop.workflows.sales-outreach/-/1.1.4.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-8+cSd6PIWItf1fufk5QZ74jyOduHgEp5C/nA0dwLeIY=",
+      "versionDeprecated": false,
+      "yanked": false
     }
   ],
-  "latest": "1.1.3",
+  "latest": "1.1.4",
   "deprecated": false
 }
