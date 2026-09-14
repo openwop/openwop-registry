@@ -1,8 +1,8 @@
 {
   "name": "core.openwop.workflows.seo-content-ops",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "kind": "workflow-chain",
-  "description": "SEO content-ops chains (RFC 0013): a research-grounded content pipeline — a keyword brief from live search, a drafted article for human review, and an on-publish internal-link suggestion pass. Drafts are reviewed before anything is treated as final. Replay-deterministic.",
+  "description": "SEO content-ops chains (RFC 0013): a research-grounded content pipeline \u2014 a keyword brief from live search, a drafted article for human review, and an on-publish internal-link suggestion pass. Drafts are reviewed before anything is treated as final. Replay-deterministic.",
   "author": "openwop",
   "license": "Apache-2.0",
   "engines": {
@@ -15,7 +15,7 @@
     {
       "chainId": "seo.keyword-brief",
       "version": "1.1.0",
-      "label": "Topic → Research-Grounded Brief",
+      "label": "Topic \u2192 Research-Grounded Brief",
       "description": "Researches a topic with live web search and produces a keyword-targeted content brief (angle, outline, target queries, sources) as a saved draft for the writer.",
       "parameters": {
         "type": "object",
@@ -32,7 +32,7 @@
           "provider": {
             "type": "string",
             "default": "anthropic",
-            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own."
+            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 \u2014 a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it \u2014 the workflow will not fall back to another provider on its own."
           },
           "model": {
             "type": "string",
@@ -41,7 +41,7 @@
           },
           "triggerEventName": {
             "type": "string",
-            "description": "Host event name that starts this workflow (e.g. `crm.deal.won`)."
+            "description": "Host event name that starts this workflow. MUST match the `events.md` \u00a7Types grammar: two or three kebab-case segments under a registered org, never `openwop.`-prefixed (e.g. `example.deal.won`)."
           }
         }
       },
@@ -81,7 +81,7 @@
               "y": 0
             },
             "config": {
-              "systemPrompt": "You are an SEO content strategist. From the search results, write a brief for an article on {{params.topic}}: primary + secondary target queries, a distinct angle, a section outline, and the sources to cite. Ground every claim in a result; never fabricate a source. If the search results' `engine` field is 'demo' or 'stub' they are PLACEHOLDERS, not research: do not treat them as findings or invent specifics from them — say plainly that live web search is not configured (a 'web-search' key on the keys page unlocks it) and stop there.",
+              "systemPrompt": "You are an SEO content strategist. From the search results, write a brief for an article on {{params.topic}}: primary + secondary target queries, a distinct angle, a section outline, and the sources to cite. Ground every claim in a result; never fabricate a source. If the search results' `engine` field is 'demo' or 'stub' they are PLACEHOLDERS, not research: do not treat them as findings or invent specifics from them \u2014 say plainly that live web search is not configured (a 'web-search' key on the keys page unlocks it) and stop there.",
               "provider": "{{params.provider}}",
               "model": "{{params.model}}"
             },
@@ -124,8 +124,8 @@
     {
       "chainId": "seo.draft-for-review",
       "version": "1.0.0",
-      "label": "Brief → Draft → Publish Gate",
-      "description": "Turns an approved brief into a full first draft, then holds it at a human publish gate — the article is never treated as live until a person approves.",
+      "label": "Brief \u2192 Draft \u2192 Publish Gate",
+      "description": "Turns an approved brief into a full first draft, then holds it at a human publish gate \u2014 the article is never treated as live until a person approves.",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
@@ -141,7 +141,7 @@
           "provider": {
             "type": "string",
             "default": "anthropic",
-            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own."
+            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 \u2014 a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it \u2014 the workflow will not fall back to another provider on its own."
           },
           "model": {
             "type": "string",
@@ -150,7 +150,7 @@
           },
           "triggerEventName": {
             "type": "string",
-            "description": "Host event name that starts this workflow (e.g. `crm.deal.won`)."
+            "description": "Host event name that starts this workflow. MUST match the `events.md` \u00a7Types grammar: two or three kebab-case segments under a registered org, never `openwop.`-prefixed (e.g. `example.deal.won`)."
           }
         }
       },
@@ -194,7 +194,7 @@
               "y": 0
             },
             "config": {
-              "title": "Review the draft — approve to mark it ready to publish"
+              "title": "Review the draft \u2014 approve to mark it ready to publish"
             },
             "inputs": {}
           }
