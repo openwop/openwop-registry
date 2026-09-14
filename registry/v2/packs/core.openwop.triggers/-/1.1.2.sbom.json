@@ -1,0 +1,901 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.triggers@1.1.2",
+      "type": "library",
+      "name": "core.openwop.triggers",
+      "version": "1.1.2",
+      "description": "Workflow-trigger pack. Sixteen entry-point shapes — original seven (webhook, schedule, event, envelope, chatMessage, canvas, artifact) plus the v1.1 additions (mailhook, email-imap, form, rss, manual, error, sub-workflow, cron-advanced) and the webhook-response action. Trigger nodes are pass-through executors: they forward `ctx.triggerData` (set by the engine when the trigger fires) to outputs.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/packs/core.openwop.triggers"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e1441af9cccf5f31558f90e8efc809531fa63750c17a3628a77f9a4d1f9d2c7e"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.triggers@1.1.2"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7aec093b7d6d15fdf913baeec0db5c8ee586907173be4e79748048b33c08172e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "4670"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "index.mjs",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "627a7ac1f19e33ed041b37cc57499c04cbb5ba4cabe0daf88568c5e79114ff54"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "7874"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "74d5ad7949177913adcf066cf858769911717f971c00be324d5dc1891694e1e1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "94dbeddd9d5c4d5e50e04b8e18b76ce0d023855698980d2fdf8c0d2b5967da16"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "9384"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/artifact.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f769c65fbc3946b3aea6326514ec967b673b9aa2120cbc94eae75eb31181279c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "292"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/artifact.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fef974bf60f425c9b5aac171ab1899026ed0a3c44dc447dd564e66d85f123cbf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "116"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/artifact.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6b0b202b73eab249163535094cf81fa1a91e3b9c2d1233bb85d680422f90e4de"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "405"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/canvas.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c90c3e49f4fdd8214db530d7b3b26e5bf35f8712c73cb353a1ff20020bf11443"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "284"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/canvas.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fef974bf60f425c9b5aac171ab1899026ed0a3c44dc447dd564e66d85f123cbf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "116"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/canvas.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "29a3b48f70949a2370e96ddaa550f7c32adf07a53d9b78e14f4ef2a8a296206d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "401"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/chatMessage.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ee8f4494a29f28687d31e5941f73b7d90169c96326d307688356031a19a74761"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "320"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/chatMessage.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fef974bf60f425c9b5aac171ab1899026ed0a3c44dc447dd564e66d85f123cbf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "116"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/chatMessage.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5dc8a21e3f4343360b9b587709c329b6c3d97f2353e2a1993efbde795d1bea8a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "468"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/cron-advanced.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3da62b7efa3b99c0a35a09d4fdfeddd83d182eac61a925c9ff1d289a12307dc8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "480"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/cron-advanced.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4e9e857ddcea99e16d53e89ebdb2b731c934908904d4d911c5b431a2ab655cdd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "260"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/cron-advanced.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "12fceda8f4b4f2f23eda8d917e859dc4e128a6cc6bf78fc3cf9f53f25c0b5257"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "451"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/email-imap.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5d1fa7c4fbc84ea734677586be3985fe6d4c5bca564bcdbe481f77fba6b9fd82"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "624"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/email-imap.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ab1f2f559ae3a8ce8033129b37bddb3a63bb04111ac1a1d501dbb66fef86c649"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "254"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/email-imap.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ab3a680a0a7fae0c52df52818dc616e369c05e035da88229395454986e542d8d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "761"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/envelope.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "20c8d834f7f37ca22ef7ea4d4fe7942aa6e2205672379724c5c65665db569931"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1024"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/envelope.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c063bc33f1ca06f992083822eaac116a6475c67321825b10fe32319a616da4d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "258"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/envelope.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ddac636c56ff1a5042805899e60c3ceec786f1e59f0baaa6602d2111e7fca59e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "889"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/error.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f1dd4a1a115bfda9a91b76fdd3fa1f07a020803d1d36f47ed5527232216ada75"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "360"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/error.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ff6b42ad8df8ade95828746ab8a4485f3c53d88d12a69a91b0ec6437c2b964a2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "245"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/error.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ec20f7d4db4d5bad0cb7ca789553848905bedcb7646d7a25229d458f94ccef3d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "530"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/event.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9152f0daefa261585fbf0f886cef89ed6c352b3522c879474289a0fa7c801a07"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1427"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/event.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6512ca00bb981e8525c5c103c3b112b0b364fb65327e301e1b6ed47b3484f16f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "252"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/event.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5caf5eb4c547993321ec066cbf75815ded5a51144553810657f72fd41f3b4e0d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "949"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/form.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bb9290e06675b89334dc468475b48c20455372b3cb3fa4be30d5af080ebb9afa"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "467"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/form.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5d5d85e0873e2cee7381d6f74a806066e8df6f3e953879ed096375346329d269"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "243"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/form.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "698400ac533b70e7b05ab054b27bf34d7810b8c2f60c1c13a06686fb0068b0b4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "519"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/mailhook.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0c0fa5a6f8749061075134c1f48ec3be94a29e66f6ccd7a8a293e877b10ff5b4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "410"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/mailhook.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "44d4033eccc131207eda6c88f12b5027efb5bc8530aaa4a75ab8b3c49126acb3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "251"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/mailhook.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e595fbcf9b799a571b52223e2fae687b2670f5accc7d8674b6da338009e0c4e7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "795"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/manual.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8d54953bdab270a6a2c4ff4dd9b141dc555de957e5d00bb7a2b300512f546196"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "296"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/manual.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "155f7c525f57b9663a3ff5416224ad9606f8891dce1846219eddf2f01d8d7d8a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "247"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/manual.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1a6ac0417ba08a4497f4570c6225e9e46590bedceb54ff60964d4bde1e455bdc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "270"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/rss.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "94c832e7e161faa1b383bc45fd9524211af7462c8b0b9d73f2a06dad412a00e9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "464"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/rss.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "35444d5c6286c25c659b17949d7ba5164eb91155f24d5d6fae490439424d9cb6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "241"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/rss.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4c1eb90e7cfa5de15c7683634c07f7e7f82a2b81e9a7ddfd12de159152946cdd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "618"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/schedule.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "dc410b5f181607f5b48a6afb89ae3e822cfc579719f35d37eed969cc4ae816ce"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1347"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/schedule.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "49a0c888a6c3429d1e5efe6ab1e1373094ad6b444c7c833d9e0bd37ff237953a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "258"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/schedule.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4c8c8e0b8e7a9dfbb56d9c544d3dd26e8e02330f3c0981967536b3f215335689"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1113"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/sub-workflow.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "32c0a8d2399f191295602c123eb7bc84115245fff4acc1ff4e7871988bef164e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "394"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/sub-workflow.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "79442e0ad54f026697e32d448f1ea4fa362f0f9a129b5446685726d13f99a9c8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "258"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/sub-workflow.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4c9bddeb8e92189f910854d9a2a43e0c8622e15823767853bbf6aa017b74d148"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "535"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/webhook-respond.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6ca1a31f6e78809d2890e84ffc89f8f7b941c6619ce04fee2f67ffc23f8c8284"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "494"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/webhook-respond.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "eabe1e80089e0881d927f34cadd8ee0228a9237b0829d11f91d3648cc9a9b98c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "282"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/webhook-respond.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7c3cb9a93d5237328c8f49983ae1b1b9d808fe02aa54aa173c9da7cf60671f42"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "465"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/webhook.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "040e748f14b2aa5c88f64fe9a1a79faa8cdb1a5259d7f9a8b60239cfc1d06064"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1389"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/webhook.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bec22c89f6f762295e5ae91b9e18d2212f31e8485e8e16c59d6323ee12884e34"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "408"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/webhook.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "eb1f120dd37528d79ce6b252549c7ffa15542e4c0f656a663cffabe678da4e13"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1490"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.triggers@1.1.2",
+      "dependsOn": []
+    }
+  ]
+}

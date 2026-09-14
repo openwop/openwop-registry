@@ -1119,7 +1119,7 @@
     {
       "name": "core.openwop.triggers",
       "kind": "node",
-      "latestVersion": "1.1.1",
+      "latestVersion": "1.1.2",
       "description": "Workflow-trigger pack. Sixteen entry-point shapes — original seven (webhook, schedule, event, envelope, chatMessage, canvas, artifact) plus the v1.1 additions (mailhook, email-imap, form, rss, manual, error, sub-workflow, cron-advanced) and the webhook-response action. Trigger nodes are pass-through executors: they forward `ctx.triggerData` (set by the engine when the trigger fires) to outputs.",
       "license": "Apache-2.0",
       "tags": [],
