@@ -53,3 +53,19 @@ jobs:
         # current batch touched while allowing the legacy partials a separate
         # cleanup track.
         run: node scripts/check-pack-schema-ids.mjs
+
+      - name: Served indexes match their tree's publication rule
+        # The two registry trees hold deliberately different things: the v2 tree
+        # is live, the v1 tree is a frozen historical record that auto-register
+        # stops updating once a manifest admits major 2. Nothing said so, and on
+        # 2026-09-16 a host operator compared packs/ against the v1 index, found
+        # "154 of 156 drifted", and a second session reproduced and CONFIRMED the
+        # number. Against the tree a major-2 client actually resolves, the drift
+        # was ZERO. What made it credible was `generatedAt`, a hardcoded literal
+        # since the first build, so a current index advertised itself as four
+        # months stale.
+        #
+        # This gate holds each tree to its own rule and refuses the frozen
+        # timestamp, so the comparison nobody should make cannot be made
+        # silently again.
+        run: node scripts/check-served-index-matches-tree.mjs

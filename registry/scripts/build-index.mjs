@@ -332,9 +332,19 @@ function rebuildPack(packName) {
 }
 
 function rebuildRegistryIndex(packDocs) {
+  // `generatedAt` was a hardcoded '2026-05-10T00:00:00Z' literal from the first
+  // build until 2026-09-16. The v2 tree's CONTENTS stayed current the whole
+  // time — the field simply stopped tracking them, which is worse than having
+  // no field: three sessions read staleness into a correct index and went
+  // hunting for a missing generator instead of a wrong tree.
+  //
+  // A live timestamp does not churn here: this index is rebuilt only when
+  // `packs/**` changes (`.github/workflows/auto-register.yml`), so the value
+  // moves exactly when the contents move. `emitLandingPage` has always done
+  // this; only the JSON was frozen.
   const registryDoc = {
     registryVersion: '1.0.0',
-    generatedAt: '2026-05-10T00:00:00Z',
+    generatedAt: new Date().toISOString(),
     packCount: packDocs.length,
     packs: packDocs.map((p) => ({
       name: p.name,
