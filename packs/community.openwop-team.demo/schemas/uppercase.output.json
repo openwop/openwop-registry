@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://packs.openwop.dev/community.openwop-team.demo/0.1.1/uppercase.output.json",
+  "$id": "https://packs.openwop.dev/community.openwop-team.demo/0.1.2/uppercase.output.json",
   "title": "UppercaseNodeOutput",
   "description": "Output for community.openwop-team.demo.uppercase.",
   "type": "object",
