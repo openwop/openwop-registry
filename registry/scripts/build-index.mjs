@@ -31,6 +31,12 @@
 
 import { readFileSync, writeFileSync, readdirSync, existsSync, statSync, mkdirSync, rmSync } from 'node:fs';
 import { createHash } from 'node:crypto';
+
+/** Drop the `generatedAt` line so --check compares catalog content, not clocks. */
+function stripGeneratedAt(text) {
+  return text.replace(/^\s*"generatedAt":\s*"[^"]*",?\n/m, '');
+}
+
 import { execFileSync } from 'node:child_process';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -56,7 +62,16 @@ function writeJson(path, data) {
   const text = JSON.stringify(data, null, 2) + '\n';
   if (checkMode) {
     const existing = existsSync(path) ? readFileSync(path, 'utf8') : '';
-    if (existing !== text) {
+    // `generatedAt` is a live timestamp, so it differs on every run by
+    // construction. --check asks "is the CONTENT current", which is a question
+    // about the catalog, not about when the file was written; comparing the
+    // timestamp would make this gate red on every unrelated PR and teach
+    // everyone to ignore it.
+    //
+    // The timestamp is not unchecked — `scripts/check-served-index-matches-tree.mjs`
+    // fails if it is missing, unparseable, or the frozen 2026-05-10 literal it
+    // used to be. Content here, honesty there.
+    if (stripGeneratedAt(existing) !== stripGeneratedAt(text)) {
       console.error(`[build-index --check] ${path} would change`);
       process.exitCode = 1;
     }
