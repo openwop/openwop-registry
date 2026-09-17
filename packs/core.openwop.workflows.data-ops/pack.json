@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.data-ops",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "kind": "workflow-chain",
   "description": "Real-work workflow pack (RFC 0013, ADR 0200/0201) — the Data Ops cluster, the one shape-family the Zapier/n8n and Microsoft canons don't cover (surfaced by the Make/Workato research): collapsing many records into one output (the aggregator canon), one-way movement of records between systems, and content routing (send a record down the right branch). Roll Up, Records → Table, Records → System (one-way upsert behind a human sign-off), and Content Router (route a record to the matching branch by a field predicate — the Make router shape, gated via edge conditions, ADR 0201). Uses only shipped, executable nodes (core.flow.aggregate-{numeric,text,table} + core.flow.router + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.http.openapi-call + core.openwop.integration.notification-push). The write is ONE-WAY movement keyed on an external id (re-runs update, never duplicate) behind a human approval — it is NOT a bidirectional sync. All tenant values are run parameters (replay-deterministic).",
   "author": "openwop",
@@ -244,7 +244,7 @@
     },
     {
       "chainId": "data-ops.records-to-system",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "label": "Records → System (one-way)",
       "description": "One-way movement: read records from a source system, reshape them with AI, review, and upsert them into a destination — keyed on an external id so re-runs update the same records instead of duplicating them. It is one-way, not a sync: it does not read the destination back, propagate deletes, or reconcile conflicts. The write step needs a connection with write scope (if you added that scope after connecting, re-authorize the connection) and an upsert-by-external-key operation (e.g. Salesforce upsert, HubSpot upsert) — pointed at a plain create it will duplicate. Every write waits on your approval.",
       "parameters": {
@@ -332,6 +332,24 @@
               "x": 560,
               "y": 0
             },
+            "config": {
+              "title": "Review the reshaped records before upserting into the destination",
+              "artifactType": "data.records",
+              "actions": [
+                "approve",
+                "reject"
+              ]
+            },
+            "inputs": {}
+          },
+          {
+            "id": "gate-reject",
+            "typeId": "core.flow.noop",
+            "name": "Rejected — nothing written",
+            "position": {
+              "x": 840,
+              "y": 160
+            },
             "config": {},
             "inputs": {}
           },
@@ -357,11 +375,23 @@
           },
           {
             "from": "reshape",
-            "to": "approve"
+            "to": "approve.artifact"
           },
           {
             "from": "approve",
-            "to": "upsert"
+            "to": "upsert",
+            "condition": {
+              "type": "truthy",
+              "left": "approved"
+            }
+          },
+          {
+            "from": "approve",
+            "to": "gate-reject",
+            "condition": {
+              "type": "falsy",
+              "left": "approved"
+            }
           }
         ]
       },

@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.research",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "kind": "workflow-chain",
   "description": "Real-work workflow pack (RFC 0013, ADR 0190 Phase 5) — the Research cluster: turn a question into a short, cited web brief. Rides the ADR 0101 unified web search (core.web.search → the host.webResearch surface): live results when a search key is configured (BYOK secret 'web-search' on the keys page, or the host's OPENWOP_WEBSEARCH_API_KEY), an honest demo placeholder when not — the synthesis says so plainly instead of pretending. For deep, multi-source, long-horizon research use the Deep Research AGENT in chat; this chain is the quick-brief shape. All tenant values are run parameters (replay-deterministic).",
   "author": "openwop",
@@ -14,7 +14,7 @@
   "chains": [
     {
       "chainId": "research.web-brief",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "label": "Cited Web Brief",
       "description": "Ask a question and get a short brief synthesized from live web results, with every claim tied to a source URL. Without a search key it says the results are placeholders (add a 'web-search' key on the keys page to go live) — it never fakes research. For deep multi-source investigations, use the Deep Research agent in chat.",
       "parameters": {
@@ -54,8 +54,7 @@
               "y": 0
             },
             "config": {
-              "maxResults": 8,
-              "query": "{{params.query}}"
+              "maxResults": 8
             },
             "inputs": {
               "query": "{{params.query}}"

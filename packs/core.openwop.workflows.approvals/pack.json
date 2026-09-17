@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.approvals",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "kind": "workflow-chain",
   "description": "Real-work workflow pack (RFC 0013, ADR 0198) — the Approvals cluster, the single most-used enterprise automation shape (Power Automate's #1 template is a sign-off flow with ~3.35M instantiations): Request Sign-off (an open gate any team member can approve — the zero-config marquee) and Two-Stage Sign-off (an ordered approval chain: stage two is only asked after stage one approves — sequential chains are DAG composition, not a new primitive). Gates support quorum (requiredApprovals), named approvers (approverRefs), and out-of-office delegation (an approver's active delegation lets their delegate act, counted as ONE identity — ADR 0198). All tenant values are run parameters (replay-deterministic).",
   "author": "openwop",
@@ -14,7 +14,7 @@
   "chains": [
     {
       "chainId": "approvals.request-sign-off",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "label": "Request Sign-off",
       "description": "The classic sign-off: describe what needs approval, get a crisp summary card, and any team member signs off (or rejects) — then the decision comes back to you as a notification. Zero configuration; approvers on leave are covered automatically by their delegations.",
       "parameters": {
@@ -93,8 +93,8 @@
             "to": "gate"
           },
           {
-            "from": "gate",
-            "to": "notify"
+            "from": "gate.decision",
+            "to": "notify.message"
           }
         ]
       },
@@ -107,7 +107,7 @@
     },
     {
       "chainId": "approvals.two-stage-sign-off",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "label": "Two-Stage Sign-off",
       "description": "An ordered approval chain: stage one (e.g. the manager) approves first; only then is stage two (e.g. compliance) asked. Name each stage's approver by id to route the request to them — or leave a stage blank to open it to the whole team. Approvers on leave are covered automatically by their delegations.",
       "parameters": {
@@ -219,8 +219,8 @@
             "to": "stageTwo"
           },
           {
-            "from": "stageTwo",
-            "to": "notify"
+            "from": "stageTwo.decision",
+            "to": "notify.message"
           }
         ]
       },
