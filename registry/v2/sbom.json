@@ -1260,6 +1260,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.approvals@1.0.5",
+      "type": "library",
+      "name": "core.openwop.workflows.approvals",
+      "version": "1.0.5",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.approvals/-/1.0.5.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "41804e4c8e63c2c8c043bc8aec9977ecf02fbd9741311e303fde0b9cfbc53077"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.workflows.campaign-brief@1.0.1",
       "type": "library",
       "name": "core.openwop.workflows.campaign-brief",
@@ -1542,6 +1560,24 @@
             {
               "alg": "SHA-256",
               "content": "bfdef3c54387341bda4be916be8de56ed34d03912abdfdaf53e9055b11c3ce22"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.data-ops@1.1.5",
+      "type": "library",
+      "name": "core.openwop.workflows.data-ops",
+      "version": "1.1.5",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.data-ops/-/1.1.5.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "66da0be7822ae73a4d5805ed85bf0a2059a1b3a62b65ffe4496cd0fe661c5df6"
             }
           ]
         }
@@ -2298,6 +2334,24 @@
             {
               "alg": "SHA-256",
               "content": "90053b690d017ad8745a209edd74fae5cecf9afca8b0e0cdc4aaf20809599852"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.research@1.0.4",
+      "type": "library",
+      "name": "core.openwop.workflows.research",
+      "version": "1.0.4",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.research/-/1.0.4.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "25feb9f18584a86170426511641d480bcf44f5330a07330d00ab357219475612"
             }
           ]
         }
