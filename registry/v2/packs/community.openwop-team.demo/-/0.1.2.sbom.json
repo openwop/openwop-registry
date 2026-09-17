@@ -1,0 +1,197 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/community.openwop-team.demo@0.1.2",
+      "type": "library",
+      "name": "community.openwop-team.demo",
+      "version": "0.1.2",
+      "description": "First community-namespace demo pack. Mixed pack — one trivial node (`uppercase`) plus one agent (`greeter`) — exercising both extension paths in a single tarball under the open-publish `community.*` tier. Manual Ed25519 signed (not Sigstore) to demonstrate the non-OIDC publishing path documented in registry-operations.md §Step 2. MIT-licensed for SPDX-diversity with the Apache-2.0 core packs.",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/packs/community.openwop-team.demo"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "325d81e1d9ce343c86d20d0eb2bbd7ada31f910371581cb41007f1ea49dbdcc7"
+        }
+      ],
+      "purl": "pkg:openwop/community.openwop-team.demo@0.1.2"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a9c68f86b8ec2cf3c35de692a0b5a68bfa4f126dd4846fcb85e6b6393fcdb65b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1093"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "58e39d04d1a92e4125f25bb14a6fd54a523bde383a3b67feafa330bd12017969"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "5228"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "index.mjs",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6079c6db593aba6c0d203e80466532982739fa3eca10a1c83ba12c7b61063a96"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "900"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/community.openwop-team.pub.pem",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "432461188f212d101a061fdb2a5b4b90b2ba79504983646d79ae5146dc769aac"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "113"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f5fc03bad411bda34233b303693b97df66a0bc0d62a5c1ef515ad8611905ace5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5bc00c9e4b85e98a10a9f7f97f419693a13a59d93029a231edec3f38b3c751cc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2581"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/uppercase.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "67dfc4345eb4cb6c8f882630f465780e0771c3479d29901dae32949c949f9d27"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "380"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/uppercase.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "aca7990e0fccfe84df80d5154078e737feff0bd9f4e90f969670e1f23e14bcc8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "617"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/uppercase.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e8634480be07a87f56c59b1ca5e0c18dc79def13461161f9bee75072c16806de"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "465"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/community.openwop-team.demo@0.1.2",
+      "dependsOn": []
+    }
+  ]
+}

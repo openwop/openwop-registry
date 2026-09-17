@@ -1,8 +1,24 @@
 {
   "registryVersion": "1.0.0",
-  "generatedAt": "2026-09-17T02:40:44.804Z",
-  "packCount": 155,
+  "generatedAt": "2026-09-17T21:07:02.050Z",
+  "packCount": 156,
   "packs": [
+    {
+      "name": "community.openwop-team.demo",
+      "kind": "node",
+      "latestVersion": "0.1.2",
+      "description": "First community-namespace demo pack. Mixed pack — one trivial node (`uppercase`) plus one agent (`greeter`) — exercising both extension paths in a single tarball under the open-publish `community.*` tier. Manual Ed25519 signed (not Sigstore) to demonstrate the non-OIDC publishing path documented in registry-operations.md §Step 2. MIT-licensed for SPDX-diversity with the Apache-2.0 core packs.",
+      "license": "MIT",
+      "tags": [],
+      "typeIds": [
+        "community.openwop-team.demo.uppercase",
+        "community.openwop-team.demo.greeter"
+      ],
+      "nodeCount": 1,
+      "agentCount": 1,
+      "deprecated": false,
+      "yanked": false
+    },
     {
       "name": "core.openwop.a2a",
       "kind": "node",
