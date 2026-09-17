@@ -1,6 +1,6 @@
 {
   "registryVersion": "1.0.0",
-  "generatedAt": "2026-09-17T00:43:33.100Z",
+  "generatedAt": "2026-09-17T02:40:44.804Z",
   "packCount": 155,
   "packs": [
     {
@@ -1164,7 +1164,7 @@
     {
       "name": "core.openwop.workflows.approvals",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.4",
+      "latestVersion": "1.0.5",
       "description": "Real-work workflow pack (RFC 0013, ADR 0198) — the Approvals cluster, the single most-used enterprise automation shape (Power Automate's #1 template is a sign-off flow with ~3.35M instantiations): Request Sign-off (an open gate any team member can approve — the zero-config marquee) and Two-Stage Sign-off (an ordered approval chain: stage two is only asked after stage one approves — sequential chains are DAG composition, not a new primitive). Gates support quorum (requiredApprovals), named approvers (approverRefs), and out-of-office delegation (an approver's active delegation lets their delegate act, counted as ONE identity — ADR 0198). All tenant values are run parameters (replay-deterministic).",
       "license": "Apache-2.0",
       "tags": [],
@@ -1361,7 +1361,7 @@
     {
       "name": "core.openwop.workflows.data-ops",
       "kind": "workflow-chain",
-      "latestVersion": "1.1.4",
+      "latestVersion": "1.1.5",
       "description": "Real-work workflow pack (RFC 0013, ADR 0200/0201) — the Data Ops cluster, the one shape-family the Zapier/n8n and Microsoft canons don't cover (surfaced by the Make/Workato research): collapsing many records into one output (the aggregator canon), one-way movement of records between systems, and content routing (send a record down the right branch). Roll Up, Records → Table, Records → System (one-way upsert behind a human sign-off), and Content Router (route a record to the matching branch by a field predicate — the Make router shape, gated via edge conditions, ADR 0201). Uses only shipped, executable nodes (core.flow.aggregate-{numeric,text,table} + core.flow.router + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.http.openapi-call + core.openwop.integration.notification-push). The write is ONE-WAY movement keyed on an external id (re-runs update, never duplicate) behind a human approval — it is NOT a bidirectional sync. All tenant values are run parameters (replay-deterministic).",
       "license": "Apache-2.0",
       "tags": [],
@@ -1850,7 +1850,7 @@
     {
       "name": "core.openwop.workflows.research",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.3",
+      "latestVersion": "1.0.4",
       "description": "Real-work workflow pack (RFC 0013, ADR 0190 Phase 5) — the Research cluster: turn a question into a short, cited web brief. Rides the ADR 0101 unified web search (core.web.search → the host.webResearch surface): live results when a search key is configured (BYOK secret 'web-search' on the keys page, or the host's OPENWOP_WEBSEARCH_API_KEY), an honest demo placeholder when not — the synthesis says so plainly instead of pretending. For deep, multi-source, long-horizon research use the Deep Research AGENT in chat; this chain is the quick-brief shape. All tenant values are run parameters (replay-deterministic).",
       "license": "Apache-2.0",
       "tags": [],
