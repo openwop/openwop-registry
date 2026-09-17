@@ -540,6 +540,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.ai@1.4.1",
+      "type": "library",
+      "name": "core.openwop.ai",
+      "version": "1.4.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.ai/-/1.4.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "3776f2ae4a66ff276a75ea58d9bf89110c05fb736dbe9923c3caef188eadc419"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.artifact-types@1.0.1",
       "type": "library",
       "name": "core.openwop.artifact-types",
@@ -954,6 +972,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.http@2.1.1",
+      "type": "library",
+      "name": "core.openwop.http",
+      "version": "2.1.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.http/-/2.1.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "f74916dea1a4ad8f98c4a2f1a0f76515123d90090a13be70529b2f33ca672225"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.integration@1.1.1",
       "type": "library",
       "name": "core.openwop.integration",
@@ -984,6 +1020,24 @@
             {
               "alg": "SHA-256",
               "content": "c96e6583f42835aa3151cb43dc9ebd40c895779aaba0835599c06d0ec08df019"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.integration@1.2.1",
+      "type": "library",
+      "name": "core.openwop.integration",
+      "version": "1.2.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.integration/-/1.2.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "ad338ef3421a35482f1e58133325b684d1b718193cec28691f65403a017ec6e4"
             }
           ]
         }
