@@ -18,6 +18,24 @@
   },
   "components": [
     {
+      "bom-ref": "pkg:openwop/community.openwop-team.demo@0.1.2",
+      "type": "library",
+      "name": "community.openwop-team.demo",
+      "version": "0.1.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/community.openwop-team.demo/-/0.1.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "9f93a30b35abc5dabaa46cb85c849b314cab4e539d6a6bbd4a15b2c4fc9973da"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.a2a@1.1.1",
       "type": "library",
       "name": "core.openwop.a2a",

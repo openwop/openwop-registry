@@ -68,9 +68,12 @@ const FROZEN = '2026-05-10T00:00:00Z';
  * registered (stale waiver) as loudly as it fails for an unwaived gap, so the
  * list cannot quietly become the place unregistered packs go to be forgotten.
  */
-const PENDING_V2_REGISTRATION = new Map([
-  ['community.openwop-team.demo', '0.1.1 is on disk and admits major 2; the v2 tree still has no signed tarball for it. Found 2026-09-16 by this check\'s first honest run.'],
-]);
+// Empty since 2026-09-17: community.openwop-team.demo 0.1.2 is registered into
+// registry/v2/ by the auto-register job on the PR that bumped it (the
+// `workflow_dispatch` form of that job is a dry run and registers nothing —
+// only a PR touching packs/** produces a signed entry). A waiver placed here
+// is removed in the PR that registers the pack, never later.
+const PENDING_V2_REGISTRATION = new Map();
 
 const readJson = (p) => JSON.parse(readFileSync(p, 'utf8'));
 const cmp = (a, b) => {

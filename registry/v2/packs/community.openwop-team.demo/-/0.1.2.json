@@ -56,5 +56,10 @@
     "format": "esm",
     "entry": "./index.mjs",
     "minRuntimeVersion": "node>=20"
-  }
+  },
+  "signing": {
+    "keyId": "openwop-team-1",
+    "scheme": "ed25519-canonical-json"
+  },
+  "integrity": "sha256-Ml2B4dnONDyG0g0OsrvXraMfkQNxWBy0EAfx6knb3Mc="
 }
