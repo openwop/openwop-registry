@@ -1,0 +1,469 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.integration@1.2.1",
+      "type": "library",
+      "name": "core.openwop.integration",
+      "version": "1.2.1",
+      "description": "Integration-layer primitives. v1.0 (email-send, slack-message) plus v1.1 (chat-message-generic, sms-send, voice-call-place, voice-call-tts-greet, notification-push) — provider-neutral cross-cutting integration helpers.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/packs/core.openwop.integration"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "67eef888c4d62b75191b5054facd87df2e48a985a5905fb5dad7c709cd3424f9"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.integration@1.2.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fb6f8ad6128ab335d4cf3bcb43befba861ede3eeb80387914eb31b775bd3d453"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "4637"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "index.mjs",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ba970ec026e2b495d77fe857d12df6311407416ab66abb5238d1405fd6c739d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "10949"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a8339b50c0da842c6acab703a0eba7b35c0cca3534ae28235417c81ae6b04766"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e2772a1193ef8026fe9d4d8d3e290842da78c8cebd4c4be22c0cd659d4f378d2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "4157"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/chat-message-generic.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "dfd5b7dbc529d74fe29a3cfae086cf5cd48239457d2e7c7e2d43fefd0dc289a3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "339"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/chat-message-generic.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5dc629c23f10e5ed1c6ef000a5d1b142aed9bc23e7f9b54c9f3f1233695ce11c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "584"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/chat-message-generic.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d72de58de37b2c3ac264177924af7cc91d84125fd57a9743788ba7697738beed"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "470"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/email-send.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "96415f45d2c2507c854ac053bfc8f2d583d89502a11631902be47a97bcf4d15a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1125"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/email-send.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ab83308b138171eaf70ffd0b8eb3cb87b5b9569ecbc1a74b9dc5ca8ed9f12489"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1478"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/email-send.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "02890946a22f09377766842a1e4dac8c5998a85c7a6828ee52dd7bc5388c0c51"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1180"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/notification-push.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "16b24a4e98ec8b3eb69ea30929bf0b8ddb9378a7ea20d81e26ce2e01ef969e48"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "425"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/notification-push.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "95f36cda599f5467e8feea11acf535e2e8c83ab1ad110eaaa200dea0c86518be"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "545"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/notification-push.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "af0f7191fe88d780b36aba19d78f5e486ceba1332394acdd3514c48009d0c234"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "411"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/slack-message.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "91b454b133ab475b9af8e895cba11c460298afd021b9557b73d7a5e1a1c7f19b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "979"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/slack-message.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "35cab8060db2edf255c9c99ae2d58b40718804d1c0140d45dab0b038bb73cfe2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1154"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/slack-message.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "87210a3a8d6d347c44b5774acffa6920813c7ee5410c8389438426ee9be2b9a4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1017"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/sms-send.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "045c891a7e6dedd04fe9028683a0747970c0d406bb5976fbe15f161bfec86b68"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "431"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/sms-send.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ff0783496b8d267c5dde2dae0697350a069460b991b3532fb90bb8e9c438ac96"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "427"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/sms-send.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "53d83e87c80baec1c195bf39c4cf10d636e5aea1e7a2e2bbcf81a0c2b485fa63"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "389"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/voice-call-place.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4bdcea3c154d9663fb8d5967572dc8fb2c5f678ebdf40f3145538eaf87ea3f29"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "320"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/voice-call-place.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "112eaa7039d6f5b97c03bf5c98b780baeec3cea9dbf99ff2bb8957c245ca4320"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "482"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/voice-call-place.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d3a364e0eb9d64880fbd1a93dcd5a9447f703e2751ea41d1c35a17ddd2913cdb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "398"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/voice-call-tts-greet.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3fec53867ac327eee3add5c196fab4c11c03e0340c6ba063958daa6aa097cc61"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "324"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/voice-call-tts-greet.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "58d5db6152e76f6cc2b21e31a88a3340a1248e1b5d5e6e8674588135c45f1422"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "413"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/voice-call-tts-greet.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8f710ee76baf439045d4cc72b90c9df18b7d04eb8f28c3c5d00fc015849cccc0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "360"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.integration@1.2.1",
+      "dependsOn": []
+    }
+  ]
+}

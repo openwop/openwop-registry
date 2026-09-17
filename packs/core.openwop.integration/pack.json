@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.integration",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Integration-layer primitives. v1.0 (email-send, slack-message) plus v1.1 (chat-message-generic, sms-send, voice-call-place, voice-call-tts-greet, notification-push) — provider-neutral cross-cutting integration helpers.",
   "author": "OpenWOP Working Group",
   "license": "Apache-2.0",
