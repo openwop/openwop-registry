@@ -72,12 +72,14 @@ else
   node --test scripts/test-registry-v2-schemas.mjs
   echo "[v2 9/10] Every pack is INSTALLABLE on a major-2 host (engines.openwop admits major 2, RFC 0177 §A.1)..."
   node scripts/check-pack-engines-admit-major.mjs --major 2
-  echo "[v2 10/11] Every published version was signed by a key the registry PERMITS for its namespace (packs.md §Signing)..."
+  echo "[v2 10/12] Every peer-dependency key names a family that EXISTS (packs.md §Peer-dependency identifiers)..."
+  node scripts/check-pack-peer-dependencies.mjs
+  echo "[v2 11/12] Every published version was signed by a key the registry PERMITS for its namespace (packs.md §Signing)..."
   node scripts/check-pack-namespace-authority.mjs --tree v2
   node scripts/check-pack-namespace-authority.mjs --tree v1
   node scripts/check-pack-event-names.mjs
   node scripts/check-pack-chain-params-declared.mjs
-  echo "[v2 11/11] Every pack that ships schemas ships them at EVERY published version (a manifest whose documents are absent serves 404s)..."
+  echo "[v2 12/12] Every pack that ships schemas ships them at EVERY published version (a manifest whose documents are absent serves 404s)..."
   node scripts/check-pack-schema-tree-complete.mjs --tree v2
   node scripts/check-pack-schema-tree-complete.mjs --tree v1
 fi
