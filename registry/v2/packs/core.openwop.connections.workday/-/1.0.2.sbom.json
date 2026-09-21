@@ -1,0 +1,76 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.connections.workday@1.0.2",
+      "type": "library",
+      "name": "core.openwop.connections.workday",
+      "version": "1.0.2",
+      "description": "Workday connection pack — OAuth2 provider for the Workday REST API (HCM / People). DEPLOY-GATED. Reach is `openapi`: Workday has no first-party global MCP server, and its OAuth authorize/token endpoints plus REST base are TENANT-SPECIFIC (`https://{instance}.workday.com/{tenant}/.`), supplied per connection via instanceUrlTemplate. The manifest declares the global https hosts and the per-tenant template; the operator fills the tenant at connection time (capability honesty). Carries NO secret; the operator supplies the API-client id/secret host-side.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1c0c45d59eb28e3803f3ddd6bcc9167b2fb3bd116e24f095e4448e8b3c9f1d14"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.connections.workday@1.0.2"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "dca22560d1aeab9c2d712503ca7ac8187adf9e462ca88bfff37600e1259792b3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7fdfede56b4b2195d08a69c5f832c9f75cf0de0980c1177439ce557fd8e18676"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1458"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.connections.workday@1.0.2",
+      "dependsOn": []
+    }
+  ]
+}

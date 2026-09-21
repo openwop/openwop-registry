@@ -1,0 +1,76 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.connections.microsoft365@1.0.2",
+      "type": "library",
+      "name": "core.openwop.connections.microsoft365",
+      "version": "1.0.2",
+      "description": "Microsoft 365 connection pack — OAuth2 provider for Teams, Outlook (Mail/Calendar), and SharePoint via the Microsoft Graph API. DEPLOY-GATED. Reach is `openapi` against the Microsoft Graph OpenAPI surface: Microsoft's first-party remote MCP servers are per-tenant/preview (a tenant-templated URL, not a single global https endpoint the manifest can fix), so a stable Graph OpenAPI path is the honest day-1 reach (capability honesty). Carries NO secret; the operator supplies the OAuth client id/secret host-side.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0d55293597700adb7e79f9b7fb1cf2f92611db6ca47985e8933a654f60f0eb8e"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.connections.microsoft365@1.0.2"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4a8150b3dc7eb3ceacfaf48b64fc9172e3633b81105f61c9094d94617bd6dfd3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a9d3a5df694642f356efa6bc6eb2a4c33153d90a1262fb928f157ebcf533afdb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2495"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.connections.microsoft365@1.0.2",
+      "dependsOn": []
+    }
+  ]
+}
