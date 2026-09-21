@@ -1,6 +1,6 @@
 {
   "registryVersion": "1.0.0",
-  "generatedAt": "2026-09-17T21:07:02.050Z",
+  "generatedAt": "2026-09-21T14:25:49.477Z",
   "packCount": 156,
   "packs": [
     {
@@ -1803,7 +1803,7 @@
     {
       "name": "core.openwop.workflows.people-hr",
       "kind": "workflow-chain",
-      "latestVersion": "1.4.3",
+      "latestVersion": "1.5.0",
       "description": "Real-work workflow pack (RFC 0013, ADR 0149) — the People / HR cluster: Employee Onboarding Orchestrator, Offboarding & Access Revocation, and Leave/PTO Request Routing. Reasons with core.ai.chatCompletion; binds Microsoft 365 via core.openwop.http.openapi-call connectionRef, recommends HRIS actions provider-agnostically via core.openwop.connectors.hris-action (Workday today), and provider-agnostic ticketing (Jira/ServiceNow) via the core.openwop.connectors.ticket-* capability nodes (ADR 0186); every account/HRIS mutation and every team-facing send is gated by core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + integration packs; connections are configured under Access & data → Connections. Published under core.openwop.workflows.* (openwop-team key).",
       "license": "Apache-2.0",
       "tags": [],
