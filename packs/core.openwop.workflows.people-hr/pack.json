@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.people-hr",
-  "version": "1.4.3",
+  "version": "1.5.0",
   "kind": "workflow-chain",
   "description": "Real-work workflow pack (RFC 0013, ADR 0149) \u2014 the People / HR cluster: Employee Onboarding Orchestrator, Offboarding & Access Revocation, and Leave/PTO Request Routing. Reasons with core.ai.chatCompletion; binds Microsoft 365 via core.openwop.http.openapi-call connectionRef, recommends HRIS actions provider-agnostically via core.openwop.connectors.hris-action (Workday today), and provider-agnostic ticketing (Jira/ServiceNow) via the core.openwop.connectors.ticket-* capability nodes (ADR 0186); every account/HRIS mutation and every team-facing send is gated by core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + integration packs; connections are configured under Access & data \u2192 Connections. Published under core.openwop.workflows.* (openwop-team key).",
   "author": "openwop",
@@ -280,17 +280,21 @@
     },
     {
       "chainId": "people-hr.offboarding",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "label": "Offboarding & Access Revocation",
       "description": "On termination, deprovision accounts (Microsoft 365), close access tickets (provider-agnostic Jira/ServiceNow), run final-pay in the HRIS (Workday), capture a knowledge handoff, then require a compliance attestation before completing. 1.1.0 (ADR 0617 D3): the chain has TWO lanes. The SCIM-leaver lane starts from the `host.users.user.deactivated` host event (bind it on the Event Bindings page to this workflow \u2014 see the pack README); the `trigger` entry node forwards the ids-only payload. The human-started lane runs from the gallery with `userId` as a parameter. A new gated step `deprovision-host` (feature.users.nodes.deactivate) disables THIS workspace's own account BEHIND the compliance attestation \u2014 never before it \u2014 via one `{truthy approved}` edge; it reads `userId` from the event payload, else the chain parameter. It requires the run's acting user to hold host:members:manage, so on an event-started (system) run it fails closed \u2014 by design: on that lane the host account was already disabled at the identity write (ADR 0621). `notify` reports the attestation OUTCOME on both legs (decision-aware, unconditional \u2014 the NOTIFY_OF_OUTCOME allow-list).",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
         "required": [
-          "triggerEventName",
           "employeeName"
         ],
         "properties": {
+          "triggerEventName": {
+            "type": "string",
+            "default": "host.users.user.deactivated",
+            "description": "The host event this chain ignites on. The event belongs to the INSTALLING HOST, not the pack (openwop-1, crosstalk 1892) \u2014 defaulted so an existing install keeps working."
+          },
           "employeeName": {
             "type": "string",
             "description": "The departing employee."
@@ -324,10 +328,6 @@
             "type": "string",
             "default": "claude-sonnet-4-6",
             "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation."
-          },
-          "triggerEventName": {
-            "type": "string",
-            "description": "Host event name that starts this chain. MUST match the `events.md` \u00a7Types grammar: two or three kebab-case segments, never `openwop.`-prefixed (e.g. `openwop-app.forms.submission-created`)."
           }
         }
       },
