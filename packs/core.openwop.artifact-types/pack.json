@@ -1,8 +1,8 @@
 {
   "name": "core.openwop.artifact-types",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "kind": "artifact-type",
-  "description": "Example artifact-type pack — proves the kind:'artifact-type' pack tier registers its declared types through the host artifact-type registry (registrationSource:'pack'), advertised under host.artifactTypes and served at /schemas/artifacts/{id}.schema.json.",
+  "description": "Example artifact-type pack — proves the kind:'artifact-type' pack tier registers its declared types through the host artifact-type registry (registrationSource:'pack'), advertised under host.artifactTypes and served at /schemas/artifacts/{id}.schema.json. 2.0.0 carries the canonical reverse-DNS ids (core.openwop.doc.one-pager, core.openwop.brand.kit) the manifest schema requires; the bare ids of 1.x were never conformant (RFC 0141), and a host holding artifacts under them keeps a permanent read-side alias — it never rewrites its logs. Both schemas are declared validation:'open' (RFC 0075): they tolerate extra fields.",
   "author": "OpenWOP App",
   "license": "Apache-2.0",
   "keywords": [
@@ -14,50 +14,20 @@
   },
   "artifactTypes": [
     {
-      "artifactTypeId": "doc.one-pager",
-      "title": "One-Pager",
-      "schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
-        "type": "object",
-        "required": [
-          "content"
-        ],
-        "properties": {
-          "content": {
-            "type": "string",
-            "minLength": 1
-          },
-          "title": {
-            "type": "string"
-          }
-        },
-        "additionalProperties": true
-      },
-      "export": [
+      "artifactTypeId": "core.openwop.doc.one-pager",
+      "schemaRef": "schemas/core.openwop.doc.one-pager.schema.json",
+      "validation": "open",
+      "displayName": "One-Pager",
+      "exportFormats": [
         "pdf",
         "slides"
       ]
     },
     {
-      "artifactTypeId": "brand.kit",
-      "title": "Brand Kit",
-      "schema": {
-        "$schema": "https://json-schema.org/draft/2020-12/schema",
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "colors": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        },
-        "additionalProperties": true
-      },
-      "export": []
+      "artifactTypeId": "core.openwop.brand.kit",
+      "schemaRef": "schemas/core.openwop.brand.kit.schema.json",
+      "validation": "open",
+      "displayName": "Brand Kit"
     }
   ]
 }
