@@ -1,0 +1,76 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.connections.salesforce@1.0.2",
+      "type": "library",
+      "name": "core.openwop.connections.salesforce",
+      "version": "1.0.2",
+      "description": "Salesforce connection pack — OAuth2 (web-server flow) provider for the Salesforce REST API. DEPLOY-GATED. Reach is `openapi`: Salesforce has no single global first-party MCP server (the API lives on a per-org `*.my.salesforce.com` instance host, supplied per connection via instanceUrlTemplate), so a documented OpenAPI/REST surface is the honest day-1 reach. Carries NO secret; the operator supplies the connected-app consumer key/secret host-side.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ac0815b4486cb6a7090158c79e3109bf39b8978ff93ac31812d8a3cfa32ee35a"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.connections.salesforce@1.0.2"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6fd6040e64fd33100d8684c4b6f083659208d391df0750d748b02536b458c20f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "be195fd7c3fb7997a6dcff81cd5e734e7a14f4c9cd63f85c12ba885053bdc6bd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1762"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.connections.salesforce@1.0.2",
+      "dependsOn": []
+    }
+  ]
+}

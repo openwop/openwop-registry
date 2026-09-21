@@ -594,6 +594,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.artifact-types@2.0.0",
+      "type": "library",
+      "name": "core.openwop.artifact-types",
+      "version": "2.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.artifact-types/-/2.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "3095c19b4f7b4d2643993756c688c7ced6ea535a19b3b3fa48d21d7b02657e0e"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.connections.github@1.0.1",
       "type": "library",
       "name": "core.openwop.connections.github",
@@ -720,6 +738,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.connections.microsoft365@1.0.2",
+      "type": "library",
+      "name": "core.openwop.connections.microsoft365",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.connections.microsoft365/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "17031d10e069c566faf042c4528c8aa42ebe89f1431092da89645b3b9dce558c"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.connections.netsuite@1.0.1",
       "type": "library",
       "name": "core.openwop.connections.netsuite",
@@ -774,6 +810,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.connections.salesforce@1.0.2",
+      "type": "library",
+      "name": "core.openwop.connections.salesforce",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.connections.salesforce/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "f1dd743b4cf3e9133998389939e9d5a4635da2a176178615ba825ba04e26b260"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.connections.tiktok-ads@1.0.1",
       "type": "library",
       "name": "core.openwop.connections.tiktok-ads",
@@ -804,6 +858,24 @@
             {
               "alg": "SHA-256",
               "content": "9a69f1bbc9b0b160b893a82dc50019e8ec238eddc28eb33b6dd849127ea50dce"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.connections.workday@1.0.2",
+      "type": "library",
+      "name": "core.openwop.connections.workday",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.connections.workday/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "8e4274c93b5d9f27ed7f06555019d143b9fed3295f61c630c2aeb715202d6696"
             }
           ]
         }
@@ -912,6 +984,24 @@
             {
               "alg": "SHA-256",
               "content": "14afb7743a63ebb3ad09e6065888539124abf3830be17ea6cea476af3c97aa05"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.flow@1.1.2",
+      "type": "library",
+      "name": "core.openwop.flow",
+      "version": "1.1.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.flow/-/1.1.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "a8ce7c7e05b1ee07f71c60b2661f7d2b582ac5064b50536d1ad8d7b32f3eb9d0"
             }
           ]
         }

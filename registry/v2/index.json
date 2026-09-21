@@ -1,6 +1,6 @@
 {
   "registryVersion": "1.0.0",
-  "generatedAt": "2026-09-21T14:25:49.477Z",
+  "generatedAt": "2026-09-21T21:38:27.492Z",
   "packCount": 156,
   "packs": [
     {
@@ -494,13 +494,13 @@
     {
       "name": "core.openwop.artifact-types",
       "kind": "artifact-type",
-      "latestVersion": "1.0.1",
-      "description": "Example artifact-type pack — proves the kind:'artifact-type' pack tier registers its declared types through the host artifact-type registry (registrationSource:'pack'), advertised under host.artifactTypes and served at /schemas/artifacts/{id}.schema.json.",
+      "latestVersion": "2.0.0",
+      "description": "Example artifact-type pack — proves the kind:'artifact-type' pack tier registers its declared types through the host artifact-type registry (registrationSource:'pack'), advertised under host.artifactTypes and served at /schemas/artifacts/{id}.schema.json. 2.0.0 carries the canonical reverse-DNS ids (core.openwop.doc.one-pager, core.openwop.brand.kit) the manifest schema requires; the bare ids of 1.x were never conformant (RFC 0141), and a host holding artifacts under them keeps a permanent read-side alias — it never rewrites its logs. Both schemas are declared validation:'open' (RFC 0075): they tolerate extra fields.",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
-        "doc.one-pager",
-        "brand.kit"
+        "core.openwop.doc.one-pager",
+        "core.openwop.brand.kit"
       ],
       "nodeCount": 0,
       "agentCount": 0,
@@ -600,7 +600,7 @@
     {
       "name": "core.openwop.connections.microsoft365",
       "kind": "connection",
-      "latestVersion": "1.0.1",
+      "latestVersion": "1.0.2",
       "description": "Microsoft 365 connection pack — OAuth2 provider for Teams, Outlook (Mail/Calendar), and SharePoint via the Microsoft Graph API. DEPLOY-GATED. Reach is `openapi` against the Microsoft Graph OpenAPI surface: Microsoft's first-party remote MCP servers are per-tenant/preview (a tenant-templated URL, not a single global https endpoint the manifest can fix), so a stable Graph OpenAPI path is the honest day-1 reach (capability honesty). Carries NO secret; the operator supplies the OAuth client id/secret host-side.",
       "license": "Apache-2.0",
       "tags": [],
@@ -645,7 +645,7 @@
     {
       "name": "core.openwop.connections.salesforce",
       "kind": "connection",
-      "latestVersion": "1.0.1",
+      "latestVersion": "1.0.2",
       "description": "Salesforce connection pack — OAuth2 (web-server flow) provider for the Salesforce REST API. DEPLOY-GATED. Reach is `openapi`: Salesforce has no single global first-party MCP server (the API lives on a per-org `*.my.salesforce.com` instance host, supplied per connection via instanceUrlTemplate), so a documented OpenAPI/REST surface is the honest day-1 reach. Carries NO secret; the operator supplies the connected-app consumer key/secret host-side.",
       "license": "Apache-2.0",
       "tags": [],
@@ -675,7 +675,7 @@
     {
       "name": "core.openwop.connections.workday",
       "kind": "connection",
-      "latestVersion": "1.0.1",
+      "latestVersion": "1.0.2",
       "description": "Workday connection pack — OAuth2 provider for the Workday REST API (HCM / People). DEPLOY-GATED. Reach is `openapi`: Workday has no first-party global MCP server, and its OAuth authorize/token endpoints plus REST base are TENANT-SPECIFIC (`https://{instance}.workday.com/{tenant}/.`), supplied per connection via instanceUrlTemplate. The manifest declares the global https hosts and the per-tenant template; the operator fills the tenant at connection time (capability honesty). Carries NO secret; the operator supplies the API-client id/secret host-side.",
       "license": "Apache-2.0",
       "tags": [],
@@ -845,7 +845,7 @@
     {
       "name": "core.openwop.flow",
       "kind": "node",
-      "latestVersion": "1.1.1",
+      "latestVersion": "1.1.2",
       "description": "Spec-canonical flow-control primitives. 25 nodes covering branching, merging, iteration, aggregation, batching, sorting, deduplication, repetition, suspension, sub-workflow invocation, and Make-style error handlers. Pure or suspending — no external I/O. Zero npm deps. Engine >=1.0.0 <2.0.0.",
       "license": "Apache-2.0",
       "tags": [],

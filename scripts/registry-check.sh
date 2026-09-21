@@ -82,6 +82,8 @@ else
   echo "[v2 12/12] Every pack that ships schemas ships them at EVERY published version (a manifest whose documents are absent serves 404s)..."
   node scripts/check-pack-schema-tree-complete.mjs --tree v2
   node scripts/check-pack-schema-tree-complete.mjs --tree v1
+  echo "[v2 13/13] Every v2 pack manifest a host installs validates against the corpus bare-manifest schema for its kind (openwop-registry#69)..."
+  node scripts/check-pack-manifest-schemas.mjs
 fi
 
 echo "=== registry:check OK ==="
