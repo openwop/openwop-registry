@@ -2268,6 +2268,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.people-hr@1.5.0",
+      "type": "library",
+      "name": "core.openwop.workflows.people-hr",
+      "version": "1.5.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.people-hr/-/1.5.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "b8ee1b055b4c48fc29698697835015d98aa91feb54243e58d4d9ed51731a2f31"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.workflows.podcasts@1.0.1",
       "type": "library",
       "name": "core.openwop.workflows.podcasts",
