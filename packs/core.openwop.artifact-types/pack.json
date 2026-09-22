@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.artifact-types",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "kind": "artifact-type",
   "description": "Example artifact-type pack — proves the kind:'artifact-type' pack tier registers its declared types through the host artifact-type registry (registrationSource:'pack'), advertised under host.artifactTypes and served at /schemas/artifacts/{id}.schema.json. 2.0.0 carries the canonical reverse-DNS ids (core.openwop.doc.one-pager, core.openwop.brand.kit) the manifest schema requires; the bare ids of 1.x were never conformant (RFC 0141), and a host holding artifacts under them keeps a permanent read-side alias — it never rewrites its logs. Both schemas are declared validation:'open' (RFC 0075): they tolerate extra fields.",
   "author": "OpenWOP App",

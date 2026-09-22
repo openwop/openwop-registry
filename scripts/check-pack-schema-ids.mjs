@@ -69,6 +69,18 @@ for (const dir of readdirSync(PACKS)) {
   }
   if (!existsSync(schemasDir)) continue;
 
+  // An artifact-type pack's `schemaRef` targets carry the CORPUS identity, not
+  // this registry's `<pack>/<version>/<file>` convention (openwop#1465):
+  // `artifact-type-pack-manifest` requires an `$id` under the publishing host's
+  // `{HostBase}/schemas/artifacts/{artifactTypeId}.schema.json`, and for a pack
+  // published here the publishing host is this registry. No pack version in it:
+  // an artifact type's identity is stable across pack versions.
+  const artifactIds = new Map(
+    pack.kind === 'artifact-type' && Array.isArray(pack.artifactTypes)
+      ? pack.artifactTypes.filter((a) => typeof a.schemaRef === 'string').map((a) => [a.schemaRef.replace(/^\.\//, '').replace(/^schemas\//, ''), `https://packs.openwop.dev/schemas/artifacts/${a.artifactTypeId}.schema.json`])
+      : [],
+  );
+
   for (const file of readdirSync(schemasDir)) {
     if (!file.endsWith('.json')) continue;
     const path = join(schemasDir, file);
@@ -86,7 +98,7 @@ for (const dir of readdirSync(PACKS)) {
     // CONTRIBUTING.md makes `$id` normative, so absence is itself reportable.
     schemasScanned += 1;
     if (typeof schema.$id !== 'string') { missingId.push(path); continue; }
-    const expected = `https://packs.openwop.dev/${dir}/${version}/${file}`;
+    const expected = artifactIds.get(file) ?? `https://packs.openwop.dev/${dir}/${version}/${file}`;
     if (schema.$id === expected) continue;
 
     drifts.push({ path, actual: schema.$id, expected });

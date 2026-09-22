@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://packs.openwop.dev/core.openwop.artifact-types/2.0.0/core.openwop.doc.one-pager.schema.json",
+  "$id": "https://packs.openwop.dev/schemas/artifacts/core.openwop.doc.one-pager.schema.json",
   "title": "One-Pager",
   "type": "object",
   "required": [
