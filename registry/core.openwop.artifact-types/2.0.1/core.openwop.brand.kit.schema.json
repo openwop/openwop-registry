@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://packs.openwop.dev/schemas/artifacts/core.openwop.brand.kit.schema.json",
+  "title": "Brand Kit",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "colors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true
+}

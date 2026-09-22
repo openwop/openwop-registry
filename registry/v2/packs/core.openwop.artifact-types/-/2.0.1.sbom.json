@@ -1,0 +1,108 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.artifact-types@2.0.1",
+      "type": "library",
+      "name": "core.openwop.artifact-types",
+      "version": "2.0.1",
+      "description": "Example artifact-type pack — proves the kind:'artifact-type' pack tier registers its declared types through the host artifact-type registry (registrationSource:'pack'), advertised under host.artifactTypes and served at /schemas/artifacts/{id}.schema.json. 2.0.0 carries the canonical reverse-DNS ids (core.openwop.doc.one-pager, core.openwop.brand.kit) the manifest schema requires; the bare ids of 1.x were never conformant (RFC 0141), and a host holding artifacts under them keeps a permanent read-side alias — it never rewrites its logs. Both schemas are declared validation:'open' (RFC 0075): they tolerate extra fields.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cae379aedc8a7198c46c852ecca466a2da248fd81ae4740c8dce9625eabe64ad"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.artifact-types@2.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d70a324a2ef9b4ec0edb4a2528011a14f1f24bca06e3872e0a96ecd55d4bfe95"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e2a17f7a47cc55c8b8b66de3ad6330b677ca6e186b4a265abea6c85eee26e0ab"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1274"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/core.openwop.brand.kit.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d0a9e9cbbe4a14906d59d1398f49a67dd0ebf4d7af05f7340840b0e28239a1a7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "393"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/core.openwop.doc.one-pager.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5db07d264ac58c7515c8669daef6990dad1c3865172b28cd370bddb3d53c2197"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "406"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.artifact-types@2.0.1",
+      "dependsOn": []
+    }
+  ]
+}
