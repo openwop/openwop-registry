@@ -21,6 +21,10 @@
  *
  * A kind with no bare-manifest schema is reported, never silently passed.
  *
+ * RFC 0203 §A.3: a node pack carrying `runtime.mcpServer` must also satisfy
+ * `entry == mcpServer.remotes[0].url` — an equality the schema cannot express
+ * (scripts/lib/remote-entry-binding.mjs; tested by test-remote-entry-binding.mjs).
+ *
  *   node scripts/check-pack-manifest-schemas.mjs
  */
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
@@ -30,6 +34,7 @@ import { execFileSync } from 'node:child_process';
 import Ajv2020 from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
 import { publicationTree, V2_SCHEME } from './lib/registry-tree.mjs';
+import { remoteEntryBinding } from './lib/remote-entry-binding.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SCHEMAS_V2 = join(ROOT, 'schemas', 'v2');
@@ -64,6 +69,8 @@ for (const name of readdirSync(SOURCE).sort()) {
   const signed = m.signing ? m : { ...m, signing: { keyId: 'openwop-team-1', scheme: V2_SCHEME } };
   sourceChecked++;
   if (!validate(signed)) failures.push(`source packs/${name}/pack.json (${m.kind ?? 'node'} ${m.version}): ${fmt(validate.errors)}`);
+  const binding = remoteEntryBinding(m);
+  if (binding !== null) failures.push(`source packs/${name}/pack.json (${m.kind ?? 'node'} ${m.version}): ${binding.code} — ${binding.message}`);
 }
 
 // 2. served — latest version per pack; older invalid versions are counted, not failed
@@ -79,8 +86,10 @@ if (existsSync(SERVED)) {
       if (validate === null) { unknownKinds.add(m.kind); return; }
       const latest = i === versions.length - 1;
       if (latest) servedChecked++;
-      if (!validate(m)) {
-        if (latest) failures.push(`served ${name}@${v} (latest): ${fmt(validate.errors)}`);
+      const binding = remoteEntryBinding(m);
+      if (!validate(m) || binding !== null) {
+        const why = binding !== null ? `${binding.code} — ${binding.message}` : fmt(validate.errors);
+        if (latest) failures.push(`served ${name}@${v} (latest): ${why}`);
         else superseded.push(`${name}@${v}`);
       }
     });
