@@ -612,6 +612,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.artifact-types@2.0.1",
+      "type": "library",
+      "name": "core.openwop.artifact-types",
+      "version": "2.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.artifact-types/-/2.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "34d361e9f39244b070a577f60dd7d940bc2c2da9b5c264d0d3488c5d131c7c30"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.connections.github@1.0.1",
       "type": "library",
       "name": "core.openwop.connections.github",

@@ -29,5 +29,10 @@
       "validation": "open",
       "displayName": "Brand Kit"
     }
-  ]
+  ],
+  "signing": {
+    "keyId": "openwop-team-1",
+    "scheme": "ed25519-canonical-json"
+  },
+  "integrity": "sha256-yuN5rtyKcZjEbIUuzKRmotokj9ga5HQMjc6WJeq+ZK0="
 }
