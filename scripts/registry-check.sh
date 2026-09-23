@@ -43,6 +43,9 @@ echo "[9/9] Pack-internal schema \$ids match <pack>/<version>/..."
 # left main red for four days with no way to see it except by pushing.
 node scripts/check-pack-schema-ids.mjs
 
+echo "[jcs] The signer's canonical JSON is RFC 8785 JCS over I-JSON, and every committed pack.json keeps its bytes (RFC 0212)..."
+node --test scripts/test-jcs.mjs
+
 # ── v2 leg (RFC 0177 §A.2 — the parallel registry/v2 tree gets the SAME gate) ──
 # Skips cleanly with a printed reason while registry/v2 is absent: the signed v2
 # tree is produced only by the `registry-v2-sign` CI job (auto-register.yml),
