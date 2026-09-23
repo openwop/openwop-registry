@@ -60,6 +60,7 @@
  *       §"Manifest format" + §"Signing" + §"Registry HTTP API"
  */
 
+import { canonicalJson, parseIJson } from './lib/jcs.mjs';
 import { readFileSync, readdirSync, writeFileSync, statSync, existsSync, mkdirSync } from 'node:fs';
 import { join, resolve, dirname, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -141,14 +142,11 @@ function parseArgs(argv) {
 const V2_SCHEME = 'ed25519-canonical-json';
 const V2_RANGE = /^>=\d+(\.\d+){0,2} <(\d+)\.0\.0$/;
 
-// ─── canonical JSON (RFC 8785-style key-sorted) ──────────────────────
-
-function canonicalJson(value) {
-  if (value === null || typeof value !== 'object') return JSON.stringify(value);
-  if (Array.isArray(value)) return '[' + value.map(canonicalJson).join(',') + ']';
-  const keys = Object.keys(value).sort();
-  return '{' + keys.map((k) => JSON.stringify(k) + ':' + canonicalJson(value[k])).join(',') + '}';
-}
+// ─── canonical JSON ──────────────────────────────────────────────────
+// RFC 0212: `ed25519-canonical-json` signs RFC 8785 (JCS) bytes of an I-JSON
+// value. `canonicalJson` / `parseIJson` refuse what the old sorted-keys helper
+// coerced (NaN → null, `undefined`, a rounded 2^53+1, the last of two duplicate
+// names) — see scripts/lib/jcs.mjs.
 
 // ─── USTAR writer (self-contained — no deps) ─────────────────────────
 
@@ -297,9 +295,9 @@ function buildPack(packName, args) {
   const manifestText = readFileSync(manifestPath, 'utf8');
   let manifest;
   try {
-    manifest = JSON.parse(manifestText);
+    manifest = parseIJson(manifestText);
   } catch (err) {
-    fail(`✗ pack.json not valid JSON: ${packName} — ${err.message}`);
+    fail(`✗ pack.json not valid I-JSON (RFC 0212): ${packName} — ${err.message}`);
     return false;
   }
 
