@@ -84,6 +84,7 @@ else
   node scripts/check-pack-schema-tree-complete.mjs --tree v1
   echo "[v2 13/13] Every v2 pack manifest a host installs validates against the corpus bare-manifest schema for its kind (openwop-registry#69)..."
   node scripts/check-pack-manifest-schemas.mjs
+  node --test scripts/test-remote-entry-binding.mjs
 fi
 
 echo "=== registry:check OK ==="
