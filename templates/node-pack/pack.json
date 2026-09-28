@@ -1,0 +1,34 @@
+{
+  "name": "{NAME}",
+  "version": "0.1.0",
+  "kind": "node",
+  "description": "{ONE-LINE description of what this pack does and what makes it distinct from core.openwop.* packs.}",
+  "author": "{Author or org display name}",
+  "license": "Apache-2.0",
+  "homepage": "https://example.com/packs/{NAME}",
+  "repository": "https://github.com/{ORG}/{PACK}",
+  "keywords": ["{ORG}", "{PACK}"],
+  "engines": {
+    "openwop": ">=1.0.0 <3.0.0"
+  },
+  "runtime": {
+    "language": "javascript",
+    "format": "esm",
+    "entry": "./index.mjs",
+    "minRuntimeVersion": "node>=20"
+  },
+  "nodes": [
+    {
+      "typeId": "{NAME}.example",
+      "version": "0.1.0",
+      "label": "Example",
+      "description": "Replace with what your node consumes and returns. This example trims and uppercases a string.",
+      "category": "data",
+      "role": "pure",
+      "capabilities": ["cacheable"],
+      "configSchemaRef": "schemas/example.config.json",
+      "inputSchemaRef": "schemas/example.input.json",
+      "outputSchemaRef": "schemas/example.output.json"
+    }
+  ]
+}

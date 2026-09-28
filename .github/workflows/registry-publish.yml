@@ -217,12 +217,13 @@ jobs:
           # keyId required), signer consistency, structural conformance, SBOMs,
           # advisories, plus ajv validation of every version manifest against
           # the VENDORED v2 schemas pinned to CORPUS_TAG. Skips with a printed
-          # reason while registry/v2 is absent: the signed tree is produced only
-          # by the registry-v2-sign job in auto-register.yml (the signing key
-          # lives there and nowhere else).
+          # reason while registry/v2 is absent. The tree is written by
+          # `scripts/auto-register.mjs --tree v2`: the registry-v2-sign job in
+          # auto-register.yml runs it with the openwop-team-1 key for first-party
+          # namespaces; other publishers run it with their own registered key.
           npm install --no-audit --no-fund
           if [ ! -d registry/v2/packs ]; then
-            echo "::notice::registry/v2 is absent — nothing to validate; the signed v2 tree is produced only by the registry-v2-sign job (OPENWOP_TEAM_1_SIGNING_KEY)."
+            echo "::notice::registry/v2 is absent — nothing to validate (scripts/auto-register.mjs --tree v2 writes it)."
             node --test scripts/test-registry-v2-schemas.mjs   # the vendored-schema self-tests still run
             exit 0
           fi

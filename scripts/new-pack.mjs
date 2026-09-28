@@ -1,28 +1,33 @@
 #!/usr/bin/env node
 /**
- * Generate a new pack source tree from `examples/packs/vendor-template/`.
+ * Generate a new v2 pack source tree from `templates/node-pack/`.
  *
- *   node scripts/new-pack.mjs vendor.<org>.<pack>
+ *   node scripts/new-pack.mjs community.<group>.<pack>
  *   node scripts/new-pack.mjs --pack vendor.<org>.<pack>
  *   node scripts/new-pack.mjs --pack vendor.<org>.<pack> --out packs/
+ *   node scripts/new-pack.mjs --pack vendor.<org>.<pack> --template <dir>
  *
- * Copies the template, substitutes `{ORG}` and `{PACK}` placeholders
- * across pack.json + index.mjs + every schema file + the README, and
- * prints the next-step checklist (customize, build, sign, open PR).
+ * Copies the template, substitutes the `{NAME}` (full pack name), `{ORG}`,
+ * `{PACK}` and `{YEAR}` placeholders across every text file, and prints the
+ * next-step checklist (customize, build, stage, verify, open PR).
+ *
+ * The template ships in this repo so a registry clone is self-sufficient; it
+ * used to live at `examples/packs/vendor-template/`, which left with the
+ * 2026-06 split and was v1-shaped. The template is a v2 manifest (RFC 0177):
+ * `kind` present, an `engines.openwop` ceiling admitting major 2, no `signing`
+ * block (the signer writes `{ keyId, scheme }`), so a scaffolded pack publishes
+ * to `registry/v2`. The v1 tree is read-only.
  *
  * Reverse-DNS validation:
- *   - Pack name MUST match `(core|vendor|community)\.<org>\.<rest>` per
- *     `spec/v1/node-packs.md` §Naming. Core packs reserved for openwop
- *     project; community packs are author-claimed; vendor packs require
- *     a registered namespace claim in `registry/.well-known/openwop-
- *     registry.json` `namespaceAssignments`.
+ *   - Pack name MUST match `(core|vendor|community|private)\.<org>\.<rest>`
+ *     (`schemas/v2/node-pack-manifest.schema.json` `name`). Core packs are
+ *     reserved for the openwop project; community packs are author-claimed;
+ *     vendor packs require a key whose `permittedNamespaces` covers the prefix
+ *     in `registry/.well-known/openwop-registry.json` `signingKeys[]`.
  *
  * Pure Node 20 stdlib — no npm install required.
  *
- * Stage 3 PR 1 (2026-05-12): part of the enterprise-architecture plan.
- * Reduces per-pack authoring overhead by ~50% by eliminating the
- * "what files go where + what's the exact placeholder shape" research
- * cost. See docs/AUTHORING-CANVAS-PACKS.md for the full pattern guide.
+ * Author guide: https://github.com/openwop/openwop/blob/main/docs/PACK-AUTHOR-QUICKSTART.md
  */
 
 import { cpSync, readFileSync, writeFileSync, readdirSync, statSync, existsSync, mkdirSync } from 'node:fs';
@@ -31,7 +36,7 @@ import { fileURLToPath } from 'node:url';
 
 const __filename = fileURLToPath(import.meta.url);
 const REPO_ROOT = dirname(dirname(__filename));
-const TEMPLATE_DIR = join(REPO_ROOT, 'examples', 'packs', 'vendor-template');
+const DEFAULT_TEMPLATE_DIR = join(REPO_ROOT, 'templates', 'node-pack');
 const DEFAULT_OUT_DIR = join(REPO_ROOT, 'packs');
 
 const TTY = process.stdout.isTTY;
@@ -49,18 +54,20 @@ const dim = (s) => console.log(`${C.dim}${s}${C.reset}`);
 // ─── arg parsing ────────────────────────────────────────────────────
 
 function parseArgs(argv) {
-  const args = { pack: null, out: DEFAULT_OUT_DIR };
+  const args = { pack: null, out: DEFAULT_OUT_DIR, template: DEFAULT_TEMPLATE_DIR };
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (a === '--pack') {
       args.pack = argv[++i];
     } else if (a === '--out') {
       args.out = resolve(argv[++i]);
+    } else if (a === '--template') {
+      args.template = resolve(argv[++i]);
     } else if (a === '--help' || a === '-h') {
-      console.log('Usage: new-pack.mjs [--pack] vendor.<org>.<pack> [--out <dir>]');
+      console.log('Usage: new-pack.mjs [--pack] <scope>.<org>.<pack> [--out <dir>] [--template <dir>]');
       console.log('');
-      console.log('Generates a new pack source tree under packs/<name>/ from');
-      console.log('the examples/packs/vendor-template/ skeleton, with all');
+      console.log('Generates a new v2 pack source tree under packs/<name>/ from');
+      console.log('templates/node-pack/ (or --template <dir>), with all');
       console.log('placeholder substitutions applied.');
       process.exit(0);
     } else if (!a.startsWith('-') && args.pack === null) {
@@ -112,8 +119,10 @@ function parsePackName(name) {
 
 function substitutePlaceholders(content, parsed) {
   return content
+    .replace(/\{NAME\}/g, parsed.fullName)
     .replace(/\{ORG\}/g, parsed.org)
-    .replace(/\{PACK\}/g, parsed.pack);
+    .replace(/\{PACK\}/g, parsed.pack)
+    .replace(/\{YEAR\}/g, String(new Date().getFullYear()));
 }
 
 function copyAndSubstitute(srcDir, destDir, parsed) {
@@ -129,7 +138,7 @@ function copyAndSubstitute(srcDir, destDir, parsed) {
       // Substitute in text files; copy binary as-is.
       const ext = name.split('.').pop()?.toLowerCase();
       const textExts = ['json', 'mjs', 'js', 'ts', 'md', 'yaml', 'yml'];
-      if (textExts.includes(ext)) {
+      if (textExts.includes(ext) || name === 'LICENSE') {
         const original = readFileSync(srcPath, 'utf8');
         const substituted = substitutePlaceholders(original, parsed);
         writeFileSync(destPath, substituted);
@@ -147,8 +156,14 @@ function main() {
   if (!args.pack) {
     fail('pack name required. Usage: new-pack.mjs vendor.<org>.<pack>');
   }
-  if (!existsSync(TEMPLATE_DIR)) {
-    fail(`template dir missing: ${TEMPLATE_DIR}`);
+  if (!existsSync(join(args.template, 'pack.json'))) {
+    fail(
+      `template missing: no pack.json in ${args.template}\n` +
+      (args.template === DEFAULT_TEMPLATE_DIR
+        ? `The template ships in this repo at templates/node-pack/. Run from a full clone of\n` +
+          `openwop/openwop-registry, or pass --template <dir> pointing at a pack source tree.`
+        : `--template must name a pack source tree (pack.json, index.mjs, schemas/).`),
+    );
   }
 
   const parsed = parsePackName(args.pack);
@@ -167,31 +182,35 @@ function main() {
   info(`  pack:   ${parsed.pack}`);
   info(`  output: ${destDir}`);
 
-  copyAndSubstitute(TEMPLATE_DIR, destDir, parsed);
+  copyAndSubstitute(args.template, destDir, parsed);
 
   ok(`pack source tree created at ${destDir}`);
 
   // Print next steps.
+  const keyId = `${parsed.org}-1`;
+  const key = `~/.openwop-keys/${keyId}.private.pem`;
   console.log('');
-  info('next steps:');
+  info('next steps (full guide: openwop docs/PACK-AUTHOR-QUICKSTART.md):');
   console.log('');
-  console.log(`  1. Edit ${destDir}/pack.json — update description, keywords, signing.keyId, peerDependencies`);
-  console.log(`  2. Replace the example typeId in pack.json + index.mjs with your real nodes`);
-  console.log(`  3. Author per-node JSON schemas in ${destDir}/schemas/`);
-  console.log(`  4. Write executor logic in ${destDir}/index.mjs using ctx.* accessors`);
+  console.log(`  1. Edit ${destDir}/pack.json — description, author, homepage, repository, keywords.`);
+  console.log(`     Add peerDependencies (declaration family keys, facets in peerDependenciesMeta) for every ctx.* service you use.`);
+  console.log(`  2. Replace the example node in pack.json + index.mjs + schemas/ with your real nodes`);
+  console.log(`  3. Register your key: registry/keys/${keyId}.pub + a signingKeys[] entry in`);
+  console.log(`     registry/.well-known/openwop-registry.json whose permittedNamespaces covers ${parsed.scope}.${parsed.org}.*`);
   console.log('');
-  console.log(`  5. Build + sign:`);
-  console.log(`     node scripts/build-pack-tarball.mjs \\`);
-  console.log(`       --pack ${parsed.fullName} \\`);
-  console.log(`       --signed \\`);
-  console.log(`       --key ~/.openwop-keys/${parsed.org}-internal-1.private.pem \\`);
-  console.log(`       --key-id ${parsed.org}-internal-1`);
+  console.log(`  4. Check the build:`);
+  console.log(`     node scripts/build-pack-tarball.mjs --pack ${parsed.fullName} \\`);
+  console.log(`       --signed --key ${key} --key-id ${keyId} \\`);
+  console.log(`       --tree v2 --scheme ed25519-canonical-json`);
   console.log('');
-  console.log(`       [--tree v2 --scheme ed25519-canonical-json   # RFC 0177: a v2 manifest (explicit <3.0.0 ceiling, \`kind\`, declaration-key peers) publishes to registry/v2]`);
+  console.log(`  5. Stage the v2 artifacts, then verify:`);
+  console.log(`     node scripts/auto-register.mjs --tree v2 --key-file ${key} --key-id ${keyId} --scheme ed25519-canonical-json`);
+  console.log(`     node registry/scripts/verify-signatures.mjs --tree v2`);
+  console.log(`     npm run check`);
   console.log('');
-  console.log(`  6. Open a PR against openwop/openwop-registry with the registry/<tree>/packs/${parsed.fullName}/-/1.0.0.{tgz,sig,json} files (tree = v1 for a \`<2.0.0\` manifest, v2 for a v2 manifest)`);
+  console.log(`  6. Open a PR against openwop/openwop-registry with packs/${parsed.fullName}/, the staged registry/v2/… and`);
+  console.log(`     registry/${parsed.fullName}/<version>/ files, and (first time) your key + signingKeys[] entry`);
   console.log('');
-  dim('   See docs/AUTHORING-CANVAS-PACKS.md for the full pattern guide.');
 }
 
 main();

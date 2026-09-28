@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://packs.openwop.dev/{NAME}/0.1.0/example.output.json",
+  "title": "ExampleOutput",
+  "description": "Output of {NAME}.example.",
+  "type": "object",
+  "required": ["text"],
+  "properties": {
+    "text": {
+      "type": "string",
+      "description": "The transformed string."
+    }
+  },
+  "additionalProperties": false
+}

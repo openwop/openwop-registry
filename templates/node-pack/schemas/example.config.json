@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://packs.openwop.dev/{NAME}/0.1.0/example.config.json",
+  "title": "ExampleConfig",
+  "description": "Author-time configuration for {NAME}.example.",
+  "type": "object",
+  "properties": {
+    "trim": {
+      "type": "boolean",
+      "default": true,
+      "description": "Trim surrounding whitespace before uppercasing."
+    }
+  },
+  "additionalProperties": false
+}

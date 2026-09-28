@@ -47,13 +47,14 @@ echo "[jcs] The signer's canonical JSON is RFC 8785 JCS over I-JSON, and every c
 node --test scripts/test-jcs.mjs
 
 # ── v2 leg (RFC 0177 §A.2 — the parallel registry/v2 tree gets the SAME gate) ──
-# Skips cleanly with a printed reason while registry/v2 is absent: the signed v2
-# tree is produced only by the `registry-v2-sign` CI job (auto-register.yml),
-# which holds OPENWOP_TEAM_1_SIGNING_KEY. Everything before that job is in-tree;
-# a local run can only exercise the pipeline with a throwaway key.
+# Validates registry/v2 whenever registry/v2/packs exists (it is committed). The
+# tree is written by `scripts/auto-register.mjs --tree v2`: the `registry-v2-sign`
+# CI job runs it with OPENWOP_TEAM_1_SIGNING_KEY for first-party namespaces, and
+# a publisher runs it locally with any key registered in signingKeys[]. The skip
+# branch below only fires in a checkout that has no v2 tree.
 echo "=== registry:check — v2 tree ==="
 if [ ! -d registry/v2/packs ]; then
-  echo "[v2 -/8] SKIP: registry/v2 is absent — the signed v2 tree is produced only by the registry-v2-sign CI job (OPENWOP_TEAM_1_SIGNING_KEY); nothing to validate locally."
+  echo "[v2 -/8] SKIP: registry/v2/packs is absent in this checkout — nothing to validate. Stage it with scripts/auto-register.mjs --tree v2 (the registry-v2-sign CI job does this with openwop-team-1; a publisher does it with their own registered key)."
   echo "[v2 0/8] Vendored v2 schema self-tests still run (the schema itself enforces RFC 0177 §A.1/§C.3–§C.5; tree legs skip with their reason)..."
   node --test scripts/test-registry-v2-schemas.mjs
 else
