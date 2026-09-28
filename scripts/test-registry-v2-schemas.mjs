@@ -16,7 +16,7 @@
  *      unbounded engines range is REJECTED. If a re-vendor ever loosens the
  *      schema, this layer goes red before any tree does.
  *   2. tree tests (skipped with a printed reason while registry/v2 is absent —
- *      the signed tree is produced only by the CI job holding the signing key).
+ *      it is written by `scripts/auto-register.mjs --tree v2`).
  *
  *   node --test scripts/test-registry-v2-schemas.mjs
  */
@@ -88,7 +88,7 @@ for (const [label, mutate] of [
 // ─── layer 2: the tree ───────────────────────────────────────────────────────
 
 const treePresent = existsSync(PACKS_DIR);
-const skipReason = 'registry/v2 is absent — the signed v2 tree is produced only by the registry-v2-sign CI job (OPENWOP_TEAM_1_SIGNING_KEY); nothing to validate locally';
+const skipReason = 'registry/v2 is absent in this checkout — nothing to validate (scripts/auto-register.mjs --tree v2 writes it)';
 const packs = treePresent ? readdirSync(PACKS_DIR).filter((d) => existsSync(join(PACKS_DIR, d, '-'))).sort() : [];
 const versionsOf = (pack) => readdirSync(join(PACKS_DIR, pack, '-')).filter((f) => /^[^/]+\.json$/.test(f) && !f.endsWith('.sbom.json')).map((f) => f.slice(0, -5)).sort();
 

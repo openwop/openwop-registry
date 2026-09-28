@@ -21,10 +21,11 @@ registry/
 │               ├── <version>.tgz       signed pack tarball
 │               ├── <version>.sig       signature (ed25519 or sigstore bundle)
 │               └── <version>.sbom.json CycloneDX 1.6 SBOM (files, hashes, peer deps)
-├── v2/                                 the v2 tree (RFC 0177 §A.2): the same layout, re-signed under the one
-│   ├── index.json                      scheme `ed25519-canonical-json` (`signing: { keyId, scheme }`), SBOMs +
-│   ├── sbom.json                       indexes regenerated. Produced ONLY by the `registry-v2-sign` CI job
-│   └── packs/<pack-name>/…             (auto-register.yml) from the openwop-team-1 signing secret.
+├── v2/                                 the v2 tree (RFC 0177 §A.2): the same layout, signed under the one
+│   ├── index.json                      scheme `ed25519-canonical-json` (`signing: { keyId, scheme }`). Written
+│   ├── sbom.json                       by `scripts/auto-register.mjs --tree v2`: the `registry-v2-sign` CI job
+│   └── packs/<pack-name>/…             (auto-register.yml) runs it with openwop-team-1 for first-party namespaces;
+│                                       any publisher runs it locally with their own key in signingKeys[].
 ├── keys/
 │   └── <keyId>.pub                     signing public key(s); served at /keys/<keyId>.pub
 ├── security/
@@ -61,71 +62,45 @@ Write endpoints (`PUT /v1/packs/{name}/-/{version}.tgz`) are NOT supported by th
 
 ## Publish flow
 
-Read-only registry — submissions go through GitHub PRs. The CI gate at `.github/workflows/registry-publish.yml` validates each submission before merge; merge-to-`main` triggers Firebase deploy.
+Read-only registry — submissions go through GitHub PRs. The CI gate at `.github/workflows/registry-publish.yml` validates each submission before merge; merge-to-`main` triggers Firebase deploy. New publications go to the **v2 tree**; the v1 tree is read-only (`scripts/auto-register.mjs --tree v1` skips every v2 manifest). The author walkthrough, including key registration, is the corpus's [`docs/PACK-AUTHOR-QUICKSTART.md`](https://github.com/openwop/openwop/blob/main/docs/PACK-AUTHOR-QUICKSTART.md). All commands run from the repo root.
 
-### 1. Build the pack
-
-For a Rust WASM pack:
+### 1. Scaffold the pack
 
 ```bash
-cd examples/packs/rust-hello
-cargo build --target wasm32-unknown-unknown --release
+node scripts/new-pack.mjs community.<group>.<pack>
 ```
 
-Output: `target/wasm32-unknown-unknown/release/rust_hello.wasm`.
+This copies [`templates/node-pack/`](../templates/node-pack/) to `packs/<name>/` with the placeholders filled. The template is already a v2 manifest: `kind: "node"`, `engines.openwop: ">=1.0.0 <3.0.0"`, no `signing` block. `--template <dir>` uses another source tree instead.
 
-Bundle into a tarball:
+### 2. Check the build
 
 ```bash
-mkdir -p staging/dist
-cp pack.json staging/
-cp README.md staging/
-cp target/wasm32-unknown-unknown/release/rust_hello.wasm staging/dist/
-tar -czf rust_hello-1.0.0.tgz -C staging .
+node scripts/build-pack-tarball.mjs --pack <name> \
+  --signed --key <private.pem> --key-id <keyId> \
+  --tree v2 --scheme ed25519-canonical-json
 ```
 
-### 2. Sign
+Writes a deterministic tarball, manifest, signature and integrity hash to `dist/packs/` (gitignored) and refuses a manifest a v2 host would refuse. The signature is Ed25519 over the canonical JSON of the in-tarball `pack.json`, not over the tarball bytes.
 
-Manual Ed25519 (until sigstore is wired in v1.2):
+### 3. Stage the v2 artifacts
 
 ```bash
-openssl pkeyutl -sign -inkey ~/.openwop/openwop-registry-root.key \
-  -in rust_hello-1.0.0.tgz -out rust_hello-1.0.0.sig
+node scripts/auto-register.mjs --tree v2 \
+  --key-file <private.pem> --key-id <keyId> --scheme ed25519-canonical-json
 ```
 
-### 3. Commit
+Signs every unpublished pack in the namespaces `<keyId>` is permitted in `signingKeys[]`, stages `registry/v2/packs/<name>/-/<version>.{json,tgz,sig,sbom.json}` plus the schema mirror under `registry/<name>/<version>/`, and regenerates `registry/v2/index.json`, the per-pack indexes and `registry/v2/sbom.json`. The `registry-v2-sign` CI job runs this same command with the `openwop-team-1` key for first-party namespaces.
 
-Copy artifacts into the registry tree at the correct paths:
+### 4. Verify and open a PR
 
 ```bash
-cp rust_hello-1.0.0.tgz registry/v1/packs/vendor.openwop.rust-hello/-/1.0.0.tgz
-cp rust_hello-1.0.0.sig registry/v1/packs/vendor.openwop.rust-hello/-/1.0.0.sig
+node registry/scripts/verify-signatures.mjs --tree v2
+npm run check
 ```
 
-### 4. Rebuild indices + SBOM
+`npm run check` (`scripts/registry-check.sh`) runs the v1 gate and then the v2 gate: index drift, tarball signatures, signer consistency, namespace authority, structural conformance, SBOM drift, advisories, the vendored v2 schemas, the engines ceiling, peer-dependency identifiers, and the corpus bare-manifest schema for every source and served pack. CI runs the same checks on the PR.
 
-```bash
-node registry/scripts/build-index.mjs
-node registry/scripts/generate-sbom.mjs
-```
-
-`build-index.mjs` recomputes the `integrity` (sha256) field on every version manifest, regenerates the per-pack `index.json`, and regenerates the registry-wide `v1/index.json`.
-
-`generate-sbom.mjs` writes a sibling `<version>.sbom.json` (CycloneDX 1.6) for every pack version and the aggregate `v1/sbom.json`. Output is deterministic — re-runs without source changes are no-ops. CI runs `--check` mode and fails the PR if any SBOM bytes drift from the committed file.
-
-### 5. Open a PR
-
-CI will:
-
-1. Validate every JSON file parses + every version manifest matches `schemas/registry-version-manifest.schema.json`.
-2. Verify `build-index.mjs --check` is clean (no drift between manifests and tarball hashes).
-3. Verify every `.tgz` has a sibling `.sig`.
-4. Crypto-verify each `.sig` against the registered publisher key per `signingKeys[]` (namespace-scoped).
-5. Run structural conformance check on every pack (`conformance-check.mjs`).
-6. Verify SBOMs are up-to-date (`generate-sbom.mjs --check`).
-7. Validate each security advisory against `schemas/security-advisory.schema.json` + cross-check against published versions (`check-advisories.mjs`).
-
-On merge to `main`, the `deploy` job pushes the directory to Firebase Hosting under the `packs` target. New artifacts become live at `https://packs.openwop.dev/v1/packs/...` within a minute.
+On merge to `main`, the `deploy` job pushes the directory to Firebase Hosting under the `packs` target. New artifacts become live at `https://packs.openwop.dev/v2/packs/...` within a minute.
 
 ## Local development
 
