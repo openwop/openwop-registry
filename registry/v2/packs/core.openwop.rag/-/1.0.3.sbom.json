@@ -1,0 +1,759 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.rag@1.0.3",
+      "type": "library",
+      "name": "core.openwop.rag",
+      "version": "1.0.3",
+      "description": "Retrieval-Augmented-Generation primitives: loaders, splitters, vector ops (thin wrappers over core.openwop.db.vector-*), and retrievers (basic / multi-query / contextual-compression). Agent-tooling only (ADR 0643 D2): these nodes are the tool surface an agent pack allowlists; the host's KB WRITE surface for chains is `feature.kb.nodes`, and this pack is not the way a workflow ingests, deletes or reindexes a tenant collection.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/packs/core.openwop.rag"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ab4cf701865c06629691a070215830070d9e2497a46047aac500576316f2a1cd"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.rag@1.0.3"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7ace69634175a958ada72ad8333c46d7183f47cdda4c2e2afed64cc30748456b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "682"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "index.mjs",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6acca3234c050df10248a2fdcf852e51f0cd8f8b1a31a34abecfb71f3c3b7c7b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "11969"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c7280dffc18e253474cb1924073988b097128dfa2c1be2af95300a9989a330f4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4ca630d7354ee3c43b69f7fead10f7f575db6ff4115f5e0d359cf2b8567a209f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "6182"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/loader-file.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6365a59cf77df59daffb54ef4c525800a1fb72451b6ebfa8d2cf9b996493f625"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "253"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/loader-file.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "252d9df231140ec81d80549d5f8085e13325cefeba80cc542efd4978a48f0855"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "329"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/loader-file.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "dc8fd31f6117af86fa90f4ed88d7154d5d73ee5332ad0f84777e0339ba9900bc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "375"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/loader-github.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e781a2676fd357d960a0908b4e2639cb5277d790475237db40c9b362992a4b2e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "422"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/loader-github.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "89a16f9184b264a95a2e4cf1c5cf5b39facf6e94dee835de06bb2aec3f42eff4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "301"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/loader-github.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9b8921e792437e0a3b3f7d4760dfe1398cad12b592cd80849cbd580303438e0f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "433"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/loader-s3.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4d69d43e424f8d283e1bc0db56849c88c7efb7e7b54c7717d4abda201837ff20"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "377"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/loader-s3.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4e3d4383286ea4dc698afff23ad317e8dc2dab61b049380275f57d4110c90f3a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "292"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/loader-s3.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "36e69104a2281e5f0745aeebd8d6798b88090218add6f1e2110c2675e7142ac4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "425"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/loader-url.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0713b1166ac110c05dba743c9f85e280829f7f2ec7451a1f8cd0ba6ae7108dc5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "377"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/loader-url.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "194efa9def1ddd14aaa961cfb769a98db63487dabda23947bb81f295356ae471"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "461"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/loader-url.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d7e945640f71bc62377cada9e4a07e64c31863529f086fbec6bc47bd6fc4a665"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "424"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/retriever-basic.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8ade06345540704b9270f6d9c2e92cf2c8e3dbd4193a0a598fd3460858da1fa3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "416"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/retriever-basic.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5fcae44b0325c4fe30b5546ad24b11104c30ca2cef66632d3a11a6392469785e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "339"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/retriever-basic.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0222e6f37dbed9e221070386a810437d91dcb727c935fa1fd1c25eda48d4f68c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "338"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/retriever-contextual-compression.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "58ca8eb1ca2e735ce925dc638b5ee19cec8211dc01e5d1ac50e553d3e171c068"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "474"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/retriever-contextual-compression.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "883562814b6f8faa31a3cb1930e19aca2cbf8311ae705c2f5ee52e0b4c888484"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "372"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/retriever-contextual-compression.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "25a010a02e832a8a83adf1b1169f258947961877245b6635fc706599b30e5b63"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "419"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/retriever-multi-query.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cd83fe6dab42a0d403aedbdf19cf0be01fc6a846965f6f7841248bbf1ca70e62"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "521"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/retriever-multi-query.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f50d8bfe60bcd4c9b76a1fa72776fdb5345ce9145c6d9c684430c5e822ad9ac5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "350"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/retriever-multi-query.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8ee692395ecb152efa3de9327866d7a524351dc1799ef83a7a79e9da6c617302"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "450"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/splitter-character.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bd0d0aed6c31c4c6b53cfb6332794a5c5221fec97003b8122ccdd3cc19b10860"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "415"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/splitter-character.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "83755e95e4fd08e3b83cecee97aa698baeee93390d2660c5f9fc7bf1dad8a0a8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "343"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/splitter-character.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3c6d5205f2bc8518596d5d7ef01c6621381dfeb0543bb130c5911d6555db6b6a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "399"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/splitter-recursive.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0c8f1df88434d95e2c0efaab5914bc161dcbaf5e19adf2e4f75e941336f81f1d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "517"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/splitter-recursive.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8c67fd76603fcc4d018191eb0f86f288c457ff4cd86f35841862e324f36d5e16"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "343"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/splitter-recursive.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b3fc3b0c291ef4cb350864f720f127382531969c83fb7ce5527e2577dcb9c510"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "399"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/splitter-token.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "12ccb204d966dcb5ede11b5bdac697ba5af3a663507c2339c9f7a191c864abc3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "456"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/splitter-token.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "149070f84c215dad61fc2cb36b08f6442d00982e2b04509a27a5c1f2ac86724f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "335"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/splitter-token.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9f0f45ddaa52f6f98e2164f9fd68a7f399accfb7b9b98ce571f1d3baeee3d24b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "391"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/vector-delete.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c72223d02bae1f373b2ac7993ec2a37089cfed4e71c6bf61dfd5c9359c97ca1c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "350"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/vector-delete.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7034699d18b54822b7141feeb929e9e8aff0b2828e4ca90b683daa28a4079f92"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "435"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/vector-delete.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "10b23fcd506089eb98cd17381fe7a406976dd2dddaa708808c088eaa855758e2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "345"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/vector-query.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "eccff39fdd0bf14b6bc3526780a5d635e2b10fe2a589c14903b5663653aebba8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "468"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/vector-query.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "faa3a3689d948c36f4982e4c82c33be71aa730703be412452aba6122689c0f11"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "418"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/vector-query.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e7d5d982325a5f8f076dcf05cf764f2c2a2e5ddc1b3dd4524242fca825c247a2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "335"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/vector-upsert.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f551dfbc14a9108a40f1f112b1953148dafd0b325d3cbeded501f93acdbcfad6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "404"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/vector-upsert.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "57e5ad6d63d68171c883e3597ac86fd4f53d7bd56c0acbd10ac66a31eebf3d6a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "856"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/vector-upsert.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b20d2170bb27b63bf319bb44d1c23d54008ed59915100a769050669f9747a15f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "347"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.rag@1.0.3",
+      "dependsOn": [
+        "host:aiProviders"
+      ]
+    }
+  ]
+}

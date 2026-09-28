@@ -1,0 +1,183 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.market-intel-content-extraction@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.market-intel-content-extraction",
+      "version": "1.0.2",
+      "description": "MyndHyve market-intel.content-extraction — extract structured content from raw HTML via one ctx.callAI. Outputs title, cleaned content, author, publishedAt, contentType, engagement metrics, tags, summary, and relevantQuotes. Sits between host.webResearch.fetchBatch and market-intel.voc-extraction in the canonical pipeline. Fifth marketIntel pack of the Stage 5 cohort.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://myndhyve.ai/packs/market-intel-content-extraction"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a9198740557dd2018d70a0878c585b0149fcc45e602a0740c542c35586c13f39"
+        }
+      ],
+      "purl": "pkg:openwop/vendor.myndhyve.market-intel-content-extraction@1.0.2"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ccbfaaa92074b737c73b95578275e48d1f528f156f227f7f1dbc0079664fe9ad"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "4299"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "index.mjs",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1e3801ae6fe8c361d9b65268d26a5cbc015e3532228723e7972062a197263e38"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "10478"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "09e478bcbbaae88869560f9245ea182742ce9ea664cfc5ce66483a562152590e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b71e361dda5c71375f3cfcf3ab978ffc40b3ed7b23843f89074b81948abc9714"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1805"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/content-extraction.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bc9b2e82256a032e0bfbce6ab36fad5cc38b20f2a9b2aad9425977db68198c1d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "802"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/content-extraction.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d3f28af2f867e8ff04406391b6fd6d4e5db6dc95dd56fcde80713b336cde4012"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "830"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/content-extraction.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3a5dfafd0e07e63cc695936d5c8dba5d3943c815b2fd6522a7f61e6f919bb9bf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2003"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/vendor.myndhyve.market-intel-content-extraction@1.0.2",
+      "dependsOn": [
+        "host:aiProviders"
+      ]
+    }
+  ]
+}

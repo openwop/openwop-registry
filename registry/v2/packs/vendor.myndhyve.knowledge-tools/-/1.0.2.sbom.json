@@ -1,0 +1,231 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.knowledge-tools@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.knowledge-tools",
+      "version": "1.0.2",
+      "description": "MyndHyve knowledge-tools — first reference consumer of the v1 host.knowledge surface. Two typeIds: (1) knowledge.retrieve — thin pass-through over ctx.knowledge.retrieve with optional score-floor filtering; (2) knowledge.augment-prompt — composition primitive that retrieves + renders a Sources block + builds an augmented user message + emits a citation list. Host advertises host.knowledge: supported per spec/v1/host-capabilities.md §host.knowledge.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://myndhyve.ai/packs/knowledge-tools"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "becf91fd0159ef255c93c81f6f85f4f83eff77026addff94474d9befcb088718"
+        }
+      ],
+      "purl": "pkg:openwop/vendor.myndhyve.knowledge-tools@1.0.2"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f2d2325ac0fcce3732ce0fd17a7d5207b299cc84155a1d22f3d33c237ee4bfad"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "4012"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "index.mjs",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cbbc8f168f98a7f3504d46e1812d3118808a0349741dec6285a5ec9395631fa1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "8407"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4e67c495f8cf9dfabd75fe87a03626edeff1bb673f1906a7df2f2b6a281b22eb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c37c945f8fac54bac142a1ec26b474055e8ee6cd5819431365df8555fc912067"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2303"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/augment-prompt.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c5c79375c30500c19db5253294c8e034e23e275bc0f59a161a38cb8c2658ddaa"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1144"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/augment-prompt.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f023fada07c6f74ed3d7dacaf5edbba313cb5064f1619bfa2b0d0c4dddaf1c75"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "947"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/augment-prompt.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2caf648671be29201b9df48e7864f9ef6e3a95944d86ae95601dd89fc33d1627"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1656"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/retrieve.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "952c2a335714640e4407aa5e750ca7a583a7c50943c77639c560f8d9e52dd8d0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "868"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/retrieve.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "361931e7e2fee5b24502aa7fd6275595e583c563d0ac1c8ce55d33b0f241c22f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1212"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/retrieve.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0412a75db40a885f7b1a233efda8b8f45711bea333c8141809d3e381ecf673c3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1765"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/vendor.myndhyve.knowledge-tools@1.0.2",
+      "dependsOn": [
+        "host:knowledge"
+      ]
+    }
+  ]
+}

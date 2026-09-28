@@ -24,8 +24,20 @@
       "integrity": "sha256-MuhD8s6im5pzuEzgpnHbwY2HlZqHycsj27B634xaiJ0=",
       "versionDeprecated": false,
       "yanked": false
+    },
+    {
+      "version": "1.0.2",
+      "manifestUrl": "/v2/packs/vendor.myndhyve.market-intel-discovery/-/1.0.2.json",
+      "tarballUrl": "/v2/packs/vendor.myndhyve.market-intel-discovery/-/1.0.2.tgz",
+      "signatureUrl": "/v2/packs/vendor.myndhyve.market-intel-discovery/-/1.0.2.sig",
+      "sbomUrl": "/v2/packs/vendor.myndhyve.market-intel-discovery/-/1.0.2.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "myndhyve-internal-1",
+      "integrity": "sha256-XCMJE4wJm8j6vZwFMXENYNoCqlyHMmdEaxOHlOAH4T0=",
+      "versionDeprecated": false,
+      "yanked": false
     }
   ],
-  "latest": "1.0.1",
+  "latest": "1.0.2",
   "deprecated": false
 }

@@ -72,6 +72,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.agent-examples@1.1.2",
+      "type": "library",
+      "name": "core.openwop.agent-examples",
+      "version": "1.1.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.agent-examples/-/1.1.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "30e13789ff8f7fd2d3dfc9bb92bc886b5f0bdc56be211ccef3d944f0255ec1ba"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.agents.api-designer@1.0.2",
       "type": "library",
       "name": "core.openwop.agents.api-designer",
@@ -1062,6 +1080,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.examples@1.0.3",
+      "type": "library",
+      "name": "core.openwop.examples",
+      "version": "1.0.3",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.examples/-/1.0.3.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "403a6c28cfab7844cbe6a05f90dada6047bd894bb8a58c229814fc71894b2c4c"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.files@1.0.1",
       "type": "library",
       "name": "core.openwop.files",
@@ -1110,6 +1146,24 @@
             {
               "alg": "SHA-256",
               "content": "a8ce7c7e05b1ee07f71c60b2661f7d2b582ac5064b50536d1ad8d7b32f3eb9d0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.flow@1.1.3",
+      "type": "library",
+      "name": "core.openwop.flow",
+      "version": "1.1.3",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.flow/-/1.1.3.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "fbeb6220f2118f31d41c03a1fc4e99677926a79d66de3d9a2b1f5831bb230e97"
             }
           ]
         }
@@ -1350,6 +1404,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.rag@1.0.3",
+      "type": "library",
+      "name": "core.openwop.rag",
+      "version": "1.0.3",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.rag/-/1.0.3.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "bce6cee40c5656509f608845a059c531f5bad7a8c9d6125d04702ffb8c3c64a9"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.skills-bridge@1.0.1",
       "type": "library",
       "name": "core.openwop.skills-bridge",
@@ -1362,6 +1434,24 @@
             {
               "alg": "SHA-256",
               "content": "eb2364b8fb2448f898b92c19d1bc344779d923409f0734e8279a905377d2e675"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.skills-bridge@1.0.2",
+      "type": "library",
+      "name": "core.openwop.skills-bridge",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.skills-bridge/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "b73cc3502ce5666d787a768192b21bb47389a13b3f14f82de2305611364ea524"
             }
           ]
         }
@@ -1452,6 +1542,24 @@
             {
               "alg": "SHA-256",
               "content": "3b0b7718f9f3b459698f8881086ffdc1423dc6e57e088614333451b1fc9e2f69"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.web-search@1.1.1",
+      "type": "library",
+      "name": "core.openwop.web-search",
+      "version": "1.1.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.web-search/-/1.1.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "dae63bc56a8aae25a67d87985262feefadf1b73cf72306999fae60843132dd44"
             }
           ]
         }
@@ -3114,6 +3222,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-copy-generate@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-copy-generate",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.ads-copy-generate/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "d485b06cf561da91cb4817c4b38c78e250ab001e15c6c973509ad4ad3a651abc"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/vendor.myndhyve.ads-creative-validate@1.0.1",
       "type": "library",
       "name": "vendor.myndhyve.ads-creative-validate",
@@ -3126,6 +3252,24 @@
             {
               "alg": "SHA-256",
               "content": "602ea61e516a96ee70cf7ff21ec610c7dd2909aa42d640f47ba2b4bbbaa2f818"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-creative-validate@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-creative-validate",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.ads-creative-validate/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "32cd75f6269b13d05c26504c58c89ba4808ab85253530efc1261e9ae800ef6d9"
             }
           ]
         }
@@ -3150,6 +3294,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-crew@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-crew",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.ads-crew/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "ad621d42e0125081e15bceaf5e6dcf6c6c9541f887087af2a206a1f71c9dac53"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/vendor.myndhyve.ads-export@1.0.1",
       "type": "library",
       "name": "vendor.myndhyve.ads-export",
@@ -3162,6 +3324,24 @@
             {
               "alg": "SHA-256",
               "content": "097b8fec895f810ddeaa4780d10f4e38af6275a8d062b9dd804e489aad7858a5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-export@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-export",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.ads-export/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "2a4f89b9a4b4add4c8ee793b9be0059362e272ae2efcc8d6cfd826363cc4597a"
             }
           ]
         }
@@ -3186,6 +3366,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-image-generate@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-image-generate",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.ads-image-generate/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "9fb5f1b91905b77bff650d4294b2c79bc87e0d007b3bd7f85443469df04b49da"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/vendor.myndhyve.ads-metrics-import@1.0.1",
       "type": "library",
       "name": "vendor.myndhyve.ads-metrics-import",
@@ -3198,6 +3396,24 @@
             {
               "alg": "SHA-256",
               "content": "10bdd4d2b4267623e29ebc2a1efac781698a25aff9888c98432368d9e847e075"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-metrics-import@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-metrics-import",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.ads-metrics-import/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "fd91349307f82d7563ea28a5e3013fc8dcf1e4236cce91540f44b82aadaf173f"
             }
           ]
         }
@@ -3222,6 +3438,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-platforms@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-platforms",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.ads-platforms/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "e5325454319995abb11c768df193b2a2123f09c4fc39b4c364606c39ce41fab4"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/vendor.myndhyve.ads-policy@1.0.1",
       "type": "library",
       "name": "vendor.myndhyve.ads-policy",
@@ -3234,6 +3468,24 @@
             {
               "alg": "SHA-256",
               "content": "c8c63723364330aea65fec33ef9b6951313e5e1cdfb2ec70387f4566d7c29364"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-policy@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-policy",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.ads-policy/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "c2131c12b2f9c2d8a44003da802325c35d19ac11068652bfe47a5e29012408d2"
             }
           ]
         }
@@ -3258,6 +3510,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-publish-google@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-publish-google",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.ads-publish-google/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "1c9b8176bcff7b29f291e055508f863c7f9f6c44b9039af95cd2687430eb993f"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/vendor.myndhyve.ads-publish-meta@1.0.1",
       "type": "library",
       "name": "vendor.myndhyve.ads-publish-meta",
@@ -3276,6 +3546,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-publish-meta@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-publish-meta",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.ads-publish-meta/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "56a24a62022b95d36d4b45851b39063218d738fe32ab9b39836364ca69a36456"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/vendor.myndhyve.ads-publish-tiktok@1.0.1",
       "type": "library",
       "name": "vendor.myndhyve.ads-publish-tiktok",
@@ -3288,6 +3576,24 @@
             {
               "alg": "SHA-256",
               "content": "59ac368628a4a638773187cd7b57a07226c030c934e5d4d2b3b371c3dc8e1751"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-publish-tiktok@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-publish-tiktok",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.ads-publish-tiktok/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "7915aa8d1c10c3ceebe4ad737bb69f2e7c8588b0eed1fa709e065c79e28ae9f4"
             }
           ]
         }
@@ -3330,6 +3636,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-tools@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-tools",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.ads-tools/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "00733c19df975fd77efdcb40261b770673351978a46c8c4389831426ffff688b"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/vendor.myndhyve.ads-video-generate@1.0.1",
       "type": "library",
       "name": "vendor.myndhyve.ads-video-generate",
@@ -3342,6 +3666,24 @@
             {
               "alg": "SHA-256",
               "content": "8a584d12510a37c38e6ad5df10d9382acdce94d8013d39c0d652955141c399ea"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-video-generate@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-video-generate",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.ads-video-generate/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "3303cab5dc2fb9a212cae9d0b794a830b85922d7ea55ea801dc1fe54a01d7c4e"
             }
           ]
         }
@@ -3366,6 +3708,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.agent-orchestration@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.agent-orchestration",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.agent-orchestration/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "345e49ad74db47410d5c4d89b3cc0c2d7d2c8bedc3f10f2a66b48fd08dffc317"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/vendor.myndhyve.ai@1.0.1",
       "type": "library",
       "name": "vendor.myndhyve.ai",
@@ -3384,6 +3744,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ai@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.ai",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.ai/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "475cdf19115327946bae5b4c2fdd0d06e514c2f563738390aae3e2e16f03fcd6"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/vendor.myndhyve.brand@1.1.1",
       "type": "library",
       "name": "vendor.myndhyve.brand",
@@ -3396,6 +3774,24 @@
             {
               "alg": "SHA-256",
               "content": "08442353f17cfefeca59a82cc9598924edf4b5108e111bcca4b6dba9d4278d0a"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.brand@1.1.2",
+      "type": "library",
+      "name": "vendor.myndhyve.brand",
+      "version": "1.1.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.brand/-/1.1.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "843a6a13d5b0e2187b0051daa4377ea70dec01e0f8021f3c81a90730fa81b5ff"
             }
           ]
         }
@@ -3456,6 +3852,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.canvas@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.canvas",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.canvas/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "e4bcc80bad9200821bee92f17011a2e9b1ff40e956eb01fe534a8584fef85371"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/vendor.myndhyve.chat@1.0.1",
       "type": "library",
       "name": "vendor.myndhyve.chat",
@@ -3468,6 +3882,24 @@
             {
               "alg": "SHA-256",
               "content": "710cdeba2b8c0e5f5771fb3c0c3941935c8a0c8f4a4c7c2fdab84947e239e132"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.chat@1.3.1",
+      "type": "library",
+      "name": "vendor.myndhyve.chat",
+      "version": "1.3.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.chat/-/1.3.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "5e8bbf07ccd134a8a5644bc2e1466c034af4aae44452eed28d4fdf2bc3d1398e"
             }
           ]
         }
@@ -3492,6 +3924,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.data-integration@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.data-integration",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.data-integration/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "4e72119de71d51839cc82dba6bf02ea026531f57b7ee05a8218469a703f9c6ad"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/vendor.myndhyve.entities@1.0.1",
       "type": "library",
       "name": "vendor.myndhyve.entities",
@@ -3504,6 +3954,24 @@
             {
               "alg": "SHA-256",
               "content": "8349ad24383535ccde82f8dc31c4e60184f1e83b72bbb86de7401dcd1afd59a3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.entities@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.entities",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.entities/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "201bc69f2ef4a5926222cff4e054590d6015b4d13465bcae593af9ce7ded6674"
             }
           ]
         }
@@ -3528,6 +3996,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.kanban@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.kanban",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.kanban/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "6588c88995bb0d135a879acf2a16103681fc65860aee7ae1f557238134817821"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/vendor.myndhyve.knowledge-tools@1.0.1",
       "type": "library",
       "name": "vendor.myndhyve.knowledge-tools",
@@ -3540,6 +4026,24 @@
             {
               "alg": "SHA-256",
               "content": "a376771fd28cf290c23ec81592f3742cbe48374d0ad98d4d62222b3dbe9d959d"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.knowledge-tools@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.knowledge-tools",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.knowledge-tools/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "54f2229f0ef701057b591d4c1929a948afdef0448e74cc0175b5af3e2a4c445d"
             }
           ]
         }
@@ -3564,6 +4068,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.landing-page@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.landing-page",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.landing-page/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "2daf2d153611a41ef2dc305324153c5f3d59feccc1f7259472b019d0bc34cbaa"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/vendor.myndhyve.launch-studio@1.0.1",
       "type": "library",
       "name": "vendor.myndhyve.launch-studio",
@@ -3576,6 +4098,24 @@
             {
               "alg": "SHA-256",
               "content": "5428dfefc99327f5f56719a610c9f71782372d27ffac8d3e33267fa234b175b8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.launch-studio@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.launch-studio",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.launch-studio/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "65e8c78b8e3ac5f26c6591a94be78f34ca4dd9b80e3186b3214b55380510caa9"
             }
           ]
         }
@@ -3600,6 +4140,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.market-intel-ad-angles@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.market-intel-ad-angles",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.market-intel-ad-angles/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "b7008bbae24c2bfb601c8145f007758e79bd9cec16e79dfdd79efae10c054925"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/vendor.myndhyve.market-intel-audience-targeting@1.0.1",
       "type": "library",
       "name": "vendor.myndhyve.market-intel-audience-targeting",
@@ -3612,6 +4170,24 @@
             {
               "alg": "SHA-256",
               "content": "74ed4e8e080bf7af2367853596bb0c6f0923f3dde3e15b8d210e0d4482eeb63a"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.market-intel-audience-targeting@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.market-intel-audience-targeting",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.market-intel-audience-targeting/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "07b4cb73c5be9bbbcaec1419b833e4a4c318b9eef2a95eb3f3575c88656978c3"
             }
           ]
         }
@@ -3636,6 +4212,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.market-intel-community-rank@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.market-intel-community-rank",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.market-intel-community-rank/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "53ac08f6b808f8a9e305a0b6d6670960ca1320d230faf72296668472047d6812"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/vendor.myndhyve.market-intel-content-extraction@1.0.1",
       "type": "library",
       "name": "vendor.myndhyve.market-intel-content-extraction",
@@ -3648,6 +4242,24 @@
             {
               "alg": "SHA-256",
               "content": "cf8436c6917ec740a6b7de6bf588a18b2a409b466ebe957b792dfd3686e3581e"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.market-intel-content-extraction@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.market-intel-content-extraction",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.market-intel-content-extraction/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "8e7fc3244fb48d71a02e372586c92199297e31391d2ec9424df3f6b265ef9d7c"
             }
           ]
         }
@@ -3672,6 +4284,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.market-intel-crew@1.0.3",
+      "type": "library",
+      "name": "vendor.myndhyve.market-intel-crew",
+      "version": "1.0.3",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.market-intel-crew/-/1.0.3.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "c8d2d02795588c6ed7dbbf63009c2aed117e83734fba2f895ee1814cf20ad41f"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/vendor.myndhyve.market-intel-discovery@1.0.1",
       "type": "library",
       "name": "vendor.myndhyve.market-intel-discovery",
@@ -3684,6 +4314,24 @@
             {
               "alg": "SHA-256",
               "content": "5579adaf9103de61831d90c78ad2f29af6cf2b56489cdb7bc4a00191f1b6af13"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.market-intel-discovery@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.market-intel-discovery",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.market-intel-discovery/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "5b170c0990a9b3e5e3b9dbf930164615043f462e7bc8cf3c99f777749a1a94c1"
             }
           ]
         }
@@ -3708,6 +4356,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.market-intel-opportunity-scoring@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.market-intel-opportunity-scoring",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.market-intel-opportunity-scoring/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "13a4b4f278e36c72177d78501a0f7ab425ee2e561434a532f9f0ef6bffc5b077"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/vendor.myndhyve.market-intel-query-builder@1.0.1",
       "type": "library",
       "name": "vendor.myndhyve.market-intel-query-builder",
@@ -3720,6 +4386,24 @@
             {
               "alg": "SHA-256",
               "content": "9cefe5a94455f60d219d100c064020d86039e8843a1fee3654e11e78c960b542"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.market-intel-query-builder@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.market-intel-query-builder",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.market-intel-query-builder/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "42c9aee0917bb1153f574436cfb765adef7a67c88915e587bd8c14b6f06746b9"
             }
           ]
         }
@@ -3744,6 +4428,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.market-intel-thread-triage@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.market-intel-thread-triage",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.market-intel-thread-triage/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "f251f02bf6ec4db3690d0bf375a0ce8e1c03f1441c220da8ef1c3f57bbc305eb"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/vendor.myndhyve.market-intel-voc@1.0.1",
       "type": "library",
       "name": "vendor.myndhyve.market-intel-voc",
@@ -3756,6 +4458,24 @@
             {
               "alg": "SHA-256",
               "content": "c8c8600939ad693603c7e4c6161b505c0a88572e47a54bbad0c0b6d7074278b1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.market-intel-voc@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.market-intel-voc",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.market-intel-voc/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "d01b4e64c30065d5597e5b2cf904833c5164477f7a3b2ff211c8ce2d8888142c"
             }
           ]
         }
@@ -3780,6 +4500,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.web-research@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.web-research",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.web-research/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "d5624ff404c7218a5cd3bdf9984f025ab53405f81073f12d692ffffdb34de417"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/vendor.myndhyve.wop-refinement@1.0.1",
       "type": "library",
       "name": "vendor.myndhyve.wop-refinement",
@@ -3792,6 +4530,24 @@
             {
               "alg": "SHA-256",
               "content": "8d6efa3a9a6ad65b20ecbc81f9e195f364a123af652ede0e3f17088d7b79be1f"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.wop-refinement@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.wop-refinement",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.wop-refinement/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "3fa9241a1ca19a7753c40e13701f8cae186de93247666179c4a5b32630c79445"
             }
           ]
         }

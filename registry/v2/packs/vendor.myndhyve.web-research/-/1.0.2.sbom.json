@@ -1,0 +1,328 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.web-research@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.web-research",
+      "version": "1.0.2",
+      "description": "MyndHyve web-research pack — 4 nodes for the search → fetch → research → synthesize pipeline. webSearch + fetchUrls + researchWeb route through the host's webResearch adapter (search API + scraping policy + rate-limit + cache layer); synthesize composes results into a typed envelope via the AI envelope surface.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://myndhyve.ai/packs/web-research"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "321e0b071c2919231fc6d3726538f41e1bb283415b930e0a18455a215d1deffa"
+        }
+      ],
+      "purl": "pkg:openwop/vendor.myndhyve.web-research@1.0.2"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bc00419465b285c11ffc0031b425f9a1fd971c2387d145da79e83306233e7ff9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2413"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "index.mjs",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3c895c187215b6b8f081885c7582828d0a446f1521496c6f3877650e89608b87"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "6313"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "dd731f6aeb8f23fa6431f4ba8198f6d9917d1d9561b6935c1846fa31cbdcc17e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7ac46c228fe866c2871756c7d7bb4c7acaa0424a41533b8dcc8d9c42c522778a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3336"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/fetchUrls.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "30469738f9ddae01b81a6e3d6a5d03c829a4de8b418e5a98c70204cb970feb20"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1091"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/fetchUrls.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d27c17215d57be7696c471699520b19f43e0f1ac532950094efe7b0219daad80"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "426"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/fetchUrls.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "37170cbf25a0832c6020cdc70925b4a4a853fcaca1d656b3d4d4f3751bae2888"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1519"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/researchWeb.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0750f87df933fa0475e1be8d39f162613a88ca93d0f25decd931d22efeb436ee"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "635"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/researchWeb.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a1f3f07da487532ebe5f3d99fbad0dd537d9174edead6c062ff456e7412cc058"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "431"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/researchWeb.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d3d571b57c25a203e9ad5c76229a9f697feedc85caa0111013ea249608fee2dd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1020"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/synthesize.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2ffc1a5bbc95ed1972670d2d73bbf4b19b31ba9af05e7d784b5e5f75dca3c361"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "786"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/synthesize.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "548b50dfc1cc4c5b3a8348fac12bf4b8c9fd0a32e29313b618bc8bb7fc064cd5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "890"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/synthesize.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b7a87e96d54acba377bddf9df389ece212b41a8e2fcf2f735560dccb31827257"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "983"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/webSearch.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c03afb3a3c853b0fd94551e91d98863bb4ba077177555ef55b195888c28f11ec"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "985"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/webSearch.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "03364c16d5aa086451b8883259d5f6656ae7c2166a3c007a89766883acbb69e8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "637"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/webSearch.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8ad9344410b8fc19e52dfdc5dfc9821a4f2b5442b4f57821146d934c0334c2ce"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1173"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/vendor.myndhyve.web-research@1.0.2",
+      "dependsOn": [
+        "host:aiEnvelope",
+        "host:webResearch"
+      ]
+    }
+  ]
+}

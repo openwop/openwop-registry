@@ -1,0 +1,712 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.agent-orchestration@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.agent-orchestration",
+      "version": "1.0.2",
+      "description": "MyndHyve agent-orchestration pack. Six nodes that operate on protocol primitives — spawn, delegate-smart, consensus-vote, message-send, skill-invoke, swarm-execute. Routes through the host's agent runtime (ctx.agentRuntime.*). Inherits suspend mechanics for low-confidence escalation.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://myndhyve.ai/packs/agent-orchestration"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e3f5b6e691f44114da03f62af4ee5f7b00e2fd3da95201c1b884014b22509559"
+        }
+      ],
+      "purl": "pkg:openwop/vendor.myndhyve.agent-orchestration@1.0.2"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e5a1269368c7cf1ad4813cca9e654c09768d3a631276b7964998a425a169b8b7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3517"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "index.mjs",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fc2c1c0daae8f754fb949d32b5188a0fbb0fffa2688a031e24896f2a41d23ee4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "15890"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a1d9a31e5ddfb4a13fbb28c02cff0f9e6c80daec59a5b33a1a8b90e5291038cb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "426dacdd935fe87646c618a0ffc774ba21c30d869f058662a055b299a622c4bb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "7394"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/consensus.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "86e4a27b85ace7c98384e7d85081212cfc1ae6ea50182e03364d71a8cd9fe6b4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1004"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/consensus.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "35c5c1b123619551ef306486a8620aa46fd9fa23168d5786d2589a15b3bac348"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "423"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/consensus.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "69f4c0d7ad6012802781a26f91bd89be6e92d9b05f812b8d7cf5f9fbd9dc6184"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1098"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/coordination.compete.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fef974bf60f425c9b5aac171ab1899026ed0a3c44dc447dd564e66d85f123cbf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "116"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/coordination.compete.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fef974bf60f425c9b5aac171ab1899026ed0a3c44dc447dd564e66d85f123cbf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "116"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/coordination.compete.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a4631392f62f6343c008e42e668b43e0ffd9e3d9f06381ba89e9d4f2fa6d464f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "381"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/coordination.consensus.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fef974bf60f425c9b5aac171ab1899026ed0a3c44dc447dd564e66d85f123cbf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "116"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/coordination.consensus.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fef974bf60f425c9b5aac171ab1899026ed0a3c44dc447dd564e66d85f123cbf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "116"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/coordination.consensus.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bc33b52e0db26f388e9df5097bf3bd6a8b01d345422514e0fa1c213c975a8485"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "374"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/coordination.delegate.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fef974bf60f425c9b5aac171ab1899026ed0a3c44dc447dd564e66d85f123cbf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "116"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/coordination.delegate.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fef974bf60f425c9b5aac171ab1899026ed0a3c44dc447dd564e66d85f123cbf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "116"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/coordination.delegate.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c6adbd16b0fb4cf34821112255d4f6d2756197d94e3baf0bc3f74218bc320e35"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "361"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/coordination.map-reduce.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fef974bf60f425c9b5aac171ab1899026ed0a3c44dc447dd564e66d85f123cbf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "116"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/coordination.map-reduce.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fef974bf60f425c9b5aac171ab1899026ed0a3c44dc447dd564e66d85f123cbf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "116"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/coordination.map-reduce.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ca30d94c31d4ec77f87637bd8f59a42ba399ebff3a2440d78327f94ba17b34cd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "305"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/coordination.round-robin.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fef974bf60f425c9b5aac171ab1899026ed0a3c44dc447dd564e66d85f123cbf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "116"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/coordination.round-robin.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fef974bf60f425c9b5aac171ab1899026ed0a3c44dc447dd564e66d85f123cbf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "116"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/coordination.round-robin.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bbd431f41307852b2253ecdac535e8963afeb1ce630164a969075604468394a5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "423"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/coordination.vote.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fef974bf60f425c9b5aac171ab1899026ed0a3c44dc447dd564e66d85f123cbf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "116"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/coordination.vote.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fef974bf60f425c9b5aac171ab1899026ed0a3c44dc447dd564e66d85f123cbf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "116"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/coordination.vote.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "31bd9b3e4deda7d495592b7d074ee05c719902ce1ea74027857d37698cfef95a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "593"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/delegate.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "615e7a2618f3e69aab534fa623d03d3a542948ea250003a660784bb9d985e008"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1153"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/delegate.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "65bc9db526b826a727e35b015be07c7f80d98a5a1782ca8e416bef0e5e9bea7d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "611"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/delegate.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1410642a4d1da08041ec979bfd3db80db13fec41674ccc906a03a90be100a7ca"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "996"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/message.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "92297d5ad93e195bdab29650bfb4e46908132b66cd2a5213e01d334eecb95c12"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "635"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/message.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "694a0d4f689470d2e28d9cfc0438f56edba5d624ab87c816fe6c0e6442d4f569"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "569"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/message.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "61abee041fc0428be742aaf5ee1f4a6549a9967a2965630741663c48a366be2c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "719"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/skill.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f54e596af711256ab8fddb9e98bbd7af441af6d37a165447ee0826221a3229b6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "683"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/skill.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "01a95bf89e4df0af7dfd2f7a43a2d3c8c79276d0618285cd46799e0aa8a6a96c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "420"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/skill.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "28583e0632ba365e0ebf9afb1150c54245e41f0cd50fed4558a2466a2cf6a842"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "596"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/spawn.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6df079e516e711e237cd17207b7250cda4dda701e6999ef1db1f8d56be037a62"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "837"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/spawn.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "67c774cd6d3f3f89ed4b955bf878b2b9b281b6a84d310c4eff4e8450e61bb2af"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "583"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/spawn.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f3a7f2e79befa479046c6c4cd7967a28c0f952576e394040328a93a3241f7ce1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "629"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/swarm.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7a3783d976d359822bee4b5da12db2f3839e1d1b285470c6c3dac3b1107aeef2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1172"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/swarm.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ca4b843b47843ebb0d53ae7ba8cf018c09a2e3af98af5bae367365535ea5e226"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "622"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/swarm.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "63022fc3afd287a4f8f877bb831e26388ab001a1c911d6dc2bed23df53113082"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1305"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/vendor.myndhyve.agent-orchestration@1.0.2",
+      "dependsOn": [
+        "host:agentRuntime",
+        "host:coordination"
+      ]
+    }
+  ]
+}
