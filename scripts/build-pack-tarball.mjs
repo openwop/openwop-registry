@@ -50,7 +50,8 @@
  *   - uid/gid: 0; uname/gname: ""
  *   - mode: 644 (files only — no directory entries)
  *   - entry order: lexicographic by path
- *   - file set: pack.json, LICENSE, README.md, index.mjs, schemas/*
+ *   - file set: pack.json, LICENSE, README.md, index.mjs, schemas/*, keys/*, prompts/*,
+ *               plus the file `runtime.entry` names (any language but `remote`)
  *               (everything else — node_modules, __tests__, .DS_Store,
  *               .git — excluded)
  *
@@ -227,7 +228,25 @@ const ALLOWED_DIR_EXTS = {
   prompts: ['.md', '.txt'],
 };
 
-function walkPack(packDir) {
+/**
+ * spec/v2/core/node-pack-runtimes.md: `runtime.entry` is a path inside the tarball
+ * for every language except `remote` (where it is the MCP server URL). The fixed
+ * allowlist above only covers the JavaScript layout (`index.mjs`), so a WASM,
+ * Python or Go pack's code never reached its tarball. The declared entry is always
+ * bundled, at the same relative path, and a missing or escaping path fails loud.
+ */
+function runtimeEntryPath(packDir, manifest) {
+  const rt = manifest?.runtime;
+  if (!rt || typeof rt !== 'object' || rt.language === 'remote' || typeof rt.entry !== 'string') return null;
+  const rel = rt.entry.replace(/^\.\//, '');
+  if (rel === '' || rel.startsWith('/') || rel.split('/').includes('..')) throw new Error(`runtime.entry ${JSON.stringify(rt.entry)} must be a relative path inside the pack`);
+  if (Buffer.byteLength(rel, 'utf8') > 100) throw new Error(`runtime.entry ${JSON.stringify(rel)} is longer than the 100-byte USTAR name field this writer supports`);
+  const full = join(packDir, rel);
+  if (!existsSync(full) || !statSync(full).isFile()) throw new Error(`runtime.entry ${JSON.stringify(rel)} is not a file in the pack — build it before packing (e.g. cargo build --release for a wasm pack)`);
+  return rel;
+}
+
+function walkPack(packDir, manifest) {
   const entries = [];
   for (const name of readdirSync(packDir).sort()) {
     const full = join(packDir, name);
@@ -244,6 +263,8 @@ function walkPack(packDir) {
       }
     }
   }
+  const entry = runtimeEntryPath(packDir, manifest);
+  if (entry !== null && !entries.some((e) => e.name === entry)) entries.push({ name: entry, content: readFileSync(join(packDir, entry)) });
   entries.sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0));
   return entries;
 }
@@ -393,7 +414,8 @@ function buildPack(packName, args) {
   // (pretty-printed sidecar) for inspection. The CDN-served manifest
   // is JSON regardless — clients parse it; pretty-printing is only
   // useful for `gunzip | tar -xO pack.json | cat`.
-  let entries = walkPack(packDir);
+  let entries;
+  try { entries = walkPack(packDir, manifest); } catch (err) { fail(`✗ ${packName}: ${err.message}`); return false; }
   if (args.signed) {
     const canonicalManifestBytes = Buffer.from(canonical, 'utf8');
     // Overwrite pack.json with the canonical-augmented version, and
