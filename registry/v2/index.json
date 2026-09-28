@@ -1,6 +1,6 @@
 {
   "registryVersion": "1.0.0",
-  "generatedAt": "2026-09-28T19:33:20.065Z",
+  "generatedAt": "2026-09-28T20:35:57.049Z",
   "packCount": 156,
   "packs": [
     {
@@ -1196,7 +1196,7 @@
     {
       "name": "core.openwop.workflows.campaign-brief",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.1",
+      "latestVersion": "1.0.2",
       "description": "Campaign-brief messaging-kernel + market-intel workflows, migrated from the deprecated builtins (ADR 0472 P4). chainIds keep the original ids; outputRoles restored at registration.",
       "license": "",
       "tags": [],
@@ -1212,7 +1212,7 @@
     {
       "name": "core.openwop.workflows.campaign-channels",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.1",
+      "latestVersion": "1.0.2",
       "description": "The five campaign channel child workflows (ADR 0157) — generate→approve DAGs the orchestration fans out over — migrated from the deprecated builtins (ADR 0472 P4). chainIds keep the original ids.",
       "license": "",
       "tags": [],
@@ -1248,7 +1248,7 @@
     {
       "name": "core.openwop.workflows.campaign-orchestration",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.1",
+      "latestVersion": "1.0.2",
       "description": "Campaign Studio orchestration spine (ADR 0158/RFC 0118), parallel channel fan-out shape — migrated from the deprecated builtin (ADR 0472 P4). chainId keeps the original id; the 5 channel children resolve by id at runtime via core.dispatch.",
       "license": "",
       "tags": [],
@@ -1312,7 +1312,7 @@
     {
       "name": "core.openwop.workflows.creative-briefs-reel",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.1",
+      "latestVersion": "1.0.2",
       "description": "Generate a text-to-video reel from a creative brief (migrated from the deprecated ADR 0411 builtin `openwop-app.creative-briefs-reel`, ADR 0472 Phase 2/4). A single `generate-reel` node — the boundary-clean reel path run through the workflow engine. chainId keeps the original id so the route ignition + replay resolve unchanged; the host registers it chain-backed AND it is a gallery-editable chain.",
       "license": "",
       "tags": [],
@@ -1395,7 +1395,7 @@
     {
       "name": "core.openwop.workflows.destination-sync",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.1",
+      "latestVersion": "1.0.2",
       "description": "CDP → peer-OpenWOP-host onward-sync (ADR 0289/RFC 0128), migrated from the deprecated builtin (ADR 0472 P4). chainId keeps the original id; peerIngestUrl resolves at runtime via the http node config template.",
       "license": "",
       "tags": [],
@@ -1478,7 +1478,7 @@
     {
       "name": "core.openwop.workflows.funnels",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.2",
+      "latestVersion": "1.0.3",
       "description": "Funnel optimization chains (ADR 0294 / Funnel A, Phase 6) — read-only analysis over the funnels feature nodes: per-step stats in, a grounded optimization proposal out. Proposals only: publishing, step edits, and experiment starts remain human actions in the Funnels page.",
       "license": "Apache-2.0",
       "tags": [],
@@ -1558,7 +1558,7 @@
     {
       "name": "core.openwop.workflows.kicktodo-accountability",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.1",
+      "latestVersion": "1.0.2",
       "description": "Migrated from deprecated builtins (ADR 0472 P4).",
       "license": "",
       "tags": [],
@@ -1589,7 +1589,7 @@
     {
       "name": "core.openwop.workflows.kicktodo-integrations",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.1",
+      "latestVersion": "1.0.2",
       "description": "Migrated from deprecated builtins (ADR 0472 P4).",
       "license": "",
       "tags": [],
@@ -1621,7 +1621,7 @@
     {
       "name": "core.openwop.workflows.kicktodo-plan-generation",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.1",
+      "latestVersion": "1.0.2",
       "description": "KickTodo plan generation as an RFC 0013 / RFC 0133 chain pack (migrated from the deprecated ADR 0072 builtin `openwop-app.kicktodo.plan-generation`). Generate a validated challenge plan with the run-scoped provider (closed-world validatePlan + one bounded repair inside the node; fails closed on stub providers), then decompose it into a draft. Demonstrates RFC 0133 produced variables: `generate` writes the validated `plan` to the run bag and `decompose` reads it by name — no typed output port, so an explicit edge is not the right shape.",
       "license": "",
       "tags": [],
@@ -1651,7 +1651,7 @@
     {
       "name": "core.openwop.workflows.kicktodo-research",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.2",
+      "latestVersion": "1.0.3",
       "description": "KickTodo research spine as an RFC 0013 chain pack (migrated from the deprecated ADR 0072 builtin `openwop-app.kicktodo.research`, ADR 0472 Phase 2). Frame deterministic research questions, search the web (honestly demo or live per the host adapter), normalize to canonical source records, and build a structure-checked evidence graph. Conversion tightened the builtin's implicit ordering into EXPLICIT edge dataflow (the audit's honesty note): search's `{results,engine}` flows to normalize, normalize's sources flow to the evidence graph.",
       "license": "",
       "tags": [],
@@ -1785,7 +1785,7 @@
     {
       "name": "core.openwop.workflows.notebooks",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.1",
+      "latestVersion": "1.0.2",
       "description": "Notebooks workflows (summarize, transform, ingest-audio, ingest-youtube), migrated from the deprecated builtins (ADR 0472 P4). chainIds keep the original ids so ignition + replay resolve unchanged; node outputRoles restored at registration.",
       "license": "",
       "tags": [],
@@ -1820,7 +1820,7 @@
     {
       "name": "core.openwop.workflows.podcasts",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.1",
+      "latestVersion": "1.0.2",
       "description": "Migrated from the deprecated builtin (ADR 0472 P4). chainId keeps the original id; outputRoles restored at registration.",
       "license": "",
       "tags": [],
@@ -1835,7 +1835,7 @@
     {
       "name": "core.openwop.workflows.production-plan",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.2",
+      "latestVersion": "1.0.3",
       "description": "Migrated from the deprecated builtin (ADR 0472 P4). chainId keeps the original id; outputRoles restored at registration.",
       "license": "",
       "tags": [],
@@ -1897,7 +1897,7 @@
     {
       "name": "core.openwop.workflows.seo-content-ops",
       "kind": "workflow-chain",
-      "latestVersion": "1.1.2",
+      "latestVersion": "1.1.3",
       "description": "SEO content-ops chains (RFC 0013): a research-grounded content pipeline — a keyword brief from live search, a drafted article for human review, and an on-publish internal-link suggestion pass. Drafts are reviewed before anything is treated as final. Replay-deterministic.",
       "license": "Apache-2.0",
       "tags": [],
@@ -1913,7 +1913,7 @@
     {
       "name": "core.openwop.workflows.slides-design",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.1",
+      "latestVersion": "1.0.2",
       "description": "The slides design workflow (outline → gate → draft → deepen → notes → audit → review), migrated from the deprecated builtin `slides.design` (ADR 0472 P4). Explicit port dataflow + two HITL approval gates (ordering, not conditional). chainId keeps the original id so ignition + replay resolve unchanged; also a gallery-editable chain.",
       "license": "",
       "tags": [],
@@ -1967,7 +1967,7 @@
     {
       "name": "core.openwop.workflows.walkthroughs",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.2",
+      "latestVersion": "1.0.3",
       "description": "The first-party SYSTEM guided walkthroughs (single-step page tours), migrated from the deprecated builtinWorkflows seam (ADR 0472 P4). Each chainId keeps its original walkthrough.* id so the FE player + replay resolve unchanged; registered chain-backed with metadata.walkthrough=true so the walkthroughs surface lists them.",
       "license": "",
       "tags": [],
@@ -2023,7 +2023,7 @@
     {
       "name": "core.openwop.workflows.workflow-author",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.1",
+      "latestVersion": "1.0.2",
       "description": "The AI workflow-author meta-workflow (draft → validate → persist), migrated from the deprecated builtin `openwop-app.workflow-author` (ADR 0472 P4). chainId keeps the original id so the Create-with-AI route ignition + replay resolve unchanged; also a gallery-editable chain.",
       "license": "",
       "tags": [],
@@ -2693,7 +2693,7 @@
     {
       "name": "vendor.openwop-app.workflows.cms",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.1",
+      "latestVersion": "1.0.2",
       "description": "CMS content workflows (RFC 0013 / ADR 0204 C6) — chains over the feature.cms.nodes governed verbs. `cms.localize-and-submit` translates ONE draft section into a target locale and submits the page for editorial review: read the draft section, AI-translate its base data (structure-preserving), store the overlay on the draft (sanitized like an editor save), then submit — the SAME approval-gate composition as the editor UI, so when `cms-approval-gate` is ON the run ends at a human ApprovalsInbox row. There is deliberately NO publish step: a node can draft and submit, never publish (the Phase-C architecture ruling). All tenant/org/page values are run parameters (replay-deterministic).",
       "license": "Apache-2.0",
       "tags": [],

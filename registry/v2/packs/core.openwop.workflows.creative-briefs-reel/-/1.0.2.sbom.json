@@ -1,0 +1,102 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.creative-briefs-reel@1.0.2",
+      "type": "library",
+      "name": "core.openwop.workflows.creative-briefs-reel",
+      "version": "1.0.2",
+      "description": "Generate a text-to-video reel from a creative brief (migrated from the deprecated ADR 0411 builtin `openwop-app.creative-briefs-reel`, ADR 0472 Phase 2/4). A single `generate-reel` node — the boundary-clean reel path run through the workflow engine. chainId keeps the original id so the route ignition + replay resolve unchanged; the host registers it chain-backed AND it is a gallery-editable chain.",
+      "licenses": [],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "95689898e23616610cc502808aad7e4fbc219221a572202fce1593755f7196c6"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.creative-briefs-reel@1.0.2"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d237a7ef16fb1b2449893ad1bc76a2246b087edfa935988d6028a5a492ef6eb8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "700"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "de8dbf65a52698eed2262f041aae7b3a85572f68da5ca463779b2ce75549c625"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a8355cfffb29fec446910b43cabf5c6561c415234ae295f98187a20b8c0001ed"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2022"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.creative-briefs-reel@1.0.2",
+      "dependsOn": []
+    }
+  ]
+}

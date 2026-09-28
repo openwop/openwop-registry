@@ -1,0 +1,102 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.kicktodo-plan-generation@1.0.2",
+      "type": "library",
+      "name": "core.openwop.workflows.kicktodo-plan-generation",
+      "version": "1.0.2",
+      "description": "KickTodo plan generation as an RFC 0013 / RFC 0133 chain pack (migrated from the deprecated ADR 0072 builtin `openwop-app.kicktodo.plan-generation`). Generate a validated challenge plan with the run-scoped provider (closed-world validatePlan + one bounded repair inside the node; fails closed on stub providers), then decompose it into a draft. Demonstrates RFC 0133 produced variables: `generate` writes the validated `plan` to the run bag and `decompose` reads it by name — no typed output port, so an explicit edge is not the right shape.",
+      "licenses": [],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8a5c43704db666eb9e47acccf09bbfb31fa5d081fcaaaa101685b7cffa853000"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.kicktodo-plan-generation@1.0.2"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6bd3b361c16da252e08dfab741b2fc49b649508ffb9ef96cd8409b1577369441"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "851"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "269b4ed5d4cd9bebdc5ae0a760ab465f5b1da53b2ae01e21541ff9b915491421"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d2038f1b055aa14e087ef7589892f4032917b804ce7946a45c565159c5f0e88e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2432"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.kicktodo-plan-generation@1.0.2",
+      "dependsOn": []
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.workflow-author@1.0.2",
+      "type": "library",
+      "name": "core.openwop.workflows.workflow-author",
+      "version": "1.0.2",
+      "description": "The AI workflow-author meta-workflow (draft → validate → persist), migrated from the deprecated builtin `openwop-app.workflow-author` (ADR 0472 P4). chainId keeps the original id so the Create-with-AI route ignition + replay resolve unchanged; also a gallery-editable chain.",
+      "licenses": [],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0df57c2ca4d0f54de643fdaa0ecd80f0af27d019093edefcf01087c875ab292d"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.workflow-author@1.0.2"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5ba85f7e6d3e570c33d2eed8c9da280e831395c6a12926571bb95db581289eb0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "571"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6f5c28cd1b3704ddb0d9fa59286170c3e3cdebbc78c7610ec821deaeebae82f9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "107940657fec2bd5a6a673601f9da019d36c5cc9c41b0e24f521ff3ee3e74d67"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1391"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.workflow-author@1.0.2",
+      "dependsOn": []
+    }
+  ]
+}

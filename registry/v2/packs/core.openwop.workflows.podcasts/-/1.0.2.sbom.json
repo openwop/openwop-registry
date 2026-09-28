@@ -1,0 +1,102 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.podcasts@1.0.2",
+      "type": "library",
+      "name": "core.openwop.workflows.podcasts",
+      "version": "1.0.2",
+      "description": "Migrated from the deprecated builtin (ADR 0472 P4). chainId keeps the original id; outputRoles restored at registration.",
+      "licenses": [],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fc920c661c6868e4a27204f6bf85178659141c8e30792796679acf2a325bb363"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.podcasts@1.0.2"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a785dda6892ecd4449738ecbe1a8d4cd821d32b08d392a2464304fe966222e79"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "381"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "41f65683cbefa368610ef39dbf12bf411e18e14c36bf66fdbc7fad92e3cf3b00"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1c8ab198a9e243165bf23c875641ea07b47ad83cdc686c924e4345abb179aefe"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1587"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.podcasts@1.0.2",
+      "dependsOn": []
+    }
+  ]
+}
