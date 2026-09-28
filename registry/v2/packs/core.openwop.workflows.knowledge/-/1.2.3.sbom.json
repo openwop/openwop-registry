@@ -1,0 +1,108 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.knowledge@1.2.3",
+      "type": "library",
+      "name": "core.openwop.workflows.knowledge",
+      "version": "1.2.3",
+      "description": "Real-work workflow pack (RFC 0013, ADR 0190 Phase 2) — the internal Knowledge cluster: employee policy/HR Q&A grounded in your Knowledge Base, compliance review of documents against your policy corpus, and structured document summarization. Distinct from core.openwop.workflows.support: these serve EMPLOYEES over internal policy collections. Authored over shipped node typeIds (feature.kb.nodes.rag + core.ai.chatCompletion + core.flow.if + core.chat.approvalGate + core.openwop.integration.*). Populate the collections in the Knowledge feature — these chains READ the app KB. All tenant values are run parameters (replay-deterministic). EVERY delivery edge is PORT-QUALIFIED (ADR 0583) — a bare edge binds no named port at all. Every external send waits on a human approval gate AND ONLY FIRES ON AN APPROVAL — Slack takes its content BACK OFF THE GATE (`approveEscalation.artifact → escalate.text`, `{truthy approved}`), so it has NO unconditional incoming edge and every non-approving outcome folds it to `skipped`.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "53fa004adf9fd3435c750c0b3665b8636f20a1c64b6ef6faecef119977d89621"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.knowledge@1.2.3"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d98912faad5807e33272381a9fb183fcdc8f7d8a880075b8716a432ef16adc8e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "448"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "69813d4c088168e9d670213ec41fce599ab7d16cc673e4d87dffe3b525bde5be"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a1fbc140206c3dca03e1f86ab7afce07c516cb78789ee41767673fc0abd2511c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "11716"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.knowledge@1.2.3",
+      "dependsOn": []
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.exec-ops@1.3.2",
+      "type": "library",
+      "name": "core.openwop.workflows.exec-ops",
+      "version": "1.3.2",
+      "description": "Real-work workflow pack (RFC 0013, ADR 0149). The Executive / Chief-of-Staff cluster: Daily Executive Briefing, Meeting Prep & Attendee Dossier, and Board / Investor Update Pack. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.analytics) and, where a workflow touches an external system, binds a connection pack via core.openwop.http.openapi-call (connectionRef) — so a configured connection runs live and an unconfigured one surfaces a connect prompt rather than failing. Every external send is gated by core.chat.approvalGate; the read-only briefing is ungated. All tenant-specific values are run parameters (replay-deterministic). Resolves fully on hosts that ship the feature + http/mcp + chat packs (the OpenWOP reference app); the connection bindings are configured by the operator under Access & data → Connections.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d5dc3f8d53fc40721240705bd7deaef890f32b08c02b1a9f567c9bd56feb231f"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.exec-ops@1.3.2"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5518032ed3fa1e9523098940770dd564351d7634afc5e5d017f4e3c8b7c46907"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "864"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ebf610735f53548a9b8dbbbd99f71b09305baf2b915f8195bbaa3914e5316019"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bab361d73951f598f9d100b74e78499adf5de3c72edeaf58881768af5d65fbc5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "10695"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.exec-ops@1.3.2",
+      "dependsOn": []
+    }
+  ]
+}
