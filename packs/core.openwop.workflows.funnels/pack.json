@@ -5,7 +5,7 @@
   "description": "Funnel optimization chains (ADR 0294 / Funnel A, Phase 6) — read-only analysis over the funnels feature nodes: per-step stats in, a grounded optimization proposal out. Proposals only: publishing, step edits, and experiment starts remain human actions in the Funnels page.",
   "author": "OpenWOP App",
   "license": "Apache-2.0",
-  "engines": { "openwop": ">=1.1.0 <2.0.0" },
+  "engines": { "openwop": ">=1.1.0 <3.0.0" },
   "keywords": ["funnels", "optimization", "conversion", "marketing"],
   "chains": [
     {
