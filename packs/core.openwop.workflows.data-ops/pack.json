@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.data-ops",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "kind": "workflow-chain",
   "description": "Real-work workflow pack (RFC 0013, ADR 0200/0201) — the Data Ops cluster, the one shape-family the Zapier/n8n and Microsoft canons don't cover (surfaced by the Make/Workato research): collapsing many records into one output (the aggregator canon), one-way movement of records between systems, and content routing (send a record down the right branch). Roll Up, Records → Table, Records → System (one-way upsert behind a human sign-off), and Content Router (route a record to the matching branch by a field predicate — the Make router shape, gated via edge conditions, ADR 0201). Uses only shipped, executable nodes (core.flow.aggregate-{numeric,text,table} + core.flow.router + core.ai.chatCompletion + core.chat.approvalGate + core.openwop.http.openapi-call + core.openwop.integration.notification-push). The write is ONE-WAY movement keyed on an external id (re-runs update, never duplicate) behind a human approval — it is NOT a bidirectional sync. All tenant values are run parameters (replay-deterministic).",
   "author": "openwop",
@@ -14,7 +14,7 @@
   "chains": [
     {
       "chainId": "data-ops.rollup",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "label": "Roll Up a List of Records",
       "description": "Turn a list of records (orders, line items, expenses…) into one narrated summary: sum a numeric field, format each record into a readable line, and write a short digest. The 'collapse many rows into one output' shape — paste a JSON array or pipe one from another workflow.",
       "parameters": {
@@ -55,7 +55,7 @@
         "nodes": [
           {
             "id": "total",
-            "typeId": "core.flow.aggregate-numeric",
+            "typeId": "core.flow.aggregate-numeric@1.0.0",
             "name": "Sum the amount",
             "position": {
               "x": 0,
@@ -71,7 +71,7 @@
           },
           {
             "id": "list",
-            "typeId": "core.flow.aggregate-text",
+            "typeId": "core.flow.aggregate-text@1.0.0",
             "name": "Format each record",
             "position": {
               "x": 0,
@@ -87,7 +87,7 @@
           },
           {
             "id": "digest",
-            "typeId": "core.ai.chatCompletion",
+            "typeId": "core.ai.chatCompletion@1.0.0",
             "name": "Write the digest",
             "position": {
               "x": 300,
@@ -102,7 +102,7 @@
           },
           {
             "id": "notify",
-            "typeId": "feature.notifications.nodes.notify",
+            "typeId": "feature.notifications.nodes.notify@1.0.0",
             "name": "Deliver digest",
             "position": {
               "x": 560,
@@ -140,7 +140,7 @@
     },
     {
       "chainId": "data-ops.to-table",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "label": "Records → Table + Anomaly Scan",
       "description": "Reshape a list of records into a clean name/value table, then have AI scan it for outliers, gaps, and things worth a second look — delivered as a notification. Paste a JSON array of records. The column set is fixed (name, value) — a chain-level `{{params.*}}` config token only substitutes STRINGS (the host's per-run config interpolation is a string-replace over the token; an array/object param collapses to its `String(...)` form, e.g. '[object Object]'), so an array-typed `columns` parameter cannot be threaded through this node's `config.columns` — it needs the real array, not a stringified one.",
       "parameters": {
@@ -171,7 +171,7 @@
         "nodes": [
           {
             "id": "table",
-            "typeId": "core.flow.aggregate-table",
+            "typeId": "core.flow.aggregate-table@1.0.0",
             "name": "Build the table",
             "position": {
               "x": 0,
@@ -195,7 +195,7 @@
           },
           {
             "id": "scan",
-            "typeId": "core.ai.chatCompletion",
+            "typeId": "core.ai.chatCompletion@1.0.0",
             "name": "Scan for anomalies",
             "position": {
               "x": 300,
@@ -210,7 +210,7 @@
           },
           {
             "id": "notify",
-            "typeId": "feature.notifications.nodes.notify",
+            "typeId": "feature.notifications.nodes.notify@1.0.0",
             "name": "Deliver findings",
             "position": {
               "x": 560,
@@ -244,7 +244,7 @@
     },
     {
       "chainId": "data-ops.records-to-system",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "label": "Records → System (one-way)",
       "description": "One-way movement: read records from a source system, reshape them with AI, review, and upsert them into a destination — keyed on an external id so re-runs update the same records instead of duplicating them. It is one-way, not a sync: it does not read the destination back, propagate deletes, or reconcile conflicts. The write step needs a connection with write scope (if you added that scope after connecting, re-authorize the connection) and an upsert-by-external-key operation (e.g. Salesforce upsert, HubSpot upsert) — pointed at a plain create it will duplicate. Every write waits on your approval.",
       "parameters": {
@@ -297,7 +297,7 @@
         "nodes": [
           {
             "id": "read",
-            "typeId": "core.openwop.http.openapi-call",
+            "typeId": "core.openwop.http.openapi-call@1.0.0",
             "name": "Read source records",
             "position": {
               "x": 0,
@@ -311,7 +311,7 @@
           },
           {
             "id": "reshape",
-            "typeId": "core.ai.chatCompletion",
+            "typeId": "core.ai.chatCompletion@1.0.0",
             "name": "Reshape for the destination",
             "position": {
               "x": 280,
@@ -326,7 +326,7 @@
           },
           {
             "id": "approve",
-            "typeId": "core.chat.approvalGate",
+            "typeId": "core.chat.approvalGate@1.1.0",
             "name": "Review before write",
             "position": {
               "x": 560,
@@ -344,7 +344,7 @@
           },
           {
             "id": "gate-reject",
-            "typeId": "core.flow.noop",
+            "typeId": "core.flow.noop@1.0.0",
             "name": "Rejected — nothing written",
             "position": {
               "x": 840,
@@ -355,7 +355,7 @@
           },
           {
             "id": "upsert",
-            "typeId": "core.openwop.http.openapi-call",
+            "typeId": "core.openwop.http.openapi-call@1.0.0",
             "name": "Upsert into destination",
             "position": {
               "x": 840,
@@ -404,7 +404,7 @@
     },
     {
       "chainId": "data-ops.content-router",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "label": "Content Router",
       "description": "Route a record to the right branch by one of its fields: match on the field's value (e.g. priority high / normal / low) and only the matching branch fires its notification. Set the field to switch on; the three example branches match high, normal, and low.",
       "parameters": {
@@ -430,7 +430,7 @@
         "nodes": [
           {
             "id": "route",
-            "typeId": "core.flow.router",
+            "typeId": "core.flow.router@1.0.0",
             "name": "Route by field",
             "position": {
               "x": 0,
@@ -472,7 +472,7 @@
           },
           {
             "id": "high",
-            "typeId": "feature.notifications.nodes.notify",
+            "typeId": "feature.notifications.nodes.notify@1.0.0",
             "name": "High-priority branch",
             "position": {
               "x": 320,
@@ -487,7 +487,7 @@
           },
           {
             "id": "normal",
-            "typeId": "feature.notifications.nodes.notify",
+            "typeId": "feature.notifications.nodes.notify@1.0.0",
             "name": "Normal branch",
             "position": {
               "x": 320,
@@ -502,7 +502,7 @@
           },
           {
             "id": "low",
-            "typeId": "feature.notifications.nodes.notify",
+            "typeId": "feature.notifications.nodes.notify@1.0.0",
             "name": "Low-priority branch",
             "position": {
               "x": 320,
