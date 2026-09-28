@@ -1,6 +1,6 @@
 {
   "name": "vendor.myndhyve.ads-export",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "MyndHyve ads.export.pack — pure-logic export pack builder. Bundles copy variants + creative assets + tracking links into a structured AdExportPack record (JSON-serializable). Lifted from src/canvas-types/campaign-studio/ads-studio/export/AdExportPackService.ts. No host capabilities required; deterministic.",
   "author": "MyndHyve",
   "license": "Apache-2.0",

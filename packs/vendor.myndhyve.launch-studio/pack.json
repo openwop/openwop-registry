@@ -1,6 +1,6 @@
 {
   "name": "vendor.myndhyve.launch-studio",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "MyndHyve Launch Studio pack. 2 nodes for the LS backbone: link a project to a step + propagate inherited artifact context, and dispatch ready WOP stack items (todo → doing) for a step's canvas type.",
   "author": "MyndHyve",
   "license": "Apache-2.0",

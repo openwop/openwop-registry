@@ -1,6 +1,6 @@
 {
   "name": "vendor.myndhyve.wop-refinement",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "MyndHyve WOP feature-refinement node — wop.feature.refine. Driven by a `feature.breakdown` LLM envelope; decides whether a stack item is actionable as a node, executable as a chain, must be split into sub-items, needs clarification, or should be blocked. Enforces hard `maxDepth` + `maxGeneratedItems` constraints regardless of LLM proposal. Used by both runner-driven dispatch (StackAutoplayRunner) and chain-driven sub-workflows.",
   "author": "MyndHyve",
   "license": "Apache-2.0",

@@ -1,6 +1,6 @@
 {
   "name": "vendor.myndhyve.web-research",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "MyndHyve web-research pack — 4 nodes for the search → fetch → research → synthesize pipeline. webSearch + fetchUrls + researchWeb route through the host's webResearch adapter (search API + scraping policy + rate-limit + cache layer); synthesize composes results into a typed envelope via the AI envelope surface.",
   "author": "MyndHyve",
   "license": "Apache-2.0",

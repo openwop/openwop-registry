@@ -1,6 +1,6 @@
 {
   "name": "vendor.myndhyve.market-intel-query-builder",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "MyndHyve market-intel.query-builder — generate intent-mapped search queries (4-8 query groups × 4 intent stages, 2-4 variations each, synonym maps, platform hints) + per-competitor query packs (comparison/switching/alternative) + topic clusters from ICP + product context. Pairs with ai-discovery: query-builder produces 'what to search for', ai-discovery produces 'where to search'. Eighth marketIntel pack of the Stage 5 cohort.",
   "author": "MyndHyve",
   "license": "Apache-2.0",

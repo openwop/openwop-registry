@@ -3,8 +3,8 @@
 Reference / smoke-fixture agent pack. Exercises every shape on `agent-manifest.schema.json` so the conformance suite, registry verifier, and reference hosts have a canonical pack to validate against. Validates the `agents[]` extension to `pack.json` (per `agent-manifest.schema.json` + RFC 0003 §`agents[]` extension).
 
 | Pack name | `core.openwop.agent-examples` |
-| Version | `1.1.1` |
-| Engine | OpenWOP `>=1.1.0 <3.0.0` |
+| Version | `1.1.0` |
+| Engine | OpenWOP `>=1.1.0 <2.0.0` |
 | Runtime | `language: remote` (no executable artifact — agents are host-interpreted) |
 | Nodes | 0 — pure agent pack |
 | Agents | 5 |
@@ -45,7 +45,7 @@ Typed I/O contract fixture. Ships `handoff.taskSchemaRef` + `handoff.returnSchem
 
 ### `core.openwop.agent-examples.tool-caller`
 
-Non-empty `toolAllowlist` fixture. Allowlists `openwop:core.http.fetch` + `openwop:core.data.jsonpath-query`. Exercises the runtime's tool-allowlist enforcement boundary established by safety-fix `OPENWOP-AUDIT-2026-003` (`SECURITY/invariants.yaml#agents-run-no-raw-handler`). Requires the host to advertise `host.agentRuntime` per RFC 0007. `memoryShape.scratchpad: true` for per-task tool-result tracking.
+Non-empty `toolAllowlist` fixture. Allowlists `openwop:core.openwop.http.fetch` + `openwop:core.openwop.data.jsonpath-query`. Exercises the runtime's tool-allowlist enforcement boundary established by safety-fix `OPENWOP-AUDIT-2026-003` (`SECURITY/invariants.yaml#agents-run-no-raw-handler`). Requires the host to advertise `host.agentRuntime` per RFC 0007. `memoryShape.scratchpad: true` for per-task tool-result tracking.
 
 ## Workflow usage
 
@@ -76,8 +76,8 @@ The agent manifest's `modelClass` is a CLASS (`general`, `writing`, `coding`, `r
 
 ## See also
 
-- [`spec/v1/node-packs.md`](https://github.com/openwop/openwop/blob/main/spec/v1/node-packs.md)
-- [`schemas/agent-manifest.schema.json`](https://github.com/openwop/openwop/blob/main/schemas/agent-manifest.schema.json)
-- [`RFCS/0003-agent-packs.md`](https://github.com/openwop/openwop/blob/main/RFCS/0003-agent-packs.md) — agents[] extension RFC
-- [`docs/PACK-CATALOG.md`](https://github.com/openwop/openwop/blob/main/docs/PACK-CATALOG.md) — full pack catalog
+- [`spec/v1/node-packs.md`](../../spec/v1/node-packs.md)
+- [`schemas/agent-manifest.schema.json`](../../schemas/agent-manifest.schema.json)
+- [`RFCS/0003-agent-packs.md`](../../RFCS/0003-agent-packs.md) — agents[] extension RFC
+- [`docs/PACK-CATALOG.md`](../../docs/PACK-CATALOG.md) — full pack catalog
 - Production agent packs: `packs/core.openwop.agents.<pattern>/`

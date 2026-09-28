@@ -3,8 +3,8 @@
 First vendor-namespace pack. Ships MyndHyve canvas-coordination nodes.
 
 | Pack name | `vendor.myndhyve.canvas` |
-| Version | `1.0.1` |
-| Engine | OpenWOP `>=1.0.0 <3.0.0` |
+| Version | `1.0.0` |
+| Engine | OpenWOP `>=1.0.0 <2.0.0` |
 | Runtime | JavaScript (ESM), Node `>=20` |
 | External deps | None — speaks no Firestore directly; routes through `ctx.canvas.*` |
 | peerDependencies | `host.canvas: supported` |
@@ -112,5 +112,5 @@ The exact field name for the capability advertisement (`host.canvas` vs other sh
 ## See also
 
 - [`docs/plans/MYNDHYVE-TO-OPENWOP-PACK-MIGRATION.md`](https://github.com/openwop/openwop) (in myndhyve repo) — full migration plan, Phase 2
-- [`spec/v1/host-extensions.md`](https://github.com/openwop/openwop/blob/main/spec/v1/host-extensions.md) §canonical-prefix
-- [`spec/v1/replay.md`](https://github.com/openwop/openwop/blob/main/spec/v1/replay.md) §"Replay determinism" — Layer-2 cache guarantees
+- [`spec/v1/host-extensions.md`](../../spec/v1/host-extensions.md) §canonical-prefix
+- [`spec/v1/replay.md`](../../spec/v1/replay.md) §"Replay determinism" — Layer-2 cache guarantees

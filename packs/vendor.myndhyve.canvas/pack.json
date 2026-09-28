@@ -1,6 +1,6 @@
 {
   "name": "vendor.myndhyve.canvas",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "First vendor-namespace pack. Ships MyndHyve canvas-coordination nodes — canvasRead / canvasWrite / canvasCreate / crossCanvasInvoke — preserving the `core.coordination.*` typeIds in the wild (typeId-preserve strategy from the migration plan §4). The pack itself is MyndHyve-internal: hosts that don't advertise `host.canvas: supported` cannot register it.",
   "author": "MyndHyve",
   "license": "Apache-2.0",

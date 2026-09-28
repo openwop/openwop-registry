@@ -1,6 +1,6 @@
 {
   "name": "vendor.myndhyve.ads-image-generate",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "MyndHyve ads.image.generate — generate ad creative images via the host's ctx.callImageGenerator (host.aiProviders.imageGeneration sub-capability from spec PR #48). Batches N prompts through one host call each, computes per-placement dimensions from caller-supplied placementSpec, applies platform/style/brand-color prompt enhancement, and aggregates safety-filter stats. First consumer of the new sub-capability.",
   "author": "MyndHyve",
   "license": "Apache-2.0",
@@ -32,7 +32,7 @@
       "typeId": "ads.image.generate",
       "version": "1.0.0",
       "label": "Generate Ad Images",
-      "description": "Batches inputs.prompts[] through ctx.callImageGenerator. Per-placement dimensions resolved from inputs.placementSpec.imageSpec (recommendedWidth/Height, capped at config.maxDimension) or fallback to inputs.aspectRatio + maxDimension. Each prompt enhanced with platform/placement/style/brandColors context. Aborts mid-batch on ctx.signal. Returns assets[] + per-prompt stats + total filtered count.",
+      "description": "Batches inputs.prompts[] through ctx.callImageGenerator. Per-placement dimensions resolved from inputs.placementSpec.imageSpec (recommendedWidth/Height, capped at config.maxDimension) or fallback to inputs.aspectRatio + maxDimension. Each prompt enhanced with platform/placement/style/brandColors context. Aborts mid-batch on ctx.signal. Returns images[] (host media-output convention, minted as Library assets) + per-prompt stats + total filtered count.",
       "category": "data",
       "role": "action",
       "capabilities": [
