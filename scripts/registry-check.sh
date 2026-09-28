@@ -88,6 +88,8 @@ else
   node scripts/check-pack-schema-tree-complete.mjs --tree v1
   echo "[v2 13/13] Every v2 pack manifest a host installs validates against the corpus bare-manifest schema for its kind (openwop-registry#69)..."
   node scripts/check-pack-manifest-schemas.mjs
+  echo "[v2 14/14] A published version is immutable outside its lifecycle fields, and a new one is signed by an active key (openwop RFC 0222; base origin/main, SKIP if absent)..."
+  node scripts/check-published-immutable.mjs
   node --test scripts/test-remote-entry-binding.mjs
 fi
 

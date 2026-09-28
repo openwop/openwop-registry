@@ -209,6 +209,16 @@ jobs:
           # yank-with-advisory invariant the maintainer process depends on.
           node registry/scripts/check-advisories.mjs
 
+      - name: Published v2 versions are immutable; a new one is signed by an active key (openwop RFC 0222)
+        if: github.event_name == 'pull_request'
+        run: |
+          # packs.md §"Version manifests" / §Signing. Compares the PR against its base: a published
+          # version's .tgz / .sig may not change, its manifest may change only the lifecycle fields,
+          # and a version new in the PR must name an `active` signingKeys[] entry. The served tree
+          # cannot decide the second rule, so the diff is where it is enforced.
+          git fetch --no-tags --depth=1 origin "+refs/heads/${{ github.base_ref }}:refs/remotes/origin/${{ github.base_ref }}"
+          node scripts/check-published-immutable.mjs --base "origin/${{ github.base_ref }}"
+
       - name: Validate registry/v2 with the same gate (RFC 0177 §A.2)
         run: |
           # v2 charter Phase 3 (RFC 0177): registry/v2/ is a parallel tree of
