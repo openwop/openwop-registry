@@ -258,7 +258,13 @@ function rebuildPack(packName) {
     pack = manifest;
   }
 
-  const latest = versions[versions.length - 1];
+  // v2 (spec/v2/core/packs.md §"Version manifests"): `latest` never names a
+  // yanked version while the pack has one that is not yanked, and the
+  // registry-wide row is `yanked` only when every version is. The v1 tree is
+  // frozen through the overlap and keeps highest-semver.
+  const unyanked = versionEntries.filter((v) => !v.yanked).map((v) => v.version);
+  const latest = TREE === 'v2' && unyanked.length > 0 ? unyanked[unyanked.length - 1] : versions[versions.length - 1];
+  const allYanked = TREE === 'v2' && unyanked.length === 0;
   // Pack kind per RFC 0013. Node packs (the default and original kind)
   // either omit `kind` or set it to "node"; workflow-chain packs set
   // `kind: "workflow-chain"`. Consumers MUST inspect `kind` before
@@ -343,7 +349,7 @@ function rebuildPack(packName) {
   if (!cardCount) delete indexDoc.cardCount;
 
   writeJson(join(PACKS_DIR, packName, 'index.json'), indexDoc);
-  return indexDoc;
+  return { ...indexDoc, allYanked };
 }
 
 function rebuildRegistryIndex(packDocs) {
@@ -372,7 +378,7 @@ function rebuildRegistryIndex(packDocs) {
       nodeCount: p.nodeCount,
       agentCount: p.agentCount,
       deprecated: p.deprecated,
-      yanked: false,
+      yanked: Boolean(p.allYanked),
     })),
   };
   writeJson(REGISTRY_INDEX, registryDoc);

@@ -41,7 +41,7 @@
   "writeApi": {
     "supported": false,
     "publishMethod": "github-pull-request",
-    "publishUrl": "https://github.com/openwop/openwop/pulls"
+    "publishUrl": "https://github.com/openwop/openwop-registry/pulls"
   },
   "lifecycle": {
     "yankSupported": true,
