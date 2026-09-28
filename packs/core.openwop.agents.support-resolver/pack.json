@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.agents.support-resolver",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Customer support resolver agent. KB-grounded answers with explicit citation, escalation handoff on low confidence. Pure-agent pack.",
   "author": "OpenWOP Working Group",
   "license": "Apache-2.0",

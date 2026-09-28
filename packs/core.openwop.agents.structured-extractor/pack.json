@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.agents.structured-extractor",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Production-grade structured extraction agent. Caller supplies a JSON Schema; agent extracts conforming output with an auto-fix loop on validation failure. Mirrors LangGraph Trustcall. Pure-agent pack.",
   "author": "OpenWOP Working Group",
   "license": "Apache-2.0",
