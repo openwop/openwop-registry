@@ -27,7 +27,7 @@
  *   node registry/scripts/generate-sbom.mjs [--tree v1|v2]   # write
  *   node registry/scripts/generate-sbom.mjs --check           # fail if files would change
  *
- * `--tree v2` (RFC 0177 §A.2, default v1) generates for `registry/v2/` with
+ * `--tree v2` (RFC 0177 §A.2, the default; `--tree v1` for the frozen v1 tree) generates for `registry/v2/` with
  * `/v2/` sbomUrl templates and the aggregate at registry/v2/sbom.json.
  *
  * @see https://cyclonedx.org/specification/overview/ (CycloneDX 1.6)

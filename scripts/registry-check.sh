@@ -13,16 +13,16 @@ cd "$ROOT"
 echo "=== registry:check — validating $ROOT ==="
 
 echo "[1/9] Registry index up to date (build-index --check)..."
-node registry/scripts/build-index.mjs --check
+node registry/scripts/build-index.mjs --tree v1 --check
 
 echo "[2/9] Pack tarball signatures (Ed25519 over in-tarball pack.json)..."
-node scripts/check-pack-tarball-signatures.mjs
+node scripts/check-pack-tarball-signatures.mjs --tree v1
 
 echo "[3/9] Registry signer-metadata consistency..."
-node scripts/check-registry-signer-consistency.mjs
+node scripts/check-registry-signer-consistency.mjs --tree v1
 
 echo "[4/9] Published-tarball signatures (registry/scripts/verify-signatures)..."
-node registry/scripts/verify-signatures.mjs
+node registry/scripts/verify-signatures.mjs --tree v1
 
 echo "[5/9] Agent-pack systemPromptRef bundling..."
 node scripts/check-pack-prompt-refs.mjs
@@ -31,11 +31,11 @@ echo "[6/9] Agent tool-allowlist resolves..."
 node scripts/check-agent-tool-allowlist.mjs
 
 echo "[7/9] SBOMs up to date (generate-sbom --check)..."
-node registry/scripts/generate-sbom.mjs --check
+node registry/scripts/generate-sbom.mjs --tree v1 --check
 
 echo "[8/9] Security advisories valid + conformance..."
-node registry/scripts/check-advisories.mjs
-node registry/scripts/conformance-check.mjs
+node registry/scripts/check-advisories.mjs --tree v1
+node registry/scripts/conformance-check.mjs --tree v1
 
 echo "[9/9] Pack-internal schema \$ids match <pack>/<version>/..."
 # Extracted from an inline heredoc in packs-check.yml so it can be run, tested

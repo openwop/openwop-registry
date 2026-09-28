@@ -34,7 +34,62 @@ jobs:
             }
           '
 
-      - name: Validate version manifests against registry-version-manifest schema
+      - name: Validate the v2 tree — the primary tree new publications land on (RFC 0177 §A.2)
+        run: |
+          # v2 charter Phase 3 (RFC 0177): registry/v2/ is the tree new
+          # publications land on (the v1 tree is frozen, packs.md §"During the
+          # v1 overlap"), so it is gated FIRST. It gets the full gate — integrity,
+          # cryptographic signatures under the ONE scheme (ed25519-canonical-json,
+          # keyId required), signer consistency, structural conformance, SBOMs,
+          # advisories, plus ajv validation of every version manifest against
+          # the VENDORED v2 schemas pinned to CORPUS_TAG. Skips with a printed
+          # reason while registry/v2 is absent. The tree is written by
+          # `scripts/auto-register.mjs --tree v2`: the registry-v2-sign job in
+          # auto-register.yml runs it with the openwop-team-1 key for first-party
+          # namespaces; other publishers run it with their own registered key.
+          npm install --no-audit --no-fund
+          if [ ! -d registry/v2/packs ]; then
+            echo "::notice::registry/v2 is absent — nothing to validate (scripts/auto-register.mjs --tree v2 writes it)."
+            node --test scripts/test-registry-v2-schemas.mjs   # the vendored-schema self-tests still run
+            exit 0
+          fi
+          node scripts/check-vendored-sync.mjs                 # RFC 0177 §C.6 — never validate v2 against a drifted copy
+          node registry/scripts/build-index.mjs --tree v2 --check
+          node scripts/check-pack-tarball-signatures.mjs --tree v2
+          node scripts/check-registry-signer-consistency.mjs --tree v2
+          node registry/scripts/verify-signatures.mjs --tree v2
+          node registry/scripts/conformance-check.mjs --tree v2
+          node registry/scripts/generate-sbom.mjs --tree v2 --check
+          node registry/scripts/check-advisories.mjs --tree v2
+          node --test scripts/test-registry-v2-schemas.mjs
+          # Integrity hashes for the v2 tree (same rule as the frozen-v1 step below).
+          python3 - <<'PY'
+          import hashlib, base64, json, sys
+          from pathlib import Path
+          errors = []
+          for tgz in Path('registry/v2/packs').glob('*/-/*.tgz'):
+              manifest_path = tgz.with_suffix('.json')
+              if not manifest_path.exists():
+                  errors.append(f'{tgz}: no matching manifest'); continue
+              expected = json.load(open(manifest_path)).get('integrity', '')
+              actual = 'sha256-' + base64.b64encode(hashlib.sha256(tgz.read_bytes()).digest()).decode('ascii')
+              if expected != actual:
+                  errors.append(f'{tgz}: integrity mismatch (manifest {expected!r}, file {actual!r})')
+          for e in errors: print(f'::error::{e}')
+          sys.exit(1 if errors else 0)
+          PY
+
+      - name: Published v2 versions are immutable; a new one is signed by an active key (openwop RFC 0222)
+        if: github.event_name == 'pull_request'
+        run: |
+          # packs.md §"Version manifests" / §Signing. Compares the PR against its base: a published
+          # version's .tgz / .sig may not change, its manifest may change only the lifecycle fields,
+          # and a version new in the PR must name an `active` signingKeys[] entry. The served tree
+          # cannot decide the second rule, so the diff is where it is enforced.
+          git fetch --no-tags --depth=1 origin "+refs/heads/${{ github.base_ref }}:refs/remotes/origin/${{ github.base_ref }}"
+          node scripts/check-published-immutable.mjs --base "origin/${{ github.base_ref }}"
+
+      - name: Validate version manifests against registry-version-manifest schema — frozen v1 tree
         run: |
           # Stage 2 PR 1 (2026-05-12): replaces the v1.2-pending TODO.
           # Every registry/v1/packs/<name>/-/<version>.json MUST conform to
@@ -69,11 +124,11 @@ jobs:
             echo "::warning::no version manifests found under registry/v1/packs"
           fi
 
-      - name: Check index files are up to date
+      - name: Check index files are up to date — frozen v1 tree
         run: |
-          node registry/scripts/build-index.mjs --check
+          node registry/scripts/build-index.mjs --tree v1 --check
 
-      - name: Verify tarball integrity hashes
+      - name: Verify tarball integrity hashes — frozen v1 tree
         run: |
           # For each .tgz in registry/, recompute sha256 and compare to
           # the manifest's `integrity` field. Submissions that bypass
@@ -111,7 +166,7 @@ jobs:
           print('all integrity hashes verified')
           PY
 
-      - name: Verify Ed25519 signatures cryptographically
+      - name: Verify Ed25519 signatures cryptographically — frozen v1 tree
         run: |
           # Stage 2 PR 2 (2026-05-12): replaces the prior presence-only sig
           # check with full cryptographic verification per the enterprise-
@@ -128,9 +183,9 @@ jobs:
           # `signingKeys[].permittedNamespaces` allow-list in
           # .well-known/openwop-registry.json. A vendor key signing a
           # core.* pack would fail here.
-          node registry/scripts/verify-signatures.mjs
+          node registry/scripts/verify-signatures.mjs --tree v1
 
-      - name: Run structural conformance check on every pack
+      - name: Run structural conformance check on every pack — frozen v1 tree
         run: |
           # Stage 2 PR 3 (2026-05-12): closes CRITICAL finding #3 from
           # the enterprise-architecture review. Authoring-level conformance
@@ -148,9 +203,9 @@ jobs:
           # conformance (the pack actually dispatches on a reference host)
           # ships as a per-pack scenario in Stage 5 when each canvas pack
           # is published.
-          node registry/scripts/conformance-check.mjs
+          node registry/scripts/conformance-check.mjs --tree v1
 
-      - name: Generate + check SBOMs (CycloneDX 1.6)
+      - name: Generate + check SBOMs (CycloneDX 1.6) — frozen v1 tree
         run: |
           # Stage 4 PR 2 (2026-05-12): operational maturity per the
           # enterprise-architecture review. Every published pack gets a
@@ -168,7 +223,7 @@ jobs:
           # Consumers (host-side verifier + downstream supply-chain
           # tooling) read the per-version SBOM URL from
           # registry/v1/sbom.json's component[].externalReferences.
-          node registry/scripts/generate-sbom.mjs --check
+          node registry/scripts/generate-sbom.mjs --tree v1 --check
 
       - name: Validate security advisories against schema
         run: |
@@ -200,68 +255,14 @@ jobs:
             echo "::warning::no registry/security/advisories.json — skipping advisory schema check"
           fi
 
-      - name: Cross-check advisories against published versions
+      - name: Cross-check advisories against published versions — frozen v1 tree
         run: |
           # Stage 4 PR 3 (2026-05-12): registry/scripts/check-advisories.mjs
           # iterates every advisory's affected[] rows, expands SemVer
           # ranges against published versions, and fails CI if any
           # non-yanked version matches an active advisory. Forces the
           # yank-with-advisory invariant the maintainer process depends on.
-          node registry/scripts/check-advisories.mjs
-
-      - name: Published v2 versions are immutable; a new one is signed by an active key (openwop RFC 0222)
-        if: github.event_name == 'pull_request'
-        run: |
-          # packs.md §"Version manifests" / §Signing. Compares the PR against its base: a published
-          # version's .tgz / .sig may not change, its manifest may change only the lifecycle fields,
-          # and a version new in the PR must name an `active` signingKeys[] entry. The served tree
-          # cannot decide the second rule, so the diff is where it is enforced.
-          git fetch --no-tags --depth=1 origin "+refs/heads/${{ github.base_ref }}:refs/remotes/origin/${{ github.base_ref }}"
-          node scripts/check-published-immutable.mjs --base "origin/${{ github.base_ref }}"
-
-      - name: Validate registry/v2 with the same gate (RFC 0177 §A.2)
-        run: |
-          # v2 charter Phase 3 (RFC 0177): registry/v2/ is a parallel tree of
-          # re-signed manifests and gets the SAME validation as v1 — integrity,
-          # cryptographic signatures under the ONE scheme (ed25519-canonical-json,
-          # keyId required), signer consistency, structural conformance, SBOMs,
-          # advisories, plus ajv validation of every version manifest against
-          # the VENDORED v2 schemas pinned to CORPUS_TAG. Skips with a printed
-          # reason while registry/v2 is absent. The tree is written by
-          # `scripts/auto-register.mjs --tree v2`: the registry-v2-sign job in
-          # auto-register.yml runs it with the openwop-team-1 key for first-party
-          # namespaces; other publishers run it with their own registered key.
-          npm install --no-audit --no-fund
-          if [ ! -d registry/v2/packs ]; then
-            echo "::notice::registry/v2 is absent — nothing to validate (scripts/auto-register.mjs --tree v2 writes it)."
-            node --test scripts/test-registry-v2-schemas.mjs   # the vendored-schema self-tests still run
-            exit 0
-          fi
-          node scripts/check-vendored-sync.mjs                 # RFC 0177 §C.6 — never validate v2 against a drifted copy
-          node registry/scripts/build-index.mjs --tree v2 --check
-          node scripts/check-pack-tarball-signatures.mjs --tree v2
-          node scripts/check-registry-signer-consistency.mjs --tree v2
-          node registry/scripts/verify-signatures.mjs --tree v2
-          node registry/scripts/conformance-check.mjs --tree v2
-          node registry/scripts/generate-sbom.mjs --tree v2 --check
-          node registry/scripts/check-advisories.mjs --tree v2
-          node --test scripts/test-registry-v2-schemas.mjs
-          # Integrity hashes for the v2 tree (same rule as the v1 step above).
-          python3 - <<'PY'
-          import hashlib, base64, json, sys
-          from pathlib import Path
-          errors = []
-          for tgz in Path('registry/v2/packs').glob('*/-/*.tgz'):
-              manifest_path = tgz.with_suffix('.json')
-              if not manifest_path.exists():
-                  errors.append(f'{tgz}: no matching manifest'); continue
-              expected = json.load(open(manifest_path)).get('integrity', '')
-              actual = 'sha256-' + base64.b64encode(hashlib.sha256(tgz.read_bytes()).digest()).decode('ascii')
-              if expected != actual:
-                  errors.append(f'{tgz}: integrity mismatch (manifest {expected!r}, file {actual!r})')
-          for e in errors: print(f'::error::{e}')
-          sys.exit(1 if errors else 0)
-          PY
+          node registry/scripts/check-advisories.mjs --tree v1
 
   deploy:
     name: Deploy to packs.openwop.dev
@@ -294,6 +295,7 @@ jobs:
       # only be impersonated by workflows running in `openwop/openwop`
       # (principalSet membership). See `registry/README.md` §"Operator
       # setup" for the one-time provisioning steps.
+
       - name: Authenticate to Google Cloud (WIF)
         id: auth
         uses: google-github-actions/auth@v2

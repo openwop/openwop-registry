@@ -10,12 +10,12 @@
  * `<ver>.json`, raw-64-byte `<ver>.sig`). Foreign namespaces
  * (`vendor.myndhyve.*`, `community.*`) are left to their own publishers.
  *
- *   node scripts/auto-register.mjs --key <private.pem> [--key-id openwop-team-1]
- *   node scripts/auto-register.mjs --tree v2 --key-file <pem> --scheme ed25519-canonical-json
+ *   node scripts/auto-register.mjs --key-file <pem> --scheme ed25519-canonical-json [--key-id openwop-team-1]
  *   node scripts/auto-register.mjs --dry-run              # list unpublished, no signing
  *   node scripts/auto-register.mjs --changed-base <ref>   # only packs changed vs <ref>
+ *   node scripts/auto-register.mjs --tree v1 --key <private.pem>   # maintenance of the frozen v1 tree
  *
- * `--tree v1|v2` (RFC 0177 §A.2, default v1) selects the registry tree. A source
+ * `--tree v1|v2` (RFC 0177 §A.2, default v2) selects the registry tree. A source
  * manifest belongs to exactly one tree (scripts/lib/registry-tree.mjs
  * `publicationTree`): a manifest migrated for the v2 wave — explicit ceiling
  * admitting protocol major 2, declaration-key peer dependencies — is a v2

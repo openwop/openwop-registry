@@ -43,7 +43,7 @@ import { treeFromArgv } from '../../scripts/lib/registry-tree.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const REGISTRY_ROOT = dirname(dirname(__filename));
-const TREE = treeFromArgv(); // --tree v1|v2 (RFC 0177 §A.2), default v1
+const TREE = treeFromArgv(); // --tree v1|v2 (RFC 0177 §A.2), default v2
 const PACKS_ROOT = join(REGISTRY_ROOT, TREE, 'packs');
 
 const TTY = process.stdout.isTTY;

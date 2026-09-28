@@ -22,7 +22,7 @@
  * Exits 1 on first failure; reports the count of verified vs failed.
  * Pure Node 20 stdlib — no npm install required.
  *
- * `--tree v1|v2` (RFC 0177 §A.2, default v1) selects the tree. Under v2 there is
+ * `--tree v1|v2` (RFC 0177 §A.2, default v2; `--tree v1` gates the frozen v1 tree) selects the tree. Under v2 there is
  * ONE scheme (§C.3): `signing` MUST be `{ keyId, scheme: ed25519-canonical-json }`
  * (`method` / `publicKeyRef` are refused, §C.4) and the bytes verified are the
  * exact in-tarball pack.json — a signature over tarball bytes is not a v2

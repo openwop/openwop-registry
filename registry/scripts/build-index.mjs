@@ -2,9 +2,9 @@
 /**
  * Rebuild the registry index files from the on-disk pack tree.
  *
- * Scans `registry/v1/packs/{name}/-/*.json` and regenerates:
- *   - `registry/v1/packs/{name}/index.json` (per-pack metadata aggregate)
- *   - `registry/v1/index.json` (registry-wide index)
+ * Scans `registry/<tree>/packs/{name}/-/*.json` (`--tree`, default v2) and regenerates:
+ *   - `registry/<tree>/packs/{name}/index.json` (per-pack metadata aggregate)
+ *   - `registry/<tree>/index.json` (registry-wide index)
  *
  * Also recomputes the `integrity` field on each version manifest by
  * hashing the corresponding `.tgz` file when present. Manifests whose
@@ -18,7 +18,7 @@
  *   node registry/scripts/build-index.mjs [--tree v1|v2]
  *   node registry/scripts/build-index.mjs --check   # fail if files would change
  *
- * `--tree v2` (RFC 0177 §A.2/§A.3, default v1) rebuilds `registry/v2/` instead:
+ * `--tree v2` (RFC 0177 §A.2/§A.3, the default; `--tree v1` rebuilds the frozen v1 tree) rebuilds `registry/v2/`:
  * every URL template carries the `/v2/` prefix (the registry is versioned by
  * tree — the prefix IS the version), catalog rows carry `signingScheme` +
  * `signingKeyId` read from the manifest's `signing.keyId` with NO default (the
