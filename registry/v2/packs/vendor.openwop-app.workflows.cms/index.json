@@ -23,8 +23,20 @@
       "integrity": "sha256-Sq6yCVw6+V7ew1uRH5XD1FDmPiXmo3H5yvfJRelibU8=",
       "versionDeprecated": false,
       "yanked": false
+    },
+    {
+      "version": "1.0.2",
+      "manifestUrl": "/v2/packs/vendor.openwop-app.workflows.cms/-/1.0.2.json",
+      "tarballUrl": "/v2/packs/vendor.openwop-app.workflows.cms/-/1.0.2.tgz",
+      "signatureUrl": "/v2/packs/vendor.openwop-app.workflows.cms/-/1.0.2.sig",
+      "sbomUrl": "/v2/packs/vendor.openwop-app.workflows.cms/-/1.0.2.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-ApxdOS9V3IXW/hWVtNRgd3ckVl9+yEAx2LzauavqJX0=",
+      "versionDeprecated": false,
+      "yanked": false
     }
   ],
-  "latest": "1.0.1",
+  "latest": "1.0.2",
   "deprecated": false
 }

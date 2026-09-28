@@ -1,0 +1,102 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.kicktodo-integrations@1.0.2",
+      "type": "library",
+      "name": "core.openwop.workflows.kicktodo-integrations",
+      "version": "1.0.2",
+      "description": "Migrated from deprecated builtins (ADR 0472 P4).",
+      "licenses": [],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "98f3dab73650ed2cd6dc6eab87570837cd17161093b8d2801edd0e63c639e8c1"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.kicktodo-integrations@1.0.2"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5d8761177902f023a0c132c138a5052581315050f59a678d0673b6dc174150e6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "362"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cfc7dd60a9905c44e0bf5cacd8e3ec941ef61d6df494fd1033c6c5451ea2138d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f2757895bb11e3bb6c5d550f38bac4a8fa0fd80032ee5d53bf03f6e0d4456bce"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "844"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.kicktodo-integrations@1.0.2",
+      "dependsOn": []
+    }
+  ]
+}
