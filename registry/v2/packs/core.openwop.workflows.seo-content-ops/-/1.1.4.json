@@ -20,16 +20,29 @@
       "parameters": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["triggerEventName"],
+        "required": [
+          "triggerEventName"
+        ],
         "properties": {
           "topic": {
             "type": "string",
             "default": "",
             "description": "The topic to brief."
           },
-          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own." },
-          "model": { "type": "string", "default": "claude-sonnet-4-6", "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation." },
-          "triggerEventName": { "type": "string", "description": "Host event name that starts this workflow. MUST match the `events.md` §Types grammar: two or three kebab-case segments under a registered org, never `openwop.`-prefixed (e.g. `example.deal.won`)." }
+          "provider": {
+            "type": "string",
+            "default": "anthropic",
+            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own."
+          },
+          "model": {
+            "type": "string",
+            "default": "claude-sonnet-4-6",
+            "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation."
+          },
+          "triggerEventName": {
+            "type": "string",
+            "description": "Host event name that starts this workflow. MUST match the `events.md` §Types grammar: two or three kebab-case segments under a registered org, never `openwop.`-prefixed (e.g. `example.deal.won`)."
+          }
         }
       },
       "capabilities": [],
@@ -116,16 +129,29 @@
       "parameters": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["triggerEventName"],
+        "required": [
+          "triggerEventName"
+        ],
         "properties": {
           "voice": {
             "type": "string",
             "default": "clear and practical",
             "description": "Editorial voice."
           },
-          "provider": { "type": "string", "default": "anthropic", "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own." },
-          "model": { "type": "string", "default": "claude-sonnet-4-6", "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation." },
-          "triggerEventName": { "type": "string", "description": "Host event name that starts this workflow. MUST match the `events.md` §Types grammar: two or three kebab-case segments under a registered org, never `openwop.`-prefixed (e.g. `example.deal.won`)." }
+          "provider": {
+            "type": "string",
+            "default": "anthropic",
+            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own."
+          },
+          "model": {
+            "type": "string",
+            "default": "claude-sonnet-4-6",
+            "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation."
+          },
+          "triggerEventName": {
+            "type": "string",
+            "description": "Host event name that starts this workflow. MUST match the `events.md` §Types grammar: two or three kebab-case segments under a registered org, never `openwop.`-prefixed (e.g. `example.deal.won`)."
+          }
         }
       },
       "capabilities": [],
@@ -191,5 +217,10 @@
         }
       }
     }
-  ]
+  ],
+  "signing": {
+    "keyId": "openwop-team-1",
+    "scheme": "ed25519-canonical-json"
+  },
+  "integrity": "sha256-b72aMwfbX5LwZYUV9m6gQbH6sbLbvCkJ+Zduzff7nPo="
 }

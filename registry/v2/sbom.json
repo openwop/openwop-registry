@@ -3276,6 +3276,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.seo-content-ops@1.1.4",
+      "type": "library",
+      "name": "core.openwop.workflows.seo-content-ops",
+      "version": "1.1.4",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.seo-content-ops/-/1.1.4.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "8f78bb0a9cddb436a908fc0465b3003cde9ad7aa456dea865f0fecc74f99a104"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.workflows.slides-design@1.0.1",
       "type": "library",
       "name": "core.openwop.workflows.slides-design",
