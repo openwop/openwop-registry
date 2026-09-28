@@ -1,0 +1,183 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.market-intel-discovery@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.market-intel-discovery",
+      "version": "1.0.2",
+      "description": "MyndHyve market-intel.ai-discovery — AI-powered source-discovery via one ctx.callAI. Given a topic + optional industry/audience/platforms, returns relevant URLs, communities (with platform / relevanceScore / estimatedPostCount), and search queries. Replaces the manual URL-input step of the marketIntel research pipeline. Third marketIntel pack of the Stage 5 cohort.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://myndhyve.ai/packs/market-intel-discovery"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5c2309138c099bc8fabd9c0531710d60da02aa5c873267446b138794e007e13d"
+        }
+      ],
+      "purl": "pkg:openwop/vendor.myndhyve.market-intel-discovery@1.0.2"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fd75592a61d87b58738dc0b00c4ebf4ff7d418cc62ee0efc6662b0c066679312"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "4446"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "index.mjs",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9e8c9988dc53ac56823b01156673570f97fc7e7a3c2f968257bbf4bba5ba662a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "9232"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "438b2539adb66a6a869acd46218504198db3d2f6c62816e762667c10dbd806a8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d8684bb829f665f3d6a7a1ca4d976b149113cbd21aea0e34db0595016f47f7f9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1620"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/ai-discovery.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fec82750a2f0e74d6ee70241d3797e44e02b5f2d75888574caef4c0557a62f4e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "778"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/ai-discovery.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1ead6918d8d9ce0621a40dc37f9fb02ccf55ca53c92aa8190b8bc23486bc76d2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1301"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/ai-discovery.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bcfd0f5c9269b01385308130d2aa9e62e64d19dbbeae49bde5309039af27825e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1782"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/vendor.myndhyve.market-intel-discovery@1.0.2",
+      "dependsOn": [
+        "host:aiProviders"
+      ]
+    }
+  ]
+}

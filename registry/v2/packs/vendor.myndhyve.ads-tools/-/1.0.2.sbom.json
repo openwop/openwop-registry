@@ -1,0 +1,229 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-tools@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-tools",
+      "version": "1.0.2",
+      "description": "MyndHyve Ads Studio tools — 2 pure-logic executors (ads.brief.extract, ads.tracking.link) lifted from src/canvas-types/campaign-studio/ads-studio/. Both are deterministic — no AI calls, no host capabilities. brief.extract derives an AdBrief from caller-supplied page sections; tracking.link builds UTM-tagged per-platform URLs with click-ID macros.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://myndhyve.ai/packs/ads-tools"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5738008d1f843448ee6bfc350b029b1c317f62cf8af65885998d387d674b6970"
+        }
+      ],
+      "purl": "pkg:openwop/vendor.myndhyve.ads-tools@1.0.2"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "35c820295c66376efb4dbf3722e24c77b6321daa8ded2dbde0b5c23a36050b79"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2355"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "index.mjs",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "663cd9435f1ec2f9a92c4d2f8a7bbe8828234eb61a46c72ba8a93ca5b7182265"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "16479"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b8244da9656edbbd70e36bb02ba8fd754b4b7e55189dea1edd1b2f7af1cd8c14"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "df06a591939d2d7d065527b284a6e6d6464e3d6952f1b0808ab1078659f5b6ee"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1926"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/brief-extract.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a1db680596f235a9a17912643456a2a1b93a560cb9e618a0964cb4780ed467ee"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "481"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/brief-extract.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "df7833d27cc3b3ed59eacee095782de953946f4edb321468278056df6beeddc1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1794"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/brief-extract.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "30517660fa1a11e02236c8228648a6f26eff513850daa958f38ba29e1a17bf2f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "771"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/tracking-link.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "efa7fdd9af3b36f89bf4b90694b7ea5acdb5c23b635275a9dae1fbc90d5e4bba"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "268"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/tracking-link.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0ee50db97083948a66d14f3daa354bdfc1c75d6710389d26500a4ad9e9c1c81f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1427"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/tracking-link.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6786ec0bf68a331dd69bc11aab74954d2bd53d13e5991a409c362dd6aebe67d0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "732"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/vendor.myndhyve.ads-tools@1.0.2",
+      "dependsOn": []
+    }
+  ]
+}

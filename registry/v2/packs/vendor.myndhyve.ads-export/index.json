@@ -24,8 +24,20 @@
       "integrity": "sha256-CruR5z458KIgNml4V2jBMyKOD55zSEQcaF9WpZaoTQ4=",
       "versionDeprecated": false,
       "yanked": false
+    },
+    {
+      "version": "1.0.2",
+      "manifestUrl": "/v2/packs/vendor.myndhyve.ads-export/-/1.0.2.json",
+      "tarballUrl": "/v2/packs/vendor.myndhyve.ads-export/-/1.0.2.tgz",
+      "signatureUrl": "/v2/packs/vendor.myndhyve.ads-export/-/1.0.2.sig",
+      "sbomUrl": "/v2/packs/vendor.myndhyve.ads-export/-/1.0.2.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "myndhyve-internal-1",
+      "integrity": "sha256-grxZnKAO2TYVQf4dmlv5aCBqR55Y5vTDoPU6te8kL5s=",
+      "versionDeprecated": false,
+      "yanked": false
     }
   ],
-  "latest": "1.0.1",
+  "latest": "1.0.2",
   "deprecated": false
 }

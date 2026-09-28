@@ -24,8 +24,20 @@
       "integrity": "sha256-YqDdl4HTyUPEqZXSUsm5x+2C/E35bz2/IptFZtAJ+4I=",
       "versionDeprecated": false,
       "yanked": false
+    },
+    {
+      "version": "1.0.2",
+      "manifestUrl": "/v2/packs/vendor.myndhyve.ads-publish-tiktok/-/1.0.2.json",
+      "tarballUrl": "/v2/packs/vendor.myndhyve.ads-publish-tiktok/-/1.0.2.tgz",
+      "signatureUrl": "/v2/packs/vendor.myndhyve.ads-publish-tiktok/-/1.0.2.sig",
+      "sbomUrl": "/v2/packs/vendor.myndhyve.ads-publish-tiktok/-/1.0.2.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "myndhyve-internal-1",
+      "integrity": "sha256-vE2OysCb+gYwYAbuLfV9ugsVSf/gfJbQrwLh/uMeXAY=",
+      "versionDeprecated": false,
+      "yanked": false
     }
   ],
-  "latest": "1.0.1",
+  "latest": "1.0.2",
   "deprecated": false
 }

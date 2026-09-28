@@ -1,0 +1,183 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.market-intel-voc@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.market-intel-voc",
+      "version": "1.0.2",
+      "description": "MyndHyve market-intel.voc-extraction — extract Voice of Customer records (verbatim quotes + tagType + intentStage + confidence + rationale) from a single piece of content via a single AI call. First marketIntel pack of the Stage 5 cohort. Schema validation strips invalid records with per-record warnings; output preserves source structure (records + summary + warnings).",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://myndhyve.ai/packs/market-intel-voc"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "84e09dc04f7291689d3bc787e3928efbb5a3c4d9aab230f458ee8b038567ecdd"
+        }
+      ],
+      "purl": "pkg:openwop/vendor.myndhyve.market-intel-voc@1.0.2"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "aabbe23758672090bdb706b6f98d89d86e23936d5385f3f83b7da4e2fcbd7433"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "4001"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "index.mjs",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1f37f8b547ccd9b6261f007a5c901ee330c0cd5558e68515674fcb3a7ce6c02b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "12953"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "452d98f55f6d2a0e0df7d0ebda5806900f6ba158f284cd63370a18b042b9dedf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "48749273f8536559873ec0577ebd631d138bd125f0ddcd96c2163a56f86ff74f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1608"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/voc-extraction.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "49f89b45d0390ee37ec0b645cd97f3ce3020640992d812a8b1fb455671db7dbb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "907"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/voc-extraction.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d61928cf9773cae7229b601d0d4fe3af5c8d13ee5fa93d79d3b42807546e8111"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1917"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/voc-extraction.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b733d0952c8b7f795fc2f1134900fc9e917f3e66de150f795c35871fd2780e34"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2820"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/vendor.myndhyve.market-intel-voc@1.0.2",
+      "dependsOn": [
+        "host:aiProviders"
+      ]
+    }
+  ]
+}

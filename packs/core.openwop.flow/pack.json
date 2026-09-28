@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.flow",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "Spec-canonical flow-control primitives. 25 nodes covering branching, merging, iteration, aggregation, batching, sorting, deduplication, repetition, suspension, sub-workflow invocation, and Make-style error handlers. Pure or suspending — no external I/O. Zero npm deps. Engine >=1.0.0 <2.0.0.",
   "author": "OpenWOP Working Group",
   "license": "Apache-2.0",
@@ -31,7 +31,8 @@
       ],
       "configSchemaRef": "schemas/if.config.json",
       "inputSchemaRef": "schemas/if.input.json",
-      "outputSchemaRef": "schemas/if.output.json"
+      "outputSchemaRef": "schemas/if.output.json",
+      "x-paletteCategory": "flow"
     },
     {
       "typeId": "core.flow.switch",
@@ -45,7 +46,8 @@
       ],
       "configSchemaRef": "schemas/switch.config.json",
       "inputSchemaRef": "schemas/switch.input.json",
-      "outputSchemaRef": "schemas/switch.output.json"
+      "outputSchemaRef": "schemas/switch.output.json",
+      "x-paletteCategory": "flow"
     },
     {
       "typeId": "core.flow.router",
@@ -59,7 +61,8 @@
       ],
       "configSchemaRef": "schemas/router.config.json",
       "inputSchemaRef": "schemas/router.input.json",
-      "outputSchemaRef": "schemas/router.output.json"
+      "outputSchemaRef": "schemas/router.output.json",
+      "x-paletteCategory": "flow"
     },
     {
       "typeId": "core.flow.filter",
@@ -73,7 +76,8 @@
       ],
       "configSchemaRef": "schemas/filter.config.json",
       "inputSchemaRef": "schemas/filter.input.json",
-      "outputSchemaRef": "schemas/filter.output.json"
+      "outputSchemaRef": "schemas/filter.output.json",
+      "x-paletteCategory": "flow"
     },
     {
       "typeId": "core.flow.merge",
@@ -87,7 +91,8 @@
       ],
       "configSchemaRef": "schemas/merge.config.json",
       "inputSchemaRef": "schemas/merge.input.json",
-      "outputSchemaRef": "schemas/merge.output.json"
+      "outputSchemaRef": "schemas/merge.output.json",
+      "x-paletteCategory": "flow"
     },
     {
       "typeId": "core.flow.iterator",
@@ -102,7 +107,8 @@
       ],
       "configSchemaRef": "schemas/iterator.config.json",
       "inputSchemaRef": "schemas/iterator.input.json",
-      "outputSchemaRef": "schemas/iterator.output.json"
+      "outputSchemaRef": "schemas/iterator.output.json",
+      "x-paletteCategory": "flow"
     },
     {
       "typeId": "core.flow.aggregate-array",
@@ -116,7 +122,8 @@
       ],
       "configSchemaRef": "schemas/aggregate-array.config.json",
       "inputSchemaRef": "schemas/aggregate-array.input.json",
-      "outputSchemaRef": "schemas/aggregate-array.output.json"
+      "outputSchemaRef": "schemas/aggregate-array.output.json",
+      "x-paletteCategory": "flow"
     },
     {
       "typeId": "core.flow.aggregate-numeric",
@@ -130,7 +137,8 @@
       ],
       "configSchemaRef": "schemas/aggregate-numeric.config.json",
       "inputSchemaRef": "schemas/aggregate-numeric.input.json",
-      "outputSchemaRef": "schemas/aggregate-numeric.output.json"
+      "outputSchemaRef": "schemas/aggregate-numeric.output.json",
+      "x-paletteCategory": "flow"
     },
     {
       "typeId": "core.flow.aggregate-text",
@@ -144,7 +152,8 @@
       ],
       "configSchemaRef": "schemas/aggregate-text.config.json",
       "inputSchemaRef": "schemas/aggregate-text.input.json",
-      "outputSchemaRef": "schemas/aggregate-text.output.json"
+      "outputSchemaRef": "schemas/aggregate-text.output.json",
+      "x-paletteCategory": "flow"
     },
     {
       "typeId": "core.flow.aggregate-table",
@@ -158,7 +167,8 @@
       ],
       "configSchemaRef": "schemas/aggregate-table.config.json",
       "inputSchemaRef": "schemas/aggregate-table.input.json",
-      "outputSchemaRef": "schemas/aggregate-table.output.json"
+      "outputSchemaRef": "schemas/aggregate-table.output.json",
+      "x-paletteCategory": "flow"
     },
     {
       "typeId": "core.flow.split-in-batches",
@@ -172,7 +182,8 @@
       ],
       "configSchemaRef": "schemas/split-in-batches.config.json",
       "inputSchemaRef": "schemas/split-in-batches.input.json",
-      "outputSchemaRef": "schemas/split-in-batches.output.json"
+      "outputSchemaRef": "schemas/split-in-batches.output.json",
+      "x-paletteCategory": "flow"
     },
     {
       "typeId": "core.flow.sort",
@@ -186,7 +197,8 @@
       ],
       "configSchemaRef": "schemas/sort.config.json",
       "inputSchemaRef": "schemas/sort.input.json",
-      "outputSchemaRef": "schemas/sort.output.json"
+      "outputSchemaRef": "schemas/sort.output.json",
+      "x-paletteCategory": "flow"
     },
     {
       "typeId": "core.flow.limit",
@@ -200,7 +212,8 @@
       ],
       "configSchemaRef": "schemas/limit.config.json",
       "inputSchemaRef": "schemas/limit.input.json",
-      "outputSchemaRef": "schemas/limit.output.json"
+      "outputSchemaRef": "schemas/limit.output.json",
+      "x-paletteCategory": "flow"
     },
     {
       "typeId": "core.flow.distinct",
@@ -214,7 +227,8 @@
       ],
       "configSchemaRef": "schemas/distinct.config.json",
       "inputSchemaRef": "schemas/distinct.input.json",
-      "outputSchemaRef": "schemas/distinct.output.json"
+      "outputSchemaRef": "schemas/distinct.output.json",
+      "x-paletteCategory": "flow"
     },
     {
       "typeId": "core.flow.compare-datasets",
@@ -228,7 +242,8 @@
       ],
       "configSchemaRef": "schemas/compare-datasets.config.json",
       "inputSchemaRef": "schemas/compare-datasets.input.json",
-      "outputSchemaRef": "schemas/compare-datasets.output.json"
+      "outputSchemaRef": "schemas/compare-datasets.output.json",
+      "x-paletteCategory": "flow"
     },
     {
       "typeId": "core.flow.repeater",
@@ -243,7 +258,8 @@
       ],
       "configSchemaRef": "schemas/repeater.config.json",
       "inputSchemaRef": "schemas/repeater.input.json",
-      "outputSchemaRef": "schemas/repeater.output.json"
+      "outputSchemaRef": "schemas/repeater.output.json",
+      "x-paletteCategory": "flow"
     },
     {
       "typeId": "core.flow.noop",
@@ -257,7 +273,8 @@
       ],
       "configSchemaRef": "schemas/noop.config.json",
       "inputSchemaRef": "schemas/noop.input.json",
-      "outputSchemaRef": "schemas/noop.output.json"
+      "outputSchemaRef": "schemas/noop.output.json",
+      "x-paletteCategory": "flow"
     },
     {
       "typeId": "core.flow.stop-and-error",
@@ -271,7 +288,8 @@
       ],
       "configSchemaRef": "schemas/stop-and-error.config.json",
       "inputSchemaRef": "schemas/stop-and-error.input.json",
-      "outputSchemaRef": "schemas/stop-and-error.output.json"
+      "outputSchemaRef": "schemas/stop-and-error.output.json",
+      "x-paletteCategory": "flow"
     },
     {
       "typeId": "core.flow.wait",
@@ -286,7 +304,8 @@
       ],
       "configSchemaRef": "schemas/wait.config.json",
       "inputSchemaRef": "schemas/wait.input.json",
-      "outputSchemaRef": "schemas/wait.output.json"
+      "outputSchemaRef": "schemas/wait.output.json",
+      "x-paletteCategory": "flow"
     },
     {
       "typeId": "core.flow.sub-workflow-invoke",
@@ -301,7 +320,8 @@
       ],
       "configSchemaRef": "schemas/sub-workflow-invoke.config.json",
       "inputSchemaRef": "schemas/sub-workflow-invoke.input.json",
-      "outputSchemaRef": "schemas/sub-workflow-invoke.output.json"
+      "outputSchemaRef": "schemas/sub-workflow-invoke.output.json",
+      "x-paletteCategory": "flow"
     },
     {
       "typeId": "core.flow.error-handler-resume",
@@ -315,7 +335,8 @@
       ],
       "configSchemaRef": "schemas/error-handler-resume.config.json",
       "inputSchemaRef": "schemas/error-handler-resume.input.json",
-      "outputSchemaRef": "schemas/error-handler-resume.output.json"
+      "outputSchemaRef": "schemas/error-handler-resume.output.json",
+      "x-paletteCategory": "flow"
     },
     {
       "typeId": "core.flow.error-handler-ignore",
@@ -329,7 +350,8 @@
       ],
       "configSchemaRef": "schemas/error-handler-ignore.config.json",
       "inputSchemaRef": "schemas/error-handler-ignore.input.json",
-      "outputSchemaRef": "schemas/error-handler-ignore.output.json"
+      "outputSchemaRef": "schemas/error-handler-ignore.output.json",
+      "x-paletteCategory": "flow"
     },
     {
       "typeId": "core.flow.error-handler-break",
@@ -343,7 +365,8 @@
       ],
       "configSchemaRef": "schemas/error-handler-break.config.json",
       "inputSchemaRef": "schemas/error-handler-break.input.json",
-      "outputSchemaRef": "schemas/error-handler-break.output.json"
+      "outputSchemaRef": "schemas/error-handler-break.output.json",
+      "x-paletteCategory": "flow"
     },
     {
       "typeId": "core.flow.error-handler-commit",
@@ -357,7 +380,8 @@
       ],
       "configSchemaRef": "schemas/error-handler-commit.config.json",
       "inputSchemaRef": "schemas/error-handler-commit.input.json",
-      "outputSchemaRef": "schemas/error-handler-commit.output.json"
+      "outputSchemaRef": "schemas/error-handler-commit.output.json",
+      "x-paletteCategory": "flow"
     },
     {
       "typeId": "core.flow.error-handler-rollback",
@@ -371,7 +395,8 @@
       ],
       "configSchemaRef": "schemas/error-handler-rollback.config.json",
       "inputSchemaRef": "schemas/error-handler-rollback.input.json",
-      "outputSchemaRef": "schemas/error-handler-rollback.output.json"
+      "outputSchemaRef": "schemas/error-handler-rollback.output.json",
+      "x-paletteCategory": "flow"
     },
     {
       "typeId": "core.conditional",
@@ -385,7 +410,8 @@
       ],
       "configSchemaRef": "schemas/if.config.json",
       "inputSchemaRef": "schemas/if.input.json",
-      "outputSchemaRef": "schemas/if.output.json"
+      "outputSchemaRef": "schemas/if.output.json",
+      "x-paletteCategory": "flow"
     },
     {
       "typeId": "core.delay",
@@ -400,7 +426,8 @@
       ],
       "configSchemaRef": "schemas/wait.config.json",
       "inputSchemaRef": "schemas/wait.input.json",
-      "outputSchemaRef": "schemas/wait.output.json"
+      "outputSchemaRef": "schemas/wait.output.json",
+      "x-paletteCategory": "flow"
     },
     {
       "typeId": "core.loop",
@@ -415,7 +442,8 @@
       ],
       "configSchemaRef": "schemas/iterator.config.json",
       "inputSchemaRef": "schemas/iterator.input.json",
-      "outputSchemaRef": "schemas/iterator.output.json"
+      "outputSchemaRef": "schemas/iterator.output.json",
+      "x-paletteCategory": "flow"
     },
     {
       "typeId": "core.parallel",
@@ -429,7 +457,8 @@
       ],
       "configSchemaRef": "schemas/router.config.json",
       "inputSchemaRef": "schemas/router.input.json",
-      "outputSchemaRef": "schemas/router.output.json"
+      "outputSchemaRef": "schemas/router.output.json",
+      "x-paletteCategory": "flow"
     }
   ],
   "runtime": {

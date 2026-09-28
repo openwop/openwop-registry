@@ -1,0 +1,183 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-copy-generate@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-copy-generate",
+      "version": "1.0.2",
+      "description": "MyndHyve ads.copy.generate — AI-powered multi-variant ad copy generation with per-placement adaptation (truncation to caller-supplied text limits). Routes the AI call through ctx.callAI; replaces the source PlatformSpecRegistry read with caller-supplied inputs.placementTextLimits (resolve upstream from vendor.myndhyve.ads-platforms OR host.adPlatformSpecs).",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://myndhyve.ai/packs/ads-copy-generate"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "19e095f7b8ee96fbf93a04d3871e61babeb41cec5db966c5eab4521de34ff6a5"
+        }
+      ],
+      "purl": "pkg:openwop/vendor.myndhyve.ads-copy-generate@1.0.2"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "565b3d8929bb09f4a07830396f59edd9aad03e79291e8d814b479414cf2a7846"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "4703"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "index.mjs",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fd0129db78f67dd729159f29da28a66c1fd787c8791c6a733a1f883acd18623d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "10287"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7b1f5ad849456642335882e8104adf86dcca889879c92efc480fc22d6fccb108"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1df350e4160bcff2881ad23bb632410129501b9ac01271474ad69919db3e50f6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1561"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/copy-generate.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ded3c7d8b3cb0f80513c022478fc1b2481ba8631ba471430d16d77a079ff447b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "937"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/copy-generate.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1f9017e9b79a1bb84316d57c21cfbc3345ba3dc4d62f1e520cbc23fe9729f9bb"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3036"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/copy-generate.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "724fac184e2599e464a4efbf741331bed8b705eb575efec859e9bf677450054b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2024"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/vendor.myndhyve.ads-copy-generate@1.0.2",
+      "dependsOn": [
+        "host:aiProviders"
+      ]
+    }
+  ]
+}

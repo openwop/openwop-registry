@@ -1,6 +1,6 @@
 # vendor.myndhyve.ads-image-generate
 
-> `ads.image.generate` — generate ad creative images via the host's `ctx.callImageGenerator`. **First consumer of the `aiProviders.imageGeneration` sub-capability** ([spec PR #48](https://github.com/openwop/openwop/blob/main/spec/v1/host-capabilities.md#host-aiProviders)).
+> `ads.image.generate` — generate ad creative images via the host's `ctx.callImageGenerator`. **First consumer of the `aiProviders.imageGeneration` sub-capability** ([spec PR #48](../../spec/v1/host-capabilities.md#host-aiProviders)).
 
 ## Node
 
@@ -16,7 +16,7 @@
 }
 ```
 
-`ctx.callImageGenerator({ provider, model, prompt, negativePrompt, width, height, count, seed, brandColors })` per [spec §host.aiProviders → imageGeneration sub-capability](https://github.com/openwop/openwop/blob/main/spec/v1/host-capabilities.md#host-aiProviders).
+`ctx.callImageGenerator({ provider, model, prompt, negativePrompt, width, height, count, seed, brandColors })` per [spec §host.aiProviders → imageGeneration sub-capability](../../spec/v1/host-capabilities.md#host-aiProviders).
 
 Pack uses every parameter in the spec contract. Hosts that advertise the sub-capability flag MUST expose the method per the spec.
 
@@ -24,8 +24,8 @@ Pack uses every parameter in the spec contract. Hosts that advertise the sub-cap
 
 | Field | Notes |
 |---|---|
-| `assets[]` | Generated images across all prompts. Each: `url? / base64? / mimeType / width / height / seed? / safetyFiltered / metadata.{promptIndex, enhancedPrompt, ...}`. |
-| `totalGenerated` | Sum of `assets.length` across prompts. |
+| `images[]` | Generated images across all prompts (host media-output convention, minted as Library assets). Each: `url? / contentBase64? / mimeType / width / height / seed? / safetyFiltered / metadata.{promptIndex, enhancedPrompt, ...}`. |
+| `totalGenerated` | Sum of `images.length` across prompts. |
 | `filteredCount` | Total safety-filtered images. |
 | `perPromptStats[]` | Per-prompt: `{ promptIndex, generated, filtered, batchTimeMs }`. |
 | `dimensions` | Resolved output dimensions used for all prompts. |

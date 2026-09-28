@@ -1,0 +1,423 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.chat@1.3.1",
+      "type": "library",
+      "name": "vendor.myndhyve.chat",
+      "version": "1.3.1",
+      "description": "MyndHyve chat-bridge nodes — sendMessage, progressCard, updateCard, phaseInputGate, approvalGate, clarificationGate. Routes through the host's chat adapter (ctx.chat.*) + ctx.suspend for HITL gates. Preserves the core.chat.* typeIds in the wild.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://myndhyve.ai/packs/chat"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5454f06c5c5c18fb19c91d3743f3fc14790e04ab67a130406e0eadc17d251551"
+        }
+      ],
+      "purl": "pkg:openwop/vendor.myndhyve.chat@1.3.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e2e59fef60b3828fbbc757315ff8151d1f8c9e10abdb37c42956a877484e4ac4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2426"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "index.mjs",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "820acd9dc60e9601d3f75f5fa5675284fb0a022d95eee283735eb84a2b7d9f8f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "21097"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4f435ebf9c22b49b1ebf18ca3d9b50957ea7b308a45dc50a69c0ab33e903c79e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "545c8fdedb237c137aec7d08b93d1a06027a0e83d4f7ae7a526e6aba4ab4f5cf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "4898"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/approvalGate.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "144f233504beb1993b83f9d2da002a9b9a050f6676f9bd1cdfd4de0c5d33df25"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1120"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/approvalGate.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0515cfa1563a4d6abff4bbbc21d3ed66a356f310a1383eaba1c8f52f9d3838a1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "205"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/approvalGate.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "27006eeacf986019d280b7573ecb19e598bcd3e6b3d21d2b3885a919062a5d39"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "991"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/clarificationGate.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "75233b764f6ee110fb5daa55e071bae925e6f04a9c1e1abd7dc2e5f7c964abc4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "341"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/clarificationGate.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "dd134d6249ea729a3c763dc516addbd452dc6e2d2de9ea73208e40b75e10059a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "453"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/clarificationGate.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "230abd487435e26b04a789accf911e3353edacf482ae5d980be328a7e351f4f6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "584"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/phaseInputGate.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e51e4763c598b4ccbb468f65641b245b673500e19a6f0daedc7c9ce760ba28f6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1234"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/phaseInputGate.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "019e3101b1addcfcf338aed64d5a704bb309c32a6a28cf282518bccfdc28cc0f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "452"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/phaseInputGate.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "98f3a3a8fe6efc39729d6682fe4839a2cd1723855167eb3b00e222e9eeb23393"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "949"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/progressCard.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f2532a02ff296bdefd67d7387fb1ee393e7621bcdf393289f5ece30bbdff1211"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1008"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/progressCard.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "db4d014bca6a48e308089bcc4ad30ead6b5b54f3b3fce3652e6a2f2716930d87"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "557"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/progressCard.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fed6c76cc2f19311199f73b90ed71a6fd0c3731abedb20c1ac0efa4e4ac3b3ed"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "403"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/sendMessage.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e88cab15d6c34e394f8858830f905414b5d5979ff85f49fb35d294f855bbb258"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "753"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/sendMessage.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c916913ff6bfd6b7883f24bd09d5975861dcb052a638fe0d0bb5ca1401efa3b3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "931"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/sendMessage.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "eeb6dbc065924baac7139ebf19fc2aaea3f6829ea28731aa9795825c77e3d772"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "461"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/updateCard.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ff95ba62e65106f66c3e4d34fb584f112723f3363e78b11833b8ef4e2bc000b0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "719"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/updateCard.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b45984b12dba8e1bb9bd787af150b29dff2aad8f1954da564cf0ecf519345384"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "470"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/updateCard.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e52c34a647e77ff3fb43328eb14b955fc3e74c88797bef59565939115e2c1617"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "618"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/vendor.myndhyve.chat@1.3.1",
+      "dependsOn": [
+        "host:chat"
+      ]
+    }
+  ]
+}

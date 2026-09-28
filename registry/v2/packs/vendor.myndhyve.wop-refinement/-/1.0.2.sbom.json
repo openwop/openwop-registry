@@ -1,0 +1,183 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.wop-refinement@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.wop-refinement",
+      "version": "1.0.2",
+      "description": "MyndHyve WOP feature-refinement node — wop.feature.refine. Driven by a `feature.breakdown` LLM envelope; decides whether a stack item is actionable as a node, executable as a chain, must be split into sub-items, needs clarification, or should be blocked. Enforces hard `maxDepth` + `maxGeneratedItems` constraints regardless of LLM proposal. Used by both runner-driven dispatch (StackAutoplayRunner) and chain-driven sub-workflows.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://myndhyve.ai/packs/wop-refinement"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "76d5cac1aa95a3321c49b2ae282b3782df5646b695d50442e50783b6bc1f9ec6"
+        }
+      ],
+      "purl": "pkg:openwop/vendor.myndhyve.wop-refinement@1.0.2"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "72bbcf8efd65c086941f96aa25b187248c07f0fcee2d1d51f7e7a037e37eebd0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3599"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "index.mjs",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "aa5f4308f5cfed643ef1a439c2f7f48752adbd03e96d10277c1cfa8b51bac281"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "18086"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "35c23df5b0b5b6bf721bb428a04efa1bb4d22f2f147ee20cf73afd56b97a95d0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9efecae43e002853bb4770cda25dee7bef4ab5d65188d77a099cca8c30b559d0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1571"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/feature-refine.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b69a4c156b8a2cb75d5af3402adcb02c900311ed57534c6542b571d6db0e8abf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1166"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/feature-refine.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2e357b45ffa70fff34e917cbf220e58ce7351f5794d3c62a8889239c5fdd9421"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3980"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/feature-refine.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c92a7f313f356ea9e1b0598bcd9dcb01897a07017d4749b420f9d9ddd9c96805"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3074"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/vendor.myndhyve.wop-refinement@1.0.2",
+      "dependsOn": [
+        "host:aiProviders"
+      ]
+    }
+  ]
+}

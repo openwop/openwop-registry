@@ -1,0 +1,183 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-publish-meta@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-publish-meta",
+      "version": "1.0.2",
+      "description": "MyndHyve ads.publish.meta — publish an ad to Meta Marketing API v21.0 (Facebook/Instagram). First consumer of the secrets.resolveInPack sub-capability (spec PR #52). Resolves OAuth token via ctx.secrets.resolve, then runs the 4-step publish pipeline (creative → campaign → ad set → ad) with best-effort rollback on failure. Validates all 6 Meta enums (objective, status, bidStrategy, billingEvent, targeting flexible-spec, placements) pre-flight. Maps Meta API errors to retryable/non-retryable per spec failure-mode glossary.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://myndhyve.ai/packs/ads-publish-meta"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "453c5e3372758e075579bfc6cb7f1831bf55b4c7a23ac50c345db5af53a0bf68"
+        }
+      ],
+      "purl": "pkg:openwop/vendor.myndhyve.ads-publish-meta@1.0.2"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e36290f26ce60e17a506684692855bb4e3b9a386879a1f2a458a343d76baddcc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "6046"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "index.mjs",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "264807f2a4c9091b8a55b670e5b5e077ea1aab6c6487f0e8f5b2b69042f79f4a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "16604"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3b6819c7031f5ac358e85f41c6aa468bcf3248a14d30c7f47253ad2f64a083be"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b8c85b7eeef27afbf4a38983388b2343c8ea67fadf44738b37ac3013446346fc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2217"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/publish-meta.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c658e3384cb9865fe0e3783a277cdbfb75349c69ec64f47c47f560997bde2bf1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "429"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/publish-meta.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "06e02c7159cee535da2dca7dde99b4cb9f259dafc3dcab703a8b2895a7a8c1bc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "5475"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/publish-meta.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ffb56b9beadf97b7443573e17ebbf95c16fc33a131100a7eea8f7ce122f31907"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1036"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/vendor.myndhyve.ads-publish-meta@1.0.2",
+      "dependsOn": [
+        "host:secrets"
+      ]
+    }
+  ]
+}

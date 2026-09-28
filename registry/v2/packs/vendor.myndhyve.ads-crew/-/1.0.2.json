@@ -1,0 +1,71 @@
+{
+  "name": "vendor.myndhyve.ads-crew",
+  "version": "1.0.2",
+  "description": "MyndHyve Ads Studio creative-director crew. Wraps the 14 vendor.myndhyve.ads-* node typeIds (brief → variants → copy → image → video → validate → export → publish) into a single creative-director agent persona. Vendor showcase agent pack.",
+  "author": "MyndHyve",
+  "license": "Apache-2.0",
+  "homepage": "https://openwop.dev/packs/vendor.myndhyve.ads-crew",
+  "repository": "https://github.com/openwop/openwop",
+  "keywords": [
+    "vendor",
+    "myndhyve",
+    "ads",
+    "creative",
+    "crew",
+    "vertical",
+    "showcase"
+  ],
+  "engines": {
+    "openwop": ">=1.1.0 <3.0.0"
+  },
+  "peerDependencies": {
+    "aiProviders": "supported",
+    "agentRuntime": "supported",
+    "agents": ">=longTerm"
+  },
+  "agents": [
+    {
+      "agentId": "vendor.myndhyve.ads-crew.creative-director",
+      "persona": "Creative Director",
+      "label": "Ads Studio Creative Director",
+      "description": "Single chat-driven persona over MyndHyve Ads Studio. Takes a campaign brief and drives the Ads Studio workflow pipeline (brief.extract → copy.generate → image.generate → creative.validate → tracking.link → export.pack → publish.{meta,google,tiktok}), whose nodes perform each stage. Interprets the brief, sequences the stages, and synthesizes results. Tracks campaign artifacts in long-term memory for follow-up + iteration.",
+      "modelClass": "reasoning",
+      "systemPromptRef": "prompts/creative-director.md",
+      "toolAllowlist": [],
+      "memoryShape": {
+        "scratchpad": true,
+        "conversation": true,
+        "longTerm": true
+      },
+      "handoff": {
+        "taskSchemaRef": "schemas/creative-director.task.schema.json",
+        "returnSchemaRef": "schemas/creative-director.return.schema.json"
+      },
+      "confidence": {
+        "defaultThreshold": 0.75
+      }
+    }
+  ],
+  "runtime": {
+    "language": "remote",
+    "entry": "pack.json"
+  },
+  "kind": "node",
+  "peerDependenciesMeta": {
+    "aiProviders": {
+      "facets": [
+        "imageGeneration"
+      ]
+    },
+    "agents": {
+      "facets": [
+        "memoryBackends"
+      ]
+    }
+  },
+  "signing": {
+    "keyId": "myndhyve-internal-1",
+    "scheme": "ed25519-canonical-json"
+  },
+  "integrity": "sha256-SaCyLa7MfujA0ADvnuoQfHLhP8EsQSsEjNA1nmzhhAk="
+}

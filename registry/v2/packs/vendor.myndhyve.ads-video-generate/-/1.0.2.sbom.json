@@ -1,0 +1,183 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.ads-video-generate@1.0.2",
+      "type": "library",
+      "name": "vendor.myndhyve.ads-video-generate",
+      "version": "1.0.2",
+      "description": "MyndHyve ads.video.generate — generate ad creative videos via the host's ctx.callVideoGenerator (aiProviders.videoGeneration sub-capability from spec PR #53). Symmetric companion to ads-image-generate but adapted for video (single video per call, host hides async polling internally, typical 30-120s latency). Caller-supplied placementSpec.videoSpec replaces source's PlatformSpecRegistry lookup.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://myndhyve.ai/packs/ads-video-generate"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "44c1f30699276d0dc9b00a808ca4fad9119d7c501824a2910dc179c393c72905"
+        }
+      ],
+      "purl": "pkg:openwop/vendor.myndhyve.ads-video-generate@1.0.2"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5c2fddd85a0272f1bf73ece00e83d62a4aec9f8e5af704517930c1a50c0f5a04"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "6516"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "index.mjs",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e266a14d9c17c9b21570e2eafe07e52b1355c5b47b11aedb31360d19c55a4d3e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "9698"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0bc6574cc367f7a7370eb2bfa3ef77f2e4f6d5d1dd076eec3977c1f707a31c6a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "324b8308abf801f4e9dd5bb4cbc1e77424586d317892ae3b9d160e59ab27c0d8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1797"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/video-generate.config.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6551901d3c692bfc453e68aa4aba1eafe6cef7d3f3cefc31817cba4267f32dfd"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "583"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/video-generate.input.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "915ebee647cc300058b42e04408388735d6a16253f3feee2ed38ea78c2fce584"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2162"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/video-generate.output.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b1ac0b3625cf4c1d1e374457a1cf466d9a722b199f1468b59b610abe41b498c6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2387"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/vendor.myndhyve.ads-video-generate@1.0.2",
+      "dependsOn": [
+        "host:aiProviders"
+      ]
+    }
+  ]
+}
