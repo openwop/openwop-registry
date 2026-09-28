@@ -52,5 +52,10 @@
     "language": "remote",
     "entry": "pack.json"
   },
-  "kind": "node"
+  "kind": "node",
+  "signing": {
+    "keyId": "openwop-team-1",
+    "scheme": "ed25519-canonical-json"
+  },
+  "integrity": "sha256-YpBZnnXvlwA/Mnen1CM1LxwCfDThdrTnBLapmAeTgwU="
 }

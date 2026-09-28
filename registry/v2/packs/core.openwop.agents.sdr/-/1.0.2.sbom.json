@@ -1,0 +1,169 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.agents.sdr@1.0.2",
+      "type": "library",
+      "name": "core.openwop.agents.sdr",
+      "version": "1.0.2",
+      "description": "Sales Development Representative agent. Researches prospects, drafts outreach (email/LinkedIn/SMS), schedules follow-ups. Persists prospect history to long-term memory. Pure-agent pack.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/packs/core.openwop.agents.sdr"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a8c65327a6e1ecc23b85d1a9492313755a5510bba99853d79e805180ef6daa66"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.agents.sdr@1.0.2"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b560c07dade7b86c0fd468f6554d6e658e47cb12c0bb1a155ac59e76f2c389ce"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1457"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "099bd23dfcfc370c4a2db9acaa25d440ce21ebd45c924b35260fedd6b37f7f86"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a860146b42b8d6263a99c962599f6c320b148631210e5587c370d779cd79385d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1594"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/sdr.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "170019b41a0794cc33dc5cbca83465e3059b69f45898a13e8e1f23573a411cd8"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2844"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/sdr.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d1459d0a4bcc61bfd086a4b266559549e5e7f4a4535f657667aaedd1be948bdc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1372"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/sdr.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "19614ec31fb6727aeeca15d6b2a1a946ad05d6710b03b5d4ddd37ae1076d3a1d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1688"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.agents.sdr@1.0.2",
+      "dependsOn": [
+        "host:agentRuntime",
+        "host:agents",
+        "host:aiProviders"
+      ]
+    }
+  ]
+}

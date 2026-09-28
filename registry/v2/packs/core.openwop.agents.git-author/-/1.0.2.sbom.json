@@ -1,0 +1,168 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.agents.git-author@1.0.2",
+      "type": "library",
+      "name": "core.openwop.agents.git-author",
+      "version": "1.0.2",
+      "description": "Git authoring agent — drafts commit messages, PR bodies, release notes, and changelog entries from diffs. Pure-agent pack.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/packs/core.openwop.agents.git-author"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6290599e75ef97003f3277a7d423352f1c027c34e176b4e704b6a99807938305"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.agents.git-author@1.0.2"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0079f2969107f27ba4c518770eaed56c29910f46a9c15609455b6aa4ba0cdefa"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1133"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "65d8fee91c6c5345739079dd50f69765fdc78410ff0750f6056da6ed0c65c004"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f829c7ab32f7568b9e0dabb88e582a49afa05224991aa83a3e88b41bcb653873"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1434"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/git-author.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ef2ba8e2f6d5928a91fba4cc9b40d3870d5eff6f1799a7240fb372b2581543de"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2751"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/git-author.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b55ab93d8d1383dfe3efa7a2ebfd659aef0ce9ca7395cb060b2e7232ecce384e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1076"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/git-author.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cd8ebcc5bc756da3cda2181a0175e30ed67ecc1fe54bc4cf5ae2c293e387a61a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "860"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.agents.git-author@1.0.2",
+      "dependsOn": [
+        "host:agentRuntime",
+        "host:aiProviders"
+      ]
+    }
+  ]
+}

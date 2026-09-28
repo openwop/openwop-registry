@@ -61,5 +61,10 @@
         "memoryBackends"
       ]
     }
-  }
+  },
+  "signing": {
+    "keyId": "openwop-team-1",
+    "scheme": "ed25519-canonical-json"
+  },
+  "integrity": "sha256-qMZTJ6bh7MI7hdGpSSMTdVpVELupmFPXnoBRgO9tqmY="
 }

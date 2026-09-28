@@ -1,0 +1,169 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.agents.support-resolver@1.0.2",
+      "type": "library",
+      "name": "core.openwop.agents.support-resolver",
+      "version": "1.0.2",
+      "description": "Customer support resolver agent. KB-grounded answers with explicit citation, escalation handoff on low confidence. Pure-agent pack.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/packs/core.openwop.agents.support-resolver"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fd99483ffa09f53fd22c1cdc79a4338e5a7e962a1a23059e755cd0c4d3942790"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.agents.support-resolver@1.0.2"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "0cea879ed215e3961316e97ab5e4d7a2b2bca999358668599bd53a1c953bc0d9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "975"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d273ab038cf5b8b1852e5623c94d205de931d68943ad9d01d011bcde3a54a6d3"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1368"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "476f3ba267bddfdac9cf8e0ad147105115b6f526a97a6e3d889ee6675ae7490e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3161e1c0db88708a9a9c31e15bf7d8965cefa532a1ed29bdf6608154ce6cb09f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1615"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "prompts/support-resolver.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bac58e14e151e002aa9c2645c810a9d771b9718d495c171847880f5a8641aa3e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2951"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/support-resolver.return.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "922c0f0b61a8c42108eb9be5c06ef7ccdc532a29075a1bf7454119a06b50d338"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1794"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "schemas/support-resolver.task.schema.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "95ea04427aee47251fb1a4af623b85cded9ad06d05d7f63cb3d24288f6648e1e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "971"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.agents.support-resolver@1.0.2",
+      "dependsOn": [
+        "host:agentRuntime",
+        "host:agents",
+        "host:aiProviders"
+      ]
+    }
+  ]
+}
