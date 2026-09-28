@@ -4,9 +4,11 @@
  * RFC 0177 §A.2/§A.3 (packs.md §"The registry tree"): the registry is versioned
  * BY TREE, not by header. `registry/v1/` is the immutable v1 tree (served
  * read-only through the overlap); `registry/v2/` is the parallel tree of
- * re-signed manifests. Every script that reads or writes a tree takes
- * `--tree v1|v2` (default v1, the historical behavior) and derives its paths and
- * its signing rules from here.
+ * re-signed manifests and the one new publications land on. Every script that
+ * reads or writes a tree takes `--tree v1|v2` (default v2 — the v1 tree is
+ * frozen, packs.md §"During the v1 overlap"; pass `--tree v1` explicitly for
+ * maintenance or to gate the frozen tree) and derives its paths and its signing
+ * rules from here.
  *
  *   v1 — `signing: { method: manual, publicKeyRef, signatureRef }`; catalog rows
  *        carry `signingMethod` + `signingKeyId`.
@@ -20,10 +22,10 @@ export const V2_SCHEME = 'ed25519-canonical-json';
 /** packs.md §"The engine range": `>=x[.y[.z]] <M.0.0`. */
 export const ENGINE_RANGE = /^>=\d+(\.\d+){0,2} <(\d+)\.0\.0$/;
 
-/** `--tree v1|v2` from argv (default v1). Exits 2 on an unknown value. */
+/** `--tree v1|v2` from argv (default v2; the v1 tree is read-only). Exits 2 on an unknown value. */
 export function treeFromArgv(argv = process.argv.slice(2)) {
   const i = argv.indexOf('--tree');
-  const tree = i >= 0 ? argv[i + 1] : 'v1';
+  const tree = i >= 0 ? argv[i + 1] : 'v2';
   if (!TREES.includes(tree)) {
     console.error(`--tree must be one of ${TREES.join('|')} (got "${tree}")`);
     process.exit(2);

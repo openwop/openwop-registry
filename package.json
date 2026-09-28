@@ -6,7 +6,8 @@
   "description": "OpenWOP pack ecosystem \u2014 source packs (packs/) and the published registry catalog (registry/) served at packs.openwop.dev.",
   "license": "Apache-2.0",
   "scripts": {
-    "build:index": "node registry/scripts/build-index.mjs",
+    "build:index": "node registry/scripts/build-index.mjs --tree v2",
+    "build:index:v1": "node registry/scripts/build-index.mjs --tree v1",
     "check": "bash scripts/registry-check.sh",
     "check:vendored": "node scripts/check-vendored-sync.mjs",
     "build:index:v2": "node registry/scripts/build-index.mjs --tree v2",

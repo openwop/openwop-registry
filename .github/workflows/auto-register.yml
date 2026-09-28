@@ -57,7 +57,7 @@ jobs:
         run: |
           set -euo pipefail
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            node scripts/auto-register.mjs --dry-run
+            node scripts/auto-register.mjs --tree v1 --dry-run
             exit 0
           fi
           if [ -z "${SIGNING_KEY:-}" ]; then
@@ -80,8 +80,8 @@ jobs:
           steps.reg.outputs.published != ''
         run: |
           set -euo pipefail
-          node registry/scripts/generate-sbom.mjs
-          node registry/scripts/build-index.mjs
+          node registry/scripts/generate-sbom.mjs --tree v1
+          node registry/scripts/build-index.mjs --tree v1
           bash scripts/registry-check.sh          # fail the PR if the generated artifacts don't pass all 8 gates
           git config user.name  "openwop-registry-bot"
           git config user.email "actions@github.com"

@@ -41,12 +41,13 @@ registry/
 
 ## URL endpoints
 
-Per `spec/v1/node-packs.md` §"Registry HTTP API" + `spec/v1/registry-operations.md`:
+Per `spec/v2/core/packs.md` §"The registry tree" + RFC 0222 (v2), and `spec/v1/node-packs.md` §"Registry HTTP API" for the frozen v1 tree:
 
 | URL | Returns |
 |---|---|
-| `GET /.well-known/openwop-registry` | Discovery metadata (registry version, supported namespaces, endpoints). |
-| `GET /v1/index.json` | Registry-wide pack listing for search/browse UIs. |
+| `GET /.well-known/openwop-registry` | Discovery metadata (registry version, supported namespaces, signing keys, `endpoints.v1` / `endpoints.v2`). |
+| `GET /v2/index.json`, `/v2/packs/{name}/index.json`, `/v2/packs/{name}/-/{version}.{json,tgz,sig,sbom.json}`, `/v2/sbom.json` | **The v2 tree — where new publications land** (RFC 0177 §A.2/§A.3, `spec/v2/core/packs.md`). Same shapes as v1 with the `/v2/` prefix, `signing: { keyId, scheme: "ed25519-canonical-json" }` (detached Ed25519 over the JCS bytes of the in-tarball `pack.json`), `kind` required, explicit `engines.openwop` ceiling. |
+| `GET /v1/index.json` | Registry-wide pack listing for search/browse UIs (frozen v1 tree; the rows below are v1 too). |
 | `GET /v1/packs/{name}/index.json` | Pack metadata + version list (aggregate). |
 | `GET /v1/packs/{name}/-/{version}.json` | Version manifest. |
 | `GET /v1/packs/{name}/-/{version}.tgz` | Signed pack tarball. |
@@ -54,11 +55,12 @@ Per `spec/v1/node-packs.md` §"Registry HTTP API" + `spec/v1/registry-operations
 | `GET /keys/{keyId}.pub` | Registry signing public key. |
 | `GET /v1/packs/{name}/-/{version}.sbom.json` | Per-version SBOM (CycloneDX 1.6). |
 | `GET /v1/sbom.json` | Aggregate SBOM listing every published version. |
-| `GET /v2/index.json`, `/v2/packs/{name}/index.json`, `/v2/packs/{name}/-/{version}.{json,tgz,sig,sbom.json}`, `/v2/sbom.json` | The v2 tree (RFC 0177 §A.2/§A.3, `spec/v2/core/packs.md`) — same shapes, `/v2/` prefix, `signing: { keyId, scheme: "ed25519-canonical-json" }`, `kind` required, explicit `engines.openwop` ceiling. The registry is versioned by tree; `.well-known` `endpoints.v1` / `endpoints.v2` name both. |
 
-**Discovery is authoritative.** Clients SHOULD substitute `{name}` / `{version}` into the templates declared in `.well-known/openwop-registry` `endpoints` rather than hardcoding paths. Filesystem-backed registries (this one and other static-CDN deployments) serve pack metadata at `/index.json` because CDN URL-rewrite engines don't reliably match dot-containing path segments — clients reach the abstract `/v1/packs/{name}` endpoint described by `node-packs.md` via the discovery template.
+The registry is versioned by tree, not header; the v1 tree is frozen through the overlap. The scripts that read or write a tree take `--tree v1|v2` and default to **v2** (`scripts/lib/registry-tree.mjs`); pass `--tree v1` only to maintain or gate the frozen tree.
 
-Write endpoints (`PUT /v1/packs/{name}/-/{version}.tgz`) are NOT supported by this MVP. Publish via the maintainer PR flow below.
+**Discovery is authoritative.** A v2 client MUST resolve every registry path through `.well-known` `endpoints` (packs.md §"The registry tree"), preferring `endpoints.v2`; v1 clients SHOULD substitute `{name}` / `{version}` into the templates declared in `.well-known/openwop-registry` `endpoints` rather than hardcoding paths. Filesystem-backed registries (this one and other static-CDN deployments) serve pack metadata at `/index.json` because CDN URL-rewrite engines don't reliably match dot-containing path segments — clients reach the abstract `/v1/packs/{name}` endpoint described by `node-packs.md` via the discovery template.
+
+Write endpoints (`PUT /v2/packs/{name}/-/{version}.tgz`, or the v1 equivalent) are NOT supported — `writeApi.supported: false`; the v2 protocol names no write endpoint (RFC 0222). Publish via the maintainer PR flow below.
 
 ## Publish flow
 
@@ -184,12 +186,14 @@ Key rotation procedure (per `spec/v1/registry-operations.md` §"Key rotation"):
 
 ## Trust model
 
-Consumers operating in `verified` mode (per `spec/v1/node-packs.md` §"Trust model") MUST:
+Consumers operating in `verified` mode MUST (v2: `spec/v2/core/packs.md` §Signing and §"Version manifests"):
 
-1. Fetch the registry's public key from `/keys/{keyId}.pub`.
-2. Verify the tarball signature against it before unpacking.
+1. Fetch the registry's public key for the manifest's `signing.keyId` (`endpoints.publicKey`, `/keys/{keyId}.pub`) and check the pack name against that key's `permittedNamespaces`. A key whose `status` is not `active` still verifies what it signed.
+2. Verify the detached `.sig` over the in-tarball `pack.json` bytes (the JCS bytes; `ed25519-canonical-json`) before unpacking.
 3. Refuse packs whose `integrity` hash doesn't match the tarball bytes.
-4. Refuse packs flagged `yanked: true` in the registry index.
+4. Never resolve a `yanked: true` version for a range or `latest`; an exact pin MAY resolve it (it stays served).
+
+(v1: `spec/v1/node-packs.md` §"Trust model".)
 
 Consumers operating in `trusted` mode skip steps 1–2 but should still honor integrity + yank flags.
 
@@ -239,7 +243,9 @@ To deploy this registry for the first time:
 
 ## See also
 
-- [`spec/v1/node-packs.md`](https://github.com/openwop/openwop/blob/main/spec/v1/node-packs.md) — pack manifest format + registry HTTP API
+- [`spec/v2/core/packs.md`](https://github.com/openwop/openwop/blob/main/spec/v2/core/packs.md) — the v2 registry tree, signing, version-manifest lifecycle
+- [`RFCS/0222-v2-registry-operations.md`](https://github.com/openwop/openwop/blob/main/RFCS/0222-v2-registry-operations.md) — v2 registry operations (yank, deprecate, key rotation, the refusals)
+- [`spec/v1/node-packs.md`](https://github.com/openwop/openwop/blob/main/spec/v1/node-packs.md) — v1 pack manifest format + registry HTTP API (frozen tree)
 - [`spec/v1/registry-operations.md`](https://github.com/openwop/openwop/blob/main/spec/v1/registry-operations.md) — operator-side lifecycle (submission, deprecation, yank, key rotation)
 - [`RFCS/0008-wasm-abi.md`](https://github.com/openwop/openwop/blob/main/RFCS/0008-wasm-abi.md) — WASM pack ABI (the `rust-hello` pack hosted here exercises this)
 - [`examples/packs/rust-hello/README.md`](https://github.com/openwop/openwop-examples/blob/main/examples/packs/rust-hello/README.md) — the reference WASM pack

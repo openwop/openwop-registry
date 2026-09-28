@@ -4,10 +4,14 @@
  *
  *   node scripts/publish-pack.mjs --pack <name> [--version <v>]
  *   node scripts/publish-pack.mjs --all
- *   node scripts/publish-pack.mjs --all --dry-run    (print, don't POST)
- *   node scripts/publish-pack.mjs --all --tree v2    (PUT /v2/packs/... — RFC 0177 §A.3: the
- *                                                     registry is versioned by tree; the
- *                                                     /v2/ prefix is the v2 tree's template)
+ *   node scripts/publish-pack.mjs --all --dry-run    (print, don't PUT)
+ *   node scripts/publish-pack.mjs --all --tree v1    (PUT /v1/packs/... — maintenance of the
+ *                                                     frozen v1 tree only)
+ *
+ * `--tree v1|v2` defaults to v2: the registry is versioned by tree (RFC 0177
+ * §A.3, spec/v2/core/packs.md §"The registry tree") and the v1 tree is frozen
+ * through the overlap (§"During the v1 overlap"), so new publications go to
+ * `/v2/packs/...`.
  *
  * Environment:
  *   OPENWOP_PACK_REGISTRY_URL   Base URL of the registry, e.g.
@@ -20,20 +24,26 @@
  *                                   --impersonate-service-account=...
  *                               or via a Firebase Auth client SDK.
  *
- * Spec: PUT /v1/packs/<name>/-/<version>.tgz with the gzipped tarball
- * as application/gzip body. The route's createPublishTar handler
- *   1. parses the tarball
- *   2. cross-checks pack.json.name == URL name (and same for version)
- *   3. verifies the embedded signature against the registry's
- *      keychain for that pack (publicKeyRef → keychain key)
- *   4. records the version in Firestore + uploads the tarball to
- *      Cloud Storage
+ * Wire: PUT /v2/packs/<name>/-/<version>.tgz with the gzipped tarball as an
+ * application/gzip body. The v2 protocol names NO registry write endpoint
+ * (RFC 0222: "A registry with a write API MAY still offer them; the protocol
+ * names none") — this targets a registry that offers one. packs.openwop.dev
+ * does not (`writeApi.supported: false`, publish by pull request against this
+ * repo; `scripts/auto-register.mjs` stages the v2 tree for that). A registry
+ * accepting the PUT is expected to
+ *   1. parse the tarball
+ *   2. cross-check pack.json.name == URL name (and same for version)
+ *   3. verify the `ed25519-canonical-json` signature over the in-tarball
+ *      pack.json against its key for `signing.keyId`, and check the pack name
+ *      against that key's `permittedNamespaces` (packs.md §Signing)
+ *   4. refuse a republished version with `version_conflict` and the other
+ *      packs.md §"Version manifests" codes
  *
- * For unsigned (non-`private.*`) tarballs the registry returns 400
- * signature_required. Use `build-pack-tarball.mjs --signed` first.
+ * Build a v2 tarball first: `build-pack-tarball.mjs --signed --tree v2
+ * --scheme ed25519-canonical-json`.
  *
- * @see services/workflow-runtime/src/routes/packs.ts createPublishTar
- * @see spec/v1/node-packs.md §"Registry HTTP API"
+ * @see spec/v2/core/packs.md §"The registry tree", §Signing, §"Version manifests"
+ * @see openwop RFCS/0222-v2-registry-operations.md
  */
 
 import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
@@ -101,7 +111,7 @@ if (!args.pack && !args.all) {
 
 if (!existsSync(args.dist)) {
   fail(`✗ dist dir not found: ${args.dist}`);
-  fail('  Run: node scripts/build-pack-tarball.mjs --all --signed --key <pem>');
+  fail(`  Run: node scripts/build-pack-tarball.mjs --all --signed --key <pem> --tree ${TREE}${TREE === 'v2' ? ' --scheme ed25519-canonical-json' : ''}`);
   process.exit(2);
 }
 
