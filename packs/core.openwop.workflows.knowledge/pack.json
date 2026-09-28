@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.knowledge",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "kind": "workflow-chain",
   "description": "Real-work workflow pack (RFC 0013, ADR 0190 Phase 2) — the internal Knowledge cluster: employee policy/HR Q&A grounded in your Knowledge Base, compliance review of documents against your policy corpus, and structured document summarization. Distinct from core.openwop.workflows.support: these serve EMPLOYEES over internal policy collections. Authored over shipped node typeIds (feature.kb.nodes.rag + core.ai.chatCompletion + core.flow.if + core.chat.approvalGate + core.openwop.integration.*). Populate the collections in the Knowledge feature — these chains READ the app KB. All tenant values are run parameters (replay-deterministic). EVERY delivery edge is PORT-QUALIFIED (ADR 0583) — a bare edge binds no named port at all. Every external send waits on a human approval gate AND ONLY FIRES ON AN APPROVAL — Slack takes its content BACK OFF THE GATE (`approveEscalation.artifact → escalate.text`, `{truthy approved}`), so it has NO unconditional incoming edge and every non-approving outcome folds it to `skipped`.",
   "author": "openwop",
@@ -14,7 +14,7 @@
   "chains": [
     {
       "chainId": "knowledge.policy-qa",
-      "version": "1.2.1",
+      "version": "1.2.2",
       "label": "HR & Policy Q&A Agent",
       "description": "Answer an employee's policy or HR question grounded ONLY in your internal policy docs (Knowledge Base), citing the specific policy sections. Covered questions are answered as a notification CARRYING THE ANSWER TEXT (`route.value → deliver.message`); questions your policies don't cover route to a human-approved escalation to your people team instead of guessing — the approver SEES the answer (`route.value → approveEscalation.artifact`) and the Slack escalation takes that same content BACK OFF THE GATE (`approveEscalation.artifact → escalate.text`, conditioned `{truthy approved}`). That is the whole gate: reject, time out, or ask for changes and `escalate`'s only upstream folds to `skipped`, so the uncovered-policy answer never reaches #people-ops. Add policy docs under Knowledge to ground it.",
       "parameters": {
@@ -62,7 +62,7 @@
         "nodes": [
           {
             "id": "retrieve",
-            "typeId": "feature.kb.nodes.rag",
+            "typeId": "feature.kb.nodes.rag@1.0.0",
             "name": "Retrieve policy passages",
             "position": {
               "x": 0,
@@ -77,7 +77,7 @@
           },
           {
             "id": "answer",
-            "typeId": "core.ai.chatCompletion",
+            "typeId": "core.ai.chatCompletion@1.0.0",
             "name": "Answer with section citations",
             "position": {
               "x": 280,
@@ -92,7 +92,7 @@
           },
           {
             "id": "route",
-            "typeId": "core.flow.if",
+            "typeId": "core.flow.if@1.0.0",
             "name": "Covered by policy?",
             "position": {
               "x": 560,
@@ -109,7 +109,7 @@
           },
           {
             "id": "approveEscalation",
-            "typeId": "core.chat.approvalGate",
+            "typeId": "core.chat.approvalGate@1.1.0",
             "name": "Approve escalation",
             "position": {
               "x": 840,
@@ -122,7 +122,7 @@
           },
           {
             "id": "escalate",
-            "typeId": "core.openwop.integration.slack-message",
+            "typeId": "core.openwop.integration.slack-message@1.0.0",
             "name": "Escalate to people team",
             "position": {
               "x": 1120,
@@ -135,7 +135,7 @@
           },
           {
             "id": "deliver",
-            "typeId": "feature.notifications.nodes.notify",
+            "typeId": "feature.notifications.nodes.notify@1.0.0",
             "name": "Deliver answer",
             "position": {
               "x": 840,
@@ -189,7 +189,7 @@
     },
     {
       "chainId": "knowledge.compliance-review",
-      "version": "1.2.1",
+      "version": "1.2.2",
       "label": "Compliance Review vs Your Policies",
       "description": "Check a document (contract clause, marketing copy, announcement) against your internal policies: retrieve the relevant ones from the Knowledge Base, flag every deviation with the policy it conflicts with, and route flagged documents to a human-approved compliance escalation. Clean documents notify you WITH the review text (`route.value → pass.message`); flagged ones show the reviewer the deviation list (`route.value → approveEscalation.artifact`) and Slack receives that list BACK OFF THE GATE (`approveEscalation.artifact → escalate.text`, conditioned `{truthy approved}`) — so a rejected, timed-out or sent-back review posts nothing to #compliance.",
       "parameters": {
@@ -242,7 +242,7 @@
         "nodes": [
           {
             "id": "retrieve",
-            "typeId": "feature.kb.nodes.rag",
+            "typeId": "feature.kb.nodes.rag@1.0.0",
             "name": "Retrieve relevant policies",
             "position": {
               "x": 0,
@@ -257,7 +257,7 @@
           },
           {
             "id": "review",
-            "typeId": "core.ai.chatCompletion",
+            "typeId": "core.ai.chatCompletion@1.0.0",
             "name": "Review vs policies",
             "position": {
               "x": 280,
@@ -272,7 +272,7 @@
           },
           {
             "id": "route",
-            "typeId": "core.flow.if",
+            "typeId": "core.flow.if@1.0.0",
             "name": "Any flags?",
             "position": {
               "x": 560,
@@ -289,7 +289,7 @@
           },
           {
             "id": "approveEscalation",
-            "typeId": "core.chat.approvalGate",
+            "typeId": "core.chat.approvalGate@1.1.0",
             "name": "Approve escalation",
             "position": {
               "x": 840,
@@ -302,7 +302,7 @@
           },
           {
             "id": "escalate",
-            "typeId": "core.openwop.integration.slack-message",
+            "typeId": "core.openwop.integration.slack-message@1.0.0",
             "name": "Escalate to compliance",
             "position": {
               "x": 1120,
@@ -315,7 +315,7 @@
           },
           {
             "id": "pass",
-            "typeId": "feature.notifications.nodes.notify",
+            "typeId": "feature.notifications.nodes.notify@1.0.0",
             "name": "Notify: passes",
             "position": {
               "x": 840,
@@ -369,7 +369,7 @@
     },
     {
       "chainId": "knowledge.doc-summarizer",
-      "version": "1.1.1",
+      "version": "1.1.2",
       "label": "Document Summarizer",
       "description": "Turn a long document into a structured summary — purpose, key points, decisions/asks, and open questions — delivered as a notification whose BODY is the summary (`summarize.content → notify.message`). Paste the text (or pipe it from another workflow) and get the two-minute version.",
       "parameters": {
@@ -400,7 +400,7 @@
         "nodes": [
           {
             "id": "summarize",
-            "typeId": "core.ai.chatCompletion",
+            "typeId": "core.ai.chatCompletion@1.0.0",
             "name": "Structured summary",
             "position": {
               "x": 0,
@@ -415,7 +415,7 @@
           },
           {
             "id": "notify",
-            "typeId": "feature.notifications.nodes.notify",
+            "typeId": "feature.notifications.nodes.notify@1.0.0",
             "name": "Deliver summary",
             "position": {
               "x": 280,

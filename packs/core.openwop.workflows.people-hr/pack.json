@@ -1,8 +1,8 @@
 {
   "name": "core.openwop.workflows.people-hr",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "kind": "workflow-chain",
-  "description": "Real-work workflow pack (RFC 0013, ADR 0149) \u2014 the People / HR cluster: Employee Onboarding Orchestrator, Offboarding & Access Revocation, and Leave/PTO Request Routing. Reasons with core.ai.chatCompletion; binds Microsoft 365 via core.openwop.http.openapi-call connectionRef, recommends HRIS actions provider-agnostically via core.openwop.connectors.hris-action (Workday today), and provider-agnostic ticketing (Jira/ServiceNow) via the core.openwop.connectors.ticket-* capability nodes (ADR 0186); every account/HRIS mutation and every team-facing send is gated by core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + integration packs; connections are configured under Access & data \u2192 Connections. Published under core.openwop.workflows.* (openwop-team key).",
+  "description": "Real-work workflow pack (RFC 0013, ADR 0149) — the People / HR cluster: Employee Onboarding Orchestrator, Offboarding & Access Revocation, and Leave/PTO Request Routing. Reasons with core.ai.chatCompletion; binds Microsoft 365 via core.openwop.http.openapi-call connectionRef, recommends HRIS actions provider-agnostically via core.openwop.connectors.hris-action (Workday today), and provider-agnostic ticketing (Jira/ServiceNow) via the core.openwop.connectors.ticket-* capability nodes (ADR 0186); every account/HRIS mutation and every team-facing send is gated by core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + integration packs; connections are configured under Access & data → Connections. Published under core.openwop.workflows.* (openwop-team key).",
   "author": "openwop",
   "license": "Apache-2.0",
   "engines": {
@@ -14,9 +14,9 @@
   "chains": [
     {
       "chainId": "people-hr.onboarding",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "label": "Employee Onboarding Orchestrator",
-      "description": "On offer-accepted, plan the onboarding checklist and provision the new hire across IT (Microsoft 365), HRIS/payroll (Workday), and provider-agnostic task tracking (Jira/ServiceNow) in parallel \u2014 and, behind the same approval, invite the new hire into THIS workspace (feature.orgs.nodes.invite, ADR 0622 D3) \u2014 then summarize completion. Exceptions are surfaced for review.",
+      "description": "On offer-accepted, plan the onboarding checklist and provision the new hire across IT (Microsoft 365), HRIS/payroll (Workday), and provider-agnostic task tracking (Jira/ServiceNow) in parallel — and, behind the same approval, invite the new hire into THIS workspace (feature.orgs.nodes.invite, ADR 0622 D3) — then summarize completion. Exceptions are surfaced for review.",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
@@ -46,7 +46,7 @@
           "ticketingBaseUrl": {
             "type": "string",
             "default": "",
-            "description": "The tenant's ticketing instance REST base (Jira/ServiceNow). Empty \u21d2 no ticket is created."
+            "description": "The tenant's ticketing instance REST base (Jira/ServiceNow). Empty ⇒ no ticket is created."
           },
           "ticketProject": {
             "type": "string",
@@ -56,7 +56,7 @@
           "provider": {
             "type": "string",
             "default": "anthropic",
-            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 \u2014 a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it \u2014 the workflow will not fall back to another provider on its own."
+            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own."
           },
           "model": {
             "type": "string",
@@ -72,7 +72,7 @@
         "nodes": [
           {
             "id": "plan",
-            "typeId": "core.ai.chatCompletion",
+            "typeId": "core.ai.chatCompletion@1.0.0",
             "name": "Onboarding plan",
             "position": {
               "x": 0,
@@ -87,7 +87,7 @@
           },
           {
             "id": "approve",
-            "typeId": "core.chat.approvalGate",
+            "typeId": "core.chat.approvalGate@1.1.0",
             "name": "Approve provisioning",
             "position": {
               "x": 160,
@@ -105,8 +105,8 @@
           },
           {
             "id": "gate-reject",
-            "typeId": "core.flow.noop",
-            "name": "Rejected \u2014 no provisioning",
+            "typeId": "core.flow.noop@1.0.0",
+            "name": "Rejected — no provisioning",
             "position": {
               "x": 320,
               "y": 360
@@ -116,7 +116,7 @@
           },
           {
             "id": "itProvision",
-            "typeId": "core.openwop.http.openapi-call",
+            "typeId": "core.openwop.http.openapi-call@1.0.0",
             "name": "Provision IT (M365)",
             "position": {
               "x": 320,
@@ -130,7 +130,7 @@
           },
           {
             "id": "hris",
-            "typeId": "core.openwop.connectors.hris-action",
+            "typeId": "core.openwop.connectors.hris-action@1.0.0",
             "name": "Set up payroll (HRIS)",
             "position": {
               "x": 320,
@@ -145,7 +145,7 @@
           },
           {
             "id": "tickets",
-            "typeId": "core.openwop.connectors.ticket-create",
+            "typeId": "core.openwop.connectors.ticket-create@1.0.0",
             "name": "Create onboarding tasks (ticketing)",
             "position": {
               "x": 320,
@@ -160,7 +160,7 @@
           },
           {
             "id": "invite-host",
-            "typeId": "feature.orgs.nodes.invite",
+            "typeId": "feature.orgs.nodes.invite@1.0.0",
             "name": "Invite to this workspace",
             "position": {
               "x": 320,
@@ -175,7 +175,7 @@
           },
           {
             "id": "track",
-            "typeId": "core.ai.chatCompletion",
+            "typeId": "core.ai.chatCompletion@1.0.0",
             "name": "Completion summary",
             "position": {
               "x": 640,
@@ -190,7 +190,7 @@
           },
           {
             "id": "notify",
-            "typeId": "feature.notifications.nodes.notify",
+            "typeId": "feature.notifications.nodes.notify@1.0.0",
             "name": "Notify manager + IT",
             "position": {
               "x": 920,
@@ -280,9 +280,9 @@
     },
     {
       "chainId": "people-hr.offboarding",
-      "version": "1.2.0",
+      "version": "1.2.1",
       "label": "Offboarding & Access Revocation",
-      "description": "On termination, deprovision accounts (Microsoft 365), close access tickets (provider-agnostic Jira/ServiceNow), run final-pay in the HRIS (Workday), capture a knowledge handoff, then require a compliance attestation before completing. 1.1.0 (ADR 0617 D3): the chain has TWO lanes. The SCIM-leaver lane starts from the `host.users.user.deactivated` host event (bind it on the Event Bindings page to this workflow \u2014 see the pack README); the `trigger` entry node forwards the ids-only payload. The human-started lane runs from the gallery with `userId` as a parameter. A new gated step `deprovision-host` (feature.users.nodes.deactivate) disables THIS workspace's own account BEHIND the compliance attestation \u2014 never before it \u2014 via one `{truthy approved}` edge; it reads `userId` from the event payload, else the chain parameter. It requires the run's acting user to hold host:members:manage, so on an event-started (system) run it fails closed \u2014 by design: on that lane the host account was already disabled at the identity write (ADR 0621). `notify` reports the attestation OUTCOME on both legs (decision-aware, unconditional \u2014 the NOTIFY_OF_OUTCOME allow-list).",
+      "description": "On termination, deprovision accounts (Microsoft 365), close access tickets (provider-agnostic Jira/ServiceNow), run final-pay in the HRIS (Workday), capture a knowledge handoff, then require a compliance attestation before completing. 1.1.0 (ADR 0617 D3): the chain has TWO lanes. The SCIM-leaver lane starts from the `host.users.user.deactivated` host event (bind it on the Event Bindings page to this workflow — see the pack README); the `trigger` entry node forwards the ids-only payload. The human-started lane runs from the gallery with `userId` as a parameter. A new gated step `deprovision-host` (feature.users.nodes.deactivate) disables THIS workspace's own account BEHIND the compliance attestation — never before it — via one `{truthy approved}` edge; it reads `userId` from the event payload, else the chain parameter. It requires the run's acting user to hold host:members:manage, so on an event-started (system) run it fails closed — by design: on that lane the host account was already disabled at the identity write (ADR 0621). `notify` reports the attestation OUTCOME on both legs (decision-aware, unconditional — the NOTIFY_OF_OUTCOME allow-list).",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
@@ -293,7 +293,7 @@
           "triggerEventName": {
             "type": "string",
             "default": "host.users.user.deactivated",
-            "description": "The host event this chain ignites on. The event belongs to the INSTALLING HOST, not the pack (openwop-1, crosstalk 1892) \u2014 defaulted so an existing install keeps working."
+            "description": "The host event this chain ignites on. The event belongs to the INSTALLING HOST, not the pack (openwop-1, crosstalk 1892) — defaulted so an existing install keeps working."
           },
           "employeeName": {
             "type": "string",
@@ -302,7 +302,7 @@
           "ticketingBaseUrl": {
             "type": "string",
             "default": "",
-            "description": "The tenant's ticketing instance REST base (Jira/ServiceNow). Empty \u21d2 no ticket is transitioned."
+            "description": "The tenant's ticketing instance REST base (Jira/ServiceNow). Empty ⇒ no ticket is transitioned."
           },
           "accessTicketKey": {
             "type": "string",
@@ -317,12 +317,12 @@
           "userId": {
             "type": "string",
             "default": "",
-            "description": "The departing employee's HOST account id (`user:<id>`, from Access & data \u2192 Users) for the human-started lane. Ignored when the run was started by the `host.users.user.deactivated` event, whose payload carries the id. Empty \u21d2 the host-deprovision step fails typed (nothing to act on)."
+            "description": "The departing employee's HOST account id (`user:<id>`, from Access & data → Users) for the human-started lane. Ignored when the run was started by the `host.users.user.deactivated` event, whose payload carries the id. Empty ⇒ the host-deprovision step fails typed (nothing to act on)."
           },
           "provider": {
             "type": "string",
             "default": "anthropic",
-            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 \u2014 a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it \u2014 the workflow will not fall back to another provider on its own."
+            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own."
           },
           "model": {
             "type": "string",
@@ -338,7 +338,7 @@
         "nodes": [
           {
             "id": "trigger",
-            "typeId": "core.trigger.event",
+            "typeId": "core.trigger.event@1.0.0",
             "name": "Leaver event (host.users.user.deactivated)",
             "position": {
               "x": -320,
@@ -351,7 +351,7 @@
           },
           {
             "id": "deprovision",
-            "typeId": "core.openwop.http.openapi-call",
+            "typeId": "core.openwop.http.openapi-call@1.0.0",
             "name": "Deprovision accounts (M365)",
             "position": {
               "x": 0,
@@ -365,7 +365,7 @@
           },
           {
             "id": "accessTickets",
-            "typeId": "core.openwop.connectors.ticket-transition",
+            "typeId": "core.openwop.connectors.ticket-transition@1.0.0",
             "name": "Close access (ticketing)",
             "position": {
               "x": 0,
@@ -382,7 +382,7 @@
           },
           {
             "id": "finalPay",
-            "typeId": "core.openwop.connectors.hris-action",
+            "typeId": "core.openwop.connectors.hris-action@1.0.0",
             "name": "Final pay (HRIS)",
             "position": {
               "x": 0,
@@ -396,7 +396,7 @@
           },
           {
             "id": "handoff",
-            "typeId": "core.ai.chatCompletion",
+            "typeId": "core.ai.chatCompletion@1.0.0",
             "name": "Knowledge handoff",
             "position": {
               "x": 320,
@@ -411,7 +411,7 @@
           },
           {
             "id": "attest",
-            "typeId": "core.chat.approvalGate",
+            "typeId": "core.chat.approvalGate@1.1.0",
             "name": "Compliance attestation",
             "position": {
               "x": 640,
@@ -422,7 +422,7 @@
           },
           {
             "id": "deprovision-host",
-            "typeId": "feature.users.nodes.deactivate",
+            "typeId": "feature.users.nodes.deactivate@1.0.1",
             "name": "Deprovision host account",
             "position": {
               "x": 920,
@@ -435,7 +435,7 @@
           },
           {
             "id": "notify",
-            "typeId": "feature.notifications.nodes.notify",
+            "typeId": "feature.notifications.nodes.notify@1.0.0",
             "name": "Confirm offboarding",
             "position": {
               "x": 920,
@@ -501,7 +501,7 @@
     },
     {
       "chainId": "people-hr.pto-routing",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "label": "Leave / PTO Request Routing",
       "description": "On a PTO request, check policy, analyze coverage against the team calendar (Microsoft 365), route to the manager for approval, then update the HRIS (Workday) and notify the team.",
       "parameters": {
@@ -524,7 +524,7 @@
           "hrisBaseUrl": {
             "type": "string",
             "default": "",
-            "description": "The Workday Absence Management REST base (\u2026/ccx/api/absenceManagement/v1/{tenant}). Empty \u21d2 recommend only."
+            "description": "The Workday Absence Management REST base (…/ccx/api/absenceManagement/v1/{tenant}). Empty ⇒ recommend only."
           },
           "workerId": {
             "type": "string",
@@ -539,7 +539,7 @@
           "provider": {
             "type": "string",
             "default": "anthropic",
-            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 \u2014 a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it \u2014 the workflow will not fall back to another provider on its own."
+            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own."
           },
           "model": {
             "type": "string",
@@ -559,7 +559,7 @@
         "nodes": [
           {
             "id": "policy",
-            "typeId": "core.ai.chatCompletion",
+            "typeId": "core.ai.chatCompletion@1.0.0",
             "name": "Policy + coverage check",
             "position": {
               "x": 0,
@@ -574,7 +574,7 @@
           },
           {
             "id": "calendar",
-            "typeId": "core.openwop.http.openapi-call",
+            "typeId": "core.openwop.http.openapi-call@1.0.0",
             "name": "Team calendar (M365)",
             "position": {
               "x": 0,
@@ -588,7 +588,7 @@
           },
           {
             "id": "approve",
-            "typeId": "core.chat.approvalGate",
+            "typeId": "core.chat.approvalGate@1.1.0",
             "name": "Manager approval",
             "position": {
               "x": 320,
@@ -606,8 +606,8 @@
           },
           {
             "id": "gate-reject",
-            "typeId": "core.flow.noop",
-            "name": "Rejected \u2014 HRIS not updated",
+            "typeId": "core.flow.noop@1.0.0",
+            "name": "Rejected — HRIS not updated",
             "position": {
               "x": 640,
               "y": 260
@@ -617,7 +617,7 @@
           },
           {
             "id": "hris",
-            "typeId": "core.openwop.connectors.hris-action",
+            "typeId": "core.openwop.connectors.hris-action@1.0.0",
             "name": "Update HRIS",
             "position": {
               "x": 640,
@@ -635,7 +635,7 @@
           },
           {
             "id": "notifyTeam",
-            "typeId": "core.openwop.integration.slack-message",
+            "typeId": "core.openwop.integration.slack-message@1.0.0",
             "name": "Notify team",
             "position": {
               "x": 640,

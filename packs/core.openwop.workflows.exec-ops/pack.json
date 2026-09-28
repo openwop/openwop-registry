@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.exec-ops",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "kind": "workflow-chain",
   "description": "Real-work workflow pack (RFC 0013, ADR 0149). The Executive / Chief-of-Staff cluster: Daily Executive Briefing, Meeting Prep & Attendee Dossier, and Board / Investor Update Pack. Reasons with core.ai.chatCompletion over real tenant data (feature.crm / feature.analytics) and, where a workflow touches an external system, binds a connection pack via core.openwop.http.openapi-call (connectionRef) — so a configured connection runs live and an unconfigured one surfaces a connect prompt rather than failing. Every external send is gated by core.chat.approvalGate; the read-only briefing is ungated. All tenant-specific values are run parameters (replay-deterministic). Resolves fully on hosts that ship the feature + http/mcp + chat packs (the OpenWOP reference app); the connection bindings are configured by the operator under Access & data → Connections.",
   "author": "openwop",
@@ -14,7 +14,7 @@
   "chains": [
     {
       "chainId": "exec-ops.daily-briefing",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "label": "Daily Executive Briefing",
       "description": "Synthesize a daily briefing from the pipeline, usage analytics, and open tasks: priorities, revenue deltas, risks, blockers, and next actions. Read-only digest — no external send, so no approval gate. Pair with a scheduled trigger (e.g. 06:30 local) registered by the operator.",
       "parameters": {
@@ -52,7 +52,7 @@
         "nodes": [
           {
             "id": "pipeline",
-            "typeId": "feature.crm.nodes.list-deals",
+            "typeId": "feature.crm.nodes.list-deals@1.0.0",
             "name": "Pipeline",
             "position": {
               "x": 0,
@@ -65,7 +65,7 @@
           },
           {
             "id": "metrics",
-            "typeId": "feature.analytics.nodes.query",
+            "typeId": "feature.analytics.nodes.query@1.0.0",
             "name": "Usage analytics",
             "position": {
               "x": 0,
@@ -78,7 +78,7 @@
           },
           {
             "id": "tasks",
-            "typeId": "feature.crm.nodes.list-tasks",
+            "typeId": "feature.crm.nodes.list-tasks@1.0.0",
             "name": "Open tasks",
             "position": {
               "x": 0,
@@ -91,7 +91,7 @@
           },
           {
             "id": "brief",
-            "typeId": "core.ai.chatCompletion",
+            "typeId": "core.ai.chatCompletion@1.0.0",
             "name": "Synthesize briefing",
             "position": {
               "x": 320,
@@ -106,7 +106,7 @@
           },
           {
             "id": "deliver",
-            "typeId": "feature.notifications.nodes.notify",
+            "typeId": "feature.notifications.nodes.notify@1.0.0",
             "name": "Deliver briefing",
             "position": {
               "x": 600,
@@ -148,7 +148,7 @@
     },
     {
       "chainId": "exec-ops.meeting-prep",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "label": "Meeting Prep & Attendee Dossier",
       "description": "Ahead of a meeting, read the upcoming calendar events (whichever calendar the user connected — Google or Microsoft 365) and the attendee's company profile, then synthesize a dossier with an agenda and suggested objectives. Pair with a scheduled trigger N hours before the event.",
       "parameters": {
@@ -196,7 +196,7 @@
         "nodes": [
           {
             "id": "calendar",
-            "typeId": "core.openwop.connectors.calendar-list-events",
+            "typeId": "core.openwop.connectors.calendar-list-events@1.0.0",
             "name": "Read upcoming calendar events",
             "position": {
               "x": 0,
@@ -210,7 +210,7 @@
           },
           {
             "id": "company",
-            "typeId": "feature.crm.nodes.get-company",
+            "typeId": "feature.crm.nodes.get-company@1.0.0",
             "name": "Get attendee company",
             "position": {
               "x": 0,
@@ -224,7 +224,7 @@
           },
           {
             "id": "dossier",
-            "typeId": "core.ai.chatCompletion",
+            "typeId": "core.ai.chatCompletion@1.0.0",
             "name": "Write dossier + agenda",
             "position": {
               "x": 320,
@@ -239,7 +239,7 @@
           },
           {
             "id": "deliver",
-            "typeId": "feature.notifications.nodes.notify",
+            "typeId": "feature.notifications.nodes.notify@1.0.0",
             "name": "Send to organizer",
             "position": {
               "x": 600,
@@ -277,7 +277,7 @@
     },
     {
       "chainId": "exec-ops.board-update",
-      "version": "1.2.0",
+      "version": "1.2.1",
       "label": "Board / Investor Update Pack",
       "description": "Assemble a monthly board/investor update: pull KPIs (analytics), pipeline (CRM), and finance figures (provider-agnostic ERP), draft a narrative with variance commentary, gate it for exec review, then deliver ONLY on approval — the distribute step takes its body from the gate on a `truthy approved` edge, so a rejected pack is not sent. Pair with a monthly scheduled trigger.",
       "parameters": {
@@ -320,7 +320,7 @@
         "nodes": [
           {
             "id": "kpis",
-            "typeId": "feature.analytics.nodes.query",
+            "typeId": "feature.analytics.nodes.query@1.0.0",
             "name": "KPIs",
             "position": {
               "x": 0,
@@ -333,7 +333,7 @@
           },
           {
             "id": "pipeline",
-            "typeId": "feature.crm.nodes.list-deals",
+            "typeId": "feature.crm.nodes.list-deals@1.0.0",
             "name": "Pipeline",
             "position": {
               "x": 0,
@@ -346,7 +346,7 @@
           },
           {
             "id": "finance",
-            "typeId": "core.openwop.connectors.erp-action",
+            "typeId": "core.openwop.connectors.erp-action@1.0.0",
             "name": "Finance figures (ERP)",
             "position": {
               "x": 0,
@@ -360,7 +360,7 @@
           },
           {
             "id": "draft",
-            "typeId": "core.ai.chatCompletion",
+            "typeId": "core.ai.chatCompletion@1.0.0",
             "name": "Draft narrative + variance",
             "position": {
               "x": 320,
@@ -375,7 +375,7 @@
           },
           {
             "id": "review",
-            "typeId": "core.chat.approvalGate",
+            "typeId": "core.chat.approvalGate@1.1.0",
             "name": "Exec review",
             "position": {
               "x": 600,
@@ -391,7 +391,7 @@
           },
           {
             "id": "gate-reject",
-            "typeId": "core.flow.noop",
+            "typeId": "core.flow.noop@1.0.0",
             "name": "Rejected — the board pack is not distributed",
             "position": {
               "x": 960,
@@ -402,7 +402,7 @@
           },
           {
             "id": "deliver",
-            "typeId": "feature.notifications.nodes.notify",
+            "typeId": "feature.notifications.nodes.notify@1.0.0",
             "name": "Distribute pack",
             "position": {
               "x": 880,

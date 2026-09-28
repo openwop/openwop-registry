@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.devops",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "kind": "workflow-chain",
   "description": "Real-work workflow pack (RFC 0013, ADR 0190 Phase 4) — the DevOps cluster: senior-style code review of a diff, changelog/release-notes drafting from a commit log, CI-failure diagnosis from a signature-verified webhook, and a stale-issue gardener over the public GitHub API. All four are ADVISORY — they analyze and notify in-app, never write to your repo or post comments (an authenticated GitHub write path would bind a connection behind an approval gate; deferred until the MCP-reach connection binding has a chain precedent). These chains do not run the Code Reviewer / Git Author AGENTS — those remain chat-drivable via the agents surface; the chains use short chain-local prompts over core.ai.chatCompletion. All tenant values are run parameters (replay-deterministic).",
   "author": "openwop",
@@ -14,7 +14,7 @@
   "chains": [
     {
       "chainId": "devops.pr-review",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "label": "Diff Review (advisory)",
       "description": "Paste a diff (or pipe one from a webhook) and get a senior-style review — correctness, security, and test-coverage findings, each citing file and line, ranked by severity. Advisory only: it notifies you in-app and never posts to your repo.",
       "parameters": {
@@ -45,7 +45,7 @@
         "nodes": [
           {
             "id": "review",
-            "typeId": "core.ai.chatCompletion",
+            "typeId": "core.ai.chatCompletion@1.0.0",
             "name": "Review the diff",
             "position": {
               "x": 0,
@@ -60,7 +60,7 @@
           },
           {
             "id": "notify",
-            "typeId": "feature.notifications.nodes.notify",
+            "typeId": "feature.notifications.nodes.notify@1.0.0",
             "name": "Deliver review",
             "position": {
               "x": 280,
@@ -90,7 +90,7 @@
     },
     {
       "chainId": "devops.release-notes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "label": "Release Notes Drafter",
       "description": "Turn a commit log (git log --oneline or richer) into a changelog entry and human-readable release notes — grouped by added/changed/fixed, with breaking changes called out first. Drafted to a notification; paste it wherever your release lives.",
       "parameters": {
@@ -126,7 +126,7 @@
         "nodes": [
           {
             "id": "draft",
-            "typeId": "core.ai.chatCompletion",
+            "typeId": "core.ai.chatCompletion@1.0.0",
             "name": "Draft notes",
             "position": {
               "x": 0,
@@ -141,7 +141,7 @@
           },
           {
             "id": "notify",
-            "typeId": "feature.notifications.nodes.notify",
+            "typeId": "feature.notifications.nodes.notify@1.0.0",
             "name": "Deliver draft",
             "position": {
               "x": 280,
@@ -171,7 +171,7 @@
     },
     {
       "chainId": "devops.ci-failure-explainer",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "label": "CI Failure Explainer",
       "description": "Bind your CI's webhook via the trigger-subscriptions API (signature-verified host-side — the secret never leaves the host, RFC 0099 §F — before the run ever starts) and every failed run arrives as a diagnosis, not a wall of logs: the failing step, the probable cause, and the first thing to try. CI-specialized analysis — for generic webhook routing use the starter Verified Webhook Router.",
       "parameters": {
@@ -201,7 +201,7 @@
         "nodes": [
           {
             "id": "hook",
-            "typeId": "core.trigger.webhook",
+            "typeId": "core.trigger.webhook@1.0.0",
             "name": "CI webhook",
             "position": {
               "x": 0,
@@ -214,7 +214,7 @@
           },
           {
             "id": "diagnose",
-            "typeId": "core.ai.chatCompletion",
+            "typeId": "core.ai.chatCompletion@1.0.0",
             "name": "Diagnose the failure",
             "position": {
               "x": 520,
@@ -229,7 +229,7 @@
           },
           {
             "id": "notify",
-            "typeId": "feature.notifications.nodes.notify",
+            "typeId": "feature.notifications.nodes.notify@1.0.0",
             "name": "Deliver diagnosis",
             "position": {
               "x": 780,
@@ -263,7 +263,7 @@
     },
     {
       "chainId": "devops.stale-issues",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "label": "Stale-Issue Gardener",
       "description": "Point it at a public GitHub repo and get a gardener's report over the least-recently-updated open issues: which look answered or obsolete (close candidates), which need a nudge, and a suggested comment for each. Advisory only — it never posts; works unauthenticated on public repos (private repos need a GitHub connection — coming later).",
       "parameters": {
@@ -296,7 +296,7 @@
         "nodes": [
           {
             "id": "fetch",
-            "typeId": "core.openwop.http.fetch",
+            "typeId": "core.openwop.http.fetch@1.0.0",
             "name": "Fetch oldest open issues",
             "position": {
               "x": 0,
@@ -309,7 +309,7 @@
           },
           {
             "id": "garden",
-            "typeId": "core.ai.chatCompletion",
+            "typeId": "core.ai.chatCompletion@1.0.0",
             "name": "Gardener report",
             "position": {
               "x": 280,
@@ -324,7 +324,7 @@
           },
           {
             "id": "notify",
-            "typeId": "feature.notifications.nodes.notify",
+            "typeId": "feature.notifications.nodes.notify@1.0.0",
             "name": "Deliver report",
             "position": {
               "x": 560,
