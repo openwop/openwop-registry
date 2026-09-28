@@ -1,6 +1,6 @@
 {
   "registryVersion": "1.0.0",
-  "generatedAt": "2026-09-22T01:10:27.785Z",
+  "generatedAt": "2026-09-28T15:34:35.693Z",
   "packCount": 156,
   "packs": [
     {
@@ -250,7 +250,7 @@
     {
       "name": "core.openwop.agents.git-author",
       "kind": "node",
-      "latestVersion": "1.0.1",
+      "latestVersion": "1.0.2",
       "description": "Git authoring agent — drafts commit messages, PR bodies, release notes, and changelog entries from diffs. Pure-agent pack.",
       "license": "Apache-2.0",
       "tags": [],
@@ -295,7 +295,7 @@
     {
       "name": "core.openwop.agents.policy-reviewer",
       "kind": "node",
-      "latestVersion": "1.0.1",
+      "latestVersion": "1.0.2",
       "description": "Policy reviewer agent. Reads content (docs, emails, ads, code) against a set of policy rules and flags violations with rationale. Pure-agent pack.",
       "license": "Apache-2.0",
       "tags": [],
@@ -358,7 +358,7 @@
     {
       "name": "core.openwop.agents.sdr",
       "kind": "node",
-      "latestVersion": "1.0.1",
+      "latestVersion": "1.0.2",
       "description": "Sales Development Representative agent. Researches prospects, drafts outreach (email/LinkedIn/SMS), schedules follow-ups. Persists prospect history to long-term memory. Pure-agent pack.",
       "license": "Apache-2.0",
       "tags": [],
@@ -373,7 +373,7 @@
     {
       "name": "core.openwop.agents.structured-extractor",
       "kind": "node",
-      "latestVersion": "1.0.1",
+      "latestVersion": "1.0.2",
       "description": "Production-grade structured extraction agent. Caller supplies a JSON Schema; agent extracts conforming output with an auto-fix loop on validation failure. Mirrors LangGraph Trustcall. Pure-agent pack.",
       "license": "Apache-2.0",
       "tags": [],
@@ -420,7 +420,7 @@
     {
       "name": "core.openwop.agents.support-resolver",
       "kind": "node",
-      "latestVersion": "1.0.1",
+      "latestVersion": "1.0.2",
       "description": "Customer support resolver agent. KB-grounded answers with explicit citation, escalation handoff on low confidence. Pure-agent pack.",
       "license": "Apache-2.0",
       "tags": [],
