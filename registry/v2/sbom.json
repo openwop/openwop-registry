@@ -4050,6 +4050,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.agent-orchestration@1.0.3",
+      "type": "library",
+      "name": "vendor.myndhyve.agent-orchestration",
+      "version": "1.0.3",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.agent-orchestration/-/1.0.3.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "e7414c50e809d352dea9b65b15922a8e41880776f61f8839a9eac057175071e9"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/vendor.myndhyve.ai@1.0.1",
       "type": "library",
       "name": "vendor.myndhyve.ai",
