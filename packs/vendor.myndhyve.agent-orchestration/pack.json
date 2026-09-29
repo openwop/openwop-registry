@@ -1,7 +1,7 @@
 {
   "name": "vendor.myndhyve.agent-orchestration",
-  "version": "1.0.2",
-  "description": "MyndHyve agent-orchestration pack. Six nodes that operate on protocol primitives — spawn, delegate-smart, consensus-vote, message-send, skill-invoke, swarm-execute. Routes through the host's agent runtime (ctx.agentRuntime.*). Inherits suspend mechanics for low-confidence escalation.",
+  "version": "1.0.3",
+  "description": "MyndHyve agent-orchestration pack. Twelve nodes: six agent primitives (spawn, delegate-smart, consensus-vote, message-send, skill-invoke, swarm-execute) and six coordination strategies (vote, consensus, compete, map-reduce, delegate, round-robin). Routes through the host's agent runtime (ctx.agentRuntime.*). Inherits suspend mechanics for low-confidence escalation.",
   "author": "MyndHyve",
   "license": "Apache-2.0",
   "homepage": "https://myndhyve.ai/packs/agent-orchestration",
@@ -28,6 +28,7 @@
       "label": "Agent Spawn",
       "description": "Instantiates an agent from an AgentManifest (RFC 0008) or AgentRef (RFC 0007). Returns an agentInstanceId other nodes in the run can reference. Side-effectful (allocates host-side agent state) + cacheable (replays return the original instanceId).",
       "category": "coordination",
+      "x-paletteCategory": "ai",
       "role": "side-effect",
       "capabilities": [
         "cacheable",
@@ -43,6 +44,7 @@
       "label": "Agent Delegate (Smart)",
       "description": "Delegates a task to one of several agents based on a routing decision (typically LLM-based). Inherits RFC 0011 §F conservative-path: when the routing confidence is below `escalationThreshold` (default 0.7 per RFC 0007 §A1), suspends via ctx.suspend({ reason: 'low-confidence' }) for human approval.",
       "category": "coordination",
+      "x-paletteCategory": "ai",
       "role": "side-effect",
       "capabilities": [
         "cacheable",
@@ -58,6 +60,7 @@
       "label": "Agent Consensus Vote",
       "description": "Multi-agent voting on a decision. Fans out the question to N agents in parallel, collects votes, and returns the winning option + per-agent vote breakdown. Tie-breaking strategies: `first` (deterministic by agent index), `unresolved` (returns winningOption: null on tie).",
       "category": "coordination",
+      "x-paletteCategory": "ai",
       "role": "side-effect",
       "capabilities": [
         "cacheable",
@@ -73,6 +76,7 @@
       "label": "Agent Message Send",
       "description": "Sends a message from the calling agent to a target agent. Uses RFC 0007 B2.3 messaging reducer — append-only, idempotent on messageId, replay-deterministic. The target agent reads via its conversation channel on next turn.",
       "category": "coordination",
+      "x-paletteCategory": "ai",
       "role": "side-effect",
       "capabilities": [
         "cacheable",
@@ -88,6 +92,7 @@
       "label": "Agent Skill Invoke",
       "description": "Invokes a specific skill (tool / function) on an agent by skill ID. Returns the skill's result. The skill must be in the agent's toolAllowlist (RFC 0008 AgentManifest); host enforces.",
       "category": "coordination",
+      "x-paletteCategory": "ai",
       "role": "side-effect",
       "capabilities": [
         "cacheable",
@@ -103,6 +108,7 @@
       "label": "Agent Swarm Execute",
       "description": "Fans out a task across a swarm of agents and aggregates results. Strategies: `map` (one task per agent, collect all results), `map-reduce` (map + reduce step), `competitive` (first to complete wins).",
       "category": "coordination",
+      "x-paletteCategory": "ai",
       "role": "side-effect",
       "capabilities": [
         "cacheable",
@@ -118,6 +124,7 @@
       "label": "Coordination Vote",
       "description": "Multi-participant voting with strategy (majority, supermajority, unanimous, plurality, ranked-choice, weighted). Routes through host.coordination.vote(...).",
       "category": "coordination",
+      "x-paletteCategory": "ai",
       "role": "gate",
       "capabilities": [
         "side-effectful"
@@ -132,6 +139,7 @@
       "label": "Coordination Consensus",
       "description": "Multi-agent consensus protocol. Participants iterate proposals until consensus threshold met or max rounds reached. Routes through host.coordination.consensus(...).",
       "category": "coordination",
+      "x-paletteCategory": "ai",
       "role": "gate",
       "capabilities": [
         "side-effectful"
@@ -146,6 +154,7 @@
       "label": "Coordination Compete",
       "description": "Race multiple agents on the same task — first to complete wins. Other in-flight tasks cancelled. Routes through host.coordination.compete(...).",
       "category": "coordination",
+      "x-paletteCategory": "ai",
       "role": "side-effect",
       "capabilities": [
         "side-effectful"
@@ -160,6 +169,7 @@
       "label": "Coordination Map-Reduce",
       "description": "Distributes work across N participants (map), then aggregates results via a reducer. Routes through host.coordination.mapReduce(...).",
       "category": "coordination",
+      "x-paletteCategory": "ai",
       "role": "side-effect",
       "capabilities": [
         "side-effectful"
@@ -174,6 +184,7 @@
       "label": "Coordination Delegate",
       "description": "Selects the best participant for a task based on skill match + load. Routes through host.coordination.delegate(...).",
       "category": "coordination",
+      "x-paletteCategory": "ai",
       "role": "side-effect",
       "capabilities": [
         "side-effectful"
@@ -188,6 +199,7 @@
       "label": "Coordination Round-Robin",
       "description": "Rotates work assignment across participants. Stateful — tracks position in `_roundRobinCursor:<nodeId>` workflow variable. Routes through host.coordination.roundRobin(...).",
       "category": "coordination",
+      "x-paletteCategory": "ai",
       "role": "side-effect",
       "capabilities": [
         "side-effectful"
