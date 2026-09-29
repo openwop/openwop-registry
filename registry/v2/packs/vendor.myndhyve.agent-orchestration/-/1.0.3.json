@@ -215,5 +215,10 @@
     "entry": "./index.mjs",
     "minRuntimeVersion": "node>=20"
   },
-  "kind": "node"
+  "kind": "node",
+  "signing": {
+    "keyId": "myndhyve-internal-1",
+    "scheme": "ed25519-canonical-json"
+  },
+  "integrity": "sha256-QwAQ0C8StPho6vSTSzi5/9M9zAbmiuOWWoswrz7Exg8="
 }
