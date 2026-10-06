@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.finance",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "kind": "workflow-chain",
   "description": "Real-work workflow pack (RFC 0013, ADR 0149) — the Finance cluster: Invoice → AP Processing, Month-End Close Checklist, and Expense/Budget Approval + anomaly detection. Reasons with core.ai.chatCompletion; recommends ERP actions (validation + posting) provider-agnostically via core.openwop.connectors.erp-action (NetSuite when connected); every posting/reimbursement runs through a threshold core.chat.approvalGate. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts shipping the http + ai + chat + kb + integration packs. Published under core.openwop.workflows.* (openwop-team key).",
   "author": "openwop",
@@ -189,7 +189,7 @@
     },
     {
       "chainId": "finance.month-end-close",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "label": "Month-End Close Checklist",
       "description": "Orchestrate the close: build the task checklist, collect supporting docs from the knowledge base, draft variance notes, chase missing approvals, then produce a close-readiness report.",
       "parameters": {
@@ -317,8 +317,8 @@
             "to": "variance.docs"
           },
           {
-            "from": "variance",
-            "to": "chase"
+            "from": "variance.content",
+            "to": "chase.artifact"
           },
           {
             "from": "chase.decision",
