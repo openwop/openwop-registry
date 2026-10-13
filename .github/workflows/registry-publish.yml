@@ -15,6 +15,11 @@ on:
   # without forcing a registry-tree commit.
   workflow_dispatch:
 
+# Least privilege. The validate job only reads the tree (checkout + a `git fetch`
+# of the base ref); the deploy job widens its own token below.
+permissions:
+  contents: read
+
 jobs:
   validate:
     name: Validate registry content
