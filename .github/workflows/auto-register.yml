@@ -78,6 +78,8 @@ jobs:
           github.event_name == 'pull_request' &&
           steps.reg.outputs.published != '0' &&
           steps.reg.outputs.published != ''
+        env:
+          HEAD_REF: ${{ github.head_ref }}
         run: |
           set -euo pipefail
           node registry/scripts/generate-sbom.mjs --tree v1
@@ -87,7 +89,7 @@ jobs:
           git config user.email "actions@github.com"
           git add registry/ packs/
           git commit -m "publish(auto): register ${{ steps.reg.outputs.published }} first-party pack(s)"
-          git push origin "HEAD:${{ github.head_ref }}"
+          git push origin "HEAD:${HEAD_REF}"
           echo "::notice::Auto-registered ${{ steps.reg.outputs.published }} pack(s) into this PR."
 
   registry-v2-sign:
@@ -138,6 +140,8 @@ jobs:
           github.event_name == 'pull_request' &&
           steps.reg2.outputs.published != '0' &&
           steps.reg2.outputs.published != ''
+        env:
+          HEAD_REF: ${{ github.head_ref }}
         run: |
           set -euo pipefail
           bash scripts/registry-check.sh          # both legs — the v2 leg runs now that registry/v2 exists
@@ -145,5 +149,5 @@ jobs:
           git config user.email "actions@github.com"
           git add registry/ packs/
           git commit -m "publish(auto): register ${{ steps.reg2.outputs.published }} first-party pack(s) into registry/v2 (RFC 0177 §A.2)"
-          git push origin "HEAD:${{ github.head_ref }}"
+          git push origin "HEAD:${HEAD_REF}"
           echo "::notice::Auto-registered ${{ steps.reg2.outputs.published }} pack(s) into registry/v2 in this PR."
