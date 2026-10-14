@@ -1800,6 +1800,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.commerce@1.3.0",
+      "type": "library",
+      "name": "core.openwop.workflows.commerce",
+      "version": "1.3.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.commerce/-/1.3.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "58d8f8c70bda9e95c77c400f200eadda68b0410ecc96f6e74df041c9e36b423e"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.workflows.content@1.0.4",
       "type": "library",
       "name": "core.openwop.workflows.content",
