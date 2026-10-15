@@ -462,7 +462,11 @@ function emitLandingPage(packDocs) {
         : kindHint === 'card'
         ? `<td class="count" title="cards in latest manifest">${p.cardCount ?? 0}</td>`
         : `<td class="count" title="provider in latest manifest">${p.providerCount ?? 0}</td>`;
-    return `        <tr>
+    // A per-pack anchor (openwop.dev/packs/<name> redirects here). A mixed pack
+    // is listed under Nodes AND Agents; only its Nodes row carries the id, so ids
+    // stay unique.
+    const anchor = kindHint === 'agent' && (p.nodeCount ?? 0) > 0 ? '' : ` id="pack-${htmlEscape(p.name)}"`;
+    return `        <tr${anchor}>
           <td class="name"><code>${htmlEscape(p.name)}</code> ${flags.join(' ')}</td>
           <td class="version">${htmlEscape(p.latest)}</td>
           ${countCell}
@@ -736,6 +740,12 @@ ${rows}
   #tab-prompts:checked ~ .tab-panel-prompts,
   #tab-cards:checked ~ .tab-panel-cards,
   #tab-form-content:checked ~ .tab-panel-form-content { display: block; }
+  /* A #pack-<name> link opens the tab holding that pack and marks its row
+     (zero JS: :has + :target; !important beats the per-tab :checked rules). */
+  .tabs:has(tr:target) .tab-panel { display: none !important; }
+  .tabs .tab-panel:has(tr:target) { display: block !important; }
+  tr:target td { background: var(--clay-soft); }
+  tr[id] { scroll-margin-top: 96px; }
   .tab-desc { margin: 0 0 20px; max-width: 78ch; color: var(--ink-2); font-size: 15px; }
   .table-box { overflow-x: auto; border: 1px solid var(--rule); border-radius: 14px; }
   table { width: 100%; min-width: 760px; border-collapse: collapse; font-size: 14px; }

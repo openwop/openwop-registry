@@ -182,6 +182,12 @@
   #tab-prompts:checked ~ .tab-panel-prompts,
   #tab-cards:checked ~ .tab-panel-cards,
   #tab-form-content:checked ~ .tab-panel-form-content { display: block; }
+  /* A #pack-<name> link opens the tab holding that pack and marks its row
+     (zero JS: :has + :target; !important beats the per-tab :checked rules). */
+  .tabs:has(tr:target) .tab-panel { display: none !important; }
+  .tabs .tab-panel:has(tr:target) { display: block !important; }
+  tr:target td { background: var(--clay-soft); }
+  tr[id] { scroll-margin-top: 96px; }
   .tab-desc { margin: 0 0 20px; max-width: 78ch; color: var(--ink-2); font-size: 15px; }
   .table-box { overflow-x: auto; border: 1px solid var(--rule); border-radius: 14px; }
   table { width: 100%; min-width: 760px; border-collapse: collapse; font-size: 14px; }
@@ -368,7 +374,7 @@
         <tr><th>Name</th><th>Version</th><th class="count-h">Nodes</th><th>Description</th><th>License</th><th>Artifacts</th></tr>
       </thead>
       <tbody>
-        <tr>
+        <tr id="pack-community.openwop-team.demo">
           <td class="name"><code>community.openwop-team.demo</code> <span class="flag flag-mixed">+ agent</span></td>
           <td class="version">0.1.2</td>
           <td class="count" title="nodes in latest manifest">1</td>
@@ -380,7 +386,7 @@
             · <a href="/v2/packs/community.openwop-team.demo/-/0.1.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.a2a">
           <td class="name"><code>core.openwop.a2a</code> </td>
           <td class="version">1.1.1</td>
           <td class="count" title="nodes in latest manifest">17</td>
@@ -392,7 +398,7 @@
             · <a href="/v2/packs/core.openwop.a2a/-/1.1.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.agents">
           <td class="name"><code>core.openwop.agents</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">12</td>
@@ -404,7 +410,7 @@
             · <a href="/v2/packs/core.openwop.agents/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.ai">
           <td class="name"><code>core.openwop.ai</code> </td>
           <td class="version">1.4.1</td>
           <td class="count" title="nodes in latest manifest">15</td>
@@ -416,7 +422,7 @@
             · <a href="/v2/packs/core.openwop.ai/-/1.4.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.crypto">
           <td class="name"><code>core.openwop.crypto</code> </td>
           <td class="version">1.0.5</td>
           <td class="count" title="nodes in latest manifest">13</td>
@@ -428,7 +434,7 @@
             · <a href="/v2/packs/core.openwop.crypto/-/1.0.5.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.data">
           <td class="name"><code>core.openwop.data</code> </td>
           <td class="version">1.2.2</td>
           <td class="count" title="nodes in latest manifest">38</td>
@@ -440,7 +446,7 @@
             · <a href="/v2/packs/core.openwop.data/-/1.2.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.db">
           <td class="name"><code>core.openwop.db</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="nodes in latest manifest">12</td>
@@ -452,7 +458,7 @@
             · <a href="/v2/packs/core.openwop.db/-/1.0.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.examples">
           <td class="name"><code>core.openwop.examples</code> </td>
           <td class="version">1.0.3</td>
           <td class="count" title="nodes in latest manifest">3</td>
@@ -464,7 +470,7 @@
             · <a href="/v2/packs/core.openwop.examples/-/1.0.3.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.files">
           <td class="name"><code>core.openwop.files</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="nodes in latest manifest">19</td>
@@ -476,7 +482,7 @@
             · <a href="/v2/packs/core.openwop.files/-/1.0.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.flow">
           <td class="name"><code>core.openwop.flow</code> </td>
           <td class="version">1.1.3</td>
           <td class="count" title="nodes in latest manifest">29</td>
@@ -488,7 +494,7 @@
             · <a href="/v2/packs/core.openwop.flow/-/1.1.3.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.hitl">
           <td class="name"><code>core.openwop.hitl</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="nodes in latest manifest">3</td>
@@ -500,7 +506,7 @@
             · <a href="/v2/packs/core.openwop.hitl/-/1.0.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.http">
           <td class="name"><code>core.openwop.http</code> </td>
           <td class="version">2.1.1</td>
           <td class="count" title="nodes in latest manifest">23</td>
@@ -512,7 +518,7 @@
             · <a href="/v2/packs/core.openwop.http/-/2.1.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.integration">
           <td class="name"><code>core.openwop.integration</code> </td>
           <td class="version">1.2.1</td>
           <td class="count" title="nodes in latest manifest">7</td>
@@ -524,7 +530,7 @@
             · <a href="/v2/packs/core.openwop.integration/-/1.2.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.mcp">
           <td class="name"><code>core.openwop.mcp</code> </td>
           <td class="version">1.1.3</td>
           <td class="count" title="nodes in latest manifest">21</td>
@@ -536,7 +542,7 @@
             · <a href="/v2/packs/core.openwop.mcp/-/1.1.3.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.messaging">
           <td class="name"><code>core.openwop.messaging</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="nodes in latest manifest">7</td>
@@ -548,7 +554,7 @@
             · <a href="/v2/packs/core.openwop.messaging/-/1.0.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.obs">
           <td class="name"><code>core.openwop.obs</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="nodes in latest manifest">7</td>
@@ -560,7 +566,7 @@
             · <a href="/v2/packs/core.openwop.obs/-/1.0.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.rag">
           <td class="name"><code>core.openwop.rag</code> </td>
           <td class="version">1.0.3</td>
           <td class="count" title="nodes in latest manifest">13</td>
@@ -572,7 +578,7 @@
             · <a href="/v2/packs/core.openwop.rag/-/1.0.3.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.skills-bridge">
           <td class="name"><code>core.openwop.skills-bridge</code> <span class="flag flag-mixed">+ agent</span></td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">1</td>
@@ -584,7 +590,7 @@
             · <a href="/v2/packs/core.openwop.skills-bridge/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.storage">
           <td class="name"><code>core.openwop.storage</code> </td>
           <td class="version">1.1.1</td>
           <td class="count" title="nodes in latest manifest">20</td>
@@ -596,7 +602,7 @@
             · <a href="/v2/packs/core.openwop.storage/-/1.1.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.triggers">
           <td class="name"><code>core.openwop.triggers</code> </td>
           <td class="version">1.1.2</td>
           <td class="count" title="nodes in latest manifest">16</td>
@@ -608,7 +614,7 @@
             · <a href="/v2/packs/core.openwop.triggers/-/1.1.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.web-search">
           <td class="name"><code>core.openwop.web-search</code> </td>
           <td class="version">1.1.1</td>
           <td class="count" title="nodes in latest manifest">1</td>
@@ -620,7 +626,7 @@
             · <a href="/v2/packs/core.openwop.web-search/-/1.1.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.ads-copy-generate">
           <td class="name"><code>vendor.myndhyve.ads-copy-generate</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">1</td>
@@ -632,7 +638,7 @@
             · <a href="/v2/packs/vendor.myndhyve.ads-copy-generate/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.ads-creative-validate">
           <td class="name"><code>vendor.myndhyve.ads-creative-validate</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">1</td>
@@ -644,7 +650,7 @@
             · <a href="/v2/packs/vendor.myndhyve.ads-creative-validate/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.ads-export">
           <td class="name"><code>vendor.myndhyve.ads-export</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">1</td>
@@ -656,7 +662,7 @@
             · <a href="/v2/packs/vendor.myndhyve.ads-export/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.ads-image-generate">
           <td class="name"><code>vendor.myndhyve.ads-image-generate</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">1</td>
@@ -668,7 +674,7 @@
             · <a href="/v2/packs/vendor.myndhyve.ads-image-generate/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.ads-metrics-import">
           <td class="name"><code>vendor.myndhyve.ads-metrics-import</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">1</td>
@@ -680,7 +686,7 @@
             · <a href="/v2/packs/vendor.myndhyve.ads-metrics-import/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.ads-platforms">
           <td class="name"><code>vendor.myndhyve.ads-platforms</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">1</td>
@@ -692,7 +698,7 @@
             · <a href="/v2/packs/vendor.myndhyve.ads-platforms/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.ads-policy">
           <td class="name"><code>vendor.myndhyve.ads-policy</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">1</td>
@@ -704,7 +710,7 @@
             · <a href="/v2/packs/vendor.myndhyve.ads-policy/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.ads-publish-google">
           <td class="name"><code>vendor.myndhyve.ads-publish-google</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">1</td>
@@ -716,7 +722,7 @@
             · <a href="/v2/packs/vendor.myndhyve.ads-publish-google/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.ads-publish-meta">
           <td class="name"><code>vendor.myndhyve.ads-publish-meta</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">1</td>
@@ -728,7 +734,7 @@
             · <a href="/v2/packs/vendor.myndhyve.ads-publish-meta/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.ads-publish-tiktok">
           <td class="name"><code>vendor.myndhyve.ads-publish-tiktok</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">1</td>
@@ -740,7 +746,7 @@
             · <a href="/v2/packs/vendor.myndhyve.ads-publish-tiktok/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.ads-studio-core">
           <td class="name"><code>vendor.myndhyve.ads-studio-core</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="nodes in latest manifest">4</td>
@@ -752,7 +758,7 @@
             · <a href="/v2/packs/vendor.myndhyve.ads-studio-core/-/1.0.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.ads-tools">
           <td class="name"><code>vendor.myndhyve.ads-tools</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">2</td>
@@ -764,7 +770,7 @@
             · <a href="/v2/packs/vendor.myndhyve.ads-tools/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.ads-video-generate">
           <td class="name"><code>vendor.myndhyve.ads-video-generate</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">1</td>
@@ -776,7 +782,7 @@
             · <a href="/v2/packs/vendor.myndhyve.ads-video-generate/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.agent-orchestration">
           <td class="name"><code>vendor.myndhyve.agent-orchestration</code> </td>
           <td class="version">1.0.3</td>
           <td class="count" title="nodes in latest manifest">12</td>
@@ -788,7 +794,7 @@
             · <a href="/v2/packs/vendor.myndhyve.agent-orchestration/-/1.0.3.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.ai">
           <td class="name"><code>vendor.myndhyve.ai</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">3</td>
@@ -800,7 +806,7 @@
             · <a href="/v2/packs/vendor.myndhyve.ai/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.brand">
           <td class="name"><code>vendor.myndhyve.brand</code> </td>
           <td class="version">1.1.2</td>
           <td class="count" title="nodes in latest manifest">14</td>
@@ -812,7 +818,7 @@
             · <a href="/v2/packs/vendor.myndhyve.brand/-/1.1.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.campaign-sequence">
           <td class="name"><code>vendor.myndhyve.campaign-sequence</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="nodes in latest manifest">3</td>
@@ -824,7 +830,7 @@
             · <a href="/v2/packs/vendor.myndhyve.campaign-sequence/-/1.0.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.campaign-sequence-integration">
           <td class="name"><code>vendor.myndhyve.campaign-sequence-integration</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">3</td>
@@ -836,7 +842,7 @@
             · <a href="/v2/packs/vendor.myndhyve.campaign-sequence-integration/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.canvas">
           <td class="name"><code>vendor.myndhyve.canvas</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">4</td>
@@ -848,7 +854,7 @@
             · <a href="/v2/packs/vendor.myndhyve.canvas/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.chat">
           <td class="name"><code>vendor.myndhyve.chat</code> </td>
           <td class="version">1.3.1</td>
           <td class="count" title="nodes in latest manifest">6</td>
@@ -860,7 +866,7 @@
             · <a href="/v2/packs/vendor.myndhyve.chat/-/1.3.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.data-integration">
           <td class="name"><code>vendor.myndhyve.data-integration</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">8</td>
@@ -872,7 +878,7 @@
             · <a href="/v2/packs/vendor.myndhyve.data-integration/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.entities">
           <td class="name"><code>vendor.myndhyve.entities</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">5</td>
@@ -884,7 +890,7 @@
             · <a href="/v2/packs/vendor.myndhyve.entities/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.kanban">
           <td class="name"><code>vendor.myndhyve.kanban</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">7</td>
@@ -896,7 +902,7 @@
             · <a href="/v2/packs/vendor.myndhyve.kanban/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.knowledge-tools">
           <td class="name"><code>vendor.myndhyve.knowledge-tools</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">2</td>
@@ -908,7 +914,7 @@
             · <a href="/v2/packs/vendor.myndhyve.knowledge-tools/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.landing-page">
           <td class="name"><code>vendor.myndhyve.landing-page</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">7</td>
@@ -920,7 +926,7 @@
             · <a href="/v2/packs/vendor.myndhyve.landing-page/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.launch-studio">
           <td class="name"><code>vendor.myndhyve.launch-studio</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">2</td>
@@ -932,7 +938,7 @@
             · <a href="/v2/packs/vendor.myndhyve.launch-studio/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.market-intel-ad-angles">
           <td class="name"><code>vendor.myndhyve.market-intel-ad-angles</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">1</td>
@@ -944,7 +950,7 @@
             · <a href="/v2/packs/vendor.myndhyve.market-intel-ad-angles/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.market-intel-audience-targeting">
           <td class="name"><code>vendor.myndhyve.market-intel-audience-targeting</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">1</td>
@@ -956,7 +962,7 @@
             · <a href="/v2/packs/vendor.myndhyve.market-intel-audience-targeting/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.market-intel-community-rank">
           <td class="name"><code>vendor.myndhyve.market-intel-community-rank</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">1</td>
@@ -968,7 +974,7 @@
             · <a href="/v2/packs/vendor.myndhyve.market-intel-community-rank/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.market-intel-content-extraction">
           <td class="name"><code>vendor.myndhyve.market-intel-content-extraction</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">1</td>
@@ -980,7 +986,7 @@
             · <a href="/v2/packs/vendor.myndhyve.market-intel-content-extraction/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.market-intel-discovery">
           <td class="name"><code>vendor.myndhyve.market-intel-discovery</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">1</td>
@@ -992,7 +998,7 @@
             · <a href="/v2/packs/vendor.myndhyve.market-intel-discovery/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.market-intel-opportunity-scoring">
           <td class="name"><code>vendor.myndhyve.market-intel-opportunity-scoring</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">1</td>
@@ -1004,7 +1010,7 @@
             · <a href="/v2/packs/vendor.myndhyve.market-intel-opportunity-scoring/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.market-intel-query-builder">
           <td class="name"><code>vendor.myndhyve.market-intel-query-builder</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">1</td>
@@ -1016,7 +1022,7 @@
             · <a href="/v2/packs/vendor.myndhyve.market-intel-query-builder/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.market-intel-thread-triage">
           <td class="name"><code>vendor.myndhyve.market-intel-thread-triage</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">1</td>
@@ -1028,7 +1034,7 @@
             · <a href="/v2/packs/vendor.myndhyve.market-intel-thread-triage/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.market-intel-voc">
           <td class="name"><code>vendor.myndhyve.market-intel-voc</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">1</td>
@@ -1040,7 +1046,7 @@
             · <a href="/v2/packs/vendor.myndhyve.market-intel-voc/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.web-research">
           <td class="name"><code>vendor.myndhyve.web-research</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">4</td>
@@ -1052,7 +1058,7 @@
             · <a href="/v2/packs/vendor.myndhyve.web-research/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.wop-refinement">
           <td class="name"><code>vendor.myndhyve.wop-refinement</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">1</td>
@@ -1096,7 +1102,7 @@
             · <a href="/v2/packs/community.openwop-team.demo/-/0.1.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.agent-examples">
           <td class="name"><code>core.openwop.agent-examples</code> </td>
           <td class="version">1.1.2</td>
           <td class="count" title="agents in latest manifest">5</td>
@@ -1108,7 +1114,7 @@
             · <a href="/v2/packs/core.openwop.agent-examples/-/1.1.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.agents.api-designer">
           <td class="name"><code>core.openwop.agents.api-designer</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="agents in latest manifest">1</td>
@@ -1120,7 +1126,7 @@
             · <a href="/v2/packs/core.openwop.agents.api-designer/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.agents.audit-summarizer">
           <td class="name"><code>core.openwop.agents.audit-summarizer</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="agents in latest manifest">1</td>
@@ -1132,7 +1138,7 @@
             · <a href="/v2/packs/core.openwop.agents.audit-summarizer/-/1.0.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.agents.classifier">
           <td class="name"><code>core.openwop.agents.classifier</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="agents in latest manifest">1</td>
@@ -1144,7 +1150,7 @@
             · <a href="/v2/packs/core.openwop.agents.classifier/-/1.0.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.agents.code-reviewer">
           <td class="name"><code>core.openwop.agents.code-reviewer</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="agents in latest manifest">1</td>
@@ -1156,7 +1162,7 @@
             · <a href="/v2/packs/core.openwop.agents.code-reviewer/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.agents.deep-research">
           <td class="name"><code>core.openwop.agents.deep-research</code> </td>
           <td class="version">1.0.5</td>
           <td class="count" title="agents in latest manifest">1</td>
@@ -1168,7 +1174,7 @@
             · <a href="/v2/packs/core.openwop.agents.deep-research/-/1.0.5.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.agents.devops-crew">
           <td class="name"><code>core.openwop.agents.devops-crew</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="agents in latest manifest">3</td>
@@ -1180,7 +1186,7 @@
             · <a href="/v2/packs/core.openwop.agents.devops-crew/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.agents.doc-writer">
           <td class="name"><code>core.openwop.agents.doc-writer</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="agents in latest manifest">1</td>
@@ -1192,7 +1198,7 @@
             · <a href="/v2/packs/core.openwop.agents.doc-writer/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.agents.document-author">
           <td class="name"><code>core.openwop.agents.document-author</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="agents in latest manifest">1</td>
@@ -1204,7 +1210,7 @@
             · <a href="/v2/packs/core.openwop.agents.document-author/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.agents.expense-categorizer">
           <td class="name"><code>core.openwop.agents.expense-categorizer</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="agents in latest manifest">1</td>
@@ -1216,7 +1222,7 @@
             · <a href="/v2/packs/core.openwop.agents.expense-categorizer/-/1.0.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.agents.frontend-designer">
           <td class="name"><code>core.openwop.agents.frontend-designer</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="agents in latest manifest">1</td>
@@ -1228,7 +1234,7 @@
             · <a href="/v2/packs/core.openwop.agents.frontend-designer/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.agents.git-author">
           <td class="name"><code>core.openwop.agents.git-author</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="agents in latest manifest">1</td>
@@ -1240,7 +1246,7 @@
             · <a href="/v2/packs/core.openwop.agents.git-author/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.agents.invoice-extractor">
           <td class="name"><code>core.openwop.agents.invoice-extractor</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="agents in latest manifest">1</td>
@@ -1252,7 +1258,7 @@
             · <a href="/v2/packs/core.openwop.agents.invoice-extractor/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.agents.long-doc-summarizer">
           <td class="name"><code>core.openwop.agents.long-doc-summarizer</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="agents in latest manifest">1</td>
@@ -1264,7 +1270,7 @@
             · <a href="/v2/packs/core.openwop.agents.long-doc-summarizer/-/1.0.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.agents.policy-reviewer">
           <td class="name"><code>core.openwop.agents.policy-reviewer</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="agents in latest manifest">1</td>
@@ -1276,7 +1282,7 @@
             · <a href="/v2/packs/core.openwop.agents.policy-reviewer/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.agents.react">
           <td class="name"><code>core.openwop.agents.react</code> </td>
           <td class="version">1.0.4</td>
           <td class="count" title="agents in latest manifest">1</td>
@@ -1288,7 +1294,7 @@
             · <a href="/v2/packs/core.openwop.agents.react/-/1.0.4.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.agents.research-crew">
           <td class="name"><code>core.openwop.agents.research-crew</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="agents in latest manifest">4</td>
@@ -1300,7 +1306,7 @@
             · <a href="/v2/packs/core.openwop.agents.research-crew/-/1.0.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.agents.sales-coach">
           <td class="name"><code>core.openwop.agents.sales-coach</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="agents in latest manifest">1</td>
@@ -1312,7 +1318,7 @@
             · <a href="/v2/packs/core.openwop.agents.sales-coach/-/1.0.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.agents.sdr">
           <td class="name"><code>core.openwop.agents.sdr</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="agents in latest manifest">1</td>
@@ -1324,7 +1330,7 @@
             · <a href="/v2/packs/core.openwop.agents.sdr/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.agents.structured-extractor">
           <td class="name"><code>core.openwop.agents.structured-extractor</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="agents in latest manifest">1</td>
@@ -1336,7 +1342,7 @@
             · <a href="/v2/packs/core.openwop.agents.structured-extractor/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.agents.supervisor">
           <td class="name"><code>core.openwop.agents.supervisor</code> </td>
           <td class="version">1.0.4</td>
           <td class="count" title="agents in latest manifest">1</td>
@@ -1348,7 +1354,7 @@
             · <a href="/v2/packs/core.openwop.agents.supervisor/-/1.0.4.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.agents.support-crew">
           <td class="name"><code>core.openwop.agents.support-crew</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="agents in latest manifest">3</td>
@@ -1360,7 +1366,7 @@
             · <a href="/v2/packs/core.openwop.agents.support-crew/-/1.0.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.agents.support-resolver">
           <td class="name"><code>core.openwop.agents.support-resolver</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="agents in latest manifest">1</td>
@@ -1372,7 +1378,7 @@
             · <a href="/v2/packs/core.openwop.agents.support-resolver/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.agents.support-triage">
           <td class="name"><code>core.openwop.agents.support-triage</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="agents in latest manifest">1</td>
@@ -1384,7 +1390,7 @@
             · <a href="/v2/packs/core.openwop.agents.support-triage/-/1.0.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.agents.test-author">
           <td class="name"><code>core.openwop.agents.test-author</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="agents in latest manifest">1</td>
@@ -1408,7 +1414,7 @@
             · <a href="/v2/packs/core.openwop.skills-bridge/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.ads-crew">
           <td class="name"><code>vendor.myndhyve.ads-crew</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="agents in latest manifest">1</td>
@@ -1420,7 +1426,7 @@
             · <a href="/v2/packs/vendor.myndhyve.ads-crew/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.myndhyve.market-intel-crew">
           <td class="name"><code>vendor.myndhyve.market-intel-crew</code> </td>
           <td class="version">1.0.3</td>
           <td class="count" title="agents in latest manifest">1</td>
@@ -1451,7 +1457,7 @@
         <tr><th>Name</th><th>Version</th><th class="count-h">Types</th><th>Description</th><th>License</th><th>Artifacts</th></tr>
       </thead>
       <tbody>
-        <tr>
+        <tr id="pack-core.openwop.artifact-types">
           <td class="name"><code>core.openwop.artifact-types</code> </td>
           <td class="version">2.0.1</td>
           <td class="count" title="artifact types in latest manifest">2</td>
@@ -1484,7 +1490,7 @@
       </thead>
       <tbody>
         <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Atlassian</th></tr>
-        <tr>
+        <tr id="pack-core.openwop.connections.jira">
           <td class="name"><code>core.openwop.connections.jira</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="provider in latest manifest">1</td>
@@ -1497,7 +1503,7 @@
           </td>
         </tr>
         <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">GitHub</th></tr>
-        <tr>
+        <tr id="pack-core.openwop.connections.github">
           <td class="name"><code>core.openwop.connections.github</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="provider in latest manifest">1</td>
@@ -1510,7 +1516,7 @@
           </td>
         </tr>
         <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Google-ads</th></tr>
-        <tr>
+        <tr id="pack-core.openwop.connections.google-ads">
           <td class="name"><code>core.openwop.connections.google-ads</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="provider in latest manifest">1</td>
@@ -1523,7 +1529,7 @@
           </td>
         </tr>
         <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Google-workspace</th></tr>
-        <tr>
+        <tr id="pack-core.openwop.connections.google-workspace">
           <td class="name"><code>core.openwop.connections.google-workspace</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="provider in latest manifest">1</td>
@@ -1536,7 +1542,7 @@
           </td>
         </tr>
         <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Linkedin-ads</th></tr>
-        <tr>
+        <tr id="pack-core.openwop.connections.linkedin-ads">
           <td class="name"><code>core.openwop.connections.linkedin-ads</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="provider in latest manifest">1</td>
@@ -1549,7 +1555,7 @@
           </td>
         </tr>
         <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Meta-ads</th></tr>
-        <tr>
+        <tr id="pack-core.openwop.connections.meta-ads">
           <td class="name"><code>core.openwop.connections.meta-ads</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="provider in latest manifest">1</td>
@@ -1562,7 +1568,7 @@
           </td>
         </tr>
         <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Microsoft 365</th></tr>
-        <tr>
+        <tr id="pack-core.openwop.connections.microsoft365">
           <td class="name"><code>core.openwop.connections.microsoft365</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="provider in latest manifest">1</td>
@@ -1575,7 +1581,7 @@
           </td>
         </tr>
         <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Netsuite</th></tr>
-        <tr>
+        <tr id="pack-core.openwop.connections.netsuite">
           <td class="name"><code>core.openwop.connections.netsuite</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="provider in latest manifest">1</td>
@@ -1588,7 +1594,7 @@
           </td>
         </tr>
         <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Notion</th></tr>
-        <tr>
+        <tr id="pack-core.openwop.connections.notion">
           <td class="name"><code>core.openwop.connections.notion</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="provider in latest manifest">1</td>
@@ -1601,7 +1607,7 @@
           </td>
         </tr>
         <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Salesforce</th></tr>
-        <tr>
+        <tr id="pack-core.openwop.connections.salesforce">
           <td class="name"><code>core.openwop.connections.salesforce</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="provider in latest manifest">1</td>
@@ -1614,7 +1620,7 @@
           </td>
         </tr>
         <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Tiktok-ads</th></tr>
-        <tr>
+        <tr id="pack-core.openwop.connections.tiktok-ads">
           <td class="name"><code>core.openwop.connections.tiktok-ads</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="provider in latest manifest">1</td>
@@ -1627,7 +1633,7 @@
           </td>
         </tr>
         <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Workday</th></tr>
-        <tr>
+        <tr id="pack-core.openwop.connections.workday">
           <td class="name"><code>core.openwop.connections.workday</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="provider in latest manifest">1</td>
@@ -1657,7 +1663,7 @@
         <tr><th>Name</th><th>Version</th><th class="count-h">Chains</th><th>Description</th><th>License</th><th>Artifacts</th></tr>
       </thead>
       <tbody>
-        <tr>
+        <tr id="pack-core.openwop.workflows.approvals">
           <td class="name"><code>core.openwop.workflows.approvals</code> </td>
           <td class="version">1.0.6</td>
           <td class="count" title="chains in latest manifest">2</td>
@@ -1669,7 +1675,7 @@
             · <a href="/v2/packs/core.openwop.workflows.approvals/-/1.0.6.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.campaign-brief">
           <td class="name"><code>core.openwop.workflows.campaign-brief</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="chains in latest manifest">2</td>
@@ -1681,7 +1687,7 @@
             · <a href="/v2/packs/core.openwop.workflows.campaign-brief/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.campaign-channels">
           <td class="name"><code>core.openwop.workflows.campaign-channels</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="chains in latest manifest">5</td>
@@ -1693,7 +1699,7 @@
             · <a href="/v2/packs/core.openwop.workflows.campaign-channels/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.campaign-journeys">
           <td class="name"><code>core.openwop.workflows.campaign-journeys</code> </td>
           <td class="version">1.1.4</td>
           <td class="count" title="chains in latest manifest">3</td>
@@ -1705,7 +1711,7 @@
             · <a href="/v2/packs/core.openwop.workflows.campaign-journeys/-/1.1.4.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.campaign-orchestration">
           <td class="name"><code>core.openwop.workflows.campaign-orchestration</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="chains in latest manifest">1</td>
@@ -1717,7 +1723,7 @@
             · <a href="/v2/packs/core.openwop.workflows.campaign-orchestration/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.campaign-sync">
           <td class="name"><code>core.openwop.workflows.campaign-sync</code> </td>
           <td class="version">1.1.2</td>
           <td class="count" title="chains in latest manifest">2</td>
@@ -1729,7 +1735,7 @@
             · <a href="/v2/packs/core.openwop.workflows.campaign-sync/-/1.1.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.commerce">
           <td class="name"><code>core.openwop.workflows.commerce</code> </td>
           <td class="version">1.3.0</td>
           <td class="count" title="chains in latest manifest">3</td>
@@ -1741,7 +1747,7 @@
             · <a href="/v2/packs/core.openwop.workflows.commerce/-/1.3.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.content">
           <td class="name"><code>core.openwop.workflows.content</code> </td>
           <td class="version">1.0.5</td>
           <td class="count" title="chains in latest manifest">2</td>
@@ -1753,7 +1759,7 @@
             · <a href="/v2/packs/core.openwop.workflows.content/-/1.0.5.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.creative-briefs-reel">
           <td class="name"><code>core.openwop.workflows.creative-briefs-reel</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="chains in latest manifest">1</td>
@@ -1765,7 +1771,7 @@
             · <a href="/v2/packs/core.openwop.workflows.creative-briefs-reel/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.crm-ops">
           <td class="name"><code>core.openwop.workflows.crm-ops</code> </td>
           <td class="version">1.3.2</td>
           <td class="count" title="chains in latest manifest">3</td>
@@ -1777,7 +1783,7 @@
             · <a href="/v2/packs/core.openwop.workflows.crm-ops/-/1.3.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.csm-ops">
           <td class="name"><code>core.openwop.workflows.csm-ops</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="chains in latest manifest">2</td>
@@ -1789,7 +1795,7 @@
             · <a href="/v2/packs/core.openwop.workflows.csm-ops/-/1.0.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.customer-onboarding">
           <td class="name"><code>core.openwop.workflows.customer-onboarding</code> </td>
           <td class="version">1.0.5</td>
           <td class="count" title="chains in latest manifest">3</td>
@@ -1801,7 +1807,7 @@
             · <a href="/v2/packs/core.openwop.workflows.customer-onboarding/-/1.0.5.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.data-ops">
           <td class="name"><code>core.openwop.workflows.data-ops</code> </td>
           <td class="version">1.1.6</td>
           <td class="count" title="chains in latest manifest">4</td>
@@ -1813,7 +1819,7 @@
             · <a href="/v2/packs/core.openwop.workflows.data-ops/-/1.1.6.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.destination-sync">
           <td class="name"><code>core.openwop.workflows.destination-sync</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="chains in latest manifest">1</td>
@@ -1825,7 +1831,7 @@
             · <a href="/v2/packs/core.openwop.workflows.destination-sync/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.devops">
           <td class="name"><code>core.openwop.workflows.devops</code> </td>
           <td class="version">1.0.5</td>
           <td class="count" title="chains in latest manifest">4</td>
@@ -1837,7 +1843,7 @@
             · <a href="/v2/packs/core.openwop.workflows.devops/-/1.0.5.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.exec-ops">
           <td class="name"><code>core.openwop.workflows.exec-ops</code> </td>
           <td class="version">1.3.2</td>
           <td class="count" title="chains in latest manifest">3</td>
@@ -1849,7 +1855,7 @@
             · <a href="/v2/packs/core.openwop.workflows.exec-ops/-/1.3.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.feedback-triage">
           <td class="name"><code>core.openwop.workflows.feedback-triage</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="chains in latest manifest">2</td>
@@ -1861,7 +1867,7 @@
             · <a href="/v2/packs/core.openwop.workflows.feedback-triage/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.finance">
           <td class="name"><code>core.openwop.workflows.finance</code> </td>
           <td class="version">1.1.9</td>
           <td class="count" title="chains in latest manifest">3</td>
@@ -1873,7 +1879,7 @@
             · <a href="/v2/packs/core.openwop.workflows.finance/-/1.1.9.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.funnels">
           <td class="name"><code>core.openwop.workflows.funnels</code> </td>
           <td class="version">1.0.3</td>
           <td class="count" title="chains in latest manifest">1</td>
@@ -1885,7 +1891,7 @@
             · <a href="/v2/packs/core.openwop.workflows.funnels/-/1.0.3.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.inbox">
           <td class="name"><code>core.openwop.workflows.inbox</code> </td>
           <td class="version">1.1.3</td>
           <td class="count" title="chains in latest manifest">3</td>
@@ -1897,7 +1903,7 @@
             · <a href="/v2/packs/core.openwop.workflows.inbox/-/1.1.3.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.incident-postmortem">
           <td class="name"><code>core.openwop.workflows.incident-postmortem</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="chains in latest manifest">2</td>
@@ -1909,7 +1915,7 @@
             · <a href="/v2/packs/core.openwop.workflows.incident-postmortem/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.insights-suite">
           <td class="name"><code>core.openwop.workflows.insights-suite</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="chains in latest manifest">3</td>
@@ -1921,7 +1927,7 @@
             · <a href="/v2/packs/core.openwop.workflows.insights-suite/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.it-support">
           <td class="name"><code>core.openwop.workflows.it-support</code> </td>
           <td class="version">1.3.4</td>
           <td class="count" title="chains in latest manifest">1</td>
@@ -1933,7 +1939,7 @@
             · <a href="/v2/packs/core.openwop.workflows.it-support/-/1.3.4.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.kicktodo-accountability">
           <td class="name"><code>core.openwop.workflows.kicktodo-accountability</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="chains in latest manifest">1</td>
@@ -1945,7 +1951,7 @@
             · <a href="/v2/packs/core.openwop.workflows.kicktodo-accountability/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.kicktodo-challenge-factory">
           <td class="name"><code>core.openwop.workflows.kicktodo-challenge-factory</code> </td>
           <td class="version">1.3.1</td>
           <td class="count" title="chains in latest manifest">2</td>
@@ -1957,7 +1963,7 @@
             · <a href="/v2/packs/core.openwop.workflows.kicktodo-challenge-factory/-/1.3.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.kicktodo-integrations">
           <td class="name"><code>core.openwop.workflows.kicktodo-integrations</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="chains in latest manifest">1</td>
@@ -1969,7 +1975,7 @@
             · <a href="/v2/packs/core.openwop.workflows.kicktodo-integrations/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.kicktodo-loops">
           <td class="name"><code>core.openwop.workflows.kicktodo-loops</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="chains in latest manifest">3</td>
@@ -1981,7 +1987,7 @@
             · <a href="/v2/packs/core.openwop.workflows.kicktodo-loops/-/1.0.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.kicktodo-plan-generation">
           <td class="name"><code>core.openwop.workflows.kicktodo-plan-generation</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="chains in latest manifest">1</td>
@@ -1993,7 +1999,7 @@
             · <a href="/v2/packs/core.openwop.workflows.kicktodo-plan-generation/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.kicktodo-replan">
           <td class="name"><code>core.openwop.workflows.kicktodo-replan</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="chains in latest manifest">1</td>
@@ -2005,7 +2011,7 @@
             · <a href="/v2/packs/core.openwop.workflows.kicktodo-replan/-/1.0.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.kicktodo-research">
           <td class="name"><code>core.openwop.workflows.kicktodo-research</code> </td>
           <td class="version">1.0.3</td>
           <td class="count" title="chains in latest manifest">1</td>
@@ -2017,7 +2023,7 @@
             · <a href="/v2/packs/core.openwop.workflows.kicktodo-research/-/1.0.3.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.knowledge">
           <td class="name"><code>core.openwop.workflows.knowledge</code> </td>
           <td class="version">1.2.3</td>
           <td class="count" title="chains in latest manifest">3</td>
@@ -2029,7 +2035,7 @@
             · <a href="/v2/packs/core.openwop.workflows.knowledge/-/1.2.3.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.lighthouse">
           <td class="name"><code>core.openwop.workflows.lighthouse</code> </td>
           <td class="version">1.1.11</td>
           <td class="count" title="chains in latest manifest">5</td>
@@ -2041,7 +2047,7 @@
             · <a href="/v2/packs/core.openwop.workflows.lighthouse/-/1.1.11.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.market-intel">
           <td class="name"><code>core.openwop.workflows.market-intel</code> </td>
           <td class="version">1.1.3</td>
           <td class="count" title="chains in latest manifest">2</td>
@@ -2053,7 +2059,7 @@
             · <a href="/v2/packs/core.openwop.workflows.market-intel/-/1.1.3.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.marketing">
           <td class="name"><code>core.openwop.workflows.marketing</code> </td>
           <td class="version">1.1.11</td>
           <td class="count" title="chains in latest manifest">4</td>
@@ -2065,7 +2071,7 @@
             · <a href="/v2/packs/core.openwop.workflows.marketing/-/1.1.11.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.mcp-tool-projections">
           <td class="name"><code>core.openwop.workflows.mcp-tool-projections</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="chains in latest manifest">19</td>
@@ -2077,7 +2083,7 @@
             · <a href="/v2/packs/core.openwop.workflows.mcp-tool-projections/-/1.0.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.meeting-ops">
           <td class="name"><code>core.openwop.workflows.meeting-ops</code> </td>
           <td class="version">1.0.3</td>
           <td class="count" title="chains in latest manifest">2</td>
@@ -2089,7 +2095,7 @@
             · <a href="/v2/packs/core.openwop.workflows.meeting-ops/-/1.0.3.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.notebooks">
           <td class="name"><code>core.openwop.workflows.notebooks</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="chains in latest manifest">4</td>
@@ -2101,7 +2107,7 @@
             · <a href="/v2/packs/core.openwop.workflows.notebooks/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.people-hr">
           <td class="name"><code>core.openwop.workflows.people-hr</code> </td>
           <td class="version">1.5.2</td>
           <td class="count" title="chains in latest manifest">3</td>
@@ -2113,7 +2119,7 @@
             · <a href="/v2/packs/core.openwop.workflows.people-hr/-/1.5.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.podcasts">
           <td class="name"><code>core.openwop.workflows.podcasts</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="chains in latest manifest">1</td>
@@ -2125,7 +2131,7 @@
             · <a href="/v2/packs/core.openwop.workflows.podcasts/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.production-plan">
           <td class="name"><code>core.openwop.workflows.production-plan</code> </td>
           <td class="version">1.0.3</td>
           <td class="count" title="chains in latest manifest">1</td>
@@ -2137,7 +2143,7 @@
             · <a href="/v2/packs/core.openwop.workflows.production-plan/-/1.0.3.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.release-comms">
           <td class="name"><code>core.openwop.workflows.release-comms</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="chains in latest manifest">2</td>
@@ -2149,7 +2155,7 @@
             · <a href="/v2/packs/core.openwop.workflows.release-comms/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.research">
           <td class="name"><code>core.openwop.workflows.research</code> </td>
           <td class="version">1.0.5</td>
           <td class="count" title="chains in latest manifest">1</td>
@@ -2161,7 +2167,7 @@
             · <a href="/v2/packs/core.openwop.workflows.research/-/1.0.5.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.sales-outreach">
           <td class="name"><code>core.openwop.workflows.sales-outreach</code> </td>
           <td class="version">1.1.4</td>
           <td class="count" title="chains in latest manifest">2</td>
@@ -2173,7 +2179,7 @@
             · <a href="/v2/packs/core.openwop.workflows.sales-outreach/-/1.1.4.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.seo-content-ops">
           <td class="name"><code>core.openwop.workflows.seo-content-ops</code> </td>
           <td class="version">1.1.4</td>
           <td class="count" title="chains in latest manifest">2</td>
@@ -2185,7 +2191,7 @@
             · <a href="/v2/packs/core.openwop.workflows.seo-content-ops/-/1.1.4.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.slides-design">
           <td class="name"><code>core.openwop.workflows.slides-design</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="chains in latest manifest">1</td>
@@ -2197,7 +2203,7 @@
             · <a href="/v2/packs/core.openwop.workflows.slides-design/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.starters">
           <td class="name"><code>core.openwop.workflows.starters</code> </td>
           <td class="version">1.1.2</td>
           <td class="count" title="chains in latest manifest">6</td>
@@ -2209,7 +2215,7 @@
             · <a href="/v2/packs/core.openwop.workflows.starters/-/1.1.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.support">
           <td class="name"><code>core.openwop.workflows.support</code> </td>
           <td class="version">1.2.3</td>
           <td class="count" title="chains in latest manifest">5</td>
@@ -2221,7 +2227,7 @@
             · <a href="/v2/packs/core.openwop.workflows.support/-/1.2.3.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.walkthroughs">
           <td class="name"><code>core.openwop.workflows.walkthroughs</code> </td>
           <td class="version">1.0.3</td>
           <td class="count" title="chains in latest manifest">26</td>
@@ -2233,7 +2239,7 @@
             · <a href="/v2/packs/core.openwop.workflows.walkthroughs/-/1.0.3.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.weekly-digest">
           <td class="name"><code>core.openwop.workflows.weekly-digest</code> </td>
           <td class="version">1.1.2</td>
           <td class="count" title="chains in latest manifest">2</td>
@@ -2245,7 +2251,7 @@
             · <a href="/v2/packs/core.openwop.workflows.weekly-digest/-/1.1.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-core.openwop.workflows.workflow-author">
           <td class="name"><code>core.openwop.workflows.workflow-author</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="chains in latest manifest">1</td>
@@ -2257,7 +2263,7 @@
             · <a href="/v2/packs/core.openwop.workflows.workflow-author/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.openwop-app.workflows.cms">
           <td class="name"><code>vendor.openwop-app.workflows.cms</code> </td>
           <td class="version">1.0.2</td>
           <td class="count" title="chains in latest manifest">1</td>
@@ -2269,7 +2275,7 @@
             · <a href="/v2/packs/vendor.openwop-app.workflows.cms/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.openwop-app.workflows.forms-intake">
           <td class="name"><code>vendor.openwop-app.workflows.forms-intake</code> </td>
           <td class="version">1.3.2</td>
           <td class="count" title="chains in latest manifest">1</td>
@@ -2281,7 +2287,7 @@
             · <a href="/v2/packs/vendor.openwop-app.workflows.forms-intake/-/1.3.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.openwop-app.workflows.strategy">
           <td class="name"><code>vendor.openwop-app.workflows.strategy</code> </td>
           <td class="version">1.0.3</td>
           <td class="count" title="chains in latest manifest">3</td>
@@ -2293,7 +2299,7 @@
             · <a href="/v2/packs/vendor.openwop-app.workflows.strategy/-/1.0.3.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.openwop.app-builder.workflows">
           <td class="name"><code>vendor.openwop.app-builder.workflows</code> </td>
           <td class="version">1.3.1</td>
           <td class="count" title="chains in latest manifest">2</td>
@@ -2305,7 +2311,7 @@
             · <a href="/v2/packs/vendor.openwop.app-builder.workflows/-/1.3.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
-        <tr>
+        <tr id="pack-vendor.openwop.workflow-chain-sample">
           <td class="name"><code>vendor.openwop.workflow-chain-sample</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="chains in latest manifest">2</td>
@@ -2335,7 +2341,7 @@
         <tr><th>Name</th><th>Version</th><th class="count-h">Templates</th><th>Description</th><th>License</th><th>Artifacts</th></tr>
       </thead>
       <tbody>
-        <tr>
+        <tr id="pack-vendor.openwop.prompt-sample">
           <td class="name"><code>vendor.openwop.prompt-sample</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="prompt templates in latest manifest">2</td>
@@ -2367,7 +2373,7 @@
         <tr><th>Name</th><th>Version</th><th class="count-h">Cards</th><th>Description</th><th>License</th><th>Artifacts</th></tr>
       </thead>
       <tbody>
-        <tr>
+        <tr id="pack-vendor.openwop.card-sample">
           <td class="name"><code>vendor.openwop.card-sample</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="cards in latest manifest">2</td>
@@ -2397,7 +2403,7 @@
         <tr><th>Name</th><th>Version</th><th class="count-h">Templates</th><th>Description</th><th>License</th><th>Artifacts</th></tr>
       </thead>
       <tbody>
-        <tr>
+        <tr id="pack-core.openwop.forms.starters">
           <td class="name"><code>core.openwop.forms.starters</code> </td>
           <td class="version">1.0.1</td>
           <td class="count" title="provider in latest manifest">0</td>
@@ -2496,7 +2502,7 @@ npm run check</code></pre>
 
 <footer class="site-footer">
   <div class="wrap">
-    <span>Generated 2026-10-15T00:53:29.407Z · OpenWOP registry</span>
+    <span>Generated 2026-10-15T01:11:56.572Z · OpenWOP registry</span>
     <nav aria-label="More">
       <a href="/v2/index.json">Index JSON</a>
       <a href="/.well-known/openwop-registry">Discovery</a>
