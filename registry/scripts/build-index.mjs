@@ -541,6 +541,11 @@ ${rows}
   const vendorCount = nsCount('vendor');
   const communityCount = nsCount('community');
   const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
+  // Signing keys come from the discovery document, the registry's own keychain.
+  const discovery = readJson(join(ROOT, '.well-known', 'openwop-registry.json'));
+  const keyRows = (discovery.signingKeys ?? [])
+    .map((k) => `          <li><code><a href="/keys/${htmlEscape(k.keyId)}.pub">${htmlEscape(k.keyId)}</a></code> <span class="note">${htmlEscape((k.permittedNamespaces ?? []).join(', '))}${k.status && k.status !== 'active' ? ` · ${htmlEscape(k.status)}` : ''}</span></li>`)
+    .join('\n');
   // The packs film lives on openwop.dev (served with ACAO: *), so the registry
   // links it rather than keeping a second copy. Bump FILM_V when openwop.dev
   // re-renders the packs film (openwop-site site/src/designed-pages.mjs `packs`).
@@ -568,7 +573,7 @@ ${rows}
 <meta name="twitter:description" content="Building blocks for workflows, signed and checked.">
 
 <link rel="alternate" type="application/json" title="Discovery" href="/.well-known/openwop-registry">
-<link rel="alternate" type="application/json" title="Registry index" href="/v1/index.json">
+<link rel="alternate" type="application/json" title="Registry index" href="/v2/index.json">
 
 <!-- Fonts — the openwop.dev display face (ADR 0883: Bricolage Grotesque 600)
      plus Geist and Geist Mono. font-display: swap paints system fonts first. -->
@@ -772,6 +777,7 @@ ${rows}
   .tiers code { font-size: 14px; color: var(--ink); }
   .tiers p { margin: 4px 0 0; color: var(--ink-2); font-size: 14px; }
   .fine { color: var(--ink-3); font-size: 14px; margin: 16px 0 0; }
+  .panel h3.keys-h { margin-top: 24px; }
 
   /* ─── Footer ─────────────────────────────────────────────────────────── */
   .site-footer { border-top: 1px solid var(--rule); }
@@ -909,7 +915,7 @@ ${
           input/output handlers, control nodes (flow / branching / approval gates),
           and integrations (HTTP, storage, MCP). Authors drop them into the canvas
           at edit time; hosts load and verify them at runtime. See the
-          <a href="https://openwop.dev/spec/v1/node-packs.md">node-packs.md</a>
+          <a href="https://openwop.dev/spec/v2/core/packs.html">packs spec</a>
           spec for the manifest contract and the SRI + Ed25519 trust model.
           Mixed packs that also ship agents are flagged
           <span class="flag flag-mixed">+ agent</span>.
@@ -1033,19 +1039,21 @@ ${
       <h2 id="trust-h" class="display">Change one byte, <span class="accent">and it fails.</span></h2>
     </div>
     <ol class="steps">
-      <li><span class="step-n">1 · Signed</span><span class="step-t">Every tarball is signed.</span><span class="step-b">Each version ships an Ed25519 signature beside its <code>.tgz</code>, made with the registry's root key.</span></li>
-      <li><span class="step-n">2 · Pinned</span><span class="step-t">The manifest pins its hash.</span><span class="step-b">An SRI hash in the version manifest names the exact tarball, so a changed byte is caught.</span></li>
-      <li><span class="step-n">3 · Verified</span><span class="step-t">The host checks before it loads.</span><span class="step-b">Hosts in <code>verified</code> trust mode MUST check each tarball against the key before unpacking it (<a href="https://openwop.dev/spec/v1/node-packs.md">node-packs.md §Trust model</a>).</span></li>
+      <li><span class="step-n">1 · Signed</span><span class="step-t">Every version is signed.</span><span class="step-b">A detached Ed25519 signature (<code>.sig</code>) covers the canonical JSON of the <code>pack.json</code> inside the tarball, made with a key registered for that namespace.</span></li>
+      <li><span class="step-n">2 · Pinned</span><span class="step-t">The manifest pins its hash.</span><span class="step-b">The version manifest carries the tarball's SRI integrity hash, so a changed byte is caught.</span></li>
+      <li><span class="step-n">3 · Verified</span><span class="step-t">The host checks before it loads.</span><span class="step-b">A host in <code>verified</code> mode fetches the key its manifest names, checks that key may sign this namespace, and verifies the signature before unpacking (<a href="https://openwop.dev/spec/v2/core/packs.html#signing">packs spec §Signing</a>).</span></li>
     </ol>
     <div class="split">
       <div class="panel">
         <h3>Verify a pack yourself</h3>
-        <p>Node 20 or later, with the root key from <a href="/keys/openwop-registry-root.pub"><code>/keys/openwop-registry-root.pub</code></a> (PEM, Ed25519):</p>
-        <pre><code>const { createPublicKey, verify } = require('node:crypto');
-const { readFileSync } = require('node:fs');
-const pub = createPublicKey({ key: readFileSync('root.pub'), format: 'pem' });
-const ok = verify(null, readFileSync('pack.tgz'), pub, readFileSync('pack.sig'));
-// ok === true if the tarball is signed by this registry's root key</code></pre>
+        <p>Each version manifest names its key in <code>signing.keyId</code>. Fetch that key from <code>/keys/{keyId}.pub</code>, confirm the pack's name falls in the key's namespaces, then verify the <code>.sig</code> against the canonical (JCS) bytes of the tarball's <code>pack.json</code>. The registry's own check does all of this:</p>
+        <pre><code>git clone https://github.com/openwop/openwop-registry
+cd openwop-registry
+node registry/scripts/verify-signatures.mjs --tree v2</code></pre>
+        <h3 class="keys-h">Registered signing keys</h3>
+        <ul class="endpoint-list">
+${keyRows}
+        </ul>
       </div>
       <div class="panel">
         <h3>Who can publish where</h3>
@@ -1068,13 +1076,16 @@ const ok = verify(null, readFileSync('pack.tgz'), pub, readFileSync('pack.sig'))
     <div class="panel">
       <ul class="endpoint-list">
         <li><code><a href="/.well-known/openwop-registry">/.well-known/openwop-registry</a></code> <span class="note">discovery: every endpoint template</span></li>
-        <li><code><a href="/v1/index.json">/v1/index.json</a></code> <span class="note">the full pack catalog</span></li>
-        <li><code>/v1/packs/{name}/index.json</code> <span class="note">one pack's metadata and versions</span></li>
-        <li><code>/v1/packs/{name}/-/{version}.json</code> <span class="note">version manifest</span></li>
-        <li><code>/v1/packs/{name}/-/{version}.tgz</code> <span class="note">signed tarball</span></li>
-        <li><code>/v1/packs/{name}/-/{version}.sig</code> <span class="note">Ed25519 signature</span></li>
+        <li><code><a href="/v2/index.json">/v2/index.json</a></code> <span class="note">the full pack catalog</span></li>
+        <li><code>/v2/packs/{name}/index.json</code> <span class="note">one pack's metadata and versions</span></li>
+        <li><code>/v2/packs/{name}/-/{version}.json</code> <span class="note">version manifest</span></li>
+        <li><code>/v2/packs/{name}/-/{version}.tgz</code> <span class="note">tarball</span></li>
+        <li><code>/v2/packs/{name}/-/{version}.sig</code> <span class="note">Ed25519 signature</span></li>
+        <li><code>/v2/packs/{name}/-/{version}.sbom.json</code> <span class="note">software bill of materials</span></li>
+        <li><code>/keys/{keyId}.pub</code> <span class="note">a signing public key</span></li>
       </ul>
-      <p class="fine">A pack schema whose <code>$id</code> is <code>https://packs.openwop.dev/{name}/{version}/&lt;schema&gt;.json</code> resolves to the schema extracted from the signed tarball. The tarball is canonical and the mirrored URL is derived, so verify against the tarball when integrity matters (<a href="https://openwop.dev/spec/v1/node-packs.md">node-packs.md §"Schema $id resolution"</a>).</p>
+      <p class="fine">The <code>/v1/</code> tree is still served, read-only, for clients that predate RFC 0177; new versions land only in <code>/v2/</code>. The discovery document lists both under <code>endpoints.v1</code> and <code>endpoints.v2</code>.</p>
+      <p class="fine">A pack schema whose <code>$id</code> is <code>https://packs.openwop.dev/{name}/{version}/&lt;schema&gt;.json</code> resolves to the schema extracted from the signed tarball. The tarball is canonical and the mirrored URL is derived, so verify against the tarball when integrity matters (<a href="https://openwop.dev/spec/v2/core/packs.html#the-registry-tree">packs spec §The registry tree</a>).</p>
     </div>
   </section>
 
@@ -1082,7 +1093,7 @@ const ok = verify(null, readFileSync('pack.tgz'), pub, readFileSync('pack.sig'))
     <div class="stage">
       <div class="stage-copy">
         <h2 id="publish-h" class="display">Publish a pack.</h2>
-        <p class="muted">Build the pack, sign the tarball with your key, and open a pull request. There is no write API on purpose. CI checks the manifest, the hash and the signature before merge, and a merge to <code>main</code> deploys it.</p>
+        <p class="muted">Build the pack, sign the version with a key registered for its namespace, and open a pull request. There is no write API on purpose. CI checks the manifest, the hash and the signature before merge, and a merge to <code>main</code> deploys it.</p>
         <div class="hero-actions">
           <a class="btn btn-solid" href="https://github.com/openwop/openwop/blob/main/docs/PACK-AUTHOR-QUICKSTART.md">Read the pack-author quickstart</a>
           <a class="btn" href="https://github.com/openwop/openwop-registry">Open the registry repo</a>
@@ -1102,7 +1113,7 @@ npm run check</code></pre>
   <div class="wrap">
     <span>Generated ${htmlEscape(generatedAt)} · OpenWOP registry</span>
     <nav aria-label="More">
-      <a href="/v1/index.json">Index JSON</a>
+      <a href="/v2/index.json">Index JSON</a>
       <a href="/.well-known/openwop-registry">Discovery</a>
       <a href="https://openwop.dev/">openwop.dev</a>
       <a href="https://github.com/openwop/openwop">OpenWOP on GitHub</a>
@@ -1165,7 +1176,11 @@ if (fatal.length > 0) {
   process.exit(1);
 }
 rebuildRegistryIndex(docs);
-if (TREE === 'v1') {
+// The landing page and robots.txt describe the CURRENT tree. RFC 0177 made v2
+// the tree new publications land in (v1 is read-only), so the page is generated
+// from the v2 docs: before 2026-10-14 it read v1 and showed 154 of 156 packs at
+// a superseded version, with every file link into the frozen tree.
+if (TREE === 'v2') {
   emitLandingPage(docs);
   emitRobotsTxt();
 }
