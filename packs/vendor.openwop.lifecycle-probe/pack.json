@@ -1,6 +1,6 @@
 {
   "name": "vendor.openwop.lifecycle-probe",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kind": "prompt",
   "description": "Registry lifecycle probe (RFC 0222). Published by the steward so the v2 tree holds a real yanked version: 1.0.0 is yanked, 1.0.1 is the latest. It carries one placeholder prompt and does nothing useful; do not install it.",
   "author": "openwop project",
