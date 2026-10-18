@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>OpenWOP registry — packs.openwop.dev</title>
-<meta name="description" content="The signed pack registry for OpenWOP: reusable nodes, agents and workflow chains, verified by every host before it runs them. 156 pack(s), 306 version(s) published.">
+<meta name="description" content="The signed pack registry for OpenWOP: reusable nodes, agents and workflow chains, verified by every host before it runs them. 157 pack(s), 308 version(s) published.">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1a1a17" media="(prefers-color-scheme: dark)">
@@ -272,15 +272,15 @@
     <div class="hero-copy">
       <p class="eyebrow">The OpenWOP registry</p>
       <h1 class="display">Building blocks for workflows, <span class="accent">signed and checked.</span></h1>
-      <p class="lede">Reusable nodes, agents and whole workflow chains, published once and verified by every host before it runs them. Browse 156 packs, or publish your own.</p>
+      <p class="lede">Reusable nodes, agents and whole workflow chains, published once and verified by every host before it runs them. Browse 157 packs, or publish your own.</p>
       <div class="hero-actions">
         <a class="btn btn-solid" href="#catalog">Browse the catalog</a>
         <a class="btn" href="#publish">Publish a pack</a>
       </div>
     </div>
     <dl class="stats">
-      <div><dt>Packs published</dt><dd>156</dd></div>
-      <div><dt>Versions</dt><dd>306</dd></div>
+      <div><dt>Packs published</dt><dd>157</dd></div>
+      <div><dt>Versions</dt><dd>308</dd></div>
       <div><dt>Signatures</dt><dd class="small">Ed25519</dd></div>
       <div><dt>Namespaces</dt><dd class="small">core<br>vendor<br>community</dd></div>
     </dl>
@@ -345,7 +345,7 @@
           <span class="tab-blurb">Whole sub-workflows that a caller runs as one step.</span>
         </label>
         <label class="tab" for="tab-prompts" role="tab">
-          <span class="tab-top"><span class="tab-label">Prompts</span><span class="tab-count">1</span></span>
+          <span class="tab-top"><span class="tab-label">Prompts</span><span class="tab-count">2</span></span>
           <span class="tab-blurb">Versioned, parameterized prompt templates.</span>
         </label>
         <label class="tab" for="tab-cards" role="tab">
@@ -2341,6 +2341,18 @@
         <tr><th>Name</th><th>Version</th><th class="count-h">Templates</th><th>Description</th><th>License</th><th>Artifacts</th></tr>
       </thead>
       <tbody>
+        <tr id="pack-vendor.openwop.lifecycle-probe">
+          <td class="name"><code>vendor.openwop.lifecycle-probe</code> </td>
+          <td class="version">1.0.1</td>
+          <td class="count" title="prompt templates in latest manifest">1</td>
+          <td class="desc">Registry lifecycle probe (RFC 0222). Published by the steward so the v2 tree holds a real yanked version: 1.0.0 is yanked, 1.0.1 is the latest. It carries one placeholder prompt and does nothing useful; do not install it.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v2/packs/vendor.openwop.lifecycle-probe/-/1.0.1.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/vendor.openwop.lifecycle-probe/-/1.0.1.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/vendor.openwop.lifecycle-probe/-/1.0.1.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
         <tr id="pack-vendor.openwop.prompt-sample">
           <td class="name"><code>vendor.openwop.prompt-sample</code> </td>
           <td class="version">1.0.1</td>
@@ -2450,7 +2462,7 @@ node registry/scripts/verify-signatures.mjs --tree v2</code></pre>
         <h3>Who can publish where</h3>
         <div class="tiers">
           <div><code>core.*</code><p>The OpenWOP working group; spec-canonical packs only. 109 packs.</p></div>
-          <div><code>vendor.&lt;org&gt;.*</code><p>Controlled by one vendor organization. 46 packs.</p></div>
+          <div><code>vendor.&lt;org&gt;.*</code><p>Controlled by one vendor organization. 47 packs.</p></div>
           <div><code>community.&lt;author&gt;.*</code><p>Open to anyone; the first claim on a name wins. 1 pack.</p></div>
         </div>
         <p class="fine"><code>private.*</code> and <code>local.*</code> never appear here: they are for host-internal and in-repo packs.</p>
@@ -2502,7 +2514,7 @@ npm run check</code></pre>
 
 <footer class="site-footer">
   <div class="wrap">
-    <span>Generated 2026-10-18T07:35:09.682Z · OpenWOP registry</span>
+    <span>Generated 2026-10-18T15:28:47.688Z · OpenWOP registry</span>
     <nav aria-label="More">
       <a href="/v2/index.json">Index JSON</a>
       <a href="/.well-known/openwop-registry">Discovery</a>

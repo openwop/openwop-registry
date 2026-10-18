@@ -5490,6 +5490,42 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/vendor.openwop.lifecycle-probe@1.0.0",
+      "type": "library",
+      "name": "vendor.openwop.lifecycle-probe",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.openwop.lifecycle-probe/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "f2532b2f6f8c37d69aa8fc61fc45764c2e32f9b49f3ccadbbfb04631536d9e17"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.openwop.lifecycle-probe@1.0.1",
+      "type": "library",
+      "name": "vendor.openwop.lifecycle-probe",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.openwop.lifecycle-probe/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "35f48b3935cb40f2498a4ae3133415b122c422c33295a85176774544561d61a6"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/vendor.openwop.prompt-sample@1.0.1",
       "type": "library",
       "name": "vendor.openwop.prompt-sample",
