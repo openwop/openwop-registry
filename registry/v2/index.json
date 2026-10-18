@@ -1,6 +1,6 @@
 {
   "registryVersion": "1.0.0",
-  "generatedAt": "2026-10-18T15:28:17.256Z",
+  "generatedAt": "2026-10-18T15:28:47.685Z",
   "packCount": 157,
   "packs": [
     {
@@ -2772,7 +2772,7 @@
     {
       "name": "vendor.openwop.lifecycle-probe",
       "kind": "prompt",
-      "latestVersion": "1.0.0",
+      "latestVersion": "1.0.1",
       "description": "Registry lifecycle probe (RFC 0222). Published by the steward so the v2 tree holds a real yanked version: 1.0.0 is yanked, 1.0.1 is the latest. It carries one placeholder prompt and does nothing useful; do not install it.",
       "license": "Apache-2.0",
       "tags": [],

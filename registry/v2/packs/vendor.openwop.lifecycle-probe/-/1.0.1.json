@@ -1,0 +1,35 @@
+{
+  "name": "vendor.openwop.lifecycle-probe",
+  "version": "1.0.1",
+  "kind": "prompt",
+  "description": "Registry lifecycle probe (RFC 0222). Published by the steward so the v2 tree holds a real yanked version: 1.0.0 is yanked, 1.0.1 is the latest. It carries one placeholder prompt and does nothing useful; do not install it.",
+  "author": "openwop project",
+  "license": "Apache-2.0",
+  "homepage": "https://openwop.dev/spec/v1/prompts.md",
+  "repository": "https://github.com/openwop/openwop",
+  "engines": {
+    "openwop": ">=1.1.0 <3.0.0"
+  },
+  "prompts": [
+    {
+      "templateId": "probe-system",
+      "version": "1.0.0",
+      "kind": "system",
+      "text": "You are a lifecycle probe. Reply with the single word: ok.",
+      "name": "Lifecycle probe (system)",
+      "description": "Placeholder template. The pack exists to exercise registry lifecycle flags, not to be installed.",
+      "tags": [
+        "probe"
+      ],
+      "modelHints": {
+        "modelClass": "writing",
+        "temperature": 0
+      }
+    }
+  ],
+  "signing": {
+    "keyId": "openwop-team-1",
+    "scheme": "ed25519-canonical-json"
+  },
+  "integrity": "sha256-yVgH0lrDG1a6wXWgpMIEILrIbjAwAF6bGOPrnj0Iiyo="
+}

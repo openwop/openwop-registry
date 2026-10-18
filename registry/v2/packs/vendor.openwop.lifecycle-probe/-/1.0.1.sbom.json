@@ -1,0 +1,101 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/vendor.openwop.lifecycle-probe@1.0.1",
+      "type": "library",
+      "name": "vendor.openwop.lifecycle-probe",
+      "version": "1.0.1",
+      "description": "Registry lifecycle probe (RFC 0222). Published by the steward so the v2 tree holds a real yanked version: 1.0.0 is yanked, 1.0.1 is the latest. It carries one placeholder prompt and does nothing useful; do not install it.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [
+        {
+          "type": "website",
+          "url": "https://openwop.dev/spec/v1/prompts.md"
+        },
+        {
+          "type": "vcs",
+          "url": "https://github.com/openwop/openwop"
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c95807d25ac31b56bac175a0a4c20420bac86e3030005e9b18e3eb9e3d088b2a"
+        }
+      ],
+      "purl": "pkg:openwop/vendor.openwop.lifecycle-probe@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "6e94967f692a7846ffd82ad455b3af801a76d6b06dda2496d1c0a9c7d3f3e963"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "456"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "96e4b4a3224c5441bf99baf9ab276fd4c3dca34f07c21dc8694211c4de39f703"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "781e2a367f2c59c747a54d4e5d51f16fe9a0e97789d31b513d5341aece253a6e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "937"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/vendor.openwop.lifecycle-probe@1.0.1",
+      "dependsOn": []
+    }
+  ]
+}

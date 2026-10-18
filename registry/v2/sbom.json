@@ -5508,6 +5508,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/vendor.openwop.lifecycle-probe@1.0.1",
+      "type": "library",
+      "name": "vendor.openwop.lifecycle-probe",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.openwop.lifecycle-probe/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "35f48b3935cb40f2498a4ae3133415b122c422c33295a85176774544561d61a6"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/vendor.openwop.prompt-sample@1.0.1",
       "type": "library",
       "name": "vendor.openwop.prompt-sample",
