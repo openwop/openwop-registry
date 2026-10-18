@@ -59,8 +59,20 @@
       "integrity": "sha256-QoiBo2LNKLSz/mV9m5AexgHqaU0+aRUhALufhbkJW1g=",
       "versionDeprecated": false,
       "yanked": false
+    },
+    {
+      "version": "1.4.0",
+      "manifestUrl": "/v2/packs/core.openwop.workflows.it-support/-/1.4.0.json",
+      "tarballUrl": "/v2/packs/core.openwop.workflows.it-support/-/1.4.0.tgz",
+      "signatureUrl": "/v2/packs/core.openwop.workflows.it-support/-/1.4.0.sig",
+      "sbomUrl": "/v2/packs/core.openwop.workflows.it-support/-/1.4.0.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-IdekvHpVZtsIn233NfR3PW6uUDJrg6VHLANLeSl80jI=",
+      "versionDeprecated": false,
+      "yanked": false
     }
   ],
-  "latest": "1.3.4",
+  "latest": "1.4.0",
   "deprecated": false
 }
