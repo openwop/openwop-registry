@@ -1,0 +1,32 @@
+{
+  "name": "vendor.openwop.lifecycle-probe",
+  "kind": "prompt",
+  "description": "Registry lifecycle probe (RFC 0222). Published by the steward so the v2 tree holds a real yanked version: 1.0.0 is yanked, 1.0.1 is the latest. It carries one placeholder prompt and does nothing useful; do not install it.",
+  "author": "openwop project",
+  "license": "Apache-2.0",
+  "homepage": "https://openwop.dev/spec/v1/prompts.md",
+  "repository": "https://github.com/openwop/openwop",
+  "tags": [],
+  "typeIds": [
+    "probe-system"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "promptCount": 1,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "manifestUrl": "/v2/packs/vendor.openwop.lifecycle-probe/-/1.0.0.json",
+      "tarballUrl": "/v2/packs/vendor.openwop.lifecycle-probe/-/1.0.0.tgz",
+      "signatureUrl": "/v2/packs/vendor.openwop.lifecycle-probe/-/1.0.0.sig",
+      "sbomUrl": "/v2/packs/vendor.openwop.lifecycle-probe/-/1.0.0.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-50HoW7MM9zmw7mlLACR4zgGCvNkstS8qSKtE8HeF7K8=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}
