@@ -24,7 +24,7 @@
       "signingKeyId": "openwop-team-1",
       "integrity": "sha256-50HoW7MM9zmw7mlLACR4zgGCvNkstS8qSKtE8HeF7K8=",
       "versionDeprecated": false,
-      "yanked": false
+      "yanked": true
     },
     {
       "version": "1.0.1",
