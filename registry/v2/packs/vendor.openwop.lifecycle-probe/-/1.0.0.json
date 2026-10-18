@@ -31,5 +31,7 @@
     "keyId": "openwop-team-1",
     "scheme": "ed25519-canonical-json"
   },
-  "integrity": "sha256-50HoW7MM9zmw7mlLACR4zgGCvNkstS8qSKtE8HeF7K8="
+  "integrity": "sha256-50HoW7MM9zmw7mlLACR4zgGCvNkstS8qSKtE8HeF7K8=",
+  "yanked": true,
+  "yankedReason": "RFC 0222 lifecycle probe: yanked on purpose so the v2 tree holds a real yanked version for v2-registry-lifecycle.test.ts. Use 1.0.1."
 }
