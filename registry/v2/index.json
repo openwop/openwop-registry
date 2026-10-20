@@ -1,6 +1,6 @@
 {
   "registryVersion": "1.0.0",
-  "generatedAt": "2026-10-18T15:34:27.103Z",
+  "generatedAt": "2026-10-20T16:15:24.495Z",
   "packCount": 157,
   "packs": [
     {
@@ -845,7 +845,7 @@
     {
       "name": "core.openwop.flow",
       "kind": "node",
-      "latestVersion": "1.1.3",
+      "latestVersion": "1.1.4",
       "description": "Spec-canonical flow-control primitives. 25 nodes covering branching, merging, iteration, aggregation, batching, sorting, deduplication, repetition, suspension, sub-workflow invocation, and Make-style error handlers. Pure or suspending — no external I/O. Zero npm deps. Engine >=1.0.0 <2.0.0.",
       "license": "Apache-2.0",
       "tags": [],
