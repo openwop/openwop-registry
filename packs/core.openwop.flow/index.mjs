@@ -374,20 +374,29 @@ export async function waitNode(ctx) {
   if (typeof ctx.suspend !== 'function') {
     throw Object.assign(new Error('host does not support suspend'), { code: 'HOST_CAPABILITY_MISSING' });
   }
+  let resumedWith;
   switch (mode) {
     case 'duration': {
       const seconds = Math.min(86400, Math.max(0, ctx.config.seconds | 0));
-      return ctx.suspend({ kind: 'duration', seconds });
+      resumedWith = await ctx.suspend({ kind: 'duration', seconds });
+      break;
     }
     case 'until': {
-      return ctx.suspend({ kind: 'until', timestamp: ctx.config.timestamp });
+      resumedWith = await ctx.suspend({ kind: 'until', timestamp: ctx.config.timestamp });
+      break;
     }
     case 'webhook': {
-      return ctx.suspend({ kind: 'webhook', signatureHint: ctx.config.signatureHint });
+      resumedWith = await ctx.suspend({ kind: 'webhook', signatureHint: ctx.config.signatureHint });
+      break;
     }
     default:
       throw Object.assign(new Error(`unknown wait mode: ${mode}`), { code: 'CONFIG_INVALID' });
   }
+  // `ctx.suspend` throws to park the run and, on resume, RETURNS the resolution value (the
+  // timer sweep's `{ elapsed: true }`, a webhook's body). That value is not a node outcome:
+  // returned bare, the host read it as a failure and every run failed the moment its wait
+  // ended (found by the ADR 0955 P5 chain witness, J955WF-7). Wrap it in the declared `wait.output.json` shape.
+  return { status: 'success', outputs: { resumed: true, ...(resumedWith !== undefined ? { payload: resumedWith } : {}) } };
 }
 
 export async function subWorkflowInvokeNode(ctx) {
