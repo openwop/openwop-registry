@@ -1188,6 +1188,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.flow@1.1.4",
+      "type": "library",
+      "name": "core.openwop.flow",
+      "version": "1.1.4",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.flow/-/1.1.4.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "84582e25142fba0c661d19feb7e781ac6208ee12eb93d8873681fd0cc627ac68"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.forms.starters@1.0.1",
       "type": "library",
       "name": "core.openwop.forms.starters",
