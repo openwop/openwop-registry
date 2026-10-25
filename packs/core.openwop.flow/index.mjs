@@ -382,7 +382,14 @@ export async function waitNode(ctx) {
       break;
     }
     case 'until': {
-      resumedWith = await ctx.suspend({ kind: 'until', timestamp: ctx.config.timestamp });
+      // A wired deadline is a recorded DAG value, so a fork checkpoint can
+      // restore it without replaying a producer's side-band variable writes.
+      const wired = ctx.inputs?.timestamp;
+      const timestamp = wired === undefined ? ctx.config.timestamp : wired;
+      if (wired !== undefined && (typeof timestamp !== 'string' || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$/.test(timestamp) || !Number.isFinite(Date.parse(timestamp)))) {
+        throw Object.assign(new Error('The wired wait timestamp must be an ISO timestamp.'), { code: 'CONFIG_INVALID' });
+      }
+      resumedWith = await ctx.suspend({ kind: 'until', timestamp });
       break;
     }
     case 'webhook': {
