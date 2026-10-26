@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>OpenWOP registry — packs.openwop.dev</title>
-<meta name="description" content="The signed pack registry for OpenWOP: reusable nodes, agents and workflow chains, verified by every host before it runs them. 184 pack(s), 366 version(s) published.">
+<meta name="description" content="The signed pack registry for OpenWOP: reusable nodes, agents and workflow chains, verified by every host before it runs them. 185 pack(s), 369 version(s) published.">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1a1a17" media="(prefers-color-scheme: dark)">
@@ -272,15 +272,15 @@
     <div class="hero-copy">
       <p class="eyebrow">The OpenWOP registry</p>
       <h1 class="display">Building blocks for workflows, <span class="accent">signed and checked.</span></h1>
-      <p class="lede">Reusable nodes, agents and whole workflow chains, published once and verified by every host before it runs them. Browse 184 packs, or publish your own.</p>
+      <p class="lede">Reusable nodes, agents and whole workflow chains, published once and verified by every host before it runs them. Browse 185 packs, or publish your own.</p>
       <div class="hero-actions">
         <a class="btn btn-solid" href="#catalog">Browse the catalog</a>
         <a class="btn" href="#publish">Publish a pack</a>
       </div>
     </div>
     <dl class="stats">
-      <div><dt>Packs published</dt><dd>184</dd></div>
-      <div><dt>Versions</dt><dd>366</dd></div>
+      <div><dt>Packs published</dt><dd>185</dd></div>
+      <div><dt>Versions</dt><dd>369</dd></div>
       <div><dt>Signatures</dt><dd class="small">Ed25519</dd></div>
       <div><dt>Namespaces</dt><dd class="small">core<br>vendor<br>community</dd></div>
     </dl>
@@ -337,7 +337,7 @@
           <span class="tab-blurb">Typed schemas for the work products a run creates and exports.</span>
         </label>
         <label class="tab" for="tab-connections" role="tab">
-          <span class="tab-top"><span class="tab-label">Connections</span><span class="tab-count">22</span></span>
+          <span class="tab-top"><span class="tab-label">Connections</span><span class="tab-count">23</span></span>
           <span class="tab-blurb">Provider definitions: auth, scopes and reach. Never credentials.</span>
         </label>
         <label class="tab" for="tab-workflow-chains" role="tab">
@@ -1593,6 +1593,19 @@
             · <a href="/v2/packs/core.openwop.connections.google-imagen/-/1.0.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
+        <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Google-merchant</th></tr>
+        <tr id="pack-core.openwop.connections.google-merchant">
+          <td class="name"><code>core.openwop.connections.google-merchant</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="provider in latest manifest">1</td>
+          <td class="desc">Google Merchant Center connection pack (RFC 0095) — OAuth2 provider for the Merchant API (products). Used by the Campaign Studio product-feed push (ADR 0952 D6): the commerce catalog is sent as product inputs to the org&#39;s Merchant Center account. Carries NO secret; the operator supplies the OAuth client id/secret host-side (ADR 0024 §7). The push stays unverified until it runs against a test Merchant Center account.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v2/packs/core.openwop.connections.google-merchant/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.connections.google-merchant/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.connections.google-merchant/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
         <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Google-workspace</th></tr>
         <tr id="pack-core.openwop.connections.google-workspace">
           <td class="name"><code>core.openwop.connections.google-workspace</code> </td>
@@ -1635,14 +1648,14 @@
         <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Meta-ads</th></tr>
         <tr id="pack-core.openwop.connections.meta-ads">
           <td class="name"><code>core.openwop.connections.meta-ads</code> </td>
-          <td class="version">1.1.0</td>
+          <td class="version">1.2.1</td>
           <td class="count" title="provider in latest manifest">1</td>
           <td class="desc">Meta (Facebook/Instagram) Ads connection pack — OAuth2 provider for the Meta Marketing API. Reach is `openapi`: the manifest declares the global Meta OAuth hosts and points at the Marketing API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the app id/secret host-side. An available provider (the parallel ad platform to google-ads); one of the three ad platforms Campaign Studio syncs.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v2/packs/core.openwop.connections.meta-ads/-/1.1.0.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/core.openwop.connections.meta-ads/-/1.1.0.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/core.openwop.connections.meta-ads/-/1.1.0.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/core.openwop.connections.meta-ads/-/1.2.1.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.connections.meta-ads/-/1.2.1.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.connections.meta-ads/-/1.2.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Microsoft 365</th></tr>
@@ -1939,14 +1952,14 @@
         </tr>
         <tr id="pack-core.openwop.workflows.campaign-sync">
           <td class="name"><code>core.openwop.workflows.campaign-sync</code> </td>
-          <td class="version">1.5.0</td>
-          <td class="count" title="chains in latest manifest">3</td>
-          <td class="desc">Campaign Studio metrics-sync chain (RFC 0013; campaign gap plan C2 on ADR 0159). Pulls a rolling 7-day look-back of daily ad metrics, with conversions and revenue, for the dispatched campaigns or the whole configured ad account through the acting user&#39;s platform connection (ctx.ads; each day&#39;s row is replaced on re-pull, so late conversions settle and nothing double-counts) into the unified performance store, then delivers a short sync summary as a notification. Schedule it daily on the ONE scheduler, or run it ad hoc — the 15-minute cooldown makes overlapping fires harmless. Also carries the daily budget-pacing check (ADR 0220). And the hourly conversions delivery (ADR 0907 D7): queued server-side conversions go to the live conversions APIs, consent re-checked per row at send.</td>
+          <td class="version">1.7.0</td>
+          <td class="count" title="chains in latest manifest">5</td>
+          <td class="desc">Campaign Studio metrics-sync chain (RFC 0013; campaign gap plan C2 on ADR 0159). Pulls a rolling 7-day look-back of daily ad metrics, with conversions and revenue, for the dispatched campaigns or the whole configured ad account through the acting user&#39;s platform connection (ctx.ads; each day&#39;s row is replaced on re-pull, so late conversions settle and nothing double-counts) into the unified performance store, then delivers a short sync summary as a notification. Schedule it daily on the ONE scheduler, or run it ad hoc — the 15-minute cooldown makes overlapping fires harmless. Also carries the daily budget-pacing check (ADR 0220). And the hourly conversions delivery (ADR 0907 D7): queued server-side conversions go to the live conversions APIs, consent re-checked per row at send. And the governed budget reallocation (ADR 0952 D3): one approved plan, decreases first. And the product-feed push (ADR 0952 D6): the commerce catalog to Meta Catalog or Google Merchant Center, changed items only.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v2/packs/core.openwop.workflows.campaign-sync/-/1.5.0.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/core.openwop.workflows.campaign-sync/-/1.5.0.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/core.openwop.workflows.campaign-sync/-/1.5.0.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/core.openwop.workflows.campaign-sync/-/1.7.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.campaign-sync/-/1.7.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.campaign-sync/-/1.7.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-core.openwop.workflows.channel-turn">
@@ -2795,7 +2808,7 @@ node registry/scripts/verify-signatures.mjs --tree v2</code></pre>
       <div class="panel">
         <h3>Who can publish where</h3>
         <div class="tiers">
-          <div><code>core.*</code><p>The OpenWOP working group; spec-canonical packs only. 135 packs.</p></div>
+          <div><code>core.*</code><p>The OpenWOP working group; spec-canonical packs only. 136 packs.</p></div>
           <div><code>vendor.&lt;org&gt;.*</code><p>Controlled by one vendor organization. 48 packs.</p></div>
           <div><code>community.&lt;author&gt;.*</code><p>Open to anyone; the first claim on a name wins. 1 pack.</p></div>
         </div>
@@ -2848,7 +2861,7 @@ npm run check</code></pre>
 
 <footer class="site-footer">
   <div class="wrap">
-    <span>Generated 2026-10-26T02:10:06.087Z · OpenWOP registry</span>
+    <span>Generated 2026-10-26T11:16:33.602Z · OpenWOP registry</span>
     <nav aria-label="More">
       <a href="/v2/index.json">Index JSON</a>
       <a href="/.well-known/openwop-registry">Discovery</a>

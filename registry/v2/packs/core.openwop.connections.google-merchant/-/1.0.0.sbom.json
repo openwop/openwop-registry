@@ -1,0 +1,76 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.connections.google-merchant@1.0.0",
+      "type": "library",
+      "name": "core.openwop.connections.google-merchant",
+      "version": "1.0.0",
+      "description": "Google Merchant Center connection pack (RFC 0095) — OAuth2 provider for the Merchant API (products). Used by the Campaign Studio product-feed push (ADR 0952 D6): the commerce catalog is sent as product inputs to the org's Merchant Center account. Carries NO secret; the operator supplies the OAuth client id/secret host-side (ADR 0024 §7). The push stays unverified until it runs against a test Merchant Center account.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "47f142272eebed510a30411621caa4f33d9db69b6249332fc6d55c2a4d1d9200"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.connections.google-merchant@1.0.0"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ab9e9e29f7b14d57b5503e51e063e3ab3f74d3f44db221468b34163a6ed811d0"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "14e39ce518b34d1232ad304d28fb83e8e2261ae19e9635920300144c285fae59"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1511"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.connections.google-merchant@1.0.0",
+      "dependsOn": []
+    }
+  ]
+}

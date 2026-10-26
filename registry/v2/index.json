@@ -1,7 +1,7 @@
 {
   "registryVersion": "1.0.0",
-  "generatedAt": "2026-10-26T02:10:06.085Z",
-  "packCount": 184,
+  "generatedAt": "2026-10-26T11:16:33.600Z",
+  "packCount": 185,
   "packs": [
     {
       "name": "community.openwop-team.demo",
@@ -598,6 +598,21 @@
       "yanked": false
     },
     {
+      "name": "core.openwop.connections.google-merchant",
+      "kind": "connection",
+      "latestVersion": "1.0.0",
+      "description": "Google Merchant Center connection pack (RFC 0095) — OAuth2 provider for the Merchant API (products). Used by the Campaign Studio product-feed push (ADR 0952 D6): the commerce catalog is sent as product inputs to the org's Merchant Center account. Carries NO secret; the operator supplies the OAuth client id/secret host-side (ADR 0024 §7). The push stays unverified until it runs against a test Merchant Center account.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "google-merchant"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
       "name": "core.openwop.connections.google-workspace",
       "kind": "connection",
       "latestVersion": "1.0.1",
@@ -660,7 +675,7 @@
     {
       "name": "core.openwop.connections.meta-ads",
       "kind": "connection",
-      "latestVersion": "1.1.0",
+      "latestVersion": "1.2.1",
       "description": "Meta (Facebook/Instagram) Ads connection pack — OAuth2 provider for the Meta Marketing API. Reach is `openapi`: the manifest declares the global Meta OAuth hosts and points at the Marketing API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the app id/secret host-side. An available provider (the parallel ad platform to google-ads); one of the three ad platforms Campaign Studio syncs.",
       "license": "Apache-2.0",
       "tags": [],
@@ -1533,14 +1548,16 @@
     {
       "name": "core.openwop.workflows.campaign-sync",
       "kind": "workflow-chain",
-      "latestVersion": "1.5.0",
-      "description": "Campaign Studio metrics-sync chain (RFC 0013; campaign gap plan C2 on ADR 0159). Pulls a rolling 7-day look-back of daily ad metrics, with conversions and revenue, for the dispatched campaigns or the whole configured ad account through the acting user's platform connection (ctx.ads; each day's row is replaced on re-pull, so late conversions settle and nothing double-counts) into the unified performance store, then delivers a short sync summary as a notification. Schedule it daily on the ONE scheduler, or run it ad hoc — the 15-minute cooldown makes overlapping fires harmless. Also carries the daily budget-pacing check (ADR 0220). And the hourly conversions delivery (ADR 0907 D7): queued server-side conversions go to the live conversions APIs, consent re-checked per row at send.",
+      "latestVersion": "1.7.0",
+      "description": "Campaign Studio metrics-sync chain (RFC 0013; campaign gap plan C2 on ADR 0159). Pulls a rolling 7-day look-back of daily ad metrics, with conversions and revenue, for the dispatched campaigns or the whole configured ad account through the acting user's platform connection (ctx.ads; each day's row is replaced on re-pull, so late conversions settle and nothing double-counts) into the unified performance store, then delivers a short sync summary as a notification. Schedule it daily on the ONE scheduler, or run it ad hoc — the 15-minute cooldown makes overlapping fires harmless. Also carries the daily budget-pacing check (ADR 0220). And the hourly conversions delivery (ADR 0907 D7): queued server-side conversions go to the live conversions APIs, consent re-checked per row at send. And the governed budget reallocation (ADR 0952 D3): one approved plan, decreases first. And the product-feed push (ADR 0952 D6): the commerce catalog to Meta Catalog or Google Merchant Center, changed items only.",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
         "campaign-sync.daily-metrics",
         "campaign-sync.pacing-check",
-        "campaign-sync.conversions-dispatch"
+        "campaign-sync.conversions-dispatch",
+        "campaign-intel.reallocate",
+        "campaign-sync.catalog-feed"
       ],
       "nodeCount": 0,
       "agentCount": 0,

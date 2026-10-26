@@ -1,0 +1,30 @@
+{
+  "name": "core.openwop.connections.google-merchant",
+  "kind": "connection",
+  "description": "Google Merchant Center connection pack (RFC 0095) — OAuth2 provider for the Merchant API (products). Used by the Campaign Studio product-feed push (ADR 0952 D6): the commerce catalog is sent as product inputs to the org's Merchant Center account. Carries NO secret; the operator supplies the OAuth client id/secret host-side (ADR 0024 §7). The push stays unverified until it runs against a test Merchant Center account.",
+  "author": "",
+  "license": "Apache-2.0",
+  "tags": [],
+  "typeIds": [
+    "google-merchant"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "providerCount": 1,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "manifestUrl": "/v2/packs/core.openwop.connections.google-merchant/-/1.0.0.json",
+      "tarballUrl": "/v2/packs/core.openwop.connections.google-merchant/-/1.0.0.tgz",
+      "signatureUrl": "/v2/packs/core.openwop.connections.google-merchant/-/1.0.0.sig",
+      "sbomUrl": "/v2/packs/core.openwop.connections.google-merchant/-/1.0.0.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-R/FCJy7r7VEKMEEWIcqk8z2dtptiSTMvxtVcKk0dkgA=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

@@ -1,18 +1,20 @@
 {
   "name": "core.openwop.workflows.campaign-sync",
   "kind": "workflow-chain",
-  "description": "Campaign Studio metrics-sync chain (RFC 0013; campaign gap plan C2 on ADR 0159). Pulls a rolling 7-day look-back of daily ad metrics, with conversions and revenue, for the dispatched campaigns or the whole configured ad account through the acting user's platform connection (ctx.ads; each day's row is replaced on re-pull, so late conversions settle and nothing double-counts) into the unified performance store, then delivers a short sync summary as a notification. Schedule it daily on the ONE scheduler, or run it ad hoc — the 15-minute cooldown makes overlapping fires harmless. Also carries the daily budget-pacing check (ADR 0220). And the hourly conversions delivery (ADR 0907 D7): queued server-side conversions go to the live conversions APIs, consent re-checked per row at send.",
+  "description": "Campaign Studio metrics-sync chain (RFC 0013; campaign gap plan C2 on ADR 0159). Pulls a rolling 7-day look-back of daily ad metrics, with conversions and revenue, for the dispatched campaigns or the whole configured ad account through the acting user's platform connection (ctx.ads; each day's row is replaced on re-pull, so late conversions settle and nothing double-counts) into the unified performance store, then delivers a short sync summary as a notification. Schedule it daily on the ONE scheduler, or run it ad hoc — the 15-minute cooldown makes overlapping fires harmless. Also carries the daily budget-pacing check (ADR 0220). And the hourly conversions delivery (ADR 0907 D7): queued server-side conversions go to the live conversions APIs, consent re-checked per row at send. And the governed budget reallocation (ADR 0952 D3): one approved plan, decreases first. And the product-feed push (ADR 0952 D6): the commerce catalog to Meta Catalog or Google Merchant Center, changed items only.",
   "author": "openwop",
   "license": "Apache-2.0",
   "tags": [],
   "typeIds": [
     "campaign-sync.daily-metrics",
     "campaign-sync.pacing-check",
-    "campaign-sync.conversions-dispatch"
+    "campaign-sync.conversions-dispatch",
+    "campaign-intel.reallocate",
+    "campaign-sync.catalog-feed"
   ],
   "nodeCount": 0,
   "agentCount": 0,
-  "chainCount": 3,
+  "chainCount": 5,
   "versions": [
     {
       "version": "1.1.2",
@@ -37,8 +39,20 @@
       "integrity": "sha256-0GFDNpbjOilDHY9DNDGwSjeVtxleLKVpRl3Fc0dIZRw=",
       "versionDeprecated": false,
       "yanked": false
+    },
+    {
+      "version": "1.7.0",
+      "manifestUrl": "/v2/packs/core.openwop.workflows.campaign-sync/-/1.7.0.json",
+      "tarballUrl": "/v2/packs/core.openwop.workflows.campaign-sync/-/1.7.0.tgz",
+      "signatureUrl": "/v2/packs/core.openwop.workflows.campaign-sync/-/1.7.0.sig",
+      "sbomUrl": "/v2/packs/core.openwop.workflows.campaign-sync/-/1.7.0.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-8455J8JG9sL5kRVmUrYbrKkAAQtUgNmtxzsa1/DllXU=",
+      "versionDeprecated": false,
+      "yanked": false
     }
   ],
-  "latest": "1.5.0",
+  "latest": "1.7.0",
   "deprecated": false
 }

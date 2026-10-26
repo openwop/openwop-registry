@@ -864,6 +864,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.connections.google-merchant@1.0.0",
+      "type": "library",
+      "name": "core.openwop.connections.google-merchant",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.connections.google-merchant/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "373a7be03400a2c1f59511eee4388b66dc5b237adc5f63fb679c8f0497c2e144"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.connections.google-workspace@1.0.1",
       "type": "library",
       "name": "core.openwop.connections.google-workspace",
@@ -984,6 +1002,24 @@
             {
               "alg": "SHA-256",
               "content": "5a264018f5c57416d14fcd75242b25e601ccd38f4cf8676d4c8daf5bd35f28d1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.connections.meta-ads@1.2.1",
+      "type": "library",
+      "name": "core.openwop.connections.meta-ads",
+      "version": "1.2.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.connections.meta-ads/-/1.2.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "f9870a93706f35b720430cc788d3d1003453d0618948f2c4e64263fa41aa74de"
             }
           ]
         }
@@ -2280,6 +2316,24 @@
             {
               "alg": "SHA-256",
               "content": "32e7ddcff347b35032b2a3d5a78967a3e2f791ac0b54116d53666a4890ac99c3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.campaign-sync@1.7.0",
+      "type": "library",
+      "name": "core.openwop.workflows.campaign-sync",
+      "version": "1.7.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.campaign-sync/-/1.7.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "684be8b7948763d07ff906a85290c0aa1020fc7069a27ecda2a5eb5206441df4"
             }
           ]
         }
