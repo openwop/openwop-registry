@@ -1,0 +1,30 @@
+{
+  "name": "core.openwop.connections.zendesk",
+  "kind": "connection",
+  "description": "Zendesk connection pack (RFC 0095) — OAuth2 (authorization-code, per-subdomain) provider for the Zendesk Ticketing REST API. ADR 0033 DEPLOY-GATED. Endpoints are per-tenant (https://{subdomain}.zendesk.com/oauth/…), so the pack carries an instanceUrlTemplate and no fixed endpoints — the host resolves them from the connected subdomain (the NetSuite precedent). Reach is `openapi` against Zendesk's documented Ticketing API: no first-party hosted MCP server, so the documented REST surface is the honest day-1 reach (ADR 0033 §4). Zendesk was the top helpdesk absence vs the market-standard app surface in the ADR 0190 template research. Carries NO secret; the operator supplies the OAuth client id/secret host-side (ADR 0024 §7).",
+  "author": "",
+  "license": "Apache-2.0",
+  "tags": [],
+  "typeIds": [
+    "zendesk"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "providerCount": 1,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "manifestUrl": "/v2/packs/core.openwop.connections.zendesk/-/1.0.0.json",
+      "tarballUrl": "/v2/packs/core.openwop.connections.zendesk/-/1.0.0.tgz",
+      "signatureUrl": "/v2/packs/core.openwop.connections.zendesk/-/1.0.0.sig",
+      "sbomUrl": "/v2/packs/core.openwop.connections.zendesk/-/1.0.0.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-6sW9nRpXlK6HH3ZZEhSpCbd5JeUg56fiP12YbN958Cw=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

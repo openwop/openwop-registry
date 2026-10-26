@@ -6,4 +6,4 @@ Source of truth: openwop-app repo, `examples/workflow-chain-packs/kicktodo-repla
 
 Chains:
 
-- `openwop-app.kicktodo.replan` v1.0.0 — Replan a participant's plan
+- `openwop-app.kicktodo.replan` v1.0.4 — Replan a participant's plan

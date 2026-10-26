@@ -1,0 +1,102 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.agent-knowledge@1.0.1",
+      "type": "library",
+      "name": "core.openwop.workflows.agent-knowledge",
+      "version": "1.0.1",
+      "description": "WF-KB-1 — the ADR 0038 §B auto-ingest workflow, migrated off the in-tree `registerWorkflow({...})` pin site in features/agent-knowledge/feature.ts. A trigger (webhook/email/form, RFC 0099) ignites this chain; the single `feature.agent-knowledge.nodes.ingest` node writes an UNTRUSTED, cited KB document into a collection bound to the agent. Registered chain-backed under the ORIGINAL id `feature.agent-knowledge.auto-ingest`, so the seeded demo trigger subscription keeps resolving and replay is unchanged — and it is now gallery-visible and builder-editable like every other chain.",
+      "licenses": [],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c4a433981123328d8d3d5fcf9977b3f55508b46c5c3591e88786c18f4b03fd6d"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.agent-knowledge@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "45e35b5348d7969e6b71fba4de98bd3d87d67f602e778fd2d7f98bcfa42ca832"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "878"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "71775a93a8e60ef6ebd09ad744a86579d3af6be46670b893a537748724bef786"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "07d1ef1b71304aac56847250de0ecd7944ccb2e0b9b127a0358881873a217689"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1440"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.agent-knowledge@1.0.1",
+      "dependsOn": []
+    }
+  ]
+}

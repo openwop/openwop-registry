@@ -1,0 +1,108 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.agent-eval-regression-gate@1.0.0",
+      "type": "library",
+      "name": "core.openwop.workflows.agent-eval-regression-gate",
+      "version": "1.0.0",
+      "description": "Run an agent's eval suite inside the app and stop for a person when it does not clear (ADR 0889 WF-EV-11). One `feature.evals.nodes.run-suite` node runs the suite (optionally against a baseline eval run, for a regression verdict); when the suite fails or regresses, an approval gate asks a reviewer to accept the result or reject it. Resolves on hosts that ship the evals feature and node pack (the OpenWOP reference app).",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "de39fbee6d28c2c79adbc2d55ec26ba0af2303abce0192d2caccb171ad2e07ae"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.agent-eval-regression-gate@1.0.0"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1936f56e33f2ce37e9f28ad22c80e30fc76002e9fa6b73c930474f1b56e05c07"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "701"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "47f5ef09dcf49162a2ace8ba856de0389792090bd6015197f927a5430b65df17"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "df8ae1929fd55e2aeda7e8312bbacfadd727b25e9c954b222bc8af745d48ca03"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2898"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.agent-eval-regression-gate@1.0.0",
+      "dependsOn": []
+    }
+  ]
+}

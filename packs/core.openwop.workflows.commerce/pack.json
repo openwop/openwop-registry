@@ -1,6 +1,6 @@
 {
   "name": "core.openwop.workflows.commerce",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "kind": "workflow-chain",
   "description": "Real-work workflow pack (RFC 0013, ADR 0152) — the Commerce operations cluster (ecommerce gap plan §5C C8): Post-Purchase Thank-You, Low-Stock Reorder Draft, and the Order Exception Digest. Designed to bind to the ADR 0221 host events (host.commerce.order.paid, host.commerce.inventory.low-stock — create a host-event binding to enroll; ADR 0208) or the schedule trigger. Every outbound send rides the governed email-send integration node (drafts/approval per the tenant's actionPolicy — ADR 0033) and the ONE notification seam; order data flows through feature.commerce.nodes over ctx.features.commerce, so the ADR 0221 audit rows + spend thresholds apply by construction. Enrollment state = the run itself; a binding fires one run per event.",
   "author": "openwop",
@@ -14,7 +14,7 @@
   "chains": [
     {
       "chainId": "commerce.post-purchase-thankyou",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "label": "Post-Purchase Thank-You",
       "description": "On order paid (bind to host.commerce.order.paid): the trigger payload's orderId reaches the order read (a manual run passes `orderId` instead), AI-compose a grounded thank-you, human sign-off, then the governed email-send to `recipientEmail`. ADR 0875 D11: the recipient is still a fixed address (the order's own contact needs a gate-safe recipient lane — follow-up COM2WF-9); re-fires are deduped only by the email-send idempotency key.",
       "parameters": {
@@ -42,13 +42,11 @@
           },
           "provider": {
             "type": "string",
-            "default": "anthropic",
-            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own."
+            "description": "AI provider id for this chain's model-calling nodes. Set it to fix a provider into those nodes when the workflow is created. Leave it unset and each run uses the run's chosen provider, else the workspace's AI setting, else the host's catalog default (ADR 0903); whichever is chosen is recorded on the run, so a replay or fork uses the same one. The workspace needs a key for the provider that runs."
           },
           "model": {
             "type": "string",
-            "default": "claude-sonnet-4-6",
-            "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation."
+            "description": "Model id for this chain's model-calling nodes. Must be offered by the provider in the host catalog. Leave it unset to use the provider's model from the same choice (ADR 0903)."
           },
           "senderEmail": {
             "type": "string",
@@ -203,7 +201,7 @@
     },
     {
       "chainId": "commerce.low-stock-reorder",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "label": "Low-Stock Reorder Draft",
       "description": "On a low-stock crossing (bind to host.commerce.inventory.low-stock): read THAT product (from the trigger payload, or `productId` on a manual run), draft a supplier reorder email, hold it at a purchasing sign-off gate, then the governed send + an owner notification carrying the draft. Never mutates inventory.",
       "parameters": {
@@ -231,13 +229,11 @@
           },
           "provider": {
             "type": "string",
-            "default": "anthropic",
-            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own."
+            "description": "AI provider id for this chain's model-calling nodes. Set it to fix a provider into those nodes when the workflow is created. Leave it unset and each run uses the run's chosen provider, else the workspace's AI setting, else the host's catalog default (ADR 0903); whichever is chosen is recorded on the run, so a replay or fork uses the same one. The workspace needs a key for the provider that runs."
           },
           "model": {
             "type": "string",
-            "default": "claude-sonnet-4-6",
-            "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation."
+            "description": "Model id for this chain's model-calling nodes. Must be offered by the provider in the host catalog. Leave it unset to use the provider's model from the same choice (ADR 0903)."
           },
           "senderEmail": {
             "type": "string",
@@ -413,7 +409,7 @@
     },
     {
       "chainId": "commerce.order-exception-digest",
-      "version": "1.0.2",
+      "version": "1.1.0",
       "label": "Order Exception Digest",
       "description": "On a schedule (pair with core.trigger.schedule): list orders, AI-summarize the exceptions — paid-but-unfulfilled beyond the SLA, aging pending reservations — and push the summary to the operations inbox (the digest node's output flows to the notification via the edge, the corpus convention). Read-only; escalation stays human.",
       "parameters": {
@@ -434,13 +430,11 @@
           },
           "provider": {
             "type": "string",
-            "default": "anthropic",
-            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 — a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it — the workflow will not fall back to another provider on its own."
+            "description": "AI provider id for this chain's model-calling nodes. Set it to fix a provider into those nodes when the workflow is created. Leave it unset and each run uses the run's chosen provider, else the workspace's AI setting, else the host's catalog default (ADR 0903); whichever is chosen is recorded on the run, so a replay or fork uses the same one. The workspace needs a key for the provider that runs."
           },
           "model": {
             "type": "string",
-            "default": "claude-sonnet-4-6",
-            "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation."
+            "description": "Model id for this chain's model-calling nodes. Must be offered by the provider in the host catalog. Leave it unset to use the provider's model from the same choice (ADR 0903)."
           }
         }
       },

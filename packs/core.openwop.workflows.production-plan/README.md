@@ -6,4 +6,4 @@ Source of truth: openwop-app repo, `examples/workflow-chain-packs/production-pla
 
 Chains:
 
-- `openwop-app.production.plan` v1.0.0 — openwop-app.production.plan
+- `openwop-app.production.plan` v1.1.0 — openwop-app.production.plan

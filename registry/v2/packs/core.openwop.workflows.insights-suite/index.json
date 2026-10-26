@@ -1,7 +1,7 @@
 {
   "name": "core.openwop.workflows.insights-suite",
   "kind": "workflow-chain",
-  "description": "Insights & Drafting meta-workflows as an RFC 0013 chain pack (migrated from the deprecated ADR 0082/0072 builtins, ADR 0472 Phase 2). Three real source→analysis→LLM→draft→notify pipelines over BYOK-connected sources (BigQuery, Workday, chat completion, email-draft, notification-push). chainIds keep the original `openwop-app.insights.*` ids so scheduler/trigger ignition + replay are unchanged; the host registers them chain-backed (resolve-by-id, stable id) AND they are gallery-editable chains. Per-node outputRole (not expressible in the portable fragment) is re-applied at registration via the feature's postProcess.",
+  "description": "Insights & Drafting meta-workflows as an RFC 0013 chain pack (migrated from the deprecated ADR 0082/0072 builtins, ADR 0472 Phase 2). Three real source→analysis→LLM→draft→notify pipelines over BYOK-connected sources. chainIds keep the original `openwop-app.insights.*` ids so scheduler/trigger ignition + replay are unchanged; the chains are also gallery-editable. 1.2.0 (ADR 0599 §5): each hard-required value is a chain PARAMETER bound as a WHOLE-VALUE `{{params.X}}` on a top-level node `inputs` entry, and data edges are port-qualified on BOTH sides. NOTIFY AUDIENCE (1.3.0 ADR 0600 §5; STATED in 1.3.1 §Correction 6): `self` resolves from the run's ACTING USER and refuses fail-closed without one, so a scheduled/webhook fire of `talent-prep` or `anniversary-draft` loses its completion notification — deliberate, since the alternative broadcasts a colleague's 9-box score or recognition draft workspace-wide. `weekly-variance` keeps `tenant`: no declared PII, and its only lane is the scheduler.",
   "author": "",
   "license": "",
   "tags": [],
@@ -25,8 +25,20 @@
       "integrity": "sha256-BUmsm0FX2to4lggueBwsCVSP2vj/QPRq6OqUHbs3R14=",
       "versionDeprecated": false,
       "yanked": false
+    },
+    {
+      "version": "1.3.2",
+      "manifestUrl": "/v2/packs/core.openwop.workflows.insights-suite/-/1.3.2.json",
+      "tarballUrl": "/v2/packs/core.openwop.workflows.insights-suite/-/1.3.2.tgz",
+      "signatureUrl": "/v2/packs/core.openwop.workflows.insights-suite/-/1.3.2.sig",
+      "sbomUrl": "/v2/packs/core.openwop.workflows.insights-suite/-/1.3.2.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-O61paRLOYBFDhYCt1Oa1DrNJ06up3OlMt8E+Cgm8Guk=",
+      "versionDeprecated": false,
+      "yanked": false
     }
   ],
-  "latest": "1.0.2",
+  "latest": "1.3.2",
   "deprecated": false
 }

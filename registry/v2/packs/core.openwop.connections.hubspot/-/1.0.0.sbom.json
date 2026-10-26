@@ -1,0 +1,76 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.connections.hubspot@1.0.0",
+      "type": "library",
+      "name": "core.openwop.connections.hubspot",
+      "version": "1.0.0",
+      "description": "HubSpot connection pack (RFC 0095) — OAuth2 (authorization-code) provider for the HubSpot CRM v3 REST API (contacts, companies, deals, tickets). ADR 0033 DEPLOY-GATED. Reach is `openapi` against HubSpot's documented REST surface (api.hubapi.com): HubSpot ships no first-party hosted MCP server, so the documented API is the honest day-1 reach (ADR 0033 §4). HubSpot was the top CRM absence vs the market-standard app surface in the ADR 0190 template research. Carries NO secret; the operator supplies the app client id/secret host-side (ADR 0024 §7).",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "09bafec38e526a2daead4308ee581d5d1a225e7d5f5c915eb7f589945bca32df"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.connections.hubspot@1.0.0"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "33aac2a43188d087eb0124156de1dddcc567b4ec74d6a2574aa07d58902eb84b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8aab26645ccf54b6c7b98fb9c191b439c51a2e55ce2dbd909a1f1f12da87341a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2004"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.connections.hubspot@1.0.0",
+      "dependsOn": []
+    }
+  ]
+}

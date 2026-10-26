@@ -6,6 +6,6 @@ Source of truth: openwop-app repo, `examples/workflow-chain-packs/kicktodo-loops
 
 Chains:
 
-- `openwop-app.kicktodo.enrollment` v1.0.0 — Enroll in a challenge
-- `openwop-app.kicktodo.daily-loop` v1.0.0 — Daily checkpoint
-- `openwop-app.kicktodo.reminder-loop` v1.0.0 — Reminder checkpoint
+- `openwop-app.kicktodo.enrollment` v1.0.1 — Enroll in a challenge
+- `openwop-app.kicktodo.daily-loop` v1.0.1 — Daily checkpoint
+- `openwop-app.kicktodo.reminder-loop` v1.1.1 — Reminder checkpoint

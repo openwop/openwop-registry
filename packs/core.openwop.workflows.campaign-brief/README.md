@@ -6,5 +6,5 @@ Source of truth: openwop-app repo, `examples/workflow-chain-packs/campaign-brief
 
 Chains:
 
-- `campaign-studio.messaging-kernel` v1.0.0 — Messaging kernel
-- `campaign-studio.market-intel` v1.0.0 — Market intelligence
+- `campaign-studio.messaging-kernel` v1.1.0 — Messaging kernel
+- `campaign-studio.market-intel` v1.1.0 — Market intelligence

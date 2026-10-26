@@ -1,17 +1,19 @@
 {
   "name": "core.openwop.workflows.csm-ops",
   "kind": "workflow-chain",
-  "description": "CSM↔CRM linkage workflows (ADR 0212, RFC 0013). Where feature.csm.agents.health-insights is read-only, these two chains carry the CSM write surface: computing an Account's healthScore/healthFactors from its linked CRM company's deals/tasks (the scoring recipe as visible, editable workflow configuration rather than buried code — ADR 0212 §3), and a human-gated renewal-risk follow-up over the deal-hygiene shape (ADR 0212 §4 — renewals are deals, not a new entity). All tenant/org-specific values are run parameters (replay-deterministic). Resolves on hosts that ship the feature.crm + feature.csm features + node packs (the OpenWOP reference app).",
+  "description": "CSM↔CRM linkage workflows (ADR 0212, RFC 0013). Where vendor.openwop-app.csm.agents.health-insights is read-only, these two chains carry the CSM write surface: computing an Account's healthScore/healthFactors from its linked CRM company's deals/tasks (the scoring recipe as visible, editable workflow configuration rather than buried code — ADR 0212 §3), and a human-gated renewal-risk follow-up over the deal-hygiene shape (ADR 0212 §4 — renewals are deals, not a new entity). All tenant/org-specific values are run parameters (replay-deterministic). Resolves on hosts that ship the feature.crm + feature.csm features + node packs (the OpenWOP reference app). 1.3.0 (ADR 0882): health-from-crm 1.1.0 names the org it measured; two playbook chains — red-account-rescue (bind the health-changed host event) and renewal-runway (run on demand or on a schedule) — write CRM tasks linked to the account's company and assigned to its owner.",
   "author": "openwop",
   "license": "Apache-2.0",
   "tags": [],
   "typeIds": [
     "csm-ops.health-from-crm",
-    "csm-ops.renewal-risk"
+    "csm-ops.renewal-risk",
+    "csm-ops.red-account-rescue",
+    "csm-ops.renewal-runway"
   ],
   "nodeCount": 0,
   "agentCount": 0,
-  "chainCount": 2,
+  "chainCount": 4,
   "versions": [
     {
       "version": "1.0.1",
@@ -24,8 +26,20 @@
       "integrity": "sha256-jVCu4Drlj0PbrYPjIhA6gjHJio4rWgT9yJc/L1kZnXU=",
       "versionDeprecated": false,
       "yanked": false
+    },
+    {
+      "version": "1.3.0",
+      "manifestUrl": "/v2/packs/core.openwop.workflows.csm-ops/-/1.3.0.json",
+      "tarballUrl": "/v2/packs/core.openwop.workflows.csm-ops/-/1.3.0.tgz",
+      "signatureUrl": "/v2/packs/core.openwop.workflows.csm-ops/-/1.3.0.sig",
+      "sbomUrl": "/v2/packs/core.openwop.workflows.csm-ops/-/1.3.0.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-0iurKAjaDfL2lwpBYr3tyZgeD+udlGBu6hNhBdeHJQY=",
+      "versionDeprecated": false,
+      "yanked": false
     }
   ],
-  "latest": "1.0.1",
+  "latest": "1.3.0",
   "deprecated": false
 }

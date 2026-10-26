@@ -6,6 +6,6 @@ Source of truth: openwop-app repo, `examples/workflow-chain-packs/strategy/`.
 
 Chains:
 
-- `strategy.weekly-checkin` v1.0.0 — Strategy: Weekly Check-in Nudge
-- `strategy.board-pack` v1.0.0 — Strategy: Board Pack Pre-read
-- `strategy.metric-sync` v1.0.0 — Strategy: Sync Sourced Metrics
+- `strategy.weekly-checkin` v1.2.0 — Strategy: Weekly Check-in Nudge
+- `strategy.board-pack` v1.2.0 — Strategy: Board Pack Pre-read
+- `strategy.metric-sync` v1.2.0 — Strategy: Sync Sourced Metrics

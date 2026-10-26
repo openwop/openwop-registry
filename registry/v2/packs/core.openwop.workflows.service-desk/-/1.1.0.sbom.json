@@ -1,0 +1,108 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.service-desk@1.1.0",
+      "type": "library",
+      "name": "core.openwop.workflows.service-desk",
+      "version": "1.1.0",
+      "description": "Service-desk workflow pack (RFC 0013, ADR 0878 D8): SLA escalation for the host's own support tickets. Bind it to the host's SLA-breach event (ADR 0683 — the event name belongs to the installing host and is a parameter here) or run it for one ticket by id. The ticket is read over feature.service-desk.nodes (the run person's org floor applies), an AI summary is grounded in the thread, and the people who work the ticket — its assignee, else its org's writers — are notified. Never a tenant broadcast; nothing is sent to the customer.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7b57aa25843a779f9be68a1cbbef2b62897da820790cda8e83fe6d2f49facc0b"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.service-desk@1.1.0"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a23ddd34fff1de8cbf00b5801f2dfdb5d73f3ba7c12edfa57b95643d0e87bbc4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "787"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "996e4ccf03495aaa030b4a1ee969c4c5fb18bb9c4b888ee4ad3f0fff55f9784a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "006a003dfec919c2807b2cd06833e12c6370ca39d6d939ef35a22ae618ec3f6c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3952"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.service-desk@1.1.0",
+      "dependsOn": []
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "registryVersion": "1.0.0",
-  "generatedAt": "2026-10-25T04:04:00.613Z",
-  "packCount": 157,
+  "generatedAt": "2026-10-26T01:23:48.023Z",
+  "packCount": 182,
   "packs": [
     {
       "name": "community.openwop-team.demo",
@@ -508,6 +508,51 @@
       "yanked": false
     },
     {
+      "name": "core.openwop.connections.avalara",
+      "kind": "connection",
+      "latestVersion": "1.0.0",
+      "description": "Avalara AvaTax connection pack (RFC 0095) — api_key provider for the commerce tax-quote seam (ADR 0250), the second tax provider alongside TaxJar. Category is `other` (openai-images precedent): the normative `category` enum has no `tax` value and the seam resolves by `id` (`avalara`), not category — no wire/RFC change. When a merchant configures an Avalara connection (and no TaxJar one), `features/commerce/taxShipping.ts` calls AvaTax createTransaction (POST https://rest.avatax.com/api/v2/transactions/create, Basic auth over the account:licenseKey secret) at checkout and reads `totalTax`; ANY error/timeout falls back to the flat/manual governance rate — a tax-provider hiccup never blocks a sale. READ quotes (not money movement), so NO commerce-spend gate. Credentials stay host-side via the Connections broker; the request carries only the destination address + line amount, never customer contact details. Carries NO secret (ADR 0024 §7).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "avalara"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.connections.cohere-rerank",
+      "kind": "connection",
+      "latestVersion": "1.0.0",
+      "description": "Cohere Rerank connection pack (RFC 0095) — api_key provider for the KB retrieval pipeline's EXTERNAL reranker (ADR 0351 Phase 4 / CSG-KB-8): a collection whose retrieval config selects `rerank:{kind:'connection'}` reranks its hybrid candidates through Cohere's /v2/rerank with the tenant's connected key, resolved through the connections broker (KMS-enveloped, rotatable) and dispatched over the brokered-egress spine (SSRF-guarded, no-redirect, bounded timeout). Carries NO secret (ADR 0024 §7). A rerank failure degrades HONESTLY to the local deterministic reranker, labeled on the search response.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "cohere-rerank"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.connections.easypost",
+      "kind": "connection",
+      "latestVersion": "1.0.0",
+      "description": "EasyPost connection pack (RFC 0095) — api_key provider declaring the TARGET shape for the commerce shipping-rate seam (ADR 0250) as an alternative carrier to Shippo: API host, auth kind, consumer nodes. Category is `other` (openai-images precedent): the normative `category` enum has no `shipping` value and the seam would resolve by `id` (`easypost`), not category — no wire/RFC change. The rate mapper is now LIVE (ADR 0250 follow-on): with an easypost connection configured, the seam rate-shops via POST https://api.easypost.com/v2/shipments (Basic auth), converts grams+cm to EasyPost's ounces+inches, and bills the cheapest same-currency rate — as a second carrier in the shippo→easypost cascade. Rate quotes are READ calls (not money movement) — no commerce-spend gate. Carries NO secret (ADR 0024 §7).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "easypost"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
       "name": "core.openwop.connections.github",
       "kind": "connection",
       "latestVersion": "1.0.1",
@@ -538,6 +583,21 @@
       "yanked": false
     },
     {
+      "name": "core.openwop.connections.google-imagen",
+      "kind": "connection",
+      "latestVersion": "1.0.0",
+      "description": "Google Imagen connection pack (RFC 0095) — api_key provider for the host image-generation seam's `google` provider (Imagen via the Gemini API, ADR 0115 Phase 6 / ADR 0229 / ADR 0244): the API host, auth kind, and the consumer nodes. **ADR 0244:** the image seam now RESOLVES THE API KEY THROUGH THE CONNECTIONS BROKER — installing this pack + connecting a Google key provides the per-tenant, KMS-enveloped, rotatable credential (a workspace-scoped Connection wins over the host-wide `OPENWOP_IMAGE_PROVIDER_KEY[_GOOGLE]` env fallback). The host operator STILL configures the ENDPOINT (`OPENWOP_IMAGE_PROVIDER_ENDPOINT[_GOOGLE]`, honest-off until set) — the endpoint is non-secret host infra, not a credential. Carries NO secret (ADR 0024 §7).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "google-imagen"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
       "name": "core.openwop.connections.google-workspace",
       "kind": "connection",
       "latestVersion": "1.0.1",
@@ -546,6 +606,21 @@
       "tags": [],
       "typeIds": [
         "google-workspace"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.connections.hubspot",
+      "kind": "connection",
+      "latestVersion": "1.0.0",
+      "description": "HubSpot connection pack (RFC 0095) — OAuth2 (authorization-code) provider for the HubSpot CRM v3 REST API (contacts, companies, deals, tickets). ADR 0033 DEPLOY-GATED. Reach is `openapi` against HubSpot's documented REST surface (api.hubapi.com): HubSpot ships no first-party hosted MCP server, so the documented API is the honest day-1 reach (ADR 0033 §4). HubSpot was the top CRM absence vs the market-standard app surface in the ADR 0190 template research. Carries NO secret; the operator supplies the app client id/secret host-side (ADR 0024 §7).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "hubspot"
       ],
       "nodeCount": 0,
       "agentCount": 0,
@@ -570,7 +645,7 @@
     {
       "name": "core.openwop.connections.linkedin-ads",
       "kind": "connection",
-      "latestVersion": "1.0.1",
+      "latestVersion": "1.0.2",
       "description": "LinkedIn Ads connection pack — OAuth2 provider for the LinkedIn Marketing API. Reach is `openapi`: the manifest declares the global LinkedIn OAuth hosts and points at the Marketing API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the client id/secret host-side. One of the three ad platforms Campaign Studio syncs (Google / Meta / LinkedIn Ads).",
       "license": "Apache-2.0",
       "tags": [],
@@ -585,7 +660,7 @@
     {
       "name": "core.openwop.connections.meta-ads",
       "kind": "connection",
-      "latestVersion": "1.0.1",
+      "latestVersion": "1.1.0",
       "description": "Meta (Facebook/Instagram) Ads connection pack — OAuth2 provider for the Meta Marketing API. Reach is `openapi`: the manifest declares the global Meta OAuth hosts and points at the Marketing API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the app id/secret host-side. An available provider (the parallel ad platform to google-ads); one of the three ad platforms Campaign Studio syncs.",
       "license": "Apache-2.0",
       "tags": [],
@@ -643,6 +718,21 @@
       "yanked": false
     },
     {
+      "name": "core.openwop.connections.openai-images",
+      "kind": "connection",
+      "latestVersion": "1.0.0",
+      "description": "OpenAI Images connection pack (RFC 0095) — api_key provider for the host image-generation seam's `openai` provider (gpt-image, ADR 0115 / ADR 0229 / ADR 0244): the Images API host, auth kind, and the consumer nodes. **ADR 0244:** the image seam now RESOLVES THE API KEY THROUGH THE CONNECTIONS BROKER — installing this pack + connecting an OpenAI key provides the per-tenant, KMS-enveloped, rotatable credential (a workspace-scoped Connection wins over the host-wide `OPENWOP_IMAGE_PROVIDER_KEY[_OPENAI]` env fallback). The host operator STILL configures the ENDPOINT (`OPENWOP_IMAGE_PROVIDER_ENDPOINT[_OPENAI]`, honest-off until set) — the endpoint is non-secret host infra, not a credential. Carries NO secret (ADR 0024 §7).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "openai-images"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
       "name": "core.openwop.connections.salesforce",
       "kind": "connection",
       "latestVersion": "1.0.2",
@@ -651,6 +741,36 @@
       "tags": [],
       "typeIds": [
         "salesforce"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.connections.shippo",
+      "kind": "connection",
+      "latestVersion": "1.0.0",
+      "description": "Shippo connection pack (RFC 0095) — api_key provider for the commerce shipping-rate seam (ADR 0250). Category is `other` (openai-images precedent): the normative `category` enum has no `shipping` value and the seam resolves by `id` (`shippo`), not category — no wire/RFC change. When configured AND the org sets `commerce.shipFrom` AND the cart's physical lines all carry a weight, `features/commerce/taxShipping.ts` calls Shippo's rate API (POST https://api.goshippo.com/v1/shipments) at checkout and bills the CHEAPEST rate; ANY missing input/error/timeout falls back to the flat/manual rate — a carrier hiccup never blocks a sale. Rate quotes are READ calls (not money movement) — no commerce-spend gate. Credentials stay host-side via the Connections broker; the request carries only the from/to postal + parcel weight, never customer contact details. Carries NO secret (ADR 0024 §7).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "shippo"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.connections.taxjar",
+      "kind": "connection",
+      "latestVersion": "1.0.0",
+      "description": "TaxJar connection pack (RFC 0095) — api_key provider for the commerce tax-quote seam (ADR 0238 DEF-1). Category is `other` (the openai-images precedent): the normative `category` enum has no `tax` value and the seam resolves this provider by `id` (`taxjar`), not category — no wire/RFC change. When a merchant configures a TaxJar connection, `features/commerce/taxShipping.ts` calls the Sales Tax API (POST https://api.taxjar.com/v2/taxes) at checkout; ANY error/timeout falls back to the flat/manual governance rate — a provider hiccup never blocks a sale. READ quotes (not money movement), so NO commerce-spend gate. Credentials stay host-side, resolved per-call through the Connections authorization choke point; the request carries only the destination address + line amount, never customer contact details. Carries NO secret (ADR 0024 §7).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "taxjar"
       ],
       "nodeCount": 0,
       "agentCount": 0,
@@ -673,6 +793,21 @@
       "yanked": false
     },
     {
+      "name": "core.openwop.connections.ucp-reference-merchant",
+      "kind": "connection",
+      "latestVersion": "1.0.0",
+      "description": "UCP reference-merchant connection pack (RFC 0095) — declares the TARGET shape of a reach:'mcp' merchant the UCP BUYER shops to validate the ucp.<op> convention (ADR 0258/0260): a bearer-auth MCP server exposing the tools ucp.discover / ucp.search / ucp.checkout / ucp.order-status, each returning a BARE structured JSON result (no content wrapper). Category is `other`: the normative `category` enum has no `commerce-merchant` value and the buyer resolves by provider `id`, not category — no wire/RFC change. The `url` here is a placeholder for a REAL merchant (https-only per RFC 0095 §B.5); the in-repo DEMO merchant is wired instead by the `ucp-reference-merchant` example-data seeder (ADR 0260), which registers a loopback dev route (POST /v1/host/openwop-app/dev/ucp-merchant/mcp, enabled by OPENWOP_UCP_REF_MERCHANT_ENABLED) and a workspace Connection so the buyer can be pointed at it. The demo merchant moves NO money (checkout creates a PENDING, unpaid order). Carries NO secret (ADR 0024 §7).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "demo-ucp-merchant"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
       "name": "core.openwop.connections.workday",
       "kind": "connection",
       "latestVersion": "1.0.2",
@@ -681,6 +816,21 @@
       "tags": [],
       "typeIds": [
         "workday"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.connections.zendesk",
+      "kind": "connection",
+      "latestVersion": "1.0.0",
+      "description": "Zendesk connection pack (RFC 0095) — OAuth2 (authorization-code, per-subdomain) provider for the Zendesk Ticketing REST API. ADR 0033 DEPLOY-GATED. Endpoints are per-tenant (https://{subdomain}.zendesk.com/oauth/…), so the pack carries an instanceUrlTemplate and no fixed endpoints — the host resolves them from the connected subdomain (the NetSuite precedent). Reach is `openapi` against Zendesk's documented Ticketing API: no first-party hosted MCP server, so the documented REST surface is the honest day-1 reach (ADR 0033 §4). Zendesk was the top helpdesk absence vs the market-standard app surface in the ADR 0190 template research. Carries NO secret; the operator supplies the OAuth client id/secret host-side (ADR 0024 §7).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "zendesk"
       ],
       "nodeCount": 0,
       "agentCount": 0,
@@ -1178,6 +1328,36 @@
       "yanked": false
     },
     {
+      "name": "core.openwop.workflows.agent-eval-regression-gate",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.0",
+      "description": "Run an agent's eval suite inside the app and stop for a person when it does not clear (ADR 0889 WF-EV-11). One `feature.evals.nodes.run-suite` node runs the suite (optionally against a baseline eval run, for a regression verdict); when the suite fails or regresses, an approval gate asks a reviewer to accept the result or reject it. Resolves on hosts that ship the evals feature and node pack (the OpenWOP reference app).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "agents.eval-regression-gate"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.agent-knowledge",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.1",
+      "description": "WF-KB-1 — the ADR 0038 §B auto-ingest workflow, migrated off the in-tree `registerWorkflow({...})` pin site in features/agent-knowledge/feature.ts. A trigger (webhook/email/form, RFC 0099) ignites this chain; the single `feature.agent-knowledge.nodes.ingest` node writes an UNTRUSTED, cited KB document into a collection bound to the agent. Registered chain-backed under the ORIGINAL id `feature.agent-knowledge.auto-ingest`, so the seeded demo trigger subscription keeps resolving and replay is unchanged — and it is now gallery-visible and builder-editable like every other chain.",
+      "license": "",
+      "tags": [],
+      "typeIds": [
+        "feature.agent-knowledge.auto-ingest"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
       "name": "core.openwop.workflows.approvals",
       "kind": "workflow-chain",
       "latestVersion": "1.1.0",
@@ -1194,9 +1374,44 @@
       "yanked": false
     },
     {
+      "name": "core.openwop.workflows.assistant",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.1",
+      "description": "WF-COS-1 — the ADR 0023 assistant's six boot-path workflows, migrated off the in-tree `registerWorkflow({...})` pin sites in `features/assistant/loops.ts` and `features/assistant/actionExecution.ts`. THREE PERCEPTION LOOPS (calendar ingest, drive ingest, morning briefing) fired by the RFC 0052 scheduler, and THREE APPROVED-ACTION EXECUTIONS (email send, calendar invite, calendar reschedule) dispatched by the winning approval claim. Each is registered chain-backed under its ORIGINAL workflowId, so the per-tenant scheduler job rows, the `EXEC_WORKFLOW_BY_KIND` dispatch and every existing run stamp keep resolving — and all six become gallery-visible and builder-editable like every other chain. NO credential or connection material lives in any node config: the ADR 0024 §4 Option-C opt-in is RUN-LEVEL (`configurable.connections`), set on the scheduler job / at dispatch, exactly as it was before the migration.",
+      "license": "",
+      "tags": [],
+      "typeIds": [
+        "assistant.loop.calendar-ingest",
+        "assistant.loop.drive-ingest",
+        "assistant.loop.morning-briefing",
+        "assistant.action.email-send",
+        "assistant.action.calendar-invite",
+        "assistant.action.calendar-reschedule"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.campaign-autonomy",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.0",
+      "description": "Campaign Studio autonomy policy (ADR 0942 D7): the daily digest of notify-after steps. One chain per workspace, scheduled host-side when a client or campaign policy asks for a daily digest. It sends each named person one notice listing the campaign steps that ran without waiting for them the day before.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "campaign-autonomy.daily-digest"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
       "name": "core.openwop.workflows.campaign-brief",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.2",
+      "latestVersion": "1.1.0",
       "description": "Campaign-brief messaging-kernel + market-intel workflows, migrated from the deprecated builtins (ADR 0472 P4). chainIds keep the original ids; outputRoles restored at registration.",
       "license": "",
       "tags": [],
@@ -1212,7 +1427,7 @@
     {
       "name": "core.openwop.workflows.campaign-channels",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.2",
+      "latestVersion": "1.1.0",
       "description": "The five campaign channel child workflows (ADR 0157) — generate→approve DAGs the orchestration fans out over — migrated from the deprecated builtins (ADR 0472 P4). chainIds keep the original ids.",
       "license": "",
       "tags": [],
@@ -1231,14 +1446,33 @@
     {
       "name": "core.openwop.workflows.campaign-journeys",
       "kind": "workflow-chain",
-      "latestVersion": "1.1.4",
+      "latestVersion": "1.3.1",
       "description": "Contact-level lifecycle journeys as RFC 0013 chains on the ONE engine (ADR 0222 / campaign gap plan C6) — NOT a journey engine. Trigger with an ADR 0208 host-event binding (e.g. host.crm.contact.created → Welcome Series), guard with the enrollment + eligibility verbs (one run per contact per journey; every send behind consent + suppression), wait with core.flow.wait, send with the existing email node, log with the CRM activity verb. Enrollment state is the run itself — monitor in Runs, reset re-enrollment via the campaign-journeys API.",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
         "campaign-journeys.welcome-series",
         "campaign-journeys.re-engage-contact",
-        "campaign-journeys.segment-winback"
+        "campaign-journeys.segment-winback",
+        "campaign-journeys.welcome-email-sms",
+        "campaign-journeys.post-webinar",
+        "campaign-journeys.abandoned-signup"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.campaign-ops",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.0",
+      "description": "Agency campaign operations (ADR 0923): turn an operator's change request into a hashed change set of constrained edits on a client's landing page and email draft, for approval.",
+      "license": "",
+      "tags": [],
+      "typeIds": [
+        "campaign-ops.change-request",
+        "campaign-ops.execute"
       ],
       "nodeCount": 0,
       "agentCount": 0,
@@ -1248,7 +1482,7 @@
     {
       "name": "core.openwop.workflows.campaign-orchestration",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.2",
+      "latestVersion": "1.2.1",
       "description": "Campaign Studio orchestration spine (ADR 0158/RFC 0118), parallel channel fan-out shape — migrated from the deprecated builtin (ADR 0472 P4). chainId keeps the original id; the 5 channel children resolve by id at runtime via core.dispatch.",
       "license": "",
       "tags": [],
@@ -1263,13 +1497,29 @@
     {
       "name": "core.openwop.workflows.campaign-sync",
       "kind": "workflow-chain",
-      "latestVersion": "1.1.2",
-      "description": "Campaign Studio metrics-sync chain (RFC 0013; campaign gap plan C2 on ADR 0159). Pulls yesterday's ad metrics for every dispatched campaign through the acting user's platform connection (ctx.ads, window-scoped so rows never double-count) into the unified performance store, then delivers a short sync summary as a notification. Schedule it daily on the ONE scheduler, or run it ad hoc — the 15-minute cooldown makes overlapping fires harmless. Also carries the daily budget-pacing check (ADR 0220).",
+      "latestVersion": "1.5.0",
+      "description": "Campaign Studio metrics-sync chain (RFC 0013; campaign gap plan C2 on ADR 0159). Pulls a rolling 7-day look-back of daily ad metrics, with conversions and revenue, for the dispatched campaigns or the whole configured ad account through the acting user's platform connection (ctx.ads; each day's row is replaced on re-pull, so late conversions settle and nothing double-counts) into the unified performance store, then delivers a short sync summary as a notification. Schedule it daily on the ONE scheduler, or run it ad hoc — the 15-minute cooldown makes overlapping fires harmless. Also carries the daily budget-pacing check (ADR 0220). And the hourly conversions delivery (ADR 0907 D7): queued server-side conversions go to the live conversions APIs, consent re-checked per row at send.",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
         "campaign-sync.daily-metrics",
-        "campaign-sync.pacing-check"
+        "campaign-sync.pacing-check",
+        "campaign-sync.conversions-dispatch"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.channel-turn",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.2",
+      "description": "The channel agent-turn workflow (ADR 0154 Phase 4), migrated off the in-tree `registerWorkflow(DEF)` pin site (ADR 0703 / PIN_SITE_QUARANTINE drain — instance #3 of the SCWF-1 class, after assistant and scheduled-agent-chats). chainId keeps the original workflowId so every dispatch and run stamp keeps resolving.",
+      "license": "",
+      "tags": [],
+      "typeIds": [
+        "openwop-app.channel.turn"
       ],
       "nodeCount": 0,
       "agentCount": 0,
@@ -1279,7 +1529,7 @@
     {
       "name": "core.openwop.workflows.commerce",
       "kind": "workflow-chain",
-      "latestVersion": "1.3.0",
+      "latestVersion": "1.4.0",
       "description": "Real-work workflow pack (RFC 0013, ADR 0152) — the Commerce operations cluster (ecommerce gap plan §5C C8): Post-Purchase Thank-You, Low-Stock Reorder Draft, and the Order Exception Digest. Designed to bind to the ADR 0221 host events (host.commerce.order.paid, host.commerce.inventory.low-stock — create a host-event binding to enroll; ADR 0208) or the schedule trigger. Every outbound send rides the governed email-send integration node (drafts/approval per the tenant's actionPolicy — ADR 0033) and the ONE notification seam; order data flows through feature.commerce.nodes over ctx.features.commerce, so the ADR 0221 audit rows + spend thresholds apply by construction. Enrollment state = the run itself; a binding fires one run per event.",
       "license": "Apache-2.0",
       "tags": [],
@@ -1327,14 +1577,18 @@
     {
       "name": "core.openwop.workflows.crm-ops",
       "kind": "workflow-chain",
-      "latestVersion": "1.3.2",
-      "description": "Governed CRM write-verb workflows (RFC 0013, ADR 0208 §2, ADR 0252). Where vendor.openwop-app.crm.agents.sales-ops is read-mostly (plus two assistive writes), these chains carry the riskier CRM mutations — owner assignment off a new-lead event, stale-deal follow-up, and the scheduler-fired Gmail inbox sync — with a human in the loop where the ADR calls for one. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts that ship the feature.crm feature + node pack (the OpenWOP reference app).",
+      "latestVersion": "1.8.0",
+      "description": "Governed CRM write-verb workflows (RFC 0013, ADR 0208 §2, ADR 0252). Where vendor.openwop-app.crm.agents.sales-ops is read-mostly (plus two assistive writes), these chains carry the riskier CRM mutations — owner assignment off a new-lead event, stale-deal follow-up, the scheduler-fired Gmail inbox sync, and contact triage (the CRM toggle variant's scoring, recorded on the contact — ADR 0837 D7) — with a human in the loop where the ADR calls for one. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts that ship the feature.crm feature + node pack (the OpenWOP reference app).",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
         "crm-ops.route-new-lead",
         "crm-ops.deal-hygiene",
-        "crm-ops.gmail-sync"
+        "crm-ops.gmail-sync",
+        "crm-ops.triage",
+        "crm-ops.grade-lead",
+        "crm-ops.route-lead",
+        "crm-ops.qualify-lead"
       ],
       "nodeCount": 0,
       "agentCount": 0,
@@ -1344,13 +1598,15 @@
     {
       "name": "core.openwop.workflows.csm-ops",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.1",
-      "description": "CSM↔CRM linkage workflows (ADR 0212, RFC 0013). Where feature.csm.agents.health-insights is read-only, these two chains carry the CSM write surface: computing an Account's healthScore/healthFactors from its linked CRM company's deals/tasks (the scoring recipe as visible, editable workflow configuration rather than buried code — ADR 0212 §3), and a human-gated renewal-risk follow-up over the deal-hygiene shape (ADR 0212 §4 — renewals are deals, not a new entity). All tenant/org-specific values are run parameters (replay-deterministic). Resolves on hosts that ship the feature.crm + feature.csm features + node packs (the OpenWOP reference app).",
+      "latestVersion": "1.3.0",
+      "description": "CSM↔CRM linkage workflows (ADR 0212, RFC 0013). Where vendor.openwop-app.csm.agents.health-insights is read-only, these two chains carry the CSM write surface: computing an Account's healthScore/healthFactors from its linked CRM company's deals/tasks (the scoring recipe as visible, editable workflow configuration rather than buried code — ADR 0212 §3), and a human-gated renewal-risk follow-up over the deal-hygiene shape (ADR 0212 §4 — renewals are deals, not a new entity). All tenant/org-specific values are run parameters (replay-deterministic). Resolves on hosts that ship the feature.crm + feature.csm features + node packs (the OpenWOP reference app). 1.3.0 (ADR 0882): health-from-crm 1.1.0 names the org it measured; two playbook chains — red-account-rescue (bind the health-changed host event) and renewal-runway (run on demand or on a schedule) — write CRM tasks linked to the account's company and assigned to its owner.",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
         "csm-ops.health-from-crm",
-        "csm-ops.renewal-risk"
+        "csm-ops.renewal-risk",
+        "csm-ops.red-account-rescue",
+        "csm-ops.renewal-runway"
       ],
       "nodeCount": 0,
       "agentCount": 0,
@@ -1360,7 +1616,7 @@
     {
       "name": "core.openwop.workflows.customer-onboarding",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.5",
+      "latestVersion": "1.2.1",
       "description": "Customer-onboarding chains (RFC 0013): the post-sale first-mile — a warm welcome, a personalized kickoff checklist, and a scheduled 30-day health check. All external sends sit behind a human approval gate; tenant values are run parameters (replay-deterministic).",
       "license": "Apache-2.0",
       "tags": [],
@@ -1443,9 +1699,25 @@
       "yanked": false
     },
     {
+      "name": "core.openwop.workflows.experiments",
+      "kind": "workflow-chain",
+      "latestVersion": "1.1.0",
+      "description": "ADR 0949 P4 — the Optimize loop. One node reallocates a running Optimize experiment by Thompson sampling, every arm kept at or above its floor. Schedule it with the existing scheduler at the experiment's epoch cadence: a run that comes too early returns `too_soon` and changes nothing, and a replay or a :fork finds its epoch already appended (the epoch number comes from the run's frozen start instant), so it never re-allocates. It only reallocates an experiment a human launched; it never launches, stops or promotes. Resolves on hosts that ship the experiments feature + node pack (the OpenWOP reference app). ADR 0950 adds `experiments.promote` (internal): the governed, staged promotion of a Decide winner, started from the experiment.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "experiments.optimize-loop",
+        "experiments.promote"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
       "name": "core.openwop.workflows.feedback-triage",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.2",
+      "latestVersion": "1.2.0",
       "description": "Feedback-triage chains (RFC 0013): turn raw inbound feedback into classified, routed, actionable items. A form submission is classified and (on approval) filed as a follow-up task; a batch is themed into a weekly digest. Replay-deterministic.",
       "license": "Apache-2.0",
       "tags": [],
@@ -1478,7 +1750,7 @@
     {
       "name": "core.openwop.workflows.funnels",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.3",
+      "latestVersion": "1.1.0",
       "description": "Funnel optimization chains (ADR 0294 / Funnel A, Phase 6) — read-only analysis over the funnels feature nodes: per-step stats in, a grounded optimization proposal out. Proposals only: publishing, step edits, and experiment starts remain human actions in the Funnels page.",
       "license": "Apache-2.0",
       "tags": [],
@@ -1510,7 +1782,7 @@
     {
       "name": "core.openwop.workflows.incident-postmortem",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.2",
+      "latestVersion": "1.2.1",
       "description": "Incident-postmortem chains (RFC 0013): after an incident resolves, draft a blameless postmortem from the timeline and turn its action items into tracked tasks. Draft-first (the human edits before anything is shared). Replay-deterministic.",
       "license": "Apache-2.0",
       "tags": [],
@@ -1526,8 +1798,8 @@
     {
       "name": "core.openwop.workflows.insights-suite",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.2",
-      "description": "Insights & Drafting meta-workflows as an RFC 0013 chain pack (migrated from the deprecated ADR 0082/0072 builtins, ADR 0472 Phase 2). Three real source→analysis→LLM→draft→notify pipelines over BYOK-connected sources (BigQuery, Workday, chat completion, email-draft, notification-push). chainIds keep the original `openwop-app.insights.*` ids so scheduler/trigger ignition + replay are unchanged; the host registers them chain-backed (resolve-by-id, stable id) AND they are gallery-editable chains. Per-node outputRole (not expressible in the portable fragment) is re-applied at registration via the feature's postProcess.",
+      "latestVersion": "1.3.2",
+      "description": "Insights & Drafting meta-workflows as an RFC 0013 chain pack (migrated from the deprecated ADR 0082/0072 builtins, ADR 0472 Phase 2). Three real source→analysis→LLM→draft→notify pipelines over BYOK-connected sources. chainIds keep the original `openwop-app.insights.*` ids so scheduler/trigger ignition + replay are unchanged; the chains are also gallery-editable. 1.2.0 (ADR 0599 §5): each hard-required value is a chain PARAMETER bound as a WHOLE-VALUE `{{params.X}}` on a top-level node `inputs` entry, and data edges are port-qualified on BOTH sides. NOTIFY AUDIENCE (1.3.0 ADR 0600 §5; STATED in 1.3.1 §Correction 6): `self` resolves from the run's ACTING USER and refuses fail-closed without one, so a scheduled/webhook fire of `talent-prep` or `anniversary-draft` loses its completion notification — deliberate, since the alternative broadcasts a colleague's 9-box score or recognition draft workspace-wide. `weekly-variance` keeps `tenant`: no declared PII, and its only lane is the scheduler.",
       "license": "",
       "tags": [],
       "typeIds": [
@@ -1556,6 +1828,21 @@
       "yanked": false
     },
     {
+      "name": "core.openwop.workflows.kb-reindex",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.3",
+      "description": "The workflow a KB collection's embedding-spec REINDEX (ADR 0398 P3 / ADR 0643 D1b) fires on cadence so the rebuild completes without a browser. One node drains ONE bounded slice — embed the next chunks into the staging namespace, cut over when the staging space is whole — and the host tears the per-collection scheduler job down the moment the job reaches a terminal status (the transient definition is archived while a recorded run replays against it). `orgId`/`collectionId` are supplied by the per-collection job the admin-gated `POST …/reindex` registers; do NOT bind this chain by hand — the surface refuses the node unless a running/paused job already exists AND the executing run is the host-minted `kb.reindex:<tenantId>:<orgId>:<collectionId>` workflow. This lane replaces the SPA's `for (i < 10000) drain()` loop as the DRIVER; the SPA loop stays as the interactive fast path, calling the same route. Resolves on hosts that ship the kb feature + node pack (the OpenWOP reference app).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "kb.reindex"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
       "name": "core.openwop.workflows.kicktodo-accountability",
       "kind": "workflow-chain",
       "latestVersion": "1.0.2",
@@ -1573,13 +1860,28 @@
     {
       "name": "core.openwop.workflows.kicktodo-challenge-factory",
       "kind": "workflow-chain",
-      "latestVersion": "1.3.1",
-      "description": "The Challenge Factory (ADR 0458) + its lesson-batch child — migrated from the deprecated builtins (ADR 0472 P4, the terminal quarantine step). chainIds keep the original ids; build-0..3 reference lesson-batch via RFC 0133 config.subChainRef (host-default binds it to the shared same-id child); truthy/falsy reject-safe barriers ride RFC 0134; produced vars (plan/evidenceSummary/planBrief) declared per RFC 0133 §2.2.",
+      "latestVersion": "1.9.0",
+      "description": "The Challenge Factory (ADR 0458) + its lesson-batch child — migrated from the deprecated builtins (ADR 0472 P4, the terminal quarantine step). chainIds keep the original ids; build-0..3 reference lesson-batch via RFC 0133 config.subChainRef (host-default binds it to the shared same-id child); truthy/falsy reject-safe barriers ride RFC 0134; produced vars (plan/evidenceSummary/evidenceClaims/planBrief/planEvidenceBrief) declared per RFC 0133 §2.2; 1.4.0 (ADR 0458 §2.2 correction) grounds the plan, the lessons and the skeptic on the STRUCTURED evidence. 1.5.4 declares `actions: [approve, reject]` on all five approval gates (they set maxRequestChangesIterations 0, so those are the only real decisions — a defer/escalate/request-changes resume is now refused instead of being recorded as a decline that fails the run) and types the lesson-batch params honestly. 1.6.0: generateMedia param + image binding. 1.7.0: gate-N shows the lessons; a failed batch stops the run. 1.9.0: search uses searchQuery (ADR 0975 D3).",
       "license": "",
       "tags": [],
       "typeIds": [
         "openwop-app.kicktodo.challenge-factory",
         "openwop-app.kicktodo.lesson-batch"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.kicktodo-convene-turn",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.0",
+      "description": "The KickTodo convene turn-workflow (ADR 0442 P5, ADR 0689), migrated off the in-tree `registerWorkflow(DEF)` pin site — the last PRODUCT entry in PIN_SITE_QUARANTINE, drained the way ADR 0701 and ADR 0703 drained the scheduled-chat and channel turns. chainId keeps the original workflowId so every scheduler job and run stamp keeps resolving.",
+      "license": "",
+      "tags": [],
+      "typeIds": [
+        "openwop-app.kicktodo.convene-turn"
       ],
       "nodeCount": 0,
       "agentCount": 0,
@@ -1604,8 +1906,8 @@
     {
       "name": "core.openwop.workflows.kicktodo-loops",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.1",
-      "description": "KickTodo enrollment + scheduled loops (enrollment, daily-loop, reminder-loop), migrated from the deprecated builtins (ADR 0472 P4). chainIds keep the original ids so scheduler-continuation ignition + replay resolve unchanged. Enrollment demonstrates RFC 0133 produced variables: `enroll` writes `enrollmentId` to the bag, `materialize` reads it.",
+      "latestVersion": "1.1.1",
+      "description": "KickTodo enrollment + scheduled loops (enrollment, daily-loop, reminder-loop), migrated from the deprecated builtins (ADR 0472 P4). chainIds keep the original ids so scheduler-continuation ignition + replay resolve unchanged. Enrollment demonstrates RFC 0133 produced variables: `enroll` writes `enrollmentId` to the bag, `materialize` reads it. v1.1.0 (ADR 0689): the reminder-loop gains a second node — after the consent-gated reminder, `coach-turn` enqueues one proactive KickBot turn into the participant's own 1:1.",
       "license": "",
       "tags": [],
       "typeIds": [
@@ -1621,8 +1923,8 @@
     {
       "name": "core.openwop.workflows.kicktodo-plan-generation",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.2",
-      "description": "KickTodo plan generation as an RFC 0013 / RFC 0133 chain pack (migrated from the deprecated ADR 0072 builtin `openwop-app.kicktodo.plan-generation`). Generate a validated challenge plan with the run-scoped provider (closed-world validatePlan + one bounded repair inside the node; fails closed on stub providers), then decompose it into a draft. Demonstrates RFC 0133 produced variables: `generate` writes the validated `plan` to the run bag and `decompose` reads it by name — no typed output port, so an explicit edge is not the right shape.",
+      "latestVersion": "1.1.0",
+      "description": "KickTodo plan generation as an RFC 0013 / RFC 0133 chain pack (migrated from the deprecated ADR 0072 builtin `openwop-app.kicktodo.plan-generation`). Generate a validated challenge plan with the run-scoped provider (closed-world validatePlan + one bounded repair inside the node; fails closed on stub providers), then decompose it into a draft. Demonstrates RFC 0133 produced variables: `generate` writes the validated `plan` to the run bag and `decompose` reads it by name — no typed output port, so an explicit edge is not the right shape. 1.1.0 (XCH-PGC-1) forwards provider/model/credentialRef to generate; the node reads the candidate's dossier claims itself when none are passed, so the prompt and validatePlan see the same evidence.",
       "license": "",
       "tags": [],
       "typeIds": [
@@ -1636,8 +1938,8 @@
     {
       "name": "core.openwop.workflows.kicktodo-replan",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.1",
-      "description": "Participant-replan workflow (ADR 0459/0463), migrated from the deprecated builtin (ADR 0472 P4). chainId keeps the original id; the falsy reject-safe barrier rides RFC 0134.",
+      "latestVersion": "1.0.4",
+      "description": "Participant-replan workflow (ADR 0459/0463), migrated from the deprecated builtin (ADR 0472 P4). chainId keeps the original id; the falsy reject-safe barrier rides RFC 0134. 1.0.3 declares `actions: [approve, reject]` on the approval gate (maxRequestChangesIterations 0), so an unmade decision is refused instead of recorded as a decline. 1.0.4 (WF-FAIL-2): a failed enrich stops the run (enrich-fail) instead of skipping the approval gate and applying the revision unapproved.",
       "license": "",
       "tags": [],
       "typeIds": [
@@ -1674,6 +1976,36 @@
         "knowledge.policy-qa",
         "knowledge.compliance-review",
         "knowledge.doc-summarizer"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.knowledge-sync",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.1",
+      "description": "The workflow a knowledge-sync source (ADR 0107 / ADR 0605) fires on cadence (WF-KB-3 / KSWF-1). A single node runs one pass — list → diff → fetch+ingest → prune — over the configured Drive/OneDrive folder into the source's bound KB collection, with all the ADR 0605 hardening (pre-run lease, destructive-diff refusal, Tier-2 erasure, subject-scoped prune) behind the WF-KB-4 spend gate. `sourceId` identifies which SyncSource to sync; the per-source scheduler job registered at source creation supplies it automatically — do not bind this chain by hand. This lane replaces the retired knowledgeSyncDaemon, folding the recurring sync onto the ONE host scheduler. Resolves on hosts that ship the knowledge-sync feature + node pack (the OpenWOP reference app).",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "knowledge-sync.run"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.launch-showcase",
+      "kind": "workflow-chain",
+      "latestVersion": "1.1.0",
+      "description": "A product brief becomes a reviewed launch kit through parallel specialist steps, editorial revision and human approval. Draft-only: no publication or messaging.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "showcase.launch-kit"
       ],
       "nodeCount": 0,
       "agentCount": 0,
@@ -1736,7 +2068,7 @@
     {
       "name": "core.openwop.workflows.mcp-tool-projections",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.1",
+      "latestVersion": "1.0.4",
       "description": "MCP tool-projection workflows (core.openwop.mcp.expose-tool → backing node), migrated from the deprecated builtinWorkflows seam (ADR 0472 P4). chainIds keep the original *.mcp.* ids; registered chain-backed with the EXACT original metadata (the ADR 0087 mcp gates) restored, and the MCP mount enumerates them.",
       "license": "",
       "tags": [],
@@ -1759,7 +2091,11 @@
         "app-builder.mcp.catalog",
         "app-builder.mcp.render-design",
         "app-builder.mcp.get-preview-url",
-        "app-builder.mcp.resolve-paused-task"
+        "app-builder.mcp.resolve-paused-task",
+        "claude-code.mcp.my-todos",
+        "claude-code.mcp.add-todo",
+        "claude-code.mcp.schema-lookup",
+        "claude-code.mcp.permission"
       ],
       "nodeCount": 0,
       "agentCount": 0,
@@ -1769,7 +2105,7 @@
     {
       "name": "core.openwop.workflows.meeting-ops",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.3",
+      "latestVersion": "1.2.1",
       "description": "Meeting-ops chains (RFC 0013): less time in and around meetings — an agenda from a stated goal, and notes turned into owned action items. In-app and draft sinks only; replay-deterministic.",
       "license": "Apache-2.0",
       "tags": [],
@@ -1835,7 +2171,7 @@
     {
       "name": "core.openwop.workflows.production-plan",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.3",
+      "latestVersion": "1.1.0",
       "description": "Migrated from the deprecated builtin (ADR 0472 P4). chainId keeps the original id; outputRoles restored at registration.",
       "license": "",
       "tags": [],
@@ -1850,7 +2186,7 @@
     {
       "name": "core.openwop.workflows.release-comms",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.2",
+      "latestVersion": "1.2.1",
       "description": "Release-comms chains (RFC 0013): ship-day communications — customer-facing release notes from a raw changelog, and an internal launch announcement. Every external/team send is human-gated. Replay-deterministic.",
       "license": "Apache-2.0",
       "tags": [],
@@ -1881,7 +2217,7 @@
     {
       "name": "core.openwop.workflows.sales-outreach",
       "kind": "workflow-chain",
-      "latestVersion": "1.1.4",
+      "latestVersion": "1.3.1",
       "description": "Sales-outreach chains (RFC 0013): research-grounded, human-gated outreach — a personalized first-touch from live research, and a polite quiet-thread nudge. Every send is reviewed by a human first. Replay-deterministic.",
       "license": "Apache-2.0",
       "tags": [],
@@ -1895,15 +2231,45 @@
       "yanked": false
     },
     {
+      "name": "core.openwop.workflows.scheduled-chat-turn",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.1",
+      "description": "The scheduled-agent-chat turn workflow (ADR 0125), migrated off the in-tree `registerWorkflow(DEF)` pin site (ADR 0701 / PIN_SITE_QUARANTINE drain). chainId keeps the original workflowId so every existing scheduler job row, run stamp and dispatch keeps resolving. One agent-runner node; the recurring tick supplies agentId/task/conversationId per fire through the run's `configurable`, which `registerChainBackedWorkflow`'s deferred expansion materializes as run-overridable variables (RFC 0124).",
+      "license": "",
+      "tags": [],
+      "typeIds": [
+        "openwop-app.scheduled-chat.turn"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
       "name": "core.openwop.workflows.seo-content-ops",
       "kind": "workflow-chain",
-      "latestVersion": "1.1.4",
+      "latestVersion": "1.2.0",
       "description": "SEO content-ops chains (RFC 0013): a research-grounded content pipeline — a keyword brief from live search, a drafted article for human review, and an on-publish internal-link suggestion pass. Drafts are reviewed before anything is treated as final. Replay-deterministic.",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
         "seo.keyword-brief",
         "seo.draft-for-review"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.service-desk",
+      "kind": "workflow-chain",
+      "latestVersion": "1.1.0",
+      "description": "Service-desk workflow pack (RFC 0013, ADR 0878 D8): SLA escalation for the host's own support tickets. Bind it to the host's SLA-breach event (ADR 0683 — the event name belongs to the installing host and is a parameter here) or run it for one ticket by id. The ticket is read over feature.service-desk.nodes (the run person's org floor applies), an AI summary is grounded in the thread, and the people who work the ticket — its assignee, else its org's writers — are notified. Never a tenant broadcast; nothing is sent to the customer.",
+      "license": "Apache-2.0",
+      "tags": [],
+      "typeIds": [
+        "service-desk.sla-escalation"
       ],
       "nodeCount": 0,
       "agentCount": 0,
@@ -1965,6 +2331,24 @@
       "yanked": false
     },
     {
+      "name": "core.openwop.workflows.tutorial-connect-your-ai",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.1",
+      "description": "ADR 0488 D2 — the NESTING PROOF. The 'Connect Your AI' tutorial expressed as phase-granular sub-chains: one child chain per driveable phase, plus a parent chain that composes them via core.subWorkflow + subChainRef (RFC 0133). 'Show me this phase' runs a child; 'Drive the whole tutorial' runs the parent. Deliberately ONE tutorial: the ADR requires proving nesting on a single tutorial before converting the library.",
+      "license": "",
+      "tags": [],
+      "typeIds": [
+        "tutorial.connect-your-ai.phase-2",
+        "tutorial.connect-your-ai.phase-3",
+        "tutorial.connect-your-ai.phase-4",
+        "tutorial.connect-your-ai"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
       "name": "core.openwop.workflows.walkthroughs",
       "kind": "workflow-chain",
       "latestVersion": "1.0.3",
@@ -2007,7 +2391,7 @@
     {
       "name": "core.openwop.workflows.weekly-digest",
       "kind": "workflow-chain",
-      "latestVersion": "1.1.2",
+      "latestVersion": "1.3.0",
       "description": "Weekly-digest chains (RFC 0013): scheduled roundups that keep a team informed without a meeting — a research digest on a watched topic, and a team status roll-up. In-app + gated-send sinks; replay-deterministic.",
       "license": "Apache-2.0",
       "tags": [],
@@ -2691,6 +3075,21 @@
       "yanked": false
     },
     {
+      "name": "vendor.openwop-app.workflows.claude-code",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.0",
+      "description": "Hand a coding task to your own Claude Code from a workflow (ADR 0785). Requires the Claude Code feature and a paired device with workflow tasks allowed.",
+      "license": "",
+      "tags": [],
+      "typeIds": [
+        "openwop-app.claude-code.ask"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
       "name": "vendor.openwop-app.workflows.cms",
       "kind": "workflow-chain",
       "latestVersion": "1.0.2",
@@ -2723,8 +3122,8 @@
     {
       "name": "vendor.openwop-app.workflows.strategy",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.3",
-      "description": "Strategy operating-rhythm workflows (RFC 0013, ADR 0231). The KR measurement cadence: a weekly check-in nudge that finds measured key results with no recent confirmed check-in and notifies their owners, and a metric-sync pass that refreshes every sourced key result from its configured data owner (CRM deal totals, analytics conversions) through the one governed check-in path. Both are scheduled via the strategy cadence config (GET/PUT /v1/host/openwop-app/strategy/cadence) — no auto-boot jobs. All writes ride ctx.features.strategy.checkIn: agent writes are structurally proposals; sync writes are confirmed only by a human-configured measure.source (fail-closed).",
+      "latestVersion": "1.1.0",
+      "description": "Strategy operating-rhythm workflows (RFC 0013, ADR 0231). The KR measurement cadence: a weekly check-in nudge that finds measured key results with no recent confirmed check-in and notifies their owners, a metric-sync pass that refreshes every sourced key result from its configured data owner (CRM deal totals, analytics conversions) through the one governed check-in path, and a board-pack pre-read that drafts an MBR/QBR memo into a board-update Document. All THREE are scheduled via the strategy cadence config (GET/PUT /v1/host/openwop-app/strategy/cadence) — no auto-boot jobs. All writes ride ctx.features.strategy.checkIn: agent writes are structurally proposals; sync writes are confirmed only by a human-configured measure.source (fail-closed).",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
@@ -2740,12 +3139,13 @@
     {
       "name": "vendor.openwop.app-builder.workflows",
       "kind": "workflow-chain",
-      "latestVersion": "1.3.1",
+      "latestVersion": "1.4.2",
       "description": "The App Builder production chains (ADR 0346 / RFC 0013). The design chain is the portable source of truth for `app-builder.design` — the host registers it at boot via the feature's registration adapter (RFC 0124 deferred expansion), and it remains instantiable from the chain gallery like any chain.",
       "license": "",
       "tags": [],
       "typeIds": [
         "app-builder.design",
+        "app-builder.plan-to-kanban",
         "app-builder.repair"
       ],
       "nodeCount": 0,

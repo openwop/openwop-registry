@@ -1,0 +1,198 @@
+{
+  "name": "core.openwop.workflows.campaign-orchestration",
+  "version": "1.2.1",
+  "kind": "workflow-chain",
+  "description": "Campaign Studio orchestration spine (ADR 0158/RFC 0118), parallel channel fan-out shape — migrated from the deprecated builtin (ADR 0472 P4). chainId keeps the original id; the 5 channel children resolve by id at runtime via core.dispatch.",
+  "keywords": [
+    "Campaign"
+  ],
+  "engines": {
+    "openwop": ">=1.0.0 <3.0.0"
+  },
+  "chains": [
+    {
+      "chainId": "campaign-studio.campaign-orchestration",
+      "version": "1.2.1",
+      "label": "Campaign orchestration",
+      "description": "Validate the brief → messaging kernel → approve → generate all five channels in parallel → consistency check → finalize.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "briefId": {
+            "type": "string",
+            "description": "The confirmed campaign brief to orchestrate."
+          },
+          "provider": {
+            "type": "string",
+            "description": "AI provider id for this chain's model-calling nodes (for example anthropic, openai, google). Fixed into those nodes when the workflow is created. Leave unset to keep the nodes' own default."
+          },
+          "model": {
+            "type": "string",
+            "description": "Model id for this chain's model-calling nodes. Must be offered by `provider` in the host catalog. Set it together with `provider`."
+          }
+        },
+        "required": [
+          "briefId"
+        ]
+      },
+      "dag": {
+        "nodes": [
+          {
+            "id": "validate",
+            "typeId": "feature.campaign-brief.nodes.validate@1.0.0",
+            "inputs": {
+              "briefId": "{{params.briefId}}"
+            }
+          },
+          {
+            "id": "kernel",
+            "typeId": "feature.campaign-brief.nodes.generate-kernel@1.0.0",
+            "inputs": {
+              "briefId": "{{params.briefId}}",
+              "provider": "{{params.provider}}",
+              "model": "{{params.model}}"
+            }
+          },
+          {
+            "id": "kernel-approve",
+            "typeId": "feature.campaign-orchestration.nodes.autonomy-gate@1.1.0",
+            "config": {
+              "actionClass": "plan.approve",
+              "prompt": "Review the messaging kernel — the foundation every channel echoes.",
+              "title": "Approve the messaging kernel?"
+            }
+          },
+          {
+            "id": "channel-supervisor",
+            "typeId": "core.orchestrator.supervisor@1.0.0",
+            "config": {
+              "mockDispatchPlan": [
+                {
+                  "kind": "next-worker",
+                  "nextWorkerIds": [
+                    "campaign-studio.channel.landing-page",
+                    "campaign-studio.channel.ad-variants",
+                    "campaign-studio.channel.email-sequence",
+                    "campaign-studio.channel.creative-briefs",
+                    "campaign-studio.channel.social-posts"
+                  ],
+                  "nextWorkerInputs": [
+                    {
+                      "briefId": "{{params.briefId}}",
+                      "provider": "{{params.provider}}",
+                      "model": "{{params.model}}"
+                    },
+                    {
+                      "briefId": "{{params.briefId}}",
+                      "provider": "{{params.provider}}",
+                      "model": "{{params.model}}"
+                    },
+                    {
+                      "briefId": "{{params.briefId}}",
+                      "provider": "{{params.provider}}",
+                      "model": "{{params.model}}"
+                    },
+                    {
+                      "briefId": "{{params.briefId}}",
+                      "provider": "{{params.provider}}",
+                      "model": "{{params.model}}"
+                    },
+                    {
+                      "briefId": "{{params.briefId}}",
+                      "provider": "{{params.provider}}",
+                      "model": "{{params.model}}"
+                    }
+                  ]
+                },
+                {
+                  "kind": "terminate",
+                  "reason": "channels-dispatched"
+                }
+              ]
+            }
+          },
+          {
+            "id": "channel-dispatch",
+            "typeId": "core.dispatch@1.0.0",
+            "config": {
+              "workerDispatchModel": "child-run",
+              "fanOutPolicy": "parallel",
+              "joinPolicy": {
+                "mode": "wait-all",
+                "onChildFailure": "collect"
+              },
+              "inputMapping": {
+                "briefId": "briefId"
+              }
+            }
+          },
+          {
+            "id": "production-plan",
+            "typeId": "feature.production.nodes.plan-generate@1.0.0",
+            "inputs": {
+              "briefId": "{{params.briefId}}",
+              "provider": "{{params.provider}}",
+              "model": "{{params.model}}"
+            }
+          },
+          {
+            "id": "consistency",
+            "typeId": "feature.campaign-orchestration.nodes.consistency-check@1.0.0",
+            "inputs": {
+              "briefId": "{{params.briefId}}",
+              "provider": "{{params.provider}}",
+              "model": "{{params.model}}"
+            }
+          },
+          {
+            "id": "finalize",
+            "typeId": "feature.campaign-orchestration.nodes.finalize@1.1.0",
+            "inputs": {
+              "briefId": "{{params.briefId}}"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "from": "validate",
+            "to": "kernel"
+          },
+          {
+            "from": "kernel",
+            "to": "kernel-approve"
+          },
+          {
+            "from": "kernel-approve",
+            "to": "channel-supervisor"
+          },
+          {
+            "from": "channel-supervisor",
+            "to": "channel-dispatch"
+          },
+          {
+            "from": "channel-dispatch",
+            "to": "production-plan"
+          },
+          {
+            "from": "production-plan",
+            "to": "consistency"
+          },
+          {
+            "from": "channel-dispatch.dispatched",
+            "to": "consistency.dispatched"
+          },
+          {
+            "from": "consistency",
+            "to": "finalize"
+          }
+        ]
+      }
+    }
+  ],
+  "signing": {
+    "keyId": "openwop-team-1",
+    "scheme": "ed25519-canonical-json"
+  },
+  "integrity": "sha256-w31HdDt6HliHGNw4sK0cAvHusPG4pTPLPMcqAKmFNEw="
+}

@@ -1,0 +1,102 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/vendor.openwop.app-builder.workflows@1.4.2",
+      "type": "library",
+      "name": "vendor.openwop.app-builder.workflows",
+      "version": "1.4.2",
+      "description": "The App Builder production chains (ADR 0346 / RFC 0013). The design chain is the portable source of truth for `app-builder.design` — the host registers it at boot via the feature's registration adapter (RFC 0124 deferred expansion), and it remains instantiable from the chain gallery like any chain.",
+      "licenses": [],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d822394acb2d2addc6faf038958f4333fe4db1ebacafa713ee3294a558b2eb7c"
+        }
+      ],
+      "purl": "pkg:openwop/vendor.openwop.app-builder.workflows@1.4.2"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "da7d76e28e4ce6377e609f2ef48341bf4b995c87dd474f0f1e3f51c5d4b1d8ef"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "802"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a0d850fd6241753265c6120a1ba2063930b0367f1fb2ff6f1b2c342ba293071a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ba9a94ef0cd69398e2943e28751d389799a7419296c01af15f5b401cb3994f5a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "11855"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/vendor.openwop.app-builder.workflows@1.4.2",
+      "dependsOn": []
+    }
+  ]
+}

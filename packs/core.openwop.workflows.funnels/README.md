@@ -6,4 +6,4 @@ Source of truth: openwop-app repo, `examples/workflow-chain-packs/funnels/` (ADR
 
 Chains:
 
-- `funnels.optimize-step` v1.0.0 — Funnel Step Optimization Proposal
+- `funnels.optimize-step` v1.1.0 — Funnel Step Optimization Proposal

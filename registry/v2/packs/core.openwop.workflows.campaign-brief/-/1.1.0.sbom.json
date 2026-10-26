@@ -1,0 +1,102 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.campaign-brief@1.1.0",
+      "type": "library",
+      "name": "core.openwop.workflows.campaign-brief",
+      "version": "1.1.0",
+      "description": "Campaign-brief messaging-kernel + market-intel workflows, migrated from the deprecated builtins (ADR 0472 P4). chainIds keep the original ids; outputRoles restored at registration.",
+      "licenses": [],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e4269795abb2f8a744dfce364678995e0e5c7dc2876499c1559eb8097fbb4fb5"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.campaign-brief@1.1.0"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "4e3acb94ab960599c9b1338876a194343476a6ea89340c004f66efafd5fe9861"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "532"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5eae38cda19649025cec57aa03bf01a51e823c1b26da34c30665995d66ce5248"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7d247159f41e9bd3e45b5ab11be696f25914afe1f4b591046e96bf314e03f8f9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3656"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.campaign-brief@1.1.0",
+      "dependsOn": []
+    }
+  ]
+}

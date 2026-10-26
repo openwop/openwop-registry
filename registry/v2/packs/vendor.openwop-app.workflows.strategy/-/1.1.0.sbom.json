@@ -1,0 +1,108 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/vendor.openwop-app.workflows.strategy@1.1.0",
+      "type": "library",
+      "name": "vendor.openwop-app.workflows.strategy",
+      "version": "1.1.0",
+      "description": "Strategy operating-rhythm workflows (RFC 0013, ADR 0231). The KR measurement cadence: a weekly check-in nudge that finds measured key results with no recent confirmed check-in and notifies their owners, a metric-sync pass that refreshes every sourced key result from its configured data owner (CRM deal totals, analytics conversions) through the one governed check-in path, and a board-pack pre-read that drafts an MBR/QBR memo into a board-update Document. All THREE are scheduled via the strategy cadence config (GET/PUT /v1/host/openwop-app/strategy/cadence) — no auto-boot jobs. All writes ride ctx.features.strategy.checkIn: agent writes are structurally proposals; sync writes are confirmed only by a human-configured measure.source (fail-closed).",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "788d9c2fc941253d7a7613a53c8c2148ba83e2379a24f70f316c3efb3b24a958"
+        }
+      ],
+      "purl": "pkg:openwop/vendor.openwop-app.workflows.strategy@1.1.0"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "ab890dbcc16236f95f52523c10ce9aa8fd2e7fe2afcb7904ff78a1d82d3af835"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1053"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "77344351de5b00a44de8d8f58aca41d16df827fe3a9d3fb22d928c02e1efe74e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "416fb2d04e75ea29631665f70cb4aae1dda6a28bef23584b1799dfeeb44c48a2"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "8676"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/vendor.openwop-app.workflows.strategy@1.1.0",
+      "dependsOn": []
+    }
+  ]
+}

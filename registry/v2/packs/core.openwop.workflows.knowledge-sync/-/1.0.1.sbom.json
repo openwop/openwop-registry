@@ -1,0 +1,108 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.knowledge-sync@1.0.1",
+      "type": "library",
+      "name": "core.openwop.workflows.knowledge-sync",
+      "version": "1.0.1",
+      "description": "The workflow a knowledge-sync source (ADR 0107 / ADR 0605) fires on cadence (WF-KB-3 / KSWF-1). A single node runs one pass — list → diff → fetch+ingest → prune — over the configured Drive/OneDrive folder into the source's bound KB collection, with all the ADR 0605 hardening (pre-run lease, destructive-diff refusal, Tier-2 erasure, subject-scoped prune) behind the WF-KB-4 spend gate. `sourceId` identifies which SyncSource to sync; the per-source scheduler job registered at source creation supplies it automatically — do not bind this chain by hand. This lane replaces the retired knowledgeSyncDaemon, folding the recurring sync onto the ONE host scheduler. Resolves on hosts that ship the knowledge-sync feature + node pack (the OpenWOP reference app).",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "70148ee9980a6eca00b91dd98cb8d4425d8b4a7b4fd86b57836fb5d5620a52a7"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.knowledge-sync@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f93dce896b7e236ed5ae04fb4b86ae243a7761f16fbde6d99542b4313122b701"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1003"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b81c94edc2eaeaab989355a86cf8524fc7e90784b41fd9f9cbb49660928d6e82"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "dad29345b4e0dcbb62af15a195afc4c14ac9cfc00116934cfb611f0fb66df147"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2323"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.knowledge-sync@1.0.1",
+      "dependsOn": []
+    }
+  ]
+}

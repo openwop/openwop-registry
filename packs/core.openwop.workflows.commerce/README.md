@@ -6,6 +6,6 @@ Source of truth: openwop-app repo, `examples/workflow-chain-packs/commerce/` (AD
 
 Chains:
 
-- `commerce.post-purchase-thankyou` v1.0.0 — Post-Purchase Thank-You
-- `commerce.low-stock-reorder` v1.0.0 — Low-Stock Reorder Draft
-- `commerce.order-exception-digest` v1.0.0 — Order Exception Digest
+- `commerce.post-purchase-thankyou` v1.2.0 — Post-Purchase Thank-You
+- `commerce.low-stock-reorder` v1.2.0 — Low-Stock Reorder Draft
+- `commerce.order-exception-digest` v1.1.0 — Order Exception Digest

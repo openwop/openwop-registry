@@ -756,6 +756,60 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.connections.avalara@1.0.0",
+      "type": "library",
+      "name": "core.openwop.connections.avalara",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.connections.avalara/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "bb3031a688d3dff2e52cf0b5cc5985baec63e93afceb9f7bd5ccfdf074c7dd44"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.connections.cohere-rerank@1.0.0",
+      "type": "library",
+      "name": "core.openwop.connections.cohere-rerank",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.connections.cohere-rerank/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "86ca0e93f085fe8f532d14479e0fc03975ed6a4b3502aef3056a270603055b50"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.connections.easypost@1.0.0",
+      "type": "library",
+      "name": "core.openwop.connections.easypost",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.connections.easypost/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "4df4e9a066b59f6d2c770bc5ca16e28b8e3106b5325c2a184617817d7a33f6e5"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.connections.github@1.0.1",
       "type": "library",
       "name": "core.openwop.connections.github",
@@ -792,6 +846,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.connections.google-imagen@1.0.0",
+      "type": "library",
+      "name": "core.openwop.connections.google-imagen",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.connections.google-imagen/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "dc99ba909778f875f410bd2b648ec72d8ca229e25479b09a0bdf75f58131afd7"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.connections.google-workspace@1.0.1",
       "type": "library",
       "name": "core.openwop.connections.google-workspace",
@@ -804,6 +876,24 @@
             {
               "alg": "SHA-256",
               "content": "bf256a99550a5d0719af77cf04665978130782878391dfce03a5487ffa584bd3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.connections.hubspot@1.0.0",
+      "type": "library",
+      "name": "core.openwop.connections.hubspot",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.connections.hubspot/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "148d99e5b130856a9dfc8d31645787c0e8a3951d8aa6d02e79a7d86fee0ac55a"
             }
           ]
         }
@@ -846,6 +936,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.connections.linkedin-ads@1.0.2",
+      "type": "library",
+      "name": "core.openwop.connections.linkedin-ads",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.connections.linkedin-ads/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "dbddd7129e5ed65731726646b2bbc86f3329d2af51d2a782cb75c9d6edc3920c"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.connections.meta-ads@1.0.1",
       "type": "library",
       "name": "core.openwop.connections.meta-ads",
@@ -858,6 +966,24 @@
             {
               "alg": "SHA-256",
               "content": "f1ea3cdb40c4c847965f243553d930f83b902092055cc8decf4a4be70a98126e"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.connections.meta-ads@1.1.0",
+      "type": "library",
+      "name": "core.openwop.connections.meta-ads",
+      "version": "1.1.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.connections.meta-ads/-/1.1.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "5a264018f5c57416d14fcd75242b25e601ccd38f4cf8676d4c8daf5bd35f28d1"
             }
           ]
         }
@@ -936,6 +1062,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.connections.openai-images@1.0.0",
+      "type": "library",
+      "name": "core.openwop.connections.openai-images",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.connections.openai-images/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "5e011153d6cd4dc044d34080ba3fa7701e39ad95d197d6100b4b094d5318db74"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.connections.salesforce@1.0.1",
       "type": "library",
       "name": "core.openwop.connections.salesforce",
@@ -972,6 +1116,42 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.connections.shippo@1.0.0",
+      "type": "library",
+      "name": "core.openwop.connections.shippo",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.connections.shippo/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "03a4d28cad3706dbf1c77730a79e605eab5b89170ae9fff58daabd4e2e426974"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.connections.taxjar@1.0.0",
+      "type": "library",
+      "name": "core.openwop.connections.taxjar",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.connections.taxjar/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "c3c62c3617a4784395329153f85de1e7b95b7544b991f9bc85b3a680e056d59e"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.connections.tiktok-ads@1.0.1",
       "type": "library",
       "name": "core.openwop.connections.tiktok-ads",
@@ -984,6 +1164,24 @@
             {
               "alg": "SHA-256",
               "content": "1c0b40d3419900f3c9b17b2805767e606080051e6741f9b812df0c2927bc7da7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.connections.ucp-reference-merchant@1.0.0",
+      "type": "library",
+      "name": "core.openwop.connections.ucp-reference-merchant",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.connections.ucp-reference-merchant/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "dbd1e4aea01e7b729b920aaf6f52591c0154e47dc71783009776cab58f24e15f"
             }
           ]
         }
@@ -1020,6 +1218,24 @@
             {
               "alg": "SHA-256",
               "content": "8e4274c93b5d9f27ed7f06555019d143b9fed3295f61c630c2aeb715202d6696"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.connections.zendesk@1.0.0",
+      "type": "library",
+      "name": "core.openwop.connections.zendesk",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.connections.zendesk/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "e9017e9a294c89aa57705d4c812e88b7f1ae7ac995250ed6eabae2e43ceb5460"
             }
           ]
         }
@@ -1620,6 +1836,42 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.agent-eval-regression-gate@1.0.0",
+      "type": "library",
+      "name": "core.openwop.workflows.agent-eval-regression-gate",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.agent-eval-regression-gate/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "a941e5b579b864f8ac68739475974569379d4f18326774ad7c343df1442617c4"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.agent-knowledge@1.0.1",
+      "type": "library",
+      "name": "core.openwop.workflows.agent-knowledge",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.agent-knowledge/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "34b0c16c910959f09e3eb523a3da7d298a173c527e7798bfeaf8c99aad505a12"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.workflows.approvals@1.0.4",
       "type": "library",
       "name": "core.openwop.workflows.approvals",
@@ -1692,6 +1944,42 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.assistant@1.0.1",
+      "type": "library",
+      "name": "core.openwop.workflows.assistant",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.assistant/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "fa75eaaea51eaa28495cfcc6546c550bded556fa114ec71480fcc53d263d7917"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.campaign-autonomy@1.0.0",
+      "type": "library",
+      "name": "core.openwop.workflows.campaign-autonomy",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.campaign-autonomy/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "fadc034ba74d69b4262e57b4dbc1957e538f1a0d88d652d9e2990c07311bdb01"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.workflows.campaign-brief@1.0.1",
       "type": "library",
       "name": "core.openwop.workflows.campaign-brief",
@@ -1722,6 +2010,24 @@
             {
               "alg": "SHA-256",
               "content": "a579fe288d394de333eff48bbbded3dce50f1684c93f0cd78b4b708f3af1e983"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.campaign-brief@1.1.0",
+      "type": "library",
+      "name": "core.openwop.workflows.campaign-brief",
+      "version": "1.1.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.campaign-brief/-/1.1.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "112a8dc03fc075a179745da351903ce0220258df6f6b5fc0ccad7052d98e5e90"
             }
           ]
         }
@@ -1764,6 +2070,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.campaign-channels@1.1.0",
+      "type": "library",
+      "name": "core.openwop.workflows.campaign-channels",
+      "version": "1.1.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.campaign-channels/-/1.1.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "483ace384eb27e3ce5ce3b7bc5c09493264febeb2e3c71567d509cd61b794a45"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.workflows.campaign-journeys@1.1.3",
       "type": "library",
       "name": "core.openwop.workflows.campaign-journeys",
@@ -1794,6 +2118,42 @@
             {
               "alg": "SHA-256",
               "content": "c6a0be1a35b7d59985c033fc5f729bca9b33ccf54e81b8bfc5a2d1349a2f2cb1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.campaign-journeys@1.3.1",
+      "type": "library",
+      "name": "core.openwop.workflows.campaign-journeys",
+      "version": "1.3.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.campaign-journeys/-/1.3.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "4e4580d7432ea5c5dfc1acf5504a303d5a5b143f5047d743ed5922399557ebff"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.campaign-ops@1.0.0",
+      "type": "library",
+      "name": "core.openwop.workflows.campaign-ops",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.campaign-ops/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "45a28a4f6046cdd611942c40e9e949d0af2ca8d8e984395eadb3aab6eed5d52e"
             }
           ]
         }
@@ -1836,6 +2196,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.campaign-orchestration@1.2.1",
+      "type": "library",
+      "name": "core.openwop.workflows.campaign-orchestration",
+      "version": "1.2.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.campaign-orchestration/-/1.2.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "2760ea177cdc5a1f16a6b424d46fb5d1cc2a69705e29e89a6397914f66987d69"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.workflows.campaign-sync@1.1.2",
       "type": "library",
       "name": "core.openwop.workflows.campaign-sync",
@@ -1848,6 +2226,42 @@
             {
               "alg": "SHA-256",
               "content": "fec220b60494dbf85d125a838900f3ce203cc81cf9c39cf6918d5cdffb6de20a"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.campaign-sync@1.5.0",
+      "type": "library",
+      "name": "core.openwop.workflows.campaign-sync",
+      "version": "1.5.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.campaign-sync/-/1.5.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "32e7ddcff347b35032b2a3d5a78967a3e2f791ac0b54116d53666a4890ac99c3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.channel-turn@1.0.2",
+      "type": "library",
+      "name": "core.openwop.workflows.channel-turn",
+      "version": "1.0.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.channel-turn/-/1.0.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "0014704a7c51f01b3f334c420f2c8004f10c1c8e592978dc778901f45c6ce0f7"
             }
           ]
         }
@@ -1884,6 +2298,24 @@
             {
               "alg": "SHA-256",
               "content": "58d8f8c70bda9e95c77c400f200eadda68b0410ecc96f6e74df041c9e36b423e"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.commerce@1.4.0",
+      "type": "library",
+      "name": "core.openwop.workflows.commerce",
+      "version": "1.4.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.commerce/-/1.4.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "a81e25f81476c5d411af81f0308b24510b325bb224f5b185f55f02df7ad30880"
             }
           ]
         }
@@ -2052,6 +2484,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.crm-ops@1.8.0",
+      "type": "library",
+      "name": "core.openwop.workflows.crm-ops",
+      "version": "1.8.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.crm-ops/-/1.8.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "349a02a193c7c55d8bc2b1f3f625e221f525afb8f53a212c7ece09bb76891b0a"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.workflows.csm-ops@1.0.1",
       "type": "library",
       "name": "core.openwop.workflows.csm-ops",
@@ -2064,6 +2514,24 @@
             {
               "alg": "SHA-256",
               "content": "12381ee966af5784094c6f9a4fb18faf2becb471d30566ae432d181bff2f2476"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.csm-ops@1.3.0",
+      "type": "library",
+      "name": "core.openwop.workflows.csm-ops",
+      "version": "1.3.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.csm-ops/-/1.3.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "30ac06b3c1abf33581cad13d9264317a7095c1898137ef79f05ffecc42cbedd6"
             }
           ]
         }
@@ -2100,6 +2568,24 @@
             {
               "alg": "SHA-256",
               "content": "e32a9a2f1b6f106241ba68d851a79400ae95f39e8d9bd0090d23900116e7bc3d"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.customer-onboarding@1.2.1",
+      "type": "library",
+      "name": "core.openwop.workflows.customer-onboarding",
+      "version": "1.2.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.customer-onboarding/-/1.2.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "5d3554d29076c9bbb759eccbb76ade462712e05091bc802bd36722ec974dd142"
             }
           ]
         }
@@ -2340,6 +2826,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.experiments@1.1.0",
+      "type": "library",
+      "name": "core.openwop.workflows.experiments",
+      "version": "1.1.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.experiments/-/1.1.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "d75cef5e0d778f5e21823965c0d565901828c4359c72d91cd12755830320cfac"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.workflows.feedback-triage@1.0.2",
       "type": "library",
       "name": "core.openwop.workflows.feedback-triage",
@@ -2352,6 +2856,24 @@
             {
               "alg": "SHA-256",
               "content": "b99d263f6407f6d43b431f6172e58072004632ce5e8fc2f0a034ed3a3f6a130d"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.feedback-triage@1.2.0",
+      "type": "library",
+      "name": "core.openwop.workflows.feedback-triage",
+      "version": "1.2.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.feedback-triage/-/1.2.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "b7452c959f80ef6ce8a25077359e5d4f24910a725b1fca4958c2a28ab549a030"
             }
           ]
         }
@@ -2484,6 +3006,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.funnels@1.1.0",
+      "type": "library",
+      "name": "core.openwop.workflows.funnels",
+      "version": "1.1.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.funnels/-/1.1.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "f56097cad8f1acf63b6a6bac92a1c79ce36639655aca823ae0afa7880eb89ad0"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.workflows.inbox@1.0.6",
       "type": "library",
       "name": "core.openwop.workflows.inbox",
@@ -2592,6 +3132,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.incident-postmortem@1.2.1",
+      "type": "library",
+      "name": "core.openwop.workflows.incident-postmortem",
+      "version": "1.2.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.incident-postmortem/-/1.2.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "d5c930ddcdcea9dbd1221fd4ce62daca3297b65758be99375d281e15ffab6880"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.workflows.insights-suite@1.0.2",
       "type": "library",
       "name": "core.openwop.workflows.insights-suite",
@@ -2604,6 +3162,24 @@
             {
               "alg": "SHA-256",
               "content": "25f732faa0283c1536ae13753bbf6f7f6ae243f700ad9d4d90b5a4e02ca25419"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.insights-suite@1.3.2",
+      "type": "library",
+      "name": "core.openwop.workflows.insights-suite",
+      "version": "1.3.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.insights-suite/-/1.3.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "27a2c19a561930996ff683c9736eb64422584a435ee4926996423d74ee9315a3"
             }
           ]
         }
@@ -2700,6 +3276,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.kb-reindex@1.0.3",
+      "type": "library",
+      "name": "core.openwop.workflows.kb-reindex",
+      "version": "1.0.3",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.kb-reindex/-/1.0.3.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "0cb126ed72a34cfd8f304052d304c9fb2702a7563f38db2ece4d4578e74c431b"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.workflows.kicktodo-accountability@1.0.1",
       "type": "library",
       "name": "core.openwop.workflows.kicktodo-accountability",
@@ -2748,6 +3342,42 @@
             {
               "alg": "SHA-256",
               "content": "dd76703b3e499b8e2117edf136dff3df43bd05f8d3fc3a35b0e687755179083b"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.kicktodo-challenge-factory@1.9.0",
+      "type": "library",
+      "name": "core.openwop.workflows.kicktodo-challenge-factory",
+      "version": "1.9.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.kicktodo-challenge-factory/-/1.9.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "e819eba483557241349c2025f64134313b622746cf6716d96a300357f4a894d0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.kicktodo-convene-turn@1.0.0",
+      "type": "library",
+      "name": "core.openwop.workflows.kicktodo-convene-turn",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.kicktodo-convene-turn/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "db4d3de818c4eec5d5274c2cf11120596cce8d9fbafaf1a85bd548a1a11dcc12"
             }
           ]
         }
@@ -2808,6 +3438,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.kicktodo-loops@1.1.1",
+      "type": "library",
+      "name": "core.openwop.workflows.kicktodo-loops",
+      "version": "1.1.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.kicktodo-loops/-/1.1.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "3a5800e01adeb29e1306b6e4a25192b06e1292f27dedfb0fe5b546b9a92249e5"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.workflows.kicktodo-plan-generation@1.0.1",
       "type": "library",
       "name": "core.openwop.workflows.kicktodo-plan-generation",
@@ -2844,6 +3492,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.kicktodo-plan-generation@1.1.0",
+      "type": "library",
+      "name": "core.openwop.workflows.kicktodo-plan-generation",
+      "version": "1.1.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.kicktodo-plan-generation/-/1.1.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "c674a35f08077114d3ff786637e216bd59b4dadca6231d079704a15c7e00704f"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.workflows.kicktodo-replan@1.0.1",
       "type": "library",
       "name": "core.openwop.workflows.kicktodo-replan",
@@ -2856,6 +3522,24 @@
             {
               "alg": "SHA-256",
               "content": "496ca8e60c7983ac5398b7d302814fab0b14283e4dfb2437cb8e7abaf5a1485e"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.kicktodo-replan@1.0.4",
+      "type": "library",
+      "name": "core.openwop.workflows.kicktodo-replan",
+      "version": "1.0.4",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.kicktodo-replan/-/1.0.4.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "689370eb4a9c86a771d403e90c7463810974aab87e3c20be221cadac6a8859ed"
             }
           ]
         }
@@ -2892,6 +3576,24 @@
             {
               "alg": "SHA-256",
               "content": "617f56288401e837b6a29e9d476c9e7f77e14c3b746be8877e2f902d2e5b2730"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.knowledge-sync@1.0.1",
+      "type": "library",
+      "name": "core.openwop.workflows.knowledge-sync",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.knowledge-sync/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "64e8a2a4a55163da210c0694ca87a18b3cc485cd1fb065a3be9cecfb90c1b076"
             }
           ]
         }
@@ -2964,6 +3666,24 @@
             {
               "alg": "SHA-256",
               "content": "199d94c13974a7e0a28d560aa79080e851cbf7d00f877be716c43a73a5dc54fd"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.launch-showcase@1.1.0",
+      "type": "library",
+      "name": "core.openwop.workflows.launch-showcase",
+      "version": "1.1.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.launch-showcase/-/1.1.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "bfea8bac8a162500a3b789ef64ff77829283a48308537fbd0daae92bd51a510f"
             }
           ]
         }
@@ -3222,6 +3942,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.mcp-tool-projections@1.0.4",
+      "type": "library",
+      "name": "core.openwop.workflows.mcp-tool-projections",
+      "version": "1.0.4",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.mcp-tool-projections/-/1.0.4.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "9d7c05e943f1c49c5a65c752a62b2ead1485bf261979247b89b0a1517d8c6e28"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.workflows.meeting-ops@1.0.2",
       "type": "library",
       "name": "core.openwop.workflows.meeting-ops",
@@ -3252,6 +3990,24 @@
             {
               "alg": "SHA-256",
               "content": "8c6a4adf14a89fba7ff77bfc95e67b265409cf86624fbf54a40fcae440ec1514"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.meeting-ops@1.2.1",
+      "type": "library",
+      "name": "core.openwop.workflows.meeting-ops",
+      "version": "1.2.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.meeting-ops/-/1.2.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "065045874b765c5ffeee296b25016c63dcd009bb791e4dc388d47de9762e3b60"
             }
           ]
         }
@@ -3510,6 +4266,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.production-plan@1.1.0",
+      "type": "library",
+      "name": "core.openwop.workflows.production-plan",
+      "version": "1.1.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.production-plan/-/1.1.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "f7d923b2835decf993b5e42fe6c8386a968d0e2300a9dddea393ade22974ff43"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.workflows.release-comms@1.0.1",
       "type": "library",
       "name": "core.openwop.workflows.release-comms",
@@ -3540,6 +4314,24 @@
             {
               "alg": "SHA-256",
               "content": "fd7d375b81acba958a55ec5ad3123172da67a39a00ca965f51258185da786a47"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.release-comms@1.2.1",
+      "type": "library",
+      "name": "core.openwop.workflows.release-comms",
+      "version": "1.2.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.release-comms/-/1.2.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "2356c159a6bd0bbe7d0e0dabbb0c23f239f59a4884b8a7358333e611635fbd0b"
             }
           ]
         }
@@ -3654,6 +4446,42 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.sales-outreach@1.3.1",
+      "type": "library",
+      "name": "core.openwop.workflows.sales-outreach",
+      "version": "1.3.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.sales-outreach/-/1.3.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "a0a70eb5bd63074c8906bb15dd72b7306399a63ce09ee1ce1a23eef592b06b26"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.scheduled-chat-turn@1.0.1",
+      "type": "library",
+      "name": "core.openwop.workflows.scheduled-chat-turn",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.scheduled-chat-turn/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "ef41a5938696c7cc8009508cf0a362d7aec4d52661b6443d6cc09ea682ab7b26"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.workflows.seo-content-ops@1.1.1",
       "type": "library",
       "name": "core.openwop.workflows.seo-content-ops",
@@ -3720,6 +4548,42 @@
             {
               "alg": "SHA-256",
               "content": "8f78bb0a9cddb436a908fc0465b3003cde9ad7aa456dea865f0fecc74f99a104"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.seo-content-ops@1.2.0",
+      "type": "library",
+      "name": "core.openwop.workflows.seo-content-ops",
+      "version": "1.2.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.seo-content-ops/-/1.2.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "4254ad0fdc2a925d491c931d381b3bee1100ec0898aa1561b3545b305ac3edb7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.service-desk@1.1.0",
+      "type": "library",
+      "name": "core.openwop.workflows.service-desk",
+      "version": "1.1.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.service-desk/-/1.1.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "b3924a1146f46d52126af2a369ee90cc317f1823c1f1bae0823275b9f21e91ea"
             }
           ]
         }
@@ -3906,6 +4770,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.tutorial-connect-your-ai@1.0.1",
+      "type": "library",
+      "name": "core.openwop.workflows.tutorial-connect-your-ai",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.tutorial-connect-your-ai/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "023c4f8701ae79a3e6602d13a65ebeaddfe95ecb3ff7aa7db48a105e20838c2c"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.workflows.walkthroughs@1.0.2",
       "type": "library",
       "name": "core.openwop.workflows.walkthroughs",
@@ -3954,6 +4836,24 @@
             {
               "alg": "SHA-256",
               "content": "edee3ea4be0b7eca58b1cbb3ae85ea7dd6333a976d6783add27fafb90321a6f0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.weekly-digest@1.3.0",
+      "type": "library",
+      "name": "core.openwop.workflows.weekly-digest",
+      "version": "1.3.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.weekly-digest/-/1.3.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "a0a6c01fc0af304242e0a221298343d5ecca0bf1d43b0d13c43a84f6ad4e2c64"
             }
           ]
         }
@@ -5364,6 +6264,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/vendor.openwop-app.workflows.claude-code@1.0.0",
+      "type": "library",
+      "name": "vendor.openwop-app.workflows.claude-code",
+      "version": "1.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.openwop-app.workflows.claude-code/-/1.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "ae8646b74c2fed271e7bb37a2be96ffbccb6c70104f91b68e0336c8451acb9b0"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/vendor.openwop-app.workflows.cms@1.0.1",
       "type": "library",
       "name": "vendor.openwop-app.workflows.cms",
@@ -5490,6 +6408,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/vendor.openwop-app.workflows.strategy@1.1.0",
+      "type": "library",
+      "name": "vendor.openwop-app.workflows.strategy",
+      "version": "1.1.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.openwop-app.workflows.strategy/-/1.1.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "d04d63a062ba484a3049acda666ca75541366c5e838ec1f672fa181da6bc4fab"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/vendor.openwop.app-builder.workflows@1.3.1",
       "type": "library",
       "name": "vendor.openwop.app-builder.workflows",
@@ -5502,6 +6438,24 @@
             {
               "alg": "SHA-256",
               "content": "585870ff37015cb96eb3274b96712d80be972545fe420720d9ceee380b739408"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.openwop.app-builder.workflows@1.4.2",
+      "type": "library",
+      "name": "vendor.openwop.app-builder.workflows",
+      "version": "1.4.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.openwop.app-builder.workflows/-/1.4.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "f258bb5f790c1a68452155f4847b12bf7c15d2a3d1f9b41c73b14a4ed79b0957"
             }
           ]
         }

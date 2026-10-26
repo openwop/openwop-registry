@@ -1,8 +1,8 @@
 {
   "name": "core.openwop.workflows.meeting-ops",
-  "version": "1.0.3",
+  "version": "1.2.1",
   "kind": "workflow-chain",
-  "description": "Meeting-ops chains (RFC 0013): less time in and around meetings \u2014 an agenda from a stated goal, and notes turned into owned action items. In-app and draft sinks only; replay-deterministic.",
+  "description": "Meeting-ops chains (RFC 0013): less time in and around meetings — an agenda from a stated goal, and notes turned into owned action items. In-app and draft sinks only; replay-deterministic.",
   "author": "openwop",
   "license": "Apache-2.0",
   "engines": {
@@ -14,35 +14,22 @@
   "chains": [
     {
       "chainId": "meeting.agenda-prep",
-      "version": "1.0.0",
-      "label": "Goal \u2192 Meeting Agenda",
+      "version": "1.1.1",
+      "label": "Goal → Meeting Agenda",
       "description": "Turns a one-line meeting goal into a tight, time-boxed agenda and posts it to the team as an in-app notification.",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
-        "required": [
-          "triggerEventName"
-        ],
+        "required": ["triggerEventName"],
         "properties": {
           "minutes": {
             "type": "string",
             "default": "30",
             "description": "Meeting length in minutes."
           },
-          "provider": {
-            "type": "string",
-            "default": "anthropic",
-            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 \u2014 a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it \u2014 the workflow will not fall back to another provider on its own."
-          },
-          "model": {
-            "type": "string",
-            "default": "claude-sonnet-4-6",
-            "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation."
-          },
-          "triggerEventName": {
-            "type": "string",
-            "description": "Host event name that starts this workflow. MUST match the `events.md` \u00a7Types grammar: two or three kebab-case segments under a registered org, never `openwop.`-prefixed (e.g. `example.deal.won`)."
-          }
+          "provider": { "type": "string", "description": "AI provider id for this chain's model-calling nodes. Set it to fix a provider into those nodes when the workflow is created. Leave it unset and each run uses the run's chosen provider, else the workspace's AI setting, else the host's catalog default (ADR 0903); whichever is chosen is recorded on the run, so a replay or fork uses the same one. The workspace needs a key for the provider that runs." },
+          "model": { "type": "string", "description": "Model id for this chain's model-calling nodes. Must be offered by the provider in the host catalog. Leave it unset to use the provider's model from the same choice (ADR 0903)." },
+          "triggerEventName": { "type": "string", "description": "Host event name that starts this workflow. MUST match the `events.md` §Types grammar: two or three kebab-case segments under a registered org, never `openwop.`-prefixed (e.g. `example.deal.won`)." }
         }
       },
       "capabilities": [],
@@ -50,7 +37,7 @@
         "nodes": [
           {
             "id": "start",
-            "typeId": "core.trigger.event",
+            "typeId": "core.trigger.event@1.0.0",
             "name": "Meeting scheduled",
             "position": {
               "x": 0,
@@ -63,7 +50,7 @@
           },
           {
             "id": "agenda",
-            "typeId": "core.ai.chatCompletion",
+            "typeId": "core.ai.chatCompletion@1.0.0",
             "name": "Build agenda",
             "position": {
               "x": 280,
@@ -78,18 +65,14 @@
           },
           {
             "id": "notify",
-            "typeId": "feature.notifications.nodes.notify",
+            "typeId": "feature.notifications.nodes.notify@1.0.0",
             "name": "Share agenda",
             "position": {
               "x": 560,
               "y": 0
             },
-            "config": {
-              "audience": "tenant"
-            },
-            "inputs": {
-              "title": "Goal \u2192 Meeting Agenda"
-            }
+            "config": { "audience": "tenant" },
+            "inputs": { "title": "Goal → Meeting Agenda" }
           }
         ],
         "edges": [
@@ -112,35 +95,22 @@
     },
     {
       "chainId": "meeting.notes-to-actions",
-      "version": "1.0.0",
-      "label": "Notes \u2192 Owned Action Items",
+      "version": "1.2.1",
+      "label": "Notes → Owned Action Items",
       "description": "Debriefs raw meeting notes into decisions and action items; a human confirms, and each action becomes a tracked task.",
       "parameters": {
         "type": "object",
         "additionalProperties": false,
-        "required": [
-          "triggerEventName"
-        ],
+        "required": ["triggerEventName"],
         "properties": {
           "orgId": {
             "type": "string",
             "default": "",
             "description": "Org the tasks belong to."
           },
-          "provider": {
-            "type": "string",
-            "default": "anthropic",
-            "description": "AI provider id for this chain's LLM nodes. Frozen into this chain's AI nodes when the workflow is created (ADR 0498 \u2014 a concrete provider is what keeps replay deterministic). Override at instantiation to use a different vendor or your own BYOK provider; whichever you pick, the workspace needs a key for it \u2014 the workflow will not fall back to another provider on its own."
-          },
-          "model": {
-            "type": "string",
-            "default": "claude-sonnet-4-6",
-            "description": "Model id for this chain's LLM nodes. Must be advertised by `provider` in the host catalog; override at instantiation."
-          },
-          "triggerEventName": {
-            "type": "string",
-            "description": "Host event name that starts this workflow. MUST match the `events.md` \u00a7Types grammar: two or three kebab-case segments under a registered org, never `openwop.`-prefixed (e.g. `example.deal.won`)."
-          }
+          "provider": { "type": "string", "description": "AI provider id for this chain's model-calling nodes. Set it to fix a provider into those nodes when the workflow is created. Leave it unset and each run uses the run's chosen provider, else the workspace's AI setting, else the host's catalog default (ADR 0903); whichever is chosen is recorded on the run, so a replay or fork uses the same one. The workspace needs a key for the provider that runs." },
+          "model": { "type": "string", "description": "Model id for this chain's model-calling nodes. Must be offered by the provider in the host catalog. Leave it unset to use the provider's model from the same choice (ADR 0903)." },
+          "triggerEventName": { "type": "string", "description": "Host event name that starts this workflow. MUST match the `events.md` §Types grammar: two or three kebab-case segments under a registered org, never `openwop.`-prefixed (e.g. `example.deal.won`)." }
         }
       },
       "capabilities": [
@@ -150,7 +120,7 @@
         "nodes": [
           {
             "id": "start",
-            "typeId": "core.trigger.event",
+            "typeId": "core.trigger.event@1.0.0",
             "name": "Notes submitted",
             "position": {
               "x": 0,
@@ -159,20 +129,18 @@
             "config": {
               "eventName": "{{params.triggerEventName}}"
             },
-            "inputs": {
-              "title": "Goal \u2192 Meeting Agenda"
-            }
+            "inputs": {}
           },
           {
             "id": "debrief",
-            "typeId": "core.ai.chatCompletion",
+            "typeId": "core.ai.chatCompletion@1.0.0",
             "name": "Extract decisions + actions",
             "position": {
               "x": 280,
               "y": 0
             },
             "config": {
-              "systemPrompt": "From these meeting notes produce: Decisions (each in one line) \u00b7 Action items (each a specific task in one line) \u00b7 Open questions. Extract only what the notes support \u2014 do not invent owners or dates.",
+              "systemPrompt": "From these meeting notes produce: Decisions (each in one line) · Action items (each a specific task in one line) · Open questions. Extract only what the notes support — do not invent owners or dates.",
               "provider": "{{params.provider}}",
               "model": "{{params.model}}"
             },
@@ -180,20 +148,32 @@
           },
           {
             "id": "gate",
-            "typeId": "core.chat.approvalGate",
+            "typeId": "core.chat.approvalGate@1.1.0",
             "name": "Confirm actions",
             "position": {
               "x": 560,
               "y": 0
             },
             "config": {
-              "title": "Confirm the action items before filing tasks"
+              "title": "Confirm the action items before filing tasks",
+              "actions": ["approve", "reject"]
             },
             "inputs": {}
           },
           {
+            "id": "gate-reject",
+            "typeId": "core.flow.noop@1.0.0",
+            "name": "Rejected — no tasks filed",
+            "position": {
+              "x": 840,
+              "y": 160
+            },
+            "config": {},
+            "inputs": {}
+          },
+          {
             "id": "task",
-            "typeId": "feature.crm.nodes.create-task",
+            "typeId": "feature.crm.nodes.create-task@1.0.0",
             "name": "File action task",
             "position": {
               "x": 840,
@@ -212,12 +192,18 @@
             "to": "debrief"
           },
           {
-            "from": "debrief",
-            "to": "gate"
+            "from": "debrief.content",
+            "to": "gate.artifact"
           },
           {
             "from": "gate",
-            "to": "task"
+            "to": "task",
+            "condition": { "type": "truthy", "left": "approved" }
+          },
+          {
+            "from": "gate",
+            "to": "gate-reject",
+            "condition": { "type": "falsy", "left": "approved" }
           }
         ]
       },
