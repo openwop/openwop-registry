@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>OpenWOP registry — packs.openwop.dev</title>
-<meta name="description" content="The signed pack registry for OpenWOP: reusable nodes, agents and workflow chains, verified by every host before it runs them. 182 pack(s), 363 version(s) published.">
+<meta name="description" content="The signed pack registry for OpenWOP: reusable nodes, agents and workflow chains, verified by every host before it runs them. 184 pack(s), 366 version(s) published.">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1a1a17" media="(prefers-color-scheme: dark)">
@@ -272,15 +272,15 @@
     <div class="hero-copy">
       <p class="eyebrow">The OpenWOP registry</p>
       <h1 class="display">Building blocks for workflows, <span class="accent">signed and checked.</span></h1>
-      <p class="lede">Reusable nodes, agents and whole workflow chains, published once and verified by every host before it runs them. Browse 182 packs, or publish your own.</p>
+      <p class="lede">Reusable nodes, agents and whole workflow chains, published once and verified by every host before it runs them. Browse 184 packs, or publish your own.</p>
       <div class="hero-actions">
         <a class="btn btn-solid" href="#catalog">Browse the catalog</a>
         <a class="btn" href="#publish">Publish a pack</a>
       </div>
     </div>
     <dl class="stats">
-      <div><dt>Packs published</dt><dd>182</dd></div>
-      <div><dt>Versions</dt><dd>363</dd></div>
+      <div><dt>Packs published</dt><dd>184</dd></div>
+      <div><dt>Versions</dt><dd>366</dd></div>
       <div><dt>Signatures</dt><dd class="small">Ed25519</dd></div>
       <div><dt>Namespaces</dt><dd class="small">core<br>vendor<br>community</dd></div>
     </dl>
@@ -341,7 +341,7 @@
           <span class="tab-blurb">Provider definitions: auth, scopes and reach. Never credentials.</span>
         </label>
         <label class="tab" for="tab-workflow-chains" role="tab">
-          <span class="tab-top"><span class="tab-label">Workflow chains</span><span class="tab-count">70</span></span>
+          <span class="tab-top"><span class="tab-label">Workflow chains</span><span class="tab-count">72</span></span>
           <span class="tab-blurb">Whole sub-workflows that a caller runs as one step.</span>
         </label>
         <label class="tab" for="tab-prompts" role="tab">
@@ -1853,6 +1853,18 @@
             · <a href="/v2/packs/core.openwop.workflows.campaign-autonomy/-/1.0.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
+        <tr id="pack-core.openwop.workflows.campaign-autopilot">
+          <td class="name"><code>core.openwop.workflows.campaign-autopilot</code> </td>
+          <td class="version">0.2.0</td>
+          <td class="count" title="chains in latest manifest">1</td>
+          <td class="desc">Campaign autopilot (ADR 0961). v0.2 is the launch spine for one campaign: a read-only preflight that waits on a checklist card while something is missing, then the drafting stage, which starts the existing campaign spine (`campaign-studio.campaign-orchestration`) as its own campaign run tagged with the same campaign. Drafts only, no external effect. A gated stage runs as its own run because a suspended sub-chain child is not resumed into its parent on this host (ADR 0961 D4 correction). Launched by the campaign-autopilot launch route, which tags the run with its campaign; every node reads that tag, never an input.</td>
+          <td class="license">—</td>
+          <td class="artifacts">
+            <a href="/v2/packs/core.openwop.workflows.campaign-autopilot/-/0.2.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.campaign-autopilot/-/0.2.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.campaign-autopilot/-/0.2.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
         <tr id="pack-core.openwop.workflows.campaign-brief">
           <td class="name"><code>core.openwop.workflows.campaign-brief</code> </td>
           <td class="version">1.1.0</td>
@@ -1911,6 +1923,18 @@
             <a href="/v2/packs/core.openwop.workflows.campaign-orchestration/-/1.2.1.json" title="version manifest (JSON)">manifest</a>
             · <a href="/v2/packs/core.openwop.workflows.campaign-orchestration/-/1.2.1.tgz" title="signed tarball (tgz)">tgz</a>
             · <a href="/v2/packs/core.openwop.workflows.campaign-orchestration/-/1.2.1.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr id="pack-core.openwop.workflows.campaign-studio-mcp">
+          <td class="name"><code>core.openwop.workflows.campaign-studio-mcp</code> </td>
+          <td class="version">1.0.1</td>
+          <td class="count" title="chains in latest manifest">7</td>
+          <td class="desc">ADR 0962 — Campaign Studio&#39;s open agent interface: MCP read tools (core.openwop.mcp.expose-tool → a campaign-ops read node). Every tool requires a clientId and binds the run to that client (access, the client&#39;s externalAgents switch, the client stamp). Registered chain-backed by campaign-ops with the ADR 0087 MCP gates; no tool publishes, sends, spends or approves.</td>
+          <td class="license">—</td>
+          <td class="artifacts">
+            <a href="/v2/packs/core.openwop.workflows.campaign-studio-mcp/-/1.0.1.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.campaign-studio-mcp/-/1.0.1.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.campaign-studio-mcp/-/1.0.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-core.openwop.workflows.campaign-sync">
@@ -2251,14 +2275,14 @@
         </tr>
         <tr id="pack-core.openwop.workflows.kicktodo-research">
           <td class="name"><code>core.openwop.workflows.kicktodo-research</code> </td>
-          <td class="version">1.0.3</td>
+          <td class="version">1.1.0</td>
           <td class="count" title="chains in latest manifest">1</td>
-          <td class="desc">KickTodo research spine as an RFC 0013 chain pack (migrated from the deprecated ADR 0072 builtin `openwop-app.kicktodo.research`, ADR 0472 Phase 2). Frame deterministic research questions, search the web (honestly demo or live per the host adapter), normalize to canonical source records, and build a structure-checked evidence graph. Conversion tightened the builtin&#39;s implicit ordering into EXPLICIT edge dataflow (the audit&#39;s honesty note): search&#39;s `{results,engine}` flows to normalize, normalize&#39;s sources flow to the evidence graph.</td>
+          <td class="desc">KickTodo research spine as an RFC 0013 chain pack (migrated from the deprecated ADR 0072 builtin `openwop-app.kicktodo.research`, ADR 0472 Phase 2). Frame deterministic research questions, search the web (honestly demo or live per the host adapter), normalize to canonical source records, and build a structure-checked evidence graph. Conversion tightened the builtin&#39;s implicit ordering into EXPLICIT edge dataflow (the audit&#39;s honesty note): search&#39;s `{results,engine}` flows to normalize, normalize&#39;s sources flow to the evidence graph. 1.1.0 (ADR 0975 D3): search reads frame.searchQuery, not the bare topic; maxResults moved to config.</td>
           <td class="license">—</td>
           <td class="artifacts">
-            <a href="/v2/packs/core.openwop.workflows.kicktodo-research/-/1.0.3.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/core.openwop.workflows.kicktodo-research/-/1.0.3.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/core.openwop.workflows.kicktodo-research/-/1.0.3.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/core.openwop.workflows.kicktodo-research/-/1.1.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.kicktodo-research/-/1.1.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.kicktodo-research/-/1.1.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-core.openwop.workflows.knowledge">
@@ -2771,7 +2795,7 @@ node registry/scripts/verify-signatures.mjs --tree v2</code></pre>
       <div class="panel">
         <h3>Who can publish where</h3>
         <div class="tiers">
-          <div><code>core.*</code><p>The OpenWOP working group; spec-canonical packs only. 133 packs.</p></div>
+          <div><code>core.*</code><p>The OpenWOP working group; spec-canonical packs only. 135 packs.</p></div>
           <div><code>vendor.&lt;org&gt;.*</code><p>Controlled by one vendor organization. 48 packs.</p></div>
           <div><code>community.&lt;author&gt;.*</code><p>Open to anyone; the first claim on a name wins. 1 pack.</p></div>
         </div>
@@ -2824,7 +2848,7 @@ npm run check</code></pre>
 
 <footer class="site-footer">
   <div class="wrap">
-    <span>Generated 2026-10-26T01:23:48.026Z · OpenWOP registry</span>
+    <span>Generated 2026-10-26T02:10:06.087Z · OpenWOP registry</span>
     <nav aria-label="More">
       <a href="/v2/index.json">Index JSON</a>
       <a href="/.well-known/openwop-registry">Discovery</a>

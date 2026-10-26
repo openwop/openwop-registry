@@ -1980,6 +1980,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.campaign-autopilot@0.2.0",
+      "type": "library",
+      "name": "core.openwop.workflows.campaign-autopilot",
+      "version": "0.2.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.campaign-autopilot/-/0.2.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "7e019275d40ef81cce7a6662cca1c4c14635772dcb331bfafc3a68cb4ee38a07"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.workflows.campaign-brief@1.0.1",
       "type": "library",
       "name": "core.openwop.workflows.campaign-brief",
@@ -2208,6 +2226,24 @@
             {
               "alg": "SHA-256",
               "content": "2760ea177cdc5a1f16a6b424d46fb5d1cc2a69705e29e89a6397914f66987d69"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.campaign-studio-mcp@1.0.1",
+      "type": "library",
+      "name": "core.openwop.workflows.campaign-studio-mcp",
+      "version": "1.0.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.campaign-studio-mcp/-/1.0.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "2370290cc491577e29acda3914b3c8d71499ee182a4ca39e1f155e1cb2fce2af"
             }
           ]
         }
@@ -3576,6 +3612,24 @@
             {
               "alg": "SHA-256",
               "content": "617f56288401e837b6a29e9d476c9e7f77e14c3b746be8877e2f902d2e5b2730"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.kicktodo-research@1.1.0",
+      "type": "library",
+      "name": "core.openwop.workflows.kicktodo-research",
+      "version": "1.1.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.kicktodo-research/-/1.1.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "bf62e0af9d5eb09686be0392487035510ebf34c1b9e960b51a1a52aec3dd2207"
             }
           ]
         }

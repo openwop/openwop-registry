@@ -1,0 +1,102 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.campaign-studio-mcp@1.0.1",
+      "type": "library",
+      "name": "core.openwop.workflows.campaign-studio-mcp",
+      "version": "1.0.1",
+      "description": "ADR 0962 — Campaign Studio's open agent interface: MCP read tools (core.openwop.mcp.expose-tool → a campaign-ops read node). Every tool requires a clientId and binds the run to that client (access, the client's externalAgents switch, the client stamp). Registered chain-backed by campaign-ops with the ADR 0087 MCP gates; no tool publishes, sends, spends or approves.",
+      "licenses": [],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f1cbc3ceaa2c947fde1740b8dbb611e93b368a60e4739ca925aa9084a1975f0e"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.campaign-studio-mcp@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9a4b1656ca45478617f16e16dc3adaaf105a819220ec0b0b31245abb00e20241"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1013"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d2298ed21307e95a9352caa618a75f605c1463cfb3aa9ca94a07e0301b69faea"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fbf1c5a16375af42cd5eda9a1fa9751c9af74bc4f094732fd923428d1aa6e452"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "10505"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.campaign-studio-mcp@1.0.1",
+      "dependsOn": []
+    }
+  ]
+}

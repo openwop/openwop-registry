@@ -6,4 +6,4 @@ Source of truth: openwop-app repo, `examples/workflow-chain-packs/kicktodo-resea
 
 Chains:
 
-- `kicktodo.research` v1.0.0 — Research a challenge topic
+- `kicktodo.research` v1.1.0 — Research a challenge topic

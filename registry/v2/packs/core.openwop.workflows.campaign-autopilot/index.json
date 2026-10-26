@@ -1,0 +1,30 @@
+{
+  "name": "core.openwop.workflows.campaign-autopilot",
+  "kind": "workflow-chain",
+  "description": "Campaign autopilot (ADR 0961). v0.2 is the launch spine for one campaign: a read-only preflight that waits on a checklist card while something is missing, then the drafting stage, which starts the existing campaign spine (`campaign-studio.campaign-orchestration`) as its own campaign run tagged with the same campaign. Drafts only, no external effect. A gated stage runs as its own run because a suspended sub-chain child is not resumed into its parent on this host (ADR 0961 D4 correction). Launched by the campaign-autopilot launch route, which tags the run with its campaign; every node reads that tag, never an input.",
+  "author": "",
+  "license": "",
+  "tags": [],
+  "typeIds": [
+    "campaign-studio.autopilot"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 1,
+  "versions": [
+    {
+      "version": "0.2.0",
+      "manifestUrl": "/v2/packs/core.openwop.workflows.campaign-autopilot/-/0.2.0.json",
+      "tarballUrl": "/v2/packs/core.openwop.workflows.campaign-autopilot/-/0.2.0.tgz",
+      "signatureUrl": "/v2/packs/core.openwop.workflows.campaign-autopilot/-/0.2.0.sig",
+      "sbomUrl": "/v2/packs/core.openwop.workflows.campaign-autopilot/-/0.2.0.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-rX32DM9J3SwkxTxJc1FSguzes+QUce/RLOV3uTszvSA=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "0.2.0",
+  "deprecated": false
+}
