@@ -6,4 +6,4 @@ Source of truth: openwop-app repo, `examples/workflow-chain-packs/campaign-orche
 
 Chains:
 
-- `campaign-studio.campaign-orchestration` v1.0.0 — Campaign orchestration
+- `campaign-studio.campaign-orchestration` v1.2.1 — Campaign orchestration

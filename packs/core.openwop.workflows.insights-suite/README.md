@@ -6,6 +6,6 @@ Source of truth: openwop-app repo, `examples/workflow-chain-packs/insights-suite
 
 Chains:
 
-- `openwop-app.insights.weekly-variance` v1.0.0 — Weekly variance (Actual vs Plan)
-- `openwop-app.insights.anniversary-draft` v1.0.0 — Work-anniversary recognition draft
-- `openwop-app.insights.talent-prep` v1.0.0 — Talent readiness prep
+- `openwop-app.insights.weekly-variance` v1.2.1 — Weekly variance (Actual vs Plan)
+- `openwop-app.insights.anniversary-draft` v1.2.1 — Work-anniversary recognition draft
+- `openwop-app.insights.talent-prep` v1.2.1 — Talent readiness prep

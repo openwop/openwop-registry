@@ -6,4 +6,4 @@ Source of truth: openwop-app repo, `examples/workflow-chain-packs/kicktodo-plan-
 
 Chains:
 
-- `kicktodo.plan-generation` v1.0.0 — Generate a challenge plan
+- `kicktodo.plan-generation` v1.1.0 — Generate a challenge plan

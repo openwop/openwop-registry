@@ -6,5 +6,5 @@ Source of truth: openwop-app repo, `examples/workflow-chain-packs/kicktodo-chall
 
 Chains:
 
-- `openwop-app.kicktodo.challenge-factory` v1.0.0 — Challenge Factory
-- `openwop-app.kicktodo.lesson-batch` v1.0.0 — Lesson batch (Challenge Factory child) *(internal — composition-only, RFC 0135)*
+- `openwop-app.kicktodo.challenge-factory` v1.9.0 — Challenge Factory
+- `openwop-app.kicktodo.lesson-batch` v1.4.0 — Lesson batch (Challenge Factory child)

@@ -6,8 +6,8 @@ Source of truth: openwop-app repo, `examples/workflow-chain-packs/campaign-chann
 
 Chains:
 
-- `campaign-studio.channel.landing-page` v1.0.0 — Landing page
-- `campaign-studio.channel.ad-variants` v1.0.0 — Ad variants
-- `campaign-studio.channel.email-sequence` v1.0.0 — Email sequence
-- `campaign-studio.channel.creative-briefs` v1.0.0 — Creative briefs
-- `campaign-studio.channel.social-posts` v1.0.0 — Social posts
+- `campaign-studio.channel.landing-page` v1.1.0 — Landing page
+- `campaign-studio.channel.ad-variants` v1.1.0 — Ad variants
+- `campaign-studio.channel.email-sequence` v1.1.0 — Email sequence
+- `campaign-studio.channel.creative-briefs` v1.1.0 — Creative briefs
+- `campaign-studio.channel.social-posts` v1.1.0 — Social posts
