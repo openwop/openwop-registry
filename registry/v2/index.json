@@ -1,7 +1,7 @@
 {
   "registryVersion": "1.0.0",
-  "generatedAt": "2026-10-26T01:23:48.023Z",
-  "packCount": 182,
+  "generatedAt": "2026-10-26T02:10:06.085Z",
+  "packCount": 184,
   "packs": [
     {
       "name": "community.openwop-team.demo",
@@ -1409,6 +1409,21 @@
       "yanked": false
     },
     {
+      "name": "core.openwop.workflows.campaign-autopilot",
+      "kind": "workflow-chain",
+      "latestVersion": "0.2.0",
+      "description": "Campaign autopilot (ADR 0961). v0.2 is the launch spine for one campaign: a read-only preflight that waits on a checklist card while something is missing, then the drafting stage, which starts the existing campaign spine (`campaign-studio.campaign-orchestration`) as its own campaign run tagged with the same campaign. Drafts only, no external effect. A gated stage runs as its own run because a suspended sub-chain child is not resumed into its parent on this host (ADR 0961 D4 correction). Launched by the campaign-autopilot launch route, which tags the run with its campaign; every node reads that tag, never an input.",
+      "license": "",
+      "tags": [],
+      "typeIds": [
+        "campaign-studio.autopilot"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
       "name": "core.openwop.workflows.campaign-brief",
       "kind": "workflow-chain",
       "latestVersion": "1.1.0",
@@ -1488,6 +1503,27 @@
       "tags": [],
       "typeIds": [
         "campaign-studio.campaign-orchestration"
+      ],
+      "nodeCount": 0,
+      "agentCount": 0,
+      "deprecated": false,
+      "yanked": false
+    },
+    {
+      "name": "core.openwop.workflows.campaign-studio-mcp",
+      "kind": "workflow-chain",
+      "latestVersion": "1.0.1",
+      "description": "ADR 0962 — Campaign Studio's open agent interface: MCP read tools (core.openwop.mcp.expose-tool → a campaign-ops read node). Every tool requires a clientId and binds the run to that client (access, the client's externalAgents switch, the client stamp). Registered chain-backed by campaign-ops with the ADR 0087 MCP gates; no tool publishes, sends, spends or approves.",
+      "license": "",
+      "tags": [],
+      "typeIds": [
+        "campaign-studio.mcp.list",
+        "campaign-studio.mcp.get",
+        "campaign-studio.mcp.performance",
+        "campaign-studio.mcp.pending-gates",
+        "campaign-studio.mcp.run-status",
+        "campaign-studio.mcp.explain",
+        "campaign-studio.mcp.request-change"
       ],
       "nodeCount": 0,
       "agentCount": 0,
@@ -1953,8 +1989,8 @@
     {
       "name": "core.openwop.workflows.kicktodo-research",
       "kind": "workflow-chain",
-      "latestVersion": "1.0.3",
-      "description": "KickTodo research spine as an RFC 0013 chain pack (migrated from the deprecated ADR 0072 builtin `openwop-app.kicktodo.research`, ADR 0472 Phase 2). Frame deterministic research questions, search the web (honestly demo or live per the host adapter), normalize to canonical source records, and build a structure-checked evidence graph. Conversion tightened the builtin's implicit ordering into EXPLICIT edge dataflow (the audit's honesty note): search's `{results,engine}` flows to normalize, normalize's sources flow to the evidence graph.",
+      "latestVersion": "1.1.0",
+      "description": "KickTodo research spine as an RFC 0013 chain pack (migrated from the deprecated ADR 0072 builtin `openwop-app.kicktodo.research`, ADR 0472 Phase 2). Frame deterministic research questions, search the web (honestly demo or live per the host adapter), normalize to canonical source records, and build a structure-checked evidence graph. Conversion tightened the builtin's implicit ordering into EXPLICIT edge dataflow (the audit's honesty note): search's `{results,engine}` flows to normalize, normalize's sources flow to the evidence graph. 1.1.0 (ADR 0975 D3): search reads frame.searchQuery, not the bare topic; maxResults moved to config.",
       "license": "",
       "tags": [],
       "typeIds": [
