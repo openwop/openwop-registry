@@ -1,0 +1,30 @@
+{
+  "name": "core.openwop.workflows.scheduled-chat-turn",
+  "kind": "workflow-chain",
+  "description": "The scheduled-agent-chat turn workflow (ADR 0125), migrated off the in-tree `registerWorkflow(DEF)` pin site (ADR 0701 / PIN_SITE_QUARANTINE drain). chainId keeps the original workflowId so every existing scheduler job row, run stamp and dispatch keeps resolving. One agent-runner node; the recurring tick supplies agentId/task/conversationId per fire through the run's `configurable`, which `registerChainBackedWorkflow`'s deferred expansion materializes as run-overridable variables (RFC 0124).",
+  "author": "",
+  "license": "",
+  "tags": [],
+  "typeIds": [
+    "openwop-app.scheduled-chat.turn"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 1,
+  "versions": [
+    {
+      "version": "1.0.1",
+      "manifestUrl": "/v2/packs/core.openwop.workflows.scheduled-chat-turn/-/1.0.1.json",
+      "tarballUrl": "/v2/packs/core.openwop.workflows.scheduled-chat-turn/-/1.0.1.tgz",
+      "signatureUrl": "/v2/packs/core.openwop.workflows.scheduled-chat-turn/-/1.0.1.sig",
+      "sbomUrl": "/v2/packs/core.openwop.workflows.scheduled-chat-turn/-/1.0.1.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-OUeVVfFQYSfNUtpnu2Qkp0YH1fu5YiXGHcLN380W/bo=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.1",
+  "deprecated": false
+}

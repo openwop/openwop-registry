@@ -1,0 +1,30 @@
+{
+  "name": "core.openwop.connections.avalara",
+  "kind": "connection",
+  "description": "Avalara AvaTax connection pack (RFC 0095) — api_key provider for the commerce tax-quote seam (ADR 0250), the second tax provider alongside TaxJar. Category is `other` (openai-images precedent): the normative `category` enum has no `tax` value and the seam resolves by `id` (`avalara`), not category — no wire/RFC change. When a merchant configures an Avalara connection (and no TaxJar one), `features/commerce/taxShipping.ts` calls AvaTax createTransaction (POST https://rest.avatax.com/api/v2/transactions/create, Basic auth over the account:licenseKey secret) at checkout and reads `totalTax`; ANY error/timeout falls back to the flat/manual governance rate — a tax-provider hiccup never blocks a sale. READ quotes (not money movement), so NO commerce-spend gate. Credentials stay host-side via the Connections broker; the request carries only the destination address + line amount, never customer contact details. Carries NO secret (ADR 0024 §7).",
+  "author": "",
+  "license": "Apache-2.0",
+  "tags": [],
+  "typeIds": [
+    "avalara"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "providerCount": 1,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "manifestUrl": "/v2/packs/core.openwop.connections.avalara/-/1.0.0.json",
+      "tarballUrl": "/v2/packs/core.openwop.connections.avalara/-/1.0.0.tgz",
+      "signatureUrl": "/v2/packs/core.openwop.connections.avalara/-/1.0.0.sig",
+      "sbomUrl": "/v2/packs/core.openwop.connections.avalara/-/1.0.0.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-3g7PwrijYIcAzQsA/18ILvbjX7d4sv0Gas7gNV+TsBw=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

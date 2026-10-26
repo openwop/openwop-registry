@@ -1,0 +1,108 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.launch-showcase@1.1.0",
+      "type": "library",
+      "name": "core.openwop.workflows.launch-showcase",
+      "version": "1.1.0",
+      "description": "A product brief becomes a reviewed launch kit through parallel specialist steps, editorial revision and human approval. Draft-only: no publication or messaging.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "bde19d6232b713569e1df97e38c2d4345febdc62f6d3bdd825cdd82daa3f507a"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.launch-showcase@1.1.0"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8ed9c0cb77d7264d04920eb3194d04401ed60945e19b4004b296cd6e4b7843f9"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "412"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "cdb88126874aa67722ca0f0acbd819962ab9dcbf54924e612eae3bd6d4e75ff5"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "71b7073d27f20629e4a3e6cf6abece1523a9e96b4e57134e3ded7284cb7e4e44"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "13948"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.launch-showcase@1.1.0",
+      "dependsOn": []
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "name": "core.openwop.workflows.knowledge-sync",
+  "kind": "workflow-chain",
+  "description": "The workflow a knowledge-sync source (ADR 0107 / ADR 0605) fires on cadence (WF-KB-3 / KSWF-1). A single node runs one pass — list → diff → fetch+ingest → prune — over the configured Drive/OneDrive folder into the source's bound KB collection, with all the ADR 0605 hardening (pre-run lease, destructive-diff refusal, Tier-2 erasure, subject-scoped prune) behind the WF-KB-4 spend gate. `sourceId` identifies which SyncSource to sync; the per-source scheduler job registered at source creation supplies it automatically — do not bind this chain by hand. This lane replaces the retired knowledgeSyncDaemon, folding the recurring sync onto the ONE host scheduler. Resolves on hosts that ship the knowledge-sync feature + node pack (the OpenWOP reference app).",
+  "author": "openwop",
+  "license": "Apache-2.0",
+  "tags": [],
+  "typeIds": [
+    "knowledge-sync.run"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 1,
+  "versions": [
+    {
+      "version": "1.0.1",
+      "manifestUrl": "/v2/packs/core.openwop.workflows.knowledge-sync/-/1.0.1.json",
+      "tarballUrl": "/v2/packs/core.openwop.workflows.knowledge-sync/-/1.0.1.tgz",
+      "signatureUrl": "/v2/packs/core.openwop.workflows.knowledge-sync/-/1.0.1.sig",
+      "sbomUrl": "/v2/packs/core.openwop.workflows.knowledge-sync/-/1.0.1.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-cBSO6ZgKbsoAuR3ZjLjUQl2LSntP2GtXg2+11WIKUqc=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.1",
+  "deprecated": false
+}

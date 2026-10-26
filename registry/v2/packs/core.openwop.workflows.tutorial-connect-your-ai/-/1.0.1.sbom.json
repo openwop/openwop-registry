@@ -1,0 +1,102 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.tutorial-connect-your-ai@1.0.1",
+      "type": "library",
+      "name": "core.openwop.workflows.tutorial-connect-your-ai",
+      "version": "1.0.1",
+      "description": "ADR 0488 D2 — the NESTING PROOF. The 'Connect Your AI' tutorial expressed as phase-granular sub-chains: one child chain per driveable phase, plus a parent chain that composes them via core.subWorkflow + subChainRef (RFC 0133). 'Show me this phase' runs a child; 'Drive the whole tutorial' runs the parent. Deliberately ONE tutorial: the ADR requires proving nesting on a single tutorial before converting the library.",
+      "licenses": [],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "32ba429a0d098744d188139976732542e5eacfda4b9b250c77f7756ef26f4f8c"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.tutorial-connect-your-ai@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "21a0522411d7a44057a18c922a68f8d6923757fe9661d4f62ec2ff8534db8fe4"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1006"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b1b15e12457e9d19b86e739e936dab099b4b641b1c05a03de4e92aa09489c902"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b67e42af4f505b7a1c69f7dc06b6fe1a3fe34485dde25addc61dac311dd2d71c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3831"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.tutorial-connect-your-ai@1.0.1",
+      "dependsOn": []
+    }
+  ]
+}

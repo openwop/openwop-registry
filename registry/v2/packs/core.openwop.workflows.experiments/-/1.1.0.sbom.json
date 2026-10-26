@@ -1,0 +1,108 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.experiments@1.1.0",
+      "type": "library",
+      "name": "core.openwop.workflows.experiments",
+      "version": "1.1.0",
+      "description": "ADR 0949 P4 — the Optimize loop. One node reallocates a running Optimize experiment by Thompson sampling, every arm kept at or above its floor. Schedule it with the existing scheduler at the experiment's epoch cadence: a run that comes too early returns `too_soon` and changes nothing, and a replay or a :fork finds its epoch already appended (the epoch number comes from the run's frozen start instant), so it never re-allocates. It only reallocates an experiment a human launched; it never launches, stops or promotes. Resolves on hosts that ship the experiments feature + node pack (the OpenWOP reference app). ADR 0950 adds `experiments.promote` (internal): the governed, staged promotion of a Decide winner, started from the experiment.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "5a63deae52de5c269be2ed1c714ac61745bbc6a1993a775ecbc4a74792dbc21d"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.experiments@1.1.0"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a9a2a1afb0f9bbf6bd007365269f84e62cca33b2b62109686731a0d178efaf7a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1053"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "93da07fe3a2e9f4532e13b225fcc5cee31e2e2100d0f954c173c3282e7588511"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e9e108ec1b645e1c717f838cb3e12da6fff1f4ad7a688f8d73930c175e61427e"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "7785"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.experiments@1.1.0",
+      "dependsOn": []
+    }
+  ]
+}

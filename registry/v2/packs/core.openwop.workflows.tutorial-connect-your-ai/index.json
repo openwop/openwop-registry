@@ -1,0 +1,33 @@
+{
+  "name": "core.openwop.workflows.tutorial-connect-your-ai",
+  "kind": "workflow-chain",
+  "description": "ADR 0488 D2 — the NESTING PROOF. The 'Connect Your AI' tutorial expressed as phase-granular sub-chains: one child chain per driveable phase, plus a parent chain that composes them via core.subWorkflow + subChainRef (RFC 0133). 'Show me this phase' runs a child; 'Drive the whole tutorial' runs the parent. Deliberately ONE tutorial: the ADR requires proving nesting on a single tutorial before converting the library.",
+  "author": "",
+  "license": "",
+  "tags": [],
+  "typeIds": [
+    "tutorial.connect-your-ai.phase-2",
+    "tutorial.connect-your-ai.phase-3",
+    "tutorial.connect-your-ai.phase-4",
+    "tutorial.connect-your-ai"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 4,
+  "versions": [
+    {
+      "version": "1.0.1",
+      "manifestUrl": "/v2/packs/core.openwop.workflows.tutorial-connect-your-ai/-/1.0.1.json",
+      "tarballUrl": "/v2/packs/core.openwop.workflows.tutorial-connect-your-ai/-/1.0.1.tgz",
+      "signatureUrl": "/v2/packs/core.openwop.workflows.tutorial-connect-your-ai/-/1.0.1.sig",
+      "sbomUrl": "/v2/packs/core.openwop.workflows.tutorial-connect-your-ai/-/1.0.1.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-MrpCmg0Jh0TRiBOZdnMlQuXqz9pLmyUMd/d1bvJvT4w=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.1",
+  "deprecated": false
+}

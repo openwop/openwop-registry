@@ -1,0 +1,272 @@
+{
+  "name": "core.openwop.workflows.weekly-digest",
+  "version": "1.3.0",
+  "kind": "workflow-chain",
+  "description": "Weekly-digest chains (RFC 0013): scheduled roundups that keep a team informed without a meeting — a research digest on a watched topic, and a team status roll-up. In-app + gated-send sinks; replay-deterministic.",
+  "author": "openwop",
+  "license": "Apache-2.0",
+  "engines": {
+    "openwop": ">=1.0.0 <3.0.0"
+  },
+  "keywords": [
+    "Weekly digest"
+  ],
+  "chains": [
+    {
+      "chainId": "digest.topic-watch",
+      "version": "1.2.0",
+      "label": "Weekly Topic Watch → Digest",
+      "description": "A scheduled research digest: searches a watched topic, summarizes what's new with sources, and posts an in-app notification.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "scheduleCron"
+        ],
+        "properties": {
+          "topic": {
+            "type": "string",
+            "default": "",
+            "description": "The topic to watch."
+          },
+          "provider": {
+            "type": "string",
+            "description": "AI provider id for this chain's model-calling nodes. Set it to fix a provider into those nodes when the workflow is created. Leave it unset and each run uses the run's chosen provider, else the workspace's AI setting, else the host's catalog default (ADR 0903); whichever is chosen is recorded on the run, so a replay or fork uses the same one. The workspace needs a key for the provider that runs."
+          },
+          "model": {
+            "type": "string",
+            "description": "Model id for this chain's model-calling nodes. Must be offered by the provider in the host catalog. Leave it unset to use the provider's model from the same choice (ADR 0903)."
+          },
+          "scheduleCron": {
+            "type": "string",
+            "description": "Cron expression for when this workflow runs (e.g. `0 9 * * 1` = Mondays 09:00)."
+          }
+        }
+      },
+      "capabilities": [],
+      "dag": {
+        "nodes": [
+          {
+            "id": "cron",
+            "typeId": "core.trigger.schedule@1.0.0",
+            "name": "Weekly",
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "config": {
+              "cron": "{{params.scheduleCron}}"
+            },
+            "inputs": {}
+          },
+          {
+            "id": "search",
+            "typeId": "core.web.search@1.0.0",
+            "name": "Search topic",
+            "position": {
+              "x": 280,
+              "y": 0
+            },
+            "config": {},
+            "inputs": {}
+          },
+          {
+            "id": "digest",
+            "typeId": "core.ai.chatCompletion@1.0.0",
+            "name": "Write digest",
+            "position": {
+              "x": 560,
+              "y": 0
+            },
+            "config": {
+              "systemPrompt": "You are a research analyst. From the search results, write a weekly digest on {{params.topic}}: the 3-5 most notable developments, each a headline + one-line why-it-matters + source. Ground every item in a result; say 'quiet week' if little is new rather than padding. If the search results' `engine` field is 'demo' or 'stub' they are PLACEHOLDERS, not research: do not treat them as findings or invent specifics from them — say plainly that live web search is not configured (a 'web-search' key on the keys page unlocks it) and stop there.",
+              "provider": "{{params.provider}}",
+              "model": "{{params.model}}"
+            },
+            "inputs": {}
+          },
+          {
+            "id": "notify",
+            "typeId": "feature.notifications.nodes.notify@1.0.0",
+            "name": "Post digest",
+            "position": {
+              "x": 840,
+              "y": 0
+            },
+            "config": {
+              "audience": "tenant"
+            },
+            "inputs": {
+              "title": "Weekly Topic Watch → Digest"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "from": "cron",
+            "to": "search"
+          },
+          {
+            "from": "search",
+            "to": "digest"
+          },
+          {
+            "from": "digest",
+            "to": "notify"
+          }
+        ]
+      },
+      "outputs": {
+        "result": {
+          "type": "string",
+          "description": "The chain's terminal output."
+        }
+      }
+    },
+    {
+      "chainId": "digest.team-status",
+      "version": "1.1.0",
+      "label": "Weekly Team Status → Roll-Up",
+      "description": "Rolls a week of status updates into a concise leadership summary (wins, risks, asks) and sends it to the channel after a human review.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "scheduleCron",
+          "slackChannel"
+        ],
+        "properties": {
+          "provider": {
+            "type": "string",
+            "description": "AI provider id for this chain's model-calling nodes. Set it to fix a provider into those nodes when the workflow is created. Leave it unset and each run uses the run's chosen provider, else the workspace's AI setting, else the host's catalog default (ADR 0903); whichever is chosen is recorded on the run, so a replay or fork uses the same one. The workspace needs a key for the provider that runs."
+          },
+          "model": {
+            "type": "string",
+            "description": "Model id for this chain's model-calling nodes. Must be offered by the provider in the host catalog. Leave it unset to use the provider's model from the same choice (ADR 0903)."
+          },
+          "scheduleCron": {
+            "type": "string",
+            "description": "Cron expression for when this workflow runs (e.g. `0 9 * * 1` = Mondays 09:00)."
+          },
+          "slackChannel": {
+            "type": "string",
+            "description": "Slack channel these messages post to (e.g. `#ops`)."
+          }
+        }
+      },
+      "capabilities": [
+        "side-effectful"
+      ],
+      "dag": {
+        "nodes": [
+          {
+            "id": "cron",
+            "typeId": "core.trigger.schedule@1.0.0",
+            "name": "Weekly",
+            "position": {
+              "x": 0,
+              "y": 0
+            },
+            "config": {
+              "cron": "{{params.scheduleCron}}"
+            },
+            "inputs": {}
+          },
+          {
+            "id": "rollup",
+            "typeId": "core.ai.chatCompletion@1.0.0",
+            "name": "Roll up status",
+            "position": {
+              "x": 280,
+              "y": 0
+            },
+            "config": {
+              "systemPrompt": "Roll these team status updates into a concise leadership summary: Wins · Risks/blockers (with the ask each needs) · Notable in-flight work. Ground everything in the updates; flag stale or missing areas rather than inventing progress.",
+              "provider": "{{params.provider}}",
+              "model": "{{params.model}}"
+            },
+            "inputs": {}
+          },
+          {
+            "id": "gate",
+            "typeId": "core.chat.approvalGate@1.1.0",
+            "name": "Review roll-up",
+            "position": {
+              "x": 560,
+              "y": 0
+            },
+            "config": {
+              "title": "Review the status roll-up before posting",
+              "actions": [
+                "approve",
+                "reject"
+              ]
+            },
+            "inputs": {}
+          },
+          {
+            "id": "gate-reject",
+            "typeId": "core.flow.noop@1.0.0",
+            "name": "Rejected — not posted",
+            "position": {
+              "x": 840,
+              "y": 160
+            },
+            "config": {},
+            "inputs": {}
+          },
+          {
+            "id": "slack",
+            "typeId": "core.openwop.integration.slack-message@1.0.0",
+            "name": "Post roll-up",
+            "position": {
+              "x": 840,
+              "y": 0
+            },
+            "config": {
+              "channel": "{{params.slackChannel}}"
+            },
+            "inputs": {}
+          }
+        ],
+        "edges": [
+          {
+            "from": "cron",
+            "to": "rollup"
+          },
+          {
+            "from": "rollup.content",
+            "to": "gate.artifact"
+          },
+          {
+            "from": "gate.artifact",
+            "to": "slack.text",
+            "condition": {
+              "type": "truthy",
+              "left": "approved"
+            }
+          },
+          {
+            "from": "gate",
+            "to": "gate-reject",
+            "condition": {
+              "type": "falsy",
+              "left": "approved"
+            }
+          }
+        ]
+      },
+      "outputs": {
+        "result": {
+          "type": "string",
+          "description": "The chain's terminal output."
+        }
+      }
+    }
+  ],
+  "signing": {
+    "keyId": "openwop-team-1",
+    "scheme": "ed25519-canonical-json"
+  },
+  "integrity": "sha256-odjqNw31W0RG1vG+bQdmmF9Mr8/nPsdHD1qLAcJxBq8="
+}

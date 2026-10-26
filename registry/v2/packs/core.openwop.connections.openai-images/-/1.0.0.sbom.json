@@ -1,0 +1,76 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.connections.openai-images@1.0.0",
+      "type": "library",
+      "name": "core.openwop.connections.openai-images",
+      "version": "1.0.0",
+      "description": "OpenAI Images connection pack (RFC 0095) — api_key provider for the host image-generation seam's `openai` provider (gpt-image, ADR 0115 / ADR 0229 / ADR 0244): the Images API host, auth kind, and the consumer nodes. **ADR 0244:** the image seam now RESOLVES THE API KEY THROUGH THE CONNECTIONS BROKER — installing this pack + connecting an OpenAI key provides the per-tenant, KMS-enveloped, rotatable credential (a workspace-scoped Connection wins over the host-wide `OPENWOP_IMAGE_PROVIDER_KEY[_OPENAI]` env fallback). The host operator STILL configures the ENDPOINT (`OPENWOP_IMAGE_PROVIDER_ENDPOINT[_OPENAI]`, honest-off until set) — the endpoint is non-secret host infra, not a credential. Carries NO secret (ADR 0024 §7).",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1a7667cfe5242e921c06dbb516a45b7407299cb1bb366bea8f18a47263e16f0b"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.connections.openai-images@1.0.0"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "a152687c9b0316d3fa102719674a01365a16cf963dcfdc835af18afec7954358"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "481e87edf359feaf4e5f7840ea021e2e4fd8754f9d1aaecfcdb431912c62d64c"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1403"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.connections.openai-images@1.0.0",
+      "dependsOn": []
+    }
+  ]
+}

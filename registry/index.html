@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>OpenWOP registry — packs.openwop.dev</title>
-<meta name="description" content="The signed pack registry for OpenWOP: reusable nodes, agents and workflow chains, verified by every host before it runs them. 157 pack(s), 310 version(s) published.">
+<meta name="description" content="The signed pack registry for OpenWOP: reusable nodes, agents and workflow chains, verified by every host before it runs them. 182 pack(s), 363 version(s) published.">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1a1a17" media="(prefers-color-scheme: dark)">
@@ -272,15 +272,15 @@
     <div class="hero-copy">
       <p class="eyebrow">The OpenWOP registry</p>
       <h1 class="display">Building blocks for workflows, <span class="accent">signed and checked.</span></h1>
-      <p class="lede">Reusable nodes, agents and whole workflow chains, published once and verified by every host before it runs them. Browse 157 packs, or publish your own.</p>
+      <p class="lede">Reusable nodes, agents and whole workflow chains, published once and verified by every host before it runs them. Browse 182 packs, or publish your own.</p>
       <div class="hero-actions">
         <a class="btn btn-solid" href="#catalog">Browse the catalog</a>
         <a class="btn" href="#publish">Publish a pack</a>
       </div>
     </div>
     <dl class="stats">
-      <div><dt>Packs published</dt><dd>157</dd></div>
-      <div><dt>Versions</dt><dd>310</dd></div>
+      <div><dt>Packs published</dt><dd>182</dd></div>
+      <div><dt>Versions</dt><dd>363</dd></div>
       <div><dt>Signatures</dt><dd class="small">Ed25519</dd></div>
       <div><dt>Namespaces</dt><dd class="small">core<br>vendor<br>community</dd></div>
     </dl>
@@ -337,11 +337,11 @@
           <span class="tab-blurb">Typed schemas for the work products a run creates and exports.</span>
         </label>
         <label class="tab" for="tab-connections" role="tab">
-          <span class="tab-top"><span class="tab-label">Connections</span><span class="tab-count">12</span></span>
+          <span class="tab-top"><span class="tab-label">Connections</span><span class="tab-count">22</span></span>
           <span class="tab-blurb">Provider definitions: auth, scopes and reach. Never credentials.</span>
         </label>
         <label class="tab" for="tab-workflow-chains" role="tab">
-          <span class="tab-top"><span class="tab-label">Workflow chains</span><span class="tab-count">55</span></span>
+          <span class="tab-top"><span class="tab-label">Workflow chains</span><span class="tab-count">70</span></span>
           <span class="tab-blurb">Whole sub-workflows that a caller runs as one step.</span>
         </label>
         <label class="tab" for="tab-prompts" role="tab">
@@ -1502,6 +1502,58 @@
             · <a href="/v2/packs/core.openwop.connections.jira/-/1.0.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
+        <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Avalara</th></tr>
+        <tr id="pack-core.openwop.connections.avalara">
+          <td class="name"><code>core.openwop.connections.avalara</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="provider in latest manifest">1</td>
+          <td class="desc">Avalara AvaTax connection pack (RFC 0095) — api_key provider for the commerce tax-quote seam (ADR 0250), the second tax provider alongside TaxJar. Category is `other` (openai-images precedent): the normative `category` enum has no `tax` value and the seam resolves by `id` (`avalara`), not category — no wire/RFC change. When a merchant configures an Avalara connection (and no TaxJar one), `features/commerce/taxShipping.ts` calls AvaTax createTransaction (POST https://rest.avatax.com/api/v2/transactions/create, Basic auth over the account:licenseKey secret) at checkout and reads `totalTax`; ANY error/timeout falls back to the flat/manual governance rate — a tax-provider hiccup never blocks a sale. READ quotes (not money movement), so NO commerce-spend gate. Credentials stay host-side via the Connections broker; the request carries only the destination address + line amount, never customer contact details. Carries NO secret (ADR 0024 §7).</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v2/packs/core.openwop.connections.avalara/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.connections.avalara/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.connections.avalara/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Cohere-rerank</th></tr>
+        <tr id="pack-core.openwop.connections.cohere-rerank">
+          <td class="name"><code>core.openwop.connections.cohere-rerank</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="provider in latest manifest">1</td>
+          <td class="desc">Cohere Rerank connection pack (RFC 0095) — api_key provider for the KB retrieval pipeline&#39;s EXTERNAL reranker (ADR 0351 Phase 4 / CSG-KB-8): a collection whose retrieval config selects `rerank:{kind:&#39;connection&#39;}` reranks its hybrid candidates through Cohere&#39;s /v2/rerank with the tenant&#39;s connected key, resolved through the connections broker (KMS-enveloped, rotatable) and dispatched over the brokered-egress spine (SSRF-guarded, no-redirect, bounded timeout). Carries NO secret (ADR 0024 §7). A rerank failure degrades HONESTLY to the local deterministic reranker, labeled on the search response.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v2/packs/core.openwop.connections.cohere-rerank/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.connections.cohere-rerank/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.connections.cohere-rerank/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Demo-ucp-merchant</th></tr>
+        <tr id="pack-core.openwop.connections.ucp-reference-merchant">
+          <td class="name"><code>core.openwop.connections.ucp-reference-merchant</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="provider in latest manifest">1</td>
+          <td class="desc">UCP reference-merchant connection pack (RFC 0095) — declares the TARGET shape of a reach:&#39;mcp&#39; merchant the UCP BUYER shops to validate the ucp.&lt;op&gt; convention (ADR 0258/0260): a bearer-auth MCP server exposing the tools ucp.discover / ucp.search / ucp.checkout / ucp.order-status, each returning a BARE structured JSON result (no content wrapper). Category is `other`: the normative `category` enum has no `commerce-merchant` value and the buyer resolves by provider `id`, not category — no wire/RFC change. The `url` here is a placeholder for a REAL merchant (https-only per RFC 0095 §B.5); the in-repo DEMO merchant is wired instead by the `ucp-reference-merchant` example-data seeder (ADR 0260), which registers a loopback dev route (POST /v1/host/openwop-app/dev/ucp-merchant/mcp, enabled by OPENWOP_UCP_REF_MERCHANT_ENABLED) and a workspace Connection so the buyer can be pointed at it. The demo merchant moves NO money (checkout creates a PENDING, unpaid order). Carries NO secret (ADR 0024 §7).</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v2/packs/core.openwop.connections.ucp-reference-merchant/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.connections.ucp-reference-merchant/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.connections.ucp-reference-merchant/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Easypost</th></tr>
+        <tr id="pack-core.openwop.connections.easypost">
+          <td class="name"><code>core.openwop.connections.easypost</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="provider in latest manifest">1</td>
+          <td class="desc">EasyPost connection pack (RFC 0095) — api_key provider declaring the TARGET shape for the commerce shipping-rate seam (ADR 0250) as an alternative carrier to Shippo: API host, auth kind, consumer nodes. Category is `other` (openai-images precedent): the normative `category` enum has no `shipping` value and the seam would resolve by `id` (`easypost`), not category — no wire/RFC change. The rate mapper is now LIVE (ADR 0250 follow-on): with an easypost connection configured, the seam rate-shops via POST https://api.easypost.com/v2/shipments (Basic auth), converts grams+cm to EasyPost&#39;s ounces+inches, and bills the cheapest same-currency rate — as a second carrier in the shippo→easypost cascade. Rate quotes are READ calls (not money movement) — no commerce-spend gate. Carries NO secret (ADR 0024 §7).</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v2/packs/core.openwop.connections.easypost/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.connections.easypost/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.connections.easypost/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
         <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">GitHub</th></tr>
         <tr id="pack-core.openwop.connections.github">
           <td class="name"><code>core.openwop.connections.github</code> </td>
@@ -1528,6 +1580,19 @@
             · <a href="/v2/packs/core.openwop.connections.google-ads/-/1.0.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
+        <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Google-imagen</th></tr>
+        <tr id="pack-core.openwop.connections.google-imagen">
+          <td class="name"><code>core.openwop.connections.google-imagen</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="provider in latest manifest">1</td>
+          <td class="desc">Google Imagen connection pack (RFC 0095) — api_key provider for the host image-generation seam&#39;s `google` provider (Imagen via the Gemini API, ADR 0115 Phase 6 / ADR 0229 / ADR 0244): the API host, auth kind, and the consumer nodes. **ADR 0244:** the image seam now RESOLVES THE API KEY THROUGH THE CONNECTIONS BROKER — installing this pack + connecting a Google key provides the per-tenant, KMS-enveloped, rotatable credential (a workspace-scoped Connection wins over the host-wide `OPENWOP_IMAGE_PROVIDER_KEY[_GOOGLE]` env fallback). The host operator STILL configures the ENDPOINT (`OPENWOP_IMAGE_PROVIDER_ENDPOINT[_GOOGLE]`, honest-off until set) — the endpoint is non-secret host infra, not a credential. Carries NO secret (ADR 0024 §7).</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v2/packs/core.openwop.connections.google-imagen/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.connections.google-imagen/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.connections.google-imagen/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
         <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Google-workspace</th></tr>
         <tr id="pack-core.openwop.connections.google-workspace">
           <td class="name"><code>core.openwop.connections.google-workspace</code> </td>
@@ -1541,30 +1606,43 @@
             · <a href="/v2/packs/core.openwop.connections.google-workspace/-/1.0.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
+        <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Hubspot</th></tr>
+        <tr id="pack-core.openwop.connections.hubspot">
+          <td class="name"><code>core.openwop.connections.hubspot</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="provider in latest manifest">1</td>
+          <td class="desc">HubSpot connection pack (RFC 0095) — OAuth2 (authorization-code) provider for the HubSpot CRM v3 REST API (contacts, companies, deals, tickets). ADR 0033 DEPLOY-GATED. Reach is `openapi` against HubSpot&#39;s documented REST surface (api.hubapi.com): HubSpot ships no first-party hosted MCP server, so the documented API is the honest day-1 reach (ADR 0033 §4). HubSpot was the top CRM absence vs the market-standard app surface in the ADR 0190 template research. Carries NO secret; the operator supplies the app client id/secret host-side (ADR 0024 §7).</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v2/packs/core.openwop.connections.hubspot/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.connections.hubspot/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.connections.hubspot/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
         <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Linkedin-ads</th></tr>
         <tr id="pack-core.openwop.connections.linkedin-ads">
           <td class="name"><code>core.openwop.connections.linkedin-ads</code> </td>
-          <td class="version">1.0.1</td>
+          <td class="version">1.0.2</td>
           <td class="count" title="provider in latest manifest">1</td>
           <td class="desc">LinkedIn Ads connection pack — OAuth2 provider for the LinkedIn Marketing API. Reach is `openapi`: the manifest declares the global LinkedIn OAuth hosts and points at the Marketing API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the client id/secret host-side. One of the three ad platforms Campaign Studio syncs (Google / Meta / LinkedIn Ads).</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v2/packs/core.openwop.connections.linkedin-ads/-/1.0.1.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/core.openwop.connections.linkedin-ads/-/1.0.1.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/core.openwop.connections.linkedin-ads/-/1.0.1.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/core.openwop.connections.linkedin-ads/-/1.0.2.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.connections.linkedin-ads/-/1.0.2.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.connections.linkedin-ads/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Meta-ads</th></tr>
         <tr id="pack-core.openwop.connections.meta-ads">
           <td class="name"><code>core.openwop.connections.meta-ads</code> </td>
-          <td class="version">1.0.1</td>
+          <td class="version">1.1.0</td>
           <td class="count" title="provider in latest manifest">1</td>
           <td class="desc">Meta (Facebook/Instagram) Ads connection pack — OAuth2 provider for the Meta Marketing API. Reach is `openapi`: the manifest declares the global Meta OAuth hosts and points at the Marketing API reference, consumed by the core.openwop.http nodes. Carries NO secret; the operator supplies the app id/secret host-side. An available provider (the parallel ad platform to google-ads); one of the three ad platforms Campaign Studio syncs.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v2/packs/core.openwop.connections.meta-ads/-/1.0.1.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/core.openwop.connections.meta-ads/-/1.0.1.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/core.openwop.connections.meta-ads/-/1.0.1.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/core.openwop.connections.meta-ads/-/1.1.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.connections.meta-ads/-/1.1.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.connections.meta-ads/-/1.1.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Microsoft 365</th></tr>
@@ -1606,6 +1684,19 @@
             · <a href="/v2/packs/core.openwop.connections.notion/-/1.0.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
+        <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Openai-images</th></tr>
+        <tr id="pack-core.openwop.connections.openai-images">
+          <td class="name"><code>core.openwop.connections.openai-images</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="provider in latest manifest">1</td>
+          <td class="desc">OpenAI Images connection pack (RFC 0095) — api_key provider for the host image-generation seam&#39;s `openai` provider (gpt-image, ADR 0115 / ADR 0229 / ADR 0244): the Images API host, auth kind, and the consumer nodes. **ADR 0244:** the image seam now RESOLVES THE API KEY THROUGH THE CONNECTIONS BROKER — installing this pack + connecting an OpenAI key provides the per-tenant, KMS-enveloped, rotatable credential (a workspace-scoped Connection wins over the host-wide `OPENWOP_IMAGE_PROVIDER_KEY[_OPENAI]` env fallback). The host operator STILL configures the ENDPOINT (`OPENWOP_IMAGE_PROVIDER_ENDPOINT[_OPENAI]`, honest-off until set) — the endpoint is non-secret host infra, not a credential. Carries NO secret (ADR 0024 §7).</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v2/packs/core.openwop.connections.openai-images/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.connections.openai-images/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.connections.openai-images/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
         <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Salesforce</th></tr>
         <tr id="pack-core.openwop.connections.salesforce">
           <td class="name"><code>core.openwop.connections.salesforce</code> </td>
@@ -1617,6 +1708,32 @@
             <a href="/v2/packs/core.openwop.connections.salesforce/-/1.0.2.json" title="version manifest (JSON)">manifest</a>
             · <a href="/v2/packs/core.openwop.connections.salesforce/-/1.0.2.tgz" title="signed tarball (tgz)">tgz</a>
             · <a href="/v2/packs/core.openwop.connections.salesforce/-/1.0.2.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Shippo</th></tr>
+        <tr id="pack-core.openwop.connections.shippo">
+          <td class="name"><code>core.openwop.connections.shippo</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="provider in latest manifest">1</td>
+          <td class="desc">Shippo connection pack (RFC 0095) — api_key provider for the commerce shipping-rate seam (ADR 0250). Category is `other` (openai-images precedent): the normative `category` enum has no `shipping` value and the seam resolves by `id` (`shippo`), not category — no wire/RFC change. When configured AND the org sets `commerce.shipFrom` AND the cart&#39;s physical lines all carry a weight, `features/commerce/taxShipping.ts` calls Shippo&#39;s rate API (POST https://api.goshippo.com/v1/shipments) at checkout and bills the CHEAPEST rate; ANY missing input/error/timeout falls back to the flat/manual rate — a carrier hiccup never blocks a sale. Rate quotes are READ calls (not money movement) — no commerce-spend gate. Credentials stay host-side via the Connections broker; the request carries only the from/to postal + parcel weight, never customer contact details. Carries NO secret (ADR 0024 §7).</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v2/packs/core.openwop.connections.shippo/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.connections.shippo/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.connections.shippo/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Taxjar</th></tr>
+        <tr id="pack-core.openwop.connections.taxjar">
+          <td class="name"><code>core.openwop.connections.taxjar</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="provider in latest manifest">1</td>
+          <td class="desc">TaxJar connection pack (RFC 0095) — api_key provider for the commerce tax-quote seam (ADR 0238 DEF-1). Category is `other` (the openai-images precedent): the normative `category` enum has no `tax` value and the seam resolves this provider by `id` (`taxjar`), not category — no wire/RFC change. When a merchant configures a TaxJar connection, `features/commerce/taxShipping.ts` calls the Sales Tax API (POST https://api.taxjar.com/v2/taxes) at checkout; ANY error/timeout falls back to the flat/manual governance rate — a provider hiccup never blocks a sale. READ quotes (not money movement), so NO commerce-spend gate. Credentials stay host-side, resolved per-call through the Connections authorization choke point; the request carries only the destination address + line amount, never customer contact details. Carries NO secret (ADR 0024 §7).</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v2/packs/core.openwop.connections.taxjar/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.connections.taxjar/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.connections.taxjar/-/1.0.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Tiktok-ads</th></tr>
@@ -1645,6 +1762,19 @@
             · <a href="/v2/packs/core.openwop.connections.workday/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
+        <tr class="vendor-row"><th class="vendor-group" colspan="6" scope="colgroup">Zendesk</th></tr>
+        <tr id="pack-core.openwop.connections.zendesk">
+          <td class="name"><code>core.openwop.connections.zendesk</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="provider in latest manifest">1</td>
+          <td class="desc">Zendesk connection pack (RFC 0095) — OAuth2 (authorization-code, per-subdomain) provider for the Zendesk Ticketing REST API. ADR 0033 DEPLOY-GATED. Endpoints are per-tenant (https://{subdomain}.zendesk.com/oauth/…), so the pack carries an instanceUrlTemplate and no fixed endpoints — the host resolves them from the connected subdomain (the NetSuite precedent). Reach is `openapi` against Zendesk&#39;s documented Ticketing API: no first-party hosted MCP server, so the documented REST surface is the honest day-1 reach (ADR 0033 §4). Zendesk was the top helpdesk absence vs the market-standard app surface in the ADR 0190 template research. Carries NO secret; the operator supplies the OAuth client id/secret host-side (ADR 0024 §7).</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v2/packs/core.openwop.connections.zendesk/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.connections.zendesk/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.connections.zendesk/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
       </tbody>
     </table></div>
       </div>
@@ -1663,6 +1793,30 @@
         <tr><th>Name</th><th>Version</th><th class="count-h">Chains</th><th>Description</th><th>License</th><th>Artifacts</th></tr>
       </thead>
       <tbody>
+        <tr id="pack-core.openwop.workflows.agent-eval-regression-gate">
+          <td class="name"><code>core.openwop.workflows.agent-eval-regression-gate</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">1</td>
+          <td class="desc">Run an agent&#39;s eval suite inside the app and stop for a person when it does not clear (ADR 0889 WF-EV-11). One `feature.evals.nodes.run-suite` node runs the suite (optionally against a baseline eval run, for a regression verdict); when the suite fails or regresses, an approval gate asks a reviewer to accept the result or reject it. Resolves on hosts that ship the evals feature and node pack (the OpenWOP reference app).</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v2/packs/core.openwop.workflows.agent-eval-regression-gate/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.agent-eval-regression-gate/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.agent-eval-regression-gate/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr id="pack-core.openwop.workflows.agent-knowledge">
+          <td class="name"><code>core.openwop.workflows.agent-knowledge</code> </td>
+          <td class="version">1.0.1</td>
+          <td class="count" title="chains in latest manifest">1</td>
+          <td class="desc">WF-KB-1 — the ADR 0038 §B auto-ingest workflow, migrated off the in-tree `registerWorkflow({...})` pin site in features/agent-knowledge/feature.ts. A trigger (webhook/email/form, RFC 0099) ignites this chain; the single `feature.agent-knowledge.nodes.ingest` node writes an UNTRUSTED, cited KB document into a collection bound to the agent. Registered chain-backed under the ORIGINAL id `feature.agent-knowledge.auto-ingest`, so the seeded demo trigger subscription keeps resolving and replay is unchanged — and it is now gallery-visible and builder-editable like every other chain.</td>
+          <td class="license">—</td>
+          <td class="artifacts">
+            <a href="/v2/packs/core.openwop.workflows.agent-knowledge/-/1.0.1.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.agent-knowledge/-/1.0.1.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.agent-knowledge/-/1.0.1.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
         <tr id="pack-core.openwop.workflows.approvals">
           <td class="name"><code>core.openwop.workflows.approvals</code> </td>
           <td class="version">1.1.0</td>
@@ -1675,76 +1829,124 @@
             · <a href="/v2/packs/core.openwop.workflows.approvals/-/1.1.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
+        <tr id="pack-core.openwop.workflows.assistant">
+          <td class="name"><code>core.openwop.workflows.assistant</code> </td>
+          <td class="version">1.0.1</td>
+          <td class="count" title="chains in latest manifest">6</td>
+          <td class="desc">WF-COS-1 — the ADR 0023 assistant&#39;s six boot-path workflows, migrated off the in-tree `registerWorkflow({...})` pin sites in `features/assistant/loops.ts` and `features/assistant/actionExecution.ts`. THREE PERCEPTION LOOPS (calendar ingest, drive ingest, morning briefing) fired by the RFC 0052 scheduler, and THREE APPROVED-ACTION EXECUTIONS (email send, calendar invite, calendar reschedule) dispatched by the winning approval claim. Each is registered chain-backed under its ORIGINAL workflowId, so the per-tenant scheduler job rows, the `EXEC_WORKFLOW_BY_KIND` dispatch and every existing run stamp keep resolving — and all six become gallery-visible and builder-editable like every other chain. NO credential or connection material lives in any node config: the ADR 0024 §4 Option-C opt-in is RUN-LEVEL (`configurable.connections`), set on the scheduler job / at dispatch, exactly as it was before the migration.</td>
+          <td class="license">—</td>
+          <td class="artifacts">
+            <a href="/v2/packs/core.openwop.workflows.assistant/-/1.0.1.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.assistant/-/1.0.1.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.assistant/-/1.0.1.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr id="pack-core.openwop.workflows.campaign-autonomy">
+          <td class="name"><code>core.openwop.workflows.campaign-autonomy</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">1</td>
+          <td class="desc">Campaign Studio autonomy policy (ADR 0942 D7): the daily digest of notify-after steps. One chain per workspace, scheduled host-side when a client or campaign policy asks for a daily digest. It sends each named person one notice listing the campaign steps that ran without waiting for them the day before.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v2/packs/core.openwop.workflows.campaign-autonomy/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.campaign-autonomy/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.campaign-autonomy/-/1.0.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
         <tr id="pack-core.openwop.workflows.campaign-brief">
           <td class="name"><code>core.openwop.workflows.campaign-brief</code> </td>
-          <td class="version">1.0.2</td>
+          <td class="version">1.1.0</td>
           <td class="count" title="chains in latest manifest">2</td>
           <td class="desc">Campaign-brief messaging-kernel + market-intel workflows, migrated from the deprecated builtins (ADR 0472 P4). chainIds keep the original ids; outputRoles restored at registration.</td>
           <td class="license">—</td>
           <td class="artifacts">
-            <a href="/v2/packs/core.openwop.workflows.campaign-brief/-/1.0.2.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/core.openwop.workflows.campaign-brief/-/1.0.2.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/core.openwop.workflows.campaign-brief/-/1.0.2.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/core.openwop.workflows.campaign-brief/-/1.1.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.campaign-brief/-/1.1.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.campaign-brief/-/1.1.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-core.openwop.workflows.campaign-channels">
           <td class="name"><code>core.openwop.workflows.campaign-channels</code> </td>
-          <td class="version">1.0.2</td>
+          <td class="version">1.1.0</td>
           <td class="count" title="chains in latest manifest">5</td>
           <td class="desc">The five campaign channel child workflows (ADR 0157) — generate→approve DAGs the orchestration fans out over — migrated from the deprecated builtins (ADR 0472 P4). chainIds keep the original ids.</td>
           <td class="license">—</td>
           <td class="artifacts">
-            <a href="/v2/packs/core.openwop.workflows.campaign-channels/-/1.0.2.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/core.openwop.workflows.campaign-channels/-/1.0.2.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/core.openwop.workflows.campaign-channels/-/1.0.2.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/core.openwop.workflows.campaign-channels/-/1.1.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.campaign-channels/-/1.1.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.campaign-channels/-/1.1.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-core.openwop.workflows.campaign-journeys">
           <td class="name"><code>core.openwop.workflows.campaign-journeys</code> </td>
-          <td class="version">1.1.4</td>
-          <td class="count" title="chains in latest manifest">3</td>
+          <td class="version">1.3.1</td>
+          <td class="count" title="chains in latest manifest">6</td>
           <td class="desc">Contact-level lifecycle journeys as RFC 0013 chains on the ONE engine (ADR 0222 / campaign gap plan C6) — NOT a journey engine. Trigger with an ADR 0208 host-event binding (e.g. host.crm.contact.created → Welcome Series), guard with the enrollment + eligibility verbs (one run per contact per journey; every send behind consent + suppression), wait with core.flow.wait, send with the existing email node, log with the CRM activity verb. Enrollment state is the run itself — monitor in Runs, reset re-enrollment via the campaign-journeys API.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v2/packs/core.openwop.workflows.campaign-journeys/-/1.1.4.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/core.openwop.workflows.campaign-journeys/-/1.1.4.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/core.openwop.workflows.campaign-journeys/-/1.1.4.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/core.openwop.workflows.campaign-journeys/-/1.3.1.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.campaign-journeys/-/1.3.1.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.campaign-journeys/-/1.3.1.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr id="pack-core.openwop.workflows.campaign-ops">
+          <td class="name"><code>core.openwop.workflows.campaign-ops</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">2</td>
+          <td class="desc">Agency campaign operations (ADR 0923): turn an operator&#39;s change request into a hashed change set of constrained edits on a client&#39;s landing page and email draft, for approval.</td>
+          <td class="license">—</td>
+          <td class="artifacts">
+            <a href="/v2/packs/core.openwop.workflows.campaign-ops/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.campaign-ops/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.campaign-ops/-/1.0.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-core.openwop.workflows.campaign-orchestration">
           <td class="name"><code>core.openwop.workflows.campaign-orchestration</code> </td>
-          <td class="version">1.0.2</td>
+          <td class="version">1.2.1</td>
           <td class="count" title="chains in latest manifest">1</td>
           <td class="desc">Campaign Studio orchestration spine (ADR 0158/RFC 0118), parallel channel fan-out shape — migrated from the deprecated builtin (ADR 0472 P4). chainId keeps the original id; the 5 channel children resolve by id at runtime via core.dispatch.</td>
           <td class="license">—</td>
           <td class="artifacts">
-            <a href="/v2/packs/core.openwop.workflows.campaign-orchestration/-/1.0.2.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/core.openwop.workflows.campaign-orchestration/-/1.0.2.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/core.openwop.workflows.campaign-orchestration/-/1.0.2.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/core.openwop.workflows.campaign-orchestration/-/1.2.1.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.campaign-orchestration/-/1.2.1.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.campaign-orchestration/-/1.2.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-core.openwop.workflows.campaign-sync">
           <td class="name"><code>core.openwop.workflows.campaign-sync</code> </td>
-          <td class="version">1.1.2</td>
-          <td class="count" title="chains in latest manifest">2</td>
-          <td class="desc">Campaign Studio metrics-sync chain (RFC 0013; campaign gap plan C2 on ADR 0159). Pulls yesterday&#39;s ad metrics for every dispatched campaign through the acting user&#39;s platform connection (ctx.ads, window-scoped so rows never double-count) into the unified performance store, then delivers a short sync summary as a notification. Schedule it daily on the ONE scheduler, or run it ad hoc — the 15-minute cooldown makes overlapping fires harmless. Also carries the daily budget-pacing check (ADR 0220).</td>
+          <td class="version">1.5.0</td>
+          <td class="count" title="chains in latest manifest">3</td>
+          <td class="desc">Campaign Studio metrics-sync chain (RFC 0013; campaign gap plan C2 on ADR 0159). Pulls a rolling 7-day look-back of daily ad metrics, with conversions and revenue, for the dispatched campaigns or the whole configured ad account through the acting user&#39;s platform connection (ctx.ads; each day&#39;s row is replaced on re-pull, so late conversions settle and nothing double-counts) into the unified performance store, then delivers a short sync summary as a notification. Schedule it daily on the ONE scheduler, or run it ad hoc — the 15-minute cooldown makes overlapping fires harmless. Also carries the daily budget-pacing check (ADR 0220). And the hourly conversions delivery (ADR 0907 D7): queued server-side conversions go to the live conversions APIs, consent re-checked per row at send.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v2/packs/core.openwop.workflows.campaign-sync/-/1.1.2.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/core.openwop.workflows.campaign-sync/-/1.1.2.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/core.openwop.workflows.campaign-sync/-/1.1.2.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/core.openwop.workflows.campaign-sync/-/1.5.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.campaign-sync/-/1.5.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.campaign-sync/-/1.5.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr id="pack-core.openwop.workflows.channel-turn">
+          <td class="name"><code>core.openwop.workflows.channel-turn</code> </td>
+          <td class="version">1.0.2</td>
+          <td class="count" title="chains in latest manifest">1</td>
+          <td class="desc">The channel agent-turn workflow (ADR 0154 Phase 4), migrated off the in-tree `registerWorkflow(DEF)` pin site (ADR 0703 / PIN_SITE_QUARANTINE drain — instance #3 of the SCWF-1 class, after assistant and scheduled-agent-chats). chainId keeps the original workflowId so every dispatch and run stamp keeps resolving.</td>
+          <td class="license">—</td>
+          <td class="artifacts">
+            <a href="/v2/packs/core.openwop.workflows.channel-turn/-/1.0.2.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.channel-turn/-/1.0.2.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.channel-turn/-/1.0.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-core.openwop.workflows.commerce">
           <td class="name"><code>core.openwop.workflows.commerce</code> </td>
-          <td class="version">1.3.0</td>
+          <td class="version">1.4.0</td>
           <td class="count" title="chains in latest manifest">3</td>
           <td class="desc">Real-work workflow pack (RFC 0013, ADR 0152) — the Commerce operations cluster (ecommerce gap plan §5C C8): Post-Purchase Thank-You, Low-Stock Reorder Draft, and the Order Exception Digest. Designed to bind to the ADR 0221 host events (host.commerce.order.paid, host.commerce.inventory.low-stock — create a host-event binding to enroll; ADR 0208) or the schedule trigger. Every outbound send rides the governed email-send integration node (drafts/approval per the tenant&#39;s actionPolicy — ADR 0033) and the ONE notification seam; order data flows through feature.commerce.nodes over ctx.features.commerce, so the ADR 0221 audit rows + spend thresholds apply by construction. Enrollment state = the run itself; a binding fires one run per event.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v2/packs/core.openwop.workflows.commerce/-/1.3.0.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/core.openwop.workflows.commerce/-/1.3.0.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/core.openwop.workflows.commerce/-/1.3.0.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/core.openwop.workflows.commerce/-/1.4.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.commerce/-/1.4.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.commerce/-/1.4.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-core.openwop.workflows.content">
@@ -1773,38 +1975,38 @@
         </tr>
         <tr id="pack-core.openwop.workflows.crm-ops">
           <td class="name"><code>core.openwop.workflows.crm-ops</code> </td>
-          <td class="version">1.3.2</td>
-          <td class="count" title="chains in latest manifest">3</td>
-          <td class="desc">Governed CRM write-verb workflows (RFC 0013, ADR 0208 §2, ADR 0252). Where vendor.openwop-app.crm.agents.sales-ops is read-mostly (plus two assistive writes), these chains carry the riskier CRM mutations — owner assignment off a new-lead event, stale-deal follow-up, and the scheduler-fired Gmail inbox sync — with a human in the loop where the ADR calls for one. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts that ship the feature.crm feature + node pack (the OpenWOP reference app).</td>
+          <td class="version">1.8.0</td>
+          <td class="count" title="chains in latest manifest">7</td>
+          <td class="desc">Governed CRM write-verb workflows (RFC 0013, ADR 0208 §2, ADR 0252). Where vendor.openwop-app.crm.agents.sales-ops is read-mostly (plus two assistive writes), these chains carry the riskier CRM mutations — owner assignment off a new-lead event, stale-deal follow-up, the scheduler-fired Gmail inbox sync, and contact triage (the CRM toggle variant&#39;s scoring, recorded on the contact — ADR 0837 D7) — with a human in the loop where the ADR calls for one. All tenant-specific values are run parameters (replay-deterministic). Resolves on hosts that ship the feature.crm feature + node pack (the OpenWOP reference app).</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v2/packs/core.openwop.workflows.crm-ops/-/1.3.2.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/core.openwop.workflows.crm-ops/-/1.3.2.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/core.openwop.workflows.crm-ops/-/1.3.2.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/core.openwop.workflows.crm-ops/-/1.8.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.crm-ops/-/1.8.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.crm-ops/-/1.8.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-core.openwop.workflows.csm-ops">
           <td class="name"><code>core.openwop.workflows.csm-ops</code> </td>
-          <td class="version">1.0.1</td>
-          <td class="count" title="chains in latest manifest">2</td>
-          <td class="desc">CSM↔CRM linkage workflows (ADR 0212, RFC 0013). Where feature.csm.agents.health-insights is read-only, these two chains carry the CSM write surface: computing an Account&#39;s healthScore/healthFactors from its linked CRM company&#39;s deals/tasks (the scoring recipe as visible, editable workflow configuration rather than buried code — ADR 0212 §3), and a human-gated renewal-risk follow-up over the deal-hygiene shape (ADR 0212 §4 — renewals are deals, not a new entity). All tenant/org-specific values are run parameters (replay-deterministic). Resolves on hosts that ship the feature.crm + feature.csm features + node packs (the OpenWOP reference app).</td>
+          <td class="version">1.3.0</td>
+          <td class="count" title="chains in latest manifest">4</td>
+          <td class="desc">CSM↔CRM linkage workflows (ADR 0212, RFC 0013). Where vendor.openwop-app.csm.agents.health-insights is read-only, these two chains carry the CSM write surface: computing an Account&#39;s healthScore/healthFactors from its linked CRM company&#39;s deals/tasks (the scoring recipe as visible, editable workflow configuration rather than buried code — ADR 0212 §3), and a human-gated renewal-risk follow-up over the deal-hygiene shape (ADR 0212 §4 — renewals are deals, not a new entity). All tenant/org-specific values are run parameters (replay-deterministic). Resolves on hosts that ship the feature.crm + feature.csm features + node packs (the OpenWOP reference app). 1.3.0 (ADR 0882): health-from-crm 1.1.0 names the org it measured; two playbook chains — red-account-rescue (bind the health-changed host event) and renewal-runway (run on demand or on a schedule) — write CRM tasks linked to the account&#39;s company and assigned to its owner.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v2/packs/core.openwop.workflows.csm-ops/-/1.0.1.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/core.openwop.workflows.csm-ops/-/1.0.1.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/core.openwop.workflows.csm-ops/-/1.0.1.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/core.openwop.workflows.csm-ops/-/1.3.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.csm-ops/-/1.3.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.csm-ops/-/1.3.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-core.openwop.workflows.customer-onboarding">
           <td class="name"><code>core.openwop.workflows.customer-onboarding</code> </td>
-          <td class="version">1.0.5</td>
+          <td class="version">1.2.1</td>
           <td class="count" title="chains in latest manifest">3</td>
           <td class="desc">Customer-onboarding chains (RFC 0013): the post-sale first-mile — a warm welcome, a personalized kickoff checklist, and a scheduled 30-day health check. All external sends sit behind a human approval gate; tenant values are run parameters (replay-deterministic).</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v2/packs/core.openwop.workflows.customer-onboarding/-/1.0.5.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/core.openwop.workflows.customer-onboarding/-/1.0.5.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/core.openwop.workflows.customer-onboarding/-/1.0.5.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/core.openwop.workflows.customer-onboarding/-/1.2.1.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.customer-onboarding/-/1.2.1.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.customer-onboarding/-/1.2.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-core.openwop.workflows.data-ops">
@@ -1855,16 +2057,28 @@
             · <a href="/v2/packs/core.openwop.workflows.exec-ops/-/1.4.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
+        <tr id="pack-core.openwop.workflows.experiments">
+          <td class="name"><code>core.openwop.workflows.experiments</code> </td>
+          <td class="version">1.1.0</td>
+          <td class="count" title="chains in latest manifest">2</td>
+          <td class="desc">ADR 0949 P4 — the Optimize loop. One node reallocates a running Optimize experiment by Thompson sampling, every arm kept at or above its floor. Schedule it with the existing scheduler at the experiment&#39;s epoch cadence: a run that comes too early returns `too_soon` and changes nothing, and a replay or a :fork finds its epoch already appended (the epoch number comes from the run&#39;s frozen start instant), so it never re-allocates. It only reallocates an experiment a human launched; it never launches, stops or promotes. Resolves on hosts that ship the experiments feature + node pack (the OpenWOP reference app). ADR 0950 adds `experiments.promote` (internal): the governed, staged promotion of a Decide winner, started from the experiment.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v2/packs/core.openwop.workflows.experiments/-/1.1.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.experiments/-/1.1.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.experiments/-/1.1.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
         <tr id="pack-core.openwop.workflows.feedback-triage">
           <td class="name"><code>core.openwop.workflows.feedback-triage</code> </td>
-          <td class="version">1.0.2</td>
+          <td class="version">1.2.0</td>
           <td class="count" title="chains in latest manifest">2</td>
           <td class="desc">Feedback-triage chains (RFC 0013): turn raw inbound feedback into classified, routed, actionable items. A form submission is classified and (on approval) filed as a follow-up task; a batch is themed into a weekly digest. Replay-deterministic.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v2/packs/core.openwop.workflows.feedback-triage/-/1.0.2.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/core.openwop.workflows.feedback-triage/-/1.0.2.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/core.openwop.workflows.feedback-triage/-/1.0.2.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/core.openwop.workflows.feedback-triage/-/1.2.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.feedback-triage/-/1.2.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.feedback-triage/-/1.2.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-core.openwop.workflows.finance">
@@ -1881,14 +2095,14 @@
         </tr>
         <tr id="pack-core.openwop.workflows.funnels">
           <td class="name"><code>core.openwop.workflows.funnels</code> </td>
-          <td class="version">1.0.3</td>
+          <td class="version">1.1.0</td>
           <td class="count" title="chains in latest manifest">1</td>
           <td class="desc">Funnel optimization chains (ADR 0294 / Funnel A, Phase 6) — read-only analysis over the funnels feature nodes: per-step stats in, a grounded optimization proposal out. Proposals only: publishing, step edits, and experiment starts remain human actions in the Funnels page.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v2/packs/core.openwop.workflows.funnels/-/1.0.3.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/core.openwop.workflows.funnels/-/1.0.3.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/core.openwop.workflows.funnels/-/1.0.3.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/core.openwop.workflows.funnels/-/1.1.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.funnels/-/1.1.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.funnels/-/1.1.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-core.openwop.workflows.inbox">
@@ -1905,26 +2119,26 @@
         </tr>
         <tr id="pack-core.openwop.workflows.incident-postmortem">
           <td class="name"><code>core.openwop.workflows.incident-postmortem</code> </td>
-          <td class="version">1.0.2</td>
+          <td class="version">1.2.1</td>
           <td class="count" title="chains in latest manifest">2</td>
           <td class="desc">Incident-postmortem chains (RFC 0013): after an incident resolves, draft a blameless postmortem from the timeline and turn its action items into tracked tasks. Draft-first (the human edits before anything is shared). Replay-deterministic.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v2/packs/core.openwop.workflows.incident-postmortem/-/1.0.2.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/core.openwop.workflows.incident-postmortem/-/1.0.2.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/core.openwop.workflows.incident-postmortem/-/1.0.2.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/core.openwop.workflows.incident-postmortem/-/1.2.1.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.incident-postmortem/-/1.2.1.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.incident-postmortem/-/1.2.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-core.openwop.workflows.insights-suite">
           <td class="name"><code>core.openwop.workflows.insights-suite</code> </td>
-          <td class="version">1.0.2</td>
+          <td class="version">1.3.2</td>
           <td class="count" title="chains in latest manifest">3</td>
-          <td class="desc">Insights &amp; Drafting meta-workflows as an RFC 0013 chain pack (migrated from the deprecated ADR 0082/0072 builtins, ADR 0472 Phase 2). Three real source→analysis→LLM→draft→notify pipelines over BYOK-connected sources (BigQuery, Workday, chat completion, email-draft, notification-push). chainIds keep the original `openwop-app.insights.*` ids so scheduler/trigger ignition + replay are unchanged; the host registers them chain-backed (resolve-by-id, stable id) AND they are gallery-editable chains. Per-node outputRole (not expressible in the portable fragment) is re-applied at registration via the feature&#39;s postProcess.</td>
+          <td class="desc">Insights &amp; Drafting meta-workflows as an RFC 0013 chain pack (migrated from the deprecated ADR 0082/0072 builtins, ADR 0472 Phase 2). Three real source→analysis→LLM→draft→notify pipelines over BYOK-connected sources. chainIds keep the original `openwop-app.insights.*` ids so scheduler/trigger ignition + replay are unchanged; the chains are also gallery-editable. 1.2.0 (ADR 0599 §5): each hard-required value is a chain PARAMETER bound as a WHOLE-VALUE `{{params.X}}` on a top-level node `inputs` entry, and data edges are port-qualified on BOTH sides. NOTIFY AUDIENCE (1.3.0 ADR 0600 §5; STATED in 1.3.1 §Correction 6): `self` resolves from the run&#39;s ACTING USER and refuses fail-closed without one, so a scheduled/webhook fire of `talent-prep` or `anniversary-draft` loses its completion notification — deliberate, since the alternative broadcasts a colleague&#39;s 9-box score or recognition draft workspace-wide. `weekly-variance` keeps `tenant`: no declared PII, and its only lane is the scheduler.</td>
           <td class="license">—</td>
           <td class="artifacts">
-            <a href="/v2/packs/core.openwop.workflows.insights-suite/-/1.0.2.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/core.openwop.workflows.insights-suite/-/1.0.2.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/core.openwop.workflows.insights-suite/-/1.0.2.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/core.openwop.workflows.insights-suite/-/1.3.2.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.insights-suite/-/1.3.2.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.insights-suite/-/1.3.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-core.openwop.workflows.it-support">
@@ -1937,6 +2151,18 @@
             <a href="/v2/packs/core.openwop.workflows.it-support/-/1.4.0.json" title="version manifest (JSON)">manifest</a>
             · <a href="/v2/packs/core.openwop.workflows.it-support/-/1.4.0.tgz" title="signed tarball (tgz)">tgz</a>
             · <a href="/v2/packs/core.openwop.workflows.it-support/-/1.4.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr id="pack-core.openwop.workflows.kb-reindex">
+          <td class="name"><code>core.openwop.workflows.kb-reindex</code> </td>
+          <td class="version">1.0.3</td>
+          <td class="count" title="chains in latest manifest">1</td>
+          <td class="desc">The workflow a KB collection&#39;s embedding-spec REINDEX (ADR 0398 P3 / ADR 0643 D1b) fires on cadence so the rebuild completes without a browser. One node drains ONE bounded slice — embed the next chunks into the staging namespace, cut over when the staging space is whole — and the host tears the per-collection scheduler job down the moment the job reaches a terminal status (the transient definition is archived while a recorded run replays against it). `orgId`/`collectionId` are supplied by the per-collection job the admin-gated `POST …/reindex` registers; do NOT bind this chain by hand — the surface refuses the node unless a running/paused job already exists AND the executing run is the host-minted `kb.reindex:&lt;tenantId&gt;:&lt;orgId&gt;:&lt;collectionId&gt;` workflow. This lane replaces the SPA&#39;s `for (i &lt; 10000) drain()` loop as the DRIVER; the SPA loop stays as the interactive fast path, calling the same route. Resolves on hosts that ship the kb feature + node pack (the OpenWOP reference app).</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v2/packs/core.openwop.workflows.kb-reindex/-/1.0.3.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.kb-reindex/-/1.0.3.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.kb-reindex/-/1.0.3.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-core.openwop.workflows.kicktodo-accountability">
@@ -1953,14 +2179,26 @@
         </tr>
         <tr id="pack-core.openwop.workflows.kicktodo-challenge-factory">
           <td class="name"><code>core.openwop.workflows.kicktodo-challenge-factory</code> </td>
-          <td class="version">1.3.1</td>
+          <td class="version">1.9.0</td>
           <td class="count" title="chains in latest manifest">2</td>
-          <td class="desc">The Challenge Factory (ADR 0458) + its lesson-batch child — migrated from the deprecated builtins (ADR 0472 P4, the terminal quarantine step). chainIds keep the original ids; build-0..3 reference lesson-batch via RFC 0133 config.subChainRef (host-default binds it to the shared same-id child); truthy/falsy reject-safe barriers ride RFC 0134; produced vars (plan/evidenceSummary/planBrief) declared per RFC 0133 §2.2.</td>
+          <td class="desc">The Challenge Factory (ADR 0458) + its lesson-batch child — migrated from the deprecated builtins (ADR 0472 P4, the terminal quarantine step). chainIds keep the original ids; build-0..3 reference lesson-batch via RFC 0133 config.subChainRef (host-default binds it to the shared same-id child); truthy/falsy reject-safe barriers ride RFC 0134; produced vars (plan/evidenceSummary/evidenceClaims/planBrief/planEvidenceBrief) declared per RFC 0133 §2.2; 1.4.0 (ADR 0458 §2.2 correction) grounds the plan, the lessons and the skeptic on the STRUCTURED evidence. 1.5.4 declares `actions: [approve, reject]` on all five approval gates (they set maxRequestChangesIterations 0, so those are the only real decisions — a defer/escalate/request-changes resume is now refused instead of being recorded as a decline that fails the run) and types the lesson-batch params honestly. 1.6.0: generateMedia param + image binding. 1.7.0: gate-N shows the lessons; a failed batch stops the run. 1.9.0: search uses searchQuery (ADR 0975 D3).</td>
           <td class="license">—</td>
           <td class="artifacts">
-            <a href="/v2/packs/core.openwop.workflows.kicktodo-challenge-factory/-/1.3.1.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/core.openwop.workflows.kicktodo-challenge-factory/-/1.3.1.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/core.openwop.workflows.kicktodo-challenge-factory/-/1.3.1.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/core.openwop.workflows.kicktodo-challenge-factory/-/1.9.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.kicktodo-challenge-factory/-/1.9.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.kicktodo-challenge-factory/-/1.9.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr id="pack-core.openwop.workflows.kicktodo-convene-turn">
+          <td class="name"><code>core.openwop.workflows.kicktodo-convene-turn</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">1</td>
+          <td class="desc">The KickTodo convene turn-workflow (ADR 0442 P5, ADR 0689), migrated off the in-tree `registerWorkflow(DEF)` pin site — the last PRODUCT entry in PIN_SITE_QUARANTINE, drained the way ADR 0701 and ADR 0703 drained the scheduled-chat and channel turns. chainId keeps the original workflowId so every scheduler job and run stamp keeps resolving.</td>
+          <td class="license">—</td>
+          <td class="artifacts">
+            <a href="/v2/packs/core.openwop.workflows.kicktodo-convene-turn/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.kicktodo-convene-turn/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.kicktodo-convene-turn/-/1.0.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-core.openwop.workflows.kicktodo-integrations">
@@ -1977,38 +2215,38 @@
         </tr>
         <tr id="pack-core.openwop.workflows.kicktodo-loops">
           <td class="name"><code>core.openwop.workflows.kicktodo-loops</code> </td>
-          <td class="version">1.0.1</td>
+          <td class="version">1.1.1</td>
           <td class="count" title="chains in latest manifest">3</td>
-          <td class="desc">KickTodo enrollment + scheduled loops (enrollment, daily-loop, reminder-loop), migrated from the deprecated builtins (ADR 0472 P4). chainIds keep the original ids so scheduler-continuation ignition + replay resolve unchanged. Enrollment demonstrates RFC 0133 produced variables: `enroll` writes `enrollmentId` to the bag, `materialize` reads it.</td>
+          <td class="desc">KickTodo enrollment + scheduled loops (enrollment, daily-loop, reminder-loop), migrated from the deprecated builtins (ADR 0472 P4). chainIds keep the original ids so scheduler-continuation ignition + replay resolve unchanged. Enrollment demonstrates RFC 0133 produced variables: `enroll` writes `enrollmentId` to the bag, `materialize` reads it. v1.1.0 (ADR 0689): the reminder-loop gains a second node — after the consent-gated reminder, `coach-turn` enqueues one proactive KickBot turn into the participant&#39;s own 1:1.</td>
           <td class="license">—</td>
           <td class="artifacts">
-            <a href="/v2/packs/core.openwop.workflows.kicktodo-loops/-/1.0.1.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/core.openwop.workflows.kicktodo-loops/-/1.0.1.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/core.openwop.workflows.kicktodo-loops/-/1.0.1.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/core.openwop.workflows.kicktodo-loops/-/1.1.1.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.kicktodo-loops/-/1.1.1.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.kicktodo-loops/-/1.1.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-core.openwop.workflows.kicktodo-plan-generation">
           <td class="name"><code>core.openwop.workflows.kicktodo-plan-generation</code> </td>
-          <td class="version">1.0.2</td>
+          <td class="version">1.1.0</td>
           <td class="count" title="chains in latest manifest">1</td>
-          <td class="desc">KickTodo plan generation as an RFC 0013 / RFC 0133 chain pack (migrated from the deprecated ADR 0072 builtin `openwop-app.kicktodo.plan-generation`). Generate a validated challenge plan with the run-scoped provider (closed-world validatePlan + one bounded repair inside the node; fails closed on stub providers), then decompose it into a draft. Demonstrates RFC 0133 produced variables: `generate` writes the validated `plan` to the run bag and `decompose` reads it by name — no typed output port, so an explicit edge is not the right shape.</td>
+          <td class="desc">KickTodo plan generation as an RFC 0013 / RFC 0133 chain pack (migrated from the deprecated ADR 0072 builtin `openwop-app.kicktodo.plan-generation`). Generate a validated challenge plan with the run-scoped provider (closed-world validatePlan + one bounded repair inside the node; fails closed on stub providers), then decompose it into a draft. Demonstrates RFC 0133 produced variables: `generate` writes the validated `plan` to the run bag and `decompose` reads it by name — no typed output port, so an explicit edge is not the right shape. 1.1.0 (XCH-PGC-1) forwards provider/model/credentialRef to generate; the node reads the candidate&#39;s dossier claims itself when none are passed, so the prompt and validatePlan see the same evidence.</td>
           <td class="license">—</td>
           <td class="artifacts">
-            <a href="/v2/packs/core.openwop.workflows.kicktodo-plan-generation/-/1.0.2.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/core.openwop.workflows.kicktodo-plan-generation/-/1.0.2.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/core.openwop.workflows.kicktodo-plan-generation/-/1.0.2.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/core.openwop.workflows.kicktodo-plan-generation/-/1.1.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.kicktodo-plan-generation/-/1.1.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.kicktodo-plan-generation/-/1.1.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-core.openwop.workflows.kicktodo-replan">
           <td class="name"><code>core.openwop.workflows.kicktodo-replan</code> </td>
-          <td class="version">1.0.1</td>
+          <td class="version">1.0.4</td>
           <td class="count" title="chains in latest manifest">1</td>
-          <td class="desc">Participant-replan workflow (ADR 0459/0463), migrated from the deprecated builtin (ADR 0472 P4). chainId keeps the original id; the falsy reject-safe barrier rides RFC 0134.</td>
+          <td class="desc">Participant-replan workflow (ADR 0459/0463), migrated from the deprecated builtin (ADR 0472 P4). chainId keeps the original id; the falsy reject-safe barrier rides RFC 0134. 1.0.3 declares `actions: [approve, reject]` on the approval gate (maxRequestChangesIterations 0), so an unmade decision is refused instead of recorded as a decline. 1.0.4 (WF-FAIL-2): a failed enrich stops the run (enrich-fail) instead of skipping the approval gate and applying the revision unapproved.</td>
           <td class="license">—</td>
           <td class="artifacts">
-            <a href="/v2/packs/core.openwop.workflows.kicktodo-replan/-/1.0.1.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/core.openwop.workflows.kicktodo-replan/-/1.0.1.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/core.openwop.workflows.kicktodo-replan/-/1.0.1.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/core.openwop.workflows.kicktodo-replan/-/1.0.4.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.kicktodo-replan/-/1.0.4.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.kicktodo-replan/-/1.0.4.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-core.openwop.workflows.kicktodo-research">
@@ -2033,6 +2271,30 @@
             <a href="/v2/packs/core.openwop.workflows.knowledge/-/1.3.0.json" title="version manifest (JSON)">manifest</a>
             · <a href="/v2/packs/core.openwop.workflows.knowledge/-/1.3.0.tgz" title="signed tarball (tgz)">tgz</a>
             · <a href="/v2/packs/core.openwop.workflows.knowledge/-/1.3.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr id="pack-core.openwop.workflows.knowledge-sync">
+          <td class="name"><code>core.openwop.workflows.knowledge-sync</code> </td>
+          <td class="version">1.0.1</td>
+          <td class="count" title="chains in latest manifest">1</td>
+          <td class="desc">The workflow a knowledge-sync source (ADR 0107 / ADR 0605) fires on cadence (WF-KB-3 / KSWF-1). A single node runs one pass — list → diff → fetch+ingest → prune — over the configured Drive/OneDrive folder into the source&#39;s bound KB collection, with all the ADR 0605 hardening (pre-run lease, destructive-diff refusal, Tier-2 erasure, subject-scoped prune) behind the WF-KB-4 spend gate. `sourceId` identifies which SyncSource to sync; the per-source scheduler job registered at source creation supplies it automatically — do not bind this chain by hand. This lane replaces the retired knowledgeSyncDaemon, folding the recurring sync onto the ONE host scheduler. Resolves on hosts that ship the knowledge-sync feature + node pack (the OpenWOP reference app).</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v2/packs/core.openwop.workflows.knowledge-sync/-/1.0.1.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.knowledge-sync/-/1.0.1.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.knowledge-sync/-/1.0.1.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr id="pack-core.openwop.workflows.launch-showcase">
+          <td class="name"><code>core.openwop.workflows.launch-showcase</code> </td>
+          <td class="version">1.1.0</td>
+          <td class="count" title="chains in latest manifest">1</td>
+          <td class="desc">A product brief becomes a reviewed launch kit through parallel specialist steps, editorial revision and human approval. Draft-only: no publication or messaging.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v2/packs/core.openwop.workflows.launch-showcase/-/1.1.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.launch-showcase/-/1.1.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.launch-showcase/-/1.1.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-core.openwop.workflows.lighthouse">
@@ -2073,26 +2335,26 @@
         </tr>
         <tr id="pack-core.openwop.workflows.mcp-tool-projections">
           <td class="name"><code>core.openwop.workflows.mcp-tool-projections</code> </td>
-          <td class="version">1.0.1</td>
-          <td class="count" title="chains in latest manifest">19</td>
+          <td class="version">1.0.4</td>
+          <td class="count" title="chains in latest manifest">23</td>
           <td class="desc">MCP tool-projection workflows (core.openwop.mcp.expose-tool → backing node), migrated from the deprecated builtinWorkflows seam (ADR 0472 P4). chainIds keep the original *.mcp.* ids; registered chain-backed with the EXACT original metadata (the ADR 0087 mcp gates) restored, and the MCP mount enumerates them.</td>
           <td class="license">—</td>
           <td class="artifacts">
-            <a href="/v2/packs/core.openwop.workflows.mcp-tool-projections/-/1.0.1.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/core.openwop.workflows.mcp-tool-projections/-/1.0.1.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/core.openwop.workflows.mcp-tool-projections/-/1.0.1.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/core.openwop.workflows.mcp-tool-projections/-/1.0.4.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.mcp-tool-projections/-/1.0.4.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.mcp-tool-projections/-/1.0.4.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-core.openwop.workflows.meeting-ops">
           <td class="name"><code>core.openwop.workflows.meeting-ops</code> </td>
-          <td class="version">1.0.3</td>
+          <td class="version">1.2.1</td>
           <td class="count" title="chains in latest manifest">2</td>
           <td class="desc">Meeting-ops chains (RFC 0013): less time in and around meetings — an agenda from a stated goal, and notes turned into owned action items. In-app and draft sinks only; replay-deterministic.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v2/packs/core.openwop.workflows.meeting-ops/-/1.0.3.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/core.openwop.workflows.meeting-ops/-/1.0.3.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/core.openwop.workflows.meeting-ops/-/1.0.3.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/core.openwop.workflows.meeting-ops/-/1.2.1.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.meeting-ops/-/1.2.1.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.meeting-ops/-/1.2.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-core.openwop.workflows.notebooks">
@@ -2133,26 +2395,26 @@
         </tr>
         <tr id="pack-core.openwop.workflows.production-plan">
           <td class="name"><code>core.openwop.workflows.production-plan</code> </td>
-          <td class="version">1.0.3</td>
+          <td class="version">1.1.0</td>
           <td class="count" title="chains in latest manifest">1</td>
           <td class="desc">Migrated from the deprecated builtin (ADR 0472 P4). chainId keeps the original id; outputRoles restored at registration.</td>
           <td class="license">—</td>
           <td class="artifacts">
-            <a href="/v2/packs/core.openwop.workflows.production-plan/-/1.0.3.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/core.openwop.workflows.production-plan/-/1.0.3.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/core.openwop.workflows.production-plan/-/1.0.3.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/core.openwop.workflows.production-plan/-/1.1.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.production-plan/-/1.1.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.production-plan/-/1.1.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-core.openwop.workflows.release-comms">
           <td class="name"><code>core.openwop.workflows.release-comms</code> </td>
-          <td class="version">1.0.2</td>
+          <td class="version">1.2.1</td>
           <td class="count" title="chains in latest manifest">2</td>
           <td class="desc">Release-comms chains (RFC 0013): ship-day communications — customer-facing release notes from a raw changelog, and an internal launch announcement. Every external/team send is human-gated. Replay-deterministic.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v2/packs/core.openwop.workflows.release-comms/-/1.0.2.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/core.openwop.workflows.release-comms/-/1.0.2.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/core.openwop.workflows.release-comms/-/1.0.2.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/core.openwop.workflows.release-comms/-/1.2.1.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.release-comms/-/1.2.1.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.release-comms/-/1.2.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-core.openwop.workflows.research">
@@ -2169,26 +2431,50 @@
         </tr>
         <tr id="pack-core.openwop.workflows.sales-outreach">
           <td class="name"><code>core.openwop.workflows.sales-outreach</code> </td>
-          <td class="version">1.1.4</td>
+          <td class="version">1.3.1</td>
           <td class="count" title="chains in latest manifest">2</td>
           <td class="desc">Sales-outreach chains (RFC 0013): research-grounded, human-gated outreach — a personalized first-touch from live research, and a polite quiet-thread nudge. Every send is reviewed by a human first. Replay-deterministic.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v2/packs/core.openwop.workflows.sales-outreach/-/1.1.4.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/core.openwop.workflows.sales-outreach/-/1.1.4.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/core.openwop.workflows.sales-outreach/-/1.1.4.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/core.openwop.workflows.sales-outreach/-/1.3.1.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.sales-outreach/-/1.3.1.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.sales-outreach/-/1.3.1.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr id="pack-core.openwop.workflows.scheduled-chat-turn">
+          <td class="name"><code>core.openwop.workflows.scheduled-chat-turn</code> </td>
+          <td class="version">1.0.1</td>
+          <td class="count" title="chains in latest manifest">1</td>
+          <td class="desc">The scheduled-agent-chat turn workflow (ADR 0125), migrated off the in-tree `registerWorkflow(DEF)` pin site (ADR 0701 / PIN_SITE_QUARANTINE drain). chainId keeps the original workflowId so every existing scheduler job row, run stamp and dispatch keeps resolving. One agent-runner node; the recurring tick supplies agentId/task/conversationId per fire through the run&#39;s `configurable`, which `registerChainBackedWorkflow`&#39;s deferred expansion materializes as run-overridable variables (RFC 0124).</td>
+          <td class="license">—</td>
+          <td class="artifacts">
+            <a href="/v2/packs/core.openwop.workflows.scheduled-chat-turn/-/1.0.1.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.scheduled-chat-turn/-/1.0.1.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.scheduled-chat-turn/-/1.0.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-core.openwop.workflows.seo-content-ops">
           <td class="name"><code>core.openwop.workflows.seo-content-ops</code> </td>
-          <td class="version">1.1.4</td>
+          <td class="version">1.2.0</td>
           <td class="count" title="chains in latest manifest">2</td>
           <td class="desc">SEO content-ops chains (RFC 0013): a research-grounded content pipeline — a keyword brief from live search, a drafted article for human review, and an on-publish internal-link suggestion pass. Drafts are reviewed before anything is treated as final. Replay-deterministic.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v2/packs/core.openwop.workflows.seo-content-ops/-/1.1.4.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/core.openwop.workflows.seo-content-ops/-/1.1.4.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/core.openwop.workflows.seo-content-ops/-/1.1.4.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/core.openwop.workflows.seo-content-ops/-/1.2.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.seo-content-ops/-/1.2.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.seo-content-ops/-/1.2.0.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr id="pack-core.openwop.workflows.service-desk">
+          <td class="name"><code>core.openwop.workflows.service-desk</code> </td>
+          <td class="version">1.1.0</td>
+          <td class="count" title="chains in latest manifest">1</td>
+          <td class="desc">Service-desk workflow pack (RFC 0013, ADR 0878 D8): SLA escalation for the host&#39;s own support tickets. Bind it to the host&#39;s SLA-breach event (ADR 0683 — the event name belongs to the installing host and is a parameter here) or run it for one ticket by id. The ticket is read over feature.service-desk.nodes (the run person&#39;s org floor applies), an AI summary is grounded in the thread, and the people who work the ticket — its assignee, else its org&#39;s writers — are notified. Never a tenant broadcast; nothing is sent to the customer.</td>
+          <td class="license">Apache-2.0</td>
+          <td class="artifacts">
+            <a href="/v2/packs/core.openwop.workflows.service-desk/-/1.1.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.service-desk/-/1.1.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.service-desk/-/1.1.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-core.openwop.workflows.slides-design">
@@ -2227,6 +2513,18 @@
             · <a href="/v2/packs/core.openwop.workflows.support/-/1.3.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
+        <tr id="pack-core.openwop.workflows.tutorial-connect-your-ai">
+          <td class="name"><code>core.openwop.workflows.tutorial-connect-your-ai</code> </td>
+          <td class="version">1.0.1</td>
+          <td class="count" title="chains in latest manifest">4</td>
+          <td class="desc">ADR 0488 D2 — the NESTING PROOF. The &#39;Connect Your AI&#39; tutorial expressed as phase-granular sub-chains: one child chain per driveable phase, plus a parent chain that composes them via core.subWorkflow + subChainRef (RFC 0133). &#39;Show me this phase&#39; runs a child; &#39;Drive the whole tutorial&#39; runs the parent. Deliberately ONE tutorial: the ADR requires proving nesting on a single tutorial before converting the library.</td>
+          <td class="license">—</td>
+          <td class="artifacts">
+            <a href="/v2/packs/core.openwop.workflows.tutorial-connect-your-ai/-/1.0.1.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.tutorial-connect-your-ai/-/1.0.1.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.tutorial-connect-your-ai/-/1.0.1.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
         <tr id="pack-core.openwop.workflows.walkthroughs">
           <td class="name"><code>core.openwop.workflows.walkthroughs</code> </td>
           <td class="version">1.0.3</td>
@@ -2241,14 +2539,14 @@
         </tr>
         <tr id="pack-core.openwop.workflows.weekly-digest">
           <td class="name"><code>core.openwop.workflows.weekly-digest</code> </td>
-          <td class="version">1.1.2</td>
+          <td class="version">1.3.0</td>
           <td class="count" title="chains in latest manifest">2</td>
           <td class="desc">Weekly-digest chains (RFC 0013): scheduled roundups that keep a team informed without a meeting — a research digest on a watched topic, and a team status roll-up. In-app + gated-send sinks; replay-deterministic.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v2/packs/core.openwop.workflows.weekly-digest/-/1.1.2.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/core.openwop.workflows.weekly-digest/-/1.1.2.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/core.openwop.workflows.weekly-digest/-/1.1.2.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/core.openwop.workflows.weekly-digest/-/1.3.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.weekly-digest/-/1.3.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.weekly-digest/-/1.3.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-core.openwop.workflows.workflow-author">
@@ -2261,6 +2559,18 @@
             <a href="/v2/packs/core.openwop.workflows.workflow-author/-/1.0.2.json" title="version manifest (JSON)">manifest</a>
             · <a href="/v2/packs/core.openwop.workflows.workflow-author/-/1.0.2.tgz" title="signed tarball (tgz)">tgz</a>
             · <a href="/v2/packs/core.openwop.workflows.workflow-author/-/1.0.2.sig" title="Ed25519 signature">sig</a>
+          </td>
+        </tr>
+        <tr id="pack-vendor.openwop-app.workflows.claude-code">
+          <td class="name"><code>vendor.openwop-app.workflows.claude-code</code> </td>
+          <td class="version">1.0.0</td>
+          <td class="count" title="chains in latest manifest">1</td>
+          <td class="desc">Hand a coding task to your own Claude Code from a workflow (ADR 0785). Requires the Claude Code feature and a paired device with workflow tasks allowed.</td>
+          <td class="license">—</td>
+          <td class="artifacts">
+            <a href="/v2/packs/vendor.openwop-app.workflows.claude-code/-/1.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/vendor.openwop-app.workflows.claude-code/-/1.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/vendor.openwop-app.workflows.claude-code/-/1.0.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-vendor.openwop-app.workflows.cms">
@@ -2289,26 +2599,26 @@
         </tr>
         <tr id="pack-vendor.openwop-app.workflows.strategy">
           <td class="name"><code>vendor.openwop-app.workflows.strategy</code> </td>
-          <td class="version">1.0.3</td>
+          <td class="version">1.1.0</td>
           <td class="count" title="chains in latest manifest">3</td>
-          <td class="desc">Strategy operating-rhythm workflows (RFC 0013, ADR 0231). The KR measurement cadence: a weekly check-in nudge that finds measured key results with no recent confirmed check-in and notifies their owners, and a metric-sync pass that refreshes every sourced key result from its configured data owner (CRM deal totals, analytics conversions) through the one governed check-in path. Both are scheduled via the strategy cadence config (GET/PUT /v1/host/openwop-app/strategy/cadence) — no auto-boot jobs. All writes ride ctx.features.strategy.checkIn: agent writes are structurally proposals; sync writes are confirmed only by a human-configured measure.source (fail-closed).</td>
+          <td class="desc">Strategy operating-rhythm workflows (RFC 0013, ADR 0231). The KR measurement cadence: a weekly check-in nudge that finds measured key results with no recent confirmed check-in and notifies their owners, a metric-sync pass that refreshes every sourced key result from its configured data owner (CRM deal totals, analytics conversions) through the one governed check-in path, and a board-pack pre-read that drafts an MBR/QBR memo into a board-update Document. All THREE are scheduled via the strategy cadence config (GET/PUT /v1/host/openwop-app/strategy/cadence) — no auto-boot jobs. All writes ride ctx.features.strategy.checkIn: agent writes are structurally proposals; sync writes are confirmed only by a human-configured measure.source (fail-closed).</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v2/packs/vendor.openwop-app.workflows.strategy/-/1.0.3.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/vendor.openwop-app.workflows.strategy/-/1.0.3.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/vendor.openwop-app.workflows.strategy/-/1.0.3.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/vendor.openwop-app.workflows.strategy/-/1.1.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/vendor.openwop-app.workflows.strategy/-/1.1.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/vendor.openwop-app.workflows.strategy/-/1.1.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-vendor.openwop.app-builder.workflows">
           <td class="name"><code>vendor.openwop.app-builder.workflows</code> </td>
-          <td class="version">1.3.1</td>
-          <td class="count" title="chains in latest manifest">2</td>
+          <td class="version">1.4.2</td>
+          <td class="count" title="chains in latest manifest">3</td>
           <td class="desc">The App Builder production chains (ADR 0346 / RFC 0013). The design chain is the portable source of truth for `app-builder.design` — the host registers it at boot via the feature&#39;s registration adapter (RFC 0124 deferred expansion), and it remains instantiable from the chain gallery like any chain.</td>
           <td class="license">—</td>
           <td class="artifacts">
-            <a href="/v2/packs/vendor.openwop.app-builder.workflows/-/1.3.1.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/vendor.openwop.app-builder.workflows/-/1.3.1.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/vendor.openwop.app-builder.workflows/-/1.3.1.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/vendor.openwop.app-builder.workflows/-/1.4.2.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/vendor.openwop.app-builder.workflows/-/1.4.2.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/vendor.openwop.app-builder.workflows/-/1.4.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-vendor.openwop.workflow-chain-sample">
@@ -2461,8 +2771,8 @@ node registry/scripts/verify-signatures.mjs --tree v2</code></pre>
       <div class="panel">
         <h3>Who can publish where</h3>
         <div class="tiers">
-          <div><code>core.*</code><p>The OpenWOP working group; spec-canonical packs only. 109 packs.</p></div>
-          <div><code>vendor.&lt;org&gt;.*</code><p>Controlled by one vendor organization. 47 packs.</p></div>
+          <div><code>core.*</code><p>The OpenWOP working group; spec-canonical packs only. 133 packs.</p></div>
+          <div><code>vendor.&lt;org&gt;.*</code><p>Controlled by one vendor organization. 48 packs.</p></div>
           <div><code>community.&lt;author&gt;.*</code><p>Open to anyone; the first claim on a name wins. 1 pack.</p></div>
         </div>
         <p class="fine"><code>private.*</code> and <code>local.*</code> never appear here: they are for host-internal and in-repo packs.</p>
@@ -2514,7 +2824,7 @@ npm run check</code></pre>
 
 <footer class="site-footer">
   <div class="wrap">
-    <span>Generated 2026-10-25T04:04:00.615Z · OpenWOP registry</span>
+    <span>Generated 2026-10-26T01:23:48.026Z · OpenWOP registry</span>
     <nav aria-label="More">
       <a href="/v2/index.json">Index JSON</a>
       <a href="/.well-known/openwop-registry">Discovery</a>

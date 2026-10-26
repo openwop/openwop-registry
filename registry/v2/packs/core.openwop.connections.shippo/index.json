@@ -1,0 +1,30 @@
+{
+  "name": "core.openwop.connections.shippo",
+  "kind": "connection",
+  "description": "Shippo connection pack (RFC 0095) — api_key provider for the commerce shipping-rate seam (ADR 0250). Category is `other` (openai-images precedent): the normative `category` enum has no `shipping` value and the seam resolves by `id` (`shippo`), not category — no wire/RFC change. When configured AND the org sets `commerce.shipFrom` AND the cart's physical lines all carry a weight, `features/commerce/taxShipping.ts` calls Shippo's rate API (POST https://api.goshippo.com/v1/shipments) at checkout and bills the CHEAPEST rate; ANY missing input/error/timeout falls back to the flat/manual rate — a carrier hiccup never blocks a sale. Rate quotes are READ calls (not money movement) — no commerce-spend gate. Credentials stay host-side via the Connections broker; the request carries only the from/to postal + parcel weight, never customer contact details. Carries NO secret (ADR 0024 §7).",
+  "author": "",
+  "license": "Apache-2.0",
+  "tags": [],
+  "typeIds": [
+    "shippo"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "providerCount": 1,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "manifestUrl": "/v2/packs/core.openwop.connections.shippo/-/1.0.0.json",
+      "tarballUrl": "/v2/packs/core.openwop.connections.shippo/-/1.0.0.tgz",
+      "signatureUrl": "/v2/packs/core.openwop.connections.shippo/-/1.0.0.sig",
+      "sbomUrl": "/v2/packs/core.openwop.connections.shippo/-/1.0.0.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-s0rbFIdhd/1vLILhreWHxSs1ZjwR9Y2fDFa9PjS9j8M=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

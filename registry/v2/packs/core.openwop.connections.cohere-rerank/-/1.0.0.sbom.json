@@ -1,0 +1,76 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.connections.cohere-rerank@1.0.0",
+      "type": "library",
+      "name": "core.openwop.connections.cohere-rerank",
+      "version": "1.0.0",
+      "description": "Cohere Rerank connection pack (RFC 0095) — api_key provider for the KB retrieval pipeline's EXTERNAL reranker (ADR 0351 Phase 4 / CSG-KB-8): a collection whose retrieval config selects `rerank:{kind:'connection'}` reranks its hybrid candidates through Cohere's /v2/rerank with the tenant's connected key, resolved through the connections broker (KMS-enveloped, rotatable) and dispatched over the brokered-egress spine (SSRF-guarded, no-redirect, bounded timeout). Carries NO secret (ADR 0024 §7). A rerank failure degrades HONESTLY to the local deterministic reranker, labeled on the search response.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "9305b3c9c11a0ec811e52201bda70048e73b56ea634cf1d48ed5f04316e35f74"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.connections.cohere-rerank@1.0.0"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8ba0f0ddde82b29ecf59192a3ac092d16f23d27db6533a1d25e56e5332437f2b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8976ea31b3caa873140f9e62a0908be1729a46deb8608eba33510a71ce0962f6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1181"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.connections.cohere-rerank@1.0.0",
+      "dependsOn": []
+    }
+  ]
+}

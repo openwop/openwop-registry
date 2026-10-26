@@ -1,0 +1,102 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.assistant@1.0.1",
+      "type": "library",
+      "name": "core.openwop.workflows.assistant",
+      "version": "1.0.1",
+      "description": "WF-COS-1 — the ADR 0023 assistant's six boot-path workflows, migrated off the in-tree `registerWorkflow({...})` pin sites in `features/assistant/loops.ts` and `features/assistant/actionExecution.ts`. THREE PERCEPTION LOOPS (calendar ingest, drive ingest, morning briefing) fired by the RFC 0052 scheduler, and THREE APPROVED-ACTION EXECUTIONS (email send, calendar invite, calendar reschedule) dispatched by the winning approval claim. Each is registered chain-backed under its ORIGINAL workflowId, so the per-tenant scheduler job rows, the `EXEC_WORKFLOW_BY_KIND` dispatch and every existing run stamp keep resolving — and all six become gallery-visible and builder-editable like every other chain. NO credential or connection material lives in any node config: the ADR 0024 §4 Option-C opt-in is RUN-LEVEL (`configurable.connections`), set on the scheduler job / at dispatch, exactly as it was before the migration.",
+      "licenses": [],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "df7801e168561cf6c53e7ff4c6dd010ed8ee35120129ea69fe1e72f38c66045b"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.assistant@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c7ce16a2ad664f26c3148063fe26b043bd0338da3d2f5167d5e33be948f5c2bc"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1608"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "2a49a82b49acbb82427ab048074532c751928594fe411a2cf18c999da8269c4d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b44676fdd74f056a747b96966282ee769e2ad8bf379562d2fee3b6411898865b"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "6987"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.assistant@1.0.1",
+      "dependsOn": []
+    }
+  ]
+}

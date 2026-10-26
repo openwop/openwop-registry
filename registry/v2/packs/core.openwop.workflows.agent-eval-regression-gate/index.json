@@ -1,0 +1,30 @@
+{
+  "name": "core.openwop.workflows.agent-eval-regression-gate",
+  "kind": "workflow-chain",
+  "description": "Run an agent's eval suite inside the app and stop for a person when it does not clear (ADR 0889 WF-EV-11). One `feature.evals.nodes.run-suite` node runs the suite (optionally against a baseline eval run, for a regression verdict); when the suite fails or regresses, an approval gate asks a reviewer to accept the result or reject it. Resolves on hosts that ship the evals feature and node pack (the OpenWOP reference app).",
+  "author": "openwop",
+  "license": "Apache-2.0",
+  "tags": [],
+  "typeIds": [
+    "agents.eval-regression-gate"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "chainCount": 1,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "manifestUrl": "/v2/packs/core.openwop.workflows.agent-eval-regression-gate/-/1.0.0.json",
+      "tarballUrl": "/v2/packs/core.openwop.workflows.agent-eval-regression-gate/-/1.0.0.tgz",
+      "signatureUrl": "/v2/packs/core.openwop.workflows.agent-eval-regression-gate/-/1.0.0.sig",
+      "sbomUrl": "/v2/packs/core.openwop.workflows.agent-eval-regression-gate/-/1.0.0.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-3jn77m0owsea28LVXsJroK8jA6vOAZLSysyxca0uB64=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

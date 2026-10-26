@@ -36,8 +36,20 @@
       "integrity": "sha256-+njQTcm3/66h5OUrKFg/RMqLDjiaTzQl53GhGjNM2LY=",
       "versionDeprecated": false,
       "yanked": false
+    },
+    {
+      "version": "1.1.0",
+      "manifestUrl": "/v2/packs/core.openwop.workflows.campaign-brief/-/1.1.0.json",
+      "tarballUrl": "/v2/packs/core.openwop.workflows.campaign-brief/-/1.1.0.tgz",
+      "signatureUrl": "/v2/packs/core.openwop.workflows.campaign-brief/-/1.1.0.sig",
+      "sbomUrl": "/v2/packs/core.openwop.workflows.campaign-brief/-/1.1.0.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-5CaXlauy+KdE3842RniZXg5cfcKHZJnBVZ64CX+7T7U=",
+      "versionDeprecated": false,
+      "yanked": false
     }
   ],
-  "latest": "1.0.2",
+  "latest": "1.1.0",
   "deprecated": false
 }

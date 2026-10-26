@@ -1,0 +1,108 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.campaign-sync@1.5.0",
+      "type": "library",
+      "name": "core.openwop.workflows.campaign-sync",
+      "version": "1.5.0",
+      "description": "Campaign Studio metrics-sync chain (RFC 0013; campaign gap plan C2 on ADR 0159). Pulls a rolling 7-day look-back of daily ad metrics, with conversions and revenue, for the dispatched campaigns or the whole configured ad account through the acting user's platform connection (ctx.ads; each day's row is replaced on re-pull, so late conversions settle and nothing double-counts) into the unified performance store, then delivers a short sync summary as a notification. Schedule it daily on the ONE scheduler, or run it ad hoc — the 15-minute cooldown makes overlapping fires harmless. Also carries the daily budget-pacing check (ADR 0220). And the hourly conversions delivery (ADR 0907 D7): queued server-side conversions go to the live conversions APIs, consent re-checked per row at send.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "d061433696e33a29431d8f433431b04a3795b7195e2ca569465dc5734748651c"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.campaign-sync@1.5.0"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "257cef49d1dd38a87c876c3e91fed43b3f5db8c695b5dc071cd933e2c23e0309"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "939"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f02171401e26ee879de74bf98fe347cf7fe13be4089be5a99f4e9025acdf4c20"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "8dff39335390a0530204ca638a275bb28fa071f5c2ed7308977aaaf852a577b6"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "6042"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.campaign-sync@1.5.0",
+      "dependsOn": []
+    }
+  ]
+}

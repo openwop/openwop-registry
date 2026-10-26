@@ -1,0 +1,102 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.kicktodo-replan@1.0.4",
+      "type": "library",
+      "name": "core.openwop.workflows.kicktodo-replan",
+      "version": "1.0.4",
+      "description": "Participant-replan workflow (ADR 0459/0463), migrated from the deprecated builtin (ADR 0472 P4). chainId keeps the original id; the falsy reject-safe barrier rides RFC 0134. 1.0.3 declares `actions: [approve, reject]` on the approval gate (maxRequestChangesIterations 0), so an unmade decision is refused instead of recorded as a decline. 1.0.4 (WF-FAIL-2): a failed enrich stops the run (enrich-fail) instead of skipping the approval gate and applying the revision unapproved.",
+      "licenses": [],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "64e8797c523e215f19dbb1b938d194c339f4bf527d07cb46f722c0e47a5435bc"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.kicktodo-replan@1.0.4"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b9fa7300f5e7cf1d8f889c476cc62769295bf12cba50221ee10e1814b709ab58"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "468"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "278abb4bf8f25807dfd553015d2a284799af9272b5f8a29faa156943878e23f7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "fc07113eb57d5cb5c692672258c90fda841816312c9cafa528bbb47d999bab77"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "2940"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.kicktodo-replan@1.0.4",
+      "dependsOn": []
+    }
+  ]
+}

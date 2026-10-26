@@ -1,0 +1,102 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.campaign-orchestration@1.2.1",
+      "type": "library",
+      "name": "core.openwop.workflows.campaign-orchestration",
+      "version": "1.2.1",
+      "description": "Campaign Studio orchestration spine (ADR 0158/RFC 0118), parallel channel fan-out shape — migrated from the deprecated builtin (ADR 0472 P4). chainId keeps the original id; the 5 channel children resolve by id at runtime via core.dispatch.",
+      "licenses": [],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "c37d47743b7a1e588718dc38b0ad1c02f1eeb0f1b8a533cb3cc72a00a985344c"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.campaign-orchestration@1.2.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "e3c7f3eadab0a63284b3c2d8b3d0f7ee0ab9983cad8ffd8b44c1b256bb26062d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "556"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "f1c150c49511bf8704abbe659ce5b3727d0f225bad98de5eccb6e14c9a9da436"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "078b0edc4734560d170123b4f97dd54015c47b9565eac1772021897b826e3e3a"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "3917"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.campaign-orchestration@1.2.1",
+      "dependsOn": []
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.scheduled-chat-turn@1.0.1",
+      "type": "library",
+      "name": "core.openwop.workflows.scheduled-chat-turn",
+      "version": "1.0.1",
+      "description": "The scheduled-agent-chat turn workflow (ADR 0125), migrated off the in-tree `registerWorkflow(DEF)` pin site (ADR 0701 / PIN_SITE_QUARANTINE drain). chainId keeps the original workflowId so every existing scheduler job row, run stamp and dispatch keeps resolving. One agent-runner node; the recurring tick supplies agentId/task/conversationId per fire through the run's `configurable`, which `registerChainBackedWorkflow`'s deferred expansion materializes as run-overridable variables (RFC 0124).",
+      "licenses": [],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "39479555f1506127cd52da67bb6424a74607d5fbb96225c61dc2cddfcd16fdba"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.scheduled-chat-turn@1.0.1"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "942f92c66361e2c535e0c1675a4f1bfe62c9855840b70d401b770ea9393f71bf"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "772"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "b112d93956b873f821e426f9b07b587f616ee219fedee9fff533b5d2118aa377"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "1ebde3a8d7594884f6b273f28b00b32867d55bfd2d60aad69de4966444db4488"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1919"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.scheduled-chat-turn@1.0.1",
+      "dependsOn": []
+    }
+  ]
+}

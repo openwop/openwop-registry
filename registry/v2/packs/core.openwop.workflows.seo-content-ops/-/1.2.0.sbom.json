@@ -1,0 +1,108 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.seo-content-ops@1.2.0",
+      "type": "library",
+      "name": "core.openwop.workflows.seo-content-ops",
+      "version": "1.2.0",
+      "description": "SEO content-ops chains (RFC 0013): a research-grounded content pipeline — a keyword brief from live search, a drafted article for human review, and an on-publish internal-link suggestion pass. Drafts are reviewed before anything is treated as final. Replay-deterministic.",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "7c0917d16bd6d048629e3184b750a3eac58a2928254115dcf39f480e33e47e52"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.workflows.seo-content-ops@1.2.0"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "LICENSE",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "106d956d874967f4a27019d89a10604ba9f52227b5a1d2dba79e622cfb9f63c7"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "119"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "README.md",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "989f77e2c75c8d509a33fa78a05b9be0f15d282703e2796e3c54ea9d68dcddc1"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "485"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "430d7341e29009f7e1e1b9e2bd72ecb70cf887e9ec995afe1a65e51645c3701d"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3c14be887964fa67629c3c57c00d981565d09e72071d698b9e94f356fd0dde30"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "5706"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.workflows.seo-content-ops@1.2.0",
+      "dependsOn": []
+    }
+  ]
+}

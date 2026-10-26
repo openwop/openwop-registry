@@ -1,0 +1,30 @@
+{
+  "name": "core.openwop.connections.google-imagen",
+  "kind": "connection",
+  "description": "Google Imagen connection pack (RFC 0095) — api_key provider for the host image-generation seam's `google` provider (Imagen via the Gemini API, ADR 0115 Phase 6 / ADR 0229 / ADR 0244): the API host, auth kind, and the consumer nodes. **ADR 0244:** the image seam now RESOLVES THE API KEY THROUGH THE CONNECTIONS BROKER — installing this pack + connecting a Google key provides the per-tenant, KMS-enveloped, rotatable credential (a workspace-scoped Connection wins over the host-wide `OPENWOP_IMAGE_PROVIDER_KEY[_GOOGLE]` env fallback). The host operator STILL configures the ENDPOINT (`OPENWOP_IMAGE_PROVIDER_ENDPOINT[_GOOGLE]`, honest-off until set) — the endpoint is non-secret host infra, not a credential. Carries NO secret (ADR 0024 §7).",
+  "author": "",
+  "license": "Apache-2.0",
+  "tags": [],
+  "typeIds": [
+    "google-imagen"
+  ],
+  "nodeCount": 0,
+  "agentCount": 0,
+  "providerCount": 1,
+  "versions": [
+    {
+      "version": "1.0.0",
+      "manifestUrl": "/v2/packs/core.openwop.connections.google-imagen/-/1.0.0.json",
+      "tarballUrl": "/v2/packs/core.openwop.connections.google-imagen/-/1.0.0.tgz",
+      "signatureUrl": "/v2/packs/core.openwop.connections.google-imagen/-/1.0.0.sig",
+      "sbomUrl": "/v2/packs/core.openwop.connections.google-imagen/-/1.0.0.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-8Hgc+kmJ9caBNdtS5CvTQaXNeHaUseTBl4Zb3KLhn3k=",
+      "versionDeprecated": false,
+      "yanked": false
+    }
+  ],
+  "latest": "1.0.0",
+  "deprecated": false
+}

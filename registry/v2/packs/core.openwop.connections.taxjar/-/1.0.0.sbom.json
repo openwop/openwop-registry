@@ -1,0 +1,76 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.6",
+  "version": 1,
+  "metadata": {
+    "component": {
+      "bom-ref": "pkg:openwop/core.openwop.connections.taxjar@1.0.0",
+      "type": "library",
+      "name": "core.openwop.connections.taxjar",
+      "version": "1.0.0",
+      "description": "TaxJar connection pack (RFC 0095) — api_key provider for the commerce tax-quote seam (ADR 0238 DEF-1). Category is `other` (the openai-images precedent): the normative `category` enum has no `tax` value and the seam resolves this provider by `id` (`taxjar`), not category — no wire/RFC change. When a merchant configures a TaxJar connection, `features/commerce/taxShipping.ts` calls the Sales Tax API (POST https://api.taxjar.com/v2/taxes) at checkout; ANY error/timeout falls back to the flat/manual governance rate — a provider hiccup never blocks a sale. READ quotes (not money movement), so NO commerce-spend gate. Credentials stay host-side, resolved per-call through the Connections authorization choke point; the request carries only the destination address + line amount, never customer contact details. Carries NO secret (ADR 0024 §7).",
+      "licenses": [
+        {
+          "license": {
+            "id": "Apache-2.0"
+          }
+        }
+      ],
+      "externalReferences": [],
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "3ea71c6086b791787126529a1317c3ee96fecf9a76662003f31dab44f108c39c"
+        }
+      ],
+      "purl": "pkg:openwop/core.openwop.connections.taxjar@1.0.0"
+    },
+    "tools": [
+      {
+        "vendor": "openwop",
+        "name": "generate-sbom.mjs",
+        "version": "1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "type": "file",
+      "name": "keys/pack.json.sig",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "611af8be6d4544bb4034955295cfd68326f33a074baf2f0e1e99f8f914c3984f"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "64"
+        }
+      ]
+    },
+    {
+      "type": "file",
+      "name": "pack.json",
+      "hashes": [
+        {
+          "alg": "SHA-256",
+          "content": "af7d26c891aad3f0d25d50996c9f7e5f9338f31f3cbfff1df1c14790d0885b60"
+        }
+      ],
+      "properties": [
+        {
+          "name": "openwop:size",
+          "value": "1411"
+        }
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "pkg:openwop/core.openwop.connections.taxjar@1.0.0",
+      "dependsOn": []
+    }
+  ]
+}
