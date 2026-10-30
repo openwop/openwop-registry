@@ -5652,6 +5652,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.brand@2.0.0",
+      "type": "library",
+      "name": "vendor.myndhyve.brand",
+      "version": "2.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.brand/-/2.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "b5157911615deed86a142ffe12d8e0f08ed36a528386a9532c99a2b6a23ee5a2"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/vendor.myndhyve.campaign-sequence-integration@1.0.2",
       "type": "library",
       "name": "vendor.myndhyve.campaign-sequence-integration",
@@ -5862,6 +5880,24 @@
             {
               "alg": "SHA-256",
               "content": "6588c88995bb0d135a879acf2a16103681fc65860aee7ae1f557238134817821"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.kanban@2.0.0",
+      "type": "library",
+      "name": "vendor.myndhyve.kanban",
+      "version": "2.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.kanban/-/2.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "a8f3eb0b0bb767d79ee3e9c9cc0458622ca4a3a8a2478524b1bac7719334fe18"
             }
           ]
         }
@@ -6366,6 +6402,24 @@
             {
               "alg": "SHA-256",
               "content": "d5624ff404c7218a5cd3bdf9984f025ab53405f81073f12d692ffffdb34de417"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.web-research@2.0.0",
+      "type": "library",
+      "name": "vendor.myndhyve.web-research",
+      "version": "2.0.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.web-research/-/2.0.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "f332cfe7397b23c31d4d977033c9420ca8b6a927bc9fd9c03101016b89ed7ebd"
             }
           ]
         }

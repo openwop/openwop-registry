@@ -78,5 +78,7 @@
     "keyId": "myndhyve-internal-1",
     "scheme": "ed25519-canonical-json"
   },
-  "integrity": "sha256-sv00wIFT9IxzyA1CVyTXaDBKcEnD5C1nWoWM0q+hD9M="
+  "integrity": "sha256-sv00wIFT9IxzyA1CVyTXaDBKcEnD5C1nWoWM0q+hD9M=",
+  "yanked": true,
+  "yankedReason": "RFC 0255 deletes the AI Envelope. All three nodes of this pack required ctx.aiEnvelope, which no host implements."
 }

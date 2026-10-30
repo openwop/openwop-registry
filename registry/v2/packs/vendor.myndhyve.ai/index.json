@@ -25,7 +25,7 @@
       "signingKeyId": "myndhyve-internal-1",
       "integrity": "sha256-0hz3RyUCVKWyT31phWvkir53YGfC0pnU42CNVbY29NE=",
       "versionDeprecated": false,
-      "yanked": false
+      "yanked": true
     },
     {
       "version": "1.0.2",
@@ -37,7 +37,7 @@
       "signingKeyId": "myndhyve-internal-1",
       "integrity": "sha256-sv00wIFT9IxzyA1CVyTXaDBKcEnD5C1nWoWM0q+hD9M=",
       "versionDeprecated": false,
-      "yanked": false
+      "yanked": true
     }
   ],
   "latest": "1.0.2",

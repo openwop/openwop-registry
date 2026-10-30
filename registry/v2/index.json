@@ -1,6 +1,6 @@
 {
   "registryVersion": "1.0.0",
-  "generatedAt": "2026-10-30T03:46:30.042Z",
+  "generatedAt": "2026-10-30T18:01:18.855Z",
   "packCount": 185,
   "packs": [
     {
@@ -2727,32 +2727,25 @@
       "nodeCount": 3,
       "agentCount": 0,
       "deprecated": false,
-      "yanked": false
+      "yanked": true
     },
     {
       "name": "vendor.myndhyve.brand",
       "kind": "node",
-      "latestVersion": "1.1.2",
-      "description": "MyndHyve brand-workflow pack. 14 nodes — 8 theme (analyze/discovery/generate/implement/publish/review/templates/validate) + 6 persona (discover/generate/keywordStrategy/publish/review/validate). Each is an AI-driven envelope-emitting node anchored on the brand canvas type. Routes through ctx.brand.* + ctx.aiEnvelope.generate.",
+      "latestVersion": "2.0.0",
+      "description": "MyndHyve brand-workflow pack. 7 nodes: theme implement/publish/review/validate and persona publish/review/validate. Routes through ctx.brand.*.",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
-        "brand.theme.analyze",
-        "brand.theme.discovery",
-        "brand.theme.generate",
         "brand.theme.implement",
         "brand.theme.publish",
         "brand.theme.review",
-        "brand.theme.templates",
         "brand.theme.validate",
-        "brand.persona.discover",
-        "brand.persona.generate",
-        "brand.persona.keywordStrategy",
         "brand.persona.publish",
         "brand.persona.review",
         "brand.persona.validate"
       ],
-      "nodeCount": 14,
+      "nodeCount": 7,
       "agentCount": 0,
       "deprecated": false,
       "yanked": false
@@ -2873,20 +2866,19 @@
     {
       "name": "vendor.myndhyve.kanban",
       "kind": "node",
-      "latestVersion": "1.0.2",
-      "description": "MyndHyve kanban-coordination pack. 7 nodes covering board lifecycle, task management (assign + AI-powered decompose), timeline planning, durable automation requests, and resource monitoring. Routes through ctx.kanban.* host adapter.",
+      "latestVersion": "2.0.0",
+      "description": "MyndHyve kanban-coordination pack. 6 nodes covering board lifecycle, task management (assign + AI-powered decompose), timeline planning, durable automation requests, and resource monitoring. Routes through ctx.kanban.* host adapter.",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
         "kanban.board.create",
         "kanban.board.review",
         "kanban.task.assign",
-        "kanban.task.decompose",
         "kanban.timeline.plan",
         "kanban.workflow.automate",
         "kanban.resource.monitor"
       ],
-      "nodeCount": 7,
+      "nodeCount": 6,
       "agentCount": 0,
       "deprecated": false,
       "yanked": false
@@ -3097,17 +3089,16 @@
     {
       "name": "vendor.myndhyve.web-research",
       "kind": "node",
-      "latestVersion": "1.0.2",
-      "description": "MyndHyve web-research pack — 4 nodes for the search → fetch → research → synthesize pipeline. webSearch + fetchUrls + researchWeb route through the host's webResearch adapter (search API + scraping policy + rate-limit + cache layer); synthesize composes results into a typed envelope via the AI envelope surface.",
+      "latestVersion": "2.0.0",
+      "description": "MyndHyve web-research pack. 3 nodes: webSearch, fetchUrls, researchWeb. Routes through ctx.webResearch.",
       "license": "Apache-2.0",
       "tags": [],
       "typeIds": [
         "data.source.webSearch",
         "data.transform.fetchUrls",
-        "ai.research.web",
-        "ai.process.synthesize"
+        "ai.research.web"
       ],
-      "nodeCount": 4,
+      "nodeCount": 3,
       "agentCount": 0,
       "deprecated": false,
       "yanked": false
