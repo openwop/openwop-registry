@@ -1,7 +1,7 @@
 {
   "name": "vendor.myndhyve.web-research",
   "kind": "node",
-  "description": "MyndHyve web-research pack — 4 nodes for the search → fetch → research → synthesize pipeline. webSearch + fetchUrls + researchWeb route through the host's webResearch adapter (search API + scraping policy + rate-limit + cache layer); synthesize composes results into a typed envelope via the AI envelope surface.",
+  "description": "MyndHyve web-research pack. 3 nodes: webSearch, fetchUrls, researchWeb. Routes through ctx.webResearch.",
   "author": "MyndHyve",
   "license": "Apache-2.0",
   "homepage": "https://myndhyve.ai/packs/web-research",
@@ -10,10 +10,9 @@
   "typeIds": [
     "data.source.webSearch",
     "data.transform.fetchUrls",
-    "ai.research.web",
-    "ai.process.synthesize"
+    "ai.research.web"
   ],
-  "nodeCount": 4,
+  "nodeCount": 3,
   "agentCount": 0,
   "versions": [
     {
@@ -39,8 +38,20 @@
       "integrity": "sha256-Mh4LBxwpGSMfxtNyZTj0Hhuyg0Fbkw4KGEVaIV0d7/o=",
       "versionDeprecated": false,
       "yanked": false
+    },
+    {
+      "version": "2.0.0",
+      "manifestUrl": "/v2/packs/vendor.myndhyve.web-research/-/2.0.0.json",
+      "tarballUrl": "/v2/packs/vendor.myndhyve.web-research/-/2.0.0.tgz",
+      "signatureUrl": "/v2/packs/vendor.myndhyve.web-research/-/2.0.0.sig",
+      "sbomUrl": "/v2/packs/vendor.myndhyve.web-research/-/2.0.0.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "myndhyve-internal-1",
+      "integrity": "sha256-8rpR2LdK7tz0BFjUSqD6wEfC8/N2531vJvQbcdwUE8k=",
+      "versionDeprecated": false,
+      "yanked": false
     }
   ],
-  "latest": "1.0.2",
+  "latest": "2.0.0",
   "deprecated": false
 }

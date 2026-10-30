@@ -1,0 +1,81 @@
+{
+  "name": "vendor.myndhyve.web-research",
+  "version": "2.0.0",
+  "description": "MyndHyve web-research pack. 3 nodes: webSearch, fetchUrls, researchWeb. Routes through ctx.webResearch.",
+  "author": "MyndHyve",
+  "license": "Apache-2.0",
+  "homepage": "https://myndhyve.ai/packs/web-research",
+  "repository": "https://github.com/openwop/openwop",
+  "keywords": [
+    "vendor",
+    "myndhyve",
+    "web-research",
+    "search",
+    "scraping"
+  ],
+  "engines": {
+    "openwop": ">=1.0.0 <3.0.0"
+  },
+  "peerDependencies": {
+    "webResearch": "supported"
+  },
+  "nodes": [
+    {
+      "typeId": "data.source.webSearch",
+      "version": "1.0.0",
+      "label": "Web Search",
+      "description": "Issues a search query through the host's search adapter (Google CSE / Bing / Brave / Perplexity / etc.). Returns top results with title + URL + snippet. Side-effectful (external call costs money + rate-limited) + cacheable (engine Layer-2 caches by query+filters).",
+      "category": "integration",
+      "role": "side-effect",
+      "capabilities": [
+        "cacheable",
+        "side-effectful"
+      ],
+      "configSchemaRef": "schemas/webSearch.config.json",
+      "inputSchemaRef": "schemas/webSearch.input.json",
+      "outputSchemaRef": "schemas/webSearch.output.json"
+    },
+    {
+      "typeId": "data.transform.fetchUrls",
+      "version": "1.0.0",
+      "label": "Fetch URLs",
+      "description": "Fetches a batch of URLs concurrently with research-specific policy (robots.txt respect, content-type filtering, body size caps, readability extraction). Returns per-URL content + status + extracted text. Different from core.openwop.http.fetch — that's a single request with raw response; this is bulk scraping with extraction.",
+      "category": "integration",
+      "role": "side-effect",
+      "capabilities": [
+        "cacheable",
+        "side-effectful"
+      ],
+      "configSchemaRef": "schemas/fetchUrls.config.json",
+      "inputSchemaRef": "schemas/fetchUrls.input.json",
+      "outputSchemaRef": "schemas/fetchUrls.output.json"
+    },
+    {
+      "typeId": "ai.research.web",
+      "version": "1.0.0",
+      "label": "Research Web",
+      "description": "End-to-end research operation: query → search → fetch top N results → extract → return citation-ready content. Higher-level than webSearch + fetchUrls; useful when workflow authors don't need to inspect intermediate results.",
+      "category": "integration",
+      "role": "side-effect",
+      "capabilities": [
+        "cacheable",
+        "side-effectful"
+      ],
+      "configSchemaRef": "schemas/researchWeb.config.json",
+      "inputSchemaRef": "schemas/researchWeb.input.json",
+      "outputSchemaRef": "schemas/researchWeb.output.json"
+    }
+  ],
+  "runtime": {
+    "language": "javascript",
+    "format": "esm",
+    "entry": "./index.mjs",
+    "minRuntimeVersion": "node>=20"
+  },
+  "kind": "node",
+  "signing": {
+    "keyId": "myndhyve-internal-1",
+    "scheme": "ed25519-canonical-json"
+  },
+  "integrity": "sha256-8rpR2LdK7tz0BFjUSqD6wEfC8/N2531vJvQbcdwUE8k="
+}

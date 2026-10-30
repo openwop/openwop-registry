@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>OpenWOP registry — packs.openwop.dev</title>
-<meta name="description" content="The signed pack registry for OpenWOP: reusable nodes, agents and workflow chains, verified by every host before it runs them. 185 pack(s), 371 version(s) published.">
+<meta name="description" content="The signed pack registry for OpenWOP: reusable nodes, agents and workflow chains, verified by every host before it runs them. 185 pack(s), 374 version(s) published.">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1a1a17" media="(prefers-color-scheme: dark)">
@@ -280,7 +280,7 @@
     </div>
     <dl class="stats">
       <div><dt>Packs published</dt><dd>185</dd></div>
-      <div><dt>Versions</dt><dd>371</dd></div>
+      <div><dt>Versions</dt><dd>374</dd></div>
       <div><dt>Signatures</dt><dd class="small">Ed25519</dd></div>
       <div><dt>Namespaces</dt><dd class="small">core<br>vendor<br>community</dd></div>
     </dl>
@@ -795,7 +795,7 @@
           </td>
         </tr>
         <tr id="pack-vendor.myndhyve.ai">
-          <td class="name"><code>vendor.myndhyve.ai</code> </td>
+          <td class="name"><code>vendor.myndhyve.ai</code> <span class="flag flag-yanked">yanked</span></td>
           <td class="version">1.0.2</td>
           <td class="count" title="nodes in latest manifest">3</td>
           <td class="desc">MyndHyve envelope-protocol AI nodes. Distinct from core.openwop.ai (which ships provider-agnostic chat-completion + structured-output + embeddings) — this pack ships MyndHyve-specific nodes that work with typed envelopes (`prd.create`, `theme.create`, etc.) emitted into the workflow&#39;s envelope stream, and prompts resolved from MyndHyve&#39;s prompt library by ID.</td>
@@ -808,14 +808,14 @@
         </tr>
         <tr id="pack-vendor.myndhyve.brand">
           <td class="name"><code>vendor.myndhyve.brand</code> </td>
-          <td class="version">1.1.2</td>
-          <td class="count" title="nodes in latest manifest">14</td>
-          <td class="desc">MyndHyve brand-workflow pack. 14 nodes — 8 theme (analyze/discovery/generate/implement/publish/review/templates/validate) + 6 persona (discover/generate/keywordStrategy/publish/review/validate). Each is an AI-driven envelope-emitting node anchored on the brand canvas type. Routes through ctx.brand.* + ctx.aiEnvelope.generate.</td>
+          <td class="version">2.0.0</td>
+          <td class="count" title="nodes in latest manifest">7</td>
+          <td class="desc">MyndHyve brand-workflow pack. 7 nodes: theme implement/publish/review/validate and persona publish/review/validate. Routes through ctx.brand.*.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v2/packs/vendor.myndhyve.brand/-/1.1.2.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/vendor.myndhyve.brand/-/1.1.2.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/vendor.myndhyve.brand/-/1.1.2.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/vendor.myndhyve.brand/-/2.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/vendor.myndhyve.brand/-/2.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/vendor.myndhyve.brand/-/2.0.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-vendor.myndhyve.campaign-sequence">
@@ -892,14 +892,14 @@
         </tr>
         <tr id="pack-vendor.myndhyve.kanban">
           <td class="name"><code>vendor.myndhyve.kanban</code> </td>
-          <td class="version">1.0.2</td>
-          <td class="count" title="nodes in latest manifest">7</td>
-          <td class="desc">MyndHyve kanban-coordination pack. 7 nodes covering board lifecycle, task management (assign + AI-powered decompose), timeline planning, durable automation requests, and resource monitoring. Routes through ctx.kanban.* host adapter.</td>
+          <td class="version">2.0.0</td>
+          <td class="count" title="nodes in latest manifest">6</td>
+          <td class="desc">MyndHyve kanban-coordination pack. 6 nodes covering board lifecycle, task management (assign + AI-powered decompose), timeline planning, durable automation requests, and resource monitoring. Routes through ctx.kanban.* host adapter.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v2/packs/vendor.myndhyve.kanban/-/1.0.2.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/vendor.myndhyve.kanban/-/1.0.2.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/vendor.myndhyve.kanban/-/1.0.2.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/vendor.myndhyve.kanban/-/2.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/vendor.myndhyve.kanban/-/2.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/vendor.myndhyve.kanban/-/2.0.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-vendor.myndhyve.knowledge-tools">
@@ -1048,14 +1048,14 @@
         </tr>
         <tr id="pack-vendor.myndhyve.web-research">
           <td class="name"><code>vendor.myndhyve.web-research</code> </td>
-          <td class="version">1.0.2</td>
-          <td class="count" title="nodes in latest manifest">4</td>
-          <td class="desc">MyndHyve web-research pack — 4 nodes for the search → fetch → research → synthesize pipeline. webSearch + fetchUrls + researchWeb route through the host&#39;s webResearch adapter (search API + scraping policy + rate-limit + cache layer); synthesize composes results into a typed envelope via the AI envelope surface.</td>
+          <td class="version">2.0.0</td>
+          <td class="count" title="nodes in latest manifest">3</td>
+          <td class="desc">MyndHyve web-research pack. 3 nodes: webSearch, fetchUrls, researchWeb. Routes through ctx.webResearch.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v2/packs/vendor.myndhyve.web-research/-/1.0.2.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/vendor.myndhyve.web-research/-/1.0.2.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/vendor.myndhyve.web-research/-/1.0.2.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/vendor.myndhyve.web-research/-/2.0.0.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/vendor.myndhyve.web-research/-/2.0.0.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/vendor.myndhyve.web-research/-/2.0.0.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-vendor.myndhyve.wop-refinement">
@@ -2861,7 +2861,7 @@ npm run check</code></pre>
 
 <footer class="site-footer">
   <div class="wrap">
-    <span>Generated 2026-10-30T03:46:30.045Z · OpenWOP registry</span>
+    <span>Generated 2026-10-30T18:01:18.857Z · OpenWOP registry</span>
     <nav aria-label="More">
       <a href="/v2/index.json">Index JSON</a>
       <a href="/.well-known/openwop-registry">Discovery</a>

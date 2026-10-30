@@ -1,29 +1,22 @@
 {
   "name": "vendor.myndhyve.brand",
   "kind": "node",
-  "description": "MyndHyve brand-workflow pack. 14 nodes — 8 theme (analyze/discovery/generate/implement/publish/review/templates/validate) + 6 persona (discover/generate/keywordStrategy/publish/review/validate). Each is an AI-driven envelope-emitting node anchored on the brand canvas type. Routes through ctx.brand.* + ctx.aiEnvelope.generate.",
+  "description": "MyndHyve brand-workflow pack. 7 nodes: theme implement/publish/review/validate and persona publish/review/validate. Routes through ctx.brand.*.",
   "author": "MyndHyve",
   "license": "Apache-2.0",
   "homepage": "https://myndhyve.ai/packs/brand",
   "repository": "https://github.com/openwop/openwop",
   "tags": [],
   "typeIds": [
-    "brand.theme.analyze",
-    "brand.theme.discovery",
-    "brand.theme.generate",
     "brand.theme.implement",
     "brand.theme.publish",
     "brand.theme.review",
-    "brand.theme.templates",
     "brand.theme.validate",
-    "brand.persona.discover",
-    "brand.persona.generate",
-    "brand.persona.keywordStrategy",
     "brand.persona.publish",
     "brand.persona.review",
     "brand.persona.validate"
   ],
-  "nodeCount": 14,
+  "nodeCount": 7,
   "agentCount": 0,
   "versions": [
     {
@@ -49,8 +42,20 @@
       "integrity": "sha256-Ii5Erywpc7BIj6Kz5xwFiwtHjBLQ9mqdtbd6+43f9OQ=",
       "versionDeprecated": false,
       "yanked": false
+    },
+    {
+      "version": "2.0.0",
+      "manifestUrl": "/v2/packs/vendor.myndhyve.brand/-/2.0.0.json",
+      "tarballUrl": "/v2/packs/vendor.myndhyve.brand/-/2.0.0.tgz",
+      "signatureUrl": "/v2/packs/vendor.myndhyve.brand/-/2.0.0.sig",
+      "sbomUrl": "/v2/packs/vendor.myndhyve.brand/-/2.0.0.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "myndhyve-internal-1",
+      "integrity": "sha256-FDt+t8u/9lOQ3az8esGwCq/zDuAmXc8vPYx2+F7jmWA=",
+      "versionDeprecated": false,
+      "yanked": false
     }
   ],
-  "latest": "1.1.2",
+  "latest": "2.0.0",
   "deprecated": false
 }
