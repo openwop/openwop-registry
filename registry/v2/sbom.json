@@ -5850,6 +5850,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/vendor.myndhyve.entities@1.0.3",
+      "type": "library",
+      "name": "vendor.myndhyve.entities",
+      "version": "1.0.3",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/vendor.myndhyve.entities/-/1.0.3.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "f1980511e2d87f714becded196ced4f4f4c5f29e3e36aba78bd8ad533532815f"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/vendor.myndhyve.kanban@1.0.1",
       "type": "library",
       "name": "vendor.myndhyve.kanban",

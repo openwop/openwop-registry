@@ -32,6 +32,16 @@
  * keys only — a facet assertion against a pinned facet set would red on a corpus
  * that had since moved.
  *
+ * WHY ONLY THE CURRENT VERSION IS STRICT (RFC 0255 §D, 2026-10-31). A published
+ * manifest is immutable, so when the corpus deletes a family (RFC 0255 deleted
+ * `aiEnvelope`), every old version naming it would red this gate forever with no
+ * fix available. Source packs and each pack's newest non-yanked version (by its
+ * `index.json`) are judged strictly: that is what a host installs by default and
+ * what a publisher can still change. Earlier and yanked versions are REPORTED, not
+ * failed; a fully yanked pack has no current version. The frozen v1 tree cannot
+ * be republished either, so a v1 key naming a deleted family is reported there.
+ * An alias row with no family (`deletedFamily`) is not an alias.
+ *
  *   node scripts/check-pack-peer-dependencies.mjs [--tree v1|v2|source]
  */
 import { readdirSync, readFileSync, existsSync } from 'node:fs';
@@ -48,14 +58,27 @@ if (!existsSync(declPath)) { console.error('check-pack-peer-dependencies: vendor
 
 const decl = JSON.parse(readFileSync(declPath, 'utf8'));
 const families = new Set((decl.families ?? []).filter((f) => f.anchor !== 'deleted').map((f) => f.key));
-const aliases = new Set(existsSync(aliasPath) ? (JSON.parse(readFileSync(aliasPath, 'utf8')).rows ?? []).map((r) => r.alias) : []);
+const aliasRows = existsSync(aliasPath) ? (JSON.parse(readFileSync(aliasPath, 'utf8')).rows ?? []) : [];
+const aliases = new Set(aliasRows.filter((r) => r.family).map((r) => r.alias));
+/** v1-era keys of a family the corpus deleted: the frozen v1 tree cannot be republished, so these are reported there. */
+const deletedAliases = new Set(aliasRows.filter((r) => r.deletedFamily).map((r) => r.alias));
+
+/** The newest non-yanked version of a published pack, by its index.json, or null. */
+const semver = (v) => String(v).split(/[.+-]/).slice(0, 3).map((x) => Number.parseInt(x, 10) || 0);
+const newer = (a, b) => { const x = semver(a), y = semver(b); for (let i = 0; i < 3; i++) if (x[i] !== y[i]) return x[i] > y[i]; return false; };
+function currentVersion(packDir) {
+  let index; try { index = JSON.parse(readFileSync(join(packDir, 'index.json'), 'utf8')); } catch { return null; }
+  let latest = null;
+  for (const v of index.versions ?? []) if (!v.yanked && (latest === null || newer(v.version, latest))) latest = v.version;
+  return latest;
+}
 
 const manifests = (t) => {
   const out = [];
   if (t === 'source') {
     const d = join(ROOT, 'packs');
     if (!existsSync(d)) return out;
-    for (const p of readdirSync(d)) { const f = join(d, p, 'pack.json'); if (existsSync(f)) out.push(f); }
+    for (const p of readdirSync(d)) { const f = join(d, p, 'pack.json'); if (existsSync(f)) out.push({ file: f, strict: true }); }
     return out;
   }
   const d = join(ROOT, 'registry', t, 'packs');
@@ -63,18 +86,19 @@ const manifests = (t) => {
   for (const p of readdirSync(d)) {
     const v = join(d, p, '-');
     if (!existsSync(v)) continue;
-    for (const f of readdirSync(v)) if (f.endsWith('.json')) out.push(join(v, f));
+    const current = currentVersion(join(d, p));
+    for (const f of readdirSync(v)) if (f.endsWith('.json') && !f.endsWith('.sbom.json')) out.push({ file: join(v, f), strict: current !== null && f === `${current}.json` });
   }
   return out;
 };
 
-let failures = [], checked = 0;
+let failures = [], reported = [], checked = 0;
 const keys = new Map();
 for (const t of tree === 'all' ? ['source', 'v2', 'v1'] : [tree]) {
   // The alias hatch is a v1 grammar: a manifest in the v2 tree (or a source pack,
   // which is what the v2 tree is cut from) may not reach a family through it.
   const allowAlias = t === 'v1';
-  for (const file of manifests(t)) {
+  for (const { file, strict } of manifests(t)) {
     let m; try { m = JSON.parse(readFileSync(file, 'utf8')); } catch { continue; }
     const pd = m.peerDependencies ?? {};
     if (!Object.keys(pd).length) continue;
@@ -86,11 +110,12 @@ for (const t of tree === 'all' ? ['source', 'v2', 'v1'] : [tree]) {
       const why = aliases.has(k)
         ? `is an OVERLAP ALIAS (spec/v2/peer-dependency-aliases.json), which a ${t} manifest may not use — a v2-admitting pack names the family directly`
         : 'names no family in spec/v2/declaration.json and has no overlap-alias row — a host refuses it with pack_peer_dependency_undefined';
-      failures.push(`  ${file.replace(ROOT + '/', '')}: peerDependencies["${k}"] ${why}`);
+      (strict && !(t === 'v1' && deletedAliases.has(k)) ? failures : reported).push(`  ${file.replace(ROOT + '/', '')}: peerDependencies["${k}"] ${why}`);
     }
   }
 }
 
+if (reported.length) console.log(`  reported, not failed — ${reported.length} key(s) in earlier or yanked published versions, which are immutable:\n${reported.join('\n')}`);
 console.log(`  ${checked} manifest(s) with peerDependencies; ${keys.size} distinct key(s); ${families.size} family key(s) + ${aliases.size} overlap alias(es) vendored at CORPUS_TAG`);
 if (failures.length) {
   console.error(`=== check-pack-peer-dependencies FAILED — ${failures.length} undefined peer-dependency key(s) ===\n${failures.join('\n')}`);

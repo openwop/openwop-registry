@@ -59,7 +59,7 @@ inputs:
   targetArtifact: { ... Plan ... }
 ```
 
-`crossStageCheck` is a **pure advisory validator** (`role:"pure"`), NOT a fail-closed gate — the true gate nodes in this corpus (`core.chat.approvalGate`, `core.ai.awaitEnvelope`, …) pause a run for a human/async decision; this one is a synchronous deterministic comparison.
+`crossStageCheck` is a **pure advisory validator** (`role:"pure"`), NOT a fail-closed gate — the true gate nodes in this corpus (`core.chat.approvalGate`, …) pause a run for a human/async decision; this one is a synchronous deterministic comparison.
 
 `failOnMismatch:false` (the default) returns `success:true` even when warnings exist (warnings-only mode — validate-and-proceed). **This means an author who wires `{truthy success}` expecting the check to BLOCK on a mismatch gets a silent pass.** To hard-block a run, set `failOnMismatch:true` (then `success` flips to `false` on any mismatch) and branch on `{falsy success}`. Either way, `.warnings` carries the per-check detail.
 
