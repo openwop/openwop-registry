@@ -2466,6 +2466,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.content@1.1.1",
+      "type": "library",
+      "name": "core.openwop.workflows.content",
+      "version": "1.1.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.content/-/1.1.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "1105940d28a101e590d6cdab53400c261008075146cd0d0b3b3bf1345fc524d1"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.workflows.creative-briefs-reel@1.0.1",
       "type": "library",
       "name": "core.openwop.workflows.creative-briefs-reel",
