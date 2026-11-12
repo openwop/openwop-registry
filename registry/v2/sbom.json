@@ -702,6 +702,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.ai@1.5.1",
+      "type": "library",
+      "name": "core.openwop.ai",
+      "version": "1.5.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.ai/-/1.5.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "b398090a934eac07bcfc05072265ba6622fd4182b63aa127e6d91e20340eaf38"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.artifact-types@1.0.1",
       "type": "library",
       "name": "core.openwop.artifact-types",
@@ -1560,6 +1578,24 @@
             {
               "alg": "SHA-256",
               "content": "f74916dea1a4ad8f98c4a2f1a0f76515123d90090a13be70529b2f33ca672225"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.http@2.1.2",
+      "type": "library",
+      "name": "core.openwop.http",
+      "version": "2.1.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.http/-/2.1.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "8040c78e330fbb413f06269b2624e71078c7648bfc60fdfc15ca121555b2ba96"
             }
           ]
         }
@@ -3954,6 +3990,24 @@
             {
               "alg": "SHA-256",
               "content": "12d5ea1251680d368440eb43691be6a089e36736df0d3a5d9ac0c5de531db4a5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.market-intel@1.2.1",
+      "type": "library",
+      "name": "core.openwop.workflows.market-intel",
+      "version": "1.2.1",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.market-intel/-/1.2.1.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "087c162ec5a6bd3385fb9005c7c38ad684fe04f8c8e8ee4381927096111e20e6"
             }
           ]
         }
