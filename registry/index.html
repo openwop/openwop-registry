@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>OpenWOP registry — packs.openwop.dev</title>
-<meta name="description" content="The signed pack registry for OpenWOP: reusable nodes, agents and workflow chains, verified by every host before it runs them. 185 pack(s), 376 version(s) published.">
+<meta name="description" content="The signed pack registry for OpenWOP: reusable nodes, agents and workflow chains, verified by every host before it runs them. 185 pack(s), 379 version(s) published.">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1a1a17" media="(prefers-color-scheme: dark)">
@@ -280,7 +280,7 @@
     </div>
     <dl class="stats">
       <div><dt>Packs published</dt><dd>185</dd></div>
-      <div><dt>Versions</dt><dd>376</dd></div>
+      <div><dt>Versions</dt><dd>379</dd></div>
       <div><dt>Signatures</dt><dd class="small">Ed25519</dd></div>
       <div><dt>Namespaces</dt><dd class="small">core<br>vendor<br>community</dd></div>
     </dl>
@@ -412,14 +412,14 @@
         </tr>
         <tr id="pack-core.openwop.ai">
           <td class="name"><code>core.openwop.ai</code> </td>
-          <td class="version">1.5.0</td>
+          <td class="version">1.5.1</td>
           <td class="count" title="nodes in latest manifest">15</td>
           <td class="desc">Spec-canonical AI-call pack. v1.0 (chatCompletion, structuredOutput, toolCalling, embeddings) plus v1.1 multi-modal + LLM helpers — image generate/edit/upscale, audio transcribe/synthesize, video generate, rerank, classify, extract, guardrails, transform. Routes through host BYOK aiProviders. v1.3.1: image-generate output schema now declares the real runtime shape (images[].url + mimeType, never contentBase64) — the host persists each image as a Media asset and returns a serve URL, never raw bytes.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v2/packs/core.openwop.ai/-/1.5.0.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/core.openwop.ai/-/1.5.0.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/core.openwop.ai/-/1.5.0.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/core.openwop.ai/-/1.5.1.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.ai/-/1.5.1.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.ai/-/1.5.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-core.openwop.crypto">
@@ -508,14 +508,14 @@
         </tr>
         <tr id="pack-core.openwop.http">
           <td class="name"><code>core.openwop.http</code> </td>
-          <td class="version">2.1.1</td>
+          <td class="version">2.1.2</td>
           <td class="count" title="nodes in latest manifest">23</td>
           <td class="desc">HTTP + general transport pack. v2.0: prefers the host-mediated, SSRF-guarded `ctx.http.safeFetch` for all outbound when the host exposes it, falling back to the pack&#39;s own `assertPublicUrl` (node:dns) + `globalThis.fetch` otherwise; declares `runtime.requires: [&quot;net.dns&quot;,&quot;net.outbound&quot;]` for the fallback path. v1.0 baseline: core.openwop.http.fetch (retry, backoff, idempotency). v1.1 additions: openapi-call, GraphQL (query/mutation/subscription), SOAP, gRPC (4 streaming variants), SSE consume, WebSocket client, long-poll, upload (multipart + resumable), download stream, pagination decorators (cursor/offset/link-header), rate-limit-aware retry, circuit breaker, idempotency-key generator, webhook signature verifier (Stripe/GitHub/Slack/raw-hmac). Zero npm deps — Node 20+ fetch/undici; transports requiring native libs delegate to host capabilities.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v2/packs/core.openwop.http/-/2.1.1.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/core.openwop.http/-/2.1.1.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/core.openwop.http/-/2.1.1.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/core.openwop.http/-/2.1.2.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.http/-/2.1.2.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.http/-/2.1.2.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-core.openwop.integration">
@@ -2348,14 +2348,14 @@
         </tr>
         <tr id="pack-core.openwop.workflows.market-intel">
           <td class="name"><code>core.openwop.workflows.market-intel</code> </td>
-          <td class="version">1.2.0</td>
+          <td class="version">1.2.1</td>
           <td class="count" title="chains in latest manifest">2</td>
           <td class="desc">Real-work workflow pack (RFC 0013, ADR 0149/0150 + ADR 0174). Market-intelligence digest + a SHIFT digest (research the current period, then diff against the prior run via market-intel.shift-detect → an in-voice shift summary) authored entirely over PUBLISHED node packs (vendor.myndhyve.market-intel-* + core.openwop.ai), so they expand + run on any conformant host. Published under the `core.openwop.workflows.*` namespace (openwop-team signing key); the registry adds `signing` at publish time.</td>
           <td class="license">Apache-2.0</td>
           <td class="artifacts">
-            <a href="/v2/packs/core.openwop.workflows.market-intel/-/1.2.0.json" title="version manifest (JSON)">manifest</a>
-            · <a href="/v2/packs/core.openwop.workflows.market-intel/-/1.2.0.tgz" title="signed tarball (tgz)">tgz</a>
-            · <a href="/v2/packs/core.openwop.workflows.market-intel/-/1.2.0.sig" title="Ed25519 signature">sig</a>
+            <a href="/v2/packs/core.openwop.workflows.market-intel/-/1.2.1.json" title="version manifest (JSON)">manifest</a>
+            · <a href="/v2/packs/core.openwop.workflows.market-intel/-/1.2.1.tgz" title="signed tarball (tgz)">tgz</a>
+            · <a href="/v2/packs/core.openwop.workflows.market-intel/-/1.2.1.sig" title="Ed25519 signature">sig</a>
           </td>
         </tr>
         <tr id="pack-core.openwop.workflows.marketing">
@@ -2861,7 +2861,7 @@ npm run check</code></pre>
 
 <footer class="site-footer">
   <div class="wrap">
-    <span>Generated 2026-11-07T13:28:51.936Z · OpenWOP registry</span>
+    <span>Generated 2026-11-12T23:42:50.632Z · OpenWOP registry</span>
     <nav aria-label="More">
       <a href="/v2/index.json">Index JSON</a>
       <a href="/.well-known/openwop-registry">Discovery</a>
