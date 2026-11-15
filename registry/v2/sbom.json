@@ -1602,6 +1602,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.http@2.1.3",
+      "type": "library",
+      "name": "core.openwop.http",
+      "version": "2.1.3",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.http/-/2.1.3.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "774d5c218de1a25a1887b380dd3925c0fc5a53e0367081d2aaf5be12f9bf8358"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.integration@1.1.1",
       "type": "library",
       "name": "core.openwop.integration",
@@ -4140,6 +4158,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.marketing@1.2.2",
+      "type": "library",
+      "name": "core.openwop.workflows.marketing",
+      "version": "1.2.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.marketing/-/1.2.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "83d0345751e2ec17f6392dfde2c1c3457d66ce298be1470b0aeea4491ea9ba15"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.workflows.mcp-tool-projections@1.0.1",
       "type": "library",
       "name": "core.openwop.workflows.mcp-tool-projections",
@@ -4782,6 +4818,24 @@
             {
               "alg": "SHA-256",
               "content": "4254ad0fdc2a925d491c931d381b3bee1100ec0898aa1561b3545b305ac3edb7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.seo-content-ops@1.3.0",
+      "type": "library",
+      "name": "core.openwop.workflows.seo-content-ops",
+      "version": "1.3.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.seo-content-ops/-/1.3.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "013fbb2ac13afb41a8fb4ecca9106a779207e8e55d0c0375d59c35c5df263f4a"
             }
           ]
         }
