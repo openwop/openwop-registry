@@ -4014,6 +4014,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.market-intel@1.3.0",
+      "type": "library",
+      "name": "core.openwop.workflows.market-intel",
+      "version": "1.3.0",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.market-intel/-/1.3.0.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "61ce5caaedc0baa27ad6820c6a76984c81b3eb23c67946119d8dfb1997094f87"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.workflows.marketing@1.1.10",
       "type": "library",
       "name": "core.openwop.workflows.marketing",
