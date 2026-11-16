@@ -86,8 +86,20 @@
       "integrity": "sha256-ntQQDBG/Qt1cbFyiWOx7svpEowiXtBsBwlSWwQGf6Z8=",
       "versionDeprecated": false,
       "yanked": false
+    },
+    {
+      "version": "1.5.2",
+      "manifestUrl": "/v2/packs/core.openwop.ai/-/1.5.2.json",
+      "tarballUrl": "/v2/packs/core.openwop.ai/-/1.5.2.tgz",
+      "signatureUrl": "/v2/packs/core.openwop.ai/-/1.5.2.sig",
+      "sbomUrl": "/v2/packs/core.openwop.ai/-/1.5.2.sbom.json",
+      "signingScheme": "ed25519-canonical-json",
+      "signingKeyId": "openwop-team-1",
+      "integrity": "sha256-+TQpRIoCy8Qit9VYcCC3eHoKK2BXJd+BhndBXMAEHnE=",
+      "versionDeprecated": false,
+      "yanked": false
     }
   ],
-  "latest": "1.5.1",
+  "latest": "1.5.2",
   "deprecated": false
 }
