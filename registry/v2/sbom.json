@@ -720,6 +720,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.ai@1.5.2",
+      "type": "library",
+      "name": "core.openwop.ai",
+      "version": "1.5.2",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.ai/-/1.5.2.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "445b5824865a6c535dcf8fa74352036ada0ea851383b153fb6ca9a98728c5610"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.artifact-types@1.0.1",
       "type": "library",
       "name": "core.openwop.artifact-types",
