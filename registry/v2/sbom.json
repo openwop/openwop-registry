@@ -4212,6 +4212,24 @@
       ]
     },
     {
+      "bom-ref": "pkg:openwop/core.openwop.workflows.marketing@1.2.3",
+      "type": "library",
+      "name": "core.openwop.workflows.marketing",
+      "version": "1.2.3",
+      "externalReferences": [
+        {
+          "type": "bom",
+          "url": "/v2/packs/core.openwop.workflows.marketing/-/1.2.3.sbom.json",
+          "hashes": [
+            {
+              "alg": "SHA-256",
+              "content": "1bbfd55f8a530fe3e12910baa6e69fdf5f469afe6fe25ad23df148d95932a60c"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "bom-ref": "pkg:openwop/core.openwop.workflows.mcp-tool-projections@1.0.1",
       "type": "library",
       "name": "core.openwop.workflows.mcp-tool-projections",
